@@ -4,11 +4,22 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
+    "storybook": "turbo run storybook",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types"
   },
+  "pnpm": {
+    "overrides": {
+      "react": "^19.1.1",
+      "react-dom": "^19.1.1",
+      "@types/react": "^19.1.16",
+      "@types/react-dom": "^19.1.9"
+    }
+  },
   "devDependencies": {
+    "@dsui/eslint-config": "workspace:*",
+    "@dsui/typescript-config": "workspace:*",
     "prettier": "^3.6.2",
     "turbo": "^2.5.8",
     "typescript": "5.9.2"

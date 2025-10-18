@@ -1,0 +1,93 @@
+@theme inline {
+  --animate-heartbeat: heartbeat 2s infinite ease-in-out;
+  --animate-rainbow: rainbow 5s linear infinite;
+  --animate-move-background: move-background 60s linear infinite;
+  --animate-slide-loading: slide-loading 1.5s linear infinite;
+  --animate-draw: draw 500ms ease-in forwards;
+
+  @keyframes heartbeat {
+    0% {
+      box-shadow: 0 0 0 0 var(--heartbeat-color, currentColor);
+      transform: scale(1);
+    }
+
+    50% {
+      box-shadow: 0 0 0 7px transparent;
+      transform: scale(1.05);
+    }
+
+    100% {
+      box-shadow: 0 0 0 0 transparent;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes rainbow {
+    0% {
+      background-position: 0px center;
+    }
+
+    100% {
+      background-position: 200% center;
+    }
+  }
+
+  @keyframes slide-loading {
+    0% {
+      transform: translateX(25px);
+    }
+
+    100% {
+      transform: translateX(-20px);
+    }
+  }
+
+  @keyframes move-background {
+    from {
+      background-position: 0% 0%;
+    }
+
+    to {
+      background-position: 0% -500%;
+    }
+  }
+
+  @keyframes draw {
+    0% {
+      stroke-dashoffset: 100;
+    }
+
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }
+}
+
+.animate-heartbeat {
+  &.bg-primary {
+    --heartbeat-color: var(--primary);
+  }
+
+  &.bg-destructive {
+    --heartbeat-color: var(--destructive);
+  }
+
+  &.bg-secondary {
+    --heartbeat-color: var(--secondary);
+  }
+
+  &.bg-accent {
+    --heartbeat-color: var(--accent);
+  }
+}
+
+.animate-draw svg path {
+  transition: stroke-width 0.3s;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 0;
+}
+
+.animate-draw:hover svg path {
+  stroke-width: 2;
+  animation: draw 500ms ease-in forwards;
+}
