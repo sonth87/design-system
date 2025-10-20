@@ -5,7 +5,7 @@ import {
 } from "@dsui/ui/components/input";
 import { cn } from "@dsui/ui/lib/utils";
 import { FloatingLabel } from "./FloatLabel";
-import { ArrowDown, ChevronDown, ChevronUp } from "lucide-react";
+import { Eye, EyeOff, ChevronDown, ChevronUp } from "lucide-react";
 
 export type InputProps = SInputProps & {
   label?: string;
@@ -23,6 +23,8 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
     // Combine refs
     React.useImperativeHandle(ref, () => innerRef.current!);
+
+    const [showPassword, setShowPassword] = React.useState(false);
 
     // State
     const helperTextStyles = {
@@ -85,6 +87,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                 "pt-5 pb-1": isFloatLabel && (!size || size === "xl"),
                 "[&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none [-moz-appearance:textfield] pr-8":
                   type === "number",
+                "pr-10": type === "password",
               },
               className
             )}
@@ -96,7 +99,9 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                   : "xl"
                 : size
             }
-            type={type}
+            type={
+              type === "password" ? (showPassword ? "text" : "password") : type
+            }
             {...props}
           />
           {isFloatLabel && (
@@ -133,6 +138,23 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                 <ChevronDown className="size-3" />
               </button>
             </div>
+          )}
+
+          {/* Show/Hide Password Button */}
+          {type === "password" && (
+            <button
+              type="button"
+              tabIndex={-1}
+              className="absolute right-2 top-1/2 -translate-y-1/2 p-1 rounded hover:bg-accent transition-colors"
+              onClick={() => setShowPassword((prev) => !prev)}
+              disabled={props.disabled}
+            >
+              {showPassword ? (
+                <EyeOff className="size-4" />
+              ) : (
+                <Eye className="size-4" />
+              )}
+            </button>
           )}
         </div>
 
