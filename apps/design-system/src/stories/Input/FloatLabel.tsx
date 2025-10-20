@@ -25,12 +25,12 @@ const FloatingLabel = React.forwardRef<
             !lagerSize,
         },
         {
-          "-top-3.5 origin-[0] scale-75 translate-x-0 max-w-full h-3 py-0": lagerSize,
+          "-top-3.5 origin-[0] scale-75 translate-x-0 max-w-full w-auto h-3 py-0": lagerSize,
           // State empty (placeholder shown) - ở giữa input
           "peer-placeholder-shown:-top-0.5 peer-placeholder-shown:scale-100 peer-placeholder-shown:w-[calc(100%-theme(spacing.4))] peer-placeholder-shown:h-8 peer-placeholder-shown:py-2":
             lagerSize,
           // // State focus - nằm trên input
-          "peer-focus:-top-3.5 peer-focus:origin-[0] peer-focus:scale-75 peer-focus:text-primary peer-focus:max-w-full peer-focus:h-3 peer-focus:py-0":
+          "peer-focus:-top-3.5 peer-focus:origin-[0] peer-focus:scale-75 peer-focus:text-primary peer-focus:max-w-full peer-focus:w-auto peer-focus:h-3 peer-focus:py-0":
             lagerSize,
         },
         "will-change-transform transition-all duration-300 ease-in-out",

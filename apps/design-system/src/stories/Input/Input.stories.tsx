@@ -30,6 +30,10 @@ const meta: Meta<InputProps> = {
       options: ["normal", "sm", "xs", "lg", "xl"],
       description: "The size of the input",
     },
+    isFloatLabel: {
+      control: "boolean",
+      description: "Enable floating label behavior",
+    },
     disabled: {
       control: "boolean",
       description: "Disable the input",
@@ -47,6 +51,14 @@ const meta: Meta<InputProps> = {
       control: "text",
       description: "Helper text to display below the input",
     },
+    mask: {
+      control: "text",
+      description: "Input mask pattern",
+    },
+    maskOptions: {
+      control: "object",
+      description: "Options for input masking",
+    },
     className: { control: "text", description: "Additional CSS classes" },
   },
   // Use `fn` to spy on the onChange arg, which will appear in the actions panel once invoked
@@ -63,11 +75,29 @@ export default meta;
 export const Default = (args: InputProps) => <Input {...args} />;
 
 export const WithLabel = (args: InputProps) => (
-  <div className="w-80">
+  <div className="flex flex-col gap-4 w-80">
     <Input
       {...args}
-      label="Email"
+      label="Label normal"
       type="email"
+      value="email@example.com"
+      placeholder="Enter your email"
+    />
+    <Input
+      {...args}
+      isFloatLabel
+      size="lg"
+      label="Label with Large size"
+      type="email"
+      value="email@example.com"
+      placeholder="Enter your email"
+    />
+    <Input
+      {...args}
+      isFloatLabel
+      label="Label with Extra Large size"
+      type="email"
+      value="email@example.com"
       placeholder="Enter your email"
     />
   </div>
@@ -80,6 +110,31 @@ export const WithHelperText = (args: InputProps) => (
       label="Username"
       placeholder="Enter your username"
       helperText="Choose a unique username for your account"
+    />
+  </div>
+);
+
+export const WithMask = (args: InputProps) => (
+  <div className="flex flex-col gap-4 w-80">
+    <Input
+      {...args}
+      mask="datetime"
+      label="Date Time"
+      maskOptions={{
+        placeholder: "_",
+        inputFormat: "HH:MM:ss",
+        outputFormat: "HH:MM:ss",
+        showMaskOnHover: false,
+      }}
+    />
+    <Input
+      mask="+1 (999) 999-9999"
+      maskOptions={{
+        placeholder: "_",
+      }}
+      size="xl"
+      isFloatLabel
+      label="Phone Number"
     />
   </div>
 );
@@ -219,17 +274,8 @@ export const FileUpload = () => (
 
 export const FloatLabel = () => (
   <div className="flex flex-col gap-4 w-80">
-    <Input
-      label="Email Address"
-      type="email"
-      isFloatLabel
-    />
-    <Input
-      label="Full Name"
-      type="text"
-      isFloatLabel
-      defaultValue="John Doe"
-    />
+    <Input label="Email Address" type="email" isFloatLabel />
+    <Input label="Full Name" type="text" isFloatLabel defaultValue="John Doe" />
     <Input
       label="Phone Number"
       type="tel"

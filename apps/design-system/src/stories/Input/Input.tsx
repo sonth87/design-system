@@ -6,22 +6,64 @@ import {
 import { cn } from "@dsui/ui/lib/utils";
 import { FloatingLabel } from "./FloatLabel";
 import { Eye, EyeOff, ChevronDown, ChevronUp } from "lucide-react";
+import { withMask } from "use-mask-input";
 
 export type InputProps = SInputProps & {
   label?: string;
   helperText?: string;
   isFloatLabel?: boolean;
+  mask?: string;
+  maskOptions?: {
+    placeholder?: string;
+    inputFormat?: string;
+    outputFormat?: string;
+    showMaskOnHover?: boolean;
+    showMaskOnFocus?: boolean;
+    separate?: boolean;
+  };
 };
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   (
-    { className, label, helperText, state, size, isFloatLabel, type, ...props },
+    {
+      className,
+      label,
+      helperText,
+      state,
+      size,
+      isFloatLabel,
+      type,
+      mask,
+      maskOptions,
+      ...props
+    },
     ref
   ) => {
     const inputId = React.useId();
     const innerRef = React.useRef<HTMLInputElement>(null);
 
     // Combine refs
+    const combinedRef = React.useCallback(
+      (element: HTMLInputElement | null) => {
+        // Set innerRef
+        if (innerRef) {
+          (
+            innerRef as React.MutableRefObject<HTMLInputElement | null>
+          ).current = element;
+        }
+
+        // Apply mask if provided
+        if (mask && element) {
+          const maskRefCallback = withMask(mask, maskOptions);
+          if (typeof maskRefCallback === "function") {
+            maskRefCallback(element);
+          }
+        }
+      },
+      [mask, maskOptions]
+    );
+
+    // Expose ref to parent
     React.useImperativeHandle(ref, () => innerRef.current!);
 
     const [showPassword, setShowPassword] = React.useState(false);
@@ -79,7 +121,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
         <div className="relative">
           <SInput
-            ref={innerRef}
+            ref={combinedRef}
             id={inputId}
             className={cn(
               "peer",
