@@ -150,10 +150,14 @@ export const ThemeShowcase: React.FC = () => {
             <button
               onClick={toggleTheme}
               className="px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-all flex items-center gap-2 shadow-md hover:shadow-lg"
-              title={isDarkMode ? "Chuyển sang Light Mode" : "Chuyển sang Dark Mode"}
+              title={
+                isDarkMode ? "Chuyển sang Light Mode" : "Chuyển sang Dark Mode"
+              }
             >
               <span className="text-xl">{isDarkMode ? "☀️" : "🌙"}</span>
-              <span className="font-medium">{isDarkMode ? "Light" : "Dark"}</span>
+              <span className="font-medium">
+                {isDarkMode ? "Light" : "Dark"}
+              </span>
             </button>
           </div>
         </div>
@@ -341,6 +345,24 @@ export const ThemeShowcase: React.FC = () => {
                     </button>
                     <button className="px-4 py-2 bg-destructive text-destructive-foreground rounded-md hover:opacity-90 transition-opacity text-sm">
                       Destructive
+                    </button>
+                  </div>
+                </div>
+
+                <div className="bg-card text-card-foreground rounded-lg border border-border p-4">
+                  <h4 className="font-semibold mb-2">State color</h4>
+                  <p className="text-sm text-muted-foreground mb-3">
+                    This is a card with current theme state colors.
+                  </p>
+                  <div className="flex gap-2 flex-wrap">
+                    <button className="px-4 py-2 bg-success text-success-foreground rounded-md hover:opacity-90 transition-opacity text-sm">
+                      Success
+                    </button>
+                    <button className="px-4 py-2 bg-error text-error-foreground rounded-md hover:opacity-90 transition-opacity text-sm">
+                      Error
+                    </button>
+                    <button className="px-4 py-2 bg-warning text-warning-foreground rounded-md hover:opacity-90 transition-opacity text-sm">
+                      Warning
                     </button>
                   </div>
                 </div>

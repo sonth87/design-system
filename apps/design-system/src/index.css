@@ -4,6 +4,7 @@
 
 /* component style */
 @import "./stories/Button/button.css";
+@import "./stories/Input/input.css";
 
 /* animation */
 @import "./animation.css";

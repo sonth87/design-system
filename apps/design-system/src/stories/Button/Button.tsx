@@ -89,6 +89,19 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
               </Glass>
             ),
           };
+        case "liquid":
+          return {
+            className: cn(
+              "relative overflow-hidden",
+              "bg-[linear-gradient(rgba(0,0,0,0.15)_0_0)] bg-no-repeat",
+              "bg-[length:200%_0.4em] bg-[position:200%_100%]",
+              "[transition:0.3s_0s,background-position_0.3s_0.3s]",
+              "hover:bg-[length:200%_100%] hover:bg-[position:0%_100%]",
+              "hover:text-white",
+              "hover:[transition:0.3s_0.3s,background-position_0.3s_0s]",
+              rest?.className
+            ),
+          };
         case "link-underline":
           return {
             variant: "link",

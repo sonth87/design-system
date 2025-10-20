@@ -1,0 +1,30 @@
+.floating-label {
+  position: relative;
+
+  /* Ẩn spinner mặc định để làm custom */
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield;
+    padding-right: 32px; /* Tạo space cho custom buttons */
+  }
+}
+
+/* Custom spinner buttons container */
+.floating-label::after {
+  content: '';
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  pointer-events: none;
+}
+
+/* Hoặc có thể tạo custom buttons bằng React component */

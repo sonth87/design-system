@@ -5,6 +5,7 @@ export type ButtonAnimation =
   | "tap"
   | "bounce"
   | "glass"
+  | "liquid"
   | "link-underline"
   | "loading"
   | "draw";
