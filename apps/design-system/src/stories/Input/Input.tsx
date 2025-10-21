@@ -21,6 +21,8 @@ export type InputProps = SInputProps & {
     showMaskOnFocus?: boolean;
     separate?: boolean;
   };
+  maxLength?: number;
+  showCharCount?: boolean;
 };
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
@@ -35,10 +37,23 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       type,
       mask,
       maskOptions,
+      maxLength,
+      showCharCount,
       ...props
     },
     ref
   ) => {
+    // Character count state
+    const [charCount, setCharCount] = React.useState(() => {
+      if (typeof props.value === "string") return props.value.length;
+      if (typeof props.defaultValue === "string") return props.defaultValue.length;
+      return 0;
+    });
+
+    const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+      setCharCount(e.target.value.length);
+      if (props.onChange) props.onChange(e);
+    };
     const inputId = React.useId();
     const innerRef = React.useRef<HTMLInputElement>(null);
 
@@ -144,6 +159,8 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             type={
               type === "password" ? (showPassword ? "text" : "password") : type
             }
+            maxLength={maxLength}
+            onChange={handleInput}
             {...props}
           />
           {isFloatLabel && (
@@ -200,10 +217,15 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           )}
         </div>
 
-        {helperText && (
-          <p className={cn("text-xs", state ? helperTextStyles?.[state] : "")}>
-            {helperText}
-          </p>
+        {(helperText || (showCharCount && typeof maxLength === "number")) && (
+          <div className="flex items-center justify-between text-xs gap-2">
+            {helperText && (
+              <p className={cn("text-xs", state ? helperTextStyles?.[state] : "")}>{helperText}</p>
+            )}
+            {showCharCount && typeof maxLength === "number" && (
+              <span className="ml-auto text-muted-foreground">{charCount} / {maxLength}</span>
+            )}
+          </div>
         )}
       </div>
     );

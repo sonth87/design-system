@@ -74,6 +74,17 @@ const meta: Meta<InputProps> = {
       control: "object",
       description: "Options for input masking",
     },
+    maxLength: {
+      control: "number",
+      description: "Maximum number of characters allowed",
+    },
+    showCharCount: {
+      control: "boolean",
+      description: "Show character count below the input",
+      table: {
+        defaultValue: { summary: "false" },
+      },
+    },
     className: { control: "text", description: "Additional CSS classes" },
   },
   // Use `fn` to spy on the onChange arg, which will appear in the actions panel once invoked
@@ -150,6 +161,19 @@ export const WithMask = (args: InputProps) => (
       size="xl"
       isFloatLabel
       label="Phone Number"
+    />
+  </div>
+);
+
+export const WithMaxLengthAndCharCount = (args: InputProps) => (
+  <div className="w-80">
+    <Input
+      {...args}
+      label="Full Name"
+      placeholder="Enter your name..."
+      maxLength={50}
+      showCharCount
+      helperText="Max 50 characters"
     />
   </div>
 );
