@@ -20,6 +20,9 @@ const meta: Meta<InputProps> = {
       control: "select",
       options: ["text", "email", "password", "number", "search", "tel", "url"],
       description: "The type of the input",
+      table: {
+        defaultValue: { summary: "text" },
+      },
     },
     placeholder: {
       control: "text",
@@ -29,14 +32,23 @@ const meta: Meta<InputProps> = {
       control: "select",
       options: ["normal", "sm", "xs", "lg", "xl"],
       description: "The size of the input",
+      table: {
+        defaultValue: { summary: "normal" },
+      },
     },
     isFloatLabel: {
       control: "boolean",
       description: "Enable floating label behavior",
+      table: {
+        defaultValue: { summary: "false" },
+      },
     },
     disabled: {
       control: "boolean",
       description: "Disable the input",
+      table: {
+        defaultValue: { summary: "false" },
+      },
     },
     label: {
       control: "text",
@@ -46,6 +58,9 @@ const meta: Meta<InputProps> = {
       control: "select",
       options: ["default", "success", "warning", "error"],
       description: "Type of helper text (default, success, warning, error)",
+      table: {
+        defaultValue: { summary: "default" },
+      },
     },
     helperText: {
       control: "text",
@@ -53,7 +68,7 @@ const meta: Meta<InputProps> = {
     },
     mask: {
       control: "text",
-      description: "Input mask pattern",
+      description: "Input mask pattern. E.g., 'datetime', '+1 (999) 999-9999'",
     },
     maskOptions: {
       control: "object",

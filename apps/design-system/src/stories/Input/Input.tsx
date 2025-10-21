@@ -126,7 +126,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             className={cn(
               "peer",
               {
-                "pt-5 pb-1": isFloatLabel && (!size || size === "xl"),
+                "pt-5 pb-1": isFloatLabel && size !== "lg",
                 "[&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none [-moz-appearance:textfield] pr-8":
                   type === "number",
                 "pr-10": type === "password",

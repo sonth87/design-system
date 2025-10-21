@@ -19,15 +19,10 @@ const meta: Meta<ButtonProps> = {
     variant: {
       control: "select",
       options: ["solid", "mix", "light", "outline", "ghost", "link"],
-      mapping: {
-        default: "default",
-        mix: "mix",
-        light: "light",
-        outline: "outline",
-        ghost: "ghost",
-        link: "link",
-      },
       description: "The visual style variant of the button",
+      table: {
+        defaultValue: { summary: "solid" },
+      },
     },
     size: {
       control: "select",
@@ -38,10 +33,20 @@ const meta: Meta<ButtonProps> = {
         "lg",
         "xl",
         "icon",
+        "icon-xs",
         "icon-sm",
         "icon-lg",
+        "icon-xl",
+        "circle-icon",
+        "circle-icon-xs",
+        "circle-icon-sm",
+        "circle-icon-lg",
+        "circle-icon-xl",
       ],
       description: "The size of the button",
+      table: {
+        defaultValue: { summary: "default" },
+      },
     },
     color: {
       control: "select",
@@ -56,14 +61,23 @@ const meta: Meta<ButtonProps> = {
         "warning",
       ],
       description: "The color theme of the button",
+      table: {
+        defaultValue: { summary: "primary" },
+      },
     },
     disabled: {
       control: "boolean",
       description: "Disable the button",
+      table: {
+        defaultValue: { summary: "false" },
+      },
     },
     isLoading: {
       control: "boolean",
       description: "Show loading state",
+      table: {
+        defaultValue: { summary: "false" },
+      },
     },
     animation: {
       control: "select",

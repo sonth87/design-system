@@ -164,9 +164,21 @@ const buttonVariants = cva(
         sm: "h-8 rounded-md gap-2 px-3 text-sm py-1.5 has-[>svg]:px-2.5",
         lg: "h-12 rounded-md px-4 py-3 has-[>svg]:px-4",
         xl: "h-14 rounded-md px-4 py-4 has-[>svg]:px-4",
-        icon: "size-9",
-        "icon-sm": "size-8",
-        "icon-lg": "size-10",
+        icon: "size-10 [&_svg:not([class*='size-'])]:size-6",
+        "icon-xs": "size-6 [&_svg:not([class*='size-'])]:size-4",
+        "icon-sm": "size-8 [&_svg:not([class*='size-'])]:size-5",
+        "icon-lg": "size-12 [&_svg:not([class*='size-'])]:size-6",
+        "icon-xl": "size-14 [&_svg:not([class*='size-'])]:size-6",
+        "circle-icon":
+          "size-10 rounded-full [&_svg:not([class*='size-'])]:size-6",
+        "circle-icon-xs":
+          "size-6 rounded-full [&_svg:not([class*='size-'])]:size-4",
+        "circle-icon-sm":
+          "size-8 rounded-full [&_svg:not([class*='size-'])]:size-5",
+        "circle-icon-lg":
+          "size-12 rounded-full [&_svg:not([class*='size-'])]:size-6",
+        "circle-icon-xl":
+          "size-14 rounded-full [&_svg:not([class*='size-'])]:size-6",
       },
       color: {
         primary: "",
