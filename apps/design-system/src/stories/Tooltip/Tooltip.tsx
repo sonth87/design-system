@@ -14,19 +14,11 @@ import {
   useSpring,
   useTransform,
 } from "motion/react";
-import type { BasicAnimation } from "../../types/variables";
+import type { BasicAnimation, BasicColor } from "../../types/variables";
 import { useMemo } from "react";
 import { animationClass } from "../../utils/css";
 
-type Color =
-  | "primary"
-  | "secondary"
-  | "dark"
-  | "light"
-  | "inverted"
-  | "success"
-  | "warning"
-  | "error";
+type Color = BasicColor | "dark" | "light" | "inverted";
 
 export type TooltipProps = TooltipContentProps & {
   content: React.ReactNode;

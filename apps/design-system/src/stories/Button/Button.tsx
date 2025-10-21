@@ -89,6 +89,13 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
               </Glass>
             ),
           };
+        case "glow":
+          return {
+            className: cn(
+              "animate-glow",
+              rest?.className
+            ),
+          };
         case "liquid":
           return {
             className: cn(

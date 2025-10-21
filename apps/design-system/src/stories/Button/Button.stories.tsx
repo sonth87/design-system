@@ -89,6 +89,7 @@ const meta: Meta<ButtonProps> = {
         "bounce",
         "tap",
         "glass",
+        "glow",
         "liquid",
         "link-underline",
         "loading",

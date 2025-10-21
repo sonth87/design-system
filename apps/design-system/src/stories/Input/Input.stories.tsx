@@ -66,9 +66,14 @@ const meta: Meta<InputProps> = {
       control: "text",
       description: "Helper text to display below the input",
     },
+    infoTooltip: {
+      control: "text",
+      description: "Tooltip info icon next to the label",
+    },
     mask: {
       control: "text",
-      description: "Input mask pattern. E.g., 'datetime', '+1 (999) 999-9999'",
+      description:
+        "Input mask pattern. E.g., 'currency', 'url', 'ip', '+1 (999) 999-9999'... For more info: <a href='https://www.npmjs.com/package/use-mask-input'>use-mask-input</a>",
     },
     maskOptions: {
       control: "object",
@@ -188,6 +193,25 @@ export const WithError = (args: InputProps) => (
       helperText="Please enter a valid email address"
       state="error"
       defaultValue="invalid-email"
+    />
+  </div>
+);
+
+export const WithInfo = (args: InputProps) => (
+  <div className="w-80 flex flex-col gap-4">
+    <Input
+      {...args}
+      label="Email"
+      type="email"
+      infoTooltip="We'll never share your email with anyone else."
+    />
+    <Input
+      {...args}
+      label="Email"
+      type="email"
+      isFloatLabel
+      infoTooltip="We'll never share your email with anyone else."
+      placeholder=""
     />
   </div>
 );

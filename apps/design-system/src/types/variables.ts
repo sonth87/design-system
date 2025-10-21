@@ -4,6 +4,7 @@ export type ButtonAnimation =
   | "shine"
   | "tap"
   | "bounce"
+  | "glow"
   | "glass"
   | "liquid"
   | "link-underline"
@@ -21,4 +22,12 @@ export type BasicAnimation =
   | "skewed"
   | "shake"
   | "flip"
+  | "glow"
   | "spec";
+
+export type BasicColor =
+  | "primary"
+  | "secondary"
+  | "success"
+  | "warning"
+  | "error";

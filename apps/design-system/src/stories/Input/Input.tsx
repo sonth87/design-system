@@ -5,8 +5,9 @@ import {
 } from "@dsui/ui/components/input";
 import { cn } from "@dsui/ui/lib/utils";
 import { FloatingLabel } from "./FloatLabel";
-import { Eye, EyeOff, ChevronDown, ChevronUp } from "lucide-react";
-import { withMask } from "use-mask-input";
+import { Eye, EyeOff, ChevronDown, ChevronUp, Info } from "lucide-react";
+import { withMask, type Options } from "use-mask-input";
+import { Tooltip } from "../Tooltip/Tooltip";
 
 export type InputProps = SInputProps & {
   label?: string;
@@ -20,9 +21,10 @@ export type InputProps = SInputProps & {
     showMaskOnHover?: boolean;
     showMaskOnFocus?: boolean;
     separate?: boolean;
-  };
+  } & Options;
   maxLength?: number;
   showCharCount?: boolean;
+  infoTooltip?: React.ReactNode;
 };
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
@@ -39,6 +41,8 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       maskOptions,
       maxLength,
       showCharCount,
+      infoTooltip,
+      placeholder = " ",
       ...props
     },
     ref
@@ -46,7 +50,8 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     // Character count state
     const [charCount, setCharCount] = React.useState(() => {
       if (typeof props.value === "string") return props.value.length;
-      if (typeof props.defaultValue === "string") return props.defaultValue.length;
+      if (typeof props.defaultValue === "string")
+        return props.defaultValue.length;
       return 0;
     });
 
@@ -121,16 +126,21 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
     return (
       <div
-        className={cn("flex w-full flex-col gap-1.5 relative", {
-          "floating-label": isFloatLabel,
+        className={cn("flex flex-col gap-1.5 relative", {
+          "floating-label relative": isFloatLabel,
         })}
       >
         {!isFloatLabel && label && (
           <label
             htmlFor={inputId}
-            className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+            className="flex gap-2 text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
           >
             {label}
+            {infoTooltip && (
+              <Tooltip content={infoTooltip}>
+                <Info className="size-3.5 min-w-3.5" />
+              </Tooltip>
+            )}
           </label>
         )}
 
@@ -159,12 +169,17 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             type={
               type === "password" ? (showPassword ? "text" : "password") : type
             }
+            placeholder={placeholder}
             maxLength={maxLength}
             onChange={handleInput}
             {...props}
           />
           {isFloatLabel && (
-            <FloatingLabel htmlFor={inputId} size={size}>
+            <FloatingLabel
+              htmlFor={inputId}
+              size={size}
+              infoTooltip={infoTooltip}
+            >
               {label}
             </FloatingLabel>
           )}
@@ -220,10 +235,19 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         {(helperText || (showCharCount && typeof maxLength === "number")) && (
           <div className="flex items-center justify-between text-xs gap-2">
             {helperText && (
-              <p className={cn("text-xs", state ? helperTextStyles?.[state] : "")}>{helperText}</p>
+              <p
+                className={cn(
+                  "text-xs",
+                  state ? helperTextStyles?.[state] : ""
+                )}
+              >
+                {helperText}
+              </p>
             )}
             {showCharCount && typeof maxLength === "number" && (
-              <span className="ml-auto text-muted-foreground">{charCount} / {maxLength}</span>
+              <span className="ml-auto text-muted-foreground">
+                {charCount} / {maxLength}
+              </span>
             )}
           </div>
         )}

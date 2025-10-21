@@ -1,6 +1,4 @@
 .floating-label {
-  position: relative;
-
   /* Ẩn spinner mặc định để làm custom */
   input[type="number"]::-webkit-outer-spin-button,
   input[type="number"]::-webkit-inner-spin-button {
