@@ -71,6 +71,17 @@ const meta: Meta<TextareaProps> = {
         defaultValue: { summary: "false" },
       },
     },
+    clearable: {
+      control: "boolean",
+      description: "Show clear button when input has value",
+      table: {
+        defaultValue: { summary: "false" },
+      },
+    },
+    onClear: {
+      action: "cleared",
+      description: "Callback function when clear button is clicked",
+    },
     rows: {
       control: "number",
       description: "Number of visible text lines",

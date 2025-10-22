@@ -1,8 +1,7 @@
 import type { Meta } from "@storybook/react";
 
 import Input, { type InputProps } from "./Input";
-import { Mail, Search, Eye, EyeOff } from "lucide-react";
-import { useState } from "react";
+import { Mail, Search, Eye } from "lucide-react";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta: Meta<InputProps> = {
@@ -89,6 +88,25 @@ const meta: Meta<InputProps> = {
       table: {
         defaultValue: { summary: "false" },
       },
+    },
+    clearable: {
+      control: "boolean",
+      description: "Show clear button when input has value",
+      table: {
+        defaultValue: { summary: "false" },
+      },
+    },
+    onClear: {
+      action: "cleared",
+      description: "Callback function when clear button is clicked",
+    },
+    prefixIcon: {
+      control: false,
+      description: "Icon to display at the start of the input",
+    },
+    suffixIcon: {
+      control: false,
+      description: "Icon to display at the end of the input",
     },
     className: { control: "text", description: "Additional CSS classes" },
   },
@@ -258,52 +276,136 @@ export const Types = () => (
 );
 
 export const WithIcons = () => {
-  const [showPassword, setShowPassword] = useState(false);
-
   return (
     <div className="flex flex-col gap-4 w-80">
-      <div className="relative">
-        <Input
-          label="Email"
-          type="email"
-          placeholder="Enter your email"
-          className="pl-10"
-        />
-        <Mail className="absolute left-3 top-[34px] h-4 w-4 text-muted-foreground" />
-      </div>
+      <Input
+        label="Email"
+        type="email"
+        placeholder="Enter your email"
+        isFloatLabel
+        prefixIcon={<Mail />}
+      />
 
-      <div className="relative">
-        <Input
-          label="Search"
-          type="search"
-          placeholder="Search..."
-          className="pl-10"
-        />
-        <Search className="absolute left-3 top-[34px] h-4 w-4 text-muted-foreground" />
-      </div>
+      <Input
+        label="Search"
+        type="search"
+        placeholder="Search..."
+        prefixIcon={<Search />}
+      />
 
-      <div className="relative">
-        <Input
-          label="Password"
-          type={showPassword ? "text" : "password"}
-          placeholder="Enter password"
-          className="pr-10"
-        />
-        <button
-          type="button"
-          onClick={() => setShowPassword(!showPassword)}
-          className="absolute right-3 top-[34px] text-muted-foreground hover:text-foreground"
-        >
-          {showPassword ? (
-            <EyeOff className="h-4 w-4" />
-          ) : (
-            <Eye className="h-4 w-4" />
-          )}
-        </button>
-      </div>
+      <Input
+        label="Password"
+        type="password"
+        placeholder="Enter password"
+        prefixIcon={<Eye />}
+      />
+
+      <Input
+        label="Email with suffix"
+        type="email"
+        placeholder="Enter your email"
+        suffixIcon={<Mail />}
+      />
+
+      <Input
+        label="Both prefix and suffix"
+        type="text"
+        placeholder="Enter text..."
+        prefixIcon={<Search />}
+        suffixIcon={<Mail />}
+      />
     </div>
   );
 };
+
+export const IconsWithSizes = () => (
+  <div className="flex flex-col gap-4 w-80">
+    <Input
+      label="Extra Small with icon"
+      placeholder="XS input"
+      size="xs"
+      prefixIcon={<Search />}
+    />
+    <Input
+      label="Small with icon"
+      placeholder="Small input"
+      size="sm"
+      prefixIcon={<Search />}
+    />
+    <Input
+      label="Default with icon"
+      placeholder="Default input"
+      size="normal"
+      prefixIcon={<Search />}
+    />
+    <Input
+      label="Large with icon"
+      placeholder="Large input"
+      size="lg"
+      prefixIcon={<Search />}
+    />
+    <Input
+      label="Extra Large with icon"
+      placeholder="XL input"
+      size="xl"
+      prefixIcon={<Search />}
+    />
+  </div>
+);
+
+export const IconsWithBuiltInFeatures = () => (
+  <div className="flex flex-col gap-4 w-80">
+    <Input
+      label="Email with prefix icon and clearable"
+      type="email"
+      placeholder="Enter your email"
+      prefixIcon={<Mail />}
+      clearable
+      defaultValue="example@email.com"
+      helperText="Prefix icon + clearable button"
+    />
+    
+    <Input
+      label="Password with prefix icon"
+      type="password"
+      placeholder="Enter password"
+      prefixIcon={<Eye />}
+      defaultValue="mypassword"
+      helperText="Prefix icon + password toggle"
+    />
+
+    <Input
+      label="Password with prefix and clearable"
+      type="password"
+      placeholder="Enter password"
+      prefixIcon={<Eye />}
+      clearable
+      defaultValue="mypassword"
+      helperText="Prefix icon + password toggle + clearable"
+    />
+
+    <Input
+      label="Search with suffix and clearable"
+      type="search"
+      placeholder="Search..."
+      suffixIcon={<Search />}
+      clearable
+      defaultValue="search term"
+      helperText="Suffix icon + clearable button"
+    />
+
+    <Input
+      label="Both icons with clearable"
+      type="text"
+      placeholder="Enter text..."
+      prefixIcon={<Mail />}
+      suffixIcon={<Search />}
+      clearable
+      defaultValue="Some text"
+      helperText="Both icons + clearable button"
+    />
+  </div>
+);
 
 export const Sizes = () => (
   <div className="flex flex-col gap-4 w-80">
@@ -337,6 +439,40 @@ export const FloatLabel = () => (
       isFloatLabel
       state="error"
       helperText="Password must be at least 8 characters"
+    />
+  </div>
+);
+
+export const Clearable = () => (
+  <div className="flex flex-col gap-4 w-80">
+    <Input
+      label="Search"
+      placeholder="Type to search..."
+      clearable
+      onClear={() => console.log("Input cleared")}
+    />
+    <Input
+      label="Email"
+      type="email"
+      placeholder="Enter your email"
+      defaultValue="example@email.com"
+      clearable
+      helperText="Click X to clear the input"
+    />
+    <Input
+      label="Password"
+      type="password"
+      defaultValue="mypassword123"
+      clearable
+      helperText="Clear button appears before the eye icon"
+      onClear={() => console.log("Password cleared")}
+    />
+    <Input
+      label="Username"
+      isFloatLabel
+      defaultValue="johndoe"
+      clearable
+      onClear={() => console.log("Username cleared")}
     />
   </div>
 );

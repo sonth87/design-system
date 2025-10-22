@@ -1,7 +1,7 @@
 import React from "react";
 import { Textarea as STextarea } from "@dsui/ui/components/textarea";
 import { cn } from "@dsui/ui/lib/utils";
-import { Info } from "lucide-react";
+import { Info, X } from "lucide-react";
 import { Tooltip } from "../Tooltip/Tooltip";
 import { FloatingLabel } from "../Input/FloatLabel";
 
@@ -10,11 +10,13 @@ export type TextareaProps = Omit<
   "size"
 > & {
   label?: string;
-  helperText?: string;
+  helperText?: React.ReactNode;
   isFloatLabel?: boolean;
   maxLength?: number;
   showCharCount?: boolean;
   infoTooltip?: React.ReactNode;
+  clearable?: boolean;
+  onClear?: () => void;
   size?: "xs" | "sm" | "normal" | "lg" | "xl";
   state?: "default" | "success" | "warning" | "error";
 };
@@ -31,6 +33,8 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
       maxLength,
       showCharCount,
       infoTooltip,
+      clearable,
+      onClear,
       placeholder = " ",
       ...props
     },
@@ -50,6 +54,20 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
     };
 
     const textareaId = React.useId();
+    const innerRef = React.useRef<HTMLTextAreaElement>(null);
+
+    // Combine refs
+    React.useImperativeHandle(ref, () => innerRef.current!);
+
+    const handleClear = () => {
+      if (innerRef.current) {
+        innerRef.current.value = "";
+        setCharCount(0);
+        const event = new Event("input", { bubbles: true });
+        innerRef.current.dispatchEvent(event);
+        if (onClear) onClear();
+      }
+    };
 
     // State
     const helperTextStyles = {
@@ -81,7 +99,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
 
         <div className="relative">
           <STextarea
-            ref={ref}
+            ref={innerRef}
             id={textareaId}
             className={cn(
               "peer resize-y",
@@ -90,6 +108,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
                 "pt-6 pb-1": isFloatLabel && size !== "lg" && size !== "xl",
                 "text-lg": (size === "xl" || size === "lg") && !isFloatLabel,
               },
+              clearable && charCount > 0 && "pr-10",
               className
             )}
             placeholder={placeholder}
@@ -114,6 +133,21 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
             >
               {label}
             </FloatingLabel>
+          )}
+
+          {/* Clear Button */}
+          {clearable && charCount > 0 && (
+            <button
+              type="button"
+              tabIndex={-1}
+              className={cn(
+                "absolute top-2 right-2 p-1 rounded hover:bg-accent transition-colors"
+              )}
+              onClick={handleClear}
+              disabled={props.disabled}
+            >
+              <X className="size-4" />
+            </button>
           )}
         </div>
 

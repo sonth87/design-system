@@ -5,13 +5,13 @@ import {
 } from "@dsui/ui/components/input";
 import { cn } from "@dsui/ui/lib/utils";
 import { FloatingLabel } from "./FloatLabel";
-import { Eye, EyeOff, ChevronDown, ChevronUp, Info } from "lucide-react";
+import { Eye, EyeOff, ChevronDown, ChevronUp, Info, X } from "lucide-react";
 import { withMask, type Options } from "use-mask-input";
 import { Tooltip } from "../Tooltip/Tooltip";
 
 export type InputProps = SInputProps & {
   label?: string;
-  helperText?: string;
+  helperText?: React.ReactNode;
   isFloatLabel?: boolean;
   mask?: string;
   maskOptions?: {
@@ -25,6 +25,10 @@ export type InputProps = SInputProps & {
   maxLength?: number;
   showCharCount?: boolean;
   infoTooltip?: React.ReactNode;
+  clearable?: boolean;
+  onClear?: () => void;
+  prefixIcon?: React.ReactNode;
+  suffixIcon?: React.ReactNode;
 };
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
@@ -42,6 +46,10 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       maxLength,
       showCharCount,
       infoTooltip,
+      clearable,
+      onClear,
+      prefixIcon,
+      suffixIcon,
       placeholder = " ",
       ...props
     },
@@ -59,6 +67,17 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       setCharCount(e.target.value.length);
       if (props.onChange) props.onChange(e);
     };
+
+    const handleClear = () => {
+      if (innerRef.current) {
+        innerRef.current.value = "";
+        setCharCount(0);
+        const event = new Event("input", { bubbles: true });
+        innerRef.current.dispatchEvent(event);
+        if (onClear) onClear();
+      }
+    };
+
     const inputId = React.useId();
     const innerRef = React.useRef<HTMLInputElement>(null);
 
@@ -95,6 +114,83 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       warning: "text-warning",
       error: "text-error",
     };
+
+    // Calculate current size
+    const currentSize = isFloatLabel
+      ? size === "xl" || size === "lg"
+        ? size
+        : "xl"
+      : size || "normal";
+
+    // Calculate padding based on size and icons
+    const getPadding = () => {
+      const sizeMap = {
+        xs: { prefix: "pl-8", suffix: "pr-8" },
+        sm: { prefix: "pl-9", suffix: "pr-9" },
+        normal: { prefix: "pl-10", suffix: "pr-10" },
+        lg: { prefix: "pl-11", suffix: "pr-11" },
+        xl: { prefix: "pl-12", suffix: "pr-12" },
+      };
+
+      return sizeMap[currentSize as keyof typeof sizeMap] || sizeMap.normal;
+    };
+
+    const padding = getPadding();
+
+    // Get icon size class based on current size
+    const getIconSizeClass = () => {
+      const sizeMap = {
+        xs: "size-3",
+        sm: "size-3.5",
+        normal: "size-4",
+        lg: "size-4",
+        xl: "size-4",
+      };
+      return sizeMap[currentSize as keyof typeof sizeMap] || "size-4";
+    };
+
+    const iconSizeClass = getIconSizeClass();
+
+    // Calculate right padding considering built-in icons
+    const getRightPadding = () => {
+      const hasBuiltInSuffix = 
+        type === "number" || 
+        type === "password" || 
+        (clearable && charCount > 0);
+
+      if (hasBuiltInSuffix && suffixIcon) {
+        return type === "password" && clearable && charCount > 0
+          ? "pr-20" // password + clear + custom icon
+          : "pr-16"; // one built-in + custom icon
+      }
+      
+      if (hasBuiltInSuffix) {
+        return type === "password" && clearable && charCount > 0
+          ? "pr-16" // password + clear
+          : "pr-10"; // single built-in icon
+      }
+
+      if (suffixIcon) {
+        return padding.suffix;
+      }
+
+      return "";
+    };
+
+    // Icon position calculations
+    const getIconPosition = () => {
+      const sizeMap = {
+        xs: { left: "left-2.5", right: "right-2.5" },
+        sm: { left: "left-3", right: "right-3" },
+        normal: { left: "left-3", right: "right-3" },
+        lg: { left: "left-3.5", right: "right-3.5" },
+        xl: { left: "left-4", right: "right-4" },
+      };
+
+      return sizeMap[currentSize as keyof typeof sizeMap] || sizeMap.normal;
+    };
+
+    const iconPosition = getIconPosition();
 
     /* Spinner Button Handlers */
     const handleIncrement = () => {
@@ -145,6 +241,22 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         )}
 
         <div className="relative">
+          {prefixIcon && (
+            <div
+              className={cn(
+                "absolute top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none",
+                iconPosition.left
+              )}
+            >
+              {React.isValidElement(prefixIcon)
+                ? React.cloneElement(prefixIcon, {
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                    className: cn(iconSizeClass, (prefixIcon.props as any)?.className),
+                  } as Partial<unknown>)
+                : prefixIcon}
+            </div>
+          )}
+
           <SInput
             ref={combinedRef}
             id={inputId}
@@ -154,9 +266,9 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                 "pt-5 pb-1": isFloatLabel && size !== "lg",
                 "[&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none [-moz-appearance:textfield] pr-8":
                   type === "number",
-                "pr-10": type === "password",
-                "text-lg": (size === "xl" || size === "lg") && !isFloatLabel,
               },
+              prefixIcon && padding.prefix,
+              getRightPadding(),
               className
             )}
             state={state}
@@ -215,12 +327,37 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             </div>
           )}
 
+          {/* Clear Button */}
+          {clearable && charCount > 0 && type !== "number" && (
+            <button
+              type="button"
+              tabIndex={-1}
+              className={cn(
+                "absolute top-1/2 -translate-y-1/2 p-1 rounded hover:bg-accent transition-colors",
+                type === "password" 
+                  ? suffixIcon 
+                    ? "right-14" 
+                    : "right-10" 
+                  : suffixIcon
+                    ? "right-10"
+                    : "right-2"
+              )}
+              onClick={handleClear}
+              disabled={props.disabled}
+            >
+              <X className="size-4" />
+            </button>
+          )}
+
           {/* Show/Hide Password Button */}
           {type === "password" && (
             <button
               type="button"
               tabIndex={-1}
-              className="absolute right-2 top-1/2 -translate-y-1/2 p-1 rounded hover:bg-accent transition-colors"
+              className={cn(
+                "absolute top-1/2 -translate-y-1/2 p-1 rounded hover:bg-accent transition-colors",
+                suffixIcon ? "right-10" : "right-2"
+              )}
               onClick={() => setShowPassword((prev) => !prev)}
               disabled={props.disabled}
             >
@@ -230,6 +367,23 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                 <Eye className="size-4" />
               )}
             </button>
+          )}
+
+          {/* Suffix Icon */}
+          {suffixIcon && (
+            <div
+              className={cn(
+                "absolute top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none",
+                iconPosition.right
+              )}
+            >
+              {React.isValidElement(suffixIcon)
+                ? React.cloneElement(suffixIcon, {
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                    className: cn(iconSizeClass, (suffixIcon.props as any)?.className),
+                  } as Partial<unknown>)
+                : suffixIcon}
+            </div>
           )}
         </div>
 
