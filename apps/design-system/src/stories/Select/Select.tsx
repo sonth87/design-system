@@ -8,21 +8,17 @@ import {
   MultiSelectGroup as BaseMultiSelectGroup,
   MultiSelectSeparator as BaseMultiSelectSeparator,
 } from "@dsui/ui/components/select";
-import { Combobox } from "@dsui/ui/components/combobox";
+import {
+  Combobox,
+  type ComboboxProps,
+  type SelectOption,
+} from "@dsui/ui/components/combobox";
 import { cn } from "@dsui/ui/lib/utils";
 import { FloatingLabel } from "@/components/FloatLabel";
 import { Info } from "lucide-react";
 import { Tooltip } from "@/stories/Tooltip/Tooltip";
-import Button from "../Button/Button";
-import { Label } from "@dsui/ui/index";
 
-export type SelectOption = {
-  value: string;
-  label: string;
-  group?: string;
-};
-
-export type SelectProps = {
+export type SelectProps = ComboboxProps & {
   label?: string;
   helperText?: React.ReactNode;
   state?: "default" | "success" | "warning" | "error";
@@ -177,13 +173,7 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
                   },
                   className
                 )}
-                size={
-                  isFloatLabel
-                    ? size === "xl" || size === "lg"
-                      ? size
-                      : "xl"
-                    : size
-                }
+                size={currentSize}
                 state={state}
                 dropdownClassName={cn("opacity-40", {
                   "translate-y-[-8px]": isFloatLabel && size !== "lg",
@@ -195,6 +185,7 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
                   size={size}
                   infoTooltip={infoTooltip}
                   shouldFloat={!!(value ?? internalValue)}
+                  className="pointer-events-none"
                 >
                   {label}
                 </FloatingLabel>

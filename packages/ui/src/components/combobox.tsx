@@ -53,12 +53,18 @@ const comboboxVariants = cva(
   }
 );
 
+type SelectOption = {
+  label: React.ReactNode;
+  value: string;
+  group?: string;
+};
+
 type ComboboxProps = Omit<
   React.ComponentProps<typeof PopoverPrimitive.Trigger>,
   "onChange"
 > & {
   value?: string;
-  options?: { label: React.ReactNode; value: string }[];
+  options?: SelectOption[];
   placeHolder?: string;
   onChange?: (value?: string | null) => void;
   clearable?: boolean;
@@ -99,7 +105,7 @@ function Combobox({
             {open && (
               <ChevronUp
                 className={cn(
-                  "opacity-50",
+                  "z-10 opacity-50",
                   {
                     "size-4": size === "sm" || size === "xs",
                     "size-5": size === "lg" || size === "xl",
@@ -111,7 +117,7 @@ function Combobox({
             {!open && (
               <ChevronDown
                 className={cn(
-                  "opacity-50",
+                  "z-10 opacity-50",
                   {
                     "size-4": size === "sm" || size === "xs",
                     "size-5": size === "lg" || size === "xl",
@@ -169,4 +175,4 @@ function Combobox({
   );
 }
 
-export { Combobox, type ComboboxProps };
+export { Combobox, type ComboboxProps, type SelectOption };
