@@ -23,7 +23,7 @@ const FloatingLabel = React.forwardRef<
       <Label
         className={cn(
           "absolute start-2 select-none pointer-events-none",
-          "bg-background dark:bg-input px-3 translate-y-2",
+          "bg-background px-3 translate-y-2",
           "flex",
           {
             "top-0.5 origin-left scale-75 translate-x-1 max-w-full h-3 py-0 bg-transparent":

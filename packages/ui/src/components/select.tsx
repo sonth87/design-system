@@ -1,6 +1,12 @@
 "use client";
 
-import { CheckIcon, ChevronsUpDownIcon, XIcon } from "lucide-react";
+import {
+  CheckIcon,
+  ChevronDown,
+  ChevronsUpDownIcon,
+  ChevronUp,
+  XIcon,
+} from "lucide-react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../lib/utils";
 import { Button } from "./button";
@@ -25,9 +31,10 @@ import {
   type ReactNode,
 } from "react";
 import { Badge } from "./badge";
+import { Label } from "./label";
 
 const multiSelectTriggerVariants = cva(
-  "flex h-auto w-fit items-center justify-between gap-2 overflow-hidden rounded-md border bg-transparent shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50 data-[placeholder]:text-muted-foreground dark:bg-input/30 dark:hover:bg-input/50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground",
+  "flex h-auto w-fit items-center justify-between gap-2 overflow-hidden rounded-md border bg-transparent shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50 data-[placeholder]:text-muted-foreground dark:bg-background dark:hover:bg-input/50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground",
   {
     variants: {
       size: {
@@ -38,7 +45,8 @@ const multiSelectTriggerVariants = cva(
         xl: "min-h-14 px-5 py-3",
       },
       state: {
-        default: "border-input focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40",
+        default:
+          "border-input focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40",
         success:
           "border-success ring-success/30 focus-visible:border-success focus-visible:ring-success/50",
         error:
@@ -123,12 +131,14 @@ export function MultiSelect({
 
 export function MultiSelectTrigger({
   className,
+  dropdownClassName,
   children,
   size,
   state = "default",
   ...props
 }: {
   className?: string;
+  dropdownClassName?: string;
   children?: ReactNode;
   size?: "normal" | "sm" | "xs" | "lg" | "xl";
   state?: "default" | "success" | "error" | "warning";
@@ -138,7 +148,7 @@ export function MultiSelectTrigger({
 
   return (
     <PopoverTrigger asChild>
-      <Button
+      {/* <Button
         {...props}
         variant={props.variant ?? "outline"}
         role={props.role ?? "combobox"}
@@ -151,7 +161,37 @@ export function MultiSelectTrigger({
       >
         {children}
         <ChevronsUpDownIcon className="size-4 shrink-0 opacity-50" />
-      </Button>
+      </Button> */}
+
+      <Label
+        className={cn(multiSelectTriggerVariants({ size, state }), className)}
+      >
+        {children}
+        {open && (
+          <ChevronUp
+            className={cn(
+              "z-10 opacity-50",
+              {
+                "size-4": size === "sm" || size === "xs",
+                "size-5": size === "lg" || size === "xl",
+              },
+              dropdownClassName
+            )}
+          />
+        )}
+        {!open && (
+          <ChevronDown
+            className={cn(
+              "z-10 opacity-50",
+              {
+                "size-4": size === "sm" || size === "xs",
+                "size-5": size === "lg" || size === "xl",
+              },
+              dropdownClassName
+            )}
+          />
+        )}
+      </Label>
     </PopoverTrigger>
   );
 }

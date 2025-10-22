@@ -208,6 +208,8 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
                   },
                   className
                 )}
+                size={currentSize}
+                state={state}
               >
                 <BaseMultiSelectValue
                   placeholder={placeholder}
