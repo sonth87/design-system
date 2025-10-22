@@ -14,9 +14,9 @@ import {
   useSpring,
   useTransform,
 } from "motion/react";
-import type { BasicAnimation, BasicColor } from "../../types/variables";
+import type { BasicAnimation, BasicColor } from "@/types/variables";
 import { useMemo } from "react";
-import { animationClass } from "../../utils/css";
+import { animationClass } from "@/utils/css";
 
 type Color = BasicColor | "dark" | "light" | "inverted";
 

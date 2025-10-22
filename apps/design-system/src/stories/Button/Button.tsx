@@ -6,8 +6,8 @@ import {
 } from "@dsui/ui/components/button";
 import { cn } from "@dsui/ui/lib/utils";
 import { motion } from "motion/react";
-import type { ButtonAnimation } from "../../types/variables";
-import Glass from "../Glass/Glass";
+import type { ButtonAnimation } from "@/types/variables";
+import Glass from "@/stories/Glass/Glass";
 import { LoaderCircle } from "lucide-react";
 
 export type ButtonProps = SButtonProps & {

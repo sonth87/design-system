@@ -1,5 +1,5 @@
 import { cn } from "@dsui/ui/index";
-import type { BasicAnimation } from "../types/variables";
+import type { BasicAnimation } from "@/types/variables";
 
 export const animationClass = (
   animation?: BasicAnimation,

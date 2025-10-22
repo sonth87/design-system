@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from "react";
-import {
-  LIGHT_THEME,
-  DARK_THEME,
-  getThemeWithValues,
-} from "../../constants/theme";
-import type { ThemeVariable } from "../../types/theme";
+import { LIGHT_THEME, DARK_THEME, getThemeWithValues } from "@/constants/theme";
+import type { ThemeVariable } from "@/types/theme";
 
 export const ThemeShowcase: React.FC = () => {
   const [themeVariables, setThemeVariables] = useState<

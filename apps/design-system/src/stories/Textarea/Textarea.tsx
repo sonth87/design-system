@@ -2,8 +2,8 @@ import React from "react";
 import { Textarea as STextarea } from "@dsui/ui/components/textarea";
 import { cn } from "@dsui/ui/lib/utils";
 import { Info, X } from "lucide-react";
-import { Tooltip } from "../Tooltip/Tooltip";
-import { FloatingLabel } from "../Input/FloatLabel";
+import { Tooltip } from "@/stories/Tooltip/Tooltip";
+import { FloatingLabel } from "@/components/FloatLabel";
 
 export type TextareaProps = Omit<
   React.TextareaHTMLAttributes<HTMLTextAreaElement>,
