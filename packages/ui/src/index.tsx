@@ -1,5 +1,28 @@
 // Components
 export { Button, type ButtonProps, buttonVariants } from "./components/button";
+export { Input, type InputProps, type inputVariants } from "./components/input";
+export { Textarea, type TextareaProps } from "./components/textarea";
+export { Label } from "./components/label";
+export {
+  MultiSelect,
+  type MultiSelectContent,
+  type MultiSelectGroup,
+  type MultiSelectItem,
+  type MultiSelectSeparator,
+  type MultiSelectTrigger,
+  type MultiSelectValue,
+} from "./components/select";
+export { Combobox, type ComboboxProps } from "./components/combobox";
+export {
+  Tooltip,
+  type TooltipProps,
+  TooltipContent,
+  type TooltipContentProps,
+  TooltipProvider,
+  type TooltipProviderProps,
+  TooltipTrigger,
+  type TooltipTriggerProps,
+} from "./components/tooltip";
 
 // Libs
 export { cn } from "./lib/utils";

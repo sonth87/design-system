@@ -1,0 +1,640 @@
+import type { Meta } from "@storybook/react";
+import Select, { type SelectProps } from "./Select";
+
+const meta: Meta<SelectProps> = {
+  title: "Base/Select",
+  component: Select,
+  parameters: {
+    layout: "centered",
+  },
+  tags: ["autodocs"],
+  argTypes: {
+    label: {
+      control: "text",
+      description: "Label for the select",
+    },
+    placeholder: {
+      control: "text",
+      description: "Placeholder text",
+    },
+    size: {
+      control: "select",
+      options: ["xs", "sm", "normal", "lg", "xl"],
+      description: "The size of the select",
+      table: {
+        defaultValue: { summary: "normal" },
+      },
+    },
+    isFloatLabel: {
+      control: "boolean",
+      description: "Enable floating label behavior",
+      table: {
+        defaultValue: { summary: "false" },
+      },
+    },
+    disabled: {
+      control: "boolean",
+      description: "Disable the select",
+      table: {
+        defaultValue: { summary: "false" },
+      },
+    },
+    state: {
+      control: "select",
+      options: ["default", "success", "warning", "error"],
+      description: "State of the select (default, success, warning, error)",
+      table: {
+        defaultValue: { summary: "default" },
+      },
+    },
+    helperText: {
+      control: "text",
+      description: "Helper text to display below the select",
+    },
+    infoTooltip: {
+      control: "text",
+      description: "Tooltip info icon next to the label",
+    },
+    multiple: {
+      control: "boolean",
+      description: "Enable multiple selection mode",
+    },
+    clearable: {
+      control: "boolean",
+      description: "Allow clearing selected items by clicking on badges",
+      table: {
+        defaultValue: { summary: "true" },
+      },
+    },
+    clickToRemove: {
+      control: "boolean",
+      description: "Enable clicking on badges to remove them",
+      table: {
+        defaultValue: { summary: "true" },
+      },
+    },
+    search: {
+      control: "boolean",
+      description: "Enable search functionality in dropdown",
+      table: {
+        defaultValue: { summary: "true" },
+      },
+    },
+    overflowBehavior: {
+      control: "select",
+      options: ["wrap", "wrap-when-open", "cutoff"],
+      description: "How to handle overflow of selected items",
+      table: {
+        defaultValue: { summary: "wrap-when-open" },
+      },
+    },
+    options: {
+      control: "object",
+      description: "Array of options for the select",
+    },
+    onValuesChange: {
+      action: "values changed",
+      description: "Callback when selected values change",
+    },
+    className: { control: "text", description: "Additional CSS classes" },
+  },
+  args: {
+    label: "Select items",
+    placeholder: "Choose items...",
+    options: [
+      { value: "option1", label: "Option 1" },
+      { value: "option2", label: "Option 2" },
+      { value: "option3", label: "Option 3" },
+      { value: "option4", label: "Option 4" },
+      { value: "option5", label: "Option 5" },
+      { value: "option6", label: "Option 6" },
+      { value: "option7", label: "Option 7" },
+      { value: "option8", label: "Option 8" },
+      { value: "option9", label: "Option 9" },
+      { value: "option10", label: "Option 10" },
+    ],
+  },
+};
+
+export default meta;
+
+const countries = [
+  { value: "us", label: "United States" },
+  { value: "uk", label: "United Kingdom" },
+  { value: "ca", label: "Canada" },
+  { value: "au", label: "Australia" },
+  { value: "de", label: "Germany" },
+  { value: "fr", label: "France" },
+  { value: "jp", label: "Japan" },
+  { value: "cn", label: "China" },
+];
+
+const fruits = [
+  { value: "apple", label: "Apple" },
+  { value: "banana", label: "Banana" },
+  { value: "orange", label: "Orange" },
+  { value: "grape", label: "Grape" },
+  { value: "mango", label: "Mango" },
+];
+
+const frameworks = [
+  { value: "react", label: "React", group: "Frontend" },
+  { value: "vue", label: "Vue", group: "Frontend" },
+  { value: "angular", label: "Angular", group: "Frontend" },
+  { value: "svelte", label: "Svelte", group: "Frontend" },
+  { value: "node", label: "Node.js", group: "Backend" },
+  { value: "express", label: "Express", group: "Backend" },
+  { value: "fastify", label: "Fastify", group: "Backend" },
+  { value: "nest", label: "NestJS", group: "Backend" },
+];
+
+export const Default = (args: SelectProps) => (
+  <div className="w-96">
+    <Select {...args} />
+  </div>
+);
+
+export const WithLabel = () => (
+  <div className="flex flex-col gap-4 w-96">
+    <Select
+      label="Country"
+      placeholder="Select countries..."
+      options={countries}
+    />
+    <Select
+      label="Favorite Fruits"
+      placeholder="Select fruits..."
+      options={fruits}
+      defaultValues={["banana", "apple"]}
+    />
+  </div>
+);
+
+export const WithHelperText = () => (
+  <div className="w-96">
+    <Select
+      label="Countries"
+      placeholder="Select your countries..."
+      options={countries}
+      helperText="This information will be used for shipping"
+    />
+  </div>
+);
+
+export const WithInfo = () => (
+  <div className="w-96 flex flex-col gap-4">
+    <Select
+      label="Countries"
+      placeholder="Select countries..."
+      options={countries}
+      infoTooltip="Select all countries where you currently operate"
+    />
+    <Select
+      label="Countries"
+      placeholder="Select countries..."
+      options={countries}
+      isFloatLabel
+      infoTooltip="Select all countries where you currently operate"
+    />
+  </div>
+);
+
+export const HelperTextStates = () => (
+  <div className="flex flex-col gap-4 w-96">
+    <Select
+      label="Default"
+      placeholder="Select..."
+      options={fruits}
+      helperText="This is a default helper text"
+      state="default"
+    />
+    <Select
+      label="Success"
+      placeholder="Select..."
+      options={fruits}
+      helperText="Selection is valid"
+      state="success"
+      defaultValues={["apple"]}
+    />
+    <Select
+      label="Warning"
+      placeholder="Select..."
+      options={fruits}
+      helperText="This selection might cause issues"
+      state="warning"
+      defaultValues={["banana", "orange"]}
+    />
+    <Select
+      label="Error"
+      placeholder="Select..."
+      options={fruits}
+      helperText="This field is required"
+      state="error"
+    />
+  </div>
+);
+
+export const Disabled = () => (
+  <div className="flex flex-col gap-4 w-96">
+    <Select
+      label="Disabled Select"
+      placeholder="This select is disabled"
+      options={countries}
+      disabled
+    />
+    <Select
+      label="Disabled with Values"
+      options={countries}
+      disabled
+      defaultValues={["us", "uk"]}
+    />
+  </div>
+);
+
+export const Sizes = () => (
+  <div className="flex flex-col gap-4 w-96">
+    <Select
+      label="Extra Small"
+      placeholder="XS select"
+      size="xs"
+      options={fruits}
+    />
+    <Select
+      label="Small"
+      placeholder="Small select"
+      size="sm"
+      options={fruits}
+    />
+    <Select
+      label="Normal"
+      placeholder="Normal select"
+      size="normal"
+      options={fruits}
+    />
+    <Select
+      label="Large"
+      placeholder="Large select"
+      size="lg"
+      options={fruits}
+    />
+    <Select
+      label="Extra Large"
+      placeholder="XL select"
+      size="xl"
+      options={fruits}
+    />
+  </div>
+);
+
+export const FloatLabel = () => (
+  <div className="flex flex-col gap-4 w-96">
+    <Select
+      label="Countries"
+      placeholder=" "
+      options={countries}
+      isFloatLabel
+    />
+    <Select
+      label="Favorite Fruits"
+      options={fruits}
+      isFloatLabel
+      defaultValues={["apple", "banana"]}
+      helperText="Select your favorite fruits"
+    />
+    <Select
+      label="Select with Error"
+      options={fruits}
+      isFloatLabel
+      state="error"
+      helperText="This field is required"
+      placeholder=" "
+    />
+  </div>
+);
+
+export const Clearable = () => (
+  <div className="flex flex-col gap-4 w-96">
+    <Select
+      label="Countries"
+      placeholder="Select countries..."
+      options={countries}
+      clearable
+      defaultValues={["us", "uk"]}
+      onValuesChange={(values) => console.log("Values changed:", values)}
+      helperText="Click X on badges to clear individual selections"
+    />
+    <Select
+      label="Fruits"
+      placeholder="Select fruits..."
+      options={fruits}
+      clearable
+      defaultValues={["banana", "apple", "orange"]}
+      helperText="Clearable multi-select"
+    />
+    <Select
+      label="Float Label with Clear"
+      options={countries}
+      isFloatLabel
+      clearable
+      defaultValues={["uk", "ca"]}
+      onValuesChange={(values) => console.log("Cleared:", values)}
+    />
+  </div>
+);
+
+export const NotClearable = () => (
+  <div className="flex flex-col gap-4 w-96">
+    <Select
+      label="Countries (Not Clearable)"
+      placeholder="Select countries..."
+      options={countries}
+      clearable={false}
+      clickToRemove={false}
+      defaultValues={["us", "uk"]}
+      helperText="Cannot remove selected items by clicking"
+    />
+  </div>
+);
+
+export const WithGroups = () => (
+  <div className="flex flex-col gap-4 w-96">
+    <Select
+      label="Frameworks"
+      placeholder="Select frameworks..."
+      options={frameworks}
+      helperText="Options are grouped by category"
+    />
+    <Select
+      label="Tech Stack"
+      options={frameworks}
+      isFloatLabel
+      defaultValues={["react", "node"]}
+      helperText="Select your technology stack"
+    />
+  </div>
+);
+
+export const WithSearch = () => (
+  <div className="flex flex-col gap-4 w-96">
+    <Select
+      label="Search Countries"
+      placeholder="Type to search..."
+      options={countries}
+      search={{
+        placeholder: "Search countries...",
+        emptyMessage: "No country found.",
+      }}
+      helperText="Use the search box to filter options"
+    />
+    <Select
+      label="Without Search"
+      placeholder="Select fruits..."
+      options={fruits}
+      search={false}
+      helperText="Search is disabled"
+    />
+  </div>
+);
+
+export const OverflowBehaviors = () => (
+  <div className="flex flex-col gap-4 w-96">
+    <Select
+      label="Wrap (always)"
+      placeholder="Select items..."
+      options={fruits}
+      overflowBehavior="wrap"
+      defaultValues={["apple", "banana", "orange", "grape"]}
+      helperText="Items always wrap to multiple lines"
+    />
+    <Select
+      label="Wrap when open (default)"
+      placeholder="Select items..."
+      options={fruits}
+      overflowBehavior="wrap-when-open"
+      defaultValues={["apple", "banana", "orange", "grape"]}
+      helperText="Items wrap only when dropdown is open"
+    />
+    <Select
+      label="Cutoff"
+      placeholder="Select items..."
+      options={fruits}
+      overflowBehavior="cutoff"
+      defaultValues={["apple", "banana", "orange", "grape", "mango"]}
+      helperText="Shows +N for overflow items"
+    />
+  </div>
+);
+
+export const AllFeaturesCombined = () => (
+  <div className="flex flex-col gap-4 w-96">
+    <Select
+      label="Complete Example"
+      placeholder="Select frameworks..."
+      options={frameworks}
+      size="lg"
+      isFloatLabel
+      clearable
+      state="success"
+      helperText="All features enabled: float label, groups, search, clearable"
+      infoTooltip="This select demonstrates all available features combined"
+      defaultValues={["react", "node"]}
+      onValuesChange={(values) => console.log("Selected:", values)}
+      search={{
+        placeholder: "Search frameworks...",
+        emptyMessage: "No framework found.",
+      }}
+    />
+  </div>
+);
+
+export const CompareSizes = () => (
+  <div className="flex flex-col gap-6 w-96">
+    <div>
+      <h3 className="text-sm font-semibold mb-3">Regular Label</h3>
+      <div className="flex flex-col gap-3">
+        <Select
+          size="xs"
+          label="XS"
+          options={fruits}
+          defaultValues={["apple"]}
+        />
+        <Select
+          size="sm"
+          label="SM"
+          options={fruits}
+          defaultValues={["apple"]}
+        />
+        <Select
+          size="normal"
+          label="Normal"
+          options={fruits}
+          defaultValues={["apple"]}
+        />
+        <Select
+          size="lg"
+          label="LG"
+          options={fruits}
+          defaultValues={["apple"]}
+        />
+        <Select
+          size="xl"
+          label="XL"
+          options={fruits}
+          defaultValues={["apple"]}
+        />
+      </div>
+    </div>
+
+    <div>
+      <h3 className="text-sm font-semibold mb-3">Float Label</h3>
+      <div className="flex flex-col gap-3">
+        <Select
+          size="xs"
+          label="XS Float"
+          options={fruits}
+          defaultValues={["apple"]}
+          isFloatLabel
+        />
+        <Select
+          size="sm"
+          label="SM Float"
+          options={fruits}
+          defaultValues={["apple"]}
+          isFloatLabel
+        />
+        <Select
+          size="normal"
+          label="Normal Float"
+          options={fruits}
+          defaultValues={["apple"]}
+          isFloatLabel
+        />
+        <Select
+          size="lg"
+          label="LG Float"
+          options={fruits}
+          defaultValues={["apple"]}
+          isFloatLabel
+        />
+        <Select
+          size="xl"
+          label="XL Float"
+          options={fruits}
+          defaultValues={["apple"]}
+          isFloatLabel
+        />
+      </div>
+    </div>
+  </div>
+);
+
+export const SingleSelect = () => (
+  <div className="flex flex-col gap-4 w-96">
+    <Select
+      label="Country"
+      placeholder="Select a country..."
+      options={countries}
+      multiple={false}
+      onValueChange={(value) => console.log("Selected:", value)}
+      helperText="Single selection mode"
+    />
+    <Select
+      label="Favorite Fruit"
+      placeholder="Choose your favorite..."
+      options={fruits}
+      multiple={false}
+      defaultValue="apple"
+      helperText="Only one selection allowed"
+    />
+  </div>
+);
+
+export const SingleSelectWithFloatLabel = () => (
+  <div className="flex flex-col gap-4 w-96">
+    <Select
+      label="Country"
+      placeholder=" "
+      options={countries}
+      multiple={false}
+      isFloatLabel
+      onValueChange={(value) => console.log("Selected:", value)}
+    />
+    <Select
+      label="Framework"
+      options={frameworks}
+      multiple={false}
+      isFloatLabel
+      defaultValue="react"
+      helperText="Select your primary framework"
+      state="success"
+    />
+  </div>
+);
+
+export const SingleSelectStates = () => (
+  <div className="flex flex-col gap-4 w-96">
+    <Select
+      label="Default"
+      placeholder="Select one..."
+      options={fruits}
+      multiple={false}
+      helperText="This is a default single select"
+      state="default"
+    />
+    <Select
+      label="Success"
+      placeholder="Select one..."
+      options={fruits}
+      multiple={false}
+      helperText="Selection is valid"
+      state="success"
+      defaultValue="apple"
+    />
+    <Select
+      label="Warning"
+      placeholder="Select one..."
+      options={fruits}
+      multiple={false}
+      helperText="This selection might cause issues"
+      state="warning"
+      defaultValue="banana"
+    />
+    <Select
+      label="Error"
+      placeholder="Select one..."
+      options={fruits}
+      multiple={false}
+      helperText="This field is required"
+      state="error"
+    />
+  </div>
+);
+
+export const CompareMultipleVsSingle = () => (
+  <div className="flex flex-col gap-6 w-96">
+    <div>
+      <h3 className="text-sm font-semibold mb-3">Multi Select</h3>
+      <Select
+        label="Select Countries (Multiple)"
+        placeholder="Select countries..."
+        options={countries}
+        multiple={true}
+        defaultValues={["us", "uk", "ca"]}
+        helperText="You can select multiple countries"
+      />
+    </div>
+
+    <div>
+      <h3 className="text-sm font-semibold mb-3">Single Select</h3>
+      <Select
+        label="Select Country (Single)"
+        placeholder="Select a country..."
+        options={countries}
+        multiple={false}
+        defaultValue="us"
+        helperText="You can only select one country"
+      />
+    </div>
+  </div>
+);
+
