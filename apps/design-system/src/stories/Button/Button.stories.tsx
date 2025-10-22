@@ -1,5 +1,4 @@
 import type { Meta } from "@storybook/react";
-import { fn } from "@storybook/test";
 
 import Button, { type ButtonProps } from "./Button";
 import { ArrowLeft, ArrowRight, BottleWine, ShoppingBag } from "lucide-react";

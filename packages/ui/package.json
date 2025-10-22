@@ -5,14 +5,14 @@
   "exports": {
     "./*": "./src/*",
     "./lib/utils": {
+      "types": "./dist/utils.d.ts",
       "import": "./dist/utils.mjs",
-      "require": "./dist/utils.js",
-      "types": "./dist/utils.d.ts"
+      "require": "./dist/utils.js"
     },
     "./button": {
+      "types": "./dist/button.d.ts",
       "import": "./dist/button.mjs",
-      "require": "./dist/button.js",
-      "types": "./dist/button.d.ts"
+      "require": "./dist/button.js"
     }
   },
   "scripts": {
