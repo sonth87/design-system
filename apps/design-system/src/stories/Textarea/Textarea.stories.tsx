@@ -105,15 +105,22 @@ export const WithLabel = (args: TextareaProps) => (
       label="Comments"
       placeholder="Add your comments here..."
       defaultValue="This is a sample comment"
+      size="lg"
+      isFloatLabel
+    />
+    <Textarea
+      {...args}
+      label="Comments"
+      placeholder="Add your comments here..."
+      defaultValue="This is a sample comment"
+      size="xl"
+      isFloatLabel
     />
   </div>
 );
 
 export const FloatingLabel = () => (
   <div className="flex flex-col gap-4 w-[500px]">
-    <Textarea label="Message" isFloatLabel size="xs" placeholder="" />
-    <Textarea label="Message" isFloatLabel size="sm" placeholder="" />
-    <Textarea label="Message" isFloatLabel size="normal" placeholder="" />
     <Textarea
       label="Bio"
       isFloatLabel
@@ -121,7 +128,13 @@ export const FloatingLabel = () => (
       placeholder=""
       defaultValue="Software Engineer with 5+ years of experience"
     />
-    <Textarea label="Notes" isFloatLabel size="xl" placeholder="" />
+    <Textarea
+      label="Notes"
+      isFloatLabel
+      size="xl"
+      placeholder=""
+      defaultValue="These are my notes"
+    />
   </div>
 );
 
@@ -140,32 +153,12 @@ export const WithMaxLengthAndCharCount = (args: TextareaProps) => (
   <div className="flex flex-col gap-4 w-[500px]">
     <Textarea
       {...args}
-      label="Tweet"
-      placeholder="What's happening?"
-      maxLength={280}
-      showCharCount
-      helperText="Max 280 characters"
-    />
-    <Textarea
-      {...args}
       label="Description"
       placeholder="Enter description..."
       maxLength={500}
+      helperText="Max 500 characters"
       showCharCount
       isFloatLabel
-    />
-  </div>
-);
-
-export const WithError = (args: TextareaProps) => (
-  <div className="w-[500px]">
-    <Textarea
-      {...args}
-      label="Feedback"
-      placeholder="Enter your feedback..."
-      helperText="This field is required and must be at least 10 characters"
-      state="error"
-      defaultValue="Too short"
     />
   </div>
 );
@@ -231,18 +224,18 @@ export const Disabled = (args: TextareaProps) => (
   </div>
 );
 
-export const Sizes = () => (
-  <div className="flex flex-col gap-4 w-[500px]">
-    <Textarea label="Extra Small" placeholder="XS textarea" size="xs" />
-    <Textarea label="Small" placeholder="Small textarea" size="sm" />
-    <Textarea label="Normal" placeholder="Normal textarea" size="normal" />
-    <Textarea label="Large" placeholder="Large textarea" size="lg" />
-    <Textarea label="Extra Large" placeholder="XL textarea" size="xl" />
-  </div>
-);
-
 export const CompleteExample = () => (
   <div className="flex flex-col gap-6 w-[600px]">
+    <Textarea
+      label="Feedback"
+      placeholder=""
+      helperText="Share your thoughts and suggestions"
+      maxLength={500}
+      showCharCount
+      infoTooltip="Your feedback helps us improve our services."
+      size="normal"
+    />
+
     <Textarea
       label="Project Description"
       placeholder="Describe your project..."
@@ -251,17 +244,7 @@ export const CompleteExample = () => (
       showCharCount
       infoTooltip="This description will be visible to all team members and stakeholders."
       size="lg"
-    />
-
-    <Textarea
-      label="Feedback"
       isFloatLabel
-      placeholder=""
-      helperText="Share your thoughts and suggestions"
-      maxLength={500}
-      showCharCount
-      infoTooltip="Your feedback helps us improve our services."
-      size="normal"
     />
 
     <Textarea
@@ -272,56 +255,6 @@ export const CompleteExample = () => (
       maxLength={200}
       showCharCount
       infoTooltip="This field must be completed before submission."
-    />
-  </div>
-);
-
-export const FloatLabelSizes = () => (
-  <div className="flex flex-col gap-4 w-[500px]">
-    <Textarea
-      label="Extra Small Float"
-      isFloatLabel
-      size="xs"
-      placeholder=""
-      maxLength={100}
-      showCharCount
-      infoTooltip="XS size with floating label"
-    />
-    <Textarea
-      label="Small Float"
-      isFloatLabel
-      size="sm"
-      placeholder=""
-      maxLength={200}
-      showCharCount
-      infoTooltip="SM size with floating label"
-    />
-    <Textarea
-      label="Normal Float"
-      isFloatLabel
-      size="normal"
-      placeholder=""
-      maxLength={300}
-      showCharCount
-      infoTooltip="Normal size with floating label"
-    />
-    <Textarea
-      label="Large Float"
-      isFloatLabel
-      size="lg"
-      placeholder=""
-      maxLength={400}
-      showCharCount
-      infoTooltip="LG size with floating label"
-    />
-    <Textarea
-      label="Extra Large Float"
-      isFloatLabel
-      size="xl"
-      placeholder=""
-      maxLength={500}
-      showCharCount
-      infoTooltip="XL size with floating label"
     />
   </div>
 );

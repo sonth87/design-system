@@ -24,7 +24,7 @@ const FloatingLabel = React.forwardRef<
           "top-0.5 origin-[0] scale-75 translate-x-1 max-w-full h-3 py-0":
             !largeSize,
           // State empty (placeholder shown) - ở giữa textarea
-          "peer-placeholder-shown:top-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-x-0 peer-placeholder-shown:w-[calc(100%-theme(spacing.4))] peer-placeholder-shown:h-10 peer-placeholder-shown:py-3":
+          "peer-placeholder-shown:top-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-x-0 peer-placeholder-shown:w-[calc(100%-theme(spacing.4))] peer-placeholder-shown:h-full peer-placeholder-shown:py-3":
             !largeSize,
           // State focus - nằm trên textarea
           "peer-focus:top-0.5 peer-focus:origin-[0] peer-focus:scale-75 peer-focus:translate-x-1 peer-focus:text-primary peer-focus:max-w-full peer-focus:h-3 peer-focus:py-0":

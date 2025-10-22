@@ -59,23 +59,6 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
       error: "text-error",
     };
 
-    // Size classes for textarea
-    const sizeClasses = {
-      xs: "text-xs min-h-20",
-      sm: "text-sm min-h-24",
-      normal: "text-base min-h-32",
-      lg: "text-lg min-h-40",
-      xl: "text-xl min-h-48",
-    };
-
-    // State classes
-    const stateClasses = {
-      default: "",
-      success: "border-success focus-visible:border-success",
-      warning: "border-warning focus-visible:border-warning",
-      error: "border-error focus-visible:border-error",
-    };
-
     return (
       <div
         className={cn("flex flex-col gap-1.5 relative", {
@@ -104,16 +87,22 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
               "peer resize-y",
               {
                 "pt-6 pb-2": isFloatLabel && (size === "lg" || size === "xl"),
-                "pt-5 pb-1": isFloatLabel && size !== "lg" && size !== "xl",
+                "pt-6 pb-1": isFloatLabel && size !== "lg" && size !== "xl",
+                "text-lg": (size === "xl" || size === "lg") && !isFloatLabel,
               },
-              sizeClasses[size],
-              state && stateClasses[state],
               className
             )}
             placeholder={placeholder}
             maxLength={maxLength}
             onChange={handleInput}
-            aria-invalid={state === "error"}
+            state={state}
+            size={
+              isFloatLabel
+                ? size === "xl" || size === "lg"
+                  ? size
+                  : "xl"
+                : size
+            }
             {...props}
           />
           {isFloatLabel && (
@@ -121,6 +110,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
               htmlFor={textareaId}
               size={size}
               infoTooltip={infoTooltip}
+              className="peer-placeholder-shown:items-start"
             >
               {label}
             </FloatingLabel>

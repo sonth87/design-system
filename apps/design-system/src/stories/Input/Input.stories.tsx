@@ -183,20 +183,6 @@ export const WithMaxLengthAndCharCount = (args: InputProps) => (
   </div>
 );
 
-export const WithError = (args: InputProps) => (
-  <div className="w-80">
-    <Input
-      {...args}
-      label="Email"
-      type="email"
-      placeholder="Enter your email"
-      helperText="Please enter a valid email address"
-      state="error"
-      defaultValue="invalid-email"
-    />
-  </div>
-);
-
 export const WithInfo = (args: InputProps) => (
   <div className="w-80 flex flex-col gap-4">
     <Input

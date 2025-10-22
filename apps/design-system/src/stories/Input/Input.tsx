@@ -155,6 +155,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                 "[&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none [-moz-appearance:textfield] pr-8":
                   type === "number",
                 "pr-10": type === "password",
+                "text-lg": (size === "xl" || size === "lg") && !isFloatLabel,
               },
               className
             )}
