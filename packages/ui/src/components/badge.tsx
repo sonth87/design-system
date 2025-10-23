@@ -83,11 +83,11 @@ const badgeVariants = cva(
         outline: "border",
       },
       size: {
-        xs: "size-1.5 text-[0px] [&>svg]:size-2",
-        sm: "h-3 min-w-3 text-[8px] [&>svg]:size-3",
-        normal: "h-4 min-w-4 text-[10px] px-0.5 [&>svg]:size-3.5",
-        lg: "h-6 min-w-6 text-xs px-1 [&>svg]:size-4",
-        xl: "h-8 min-w-8 text-sm px-1 [&>svg]:size-5",
+        xs: "size-1.5 text-[0px] leading-0 [&>svg]:size-2",
+        sm: "h-3 min-w-3 text-[8px] leading-0 [&>svg]:size-3",
+        normal: "h-4 min-w-4 text-[10px] leading-0 px-0.5 [&>svg]:size-3.5",
+        lg: "h-6 min-w-6 text-xs leading-0 px-1 [&>svg]:size-4",
+        xl: "h-8 min-w-8 text-sm leading-0 px-1 [&>svg]:size-5",
       },
       color: {
         primary: "",
