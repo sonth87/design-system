@@ -27,15 +27,15 @@ const Glass: React.FC<GlassProps> = ({ size, className, children }) => {
   return (
     <div
       className={cn(
+        "relative inline-flex overflow-hidden cursor-pointer shadow-[0_6px_6px_rgba(0,0,0,0.2),0_0_20px_rgba(0,0,0,0.1)] transition-all duration-400 ease-[cubic-bezier(0.175,0.885,0.32,2.2)] rounded-md p-0",
         glassVariants({ size, className }),
-        "relative inline-flex overflow-hidden cursor-pointer shadow-[0_6px_6px_rgba(0,0,0,0.2),0_0_20px_rgba(0,0,0,0.1)] transition-all duration-400 ease-[cubic-bezier(0.175,0.885,0.32,2.2)] rounded-md"
       )}
     >
       <div className="absolute z-0 inset-0 backdrop-blur-[2.5px] overflow-hidden isolate [filter:url(#glass-distortion)] rounded-md"></div>
       <div className="z-[1] absolute inset-0 bg-white/25 rounded-md"></div>
       <div className="absolute inset-0 z-[2] overflow-hidden shadow-[inset_2px_2px_1px_0_rgba(255,255,255,0.5),inset_-1px_-1px_1px_1px_rgba(255,255,255,0.5)] rounded-md"></div>
       <div className="z-[3] rounded-md relative">
-        <div className="text-white [text-shadow:0px_0px_10px_rgba(0,0,0,0.8)] transition-all duration-100 ease-in hover:backdrop-blur-[2px] inline-flex gap-2">
+        <div className="text-white [text-shadow:0px_0px_8px_rgba(0,0,0,0.5)] transition-all duration-100 ease-in hover:backdrop-blur-[2px] inline-flex gap-2">
           {children}
         </div>
       </div>

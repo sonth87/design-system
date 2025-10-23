@@ -11,6 +11,17 @@ export type ButtonAnimation =
   | "loading"
   | "draw";
 
+export type BadgeAnimation =
+  | "heartbeat"
+  | "shine"
+  | "tap"
+  | "bounce"
+  | "glow"
+  | "glass"
+  | "liquid"
+  | "loading"
+  | "draw";
+
 export type BasicAnimation =
   | "bounce"
   | "slide-up"

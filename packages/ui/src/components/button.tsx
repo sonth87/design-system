@@ -159,9 +159,9 @@ const buttonVariants = cva(
         link: "",
       },
       size: {
-        default: "h-10 px-4 py-2 has-[>svg]:px-3",
         xs: "h-6 rounded-md gap-2 px-2 text-sm py-0.5 has-[>svg]:px-2",
         sm: "h-8 rounded-md gap-2 px-3 text-sm py-1.5 has-[>svg]:px-2.5",
+        normal: "h-10 px-4 py-2 has-[>svg]:px-3",
         lg: "h-12 rounded-md px-4 py-3 has-[>svg]:px-4",
         xl: "h-14 rounded-md px-4 py-4 has-[>svg]:px-4",
         icon: "size-10 [&_svg:not([class*='size-'])]:size-6",
@@ -195,7 +195,7 @@ const buttonVariants = cva(
     compoundVariants: generateCompoundVariants(),
     defaultVariants: {
       variant: "solid",
-      size: "default",
+      size: "normal",
       color: "primary",
     },
   }

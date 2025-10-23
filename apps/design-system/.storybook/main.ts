@@ -1,5 +1,5 @@
 import type { StorybookConfig } from "@storybook/react-vite";
-import { join, dirname } from "path";
+import { join } from "path";
 import { mergeConfig } from "vite";
 
 const config: StorybookConfig = {

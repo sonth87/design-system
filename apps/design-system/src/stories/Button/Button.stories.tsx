@@ -110,7 +110,7 @@ const meta: Meta<ButtonProps> = {
     children: "Button",
     variant: "solid",
     color: "primary",
-    size: "default",
+    size: "normal",
   },
 };
 
