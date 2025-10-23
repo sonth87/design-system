@@ -11,12 +11,14 @@ import {
 import {
   Combobox,
   type ComboboxProps,
-  type SelectOption,
+  type SelectOption as SSelectOption,
 } from "@dsui/ui/components/combobox";
 import { cn } from "@dsui/ui/lib/utils";
 import { FloatingLabel } from "@/components/FloatLabel";
 import { Info } from "lucide-react";
 import { Tooltip } from "@/stories/Tooltip/Tooltip";
+
+export type SelectOption = SSelectOption;
 
 export type SelectProps = ComboboxProps & {
   label?: string;
@@ -28,12 +30,13 @@ export type SelectProps = ComboboxProps & {
   clearable?: boolean;
   placeholder?: string;
   options?: SelectOption[];
+  tagRender?: (option: SelectOption) => React.ReactNode;
   multiple?: boolean;
   value?: string;
   defaultValue?: string;
   onValueChange?: (value: string) => void;
   values?: string[];
-  defaultValues?: string[];
+  defaultValues?: string | string[];
   onValuesChange?: (values: string[]) => void;
   search?: boolean | { placeholder?: string; emptyMessage?: string };
   clickToRemove?: boolean;
@@ -55,6 +58,7 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
       clearable = true,
       placeholder = "Select items...",
       options = [],
+      tagRender,
       multiple = false,
       value,
       defaultValue,
@@ -92,12 +96,6 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
         onValueChange?.(val);
       },
       [onValueChange, value]
-    );
-
-    // Convert options to combobox format (for single select)
-    const comboboxOptions = React.useMemo(
-      () => options.map((opt) => ({ label: opt.label, value: opt.value })),
-      [options]
     );
 
     // Helper text styles
@@ -155,7 +153,7 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
             <>
               <Combobox
                 value={value ?? internalValue}
-                options={comboboxOptions}
+                options={options}
                 placeHolder={placeholder}
                 emptyText={
                   typeof search === "object"
@@ -178,6 +176,7 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
                 dropdownClassName={cn("opacity-40", {
                   "translate-y-[-8px]": isFloatLabel && size !== "lg",
                 })}
+                tagRender={tagRender}
               />
               {isFloatLabel && (
                 <FloatingLabel
@@ -195,7 +194,11 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
             // Multi Mode
             <BaseMultiSelect
               values={values}
-              defaultValues={defaultValues}
+              defaultValues={
+                typeof defaultValues === "string"
+                  ? [defaultValues]
+                  : defaultValues
+              }
               onValuesChange={onValuesChange}
             >
               <BaseMultiSelectTrigger
@@ -238,8 +241,11 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
                             <BaseMultiSelectItem
                               key={option.value}
                               value={option.value}
+                              disabled={option?.disabled}
+                              icon={option?.icon}
+                              tagRender={!!tagRender}
                             >
-                              {option.label}
+                              {tagRender ? tagRender(option) : option.label}
                             </BaseMultiSelectItem>
                           ))}
                         </BaseMultiSelectGroup>
@@ -251,8 +257,11 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
                     <BaseMultiSelectItem
                       key={option.value}
                       value={option.value}
+                      disabled={option?.disabled}
+                      icon={option?.icon}
+                      tagRender={!!tagRender}
                     >
-                      {option.label}
+                      {tagRender ? tagRender(option) : option.label}
                     </BaseMultiSelectItem>
                   ));
                 })}
@@ -272,4 +281,4 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
 );
 
 Select.displayName = "Select";
-export default Select;
+export default Select as unknown as React.ComponentType<SelectProps>;

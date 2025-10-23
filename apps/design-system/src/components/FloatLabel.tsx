@@ -45,11 +45,19 @@ const FloatingLabel = React.forwardRef<
             "peer-focus:-top-3.5 peer-focus:origin-left peer-focus:scale-75 peer-focus:text-primary peer-focus:max-w-full peer-focus:w-auto peer-focus:h-3 peer-focus:py-0":
               lagerSize,
           },
+
+          // State when shouldFloat prop is set
           {
             "top-0.5 origin-left scale-75 translate-x-1 max-w-full h-3 py-0":
-              typeof shouldFloat === "boolean" && shouldFloat,
+              typeof shouldFloat === "boolean" && shouldFloat && !lagerSize,
             "top-0 scale-100 translate-x-0 w-[calc(100%-(--spacing(4)))] h-[calc(100%-(--spacing(4)))] py-3 bg-background":
-              typeof shouldFloat === "boolean" && !shouldFloat,
+              typeof shouldFloat === "boolean" && !shouldFloat && !lagerSize,
+          },
+          {
+            "-top-3.5 origin-left scale-75 translate-x-0 max-w-full h-3 py-0":
+              typeof shouldFloat === "boolean" && shouldFloat && lagerSize,
+            "top-0 scale-100 translate-x-0 w-[calc(100%-(--spacing(4)))] h-[calc(100%-(--spacing(4)))] py-3 bg-background":
+              typeof shouldFloat === "boolean" && !shouldFloat && lagerSize,
           },
           "will-change-transform transition-all duration-300 ease-in-out",
           className

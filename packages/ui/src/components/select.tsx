@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  CheckIcon,
-  ChevronDown,
-  ChevronsUpDownIcon,
-  ChevronUp,
-  XIcon,
-} from "lucide-react";
+import { CheckIcon, ChevronDown, ChevronUp, XIcon } from "lucide-react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../lib/utils";
 import { Button } from "./button";
@@ -20,6 +14,7 @@ import {
   CommandSeparator,
 } from "./command";
 import { Popover, PopoverContent, PopoverTrigger } from "./popover";
+import * as React from "react";
 import {
   createContext,
   useCallback,
@@ -32,6 +27,7 @@ import {
 } from "react";
 import { Badge } from "./badge";
 import { Label } from "./label";
+import { SelectOption } from "./combobox";
 
 const multiSelectTriggerVariants = cva(
   "flex h-auto w-fit items-center justify-between gap-2 overflow-hidden rounded-md border bg-transparent shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50 data-[placeholder]:text-muted-foreground dark:bg-background dark:hover:bg-input/50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground",
@@ -275,27 +271,66 @@ export function MultiSelectValue({
     >
       {[...selectedValues]
         .filter((value) => items.has(value))
-        .map((value) => (
-          <Badge
-            variant="outline"
-            data-selected-item
-            className="group flex items-center gap-1"
-            key={value}
-            onClick={
-              clickToRemove
-                ? (e) => {
-                    e.stopPropagation();
-                    toggleValue(value);
-                  }
-                : undefined
-            }
-          >
-            {items.get(value)}
-            {clickToRemove && (
-              <XIcon className="size-2 text-muted-foreground group-hover:text-destructive" />
-            )}
-          </Badge>
-        ))}
+        .map((value) => {
+          const itemNode = items.get(value);
+          const removeHandler = (e: React.MouseEvent) => {
+            e.stopPropagation();
+            toggleValue(value);
+          };
+
+          if (React.isValidElement(itemNode)) {
+            const isDomElement =
+              typeof itemNode.type === "string" &&
+              ["div", "span", "button", "a"].includes(itemNode.type);
+
+            const element = itemNode as React.ReactElement<any>;
+
+            const cloneProps = isDomElement
+              ? {
+                  key: value,
+                  onClick: clickToRemove ? removeHandler : undefined,
+                  className: cn(
+                    element.props.className,
+                    "group flex items-center gap-1 whitespace-nowrap hover:scale-105 transition-transform",
+                    {
+                      "cursor-pointer": clickToRemove,
+                    }
+                  ),
+                  "data-selected-item": true,
+                }
+              : {
+                  key: value,
+                  "data-selected-item": true,
+                };
+
+            return React.cloneElement(
+              element,
+              cloneProps,
+              <>
+                {element.props.children}
+                {clickToRemove && (
+                  <XIcon className="size-2 text-muted-foreground group-hover:text-destructive" />
+                )}
+              </>
+            );
+          }
+
+          return (
+            <Badge
+              variant="outline"
+              data-selected-item
+              className="group flex items-center gap-1"
+              key={value}
+              onClick={clickToRemove ? removeHandler : undefined}
+            >
+              {itemNode}
+              {clickToRemove && (
+                <XIcon className="size-2 text-muted-foreground group-hover:text-destructive" />
+              )}
+            </Badge>
+          );
+        })}
+
       <Badge
         style={{
           display: overflowAmount > 0 && !shouldWrap ? "block" : "none",
@@ -356,10 +391,14 @@ export function MultiSelectItem({
   children,
   badgeLabel,
   onSelect,
+  icon,
+  tagRender,
   ...props
 }: {
   badgeLabel?: ReactNode;
   value: string;
+  icon?: ReactNode;
+  tagRender?: boolean;
 } & Omit<ComponentPropsWithoutRef<typeof CommandItem>, "value">) {
   const { toggleValue, selectedValues, onItemAdded } = useMultiSelectContext();
   const isSelected = selectedValues.has(value);
@@ -371,15 +410,28 @@ export function MultiSelectItem({
   return (
     <CommandItem
       {...props}
-      onSelect={() => {
-        toggleValue(value);
-        onSelect?.(value);
-      }}
+      onSelect={
+        props?.disabled
+          ? undefined
+          : () => {
+              toggleValue(value);
+              onSelect?.(value);
+            }
+      }
+      className={cn(
+        props?.disabled && "opacity-50 cursor-not-allowed grayscale"
+      )}
     >
-      <CheckIcon
-        className={cn("mr-2 size-4", isSelected ? "opacity-100" : "opacity-0")}
-      />
+      {!tagRender && icon && (
+        <span className="mr-2 max-w-4 max-h-4">{icon}</span>
+      )}
       {children}
+      <CheckIcon
+        className={cn(
+          "mr-2 ml-auto size-4",
+          isSelected ? "opacity-100" : "opacity-0"
+        )}
+      />
     </CommandItem>
   );
 }

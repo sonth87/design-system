@@ -1,5 +1,5 @@
 import type { Meta } from "@storybook/react";
-import Select, { type SelectProps } from "./Select";
+import Select, { type SelectOption, type SelectProps } from "./Select";
 
 const meta: Meta<SelectProps> = {
   title: "Base/Select",
@@ -78,6 +78,9 @@ const meta: Meta<SelectProps> = {
       description: "Enable search functionality in dropdown",
       table: {
         defaultValue: { summary: "true" },
+        type: {
+          summary: "boolean | { placeholder?: string; emptyMessage?: string }",
+        },
       },
     },
     overflowBehavior: {
@@ -86,11 +89,15 @@ const meta: Meta<SelectProps> = {
       description: "How to handle overflow of selected items",
       table: {
         defaultValue: { summary: "wrap-when-open" },
+        type: { summary: "wrap | wrap-when-open | cutoff" },
       },
     },
     options: {
       control: "object",
       description: "Array of options for the select",
+    },
+    tagRender: {
+      description: "Custom render function for selected tags",
     },
     onValuesChange: {
       action: "values changed",
@@ -129,12 +136,14 @@ const countries = [
   { value: "cn", label: "China" },
 ];
 
-const fruits = [
-  { value: "apple", label: "Apple" },
-  { value: "banana", label: "Banana" },
-  { value: "orange", label: "Orange" },
-  { value: "grape", label: "Grape" },
-  { value: "mango", label: "Mango" },
+const fruits: SelectOption[] = [
+  { value: "apple", label: "Apple", icon: "🍎" },
+  { value: "banana", label: "Banana", icon: "🍌", disabled: true },
+  { value: "avocado", label: "Avocado", icon: "🥑" },
+  { value: "orange", label: "Orange", icon: "🍊" },
+  { value: "grape", label: "Grape", icon: "🍇", disabled: true },
+  { value: "kiwi", label: "Kiwi", icon: "🥝" },
+  { value: "mango", label: "Mango", icon: "🥭" },
 ];
 
 const frameworks = [
@@ -401,26 +410,29 @@ export const OverflowBehaviors = () => (
     <Select
       label="Wrap (always)"
       placeholder="Select items..."
-      options={fruits}
+      options={countries}
       overflowBehavior="wrap"
-      defaultValues={["apple", "banana", "orange", "grape"]}
+      defaultValues={["us", "uk", "ca", "au", "de", "fr", "jp", "cn"]}
       helperText="Items always wrap to multiple lines"
+      multiple
     />
     <Select
       label="Wrap when open (default)"
       placeholder="Select items..."
-      options={fruits}
+      options={countries}
       overflowBehavior="wrap-when-open"
-      defaultValues={["apple", "banana", "orange", "grape"]}
+      defaultValues={["us", "uk", "ca", "au", "de", "fr", "jp", "cn"]}
       helperText="Items wrap only when dropdown is open"
+      multiple
     />
     <Select
       label="Cutoff"
       placeholder="Select items..."
-      options={fruits}
+      options={countries}
       overflowBehavior="cutoff"
-      defaultValues={["apple", "banana", "orange", "grape", "mango"]}
+      defaultValues={["us", "uk", "ca", "au", "de", "fr", "jp", "cn"]}
       helperText="Shows +N for overflow items"
+      multiple
     />
   </div>
 );
@@ -431,7 +443,7 @@ export const AllFeaturesCombined = () => (
       label="Complete Example"
       placeholder="Select frameworks..."
       options={frameworks}
-      size="lg"
+      size="xl"
       isFloatLabel
       clearable
       state="success"
@@ -528,56 +540,12 @@ export const CompareSizes = () => (
   </div>
 );
 
-export const SingleSelect = () => (
-  <div className="flex flex-col gap-4 w-96">
-    <Select
-      label="Country"
-      placeholder="Select a country..."
-      options={countries}
-      multiple={false}
-      onValueChange={(value) => console.log("Selected:", value)}
-      helperText="Single selection mode"
-    />
-    <Select
-      label="Favorite Fruit"
-      placeholder="Choose your favorite..."
-      options={fruits}
-      multiple={false}
-      defaultValue="apple"
-      helperText="Only one selection allowed"
-    />
-  </div>
-);
-
-export const SingleSelectWithFloatLabel = () => (
-  <div className="flex flex-col gap-4 w-96">
-    <Select
-      label="Country"
-      placeholder=" "
-      options={countries}
-      multiple={false}
-      isFloatLabel
-      onValueChange={(value) => console.log("Selected:", value)}
-    />
-    <Select
-      label="Framework"
-      options={frameworks}
-      multiple={false}
-      isFloatLabel
-      defaultValue="react"
-      helperText="Select your primary framework"
-      state="success"
-    />
-  </div>
-);
-
-export const SingleSelectStates = () => (
+export const SelectWithStates = () => (
   <div className="flex flex-col gap-4 w-96">
     <Select
       label="Default"
       placeholder="Select one..."
       options={fruits}
-      multiple={false}
       helperText="This is a default single select"
       state="default"
     />
@@ -585,7 +553,6 @@ export const SingleSelectStates = () => (
       label="Success"
       placeholder="Select one..."
       options={fruits}
-      multiple={false}
       helperText="Selection is valid"
       state="success"
       defaultValue="apple"
@@ -594,7 +561,9 @@ export const SingleSelectStates = () => (
       label="Warning"
       placeholder="Select one..."
       options={fruits}
-      multiple={false}
+      multiple
+      isFloatLabel
+      size="lg"
       helperText="This selection might cause issues"
       state="warning"
       defaultValue="banana"
@@ -603,12 +572,69 @@ export const SingleSelectStates = () => (
       label="Error"
       placeholder="Select one..."
       options={fruits}
-      multiple={false}
+      multiple
+      isFloatLabel
+      size="xl"
       helperText="This field is required"
       state="error"
     />
   </div>
 );
+
+export const CustomTagRender = () => {
+  const tagRender = (option: SelectOption) => {
+    const classNames = () => {
+      switch (option.value) {
+        case "banana":
+          return "bg-yellow-100 text-yellow-800";
+        case "apple":
+          return "bg-pink-100 text-pink-800";
+        case "avocado":
+          return "bg-green-100 text-green-500";
+        case "orange":
+          return "bg-orange-100 text-orange-800";
+        case "mango":
+          return "bg-yellow-100 text-yellow-800";
+        case "grape":
+          return "bg-purple-100 text-purple-800";
+        case "kiwi":
+          return "bg-gray-100 text-green-800";
+        default:
+          return "bg-gray-100 text-gray-800";
+      }
+    };
+
+    return (
+      <div
+        className={`${classNames()} px-2 py-1 rounded-full text-xs font-medium`}
+      >
+        {option.icon} {option.label}
+      </div>
+    );
+  };
+
+  return (
+    <div className="flex flex-col gap-4 w-96">
+      <Select
+        label="Fruits with Custom Tags"
+        placeholder="Select fruits..."
+        options={fruits}
+        tagRender={tagRender}
+        defaultValues={"apple"}
+        helperText="Custom tag rendering with emojis"
+      />
+      <Select
+        label="Fruits with Custom Tags"
+        placeholder="Select fruits..."
+        options={fruits}
+        multiple
+        tagRender={tagRender}
+        defaultValues={["apple", "banana"]}
+        helperText="Custom tag rendering with emojis"
+      />
+    </div>
+  );
+};
 
 export const CompareMultipleVsSingle = () => (
   <div className="flex flex-col gap-6 w-96">
@@ -637,4 +663,3 @@ export const CompareMultipleVsSingle = () => (
     </div>
   </div>
 );
-

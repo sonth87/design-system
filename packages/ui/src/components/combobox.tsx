@@ -1,15 +1,7 @@
 "use client";
 
 import * as React from "react";
-import {
-  Check,
-  ChevronDown,
-  ChevronsDown,
-  ChevronsUp,
-  ChevronsUpDown,
-  ChevronUp,
-  X,
-} from "lucide-react";
+import { Check, ChevronDown, ChevronUp, X } from "lucide-react";
 import { cva, type VariantProps } from "class-variance-authority";
 
 import {
@@ -57,6 +49,8 @@ type SelectOption = {
   label: React.ReactNode;
   value: string;
   group?: string;
+  icon?: React.ReactNode;
+  disabled?: boolean;
 };
 
 type ComboboxProps = Omit<
@@ -74,6 +68,9 @@ type ComboboxProps = Omit<
   children?: React.ReactNode;
   size?: "normal" | "sm" | "xs" | "lg" | "xl";
   state?: "default" | "success" | "error" | "warning";
+  tagRender?: (
+    option: SelectOption & { onClick?: () => void }
+  ) => React.ReactNode;
 } & VariantProps<typeof comboboxVariants>;
 
 function Combobox({
@@ -88,6 +85,7 @@ function Combobox({
   children,
   size,
   state = "default",
+  tagRender,
   ...props
 }: ComboboxProps) {
   const [open, setOpen] = React.useState(false);
@@ -141,9 +139,7 @@ function Combobox({
           <X className="h-4 w-4" />
         </Label>
       )}
-      <PopoverContent
-        className={cn("p-0 w-(--radix-popover-trigger-width)")}
-      >
+      <PopoverContent className={cn("p-0 w-(--radix-popover-trigger-width)")}>
         <Command>
           <CommandInput placeholder={placeHolder} className="h-9" />
           <CommandList>
@@ -153,12 +149,30 @@ function Combobox({
                 <CommandItem
                   key={option.value}
                   value={String(option.label)} // Để Command search theo label
-                  onSelect={() => {
-                    onChange?.(option.value); // Lưu value thực sự
-                    setOpen(false);
-                  }}
+                  onSelect={
+                    option?.disabled
+                      ? undefined
+                      : () => {
+                          onChange?.(option.value); // Lưu value thực sự
+                          setOpen(false);
+                        }
+                  }
+                  className={cn(
+                    option?.disabled && "opacity-50 cursor-not-allowed grayscale"
+                  )}
                 >
-                  {option.label}
+                  {tagRender ? (
+                    tagRender(option)
+                  ) : (
+                    <>
+                      {option.icon && (
+                        <span className="mr-2 max-w-4 max-h-4">
+                          {option.icon}
+                        </span>
+                      )}
+                      {option.label}
+                    </>
+                  )}
                   <Check
                     className={cn(
                       "ml-auto",
