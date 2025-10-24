@@ -11,7 +11,7 @@ const variantStyles = {
   success: "bg-success text-white border border-success/20",
   error: "bg-error text-white border border-error/20",
   warning: "bg-warning text-black border border-warning/20",
-  info: "bg-info text-white border border-info/20",
+  info: "bg-info text-foreground border border-info/20",
   primary: "bg-primary text-primary-foreground border border-primary/20",
   secondary:
     "bg-secondary text-secondary-foreground border border-secondary/20",
