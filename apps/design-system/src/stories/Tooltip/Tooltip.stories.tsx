@@ -6,6 +6,9 @@ import { Info } from "lucide-react";
 const meta: Meta<typeof Tooltip> = {
   title: "Base/Tooltip",
   component: Tooltip,
+  parameters: {
+    layout: "centered",
+  },
   tags: ["autodocs"],
   argTypes: {
     content: { control: "text", description: "Tooltip content" },
