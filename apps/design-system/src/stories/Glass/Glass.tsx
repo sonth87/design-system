@@ -3,18 +3,10 @@ import { cva, type VariantProps } from "class-variance-authority";
 import React from "react";
 
 const glassVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
   {
-    variants: {
-      size: {
-        default: "h-9 px-4 py-2",
-        sm: "h-8 rounded-md gap-1.5 px-3",
-        lg: "h-10 rounded-md px-6",
-      },
-    },
-    defaultVariants: {
-      size: "default",
-    },
+    variants: {},
+    defaultVariants: {},
   }
 );
 
@@ -23,19 +15,19 @@ type GlassProps = {
   children?: React.ReactNode;
 } & VariantProps<typeof glassVariants>;
 
-const Glass: React.FC<GlassProps> = ({ size, className, children }) => {
+const Glass: React.FC<GlassProps> = ({ className, children }) => {
   return (
     <div
       className={cn(
-        "relative inline-flex overflow-hidden cursor-pointer shadow-[0_6px_6px_rgba(0,0,0,0.2),0_0_20px_rgba(0,0,0,0.1)] transition-all duration-400 ease-[cubic-bezier(0.175,0.885,0.32,2.2)] rounded-md p-0",
-        glassVariants({ size, className }),
+        "relative inline-flex overflow-hidden cursor-pointer shadow-[0_6px_6px_rgba(0,0,0,0.2),0_0_20px_rgba(0,0,0,0.1)] transition-all duration-400 ease-[cubic-bezier(0.175,0.885,0.32,2.2)] p-0 rounded-md",
+        className
       )}
     >
-      <div className="absolute z-0 inset-0 backdrop-blur-[2.5px] overflow-hidden isolate [filter:url(#glass-distortion)] rounded-md"></div>
-      <div className="z-[1] absolute inset-0 bg-white/25 rounded-md"></div>
-      <div className="absolute inset-0 z-[2] overflow-hidden shadow-[inset_2px_2px_1px_0_rgba(255,255,255,0.5),inset_-1px_-1px_1px_1px_rgba(255,255,255,0.5)] rounded-md"></div>
-      <div className="z-[3] rounded-md relative">
-        <div className="text-foreground [text-shadow:0px_0px_8px_rgba(0,0,0,0.5)]- transition-all duration-100 ease-in hover:backdrop-blur-[2px] inline-flex gap-2">
+      <div className="absolute z-0 inset-0 backdrop-blur-[2.5px] overflow-hidden isolate [filter:url(#glass-distortion)] rounded-[inherit]"></div>
+      <div className="z-[1] absolute inset-0 bg-white/25 rounded-[inherit]"></div>
+      <div className="absolute inset-0 z-[2] overflow-hidden shadow-[inset_2px_2px_1px_0_rgba(255,255,255,0.5),inset_-1px_-1px_1px_1px_rgba(255,255,255,0.5)] rounded-[inherit]"></div>
+      <div className="z-[3] relative">
+        <div className="text-foreground [text-shadow:0px_1px_3px_rgba(0,0,0,0.5)] transition-all duration-100 ease-in inline-flex gap-2">
           {children}
         </div>
       </div>

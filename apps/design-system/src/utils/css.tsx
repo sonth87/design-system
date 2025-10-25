@@ -59,6 +59,7 @@ export const animationEffect = <T, S = undefined>({
   className,
   rootClassName,
   variantType,
+  ...rest
 }: {
   animation?: T;
   children?: React.ReactNode;
@@ -93,6 +94,7 @@ export const animationEffect = <T, S = undefined>({
             whileHover={{ scale: 1.1 }}
             className={cn(rootClassName, "transition-none", className)}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            {...rest}
           >
             {children}
           </motion.button>
@@ -105,19 +107,41 @@ export const animationEffect = <T, S = undefined>({
             whileTap={{ scale: 0.85 }}
             className={cn(rootClassName, "transition-none", className)}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            {...rest}
           >
             {children}
           </motion.button>
         ),
       };
-    case "glass":
+    case "glass": {
+      const roundedMatches = rootClassName?.match(/((?:!)?rounded-\S+)/g);
+      const roundedClass = roundedMatches
+        ? roundedMatches[roundedMatches.length - 1]
+        : "rounded-md";
+
+      console.log("Glass Debug:", {
+        rootClassName,
+        roundedMatches,
+        roundedClass,
+      });
+
       return {
         variant: (variantType ? "link" : undefined) as S,
-        className: cn("!no-underline", className),
         children: (
-          <Glass className="hover:scale-110 hover:rounded-md">{children}</Glass>
+          <Glass className={cn("hover:scale-110", roundedClass)}>
+            <span
+              className={cn(
+                rootClassName,
+                "!bg-none !bg-transparent",
+                className
+              )}
+            >
+              {children}
+            </span>
+          </Glass>
         ),
       };
+    }
     case "glow":
       return {
         className: cn(rootClassName, "animate-glow", className),

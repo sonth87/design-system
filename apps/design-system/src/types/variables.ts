@@ -41,4 +41,5 @@ export type BasicColor =
   | "secondary"
   | "success"
   | "warning"
-  | "error";
+  | "error"
+  | "glass";

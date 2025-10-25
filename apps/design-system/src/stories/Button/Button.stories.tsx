@@ -231,15 +231,76 @@ export const WithIcon = (args: ButtonProps) => (
   </div>
 );
 
+export const LoadingState = (args: ButtonProps) => (
+  <Button {...args} isLoading>
+    {args.children}
+  </Button>
+);
+
+export const DisabledState = (args: ButtonProps) => (
+  <Button {...args} disabled>
+    {args.children}
+  </Button>
+);
+
+export const Sizes = (args: ButtonProps) => (
+  <div className="flex flex-row gap-4 items-center">
+    <Button {...args} size="xs">
+      {args.children} XS
+    </Button>
+    <Button {...args} size="sm">
+      {args.children} SM
+    </Button>
+    <Button {...args} size="normal">
+      {args.children} Default
+    </Button>
+    <Button {...args} size="lg">
+      {args.children} LG
+    </Button>
+    <Button {...args} size="xl">
+      {args.children} XL
+    </Button>
+  </div>
+);
+
+export const AnimatedButton = (args: ButtonProps) => (
+  <div className="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-5 gap-4">
+    <Button {...args} animation="heartbeat">
+      {args.children} Heartbeat
+    </Button>
+    <Button {...args} animation="shine">
+      {args.children} Shine
+    </Button>
+    <Button {...args} animation="bounce">
+      {args.children} Bounce
+    </Button>
+    <Button {...args} animation="tap">
+      {args.children} Tap
+    </Button>
+    <Button {...args} animation="liquid">
+      {args.children} Liquid
+    </Button>
+    <Button {...args} animation="glow">
+      {args.children} Glow
+    </Button>
+    <Button {...args} animation="link-underline" variant={"link"}>
+      {args.children} Link Underline
+    </Button>
+  </div>
+);
+
 export const GlassEffect = (args: ButtonProps) => (
   <div
-    className="w-200 h-60 p-4 flex items-center justify-center bg-cover [animation:move-background_400s_linear_infinite]"
+    className="w-200 h-60 p-4 flex items-center justify-center bg-cover [animation:move-background_400s_linear_infinite] gap-4"
     style={{
       backgroundImage:
         "url('https://raw.githubusercontent.com/lucasromerodb/liquid-glass-effect-macos/refs/heads/main/assets/flowers.jpg')",
     }}
   >
-    <Button {...args} animation="glass" size="lg">
+    <Button {...args} animation="glass" size="xl">
+      {args.children}
+    </Button>
+    <Button {...args} animation="glass" size="circle-icon-xl">
       {args.children}
     </Button>
   </div>

@@ -1,4 +1,5 @@
 .dark body #storybook-docs .docs-story {
-  background: #303841 !important;
+  background: var(--background) !important;
+  color: var(--foreground) !important;
   transition: background-color 0.3s;
 }

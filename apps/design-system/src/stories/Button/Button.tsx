@@ -23,7 +23,13 @@ type AnimResult = {
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (props, ref) => {
-    const { animation, ...rest } = props;
+    const {
+      variant = "solid",
+      size = "normal",
+      color = "primary",
+      animation,
+      ...rest
+    } = props;
 
     const buttonAnimation = useMemo<AnimResult | null>(() => {
       return animationEffect<ButtonAnimation, SButtonProps["variant"]>({
@@ -31,11 +37,13 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         children: rest?.children,
         className: rest?.className,
         rootClassName: buttonVariants({
-          variant: rest?.variant,
-          size: rest?.size,
+          variant: variant,
+          size: size,
         }),
+        variantType: variant,
+        ...rest,
       });
-    }, [animation, rest]);
+    }, [animation, rest, color, size, variant]);
 
     return (
       <SButton
@@ -48,7 +56,9 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         )}
         asChild={buttonAnimation?.children ? true : rest.asChild}
         style={{ ...(rest.style || {}), ...(buttonAnimation?.style || {}) }}
-        variant={buttonAnimation?.variant ?? rest?.variant}
+        variant={buttonAnimation?.variant ?? variant}
+        color={color}
+        size={size}
       >
         <>
           {rest?.isLoading && <LoaderCircle className="animate-spin" />}

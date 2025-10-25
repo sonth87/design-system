@@ -9,10 +9,10 @@ const meta = {
   },
   tags: ["autodocs"],
   argTypes: {
-    size: {
-      control: "select",
-      options: ["sm", "default", "lg"],
-    },
+    // size: {
+    //   control: "select",
+    //   options: ["sm", "default", "lg"],
+    // },
   },
 } satisfies Meta<typeof Glass>;
 
@@ -22,14 +22,14 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     children: "Glass Effect",
-    size: "default",
+    // size: "default",
   },
 };
 
 export const GlassButton: Story = {
   args: {
     children: <button className="px-4 py-2">Click Me</button>,
-    size: "default",
+    // size: "default",
   },
   parameters: {
     docs: {
@@ -48,7 +48,7 @@ export const GlassInput: Story = {
           Đây là 1 container
         </div>
       </Glass>
-      <Glass size="lg">
+      <Glass>
         <input
           type="email"
           placeholder="Enter your email..."
@@ -69,13 +69,13 @@ export const GlassInput: Story = {
 export const GlassDiv: Story = {
   render: () => (
     <div className="flex flex-col gap-6">
-      <Glass size="default">
+      <Glass>
         <div className="p-4 min-w-[200px]">
           <h3 className="text-lg font-semibold mb-2">Card Title</h3>
           <p className="text-sm">This is a glass card with some content.</p>
         </div>
       </Glass>
-      <Glass size="lg">
+      <Glass>
         <div className="p-6 min-w-[250px]">
           <h3 className="text-xl font-bold mb-2">Large Card</h3>
           <p className="text-sm mb-2">

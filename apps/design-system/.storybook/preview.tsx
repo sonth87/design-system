@@ -42,13 +42,7 @@ const preview: Preview = {
 
       return (
         <>
-          <div
-            className={
-              theme === "dark"
-                ? "dark bg-[#303841] text-[#94a0ad] p-6"
-                : "bg-gray-50 text-gray-900 p-6 dark:bg-[#303841] dark:text-[#94a0ad]"
-            }
-          >
+          <div className="">
             <Story />
           </div>
 

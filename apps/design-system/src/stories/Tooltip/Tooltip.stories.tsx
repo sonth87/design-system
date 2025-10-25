@@ -34,6 +34,7 @@ const meta: Meta<typeof Tooltip> = {
         "success",
         "warning",
         "error",
+        "glass",
       ],
       description: "Tooltip color variant",
     },

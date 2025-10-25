@@ -68,6 +68,8 @@ export function Tooltip({
         return "bg-warning text-warning-foreground [&>span>svg]:bg-warning [&>span>svg]:fill-warning";
       case "error":
         return "bg-error text-error-foreground [&>span>svg]:bg-error [&>span>svg]:fill-error";
+      case "glass":
+        return "bg-white/15 text-foreground backdrop-blur-sm shadow-lg [&>span>svg]:bg-white/15 [&>span>svg]:fill-white/15";
       default:
         return "";
     }
@@ -138,7 +140,10 @@ export function Tooltip({
                 rotate: rotate,
                 whiteSpace: "nowrap",
               }}
-              className="text-primary-foreground bg-primary absolute -top-2 left-1/2 z-50 flex -translate-x-1/2 -translate-y-full flex-col items-center justify-center rounded-md px-4 py-2 text-xs shadow-xl"
+              className={cn(
+                "absolute -top-2 left-1/2 z-50 flex -translate-x-1/2 -translate-y-full flex-col items-center justify-center rounded-md px-4 py-2 text-xs shadow-xl",
+                tooltipColor
+              )}
             >
               <div className="relative z-1">{content}</div>
             </motion.div>

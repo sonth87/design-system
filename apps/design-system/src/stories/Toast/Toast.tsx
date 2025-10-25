@@ -11,7 +11,7 @@ const variantStyles = {
   success: "bg-success text-white border border-success/20",
   error: "bg-error text-white border border-error/20",
   warning: "bg-warning text-black border border-warning/20",
-  info: "bg-info text-foreground border border-info/20",
+  info: "bg-info text-foreground",
   primary: "bg-primary text-primary-foreground border border-primary/20",
   secondary:
     "bg-secondary text-secondary-foreground border border-secondary/20",
@@ -83,22 +83,32 @@ const toast = Object.assign(
   }
 );
 
-function Toaster(props: SonnerToasterProps) {
+function Toaster({
+  position = "top-right",
+  richColors = true,
+  closeButton = false,
+  expand = false,
+  visibleToasts = 3,
+  duration = 4000,
+  ...props
+}: SonnerToasterProps) {
   return (
     <SonnerToaster
-      position="top-right"
-      richColors
-      closeButton
+      {...props}
+      position={position}
+      richColors={richColors}
+      closeButton={closeButton}
+      expand={expand}
+      visibleToasts={visibleToasts}
       toastOptions={{
-        duration: 4000,
+        duration: duration,
         classNames: {
           toast:
-            "rounded-md shadow-md border text-sm font-medium backdrop-blur-sm text-black dark:text-white",
+            "rounded-md shadow-md border-none text-sm font-medium backdrop-blur-sm text-black dark:text-white",
           description: "text-muted-foreground",
           actionButton: "bg-white/10",
         },
       }}
-      {...props}
     />
   );
 }
