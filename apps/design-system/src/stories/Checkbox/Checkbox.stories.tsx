@@ -35,7 +35,7 @@ const meta: Meta<CheckboxProps> = {
     },
     variant: {
       control: "select",
-      options: ["default", "outline"],
+      options: ["default", "circle"],
       description: "The visual style variant of the checkbox",
       table: {
         defaultValue: { summary: "default" },

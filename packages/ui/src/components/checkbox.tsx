@@ -11,50 +11,50 @@ const colorVariants = {
   primary: {
     default:
       "data-[state=checked]:bg-primary data-[state=checked]:border-primary data-[state=checked]:text-primary-foreground data-[state=indeterminate]:bg-primary data-[state=indeterminate]:border-primary data-[state=indeterminate]:text-primary-foreground hover:border-primary transition-colors",
-    outline:
-      "data-[state=checked]:bg-primary data-[state=checked]:border-primary data-[state=checked]:text-primary-foreground data-[state=indeterminate]:bg-primary data-[state=indeterminate]:border-primary data-[state=indeterminate]:text-primary-foreground hover:border-primary transition-colors",
+    circle:
+      "rounded-full data-[state=checked]:bg-primary data-[state=checked]:border-primary data-[state=checked]:text-primary-foreground data-[state=indeterminate]:bg-primary data-[state=indeterminate]:border-primary data-[state=indeterminate]:text-primary-foreground hover:border-primary transition-colors",
   },
   secondary: {
     default:
       "data-[state=checked]:bg-secondary data-[state=checked]:border-secondary data-[state=checked]:text-secondary-foreground data-[state=indeterminate]:bg-secondary data-[state=indeterminate]:border-secondary data-[state=indeterminate]:text-secondary-foreground hover:border-primary transition-colors",
-    outline:
-      "data-[state=checked]:bg-secondary data-[state=checked]:border-secondary data-[state=checked]:text-secondary-foreground data-[state=indeterminate]:bg-secondary data-[state=indeterminate]:border-secondary data-[state=indeterminate]:text-secondary-foreground hover:border-primary transition-colors",
+    circle:
+      "rounded-full data-[state=checked]:bg-secondary data-[state=checked]:border-secondary data-[state=checked]:text-secondary-foreground data-[state=indeterminate]:bg-secondary data-[state=indeterminate]:border-secondary data-[state=indeterminate]:text-secondary-foreground hover:border-primary transition-colors",
   },
   accent: {
     default:
       "data-[state=checked]:bg-accent data-[state=checked]:border-accent data-[state=checked]:text-accent-foreground data-[state=indeterminate]:bg-accent data-[state=indeterminate]:border-accent data-[state=indeterminate]:text-accent-foreground hover:border-primary transition-colors",
-    outline:
-      "data-[state=checked]:bg-accent data-[state=checked]:border-accent data-[state=checked]:text-accent-foreground data-[state=indeterminate]:bg-accent data-[state=indeterminate]:border-accent data-[state=indeterminate]:text-accent-foreground hover:border-primary transition-colors",
+    circle:
+      "rounded-full data-[state=checked]:bg-accent data-[state=checked]:border-accent data-[state=checked]:text-accent-foreground data-[state=indeterminate]:bg-accent data-[state=indeterminate]:border-accent data-[state=indeterminate]:text-accent-foreground hover:border-primary transition-colors",
   },
   destructive: {
     default:
       "data-[state=checked]:bg-destructive data-[state=checked]:border-destructive data-[state=checked]:text-destructive-foreground data-[state=indeterminate]:bg-destructive data-[state=indeterminate]:border-destructive data-[state=indeterminate]:text-destructive-foreground hover:border-primary transition-colors",
-    outline:
-      "data-[state=checked]:bg-destructive data-[state=checked]:border-destructive data-[state=checked]:text-destructive-foreground data-[state=indeterminate]:bg-destructive data-[state=indeterminate]:border-destructive data-[state=indeterminate]:text-destructive-foreground hover:border-primary transition-colors",
+    circle:
+      "rounded-full data-[state=checked]:bg-destructive data-[state=checked]:border-destructive data-[state=checked]:text-destructive-foreground data-[state=indeterminate]:bg-destructive data-[state=indeterminate]:border-destructive data-[state=indeterminate]:text-destructive-foreground hover:border-primary transition-colors",
   },
   muted: {
     default:
       "data-[state=checked]:bg-muted data-[state=checked]:border-muted data-[state=checked]:text-muted-foreground data-[state=indeterminate]:bg-muted data-[state=indeterminate]:border-muted data-[state=indeterminate]:text-muted-foreground hover:border-primary transition-colors",
-    outline:
-      "data-[state=checked]:bg-muted data-[state=checked]:border-muted data-[state=checked]:text-muted-foreground data-[state=indeterminate]:bg-muted data-[state=indeterminate]:border-muted data-[state=indeterminate]:text-muted-foreground hover:border-primary transition-colors",
+    circle:
+      "rounded-full data-[state=checked]:bg-muted data-[state=checked]:border-muted data-[state=checked]:text-muted-foreground data-[state=indeterminate]:bg-muted data-[state=indeterminate]:border-muted data-[state=indeterminate]:text-muted-foreground hover:border-primary transition-colors",
   },
   success: {
     default:
       "data-[state=checked]:bg-success data-[state=checked]:border-success data-[state=checked]:text-success-foreground data-[state=indeterminate]:bg-success data-[state=indeterminate]:border-success data-[state=indeterminate]:text-success-foreground hover:border-primary transition-colors",
-    outline:
-      "data-[state=checked]:bg-success data-[state=checked]:border-success data-[state=checked]:text-success-foreground data-[state=indeterminate]:bg-success data-[state=indeterminate]:border-success data-[state=indeterminate]:text-success-foreground hover:border-primary transition-colors",
+    circle:
+      "rounded-full data-[state=checked]:bg-success data-[state=checked]:border-success data-[state=checked]:text-success-foreground data-[state=indeterminate]:bg-success data-[state=indeterminate]:border-success data-[state=indeterminate]:text-success-foreground hover:border-primary transition-colors",
   },
   error: {
     default:
       "data-[state=checked]:bg-error data-[state=checked]:border-error data-[state=checked]:text-error-foreground data-[state=indeterminate]:bg-error data-[state=indeterminate]:border-error data-[state=indeterminate]:text-error-foreground hover:border-primary transition-colors",
-    outline:
-      "data-[state=checked]:bg-error data-[state=checked]:border-error data-[state=checked]:text-error-foreground data-[state=indeterminate]:bg-error data-[state=indeterminate]:border-error data-[state=indeterminate]:text-error-foreground hover:border-primary transition-colors",
+    circle:
+      "rounded-full data-[state=checked]:bg-error data-[state=checked]:border-error data-[state=checked]:text-error-foreground data-[state=indeterminate]:bg-error data-[state=indeterminate]:border-error data-[state=indeterminate]:text-error-foreground hover:border-primary transition-colors",
   },
   warning: {
     default:
       "data-[state=checked]:bg-warning data-[state=checked]:border-warning data-[state=checked]:text-warning-foreground data-[state=indeterminate]:bg-warning data-[state=indeterminate]:border-warning data-[state=indeterminate]:text-warning-foreground hover:border-primary transition-colors",
-    outline:
-      "data-[state=checked]:bg-warning data-[state=checked]:border-warning data-[state=checked]:text-warning-foreground data-[state=indeterminate]:bg-warning data-[state=indeterminate]:border-warning data-[state=indeterminate]:text-warning-foreground hover:border-primary transition-colors",
+    circle:
+      "rounded-full data-[state=checked]:bg-warning data-[state=checked]:border-warning data-[state=checked]:text-warning-foreground data-[state=indeterminate]:bg-warning data-[state=indeterminate]:border-warning data-[state=indeterminate]:text-warning-foreground hover:border-primary transition-colors",
   },
 };
 
@@ -125,7 +125,7 @@ const checkboxVariants = cva(
     variants: {
       variant: {
         default: "",
-        outline: "border-2",
+        circle: "border-2",
       },
       size: {
         sm: "min-w-4 min-h-4 [&_svg]:min-w-3 [&_svg]:min-h-3",
