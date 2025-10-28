@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Checkbox as SCheckbox } from "@dsui/ui/components/checkbox";
 import { cn } from "@dsui/ui/index";
 import { Tooltip } from "../Tooltip/Tooltip";
 import { Info } from "lucide-react";
+import { AnimatePresence } from "motion/react";
+import { ConfettiPiece } from "@/utils/css";
 
 export type CheckboxProps = React.ComponentProps<typeof SCheckbox> & {
   label?: React.ReactNode;
@@ -12,6 +14,7 @@ export type CheckboxProps = React.ComponentProps<typeof SCheckbox> & {
   helperText?: React.ReactNode;
   state?: "default" | "error" | "success" | "warning";
   icon?: React.ReactNode;
+  animation?: "confetti" | undefined;
 };
 
 const Checkbox = React.forwardRef<HTMLButtonElement, CheckboxProps>(
@@ -27,8 +30,10 @@ const Checkbox = React.forwardRef<HTMLButtonElement, CheckboxProps>(
       labelPosition = "right",
       labelAlignment = "center",
       icon,
+      animation,
       ...rest
     } = props;
+    const [showConfetti, setShowConfetti] = useState(false);
     const inputId = React.useId();
 
     // State
@@ -37,6 +42,13 @@ const Checkbox = React.forwardRef<HTMLButtonElement, CheckboxProps>(
       success: "text-success",
       warning: "text-warning",
       error: "text-error",
+    };
+
+    const handleCheckedChange = (checked: boolean) => {
+      if (checked) {
+        setShowConfetti(true);
+        setTimeout(() => setShowConfetti(false), 800);
+      }
     };
 
     const isVertical = labelPosition === "top" || labelPosition === "bottom";
@@ -67,15 +79,31 @@ const Checkbox = React.forwardRef<HTMLButtonElement, CheckboxProps>(
             </label>
           )}
 
-          <SCheckbox
-            ref={ref}
-            id={inputId}
-            {...rest}
-            variant={variant}
-            size={size}
-            color={color}
-            icon={icon}
-          />
+          <div className="relative inline-flex">
+            <SCheckbox
+              ref={ref}
+              id={inputId}
+              {...rest}
+              variant={variant}
+              size={size}
+              color={color}
+              icon={icon}
+              onCheckedChange={(checked) => {
+                if (animation) handleCheckedChange(!!checked);
+                rest?.onCheckedChange?.(checked);
+              }}
+            />
+
+            <AnimatePresence>
+              {showConfetti && (
+                <div className="pointer-events-none absolute inset-0">
+                  {[...Array(12)].map((_, i) => (
+                    <ConfettiPiece key={i} index={i} />
+                  ))}
+                </div>
+              )}
+            </AnimatePresence>
+          </div>
 
           {(labelPosition === "bottom" || labelPosition === "right") &&
             label && (

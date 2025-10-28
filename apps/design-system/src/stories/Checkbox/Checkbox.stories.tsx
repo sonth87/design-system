@@ -99,6 +99,11 @@ const meta: Meta<CheckboxProps> = {
     },
     className: { control: "text", description: "Additional CSS classes" },
     onCheckedChange: { action: "checked changed" },
+    animation: {
+      control: "select",
+      options: ["confetti", undefined],
+      description: "Animation effect when checkbox is checked",
+    },
   },
   args: {
     variant: "default",
