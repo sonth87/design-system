@@ -26,11 +26,11 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     const {
       variant = "solid",
       size = "normal",
-      color = "primary",
+      color,
       animation,
       ...rest
     } = props;
-
+console.log("color", color);
     const buttonAnimation = useMemo<AnimResult | null>(() => {
       return animationEffect<ButtonAnimation, SButtonProps["variant"]>({
         animation,

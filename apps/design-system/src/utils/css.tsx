@@ -119,12 +119,6 @@ export const animationEffect = <T, S = undefined>({
         ? roundedMatches[roundedMatches.length - 1]
         : "rounded-md";
 
-      console.log("Glass Debug:", {
-        rootClassName,
-        roundedMatches,
-        roundedClass,
-      });
-
       return {
         variant: (variantType ? "link" : undefined) as S,
         children: (

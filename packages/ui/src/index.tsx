@@ -1,5 +1,11 @@
 // Components
 export { Button, type ButtonProps, buttonVariants } from "./components/button";
+export {
+  ButtonGroup,
+  ButtonGroupSeparator,
+  ButtonGroupText,
+  buttonGroupVariants,
+} from "./components/button-group";
 export { Input, type InputProps, type inputVariants } from "./components/input";
 export { Textarea, type TextareaProps } from "./components/textarea";
 export { Label } from "./components/label";
