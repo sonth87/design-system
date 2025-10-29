@@ -7,15 +7,9 @@ import {
   type TooltipContentProps,
 } from "@dsui/ui/components/tooltip";
 import { cn } from "@dsui/ui/index";
-import {
-  AnimatePresence,
-  motion,
-  useMotionValue,
-  useSpring,
-  useTransform,
-} from "motion/react";
+import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
 import type { BasicAnimation, BasicColor } from "@/types/variables";
-import { useMemo } from "react";
+import { useMemo, useCallback } from "react";
 import { animationClass } from "@/utils/css";
 
 type Color = BasicColor | "dark" | "light" | "inverted";
@@ -27,9 +21,10 @@ export type TooltipProps = TooltipContentProps & {
   delayDuration?: number;
   position?: "top" | "right" | "bottom" | "left";
   className?: string;
+  childClassName?: string;
   noArrow?: boolean;
   animation?: BasicAnimation;
-  color?: Color | string;
+  color?: Color;
 };
 
 export function Tooltip({
@@ -38,12 +33,12 @@ export function Tooltip({
   sideOffset = 4,
   delayDuration = 0,
   className,
+  childClassName,
   position = "top",
   noArrow = false,
   animation,
   ...props
 }: TooltipProps) {
-  const [show, setShow] = React.useState(false);
   const springConfig = { stiffness: 100, damping: 5 };
 
   const tooltipAnimation = useMemo<{ className?: string } | null>(() => {
@@ -71,7 +66,7 @@ export function Tooltip({
       case "glass":
         return "bg-white/15 text-foreground backdrop-blur-sm shadow-lg [&>span>svg]:bg-white/15 [&>span>svg]:fill-white/15";
       default:
-        return "";
+        return "bg-foreground text-background animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 w-fit origin-(--radix-tooltip-content-transform-origin) rounded-md px-3 py-1.5 text-xs text-balance";
     }
   }, [props?.color]);
 
@@ -88,70 +83,63 @@ export function Tooltip({
     springConfig
   );
 
-  if (animation === "spec") {
-    const ChildComp = () => {
-      if (!children) return <></>;
+  const handleMouseMove = useCallback(
+    (event: React.MouseEvent) => {
+      const halfWidth = (event.target as HTMLElement).offsetWidth / 2;
+      x.set(event.nativeEvent.offsetX - halfWidth);
+    },
+    [x]
+  );
 
-      const handleMouseMove = (event: any) => {
-        const halfWidth = event.target.offsetWidth / 2;
-        x.set(event.nativeEvent.offsetX - halfWidth);
-      };
-      const handleMouseEnter = () => setShow(true);
-      const handleMouseLeave = () => setShow(false);
-
-      if (typeof children === "string" || typeof children === "number") {
-        return (
-          <span
-            onMouseMove={handleMouseMove}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-          >
-            {children}
-          </span>
-        );
-      }
-
-      return React.cloneElement(children as any, {
-        onMouseMove: handleMouseMove,
-        onMouseEnter: handleMouseEnter,
-        onMouseLeave: handleMouseLeave,
-      });
-    };
+  const ChildComp = React.memo(() => {
+    if (!children) return <></>;
 
     return (
-      <div className={cn("relative -me-2.5 inline-block", className)}>
-        <AnimatePresence mode="popLayout">
-          {show && (
-            <motion.div
-              initial={{ opacity: 0, y: 20, scale: 0.6 }}
-              animate={{
-                opacity: 1,
-                y: -5,
-                scale: 1,
-                transition: {
-                  type: "spring",
-                  stiffness: 260,
-                  damping: 10,
-                },
-              }}
-              exit={{ opacity: 0, y: 20, scale: 0.6 }}
-              style={{
-                translateX: translateX,
-                rotate: rotate,
-                whiteSpace: "nowrap",
-              }}
-              className={cn(
-                "absolute -top-2 left-1/2 z-50 flex -translate-x-1/2 -translate-y-full flex-col items-center justify-center rounded-md px-4 py-2 text-xs shadow-xl",
-                tooltipColor
-              )}
-            >
-              <div className="relative z-1">{content}</div>
-            </motion.div>
+      <span
+        onMouseMove={handleMouseMove}
+        className={cn("inline-block", childClassName)}
+      >
+        {children}
+      </span>
+    );
+  });
+
+  if (animation === "spec") {
+    return (
+      <motion.div
+        className={cn("relative -me-2.5 inline-block", className)}
+        whileHover="hover"
+        initial="initial"
+      >
+        <motion.div
+          variants={{
+            initial: { opacity: 0, y: 20, scale: 0.6 },
+            hover: {
+              opacity: 1,
+              y: -5,
+              scale: 1,
+              transition: {
+                type: "spring",
+                stiffness: 260,
+                damping: 10,
+              },
+            },
+          }}
+          style={{
+            translateX: translateX,
+            rotate: rotate,
+            whiteSpace: "nowrap",
+          }}
+          className={cn(
+            "absolute -top-2 left-1/2 z-50 flex -translate-x-1/2 -translate-y-full flex-col items-center justify-center rounded-md px-4 py-2 text-xs shadow-xl",
+            tooltipColor
           )}
-        </AnimatePresence>
+        >
+          <div className="relative z-1">{content}</div>
+        </motion.div>
 
         <ChildComp />
-      </div>
+      </motion.div>
     );
   }
 

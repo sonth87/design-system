@@ -1,6 +1,7 @@
 import type { Meta } from "@storybook/react";
 
 import Separator from "./Separator";
+import { a } from "motion/react-client";
 
 type SeparatorProps = React.ComponentProps<typeof Separator>;
 
@@ -67,8 +68,8 @@ const meta: Meta<SeparatorProps> = {
 export default meta;
 
 export const Default = (args: SeparatorProps) => (
-  <div className="w-64 h-48">
-    <Separator {...args} />
+  <div className="w-64 h-48 flex items-center justify-center">
+    <Separator {...args} className="w-full h-full">{args?.children}</Separator>
   </div>
 );
 
