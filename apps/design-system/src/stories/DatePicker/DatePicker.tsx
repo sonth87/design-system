@@ -1,0 +1,150 @@
+import * as React from "react";
+import { Calendar } from "@dsui/ui/components/calendar";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@dsui/ui/components/popover";
+import {
+  Drawer,
+  DrawerContent,
+  DrawerDescription,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@dsui/ui/components/drawer";
+import { cn } from "@dsui/ui/index";
+import Input, { type InputProps } from "../Input/Input";
+import Button from "../Button/Button";
+import { CalendarIcon, CalendarPlusIcon } from "lucide-react";
+import type { VariantProps } from "class-variance-authority";
+import { isMobile } from "react-device-detect";
+
+function formatDate(date: Date | undefined) {
+  if (!date) {
+    return "";
+  }
+
+  return date.toLocaleDateString("en-US", {
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+  });
+}
+
+const parseDate = (str: string): Date | undefined => {
+  const date = new Date(str);
+  return isNaN(date.getTime()) ? undefined : date;
+};
+
+export type DatePickerProps = Omit<
+  InputProps,
+  "value" | "onChange" | "onSelect"
+> & {
+  selected?: Date;
+  onSelect?: (date: Date | undefined) => void;
+  calendarClassName?: string;
+  side?: "top" | "right" | "bottom" | "left";
+  align?: "start" | "center" | "end";
+  size?: VariantProps<typeof Input>["size"];
+};
+
+export function DatePicker({
+  selected,
+  onSelect,
+  calendarClassName,
+  side = "bottom",
+  align = "start",
+  ...props
+}: DatePickerProps) {
+  const [open, setOpen] = React.useState(false);
+  const [value, setValue] = React.useState("");
+  const [date, setDate] = React.useState<Date | undefined>(
+    parseDate(value) || undefined
+  );
+  const [month, setMonth] = React.useState<Date | undefined>(date);
+
+  const triggerComponent = (
+    <Button
+      variant="ghost"
+      className="!p-1 !leading-0 h-auto rounded hover:bg-accent transition-colors"
+      size={props.size}
+    >
+      <CalendarIcon
+        className={cn({
+          "size-3": props.size === "xs" || props.size === "sm",
+          "size-3.5": !props.size || props.size === "normal",
+          "size-4": props.size === "lg" || props.size === "xl",
+        })}
+      />
+      <span className="sr-only">Select date</span>
+    </Button>
+  );
+
+  const calendarSelection = (
+    <Calendar
+      mode="single"
+      selected={date}
+      captionLayout="dropdown"
+      month={month}
+      onMonthChange={setMonth}
+      onSelect={(date) => {
+        setDate(date);
+        setValue(formatDate(date));
+        setOpen(false);
+        onSelect?.(date);
+      }}
+      className={cn("mx-auto", {
+        "[--cell-size:clamp(0px,calc(100vw/7.5),52px)]": isMobile,
+        "[--cell-size:clamp(0px,calc(100vw/7.5),34px)]": !isMobile,
+      })}
+    />
+  );
+
+  const popPicker = (
+    <Popover open={open} onOpenChange={setOpen}>
+      <PopoverTrigger asChild disabled={props.disabled}>
+        {triggerComponent}
+      </PopoverTrigger>
+      <PopoverContent className="w-auto overflow-hidden p-0" align="end">
+        {calendarSelection}
+      </PopoverContent>
+    </Popover>
+  );
+
+  const drawPicker = (
+    <Drawer open={open} onOpenChange={setOpen}>
+      <DrawerTrigger asChild>{triggerComponent}</DrawerTrigger>
+      <DrawerContent className="w-auto overflow-hidden p-0">
+        <DrawerHeader className="sr-only">
+          <DrawerTitle>Select date</DrawerTitle>
+          <DrawerDescription>Set your date of birth</DrawerDescription>
+        </DrawerHeader>
+        {calendarSelection}
+      </DrawerContent>
+    </Drawer>
+  );
+
+  return (
+    <Input
+      {...props}
+      clearable
+      value={value}
+      onChange={(e) => {
+        setValue(e.target.value);
+        const date = parseDate(e.target.value);
+        if (date) {
+          setDate(date);
+          setMonth(date);
+        }
+      }}
+      onKeyDown={(e) => {
+        if (e.key === "ArrowDown") {
+          e.preventDefault();
+          setOpen(true);
+        }
+      }}
+      suffixIcon={isMobile ? drawPicker : popPicker}
+    />
+  );
+}

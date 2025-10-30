@@ -27,7 +27,7 @@ const Glass: React.FC<GlassProps> = ({ className, children }) => {
       <div className="z-[1] absolute inset-0 bg-white/25 rounded-[inherit]"></div>
       <div className="absolute inset-0 z-[2] overflow-hidden shadow-[inset_2px_2px_1px_0_rgba(255,255,255,0.5),inset_-1px_-1px_1px_1px_rgba(255,255,255,0.5)] rounded-[inherit]"></div>
       <div className="z-[3] relative">
-        <div className="text-foreground [text-shadow:0px_1px_3px_rgba(0,0,0,0.5)] transition-all duration-100 ease-in inline-flex gap-2">
+        <div className="text-foreground [text-shadow:0px_1px_3px_rgba(255, 255, 255, 0.3)] transition-all duration-100 ease-in inline-flex gap-2">
           {children}
         </div>
       </div>

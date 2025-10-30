@@ -27,7 +27,7 @@ export type TooltipProps = TooltipContentProps & {
   color?: Color;
 };
 
-export function Tooltip({
+export const Tooltip = React.memo(function Tooltip({
   content,
   children,
   sideOffset = 4,
@@ -113,15 +113,15 @@ export function Tooltip({
       >
         <motion.div
           variants={{
-            initial: { opacity: 0, y: 20, scale: 0.6 },
+            initial: { opacity: 0, y: 20, scale: 0 },
             hover: {
               opacity: 1,
               y: -5,
               scale: 1,
               transition: {
-                type: "spring",
-                stiffness: 260,
-                damping: 10,
+                type: "tween",
+                duration: 0.2,
+                ease: "easeOut",
               },
             },
           }}
@@ -160,4 +160,4 @@ export function Tooltip({
       </DsTooltip>
     </TooltipProvider>
   );
-}
+});

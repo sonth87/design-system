@@ -29,6 +29,31 @@ export {
   TooltipTrigger,
   type TooltipTriggerProps,
 } from "./components/tooltip";
+export { Calendar, type CalendarProps } from "./components/calendar";
+export {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+  PopoverAnchor,
+  type PopoverProps,
+  type PopoverContentProps,
+  type PopoverTriggerProps,
+} from "./components/popover";
+export { Separator, type SeparatorProps } from "./components/separator";
+export {
+  Drawer,
+  DrawerPortal,
+  DrawerOverlay,
+  DrawerTrigger,
+  DrawerClose,
+  DrawerContent,
+  DrawerHeader,
+  DrawerFooter,
+  DrawerTitle,
+  DrawerDescription,
+} from "./components/drawer";
+
+// Hooks
 
 // Libs
 export { cn } from "./lib/utils";

@@ -30,7 +30,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       animation,
       ...rest
     } = props;
-console.log("color", color);
+
     const buttonAnimation = useMemo<AnimResult | null>(() => {
       return animationEffect<ButtonAnimation, SButtonProps["variant"]>({
         animation,

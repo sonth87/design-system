@@ -153,19 +153,24 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
     // Calculate right padding considering built-in icons
     const getRightPadding = () => {
-      const hasBuiltInSuffix = 
-        type === "number" || 
-        type === "password" || 
-        (clearable && charCount > 0);
+      const hasBuiltInSuffix =
+        type === "number" ||
+        type === "password" ||
+        type === "datetime" ||
+        (clearable && (charCount > 0 || props?.value));
 
       if (hasBuiltInSuffix && suffixIcon) {
-        return type === "password" && clearable && charCount > 0
+        return type === "password" &&
+          clearable &&
+          (charCount > 0 || props?.value)
           ? "pr-20" // password + clear + custom icon
           : "pr-16"; // one built-in + custom icon
       }
-      
+
       if (hasBuiltInSuffix) {
-        return type === "password" && clearable && charCount > 0
+        return type === "password" &&
+          clearable &&
+          (charCount > 0 || props?.value)
           ? "pr-16" // password + clear
           : "pr-10"; // single built-in icon
       }
@@ -241,17 +246,20 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         )}
 
         <div className="relative">
+          {/* Prefix Icon */}
           {prefixIcon && (
             <div
               className={cn(
-                "absolute top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none",
+                "absolute top-1/2 -translate-y-1/2 text-muted-foreground leading-0",
                 iconPosition.left
               )}
             >
               {React.isValidElement(prefixIcon)
                 ? React.cloneElement(prefixIcon, {
-                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                    className: cn(iconSizeClass, (prefixIcon.props as any)?.className),
+                    className: cn(
+                      iconSizeClass,
+                      (prefixIcon.props as any)?.className
+                    ),
                   } as Partial<unknown>)
                 : prefixIcon}
             </div>
@@ -266,8 +274,10 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                 "pt-5 pb-1": isFloatLabel && size !== "lg",
                 "[&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none [-moz-appearance:textfield] pr-8":
                   type === "number",
+                // "[-webkit-text-fill-color:var(--foreground)]": mask,
               },
               prefixIcon && padding.prefix,
+              mask && "placeholder:text-slate-400 placeholder:opacity-100",
               getRightPadding(),
               className
             )}
@@ -328,26 +338,29 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           )}
 
           {/* Clear Button */}
-          {clearable && charCount > 0 && type !== "number" && (
-            <button
-              type="button"
-              tabIndex={-1}
-              className={cn(
-                "absolute top-1/2 -translate-y-1/2 p-1 rounded hover:bg-accent transition-colors",
-                type === "password" 
-                  ? suffixIcon 
-                    ? "right-14" 
-                    : "right-10" 
-                  : suffixIcon
-                    ? "right-10"
-                    : "right-2"
-              )}
-              onClick={handleClear}
-              disabled={props.disabled}
-            >
-              <X className="size-4" />
-            </button>
-          )}
+          {clearable &&
+            (charCount > 0 || props?.value) &&
+            !props.disabled &&
+            type !== "number" && (
+              <button
+                type="button"
+                tabIndex={-1}
+                className={cn(
+                  "absolute top-1/2 -translate-y-1/2 p-1 rounded hover:bg-accent transition-colors",
+                  type === "password"
+                    ? suffixIcon
+                      ? "right-14"
+                      : "right-10"
+                    : suffixIcon
+                      ? "right-10"
+                      : "right-2"
+                )}
+                onClick={handleClear}
+                disabled={props.disabled}
+              >
+                <X className="size-4" />
+              </button>
+            )}
 
           {/* Show/Hide Password Button */}
           {type === "password" && (
@@ -373,14 +386,16 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           {suffixIcon && (
             <div
               className={cn(
-                "absolute top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none",
+                "absolute top-1/2 -translate-y-1/2 text-muted-foreground leading-0",
                 iconPosition.right
               )}
             >
               {React.isValidElement(suffixIcon)
                 ? React.cloneElement(suffixIcon, {
-                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                    className: cn(iconSizeClass, (suffixIcon.props as any)?.className),
+                    className: cn(
+                      iconSizeClass,
+                      (suffixIcon.props as any)?.className
+                    ),
                   } as Partial<unknown>)
                 : suffixIcon}
             </div>

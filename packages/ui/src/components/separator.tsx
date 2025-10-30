@@ -153,4 +153,4 @@ function Separator({
   );
 }
 
-export { Separator };
+export { Separator, type SeparatorProps };

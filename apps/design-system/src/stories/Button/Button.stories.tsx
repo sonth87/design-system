@@ -180,7 +180,7 @@ export const WithIcon = (args: ButtonProps) => (
       <BottleWine className="animate-draw" />
     </Button>
 
-    <Button className="animate-draw rounded-full size-9 stroke-white">
+    <Button className="animate-draw rounded-full size-9 stroke-purple-500">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
