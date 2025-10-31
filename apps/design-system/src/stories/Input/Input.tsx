@@ -72,7 +72,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       if (innerRef.current) {
         innerRef.current.value = "";
         setCharCount(0);
-        const event = new Event("input", { bubbles: true });
+        const event = new Event("change", { bubbles: true });
         innerRef.current.dispatchEvent(event);
         if (onClear) onClear();
       }

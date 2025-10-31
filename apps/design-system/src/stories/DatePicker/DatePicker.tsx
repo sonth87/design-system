@@ -26,9 +26,8 @@ function formatDate(
   date: Date | undefined,
   outputFormat: string = DATE_FORMAT
 ) {
-  if (!date) {
-    return "";
-  }
+  if (!date) return "";
+
   return format(date, outputFormat);
 }
 
@@ -40,36 +39,47 @@ const parseDate = (
   return isValid(date) ? date : undefined;
 };
 
+export type FormatType = string | { input: string; output: string };
+
 export type DatePickerProps = Omit<
   InputProps,
   "value" | "onChange" | "onSelect"
 > & {
-  selected?: Date;
-  onSelect?: (date: Date | undefined) => void;
+  value?: string;
+  onChange?: (date?: Date, text?: string) => void;
+  onSelect?: (date?: Date, text?: string) => void;
   calendarClassName?: string;
   side?: "top" | "right" | "bottom" | "left";
   align?: "start" | "center" | "end";
   size?: VariantProps<typeof Input>["size"];
-  inputFormat?: string;
-  outputFormat?: string;
+  format?: FormatType;
 };
 
 export function DatePicker({
-  selected,
+  value,
   onSelect,
   calendarClassName,
   side = "bottom",
   align = "start",
-  inputFormat = DATE_FORMAT,
-  outputFormat = DATE_FORMAT,
+  format = DATE_FORMAT,
   ...props
 }: DatePickerProps) {
+  let inputFormat: string;
+  let outputFormat: string;
+  if (typeof format === "string") {
+    inputFormat = format;
+    outputFormat = format;
+  } else {
+    inputFormat = format.input;
+    outputFormat = format.output;
+  }
+
+  const initialDate = value ? parseDate(value, inputFormat) : undefined;
+
   const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState("");
-  const [date, setDate] = React.useState<Date | undefined>(
-    parseDate(value, inputFormat) || undefined
-  );
-  const [month, setMonth] = React.useState<Date | undefined>(date);
+  const [date, setDate] = React.useState<Date | undefined>(initialDate);
+  const [month, setMonth] = React.useState<Date | undefined>(initialDate);
+  const [inputValue, setInputValue] = React.useState(value || "");
 
   const triggerComponent = (
     <Button
@@ -97,9 +107,9 @@ export function DatePicker({
       onMonthChange={setMonth}
       onSelect={(date) => {
         setDate(date);
-        setValue(formatDate(date, outputFormat));
+        setInputValue(formatDate(date, outputFormat));
         setOpen(false);
-        onSelect?.(date);
+        onSelect?.(date, formatDate(date, outputFormat));
       }}
       className={cn(
         "mx-auto",
@@ -117,7 +127,11 @@ export function DatePicker({
       <PopoverTrigger asChild disabled={props.disabled}>
         {triggerComponent}
       </PopoverTrigger>
-      <PopoverContent className="w-auto overflow-hidden p-0" align="end">
+      <PopoverContent
+        className="w-auto overflow-hidden p-0"
+        side={side}
+        align={align}
+      >
         {calendarSelection}
       </PopoverContent>
     </Popover>
@@ -140,13 +154,16 @@ export function DatePicker({
     <Input
       {...props}
       clearable
-      value={value}
-      onChange={(e) => {
-        setValue(e.target.value);
+      value={inputValue}
+      onChange={(e) => {console.log('onChange called');
+        setInputValue(e.target.value);
         const date = parseDate(e.target.value, inputFormat);
         if (date) {
           setDate(date);
           setMonth(date);
+          onSelect?.(date, formatDate(date, outputFormat));
+        } else {
+          onSelect?.(undefined, "");
         }
       }}
       onKeyDown={(e) => {

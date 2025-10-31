@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { DatePicker } from "./DatePicker";
 import { useState } from "react";
+import { format } from "date-fns";
+import { DATE_FORMAT } from "@/constants/common";
 
 const meta: Meta<typeof DatePicker> = {
   title: "Components/DatePicker",
@@ -66,7 +68,20 @@ export const Default: Story = {
   render: function DefaultComponent(args) {
     const [date, setDate] = useState<Date | undefined>(new Date());
     const handleSelect = (d: Date | undefined) => setDate(d);
-    return <DatePicker {...args} selected={date} onSelect={handleSelect} />;
+    return (
+      <DatePicker
+        {...args}
+        value={date ? format(date, DATE_FORMAT) : ""}
+        onSelect={handleSelect}
+      />
+    );
+  },
+  args: {},
+};
+
+export const DefaultWithValue: Story = {
+  render: function DefaultComponent(args) {
+    return <DatePicker {...args} value="20/10/1991" format="dd/MM/yyyy" />;
   },
   args: {},
 };
@@ -75,7 +90,13 @@ export const WithLabel: Story = {
   render: function WithLabelComponent(args) {
     const [date, setDate] = useState<Date | undefined>();
     const handleSelect = (d: Date | undefined) => setDate(d);
-    return <DatePicker {...args} selected={date} onSelect={handleSelect} />;
+    return (
+      <DatePicker
+        {...args}
+        value={date ? format(date, DATE_FORMAT) : ""}
+        onSelect={handleSelect}
+      />
+    );
   },
   args: {
     label: "Select Date",
@@ -87,7 +108,13 @@ export const WithState: Story = {
   render: function WithStateComponent(args) {
     const [date, setDate] = useState<Date | undefined>();
     const handleSelect = (d: Date | undefined) => setDate(d);
-    return <DatePicker {...args} selected={date} onSelect={handleSelect} />;
+    return (
+      <DatePicker
+        {...args}
+        value={date ? format(date, DATE_FORMAT) : ""}
+        onSelect={handleSelect}
+      />
+    );
   },
   args: {
     label: "Error Date",
@@ -100,7 +127,13 @@ export const Disabled: Story = {
   render: function DisabledComponent(args) {
     const [date, setDate] = useState<Date | undefined>(new Date());
     const handleSelect = (d: Date | undefined) => setDate(d);
-    return <DatePicker {...args} selected={date} onSelect={handleSelect} />;
+    return (
+      <DatePicker
+        {...args}
+        value={date ? format(date, DATE_FORMAT) : ""}
+        onSelect={handleSelect}
+      />
+    );
   },
   args: {
     disabled: true,
@@ -111,7 +144,13 @@ export const WithFloatLabel: Story = {
   render: function WithFloatLabelComponent(args) {
     const [date, setDate] = useState<Date | undefined>();
     const handleSelect = (d: Date | undefined) => setDate(d);
-    return <DatePicker {...args} selected={date} onSelect={handleSelect} />;
+    return (
+      <DatePicker
+        {...args}
+        value={date ? format(date, DATE_FORMAT) : ""}
+        onSelect={handleSelect}
+      />
+    );
   },
   args: {
     label: "Floating Label Date",
@@ -126,7 +165,14 @@ export const WithMask: Story = {
     const handleSelect = (d: Date | undefined) => setDate(d);
 
     return (
-      <DatePicker {...args} selected={date} onSelect={(d) => handleSelect(d)} />
+      <>
+        {date && <span>Selected date: {format(date, DATE_FORMAT)}</span>}
+        <DatePicker
+          {...args}
+          value={date ? format(date, DATE_FORMAT) : ""}
+          onSelect={(d) => handleSelect(d)}
+        />
+      </>
     );
   },
   args: {
