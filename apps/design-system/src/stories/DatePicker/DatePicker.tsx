@@ -16,25 +16,28 @@ import {
 import { cn } from "@dsui/ui/index";
 import Input, { type InputProps } from "../Input/Input";
 import Button from "../Button/Button";
-import { CalendarIcon, CalendarPlusIcon } from "lucide-react";
+import { CalendarIcon } from "lucide-react";
 import type { VariantProps } from "class-variance-authority";
 import { isMobile } from "react-device-detect";
+import { format, parse, isValid } from "date-fns";
+import { DATE_FORMAT } from "@/constants/common";
 
-function formatDate(date: Date | undefined) {
+function formatDate(
+  date: Date | undefined,
+  outputFormat: string = DATE_FORMAT
+) {
   if (!date) {
     return "";
   }
-
-  return date.toLocaleDateString("en-US", {
-    day: "2-digit",
-    month: "long",
-    year: "numeric",
-  });
+  return format(date, outputFormat);
 }
 
-const parseDate = (str: string): Date | undefined => {
-  const date = new Date(str);
-  return isNaN(date.getTime()) ? undefined : date;
+const parseDate = (
+  str: string,
+  inputFormat: string = DATE_FORMAT
+): Date | undefined => {
+  const date = parse(str, inputFormat, new Date());
+  return isValid(date) ? date : undefined;
 };
 
 export type DatePickerProps = Omit<
@@ -47,6 +50,8 @@ export type DatePickerProps = Omit<
   side?: "top" | "right" | "bottom" | "left";
   align?: "start" | "center" | "end";
   size?: VariantProps<typeof Input>["size"];
+  inputFormat?: string;
+  outputFormat?: string;
 };
 
 export function DatePicker({
@@ -55,12 +60,14 @@ export function DatePicker({
   calendarClassName,
   side = "bottom",
   align = "start",
+  inputFormat = DATE_FORMAT,
+  outputFormat = DATE_FORMAT,
   ...props
 }: DatePickerProps) {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
   const [date, setDate] = React.useState<Date | undefined>(
-    parseDate(value) || undefined
+    parseDate(value, inputFormat) || undefined
   );
   const [month, setMonth] = React.useState<Date | undefined>(date);
 
@@ -90,14 +97,18 @@ export function DatePicker({
       onMonthChange={setMonth}
       onSelect={(date) => {
         setDate(date);
-        setValue(formatDate(date));
+        setValue(formatDate(date, outputFormat));
         setOpen(false);
         onSelect?.(date);
       }}
-      className={cn("mx-auto", {
-        "[--cell-size:clamp(0px,calc(100vw/7.5),52px)]": isMobile,
-        "[--cell-size:clamp(0px,calc(100vw/7.5),34px)]": !isMobile,
-      })}
+      className={cn(
+        "mx-auto",
+        {
+          "[--cell-size:clamp(0px,calc(100vw/7.5),52px)]": isMobile,
+          "[--cell-size:clamp(0px,calc(100vw/7.5),34px)]": !isMobile,
+        },
+        calendarClassName
+      )}
     />
   );
 
@@ -132,7 +143,7 @@ export function DatePicker({
       value={value}
       onChange={(e) => {
         setValue(e.target.value);
-        const date = parseDate(e.target.value);
+        const date = parseDate(e.target.value, inputFormat);
         if (date) {
           setDate(date);
           setMonth(date);
