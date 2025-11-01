@@ -37,12 +37,13 @@ const meta: Meta<typeof DatePicker> = {
     },
     mask: {
       control: { type: "text" },
+      description:
+        "Input mask for the date picker. True means auto-generated, String means custom. Eg: '99/99/9999'",
     },
-    maxLength: {
-      control: { type: "number" },
-    },
-    showCharCount: {
-      control: { type: "boolean" },
+    format: {
+      control: { type: "object" },
+      description:
+        "Date format: string (e.g., 'dd/MM/yyyy') or object { input: string, output: string }",
     },
     infoTooltip: {
       control: { type: "text" },
@@ -57,6 +58,15 @@ const meta: Meta<typeof DatePicker> = {
     align: {
       control: { type: "select" },
       options: ["start", "center", "end"],
+    },
+    language: {
+      control: { type: "select" },
+      options: ["vi", "en"],
+    },
+    onChange: { action: "changed" },
+    onSelect: { action: "selected" },
+    closeOnSelect: {
+      control: { type: "boolean" },
     },
   },
 };
@@ -180,4 +190,34 @@ export const WithMask: Story = {
     mask: "99/99/9999",
     placeholder: "MM/DD/YYYY",
   },
+};
+
+export const WithAutoMask: Story = {
+  render: function WithMaskComponent(args) {
+    const [date, setDate] = useState<string | undefined>();
+    const handleSelect = (d: string | undefined) => setDate(d);
+
+    return (
+      <>
+        {date && <span>Selected date: {date}</span>}
+        <DatePicker
+          {...args}
+          value={date}
+          onSelect={(_, d) => handleSelect(d)}
+        />
+      </>
+    );
+  },
+  args: {
+    label: "Masked Date Input",
+    mask: true,
+    format: "yyyy.MM.dd",
+  },
+};
+
+export const WithDifferentFormats = () => {
+  const [date, setDate] = useState<string | undefined>();
+  const handleSelect = (d: string | undefined) => setDate(d);
+
+  return <DatePicker value={date} onChange={(_, date) => handleSelect(date)} />;
 };

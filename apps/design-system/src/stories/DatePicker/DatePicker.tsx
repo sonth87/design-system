@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Calendar } from "@dsui/ui/components/calendar";
+import { Calendar, type CalendarProps } from "@dsui/ui/components/calendar";
 import {
   Popover,
   PopoverContent,
@@ -20,6 +20,7 @@ import { CalendarIcon } from "lucide-react";
 import type { VariantProps } from "class-variance-authority";
 import { isMobile } from "react-device-detect";
 import { format, parse, isValid } from "date-fns";
+import { vi, enUS } from "date-fns/locale";
 import { DATE_FORMAT } from "@/constants/common";
 
 function formatDate(
@@ -43,7 +44,7 @@ export type FormatType = string | { input: string; output: string };
 
 export type DatePickerProps = Omit<
   InputProps,
-  "value" | "onChange" | "onSelect"
+  "value" | "onChange" | "onSelect" | "mask"
 > & {
   value?: string;
   onChange?: (date?: Date, text?: string) => void;
@@ -53,15 +54,49 @@ export type DatePickerProps = Omit<
   align?: "start" | "center" | "end";
   size?: VariantProps<typeof Input>["size"];
   format?: FormatType;
+  language?: "vi" | "en";
+  mask?: boolean | string;
+  closeOnSelect?: boolean;
+  calendarConfig?: CalendarProps;
 };
+
+function generateMaskFromFormat(format: string): string {
+  return format
+    .replace(/dd|MM|yyyy/g, (match) => {
+      switch (match) {
+        case "dd":
+        case "MM":
+          return "99";
+        case "yyyy":
+          return "9999";
+        default:
+          return match;
+      }
+    })
+    .replace(/d|M|y/g, (match) => {
+      switch (match) {
+        case "d":
+        case "M":
+          return "9";
+        case "y":
+          return "9";
+        default:
+          return match;
+      }
+    });
+}
 
 export function DatePicker({
   value,
   onSelect,
   calendarClassName,
   side = "bottom",
-  align = "start",
-  format = DATE_FORMAT,
+  align = "end",
+  format = "dd/MM/yyyy",
+  language = "vi",
+  mask,
+  closeOnSelect = false,
+  calendarConfig,
   ...props
 }: DatePickerProps) {
   let inputFormat: string;
@@ -74,12 +109,23 @@ export function DatePicker({
     outputFormat = format.output;
   }
 
+  // Determine the mask to use
+  let maskToUse: string | undefined;
+  if (mask === true) {
+    maskToUse = generateMaskFromFormat(inputFormat);
+  } else if (typeof mask === "string") {
+    maskToUse = mask;
+  }
+  // If mask is false or undefined, maskToUse remains undefined
+
   const initialDate = value ? parseDate(value, inputFormat) : undefined;
 
   const [open, setOpen] = React.useState(false);
   const [date, setDate] = React.useState<Date | undefined>(initialDate);
   const [month, setMonth] = React.useState<Date | undefined>(initialDate);
   const [inputValue, setInputValue] = React.useState(value || "");
+
+  const locale = language === "en" ? enUS : vi;
 
   const triggerComponent = (
     <Button
@@ -100,6 +146,7 @@ export function DatePicker({
 
   const calendarSelection = (
     <Calendar
+      {...calendarConfig}
       mode="single"
       selected={date}
       captionLayout="dropdown"
@@ -108,13 +155,19 @@ export function DatePicker({
       onSelect={(date) => {
         setDate(date);
         setInputValue(formatDate(date, outputFormat));
-        setOpen(false);
         onSelect?.(date, formatDate(date, outputFormat));
+        if (closeOnSelect) setOpen(false);
+      }}
+      locale={locale}
+      formatters={{
+        formatMonthDropdown: (date) =>
+          date.toLocaleString(locale.code, { month: "short" }),
       }}
       className={cn(
         "mx-auto",
         {
-          "[--cell-size:clamp(0px,calc(100vw/7.5),52px)]": isMobile,
+          "[--cell-size:clamp(0px,calc(100vw/7.5),52px)] mb-8 bg-transparent":
+            isMobile,
           "[--cell-size:clamp(0px,calc(100vw/7.5),34px)]": !isMobile,
         },
         calendarClassName
@@ -128,7 +181,10 @@ export function DatePicker({
         {triggerComponent}
       </PopoverTrigger>
       <PopoverContent
-        className="w-auto overflow-hidden p-0"
+        className={cn(
+          "w-auto overflow-hidden p-0",
+          "backdrop-blur bg-background/75"
+        )}
         side={side}
         align={align}
       >
@@ -140,7 +196,12 @@ export function DatePicker({
   const drawPicker = (
     <Drawer open={open} onOpenChange={setOpen}>
       <DrawerTrigger asChild>{triggerComponent}</DrawerTrigger>
-      <DrawerContent className="w-auto overflow-hidden p-0">
+      <DrawerContent
+        className={cn(
+          "w-auto overflow-hidden p-0",
+          "backdrop-blur bg-background/90"
+        )}
+      >
         <DrawerHeader className="sr-only">
           <DrawerTitle>Select date</DrawerTitle>
           <DrawerDescription>Set your date of birth</DrawerDescription>
@@ -155,7 +216,8 @@ export function DatePicker({
       {...props}
       clearable
       value={inputValue}
-      onChange={(e) => {console.log('onChange called');
+      mask={maskToUse}
+      onChange={(e) => {
         setInputValue(e.target.value);
         const date = parseDate(e.target.value, inputFormat);
         if (date) {
@@ -163,6 +225,15 @@ export function DatePicker({
           setMonth(date);
           onSelect?.(date, formatDate(date, outputFormat));
         } else {
+          onSelect?.(undefined, "");
+        }
+      }}
+      onBlur={() => {
+        const parsedDate = parseDate(inputValue, inputFormat);
+        if (!parsedDate) {
+          setInputValue("");
+          setDate(undefined);
+          setMonth(undefined);
           onSelect?.(undefined, "");
         }
       }}
