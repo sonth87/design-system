@@ -20,7 +20,7 @@ import { CalendarIcon } from "lucide-react";
 import type { VariantProps } from "class-variance-authority";
 import { isMobile } from "react-device-detect";
 import { format, parse, isValid } from "date-fns";
-import { vi, enUS } from "date-fns/locale";
+import { vi, enUS, de } from "date-fns/locale";
 import { DATE_FORMAT } from "@/constants/common";
 
 function formatDate(
@@ -38,26 +38,6 @@ const parseDate = (
 ): Date | undefined => {
   const date = parse(str, inputFormat, new Date());
   return isValid(date) ? date : undefined;
-};
-
-export type FormatType = string | { input: string; output: string };
-
-export type DatePickerProps = Omit<
-  InputProps,
-  "value" | "onChange" | "onSelect" | "mask"
-> & {
-  value?: string;
-  onChange?: (date?: Date, text?: string) => void;
-  onSelect?: (date?: Date, text?: string) => void;
-  calendarClassName?: string;
-  side?: "top" | "right" | "bottom" | "left";
-  align?: "start" | "center" | "end";
-  size?: VariantProps<typeof Input>["size"];
-  format?: FormatType;
-  language?: "vi" | "en";
-  mask?: boolean | string;
-  closeOnSelect?: boolean;
-  calendarConfig?: CalendarProps;
 };
 
 function generateMaskFromFormat(format: string): string {
@@ -86,8 +66,43 @@ function generateMaskFromFormat(format: string): string {
     });
 }
 
+export type FormatType = string | { input: string; output: string };
+
+export type DatePickerRenderProps = {
+  value: string;
+  date?: Date;
+  onSelect: (date?: Date) => void;
+  onChange: (text: string) => void;
+};
+
+export type DatePickerProps = Omit<
+  InputProps,
+  "value" | "onChange" | "onSelect" | "mask" | "children"
+> & {
+  value?: string;
+  onChange?: (
+    event?: React.ChangeEvent<HTMLInputElement>,
+    value?: string,
+    date?: Date
+  ) => void;
+  onSelect?: (date?: Date, value?: string) => void;
+  calendarClassName?: string;
+  side?: "top" | "right" | "bottom" | "left";
+  align?: "start" | "center" | "end";
+  size?: VariantProps<typeof Input>["size"];
+  format?: FormatType;
+  language?: "vi" | "en";
+  mask?: boolean | string;
+  closeOnSelect?: boolean;
+  calendarConfig?: CalendarProps;
+  desktopMode?: "popover" | "drawer";
+  mobileMode?: "popover" | "drawer";
+  children?: (props: DatePickerRenderProps) => React.ReactNode;
+};
+
 export function DatePicker({
   value,
+  onChange,
   onSelect,
   calendarClassName,
   side = "bottom",
@@ -97,6 +112,9 @@ export function DatePicker({
   mask,
   closeOnSelect = false,
   calendarConfig,
+  desktopMode = "popover",
+  mobileMode = "drawer",
+  children,
   ...props
 }: DatePickerProps) {
   let inputFormat: string;
@@ -127,7 +145,35 @@ export function DatePicker({
 
   const locale = language === "en" ? enUS : vi;
 
-  const triggerComponent = (
+  // Helper functions for render props
+  const handleSelectForRenderProp = (date?: Date) => {
+    setDate(date);
+    setInputValue(formatDate(date, outputFormat));
+    onSelect?.(date, formatDate(date, outputFormat));
+  };
+
+  const handleChangeForRenderProp = (text: string) => {
+    setInputValue(text);
+    const parsedDate = parseDate(text, inputFormat);
+    if (parsedDate) {
+      setDate(parsedDate);
+      setMonth(parsedDate);
+      onSelect?.(parsedDate, formatDate(parsedDate, outputFormat));
+    } else {
+      setDate(undefined);
+      onSelect?.(undefined, undefined);
+    }
+  };
+
+  // Determine trigger component
+  const triggerComponent = children ? (
+    children({
+      value: inputValue,
+      date,
+      onSelect: handleSelectForRenderProp,
+      onChange: handleChangeForRenderProp,
+    })
+  ) : (
     <Button
       variant="ghost"
       className="!p-1 !leading-0 h-auto rounded hover:bg-accent transition-colors"
@@ -167,8 +213,9 @@ export function DatePicker({
         "mx-auto",
         {
           "[--cell-size:clamp(0px,calc(100vw/7.5),52px)] mb-8 bg-transparent":
-            isMobile,
-          "[--cell-size:clamp(0px,calc(100vw/7.5),34px)]": !isMobile,
+            isMobile || desktopMode === "drawer",
+          "[--cell-size:clamp(0px,calc(100vw/7.5),34px)]":
+            !isMobile && desktopMode !== "drawer",
         },
         calendarClassName
       )}
@@ -183,7 +230,7 @@ export function DatePicker({
       <PopoverContent
         className={cn(
           "w-auto overflow-hidden p-0",
-          "backdrop-blur bg-background/75"
+          "backdrop-blur bg-background/50"
         )}
         side={side}
         align={align}
@@ -211,6 +258,13 @@ export function DatePicker({
     </Drawer>
   );
 
+  // If children is provided, use render prop pattern with picker
+  if (children) {
+    const mode = isMobile ? mobileMode : desktopMode;
+    return mode === "drawer" ? drawPicker : popPicker;
+  }
+
+  // Default input rendering
   return (
     <Input
       {...props}
@@ -224,8 +278,10 @@ export function DatePicker({
           setDate(date);
           setMonth(date);
           onSelect?.(date, formatDate(date, outputFormat));
+          onChange?.(e, formatDate(date, outputFormat), date);
         } else {
-          onSelect?.(undefined, "");
+          onSelect?.(undefined, undefined);
+          onChange?.(e, undefined, undefined);
         }
       }}
       onBlur={() => {
@@ -234,7 +290,7 @@ export function DatePicker({
           setInputValue("");
           setDate(undefined);
           setMonth(undefined);
-          onSelect?.(undefined, "");
+          onSelect?.(undefined, undefined);
         }
       }}
       onKeyDown={(e) => {
@@ -243,7 +299,15 @@ export function DatePicker({
           setOpen(true);
         }
       }}
-      suffixIcon={isMobile ? drawPicker : popPicker}
+      suffixIcon={
+        isMobile
+          ? mobileMode === "drawer"
+            ? drawPicker
+            : popPicker
+          : desktopMode === "drawer"
+            ? drawPicker
+            : popPicker
+      }
     />
   );
 }
