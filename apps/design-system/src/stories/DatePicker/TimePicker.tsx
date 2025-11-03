@@ -2,6 +2,22 @@ import * as React from "react";
 import { cn } from "@dsui/ui/index";
 import Button from "../Button/Button";
 import Select from "../Select/Select";
+import Input, { type InputProps } from "../Input/Input";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@dsui/ui/components/popover";
+import {
+  Drawer,
+  DrawerContent,
+  DrawerDescription,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@dsui/ui/components/drawer";
+import { isMobile } from "react-device-detect";
+import { Clock } from "lucide-react";
 
 export type TimePickerMode = "wheel" | "select" | "compact";
 
@@ -10,7 +26,10 @@ export type DisabledTimeRange = {
   to: string; // Format: "HH:mm" or "HH:mm:ss"
 };
 
-export type TimePickerProps = {
+export type TimePickerProps = Omit<
+  InputProps,
+  "value" | "onChange" | "onSelect" | "mask" | "children"
+> & {
   value?: Date;
   onChange?: (date: Date) => void;
   showHours?: boolean;
@@ -18,10 +37,10 @@ export type TimePickerProps = {
   showSeconds?: boolean;
   disabled?: boolean;
   className?: string;
-  label?: boolean | { hours?: string; minutes?: string; seconds?: string };
+  timeLabel?: boolean | { hours?: string; minutes?: string; seconds?: string };
 
   // New configuration options
-  mode?: TimePickerMode; // Display mode: 'wheel' (default), 'normal', 'grid'
+  mode?: TimePickerMode; // Display mode: 'wheel' (default), 'select', 'compact'
   hourInterval?: number; // Hour interval (e.g., 1, 2, 3) - defaults to 1
   minuteInterval?: number; // Minute interval (e.g., 5, 10, 15, 30) - defaults to 1
   secondInterval?: number; // Second interval (e.g., 5, 10, 15, 30) - defaults to 1
@@ -29,6 +48,11 @@ export type TimePickerProps = {
   disabledTimeRanges?: DisabledTimeRange[]; // Array of disabled time ranges
   showNowButton?: boolean; // Show "Now" button to select current time
   nowButtonLabel?: string; // Label for "Now" button (defaults to "Now")
+
+  // Standalone mode configuration
+  standalone?: boolean; // When true (default), TimePicker shows as a drawer/popover with trigger. When false, it's used as an integrated component (e.g., inside DatePicker)
+  desktopMode?: "popover" | "drawer"; // Desktop display mode for standalone: 'popover' or 'drawer'
+  mobileMode?: "popover" | "drawer"; // Mobile display mode for standalone: 'popover' or 'drawer'
 };
 
 const generateIntervalArray = (max: number, interval: number = 1): number[] => {
@@ -41,6 +65,20 @@ const generateIntervalArray = (max: number, interval: number = 1): number[] => {
 
 const pad = (num: number): string => String(num).padStart(2, "0");
 
+const formatTime = (
+  date: Date | undefined,
+  showSeconds: boolean = false
+): string => {
+  if (!date) return "";
+  const hours = pad(date.getHours());
+  const minutes = pad(date.getMinutes());
+  if (showSeconds) {
+    const seconds = pad(date.getSeconds());
+    return `${hours}:${minutes}:${seconds}`;
+  }
+  return `${hours}:${minutes}`;
+};
+
 export function TimePicker({
   value,
   onChange,
@@ -49,7 +87,7 @@ export function TimePicker({
   showSeconds = false,
   disabled = false,
   className,
-  label,
+  timeLabel,
   mode = "wheel",
   hourInterval = 1,
   minuteInterval = 1,
@@ -58,12 +96,17 @@ export function TimePicker({
   disabledTimeRanges = [],
   showNowButton = false,
   nowButtonLabel = "Now",
+  standalone = true,
+  desktopMode = "popover",
+  mobileMode = "drawer",
+  ...props
 }: TimePickerProps) {
   const date = React.useMemo(() => value || new Date(), [value]);
 
   const [hours, setHours] = React.useState(date.getHours());
   const [minutes, setMinutes] = React.useState(date.getMinutes());
   const [seconds, setSeconds] = React.useState(date.getSeconds());
+  const [standaloneOpen, setStandaloneOpen] = React.useState(false);
 
   const hoursRef = React.useRef<HTMLDivElement>(null);
   const minutesRef = React.useRef<HTMLDivElement>(null);
@@ -266,20 +309,20 @@ export function TimePicker({
       value: selectedValue,
       onChange: onChangeCol,
       ref,
-      label,
+      timeLabel,
       itemClassName,
     }: {
       items: number[];
       value: number;
       onChange: (val: number) => void;
       ref: React.RefObject<HTMLDivElement | null>;
-      label?: string;
+      timeLabel?: string;
       itemClassName?: string;
     }) => (
       <div className="flex flex-col items-center gap-2">
-        {label && (
+        {timeLabel && (
           <div className="text-xs font-semibold text-muted-foreground uppercase">
-            {label}
+            {timeLabel}
           </div>
         )}
         <div className="relative">
@@ -346,19 +389,19 @@ export function TimePicker({
       items,
       value: selectedValue,
       onChange: onChangeCol,
-      label,
+      timeLabel,
       type,
     }: {
       items: number[];
       value: number;
       onChange: (val: number) => void;
-      label?: string;
+      timeLabel?: string;
       type: "hours" | "minutes" | "seconds";
     }) => (
       <div className="flex flex-col gap-2">
-        {label && (
+        {timeLabel && (
           <label className="text-xs font-semibold text-muted-foreground uppercase">
-            {label}
+            {timeLabel}
           </label>
         )}
         <Select
@@ -467,10 +510,10 @@ export function TimePicker({
     const columns = [];
 
     if (showHours) {
-      const hourLabel = label
-        ? typeof label === "boolean"
+      const hourLabel = timeLabel
+        ? typeof timeLabel === "boolean"
           ? "Hour"
-          : label.hours
+          : timeLabel.hours
         : undefined;
 
       if (mode === "wheel") {
@@ -481,7 +524,7 @@ export function TimePicker({
             items={HOURS}
             value={hours}
             onChange={handleHourChange}
-            label={hourLabel}
+            timeLabel={hourLabel}
           />
         );
       } else if (mode === "select") {
@@ -491,7 +534,7 @@ export function TimePicker({
             items={HOURS}
             value={hours}
             onChange={handleHourChange}
-            label={hourLabel}
+            timeLabel={hourLabel}
             type="hours"
           />
         );
@@ -499,10 +542,10 @@ export function TimePicker({
     }
 
     if (showMinutes) {
-      const minuteLabel = label
-        ? typeof label === "boolean"
+      const minuteLabel = timeLabel
+        ? typeof timeLabel === "boolean"
           ? "Minute"
-          : label.minutes
+          : timeLabel.minutes
         : undefined;
 
       if (mode === "wheel") {
@@ -513,7 +556,7 @@ export function TimePicker({
             items={MINUTES}
             value={minutes}
             onChange={handleMinuteChange}
-            label={minuteLabel}
+            timeLabel={minuteLabel}
             itemClassName={showHours ? "border-l" : undefined}
           />
         );
@@ -524,7 +567,7 @@ export function TimePicker({
             items={MINUTES}
             value={minutes}
             onChange={handleMinuteChange}
-            label={minuteLabel}
+            timeLabel={minuteLabel}
             type="minutes"
           />
         );
@@ -532,10 +575,10 @@ export function TimePicker({
     }
 
     if (showSeconds) {
-      const secondLabel = label
-        ? typeof label === "boolean"
+      const secondLabel = timeLabel
+        ? typeof timeLabel === "boolean"
           ? "Second"
-          : label.seconds
+          : timeLabel.seconds
         : undefined;
 
       if (mode === "wheel") {
@@ -546,7 +589,7 @@ export function TimePicker({
             items={SECONDS}
             value={seconds}
             onChange={handleSecondChange}
-            label={secondLabel}
+            timeLabel={secondLabel}
             itemClassName={showMinutes || showHours ? "border-l" : undefined}
           />
         );
@@ -557,7 +600,7 @@ export function TimePicker({
             items={SECONDS}
             value={seconds}
             onChange={handleSecondChange}
-            label={secondLabel}
+            timeLabel={secondLabel}
             type="seconds"
           />
         );
@@ -567,7 +610,39 @@ export function TimePicker({
     return columns;
   };
 
-  return (
+  // If standalone mode is disabled, return the content directly (for integration with DatePicker)
+  if (!standalone) {
+    return (
+      <div className={cn("flex flex-col gap-4", className)}>
+        <div
+          className={cn(
+            "flex rounded overflow-clip",
+            mode === "wheel"
+              ? "items-end justify-center p-0"
+              : "items-start justify-center gap-4"
+          )}
+        >
+          {renderColumns()}
+        </div>
+
+        {showNowButton && (
+          <Button
+            type="button"
+            variant="solid"
+            size="xs"
+            onClick={handleNowClick}
+            disabled={disabled}
+            className={cn("rounded-none")}
+          >
+            {nowButtonLabel}
+          </Button>
+        )}
+      </div>
+    );
+  }
+
+  // Render the time picker content
+  const timePickerContent = (
     <div className={cn("flex flex-col gap-4", className)}>
       <div
         className={cn(
@@ -593,5 +668,72 @@ export function TimePicker({
         </Button>
       )}
     </div>
+  );
+
+  // Standalone mode: show as drawer or popover with Input
+  const iconTrigger = (
+    <Button
+      variant="ghost"
+      className="!p-1 !leading-0 h-auto rounded hover:bg-accent transition-colors"
+      disabled={disabled}
+    >
+      <Clock className="size-4" />
+      <span className="sr-only">Select time</span>
+    </Button>
+  );
+
+  const popPicker = (
+    <Popover open={standaloneOpen} onOpenChange={setStandaloneOpen}>
+      <PopoverTrigger asChild disabled={disabled}>
+        {iconTrigger}
+      </PopoverTrigger>
+      <PopoverContent
+        className={cn(
+          "w-auto overflow-hidden p-4",
+          "backdrop-blur bg-background/50"
+        )}
+      >
+        {timePickerContent}
+      </PopoverContent>
+    </Popover>
+  );
+
+  const drawPicker = (
+    <Drawer open={standaloneOpen} onOpenChange={setStandaloneOpen}>
+      <DrawerTrigger asChild>{iconTrigger}</DrawerTrigger>
+      <DrawerContent
+        className={cn(
+          "w-auto overflow-hidden p-4",
+          "backdrop-blur bg-background/90"
+        )}
+      >
+        <DrawerHeader className="sr-only">
+          <DrawerTitle>Select time</DrawerTitle>
+          <DrawerDescription>Choose a time</DrawerDescription>
+        </DrawerHeader>
+        {timePickerContent}
+      </DrawerContent>
+    </Drawer>
+  );
+
+  // Return Input with picker as suffix icon (standalone mode)
+  return (
+    <Input
+      {...props}
+      clearable
+      value={formatTime(value, showSeconds)}
+      placeholder="HH:mm"
+      disabled={disabled}
+      className="cursor-pointer"
+      suffixIcon={
+        isMobile
+          ? mobileMode === "drawer"
+            ? drawPicker
+            : popPicker
+          : desktopMode === "drawer"
+            ? drawPicker
+            : popPicker
+      }
+    />
   );
 }

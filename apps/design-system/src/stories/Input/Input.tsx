@@ -346,7 +346,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                 type="button"
                 tabIndex={-1}
                 className={cn(
-                  "absolute top-1/2 -translate-y-1/2 p-1 rounded hover:bg-accent transition-colors",
+                  "absolute top-1/2 -translate-y-1/2 p-1 rounded hover:bg-accent transition-colors cursor-pointer",
                   type === "password"
                     ? suffixIcon
                       ? "right-14"

@@ -302,7 +302,8 @@ export function DatePicker({
             disabledTimeRanges={disabledTimeRanges}
             showNowButton={showNowButton}
             nowButtonLabel={nowButtonLabel}
-            label={timePickerLabel}
+            timeLabel={timePickerLabel}
+            standalone={false}
           />
         </div>
       )}

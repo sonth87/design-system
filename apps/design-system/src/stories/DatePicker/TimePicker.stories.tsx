@@ -11,6 +11,23 @@ const meta: Meta<typeof TimePicker> = {
   },
   tags: ["autodocs"],
   argTypes: {
+    label: {
+      control: { type: "text" },
+    },
+    helperText: {
+      control: { type: "text" },
+    },
+    isFloatLabel: {
+      control: { type: "boolean" },
+    },
+    state: {
+      control: { type: "select" },
+      options: [undefined, "default", "success", "warning", "error"],
+    },
+    size: {
+      control: { type: "select" },
+      options: [undefined, "xs", "sm", "select", "lg", "xl"],
+    },
     showHours: {
       control: { type: "boolean" },
       description: "Show hours column",
@@ -47,6 +64,10 @@ const meta: Meta<typeof TimePicker> = {
     showNowButton: {
       control: { type: "boolean" },
       description: "Show 'Now' button to select current time",
+    },
+    timeLabel: {
+      control: { type: "boolean" },
+      description: "Label for the time picker",
     },
   },
   args: {
@@ -122,7 +143,7 @@ export const NormalMode: Story = {
           showHours
           showMinutes
           showSeconds={false}
-          label
+          timeLabel
         />
       </div>
     );
@@ -508,6 +529,127 @@ export const Disabled: Story = {
           showHours
           showMinutes
         />
+      </div>
+    );
+  },
+  args: {},
+};
+
+export const StandaloneMode: Story = {
+  render: function StandaloneModeComponent(args) {
+    const [date, setDate] = useState(new Date());
+
+    return (
+      <div className="flex flex-col gap-4">
+        <p className="text-sm">
+          Selected: <strong>{format(date, "HH:mm")}</strong>
+        </p>
+        <p className="text-xs text-muted-foreground">
+          Standalone mode: TimePicker displays as Input with clock icon (like DatePicker)
+        </p>
+        <div className="w-48">
+          <TimePicker
+            {...args}
+            value={date}
+            onChange={setDate}
+            standalone={true}
+            showHours
+            showMinutes
+            showSeconds={false}
+            mode="wheel"
+          />
+        </div>
+      </div>
+    );
+  },
+  args: {},
+};
+
+export const StandaloneWithDrawer: Story = {
+  render: function StandaloneWithDrawerComponent(args) {
+    const [date, setDate] = useState(new Date());
+
+    return (
+      <div className="flex flex-col gap-4">
+        <p className="text-sm">
+          Selected: <strong>{format(date, "HH:mm")}</strong>
+        </p>
+        <p className="text-xs text-muted-foreground">
+          Standalone mode (force drawer): Always shows as drawer on desktop
+        </p>
+        <div className="w-48">
+          <TimePicker
+            {...args}
+            value={date}
+            onChange={setDate}
+            standalone={true}
+            desktopMode="drawer"
+            showHours
+            showMinutes
+            showSeconds={false}
+            mode="wheel"
+          />
+        </div>
+      </div>
+    );
+  },
+  args: {},
+};
+
+export const IntegratedMode: Story = {
+  render: function IntegratedModeComponent(args) {
+    const [date, setDate] = useState(new Date());
+
+    return (
+      <div className="flex flex-col gap-4">
+        <p className="text-sm">
+          Selected: <strong>{format(date, "HH:mm")}</strong>
+        </p>
+        <p className="text-xs text-muted-foreground">
+          Integrated mode: TimePicker renders inline (used inside DatePicker)
+        </p>
+        <div className="border border-border rounded p-4">
+          <TimePicker
+            {...args}
+            value={date}
+            onChange={setDate}
+            standalone={false}
+            showHours
+            showMinutes
+            showSeconds={false}
+            mode="compact"
+          />
+        </div>
+      </div>
+    );
+  },
+  args: {},
+};
+
+export const IntegratedWithWheelMode: Story = {
+  render: function IntegratedWithWheelModeComponent(args) {
+    const [date, setDate] = useState(new Date());
+
+    return (
+      <div className="flex flex-col gap-4">
+        <p className="text-sm">
+          Selected: <strong>{format(date, "HH:mm:ss")}</strong>
+        </p>
+        <p className="text-xs text-muted-foreground">
+          Integrated mode with wheel picker (e.g., inside DatePicker)
+        </p>
+        <div className="border border-border rounded p-4 overflow-auto">
+          <TimePicker
+            {...args}
+            value={date}
+            onChange={setDate}
+            standalone={false}
+            showHours
+            showMinutes
+            showSeconds
+            mode="wheel"
+          />
+        </div>
       </div>
     );
   },
