@@ -21,10 +21,11 @@ import {
 import { cn } from "@dsui/ui/index";
 import Input, { type InputProps } from "../Input/Input";
 import Button from "../Button/Button";
+import { TimePicker } from "./TimePicker";
 import { CalendarIcon } from "lucide-react";
 import type { VariantProps } from "class-variance-authority";
 import { isMobile } from "react-device-detect";
-import { format, parse, isValid, type Locale } from "date-fns";
+import { format as dfFormat, parse, isValid, type Locale } from "date-fns";
 import { vi, enUS } from "date-fns/locale";
 import { DATE_FORMAT } from "@/constants/common";
 
@@ -40,7 +41,7 @@ function formatDate(
 ) {
   if (!date) return "";
 
-  return format(date, outputFormat, locale ? { locale } : undefined);
+  return dfFormat(date, outputFormat, locale ? { locale } : undefined);
 }
 
 const parseDate = (
@@ -109,6 +110,9 @@ export type RangePickerProps = {
   fromInputProps?: Omit<InputProps, "value" | "onChange" | "mask">;
   toInputProps?: Omit<InputProps, "value" | "onChange" | "mask">;
   separator?: string;
+  showTime?: boolean;
+  timeFormat?: "HH:mm" | "HH:mm:ss";
+  hideDate?: boolean;
 };
 
 export function RangePicker({
@@ -131,6 +135,9 @@ export function RangePicker({
   fromInputProps = {},
   toInputProps = {},
   separator = "~",
+  showTime = false,
+  timeFormat = "HH:mm",
+  hideDate = false,
 }: RangePickerProps) {
   let inputFormat: string;
   let outputFormat: string;
@@ -173,11 +180,21 @@ export function RangePicker({
       ? enUS
       : vi;
 
+  // Helper to format date-time based on showTime and timeFormat
+  const formatDateTimeValue = (d: Date | undefined): string => {
+    if (!d) return "";
+    let result = formatDate(d, outputFormat, _locale);
+    if (showTime) {
+      result += ` ${dfFormat(d, timeFormat)}`;
+    }
+    return result;
+  };
+
   // Helper functions for render props
   const handleSelectForRenderProp = (range?: DateRange) => {
     setRange(range);
-    const fromFormatted = formatDate(range?.from, outputFormat, _locale);
-    const toFormatted = formatDate(range?.to, outputFormat, _locale);
+    const fromFormatted = formatDateTimeValue(range?.from);
+    const toFormatted = formatDateTimeValue(range?.to);
     setFromInputValue(fromFormatted);
     setToInputValue(toFormatted);
     onSelect?.(range, fromFormatted, toFormatted);
@@ -195,15 +212,15 @@ export function RangePicker({
       setMonth(parsedDate);
       onSelect?.(
         newRange,
-        formatDate(parsedDate, outputFormat, _locale),
-        formatDate(range?.to, outputFormat, _locale)
+        formatDateTimeValue(parsedDate),
+        formatDateTimeValue(range?.to)
       );
     } else {
       setRange(newRange);
       onSelect?.(
         newRange,
         undefined,
-        formatDate(range?.to, outputFormat, _locale)
+        formatDateTimeValue(range?.to)
       );
     }
   };
@@ -219,17 +236,39 @@ export function RangePicker({
       setRange(newRange);
       onSelect?.(
         newRange,
-        formatDate(range?.from, outputFormat, _locale),
-        formatDate(parsedDate, outputFormat, _locale)
+        formatDateTimeValue(range?.from),
+        formatDateTimeValue(parsedDate)
       );
     } else {
       setRange(newRange);
       onSelect?.(
         newRange,
-        formatDate(range?.from, outputFormat, _locale),
+        formatDateTimeValue(range?.from),
         undefined
       );
     }
+  };
+
+  const handleTimeChangeFrom = (newDate: Date) => {
+    const newRange: DateRange = {
+      from: newDate,
+      to: range?.to,
+    };
+    setRange(newRange);
+    setFromInputValue(formatDateTimeValue(newDate));
+    onSelect?.(newRange, formatDateTimeValue(newDate), formatDateTimeValue(range?.to));
+    onChange?.(formatDateTimeValue(newDate), formatDateTimeValue(range?.to), newRange);
+  };
+
+  const handleTimeChangeTo = (newDate: Date) => {
+    const newRange: DateRange = {
+      from: range?.from,
+      to: newDate,
+    };
+    setRange(newRange);
+    setToInputValue(formatDateTimeValue(newDate));
+    onSelect?.(newRange, formatDateTimeValue(range?.from), formatDateTimeValue(newDate));
+    onChange?.(formatDateTimeValue(range?.from), formatDateTimeValue(newDate), newRange);
   };
 
   // Determine trigger component
@@ -262,50 +301,76 @@ export function RangePicker({
   );
 
   const calendarSelection = (
-    <Calendar
-      {...calendarConfig}
-      mode="range"
-      selected={range}
-      captionLayout="dropdown"
-      month={month}
-      onMonthChange={setMonth}
-      onSelect={(selectedRange) => {
-        setRange(selectedRange);
-        const fromFormatted = formatDate(
-          selectedRange?.from,
-          outputFormat,
-          _locale
-        );
-        const toFormatted = formatDate(
-          selectedRange?.to,
-          outputFormat,
-          _locale
-        );
-        setFromInputValue(fromFormatted);
-        setToInputValue(toFormatted);
-        onSelect?.(selectedRange, fromFormatted, toFormatted);
-        onChange?.(fromFormatted, toFormatted, selectedRange);
-        if (closeOnSelect && selectedRange?.from && selectedRange?.to) {
-          setOpen(false);
-        }
-      }}
-      locale={_locale}
-      formatters={{
-        formatMonthDropdown: (date) =>
-          date.toLocaleString(_locale.code, { month: "short" }),
-      }}
-      showOutsideDays={showOutsideDays}
+    <div
       className={cn(
-        "mx-auto",
-        {
-          "[--cell-size:clamp(0px,calc(100vw/7.5),52px)] mb-8 bg-transparent":
-            isMobile || desktopMode === "drawer",
-          "[--cell-size:clamp(0px,calc(100vw/7.5),34px)]":
-            !isMobile && desktopMode !== "drawer",
-        },
-        calendarClassName
+        "flex items-stretch",
+        showTime && !hideDate ? "gap-0" : ""
       )}
-    />
+    >
+      {!hideDate && (
+        <Calendar
+          {...calendarConfig}
+          mode="range"
+          selected={range}
+          captionLayout="dropdown"
+          month={month}
+          onMonthChange={setMonth}
+          onSelect={(selectedRange) => {
+            setRange(selectedRange);
+            const fromFormatted = formatDateTimeValue(selectedRange?.from);
+            const toFormatted = formatDateTimeValue(selectedRange?.to);
+            setFromInputValue(fromFormatted);
+            setToInputValue(toFormatted);
+            onSelect?.(selectedRange, fromFormatted, toFormatted);
+            onChange?.(fromFormatted, toFormatted, selectedRange);
+            if (closeOnSelect && selectedRange?.from && selectedRange?.to && !showTime) {
+              setOpen(false);
+            }
+          }}
+          locale={_locale}
+          formatters={{
+            formatMonthDropdown: (date) =>
+              date.toLocaleString(_locale.code, { month: "short" }),
+          }}
+          showOutsideDays={showOutsideDays}
+          className={cn(
+            "mx-auto",
+            {
+              "[--cell-size:clamp(0px,calc(100vw/7.5),52px)] mb-8 bg-transparent":
+                isMobile || desktopMode === "drawer",
+              "[--cell-size:clamp(0px,calc(100vw/7.5),34px)]":
+                !isMobile && desktopMode !== "drawer",
+            },
+            calendarClassName
+          )}
+        />
+      )}
+      {showTime && (
+        <div className="flex gap-0 border-l border-border">
+          {range?.from && (
+            <TimePicker
+              value={range.from}
+              onChange={handleTimeChangeFrom}
+              showHours
+              showMinutes
+              showSeconds={timeFormat === "HH:mm:ss"}
+            />
+          )}
+          {range?.to && (
+            <>
+              <div className="border-l border-border" />
+              <TimePicker
+                value={range.to}
+                onChange={handleTimeChangeTo}
+                showHours
+                showMinutes
+                showSeconds={timeFormat === "HH:mm:ss"}
+              />
+            </>
+          )}
+        </div>
+      )}
+    </div>
   );
 
   const popPicker = (

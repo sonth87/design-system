@@ -28,7 +28,7 @@ const meta: Meta<typeof DatePicker> = {
     },
     size: {
       control: { type: "select" },
-      options: [undefined, "xs", "sm", "normal", "lg", "xl"],
+      options: [undefined, "xs", "sm", "select", "lg", "xl"],
     },
     disabled: {
       control: { type: "boolean" },
@@ -63,6 +63,8 @@ const meta: Meta<typeof DatePicker> = {
     language: {
       control: { type: "select" },
       options: ["vi", "en"],
+      description:
+        "Language for the date picker calendar. 'vi', 'en' or date-fns/locale",
     },
     onChange: {
       description:
@@ -91,6 +93,61 @@ const meta: Meta<typeof DatePicker> = {
     calendarConfig: {
       control: { type: "object" },
       description: "Additional configuration props for the Calendar component",
+    },
+    showTime: {
+      control: { type: "boolean" },
+      description: "Show time picker alongside date picker",
+    },
+    timeFormat: {
+      control: { type: "select" },
+      options: ["HH:mm", "HH:mm:ss"],
+      description: "Time format: HH:mm or HH:mm:ss",
+    },
+    hideDate: {
+      control: { type: "boolean" },
+      description: "Hide date picker and show only time picker",
+    },
+    timePickerMode: {
+      control: { type: "select" },
+      options: ["wheel", "select", "compact"],
+      description:
+        "Display mode for time picker: iOS wheel, normal dropdown, or grid selection",
+    },
+    hourInterval: {
+      control: { type: "number" },
+      description: "Hour interval (e.g., 1, 2, 3) - defaults to 1",
+    },
+    minuteInterval: {
+      control: { type: "number" },
+      description: "Minute interval (e.g., 5, 10, 15, 30) - defaults to 1",
+    },
+    secondInterval: {
+      control: { type: "number" },
+      description: "Second interval (e.g., 5, 10, 15, 30) - defaults to 1",
+    },
+    disabledTimes: {
+      control: { type: "object" },
+      description:
+        "Array of disabled times in 'HH:mm' format (e.g., ['09:00', '12:00'])",
+    },
+    disabledTimeRanges: {
+      control: { type: "object" },
+      description:
+        "Array of disabled time ranges (e.g., [{ from: '01:00', to: '05:00' }])",
+    },
+    showNowButton: {
+      control: { type: "boolean" },
+      description:
+        "Show 'Now' button to select current time or nearest available time",
+    },
+    nowButtonLabel: {
+      control: { type: "text" },
+      description: "Label for 'Now' button (defaults to 'Now')",
+    },
+    timePickerLabel: {
+      control: { type: "object" },
+      description:
+        "Labels for time picker columns (e.g., { hours: 'Hour', minutes: 'Minute' })",
     },
   },
   args: {
@@ -345,5 +402,280 @@ export const WithDrawerMode: Story = {
     label: "Date with Drawer Mode",
     desktopMode: "drawer",
     mobileMode: "drawer",
+  },
+};
+
+export const WithTime: Story = {
+  render: function WithTimeComponent(args) {
+    const [date, setDate] = useState<Date | undefined>(new Date());
+    const handleSelect = (d: Date | undefined) => setDate(d);
+    return (
+      <div className="flex flex-col gap-4">
+        {date && (
+          <p className="text-sm">
+            Selected: <strong>{format(date, "dd/MM/yyyy HH:mm")}</strong>
+          </p>
+        )}
+        <DatePicker
+          {...args}
+          value={date ? format(date, "dd/MM/yyyy HH:mm") : ""}
+          onSelect={handleSelect}
+        />
+      </div>
+    );
+  },
+  args: {
+    label: "Date with Time",
+    showTime: true,
+    timeFormat: "HH:mm",
+  },
+};
+
+export const WithTimeAndSeconds: Story = {
+  render: function WithTimeAndSecondsComponent(args) {
+    const [date, setDate] = useState<Date | undefined>(new Date());
+    const handleSelect = (d: Date | undefined) => setDate(d);
+    return (
+      <div className="flex flex-col gap-4">
+        {date && (
+          <p className="text-sm">
+            Selected: <strong>{format(date, "dd/MM/yyyy HH:mm:ss")}</strong>
+          </p>
+        )}
+        <DatePicker
+          {...args}
+          value={date ? format(date, "dd/MM/yyyy HH:mm:ss") : ""}
+          onSelect={handleSelect}
+        />
+      </div>
+    );
+  },
+  args: {
+    label: "Date with Time (HH:mm:ss)",
+    showTime: true,
+    timeFormat: "HH:mm:ss",
+  },
+};
+
+export const TimeOnly: Story = {
+  render: function TimeOnlyComponent(args) {
+    const [date, setDate] = useState<Date | undefined>(new Date());
+    const handleSelect = (d: Date | undefined) => setDate(d);
+    return (
+      <div className="flex flex-col gap-4">
+        {date && (
+          <p className="text-sm">
+            Selected: <strong>{format(date, "HH:mm")}</strong>
+          </p>
+        )}
+        <DatePicker
+          {...args}
+          value={date ? format(date, "HH:mm") : ""}
+          onSelect={handleSelect}
+        />
+      </div>
+    );
+  },
+  args: {
+    label: "Time Only",
+    showTime: true,
+    hideDate: true,
+    timeFormat: "HH:mm",
+  },
+};
+
+export const WithTimePickerNormalMode: Story = {
+  render: function WithTimePickerNormalModeComponent(args) {
+    const [date, setDate] = useState<Date | undefined>(new Date());
+    const handleSelect = (d: Date | undefined) => setDate(d);
+    return (
+      <div className="flex flex-col gap-4">
+        {date && (
+          <p className="text-sm">
+            Selected: <strong>{format(date, "dd/MM/yyyy HH:mm")}</strong>
+          </p>
+        )}
+        <DatePicker
+          {...args}
+          value={date ? format(date, "dd/MM/yyyy HH:mm") : ""}
+          onSelect={handleSelect}
+        />
+      </div>
+    );
+  },
+  args: {
+    label: "Date with Time (Normal Mode)",
+    showTime: true,
+    timeFormat: "HH:mm",
+    timePickerMode: "select",
+    timePickerLabel: true,
+  },
+};
+
+export const WithTimePickerGridMode: Story = {
+  render: function WithTimePickerGridModeComponent(args) {
+    const [date, setDate] = useState<Date | undefined>(new Date());
+    const handleSelect = (d: Date | undefined) => setDate(d);
+    return (
+      <div className="flex flex-col gap-4">
+        {date && (
+          <p className="text-sm">
+            Selected: <strong>{format(date, "dd/MM/yyyy HH:mm")}</strong>
+          </p>
+        )}
+        <p className="text-xs text-muted-foreground">
+          Grid mode displays time as a vertical list
+        </p>
+        <DatePicker
+          {...args}
+          value={date ? format(date, "dd/MM/yyyy HH:mm") : ""}
+          onSelect={handleSelect}
+        />
+      </div>
+    );
+  },
+  args: {
+    label: "Date with Time (Grid Mode)",
+    showTime: true,
+    timeFormat: "HH:mm",
+    timePickerMode: "compact",
+  },
+};
+
+export const WithTimeIntervals: Story = {
+  render: function WithTimeIntervalsComponent(args) {
+    const [date, setDate] = useState<Date | undefined>(new Date());
+    const handleSelect = (d: Date | undefined) => setDate(d);
+    return (
+      <div className="flex flex-col gap-4">
+        {date && (
+          <p className="text-sm">
+            Selected: <strong>{format(date, "dd/MM/yyyy HH:mm")}</strong>
+          </p>
+        )}
+        <p className="text-xs text-muted-foreground">
+          15-minute intervals: 00:00, 00:15, 00:30, 00:45...
+        </p>
+        <DatePicker
+          {...args}
+          value={date ? format(date, "dd/MM/yyyy HH:mm") : ""}
+          onSelect={handleSelect}
+        />
+      </div>
+    );
+  },
+  args: {
+    label: "Date with Time (15-min intervals)",
+    showTime: true,
+    timeFormat: "HH:mm",
+    timePickerMode: "compact",
+    minuteInterval: 15,
+  },
+};
+
+export const WithDisabledTimeRanges: Story = {
+  render: function WithDisabledTimeRangesComponent(args) {
+    const [date, setDate] = useState<Date | undefined>(new Date());
+    const handleSelect = (d: Date | undefined) => setDate(d);
+    return (
+      <div className="flex flex-col gap-4">
+        {date && (
+          <p className="text-sm">
+            Selected: <strong>{format(date, "dd/MM/yyyy HH:mm")}</strong>
+          </p>
+        )}
+        <p className="text-xs text-muted-foreground">
+          Disabled: 00:00-06:00 (night) and 12:00-13:00 (lunch break)
+        </p>
+        <DatePicker
+          {...args}
+          value={date ? format(date, "dd/MM/yyyy HH:mm") : ""}
+          onSelect={handleSelect}
+        />
+      </div>
+    );
+  },
+  args: {
+    label: "Date with Disabled Time Ranges",
+    showTime: true,
+    timeFormat: "HH:mm",
+    timePickerMode: "wheel",
+    disabledTimeRanges: [
+      { from: "00:00", to: "06:00" },
+      { from: "12:00", to: "13:00" },
+    ],
+  },
+};
+
+export const WithNowButton: Story = {
+  render: function WithNowButtonComponent(args) {
+    const [date, setDate] = useState<Date | undefined>(new Date());
+    const handleSelect = (d: Date | undefined) => setDate(d);
+    return (
+      <div className="flex flex-col gap-4">
+        {date && (
+          <p className="text-sm">
+            Selected: <strong>{format(date, "dd/MM/yyyy HH:mm")}</strong>
+          </p>
+        )}
+        <p className="text-xs text-muted-foreground">
+          Click "Now" button to select current time or nearest available time
+        </p>
+        <DatePicker
+          {...args}
+          value={date ? format(date, "dd/MM/yyyy HH:mm") : ""}
+          onSelect={handleSelect}
+        />
+      </div>
+    );
+  },
+  args: {
+    label: "Date with Now Button",
+    showTime: true,
+    timeFormat: "HH:mm",
+    timePickerMode: "compact",
+    minuteInterval: 5,
+    showNowButton: true,
+    nowButtonLabel: "Now",
+  },
+};
+
+export const ComplexTimeConfiguration: Story = {
+  render: function ComplexTimeConfigurationComponent(args) {
+    const [date, setDate] = useState<Date | undefined>(new Date());
+    const handleSelect = (d: Date | undefined) => setDate(d);
+    return (
+      <div className="flex flex-col gap-4">
+        {date && (
+          <p className="text-sm">
+            Selected: <strong>{format(date, "dd/MM/yyyy HH:mm")}</strong>
+          </p>
+        )}
+        <p className="text-xs text-muted-foreground">
+          • Compact mode with 30-minute intervals
+          <br />
+          • Disabled: 22:00-23:30 (late night)
+          <br />
+          • "Now" button enabled
+          <br />• Specific disabled times: 09:00, 12:00
+        </p>
+        <DatePicker
+          {...args}
+          value={date ? format(date, "dd/MM/yyyy HH:mm") : ""}
+          onSelect={handleSelect}
+        />
+      </div>
+    );
+  },
+  args: {
+    label: "Date with Complex Time Config",
+    showTime: true,
+    timeFormat: "HH:mm",
+    timePickerMode: "compact",
+    minuteInterval: 30,
+    disabledTimes: ["09:00", "12:00"],
+    disabledTimeRanges: [{ from: "22:00", to: "23:30" }],
+    showNowButton: true,
+    nowButtonLabel: "Now",
   },
 };

@@ -68,6 +68,19 @@ const meta: Meta<typeof RangePicker> = {
       control: { type: "text" },
       description: "Separator between from and to inputs",
     },
+    showTime: {
+      control: { type: "boolean" },
+      description: "Show time picker alongside date picker",
+    },
+    timeFormat: {
+      control: { type: "select" },
+      options: ["HH:mm", "HH:mm:ss"],
+      description: "Time format: HH:mm or HH:mm:ss",
+    },
+    hideDate: {
+      control: { type: "boolean" },
+      description: "Hide date picker and show only time picker",
+    },
   },
   args: {
     language: "vi",
@@ -435,5 +448,93 @@ export const CloseOnSelect: Story = {
   },
   args: {
     closeOnSelect: true,
+  },
+};
+
+export const WithTime: Story = {
+  render: function WithTimeComponent(args) {
+    const [range, setRange] = useState<DateRange | undefined>();
+    const handleSelect = (r: DateRange | undefined) => setRange(r);
+
+    return (
+      <div className="flex flex-col gap-4">
+        {range?.from && range?.to && (
+          <p className="text-sm">
+            Selected: <strong>{format(range.from, "dd/MM/yyyy HH:mm")} ~ {format(range.to, "dd/MM/yyyy HH:mm")}</strong>
+          </p>
+        )}
+        <RangePicker
+          {...args}
+          fromValue={range?.from ? format(range.from, "dd/MM/yyyy HH:mm") : ""}
+          toValue={range?.to ? format(range.to, "dd/MM/yyyy HH:mm") : ""}
+          onSelect={handleSelect}
+          fromInputProps={{ label: "From Date" }}
+          toInputProps={{ label: "To Date" }}
+        />
+      </div>
+    );
+  },
+  args: {
+    showTime: true,
+    timeFormat: "HH:mm",
+  },
+};
+
+export const WithTimeAndSeconds: Story = {
+  render: function WithTimeAndSecondsComponent(args) {
+    const [range, setRange] = useState<DateRange | undefined>();
+    const handleSelect = (r: DateRange | undefined) => setRange(r);
+
+    return (
+      <div className="flex flex-col gap-4">
+        {range?.from && range?.to && (
+          <p className="text-sm">
+            Selected: <strong>{format(range.from, "dd/MM/yyyy HH:mm:ss")} ~ {format(range.to, "dd/MM/yyyy HH:mm:ss")}</strong>
+          </p>
+        )}
+        <RangePicker
+          {...args}
+          fromValue={range?.from ? format(range.from, "dd/MM/yyyy HH:mm:ss") : ""}
+          toValue={range?.to ? format(range.to, "dd/MM/yyyy HH:mm:ss") : ""}
+          onSelect={handleSelect}
+          fromInputProps={{ label: "From Date" }}
+          toInputProps={{ label: "To Date" }}
+        />
+      </div>
+    );
+  },
+  args: {
+    showTime: true,
+    timeFormat: "HH:mm:ss",
+  },
+};
+
+export const TimeOnly: Story = {
+  render: function TimeOnlyComponent(args) {
+    const [range, setRange] = useState<DateRange | undefined>();
+    const handleSelect = (r: DateRange | undefined) => setRange(r);
+
+    return (
+      <div className="flex flex-col gap-4">
+        {range?.from && range?.to && (
+          <p className="text-sm">
+            Selected: <strong>{format(range.from, "HH:mm")} ~ {format(range.to, "HH:mm")}</strong>
+          </p>
+        )}
+        <RangePicker
+          {...args}
+          fromValue={range?.from ? format(range.from, "HH:mm") : ""}
+          toValue={range?.to ? format(range.to, "HH:mm") : ""}
+          onSelect={handleSelect}
+          fromInputProps={{ label: "From Time" }}
+          toInputProps={{ label: "To Time" }}
+        />
+      </div>
+    );
+  },
+  args: {
+    showTime: true,
+    hideDate: true,
+    timeFormat: "HH:mm",
   },
 };

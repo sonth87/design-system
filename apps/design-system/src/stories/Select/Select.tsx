@@ -55,7 +55,7 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
       size = "normal",
       isFloatLabel,
       infoTooltip,
-      clearable = true,
+      clearable = false,
       placeholder = "Select items...",
       options = [],
       tagRender,
@@ -66,7 +66,7 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
       values,
       defaultValues,
       onValuesChange,
-      search = true,
+      search,
       clickToRemove = true,
       overflowBehavior = "wrap-when-open",
       disabled,
@@ -176,6 +176,7 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
                 dropdownClassName={cn("opacity-40", {
                   "translate-y-[-8px]": isFloatLabel && size !== "lg",
                 })}
+                searchable={!!search}
                 tagRender={tagRender}
               />
               {isFloatLabel && (

@@ -21,10 +21,11 @@ import {
 import { cn } from "@dsui/ui/index";
 import Input, { type InputProps } from "../Input/Input";
 import Button from "../Button/Button";
+import { TimePicker, type TimePickerMode, type DisabledTimeRange } from "./TimePicker";
 import { CalendarIcon } from "lucide-react";
 import type { VariantProps } from "class-variance-authority";
 import { isMobile } from "react-device-detect";
-import { format, parse, isValid, type Locale } from "date-fns";
+import { format as dfFormat, parse, isValid, type Locale } from "date-fns";
 import { vi, enUS } from "date-fns/locale";
 import { DATE_FORMAT } from "@/constants/common";
 
@@ -35,7 +36,7 @@ function formatDate(
 ) {
   if (!date) return "";
 
-  return format(date, outputFormat, locale ? { locale } : undefined);
+  return dfFormat(date, outputFormat, locale ? { locale } : undefined);
 }
 
 const parseDate = (
@@ -105,6 +106,20 @@ export type DatePickerProps = Omit<
   mobileMode?: "popover" | "drawer";
   showOutsideDays?: boolean;
   children?: (props: DatePickerRenderProps) => React.ReactNode;
+  showTime?: boolean;
+  timeFormat?: "HH:mm" | "HH:mm:ss";
+  hideDate?: boolean;
+  
+  // TimePicker configuration options
+  timePickerMode?: TimePickerMode; // Display mode: 'wheel' (default), 'select', 'compact'
+  hourInterval?: number; // Hour interval (e.g., 1, 2, 3) - defaults to 1
+  minuteInterval?: number; // Minute interval (e.g., 5, 10, 15, 30) - defaults to 1
+  secondInterval?: number; // Second interval (e.g., 5, 10, 15, 30) - defaults to 1
+  disabledTimes?: string[]; // Array of disabled times in "HH:mm" or "HH:mm:ss" format
+  disabledTimeRanges?: DisabledTimeRange[]; // Array of disabled time ranges
+  showNowButton?: boolean; // Show "Now" button to select current time
+  nowButtonLabel?: string; // Label for "Now" button (defaults to "Now")
+  timePickerLabel?: boolean | { hours?: string; minutes?: string; seconds?: string };
 };
 
 export function DatePicker({
@@ -123,6 +138,19 @@ export function DatePicker({
   mobileMode = "drawer",
   showOutsideDays = true,
   children,
+  showTime = false,
+  timeFormat = "HH:mm",
+  hideDate = false,
+  // TimePicker props
+  timePickerMode = "wheel",
+  hourInterval = 1,
+  minuteInterval = 1,
+  secondInterval = 1,
+  disabledTimes,
+  disabledTimeRanges,
+  showNowButton = false,
+  nowButtonLabel = "Now",
+  timePickerLabel,
   ...props
 }: DatePickerProps) {
   let inputFormat: string;
@@ -157,11 +185,21 @@ export function DatePicker({
       ? enUS
       : vi;
 
+  // Helper to format date-time based on showTime and timeFormat
+  const formatDateTimeValue = (d: Date | undefined): string => {
+    if (!d) return "";
+    let result = formatDate(d, outputFormat, _locale);
+    if (showTime) {
+      result += ` ${dfFormat(d, timeFormat)}`;
+    }
+    return result;
+  };
+
   // Helper functions for render props
   const handleSelectForRenderProp = (date?: Date) => {
     setDate(date);
-    setInputValue(formatDate(date, outputFormat, _locale));
-    onSelect?.(date, formatDate(date, outputFormat, _locale));
+    setInputValue(formatDateTimeValue(date));
+    onSelect?.(date, formatDateTimeValue(date));
   };
 
   const handleChangeForRenderProp = (text: string) => {
@@ -170,11 +208,18 @@ export function DatePicker({
     if (parsedDate) {
       setDate(parsedDate);
       setMonth(parsedDate);
-      onSelect?.(parsedDate, formatDate(parsedDate, outputFormat, _locale));
+      onSelect?.(parsedDate, formatDateTimeValue(parsedDate));
     } else {
       setDate(undefined);
       onSelect?.(undefined, undefined);
     }
+  };
+
+  const handleTimeChange = (newDate: Date) => {
+    setDate(newDate);
+    setInputValue(formatDateTimeValue(newDate));
+    onSelect?.(newDate, formatDateTimeValue(newDate));
+    onChange?.(undefined, formatDateTimeValue(newDate), newDate);
   };
 
   // Determine trigger component
@@ -203,36 +248,65 @@ export function DatePicker({
   );
 
   const calendarSelection = (
-    <Calendar
-      {...calendarConfig}
-      mode="single"
-      selected={date}
-      captionLayout="dropdown"
-      month={month}
-      onMonthChange={setMonth}
-      onSelect={(date) => {
-        setDate(date);
-        setInputValue(formatDate(date, outputFormat, _locale));
-        onSelect?.(date, formatDate(date, outputFormat, _locale));
-        if (closeOnSelect) setOpen(false);
-      }}
-      locale={_locale}
-      formatters={{
-        formatMonthDropdown: (date) =>
-          date.toLocaleString(_locale.code, { month: "short" }),
-      }}
-      showOutsideDays={showOutsideDays}
+    <div
       className={cn(
-        "mx-auto",
-        {
-          "[--cell-size:clamp(0px,calc(100vw/7.5),52px)] mb-8 bg-transparent":
-            isMobile || desktopMode === "drawer",
-          "[--cell-size:clamp(0px,calc(100vw/7.5),34px)]":
-            !isMobile && desktopMode !== "drawer",
-        },
-        calendarClassName
+        "flex items-stretch",
+        showTime && !hideDate ? "gap-0" : ""
       )}
-    />
+    >
+      {!hideDate && (
+        <Calendar
+          {...calendarConfig}
+          mode="single"
+          selected={date}
+          captionLayout="dropdown"
+          month={month}
+          onMonthChange={setMonth}
+          onSelect={(date) => {
+            setDate(date);
+            setInputValue(formatDateTimeValue(date));
+            onSelect?.(date, formatDateTimeValue(date));
+            if (closeOnSelect && !showTime) setOpen(false);
+          }}
+          locale={_locale}
+          formatters={{
+            formatMonthDropdown: (date) =>
+              date.toLocaleString(_locale.code, { month: "short" }),
+          }}
+          showOutsideDays={showOutsideDays}
+          className={cn(
+            "mx-auto",
+            {
+              "[--cell-size:clamp(0px,calc(100vw/7.5),52px)] mb-8 bg-transparent":
+                isMobile || desktopMode === "drawer",
+              "[--cell-size:clamp(0px,calc(100vw/7.5),34px)]":
+                !isMobile && desktopMode !== "drawer",
+            },
+            calendarClassName
+          )}
+        />
+      )}
+      {showTime && (
+        <div className="border-l border-border">
+          <TimePicker
+            value={date}
+            onChange={handleTimeChange}
+            showHours
+            showMinutes
+            showSeconds={timeFormat === "HH:mm:ss"}
+            mode={timePickerMode}
+            hourInterval={hourInterval}
+            minuteInterval={minuteInterval}
+            secondInterval={secondInterval}
+            disabledTimes={disabledTimes}
+            disabledTimeRanges={disabledTimeRanges}
+            showNowButton={showNowButton}
+            nowButtonLabel={nowButtonLabel}
+            label={timePickerLabel}
+          />
+        </div>
+      )}
+    </div>
   );
 
   const popPicker = (
@@ -290,8 +364,8 @@ export function DatePicker({
         if (date) {
           setDate(date);
           setMonth(date);
-          onSelect?.(date, formatDate(date, outputFormat, _locale));
-          onChange?.(e, formatDate(date, outputFormat, _locale), date);
+          onSelect?.(date, formatDateTimeValue(date));
+          onChange?.(e, formatDateTimeValue(date), date);
         } else {
           onSelect?.(undefined, undefined);
           onChange?.(e, undefined, undefined);

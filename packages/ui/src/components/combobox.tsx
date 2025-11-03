@@ -68,6 +68,7 @@ type ComboboxProps = Omit<
   children?: React.ReactNode;
   size?: "normal" | "sm" | "xs" | "lg" | "xl";
   state?: "default" | "success" | "error" | "warning";
+  searchable?: boolean;
   tagRender?: (
     option: SelectOption & { onClick?: () => void }
   ) => React.ReactNode;
@@ -85,6 +86,7 @@ function Combobox({
   children,
   size,
   state = "default",
+  searchable = true,
   tagRender,
   ...props
 }: ComboboxProps) {
@@ -95,7 +97,14 @@ function Combobox({
       <PopoverTrigger asChild {...props}>
         {children ?? (
           <Label className={cn(comboboxVariants({ size, state }), className)}>
-            <span className="truncate w-full inline-block align-middle text-left pr-8">
+            <span
+              className={cn(
+                "truncate w-full inline-block align-middle text-left",
+                {
+                  "pr-8": clearable,
+                }
+              )}
+            >
               {value
                 ? options?.find((option) => option.value === value)?.label
                 : placeHolder}
@@ -105,8 +114,8 @@ function Combobox({
                 className={cn(
                   "z-10 opacity-50",
                   {
-                    "size-4": size === "sm" || size === "xs",
-                    "size-5": size === "lg" || size === "xl",
+                    "size-4 min-w-4": size === "sm" || size === "xs",
+                    "size-5 min-w-5": size === "lg" || size === "xl",
                   },
                   dropdownClassName
                 )}
@@ -117,8 +126,8 @@ function Combobox({
                 className={cn(
                   "z-10 opacity-50",
                   {
-                    "size-4": size === "sm" || size === "xs",
-                    "size-5": size === "lg" || size === "xl",
+                    "size-4 min-w-4": size === "sm" || size === "xs",
+                    "size-5 min-w-5": size === "lg" || size === "xl",
                   },
                   dropdownClassName
                 )}
@@ -141,7 +150,9 @@ function Combobox({
       )}
       <PopoverContent className={cn("p-0 w-(--radix-popover-trigger-width)")}>
         <Command>
-          <CommandInput placeholder={placeHolder} className="h-9" />
+          {searchable && (
+            <CommandInput placeholder={placeHolder} className="h-9" />
+          )}
           <CommandList>
             <CommandEmpty>{emptyText || "Not found"}</CommandEmpty>
             <CommandGroup>
@@ -158,7 +169,8 @@ function Combobox({
                         }
                   }
                   className={cn(
-                    option?.disabled && "opacity-50 cursor-not-allowed grayscale"
+                    option?.disabled &&
+                      "opacity-50 cursor-not-allowed grayscale"
                   )}
                 >
                   {tagRender ? (
