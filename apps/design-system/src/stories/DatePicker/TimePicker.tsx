@@ -333,7 +333,6 @@ export function TimePicker({
             ref={ref}
             className={cn(
               "relative h-80 w-20 overflow-y-scroll scroll-smooth",
-              "bg-background",
               "[&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-track]:bg-transparent",
               "[&::-webkit-scrollbar-thumb]:bg-border [&::-webkit-scrollbar-thumb]:rounded",
               "flex flex-col snap-y snap-mandatory",
@@ -411,7 +410,7 @@ export function TimePicker({
           clearable={false}
           search={false}
           className={cn(
-            "h-10 px-3 py-2 rounded-md border border-border bg-background w-16",
+            "h-10 px-3 py-2 rounded-md border border-border w-16",
             "text-sm font-medium cursor-pointer",
             "focus:outline-none focus:ring-2 focus:ring-primary",
             "disabled:opacity-50 disabled:cursor-not-allowed"
@@ -468,7 +467,7 @@ export function TimePicker({
       <div className="flex flex-col gap-2">
         <div
           ref={gridRef}
-          className="flex flex-col gap-1 max-h-80 overflow-y-auto p-4 rounded-md bg-background"
+          className="flex flex-col gap-1 max-h-80 overflow-y-auto p-4 rounded-md"
         >
           {timeOptions.map(({ h, m, display }) => {
             const itemDisabled = isTimeDisabled(h, m, 0);
@@ -489,7 +488,7 @@ export function TimePicker({
                   "hover:bg-accent hover:text-accent-foreground",
                   isSelected
                     ? "bg-primary text-primary-foreground font-semibold"
-                    : "bg-background text-foreground border border-border"
+                    : "text-foreground border border-border"
                 )}
               >
                 {display}
