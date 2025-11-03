@@ -65,12 +65,10 @@ const meta: Meta<typeof DatePicker> = {
       options: ["vi", "en"],
     },
     onChange: {
-      action: "changed",
       description:
         "Called when date value changes. Receives the new value and date. Example: onChange(event, newValue, newDate)",
     },
     onSelect: {
-      action: "selected",
       description:
         "Called when a date is selected. Receives the new value and date. Example: onSelect(newDate, newValue)",
     },
@@ -87,6 +85,17 @@ const meta: Meta<typeof DatePicker> = {
       options: ["popover", "drawer"],
       description: "Display mode for mobile devices",
     },
+    showOutsideDays: {
+      control: { type: "boolean" },
+    },
+    calendarConfig: {
+      control: { type: "object" },
+      description: "Additional configuration props for the Calendar component",
+    },
+  },
+  args: {
+    language: "vi",
+    format: "dd/MM/yyyy",
   },
 };
 
@@ -213,20 +222,27 @@ export const WithAutoMask: Story = {
   },
 };
 
-export const WithDifferentFormats = () => {
-  return (
-    <div className="flex flex-col gap-4">
-      <DatePicker label="yyyy-MM-DD" format="yyyy-MM-dd" />
-      <DatePicker label="MM.yyyy" format="MM.yyyy" />
-      <DatePicker
-        label="yyyy"
-        format="yyyy"
-        value={new Date().getFullYear().toString()}
-      />
-      <DatePicker label="EEEE, dd MMM yyyy" format="EEEE, dd MMM yyyy" />
-      <DatePicker label="MMMM, yyyy" format="MMMM, yyyy" />
-    </div>
-  );
+export const WithDifferentFormats: Story = {
+  render: function WithDifferentFormats(args) {
+    return (
+      <div className="flex flex-col gap-4">
+        <DatePicker {...args} label="yyyy-MM-DD" format="yyyy-MM-dd" />
+        <DatePicker {...args} label="MM.yyyy" format="MM.yyyy" />
+        <DatePicker
+          {...args}
+          label="yyyy"
+          format="yyyy"
+          value={new Date().getFullYear().toString()}
+        />
+        <DatePicker
+          {...args}
+          label="EEEE, dd MMM yyyy"
+          format="EEEE, dd MMM yyyy"
+        />
+        <DatePicker {...args} label="MMMM, yyyy" format="MMMM, yyyy" />
+      </div>
+    );
+  },
 };
 
 export const CustomWithChildren: Story = {
@@ -247,7 +263,6 @@ export const CustomWithChildren: Story = {
             <button
               className="px-4 py-2 rounded-md border border-input bg-background hover:bg-accent hover:text-accent-foreground transition-colors"
               onClick={() => {
-                // Example: You can open a modal or do custom logic here
                 console.log("Current value:", value);
                 console.log("Current date:", currentDate);
               }}

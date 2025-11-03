@@ -1,5 +1,10 @@
 import * as React from "react";
-import { Calendar, type CalendarProps } from "@dsui/ui/components/calendar";
+import {
+  CalendarDayButton as SCalendarDayButton,
+  type CalendarDayButtonProps as SCalendarDayButtonProps,
+  Calendar,
+  type CalendarProps,
+} from "@dsui/ui/components/calendar";
 import {
   Popover,
   PopoverContent,
@@ -19,17 +24,18 @@ import Button from "../Button/Button";
 import { CalendarIcon } from "lucide-react";
 import type { VariantProps } from "class-variance-authority";
 import { isMobile } from "react-device-detect";
-import { format, parse, isValid } from "date-fns";
-import { vi, enUS, de } from "date-fns/locale";
+import { format, parse, isValid, type Locale } from "date-fns";
+import { vi, enUS } from "date-fns/locale";
 import { DATE_FORMAT } from "@/constants/common";
 
 function formatDate(
   date: Date | undefined,
-  outputFormat: string = DATE_FORMAT
+  outputFormat: string = DATE_FORMAT,
+  locale?: Locale
 ) {
   if (!date) return "";
 
-  return format(date, outputFormat);
+  return format(date, outputFormat, locale ? { locale } : undefined);
 }
 
 const parseDate = (
@@ -97,6 +103,7 @@ export type DatePickerProps = Omit<
   calendarConfig?: CalendarProps;
   desktopMode?: "popover" | "drawer";
   mobileMode?: "popover" | "drawer";
+  showOutsideDays?: boolean;
   children?: (props: DatePickerRenderProps) => React.ReactNode;
 };
 
@@ -114,6 +121,7 @@ export function DatePicker({
   calendarConfig,
   desktopMode = "popover",
   mobileMode = "drawer",
+  showOutsideDays = true,
   children,
   ...props
 }: DatePickerProps) {
@@ -143,13 +151,17 @@ export function DatePicker({
   const [month, setMonth] = React.useState<Date | undefined>(initialDate);
   const [inputValue, setInputValue] = React.useState(value || "");
 
-  const locale = language === "en" ? enUS : vi;
+  const _locale: Locale = calendarConfig?.locale
+    ? (calendarConfig?.locale as Locale)
+    : language === "en"
+      ? enUS
+      : vi;
 
   // Helper functions for render props
   const handleSelectForRenderProp = (date?: Date) => {
     setDate(date);
-    setInputValue(formatDate(date, outputFormat));
-    onSelect?.(date, formatDate(date, outputFormat));
+    setInputValue(formatDate(date, outputFormat, _locale));
+    onSelect?.(date, formatDate(date, outputFormat, _locale));
   };
 
   const handleChangeForRenderProp = (text: string) => {
@@ -158,7 +170,7 @@ export function DatePicker({
     if (parsedDate) {
       setDate(parsedDate);
       setMonth(parsedDate);
-      onSelect?.(parsedDate, formatDate(parsedDate, outputFormat));
+      onSelect?.(parsedDate, formatDate(parsedDate, outputFormat, _locale));
     } else {
       setDate(undefined);
       onSelect?.(undefined, undefined);
@@ -200,15 +212,16 @@ export function DatePicker({
       onMonthChange={setMonth}
       onSelect={(date) => {
         setDate(date);
-        setInputValue(formatDate(date, outputFormat));
-        onSelect?.(date, formatDate(date, outputFormat));
+        setInputValue(formatDate(date, outputFormat, _locale));
+        onSelect?.(date, formatDate(date, outputFormat, _locale));
         if (closeOnSelect) setOpen(false);
       }}
-      locale={locale}
+      locale={_locale}
       formatters={{
         formatMonthDropdown: (date) =>
-          date.toLocaleString(locale.code, { month: "short" }),
+          date.toLocaleString(_locale.code, { month: "short" }),
       }}
+      showOutsideDays={showOutsideDays}
       className={cn(
         "mx-auto",
         {
@@ -277,8 +290,8 @@ export function DatePicker({
         if (date) {
           setDate(date);
           setMonth(date);
-          onSelect?.(date, formatDate(date, outputFormat));
-          onChange?.(e, formatDate(date, outputFormat), date);
+          onSelect?.(date, formatDate(date, outputFormat, _locale));
+          onChange?.(e, formatDate(date, outputFormat, _locale), date);
         } else {
           onSelect?.(undefined, undefined);
           onChange?.(e, undefined, undefined);
@@ -311,3 +324,6 @@ export function DatePicker({
     />
   );
 }
+
+export const CalendarDayButton = SCalendarDayButton;
+export type CalendarDayButtonProps = SCalendarDayButtonProps;

@@ -16,14 +16,15 @@
     "@dsui/ui": "workspace:*",
     "@tailwindcss/vite": "^4.1.14",
     "class-variance-authority": "^0.7.1",
+    "date-fns": "^4.1.0",
     "motion": "^12.23.24",
     "react": "^19.1.1",
+    "react-day-picker": "^9.11.1",
+    "react-device-detect": "^2.2.3",
     "react-dom": "^19.1.1",
     "sonner": "^2.0.7",
-    "use-mask-input": "^3.5.2",
-    "react-device-detect": "^2.2.3",
-    "date-fns": "^4.1.0",
-    "tailwindcss": "^4.1.14"
+    "tailwindcss": "^4.1.14",
+    "use-mask-input": "^3.5.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",
