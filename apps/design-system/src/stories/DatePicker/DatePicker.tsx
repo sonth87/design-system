@@ -268,10 +268,16 @@ export function DatePicker({
           captionLayout="dropdown"
           month={month}
           onMonthChange={setMonth}
-          onSelect={(date) => {
-            setDate(date);
-            setInputValue(formatDateTimeValue(date));
-            onSelect?.(date, formatDateTimeValue(date));
+          onSelect={(selectedDate) => {
+            // Preserve time from current date when selecting new date
+            let newDate = selectedDate;
+            if (selectedDate && date && showTime) {
+              newDate = new Date(selectedDate);
+              newDate.setHours(date.getHours(), date.getMinutes(), date.getSeconds(), date.getMilliseconds());
+            }
+            setDate(newDate);
+            setInputValue(formatDateTimeValue(newDate));
+            onSelect?.(newDate, formatDateTimeValue(newDate));
             if (closeOnSelect && !showTime) setOpen(false);
           }}
           locale={_locale}
