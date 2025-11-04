@@ -267,7 +267,8 @@ export const FifteenMinuteIntervals: Story = {
           Selected: <strong>{format(date, "HH:mm")}</strong>
         </p>
         <p className="text-xs text-muted-foreground">
-          Grid mode with 15-minute intervals: 00:00, 00:15, 00:30, 00:45, 01:00...
+          Grid mode with 15-minute intervals: 00:00, 00:15, 00:30, 00:45,
+          01:00...
         </p>
         <TimePicker
           {...args}
@@ -295,7 +296,8 @@ export const CustomIntervals: Story = {
           Selected: <strong>{format(date, "HH:mm:ss")}</strong>
         </p>
         <p className="text-xs text-muted-foreground">
-          Hours: every 2 hours | Minutes: every 10 minutes | Seconds: every 15 seconds
+          Hours: every 2 hours | Minutes: every 10 minutes | Seconds: every 15
+          seconds
         </p>
         <TimePicker
           {...args}
@@ -410,7 +412,8 @@ export const NowButtonWithIntervals: Story = {
           Selected: <strong>{format(date, "HH:mm")}</strong>
         </p>
         <p className="text-xs text-muted-foreground">
-          Current time: {format(new Date(), "HH:mm:ss")} | Minute interval: 5 minutes
+          Current time: {format(new Date(), "HH:mm:ss")} | Minute interval: 5
+          minutes
         </p>
         <p className="text-xs text-muted-foreground">
           Click "Now" to select the nearest available time
@@ -442,9 +445,10 @@ export const ComplexConfiguration: Story = {
           Selected: <strong>{format(date, "HH:mm")}</strong>
         </p>
         <p className="text-xs text-muted-foreground">
-          • Grid mode with 30-minute intervals (00:00, 00:30, 01:00...)<br />
-          • Disabled: 00:00-06:00 (night) and 22:00-23:30 (late night)<br />
-          • "Now" button to select nearest time
+          • Grid mode with 30-minute intervals (00:00, 00:30, 01:00...)
+          <br />
+          • Disabled: 00:00-06:00 (night) and 22:00-23:30 (late night)
+          <br />• "Now" button to select nearest time
         </p>
         <TimePicker
           {...args}
@@ -560,38 +564,8 @@ export const Disabled: Story = {
   args: {},
 };
 
-export const StandaloneMode: Story = {
-  render: function StandaloneModeComponent(args) {
-    const [date, setDate] = useState(new Date());
-
-    return (
-      <div className="flex flex-col gap-4">
-        <p className="text-sm">
-          Selected: <strong>{format(date, "HH:mm")}</strong>
-        </p>
-        <p className="text-xs text-muted-foreground">
-          Standalone mode: TimePicker displays as Input with clock icon (like DatePicker)
-        </p>
-        <div className="w-48">
-          <TimePicker
-            {...args}
-            value={date}
-            onChange={setDate}
-            standalone={true}
-            showHours
-            showMinutes
-            showSeconds={false}
-            mode="wheel"
-          />
-        </div>
-      </div>
-    );
-  },
-  args: {},
-};
-
-export const StandaloneWithDrawer: Story = {
-  render: function StandaloneWithDrawerComponent(args) {
+export const WithDrawer: Story = {
+  render: function WithDrawerComponent(args) {
     const [date, setDate] = useState(new Date());
 
     return (
@@ -642,6 +616,7 @@ export const IntegratedMode: Story = {
             showHours
             showMinutes
             showSeconds={false}
+            minuteInterval={10}
             mode="compact"
           />
         </div>

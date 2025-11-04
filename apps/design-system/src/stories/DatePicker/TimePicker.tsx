@@ -28,6 +28,7 @@ import {
 import { isMobile } from "react-device-detect";
 import { Clock } from "lucide-react";
 import { TimeColumnwheel } from "../../components/WheelColumn";
+import { TimeGridView } from "../../components/TimeGridView";
 
 export type TimePickerMode = "wheel" | "select" | "compact";
 
@@ -237,6 +238,18 @@ export function TimePicker({
     }
   };
 
+  const scrollHandler = useCallback(() => {
+    if (mode === "wheel") {
+      // Scroll to selected item when picker opens (only for initial load)
+      scrollToSelected(hoursRef);
+      scrollToSelected(minutesRef);
+      scrollToSelected(secondsRef);
+    } else if (mode === "compact") {
+      // Scroll to selected item in grid mode
+      scrollToSelected(gridRef);
+    }
+  }, [hoursRef, minutesRef, secondsRef, gridRef, mode]);
+
   const handleNowClick = () => {
     const now = new Date();
     const { h, m, s } = findNearestValidTime(
@@ -248,6 +261,7 @@ export function TimePicker({
     setMinutes(m);
     setSeconds(s);
     updateDateTime(h, m, s);
+    setTimeout(() => scrollHandler(), 100);
   };
 
   // Scroll to center item when selected
@@ -277,42 +291,9 @@ export function TimePicker({
   );
 
   useEffect(() => {
-    if (mode === "wheel") {
-      // Scroll to selected item when picker opens (only for initial load)
-      if (standaloneOpen) {
-        const timer = setTimeout(() => {
-          scrollToSelected(hoursRef);
-          scrollToSelected(minutesRef);
-          scrollToSelected(secondsRef);
-        }, 100);
-        return () => clearTimeout(timer);
-      }
-    } else if (mode === "compact") {
-      // Scroll to selected item in grid mode
-      const timer = setTimeout(() => {
-        if (gridRef.current) {
-          const selected = gridRef.current.querySelector(
-            "[data-selected]"
-          ) as HTMLElement;
-          if (selected) {
-            const container = gridRef.current;
-            const containerHeight = container.clientHeight;
-            const selectedTop = selected.offsetTop;
-            const selectedHeight = selected.clientHeight;
-
-            const scrollPosition =
-              selectedTop - containerHeight / 2 + selectedHeight / 2;
-
-            container.scrollTo({
-              top: scrollPosition,
-              behavior: "smooth",
-            });
-          }
-        }
-      }, 100);
-      return () => clearTimeout(timer);
-    }
-  }, [standaloneOpen, mode, scrollToSelected]); // Removed hours, minutes, seconds from dependencies
+    const timer = setTimeout(() => scrollHandler(), 100);
+    return () => clearTimeout(timer);
+  }, [standaloneOpen, mode, scrollToSelected]);
 
   // Normal Mode - Dropdown/Input style
   const TimeColumnNormal = memo(
@@ -365,77 +346,31 @@ export function TimePicker({
   );
 
   // Grid Mode - Combined time selection (HH:mm format only, vertical layout)
-  const TimeGridView = memo(() => {
-    // Generate all time combinations based on intervals (always HH:mm, never shows seconds)
-    const timeOptions = useMemo(() => {
-      const options: Array<{ h: number; m: number; display: string }> = [];
-
-      for (const h of HOURS) {
-        for (const m of MINUTES) {
-          options.push({
-            h,
-            m,
-            display: `${pad(h)}:${pad(m)}`,
-          });
-        }
-      }
-
-      return options;
-    }, []);
-
-    const currentValue = `${pad(hours)}:${pad(minutes)}`;
-
-    const handleTimeSelect = (h: number, m: number) => {
-      // Always set seconds to 0 in grid mode
-      if (!isTimeDisabled(h, m, 0)) {
-        setHours(h);
-        setMinutes(m);
-        setSeconds(0);
-        updateDateTime(h, m, 0);
-      }
-    };
-
-    return (
-      <div className="flex flex-col gap-2">
-        <div
-          ref={gridRef}
-          className="flex flex-col gap-1 max-h-80 overflow-y-auto p-4 rounded-md"
-        >
-          {timeOptions.map(({ h, m, display }) => {
-            const itemDisabled = isTimeDisabled(h, m, 0);
-            const isSelected = display === currentValue;
-
-            return (
-              <Button
-                key={display}
-                type="button"
-                variant="ghost"
-                onClick={() => handleTimeSelect(h, m)}
-                data-selected={isSelected || undefined}
-                disabled={disabled || itemDisabled}
-                className={cn(
-                  "h-10 px-4 rounded-md text-sm font-medium transition-all text-left",
-                  "cursor-pointer whitespace-nowrap",
-                  "disabled:opacity-30 disabled:cursor-not-allowed disabled:line-through",
-                  "hover:bg-accent hover:text-accent-foreground",
-                  isSelected
-                    ? "bg-primary text-primary-foreground font-semibold"
-                    : "text-foreground border border-border"
-                )}
-              >
-                {display}
-              </Button>
-            );
-          })}
-        </div>
-      </div>
-    );
-  });
+  const handleTimeSelect = (h: number, m: number) => {
+    // Always set seconds to 0 in grid mode
+    if (!isTimeDisabled(h, m, 0)) {
+      setHours(h);
+      setMinutes(m);
+      setSeconds(0);
+      updateDateTime(h, m, 0);
+    }
+  };
 
   const renderColumns = () => {
     // Grid mode shows combined time options
     if (mode === "compact") {
-      return <TimeGridView />;
+      return (
+        <TimeGridView
+          HOURS={HOURS}
+          MINUTES={MINUTES}
+          hours={hours}
+          minutes={minutes}
+          disabled={disabled}
+          isTimeDisabled={isTimeDisabled}
+          onTimeSelect={handleTimeSelect}
+          ref={gridRef}
+        />
+      );
     }
 
     const columns = [];
@@ -550,7 +485,7 @@ export function TimePicker({
   // If standalone mode is disabled, return the content directly (for integration with DatePicker)
   if (!standalone) {
     return (
-      <div className={cn("flex flex-col gap-4", className)}>
+      <div className={cn("flex flex-col gap-2 h-full justify-between", className)}>
         <div
           className={cn(
             "flex rounded overflow-clip",
