@@ -1,4 +1,13 @@
 import * as React from "react";
+import {
+  memo,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type RefObject,
+} from "react";
 import { cn } from "@dsui/ui/index";
 import Button from "../Button/Button";
 import Select from "../Select/Select";
@@ -18,6 +27,7 @@ import {
 } from "@dsui/ui/components/drawer";
 import { isMobile } from "react-device-detect";
 import { Clock } from "lucide-react";
+import { TimeColumnwheel } from "../../components/WheelColumn";
 
 export type TimePickerMode = "wheel" | "select" | "compact";
 
@@ -103,32 +113,32 @@ export function TimePicker({
 }: TimePickerProps) {
   const date = React.useMemo(() => value || new Date(), [value]);
 
-  const [hours, setHours] = React.useState(date.getHours());
-  const [minutes, setMinutes] = React.useState(date.getMinutes());
-  const [seconds, setSeconds] = React.useState(date.getSeconds());
-  const [standaloneOpen, setStandaloneOpen] = React.useState(false);
+  const [hours, setHours] = useState(date.getHours());
+  const [minutes, setMinutes] = useState(date.getMinutes());
+  const [seconds, setSeconds] = useState(date.getSeconds());
+  const [standaloneOpen, setStandaloneOpen] = useState(false);
 
-  const hoursRef = React.useRef<HTMLDivElement>(null);
-  const minutesRef = React.useRef<HTMLDivElement>(null);
-  const secondsRef = React.useRef<HTMLDivElement>(null);
-  const gridRef = React.useRef<HTMLDivElement>(null);
+  const hoursRef = useRef<HTMLDivElement>(null);
+  const minutesRef = useRef<HTMLDivElement>(null);
+  const secondsRef = useRef<HTMLDivElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
 
   // Generate time arrays based on intervals
-  const HOURS = React.useMemo(
+  const HOURS = useMemo(
     () => generateIntervalArray(24, hourInterval),
     [hourInterval]
   );
-  const MINUTES = React.useMemo(
+  const MINUTES = useMemo(
     () => generateIntervalArray(60, minuteInterval),
     [minuteInterval]
   );
-  const SECONDS = React.useMemo(
+  const SECONDS = useMemo(
     () => generateIntervalArray(60, secondInterval),
     [secondInterval]
   );
 
   // Helper function to check if a time is disabled
-  const isTimeDisabled = React.useCallback(
+  const isTimeDisabled = useCallback(
     (h: number, m: number, s: number = 0): boolean => {
       const timeStr = `${pad(h)}:${pad(m)}${showSeconds ? `:${pad(s)}` : ""}`;
 
@@ -157,7 +167,7 @@ export function TimePicker({
   );
 
   // Find nearest valid time
-  const findNearestValidTime = React.useCallback(
+  const findNearestValidTime = useCallback(
     (
       targetH: number,
       targetM: number,
@@ -197,7 +207,7 @@ export function TimePicker({
     [HOURS, MINUTES, SECONDS, isTimeDisabled]
   );
 
-  const updateDateTime = React.useCallback(
+  const updateDateTime = useCallback(
     (h: number, m: number, s: number) => {
       const newDate = new Date(date);
       newDate.setHours(h, m, s, 0);
@@ -241,8 +251,8 @@ export function TimePicker({
   };
 
   // Scroll to center item when selected
-  const scrollToSelected = React.useCallback(
-    (ref: React.RefObject<HTMLDivElement | null>) => {
+  const scrollToSelected = useCallback(
+    (ref: RefObject<HTMLDivElement | null>) => {
       if (ref.current) {
         const selected = ref.current.querySelector(
           "[data-selected]"
@@ -266,15 +276,17 @@ export function TimePicker({
     []
   );
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (mode === "wheel") {
-      // Use setTimeout to ensure DOM is fully updated before scrolling
-      const timer = setTimeout(() => {
-        scrollToSelected(hoursRef);
-        scrollToSelected(minutesRef);
-        scrollToSelected(secondsRef);
-      }, 0);
-      return () => clearTimeout(timer);
+      // Scroll to selected item when picker opens (only for initial load)
+      if (standaloneOpen) {
+        const timer = setTimeout(() => {
+          scrollToSelected(hoursRef);
+          scrollToSelected(minutesRef);
+          scrollToSelected(secondsRef);
+        }, 100);
+        return () => clearTimeout(timer);
+      }
     } else if (mode === "compact") {
       // Scroll to selected item in grid mode
       const timer = setTimeout(() => {
@@ -297,93 +309,13 @@ export function TimePicker({
             });
           }
         }
-      }, 0);
+      }, 100);
       return () => clearTimeout(timer);
     }
-  }, [hours, minutes, seconds, scrollToSelected, mode]);
-
-  // wheel Mode - Scrollable wheel picker
-  const TimeColumnwheel = React.memo(
-    ({
-      items,
-      value: selectedValue,
-      onChange: onChangeCol,
-      ref,
-      timeLabel,
-      itemClassName,
-    }: {
-      items: number[];
-      value: number;
-      onChange: (val: number) => void;
-      ref: React.RefObject<HTMLDivElement | null>;
-      timeLabel?: string;
-      itemClassName?: string;
-    }) => (
-      <div className="flex flex-col items-center gap-2">
-        {timeLabel && (
-          <div className="text-xs font-semibold text-muted-foreground uppercase">
-            {timeLabel}
-          </div>
-        )}
-        <div className="relative">
-          {/* wheel style divider lines */}
-          <div className="absolute top-1/2 left-0 right-0 h-10 -translate-y-1/2 border-t border-b border-border pointer-events-none z-10" />
-
-          <div
-            ref={ref}
-            className={cn(
-              "relative h-80 w-20 overflow-y-scroll scroll-smooth",
-              "[&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-track]:bg-transparent",
-              "[&::-webkit-scrollbar-thumb]:bg-border [&::-webkit-scrollbar-thumb]:rounded",
-              "flex flex-col snap-y snap-mandatory",
-              itemClassName
-            )}
-            style={{
-              maskImage: `linear-gradient(to bottom, transparent 0%, black 25%, black 75%, transparent 100%)`,
-              WebkitMaskImage: `linear-gradient(to bottom, transparent 0%, black 25%, black 75%, transparent 100%)`,
-            }}
-          >
-            {/* Spacer Top */}
-            <div className="h-35 flex-shrink-0" />
-
-            {items.map((item) => {
-              const itemDisabled =
-                (ref === hoursRef && isTimeDisabled(item, minutes, seconds)) ||
-                (ref === minutesRef && isTimeDisabled(hours, item, seconds)) ||
-                (ref === secondsRef && isTimeDisabled(hours, minutes, item));
-
-              return (
-                <Button
-                  key={item}
-                  type="button"
-                  variant="ghost"
-                  onClick={() => onChangeCol(item)}
-                  data-selected={item === selectedValue || undefined}
-                  disabled={disabled || itemDisabled}
-                  className={cn(
-                    "h-10 flex-shrink-0 flex items-center justify-center transition-all snap-center",
-                    "cursor-pointer text-lg font-medium",
-                    "disabled:opacity-30 disabled:cursor-not-allowed disabled:line-through",
-                    item === selectedValue
-                      ? "text-primary font-semibold"
-                      : "text-muted-foreground"
-                  )}
-                >
-                  {pad(item)}
-                </Button>
-              );
-            })}
-
-            {/* Spacer Bottom */}
-            <div className="h-35 flex-shrink-0" />
-          </div>
-        </div>
-      </div>
-    )
-  );
+  }, [standaloneOpen, mode, scrollToSelected]); // Removed hours, minutes, seconds from dependencies
 
   // Normal Mode - Dropdown/Input style
-  const TimeColumnNormal = React.memo(
+  const TimeColumnNormal = memo(
     ({
       items,
       value: selectedValue,
@@ -433,9 +365,9 @@ export function TimePicker({
   );
 
   // Grid Mode - Combined time selection (HH:mm format only, vertical layout)
-  const TimeGridView = React.memo(() => {
+  const TimeGridView = memo(() => {
     // Generate all time combinations based on intervals (always HH:mm, never shows seconds)
-    const timeOptions = React.useMemo(() => {
+    const timeOptions = useMemo(() => {
       const options: Array<{ h: number; m: number; display: string }> = [];
 
       for (const h of HOURS) {
@@ -524,6 +456,8 @@ export function TimePicker({
             value={hours}
             onChange={handleHourChange}
             timeLabel={hourLabel}
+            isItemDisabled={(item) => isTimeDisabled(item, minutes, seconds)}
+            disabled={disabled}
           />
         );
       } else if (mode === "select") {
@@ -557,6 +491,8 @@ export function TimePicker({
             onChange={handleMinuteChange}
             timeLabel={minuteLabel}
             itemClassName={showHours ? "border-l" : undefined}
+            isItemDisabled={(item) => isTimeDisabled(hours, item, seconds)}
+            disabled={disabled}
           />
         );
       } else if (mode === "select") {
@@ -590,6 +526,8 @@ export function TimePicker({
             onChange={handleSecondChange}
             timeLabel={secondLabel}
             itemClassName={showMinutes || showHours ? "border-l" : undefined}
+            isItemDisabled={(item) => isTimeDisabled(hours, minutes, item)}
+            disabled={disabled}
           />
         );
       } else if (mode === "select") {

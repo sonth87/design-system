@@ -69,6 +69,31 @@ const meta: Meta<typeof TimePicker> = {
       control: { type: "boolean" },
       description: "Label for the time picker",
     },
+    disabledTimes: {
+      control: { type: "object" },
+      description: "Array of specific times to disable (format: 'HH:mm')",
+    },
+    disabledTimeRanges: {
+      control: { type: "object" },
+      description:
+        "Array of time ranges to disable Array<{ from: 'HH:mm', to: 'HH:mm' }>",
+    },
+    nowButtonLabel: {
+      control: { type: "text" },
+      description: "Label for the 'Now' button",
+    },
+    desktopMode: {
+      control: { type: "select" },
+      options: [undefined, "popover", "drawer"],
+      description:
+        "Desktop mode for standalone TimePicker: popover or drawer (default: popover)",
+    },
+    mobileMode: {
+      control: { type: "select" },
+      options: [undefined, "popover", "drawer"],
+      description:
+        "Mobile mode for standalone TimePicker: popover or drawer (default: drawer)",
+    },
   },
   args: {
     showHours: true,
