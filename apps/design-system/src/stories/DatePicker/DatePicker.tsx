@@ -83,7 +83,7 @@ export type DatePickerRenderProps = {
   value: string;
   date?: Date;
   onSelect: (date?: Date) => void;
-  onChange: (text: string) => void;
+  onChange: (text?: string) => void;
 };
 
 export type DatePickerProps = Omit<
@@ -208,7 +208,13 @@ export function DatePicker({
     onSelect?.(date, formatDateTimeValue(date));
   };
 
-  const handleChangeForRenderProp = (text: string) => {
+  const handleChangeForRenderProp = (text?: string) => {
+    if (!text) {
+      setInputValue("");
+      setDate(undefined);
+      onSelect?.(undefined, undefined);
+      return;
+    }
     setInputValue(text);
     const parsedDate = parseDate(text, inputFormat);
     if (parsedDate) {
@@ -221,11 +227,30 @@ export function DatePicker({
     }
   };
 
-  const handleTimeChange = (newDate: Date) => {
-    setDate(newDate);
-    setInputValue(formatDateTimeValue(newDate));
-    onSelect?.(newDate, formatDateTimeValue(newDate));
-    onChange?.(undefined, formatDateTimeValue(newDate), newDate);
+  const handleTimeChange = (
+    event?: React.ChangeEvent<HTMLInputElement>,
+    value?: string,
+    newDate?: Date
+  ) => {
+    if (!newDate) {
+      // Handle clear/invalid time
+      onChange?.(event, value, undefined);
+      return;
+    }
+
+    // Merge: keep date (year, month, day) from Calendar, take time (hours, minutes, seconds) from TimePicker
+    const mergedDate = new Date(date || new Date());
+    mergedDate.setHours(
+      newDate.getHours(),
+      newDate.getMinutes(),
+      newDate.getSeconds(),
+      0
+    );
+
+    setDate(mergedDate);
+    setInputValue(formatDateTimeValue(mergedDate));
+    onSelect?.(mergedDate, formatDateTimeValue(mergedDate));
+    onChange?.(event, formatDateTimeValue(mergedDate), mergedDate);
   };
 
   // Determine trigger component
@@ -301,7 +326,8 @@ export function DatePicker({
       {showTime && (
         <div className="border-l border-border">
           <TimePicker
-            value={date}
+            value={date ? dfFormat(date, timeFormat) : undefined}
+            format={timeFormat}
             onChange={handleTimeChange}
             showHours
             showMinutes

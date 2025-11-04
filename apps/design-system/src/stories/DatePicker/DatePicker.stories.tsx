@@ -98,11 +98,6 @@ const meta: Meta<typeof DatePicker> = {
       control: { type: "boolean" },
       description: "Show time picker alongside date picker",
     },
-    timeFormat: {
-      control: { type: "select" },
-      options: ["HH:mm", "HH:mm:ss"],
-      description: "Time format: HH:mm or HH:mm:ss",
-    },
     hideDate: {
       control: { type: "boolean" },
       description: "Hide date picker and show only time picker",

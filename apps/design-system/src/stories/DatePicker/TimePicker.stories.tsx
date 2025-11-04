@@ -113,14 +113,25 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   render: function DefaultComponent(args) {
-    const [date, setDate] = useState(new Date());
+    const [value, setValue] = useState("14:30:00");
 
     return (
       <div className="flex flex-col gap-4">
         <p className="text-sm">
-          Selected: <strong>{format(date, "HH:mm:ss")}</strong>
+          Value String: <strong>{value || "N/A"}</strong>
         </p>
-        <TimePicker {...args} value={date} onChange={setDate} />
+        <TimePicker
+          {...args}
+          value={value}
+          onSelect={(date, newValue) => {
+            console.log("onSelect:", { date, newValue });
+            if (newValue) setValue(newValue);
+          }}
+          onChange={(event, newValue, date) => {
+            console.log("onChange:", { event, newValue, date });
+            if (newValue) setValue(newValue);
+          }}
+        />
       </div>
     );
   },
@@ -128,19 +139,19 @@ export const Default: Story = {
 };
 
 export const wheelMode: Story = {
-  render: function wheelModeComponent(args) {
-    const [date, setDate] = useState(new Date());
+  render: function WheelModeComponent(args) {
+    const [value, setValue] = useState("14:30");
 
     return (
       <div className="flex flex-col gap-4">
         <p className="text-sm">
-          Selected: <strong>{format(date, "HH:mm")}</strong>
+          Selected: <strong>{value}</strong>
         </p>
         <TimePicker
           {...args}
           mode="wheel"
-          value={date}
-          onChange={setDate}
+          value={value}
+          onSelect={(_date, newValue) => newValue && setValue(newValue)}
           showHours
           showMinutes
           showSeconds={false}
@@ -153,18 +164,18 @@ export const wheelMode: Story = {
 
 export const NormalMode: Story = {
   render: function NormalModeComponent(args) {
-    const [date, setDate] = useState(new Date());
+    const [value, setValue] = useState("14:30");
 
     return (
       <div className="flex flex-col gap-4">
         <p className="text-sm">
-          Selected: <strong>{format(date, "HH:mm")}</strong>
+          Selected: <strong>{value}</strong>
         </p>
         <TimePicker
           {...args}
           mode="select"
-          value={date}
-          onChange={setDate}
+          value={value}
+          onSelect={(_date, newValue) => newValue && setValue(newValue)}
           showHours
           showMinutes
           showSeconds={false}
@@ -178,12 +189,12 @@ export const NormalMode: Story = {
 
 export const GridMode: Story = {
   render: function GridModeComponent(args) {
-    const [date, setDate] = useState(new Date());
+    const [value, setValue] = useState("14:30");
 
     return (
       <div className="flex flex-col gap-4">
         <p className="text-sm">
-          Selected: <strong>{format(date, "HH:mm")}</strong>
+          Selected: <strong>{value}</strong>
         </p>
         <p className="text-xs text-muted-foreground">
           Grid mode always displays time in HH:mm format (vertical list)
@@ -191,8 +202,8 @@ export const GridMode: Story = {
         <TimePicker
           {...args}
           mode="compact"
-          value={date}
-          onChange={setDate}
+          value={value}
+          onSelect={(_date, newValue) => newValue && setValue(newValue)}
           showHours
           showMinutes
           showSeconds={false}
@@ -205,20 +216,20 @@ export const GridMode: Story = {
 
 export const FiveMinuteIntervals: Story = {
   render: function FiveMinuteIntervalsComponent(args) {
-    const [date, setDate] = useState(new Date());
+    const [value, setValue] = useState("14:30");
 
     return (
       <div className="flex flex-col gap-4">
         <p className="text-sm">
-          Selected: <strong>{format(date, "HH:mm")}</strong>
+          Selected: <strong>{value}</strong>
         </p>
         <p className="text-xs text-muted-foreground">
           Minutes: 00, 05, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55
         </p>
         <TimePicker
           {...args}
-          value={date}
-          onChange={setDate}
+          value={value}
+          onSelect={(_date, newValue) => newValue && setValue(newValue)}
           showHours
           showMinutes
           showSeconds={false}
@@ -232,12 +243,12 @@ export const FiveMinuteIntervals: Story = {
 
 export const FifteenMinuteIntervals: Story = {
   render: function FifteenMinuteIntervalsComponent(args) {
-    const [date, setDate] = useState(new Date());
+    const [value, setValue] = useState("14:30");
 
     return (
       <div className="flex flex-col gap-4">
         <p className="text-sm">
-          Selected: <strong>{format(date, "HH:mm")}</strong>
+          Selected: <strong>{value}</strong>
         </p>
         <p className="text-xs text-muted-foreground">
           Grid mode with 15-minute intervals: 00:00, 00:15, 00:30, 00:45,
@@ -246,8 +257,8 @@ export const FifteenMinuteIntervals: Story = {
         <TimePicker
           {...args}
           mode="compact"
-          value={date}
-          onChange={setDate}
+          value={value}
+          onSelect={(_date, newValue) => newValue && setValue(newValue)}
           showHours
           showMinutes
           showSeconds={false}
@@ -261,12 +272,12 @@ export const FifteenMinuteIntervals: Story = {
 
 export const CustomIntervals: Story = {
   render: function CustomIntervalsComponent(args) {
-    const [date, setDate] = useState(new Date());
+    const [value, setValue] = useState("14:30:00");
 
     return (
       <div className="flex flex-col gap-4">
         <p className="text-sm">
-          Selected: <strong>{format(date, "HH:mm:ss")}</strong>
+          Selected: <strong>{value}</strong>
         </p>
         <p className="text-xs text-muted-foreground">
           Hours: every 2 hours | Minutes: every 10 minutes | Seconds: every 15
@@ -274,8 +285,8 @@ export const CustomIntervals: Story = {
         </p>
         <TimePicker
           {...args}
-          value={date}
-          onChange={setDate}
+          value={value}
+          onSelect={(_date, newValue) => newValue && setValue(newValue)}
           showHours
           showMinutes
           showSeconds
@@ -291,12 +302,12 @@ export const CustomIntervals: Story = {
 
 export const DisabledSpecificTimes: Story = {
   render: function DisabledSpecificTimesComponent(args) {
-    const [date, setDate] = useState(new Date());
+    const [value, setValue] = useState("14:30");
 
     return (
       <div className="flex flex-col gap-4">
         <p className="text-sm">
-          Selected: <strong>{format(date, "HH:mm")}</strong>
+          Selected: <strong>{value}</strong>
         </p>
         <p className="text-xs text-muted-foreground">
           Disabled times: 09:00, 12:00, 15:00, 18:00
@@ -304,8 +315,8 @@ export const DisabledSpecificTimes: Story = {
         <TimePicker
           {...args}
           mode="compact"
-          value={date}
-          onChange={setDate}
+          value={value}
+          onSelect={(_date, newValue) => newValue && setValue(newValue)}
           showHours
           showMinutes
           showSeconds={false}
@@ -319,20 +330,20 @@ export const DisabledSpecificTimes: Story = {
 
 export const DisabledTimeRanges: Story = {
   render: function DisabledTimeRangesComponent(args) {
-    const [date, setDate] = useState(new Date());
+    const [value, setValue] = useState("14:30");
 
     return (
       <div className="flex flex-col gap-4">
         <p className="text-sm">
-          Selected: <strong>{format(date, "HH:mm")}</strong>
+          Selected: <strong>{value}</strong>
         </p>
         <p className="text-xs text-muted-foreground">
           Disabled: 01:00-05:00 (night) and 12:00-13:00 (lunch break)
         </p>
         <TimePicker
           {...args}
-          value={date}
-          onChange={setDate}
+          value={value}
+          onSelect={(_date, newValue) => newValue && setValue(newValue)}
           showHours
           showMinutes
           showSeconds={false}
@@ -349,20 +360,20 @@ export const DisabledTimeRanges: Story = {
 
 export const WithNowButton: Story = {
   render: function WithNowButtonComponent(args) {
-    const [date, setDate] = useState(new Date());
+    const [value, setValue] = useState("14:30");
 
     return (
       <div className="flex flex-col gap-4">
         <p className="text-sm">
-          Selected: <strong>{format(date, "HH:mm")}</strong>
+          Selected: <strong>{value}</strong>
         </p>
         <p className="text-xs text-muted-foreground">
           Current time: {format(new Date(), "HH:mm:ss")}
         </p>
         <TimePicker
           {...args}
-          value={date}
-          onChange={setDate}
+          value={value}
+          onSelect={(_date, newValue) => newValue && setValue(newValue)}
           showHours
           showMinutes
           showSeconds={false}
@@ -377,12 +388,12 @@ export const WithNowButton: Story = {
 
 export const NowButtonWithIntervals: Story = {
   render: function NowButtonWithIntervalsComponent(args) {
-    const [date, setDate] = useState(new Date());
+    const [value, setValue] = useState("14:30");
 
     return (
       <div className="flex flex-col gap-4">
         <p className="text-sm">
-          Selected: <strong>{format(date, "HH:mm")}</strong>
+          Selected: <strong>{value}</strong>
         </p>
         <p className="text-xs text-muted-foreground">
           Current time: {format(new Date(), "HH:mm:ss")} | Minute interval: 5
@@ -394,8 +405,8 @@ export const NowButtonWithIntervals: Story = {
         <TimePicker
           {...args}
           mode="compact"
-          value={date}
-          onChange={setDate}
+          value={value}
+          onSelect={(_date, newValue) => newValue && setValue(newValue)}
           showHours
           showMinutes
           showSeconds={false}
@@ -410,12 +421,12 @@ export const NowButtonWithIntervals: Story = {
 
 export const ComplexConfiguration: Story = {
   render: function ComplexConfigurationComponent(args) {
-    const [date, setDate] = useState(new Date());
+    const [value, setValue] = useState("14:30");
 
     return (
       <div className="flex flex-col gap-4">
         <p className="text-sm">
-          Selected: <strong>{format(date, "HH:mm")}</strong>
+          Selected: <strong>{value}</strong>
         </p>
         <p className="text-xs text-muted-foreground">
           • Grid mode with 30-minute intervals (00:00, 00:30, 01:00...)
@@ -426,8 +437,8 @@ export const ComplexConfiguration: Story = {
         <TimePicker
           {...args}
           mode="compact"
-          value={date}
-          onChange={setDate}
+          value={value}
+          onSelect={(_date, newValue) => newValue && setValue(newValue)}
           showHours
           showMinutes
           showSeconds={false}
@@ -447,17 +458,17 @@ export const ComplexConfiguration: Story = {
 
 export const HoursAndMinutes: Story = {
   render: function HoursAndMinutesComponent(args) {
-    const [date, setDate] = useState(new Date());
+    const [value, setValue] = useState("14:30");
 
     return (
       <div className="flex flex-col gap-4">
         <p className="text-sm">
-          Selected: <strong>{format(date, "HH:mm")}</strong>
+          Selected: <strong>{value}</strong>
         </p>
         <TimePicker
           {...args}
-          value={date}
-          onChange={setDate}
+          value={value}
+          onSelect={(_date, newValue) => newValue && setValue(newValue)}
           showHours
           showMinutes
           showSeconds={false}
@@ -470,17 +481,17 @@ export const HoursAndMinutes: Story = {
 
 export const WithSeconds: Story = {
   render: function WithSecondsComponent(args) {
-    const [date, setDate] = useState(new Date());
+    const [value, setValue] = useState("14:30:45");
 
     return (
       <div className="flex flex-col gap-4">
         <p className="text-sm">
-          Selected: <strong>{format(date, "HH:mm:ss")}</strong>
+          Selected: <strong>{value}</strong>
         </p>
         <TimePicker
           {...args}
-          value={date}
-          onChange={setDate}
+          value={value}
+          onSelect={(_date, newValue) => newValue && setValue(newValue)}
           showHours
           showMinutes
           showSeconds
@@ -493,17 +504,17 @@ export const WithSeconds: Story = {
 
 export const HoursOnly: Story = {
   render: function HoursOnlyComponent(args) {
-    const [date, setDate] = useState(new Date());
+    const [value, setValue] = useState("14:00");
 
     return (
       <div className="flex flex-col gap-4">
         <p className="text-sm">
-          Selected: <strong>{format(date, "HH")}</strong>
+          Selected: <strong>{value}</strong>
         </p>
         <TimePicker
           {...args}
-          value={date}
-          onChange={setDate}
+          value={value}
+          onSelect={(_date, newValue) => newValue && setValue(newValue)}
           showHours
           showMinutes={false}
           showSeconds={false}
@@ -516,17 +527,17 @@ export const HoursOnly: Story = {
 
 export const Disabled: Story = {
   render: function DisabledComponent(args) {
-    const [date, setDate] = useState(new Date());
+    const [value, setValue] = useState("14:30");
 
     return (
       <div className="flex flex-col gap-4">
         <p className="text-sm">
-          Selected: <strong>{format(date, "HH:mm")}</strong>
+          Selected: <strong>{value}</strong>
         </p>
         <TimePicker
           {...args}
-          value={date}
-          onChange={setDate}
+          value={value}
+          onSelect={(_date, newValue) => newValue && setValue(newValue)}
           disabled
           showHours
           showMinutes
@@ -539,12 +550,12 @@ export const Disabled: Story = {
 
 export const WithDrawer: Story = {
   render: function WithDrawerComponent(args) {
-    const [date, setDate] = useState(new Date());
+    const [value, setValue] = useState("14:30");
 
     return (
       <div className="flex flex-col gap-4">
         <p className="text-sm">
-          Selected: <strong>{format(date, "HH:mm")}</strong>
+          Selected: <strong>{value}</strong>
         </p>
         <p className="text-xs text-muted-foreground">
           Standalone mode (force drawer): Always shows as drawer on desktop
@@ -552,8 +563,8 @@ export const WithDrawer: Story = {
         <div className="w-48">
           <TimePicker
             {...args}
-            value={date}
-            onChange={setDate}
+            value={value}
+            onSelect={(_date, newValue) => newValue && setValue(newValue)}
             standalone={true}
             desktopMode="drawer"
             showHours
@@ -570,12 +581,12 @@ export const WithDrawer: Story = {
 
 export const IntegratedMode: Story = {
   render: function IntegratedModeComponent(args) {
-    const [date, setDate] = useState(new Date());
+    const [value, setValue] = useState("14:30");
 
     return (
       <div className="flex flex-col gap-4">
         <p className="text-sm">
-          Selected: <strong>{format(date, "HH:mm")}</strong>
+          Selected: <strong>{value}</strong>
         </p>
         <p className="text-xs text-muted-foreground">
           Integrated mode: TimePicker renders inline (used inside DatePicker)
@@ -583,8 +594,8 @@ export const IntegratedMode: Story = {
         <div className="border border-border rounded p-4">
           <TimePicker
             {...args}
-            value={date}
-            onChange={setDate}
+            value={value}
+            onSelect={(_date, newValue) => newValue && setValue(newValue)}
             standalone={false}
             showHours
             showMinutes
@@ -601,12 +612,12 @@ export const IntegratedMode: Story = {
 
 export const IntegratedWithWheelMode: Story = {
   render: function IntegratedWithWheelModeComponent(args) {
-    const [date, setDate] = useState(new Date());
+    const [value, setValue] = useState("14:30:45");
 
     return (
       <div className="flex flex-col gap-4">
         <p className="text-sm">
-          Selected: <strong>{format(date, "HH:mm:ss")}</strong>
+          Selected: <strong>{value}</strong>
         </p>
         <p className="text-xs text-muted-foreground">
           Integrated mode with wheel picker (e.g., inside DatePicker)
@@ -614,8 +625,8 @@ export const IntegratedWithWheelMode: Story = {
         <div className="border border-border rounded p-4 overflow-auto">
           <TimePicker
             {...args}
-            value={date}
-            onChange={setDate}
+            value={value}
+            onSelect={(_date, newValue) => newValue && setValue(newValue)}
             standalone={false}
             showHours
             showMinutes
@@ -623,6 +634,231 @@ export const IntegratedWithWheelMode: Story = {
             mode="wheel"
           />
         </div>
+      </div>
+    );
+  },
+  args: {},
+};
+
+export const WithMask: Story = {
+  render: function WithMaskComponent(args) {
+    const [value, setValue] = useState("14:30:45");
+
+    return (
+      <div className="flex flex-col gap-4">
+        <p className="text-sm">
+          Value String: <strong>{value || "N/A"}</strong>
+        </p>
+        <p className="text-xs text-muted-foreground">
+          Try typing time directly in the input (e.g., 14:30:45). The mask will auto-format as you type.
+        </p>
+        <TimePicker
+          {...args}
+          value={value}
+          mask={true}
+          showSeconds
+          onSelect={(_date, newValue) => {
+            if (newValue) setValue(newValue);
+          }}
+          onChange={(_event, newValue) => {
+            console.log("onChange:", { newValue });
+            if (newValue) setValue(newValue);
+          }}
+        />
+      </div>
+    );
+  },
+  args: {},
+};
+
+export const WithCustomMask: Story = {
+  render: function WithCustomMaskComponent(args) {
+    const [value, setValue] = useState("14:30");
+
+    return (
+      <div className="flex flex-col gap-4">
+        <p className="text-sm">
+          Value String: <strong>{value || "N/A"}</strong>
+        </p>
+        <p className="text-xs text-muted-foreground">
+          Custom mask: "99:99" - Try typing time directly (e.g., 14:30)
+        </p>
+        <TimePicker
+          {...args}
+          value={value}
+          mask="99:99"
+          showSeconds={false}
+          onSelect={(_date, newValue) => {
+            if (newValue) setValue(newValue);
+          }}
+          onChange={(_event, newValue) => {
+            console.log("onChange:", { newValue });
+            if (newValue) setValue(newValue);
+          }}
+        />
+      </div>
+    );
+  },
+  args: {},
+};
+
+export const CustomFormat24Hour: Story = {
+  render: function CustomFormat24HourComponent(args) {
+    const [value, setValue] = useState("14:30:45");
+
+    return (
+      <div className="flex flex-col gap-4">
+        <p className="text-sm">
+          Value String: <strong>{value || "N/A"}</strong>
+        </p>
+        <p className="text-xs text-muted-foreground">
+          Format: "HH:mm:ss" (24-hour with seconds) - e.g., "14:30:45"
+        </p>
+        <TimePicker
+          {...args}
+          value={value}
+          format="HH:mm:ss"
+          showSeconds
+          onSelect={(_date, newValue) => {
+            if (newValue) setValue(newValue);
+          }}
+          onChange={(_event, newValue) => {
+            console.log("onChange:", { newValue });
+            if (newValue) setValue(newValue);
+          }}
+        />
+      </div>
+    );
+  },
+  args: {},
+};
+
+export const CustomFormat12Hour: Story = {
+  render: function CustomFormat12HourComponent(args) {
+    const [value, setValue] = useState("02:30 PM");
+
+    return (
+      <div className="flex flex-col gap-4">
+        <p className="text-sm">
+          Value String: <strong>{value || "N/A"}</strong>
+        </p>
+        <p className="text-xs text-muted-foreground">
+          Format: "hh:mm a" (12-hour with AM/PM) - e.g., "02:30 PM"
+        </p>
+        <TimePicker
+          {...args}
+          value={value}
+          format="hh:mm a"
+          showSeconds={false}
+          mask={true}
+          onSelect={(_date, newValue) => {
+            if (newValue) setValue(newValue);
+          }}
+          onChange={(_event, newValue) => {
+            console.log("onChange:", { newValue });
+            if (newValue) setValue(newValue);
+          }}
+        />
+      </div>
+    );
+  },
+  args: {},
+};
+
+export const CustomFormatWithText: Story = {
+  render: function CustomFormatWithTextComponent(args) {
+    const [value, setValue] = useState("14h30");
+
+    return (
+      <div className="flex flex-col gap-4">
+        <p className="text-sm">
+          Value String: <strong>{value || "N/A"}</strong>
+        </p>
+        <p className="text-xs text-muted-foreground">
+          Format: "HH'h'mm" (Custom format with 'h' separator) - e.g., "14h30"
+        </p>
+        <TimePicker
+          {...args}
+          value={value}
+          format="HH'h'mm"
+          showSeconds={false}
+          mask={true}
+          onSelect={(_date, newValue) => {
+            if (newValue) setValue(newValue);
+          }}
+          onChange={(_event, newValue) => {
+            console.log("onChange:", { newValue });
+            if (newValue) setValue(newValue);
+          }}
+        />
+      </div>
+    );
+  },
+  args: {},
+};
+
+export const FormatInputOutput: Story = {
+  render: function FormatInputOutputComponent(args) {
+    const [value, setValue] = useState("14:30");
+
+    return (
+      <div className="flex flex-col gap-4">
+        <p className="text-sm">
+          Value String: <strong>{value || "N/A"}</strong>
+        </p>
+        <p className="text-xs text-muted-foreground">
+          Input format: "HH:mm" (24-hour) / Output format: "hh:mm a" (12-hour with AM/PM)
+          <br />
+          Type "14:30" → Displays as "02:30 PM"
+        </p>
+        <TimePicker
+          {...args}
+          value={value}
+          format={{ input: "HH:mm", output: "hh:mm a" }}
+          showSeconds={false}
+          mask={true}
+          onSelect={(_date, newValue) => {
+            if (newValue) setValue(newValue);
+          }}
+          onChange={(_event, newValue) => {
+            console.log("onChange:", { newValue });
+            if (newValue) setValue(newValue);
+          }}
+        />
+      </div>
+    );
+  },
+  args: {},
+};
+
+export const FormatInputOutputWithSeconds: Story = {
+  render: function FormatInputOutputWithSecondsComponent(args) {
+    const [value, setValue] = useState("14:30:45");
+
+    return (
+      <div className="flex flex-col gap-4">
+        <p className="text-sm">
+          Value String: <strong>{value || "N/A"}</strong>
+        </p>
+        <p className="text-xs text-muted-foreground">
+          Input format: "HH:mm:ss" / Output format: "hh:mm:ss a"
+          <br />
+          Type "14:30:45" → Displays as "02:30:45 PM"
+        </p>
+        <TimePicker
+          {...args}
+          value={value}
+          format={{ input: "HH:mm:ss", output: "hh:mm:ss a" }}
+          showSeconds
+          mask={true}
+          onSelect={(_date, newValue) => {
+            if (newValue) setValue(newValue);
+          }}
+          onChange={(_event, newValue) => {
+            console.log("onChange:", { newValue });
+            if (newValue) setValue(newValue);
+          }}
+        />
       </div>
     );
   },

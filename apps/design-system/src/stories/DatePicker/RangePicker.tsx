@@ -249,26 +249,30 @@ export function RangePicker({
     }
   };
 
-  const handleTimeChangeFrom = (newDate: Date) => {
-    const newRange: DateRange = {
-      from: newDate,
-      to: range?.to,
-    };
-    setRange(newRange);
-    setFromInputValue(formatDateTimeValue(newDate));
-    onSelect?.(newRange, formatDateTimeValue(newDate), formatDateTimeValue(range?.to));
-    onChange?.(formatDateTimeValue(newDate), formatDateTimeValue(range?.to), newRange);
+  const handleTimeChangeFrom = (_event?: React.ChangeEvent<HTMLInputElement>, _value?: string, date?: Date) => {
+    if (date) {
+      const newRange: DateRange = {
+        from: date,
+        to: range?.to,
+      };
+      setRange(newRange);
+      setFromInputValue(formatDateTimeValue(date));
+      onSelect?.(newRange, formatDateTimeValue(date), formatDateTimeValue(range?.to));
+      onChange?.(formatDateTimeValue(date), formatDateTimeValue(range?.to), newRange);
+    }
   };
 
-  const handleTimeChangeTo = (newDate: Date) => {
-    const newRange: DateRange = {
-      from: range?.from,
-      to: newDate,
-    };
-    setRange(newRange);
-    setToInputValue(formatDateTimeValue(newDate));
-    onSelect?.(newRange, formatDateTimeValue(range?.from), formatDateTimeValue(newDate));
-    onChange?.(formatDateTimeValue(range?.from), formatDateTimeValue(newDate), newRange);
+  const handleTimeChangeTo = (_event?: React.ChangeEvent<HTMLInputElement>, _value?: string, date?: Date) => {
+    if (date) {
+      const newRange: DateRange = {
+        from: range?.from,
+        to: date,
+      };
+      setRange(newRange);
+      setToInputValue(formatDateTimeValue(date));
+      onSelect?.(newRange, formatDateTimeValue(range?.from), formatDateTimeValue(date));
+      onChange?.(formatDateTimeValue(range?.from), formatDateTimeValue(date), newRange);
+    }
   };
 
   // Determine trigger component
@@ -349,8 +353,9 @@ export function RangePicker({
         <div className="flex gap-0 border-l border-border">
           {range?.from && (
             <TimePicker
-              value={range.from}
+              value={dfFormat(range.from, timeFormat)}
               onChange={handleTimeChangeFrom}
+              format={timeFormat}
               showHours
               showMinutes
               showSeconds={timeFormat === "HH:mm:ss"}
@@ -360,8 +365,9 @@ export function RangePicker({
             <>
               <div className="border-l border-border" />
               <TimePicker
-                value={range.to}
+                value={dfFormat(range.to, timeFormat)}
                 onChange={handleTimeChangeTo}
+                format={timeFormat}
                 showHours
                 showMinutes
                 showSeconds={timeFormat === "HH:mm:ss"}

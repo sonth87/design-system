@@ -29,6 +29,7 @@ import { isMobile } from "react-device-detect";
 import { Clock } from "lucide-react";
 import { TimeColumnwheel } from "../../components/WheelColumn";
 import { TimeGridView } from "../../components/TimeGridView";
+import { format as dfFormat, parse, isValid } from "date-fns";
 
 export type TimePickerMode = "wheel" | "select" | "compact";
 
@@ -37,18 +38,27 @@ export type DisabledTimeRange = {
   to: string; // Format: "HH:mm" or "HH:mm:ss"
 };
 
+export type FormatType = string | { input: string; output: string };
+
 export type TimePickerProps = Omit<
   InputProps,
   "value" | "onChange" | "onSelect" | "mask" | "children"
 > & {
-  value?: Date;
-  onChange?: (date: Date) => void;
+  value?: string; // Time string in specified format
+  onChange?: (
+    event?: React.ChangeEvent<HTMLInputElement>,
+    value?: string,
+    date?: Date
+  ) => void;
+  onSelect?: (date?: Date, value?: string) => void;
   showHours?: boolean;
   showMinutes?: boolean;
   showSeconds?: boolean;
   disabled?: boolean;
   className?: string;
   timeLabel?: boolean | { hours?: string; minutes?: string; seconds?: string };
+  mask?: boolean | string; // Enable mask for time input: true (auto-generate), string (custom mask), false/undefined (no mask)
+  format?: FormatType; // Time format using date-fns format tokens (default: auto from showSeconds)
 
   // New configuration options
   mode?: TimePickerMode; // Display mode: 'wheel' (default), 'select', 'compact'
@@ -76,29 +86,57 @@ const generateIntervalArray = (max: number, interval: number = 1): number[] => {
 
 const pad = (num: number): string => String(num).padStart(2, "0");
 
+// Format time Date to string using date-fns
 const formatTime = (
   date: Date | undefined,
-  showSeconds: boolean = false
+  format: string = "HH:mm"
 ): string => {
-  if (!date) return "";
-  const hours = pad(date.getHours());
-  const minutes = pad(date.getMinutes());
-  if (showSeconds) {
-    const seconds = pad(date.getSeconds());
-    return `${hours}:${minutes}:${seconds}`;
-  }
-  return `${hours}:${minutes}`;
+  if (!date || !isValid(date)) return "";
+  return dfFormat(date, format);
 };
+
+// Parse time string to Date using date-fns
+const parseTimeString = (
+  timeStr: string,
+  format: string = "HH:mm"
+): Date | undefined => {
+  if (!timeStr) return undefined;
+  
+  const referenceDate = new Date();
+  const parsedDate = parse(timeStr, format, referenceDate);
+  
+  if (!isValid(parsedDate)) return undefined;
+  
+  return parsedDate;
+};
+
+function generateMaskFromTimeFormat(format: string): string {
+  return format
+    .replace(/HH|mm|ss/g, (match) => {
+      switch (match) {
+        case "HH":
+        case "mm":
+        case "ss":
+          return "99";
+        default:
+          return match;
+      }
+    })
+    .replace(/H|m|s/g, () => "9");
+}
 
 export function TimePicker({
   value,
   onChange,
+  onSelect,
   showHours = true,
   showMinutes = true,
   showSeconds = false,
   disabled = false,
   className,
   timeLabel,
+  mask,
+  format,
   mode = "wheel",
   hourInterval = 1,
   minuteInterval = 1,
@@ -112,7 +150,27 @@ export function TimePicker({
   mobileMode = "drawer",
   ...props
 }: TimePickerProps) {
-  const date = React.useMemo(() => value || new Date(), [value]);
+  // Determine input and output formats (like DatePicker)
+  let inputFormat: string;
+  let outputFormat: string;
+  if (typeof format === "string") {
+    inputFormat = format;
+    outputFormat = format;
+  } else if (format) {
+    inputFormat = format.input;
+    outputFormat = format.output;
+  } else {
+    // Auto-determine from showSeconds if not provided
+    inputFormat = showSeconds ? "HH:mm:ss" : "HH:mm";
+    outputFormat = showSeconds ? "HH:mm:ss" : "HH:mm";
+  }
+
+  // Parse value string to Date using date-fns
+  const date = React.useMemo(() => {
+    if (!value) return new Date();
+    const parsed = parseTimeString(value, inputFormat);
+    return parsed || new Date();
+  }, [value, inputFormat]);
 
   const [hours, setHours] = useState(date.getHours());
   const [minutes, setMinutes] = useState(date.getMinutes());
@@ -212,9 +270,10 @@ export function TimePicker({
     (h: number, m: number, s: number) => {
       const newDate = new Date(date);
       newDate.setHours(h, m, s, 0);
-      onChange?.(newDate);
+      const formattedValue = formatTime(newDate, outputFormat);
+      onSelect?.(newDate, formattedValue);
     },
-    [date, onChange]
+    [date, outputFormat, onSelect]
   );
 
   const handleHourChange = (h: number) => {
@@ -236,32 +295,6 @@ export function TimePicker({
       setSeconds(s);
       updateDateTime(hours, minutes, s);
     }
-  };
-
-  const scrollHandler = useCallback(() => {
-    if (mode === "wheel") {
-      // Scroll to selected item when picker opens (only for initial load)
-      scrollToSelected(hoursRef);
-      scrollToSelected(minutesRef);
-      scrollToSelected(secondsRef);
-    } else if (mode === "compact") {
-      // Scroll to selected item in grid mode
-      scrollToSelected(gridRef);
-    }
-  }, [hoursRef, minutesRef, secondsRef, gridRef, mode]);
-
-  const handleNowClick = () => {
-    const now = new Date();
-    const { h, m, s } = findNearestValidTime(
-      now.getHours(),
-      now.getMinutes(),
-      now.getSeconds()
-    );
-    setHours(h);
-    setMinutes(m);
-    setSeconds(s);
-    updateDateTime(h, m, s);
-    setTimeout(() => scrollHandler(), 100);
   };
 
   // Scroll to center item when selected
@@ -290,10 +323,36 @@ export function TimePicker({
     []
   );
 
+  const scrollHandler = useCallback(() => {
+    if (mode === "wheel") {
+      // Scroll to selected item when picker opens (only for initial load)
+      scrollToSelected(hoursRef);
+      scrollToSelected(minutesRef);
+      scrollToSelected(secondsRef);
+    } else if (mode === "compact") {
+      // Scroll to selected item in grid mode
+      scrollToSelected(gridRef);
+    }
+  }, [hoursRef, minutesRef, secondsRef, gridRef, mode, scrollToSelected]);
+
+  const handleNowClick = () => {
+    const now = new Date();
+    const { h, m, s } = findNearestValidTime(
+      now.getHours(),
+      now.getMinutes(),
+      now.getSeconds()
+    );
+    setHours(h);
+    setMinutes(m);
+    setSeconds(s);
+    updateDateTime(h, m, s);
+    setTimeout(() => scrollHandler(), 100);
+  };
+
   useEffect(() => {
     const timer = setTimeout(() => scrollHandler(), 100);
     return () => clearTimeout(timer);
-  }, [standaloneOpen, mode, scrollToSelected]);
+  }, [standaloneOpen, mode, scrollHandler]);
 
   // Normal Mode - Dropdown/Input style
   const TimeColumnNormal = memo(
@@ -312,35 +371,31 @@ export function TimePicker({
     }) => (
       <div className="flex flex-col gap-2">
         {timeLabel && (
-          <label className="text-xs font-semibold text-muted-foreground uppercase">
+          <div className="text-xs font-semibold text-muted-foreground uppercase p-2 border-b w-full text-center">
             {timeLabel}
-          </label>
+          </div>
         )}
-        <Select
-          value={selectedValue.toString()}
-          onValueChange={(value) => onChangeCol(Number(value))}
-          disabled={disabled}
-          clearable={false}
-          search={false}
-          className={cn(
-            "h-10 px-3 py-2 rounded-md border border-border w-16",
-            "text-sm font-medium cursor-pointer",
-            "focus:outline-none focus:ring-2 focus:ring-primary",
-            "disabled:opacity-50 disabled:cursor-not-allowed"
-          )}
-          options={items.map((item) => {
-            const itemDisabled =
-              (type === "hours" && isTimeDisabled(item, minutes, seconds)) ||
-              (type === "minutes" && isTimeDisabled(hours, item, seconds)) ||
-              (type === "seconds" && isTimeDisabled(hours, minutes, item));
+        <div className="p-2">
+          <Select
+            value={selectedValue.toString()}
+            onValueChange={(value) => onChangeCol(Number(value))}
+            disabled={disabled}
+            clearable={false}
+            search={false}
+            options={items.map((item) => {
+              const itemDisabled =
+                (type === "hours" && isTimeDisabled(item, minutes, seconds)) ||
+                (type === "minutes" && isTimeDisabled(hours, item, seconds)) ||
+                (type === "seconds" && isTimeDisabled(hours, minutes, item));
 
-            return {
-              label: pad(item),
-              value: item.toString(),
-              disabled: itemDisabled,
-            };
-          })}
-        />
+              return {
+                label: pad(item),
+                value: item.toString(),
+                disabled: itemDisabled,
+              };
+            })}
+          />
+        </div>
       </div>
     )
   );
@@ -486,10 +541,7 @@ export function TimePicker({
   if (!standalone) {
     return (
       <div
-        className={cn(
-          "flex flex-col gap-2 h-full justify-between",
-          className
-        )}
+        className={cn("flex flex-col gap-2 h-full justify-between", className)}
       >
         <div
           className={cn(
@@ -526,7 +578,7 @@ export function TimePicker({
           "flex rounded overflow-clip my-auto",
           mode === "wheel"
             ? "items-end justify-center p-0"
-            : "items-start justify-center gap-4"
+            : "items-start justify-center gap-2"
         )}
       >
         {renderColumns()}
@@ -593,15 +645,44 @@ export function TimePicker({
     </Drawer>
   );
 
+  // Determine the mask to use
+  const timeFormat = outputFormat; // Use outputFormat for placeholder
+  let maskToUse: string | undefined;
+  if (mask === true) {
+    maskToUse = generateMaskFromTimeFormat(inputFormat);
+  } else if (typeof mask === "string") {
+    maskToUse = mask;
+  }
+  // If mask is false or undefined, maskToUse remains undefined
+
+  // Handle Input change (when user types)
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const inputValue = e.target.value;
+    const parsedDate = parseTimeString(inputValue, inputFormat);
+
+    if (parsedDate) {
+      setHours(parsedDate.getHours());
+      setMinutes(parsedDate.getMinutes());
+      setSeconds(parsedDate.getSeconds());
+      const formattedValue = formatTime(parsedDate, outputFormat);
+      onChange?.(e, formattedValue, parsedDate);
+      onSelect?.(parsedDate, formattedValue);
+    } else {
+      onChange?.(e, inputValue, undefined);
+    }
+  };
+
   // Return Input with picker as suffix icon (standalone mode)
   return (
     <Input
       {...props}
       clearable
-      value={formatTime(value, showSeconds)}
-      placeholder="HH:mm"
+      value={value || ""}
+      placeholder={timeFormat}
+      mask={maskToUse}
       disabled={disabled}
       className="cursor-pointer"
+      onChange={handleInputChange}
       suffixIcon={
         isMobile
           ? mobileMode === "drawer"
