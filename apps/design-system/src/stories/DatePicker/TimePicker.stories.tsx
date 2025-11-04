@@ -94,6 +94,16 @@ const meta: Meta<typeof TimePicker> = {
       description:
         "Mobile mode for standalone TimePicker: popover or drawer (default: drawer)",
     },
+    mask: {
+      control: { type: "text" },
+      description:
+        "Input mask for the date picker. True means auto-generated, String means custom. Eg: '99:99'",
+    },
+    format: {
+      control: { type: "object" },
+      description:
+        "Date format: string (e.g., 'HH:mm:ss') or object { input: string, output: string }. For more: <a href='https://date-fns.org/v4.1.0/docs/format'>https://date-fns.org/v4.1.0/docs/format</a>",
+    },
   },
   args: {
     showHours: true,
@@ -113,7 +123,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   render: function DefaultComponent(args) {
-    const [value, setValue] = useState("14:30:00");
+    const [value, setValue] = useState("14:30");
 
     return (
       <div className="flex flex-col gap-4">
@@ -650,7 +660,8 @@ export const WithMask: Story = {
           Value String: <strong>{value || "N/A"}</strong>
         </p>
         <p className="text-xs text-muted-foreground">
-          Try typing time directly in the input (e.g., 14:30:45). The mask will auto-format as you type.
+          Try typing time directly in the input (e.g., 14:30:45). The mask will
+          auto-format as you type.
         </p>
         <TimePicker
           {...args}
@@ -702,135 +713,6 @@ export const WithCustomMask: Story = {
   args: {},
 };
 
-export const CustomFormat24Hour: Story = {
-  render: function CustomFormat24HourComponent(args) {
-    const [value, setValue] = useState("14:30:45");
-
-    return (
-      <div className="flex flex-col gap-4">
-        <p className="text-sm">
-          Value String: <strong>{value || "N/A"}</strong>
-        </p>
-        <p className="text-xs text-muted-foreground">
-          Format: "HH:mm:ss" (24-hour with seconds) - e.g., "14:30:45"
-        </p>
-        <TimePicker
-          {...args}
-          value={value}
-          format="HH:mm:ss"
-          showSeconds
-          onSelect={(_date, newValue) => {
-            if (newValue) setValue(newValue);
-          }}
-          onChange={(_event, newValue) => {
-            console.log("onChange:", { newValue });
-            if (newValue) setValue(newValue);
-          }}
-        />
-      </div>
-    );
-  },
-  args: {},
-};
-
-export const CustomFormat12Hour: Story = {
-  render: function CustomFormat12HourComponent(args) {
-    const [value, setValue] = useState("02:30 PM");
-
-    return (
-      <div className="flex flex-col gap-4">
-        <p className="text-sm">
-          Value String: <strong>{value || "N/A"}</strong>
-        </p>
-        <p className="text-xs text-muted-foreground">
-          Format: "hh:mm a" (12-hour with AM/PM) - e.g., "02:30 PM"
-        </p>
-        <TimePicker
-          {...args}
-          value={value}
-          format="hh:mm a"
-          showSeconds={false}
-          mask={true}
-          onSelect={(_date, newValue) => {
-            if (newValue) setValue(newValue);
-          }}
-          onChange={(_event, newValue) => {
-            console.log("onChange:", { newValue });
-            if (newValue) setValue(newValue);
-          }}
-        />
-      </div>
-    );
-  },
-  args: {},
-};
-
-export const CustomFormatWithText: Story = {
-  render: function CustomFormatWithTextComponent(args) {
-    const [value, setValue] = useState("14h30");
-
-    return (
-      <div className="flex flex-col gap-4">
-        <p className="text-sm">
-          Value String: <strong>{value || "N/A"}</strong>
-        </p>
-        <p className="text-xs text-muted-foreground">
-          Format: "HH'h'mm" (Custom format with 'h' separator) - e.g., "14h30"
-        </p>
-        <TimePicker
-          {...args}
-          value={value}
-          format="HH'h'mm"
-          showSeconds={false}
-          mask={true}
-          onSelect={(_date, newValue) => {
-            if (newValue) setValue(newValue);
-          }}
-          onChange={(_event, newValue) => {
-            console.log("onChange:", { newValue });
-            if (newValue) setValue(newValue);
-          }}
-        />
-      </div>
-    );
-  },
-  args: {},
-};
-
-export const FormatInputOutput: Story = {
-  render: function FormatInputOutputComponent(args) {
-    const [value, setValue] = useState("14:30");
-
-    return (
-      <div className="flex flex-col gap-4">
-        <p className="text-sm">
-          Value String: <strong>{value || "N/A"}</strong>
-        </p>
-        <p className="text-xs text-muted-foreground">
-          Input format: "HH:mm" (24-hour) / Output format: "hh:mm a" (12-hour with AM/PM)
-          <br />
-          Type "14:30" → Displays as "02:30 PM"
-        </p>
-        <TimePicker
-          {...args}
-          value={value}
-          format={{ input: "HH:mm", output: "hh:mm a" }}
-          showSeconds={false}
-          mask={true}
-          onSelect={(_date, newValue) => {
-            if (newValue) setValue(newValue);
-          }}
-          onChange={(_event, newValue) => {
-            console.log("onChange:", { newValue });
-            if (newValue) setValue(newValue);
-          }}
-        />
-      </div>
-    );
-  },
-  args: {},
-};
-
 export const FormatInputOutputWithSeconds: Story = {
   render: function FormatInputOutputWithSecondsComponent(args) {
     const [value, setValue] = useState("14:30:45");
@@ -839,11 +721,6 @@ export const FormatInputOutputWithSeconds: Story = {
       <div className="flex flex-col gap-4">
         <p className="text-sm">
           Value String: <strong>{value || "N/A"}</strong>
-        </p>
-        <p className="text-xs text-muted-foreground">
-          Input format: "HH:mm:ss" / Output format: "hh:mm:ss a"
-          <br />
-          Type "14:30:45" → Displays as "02:30:45 PM"
         </p>
         <TimePicker
           {...args}
