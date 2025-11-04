@@ -203,33 +203,6 @@ export const GridMode: Story = {
   args: {},
 };
 
-export const GridModeWithIntervals: Story = {
-  render: function GridModeWithIntervalsComponent(args) {
-    const [date, setDate] = useState(new Date());
-
-    return (
-      <div className="flex flex-col gap-4">
-        <p className="text-sm">
-          Selected: <strong>{format(date, "HH:mm")}</strong>
-        </p>
-        <p className="text-xs text-muted-foreground">
-          Grid mode with 10-minute intervals (00:00, 00:10, 00:20...)
-        </p>
-        <TimePicker
-          {...args}
-          mode="compact"
-          value={date}
-          onChange={setDate}
-          showHours
-          showMinutes
-          minuteInterval={10}
-        />
-      </div>
-    );
-  },
-  args: {},
-};
-
 export const FiveMinuteIntervals: Story = {
   render: function FiveMinuteIntervalsComponent(args) {
     const [date, setDate] = useState(new Date());

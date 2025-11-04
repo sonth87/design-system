@@ -21,7 +21,11 @@ import {
 import { cn } from "@dsui/ui/index";
 import Input, { type InputProps } from "../Input/Input";
 import Button from "../Button/Button";
-import { TimePicker, type TimePickerMode, type DisabledTimeRange } from "./TimePicker";
+import {
+  TimePicker,
+  type TimePickerMode,
+  type DisabledTimeRange,
+} from "./TimePicker";
 import { CalendarIcon } from "lucide-react";
 import type { VariantProps } from "class-variance-authority";
 import { isMobile } from "react-device-detect";
@@ -109,7 +113,7 @@ export type DatePickerProps = Omit<
   showTime?: boolean;
   timeFormat?: "HH:mm" | "HH:mm:ss";
   hideDate?: boolean;
-  
+
   // TimePicker configuration options
   timePickerMode?: TimePickerMode; // Display mode: 'wheel' (default), 'select', 'compact'
   hourInterval?: number; // Hour interval (e.g., 1, 2, 3) - defaults to 1
@@ -119,7 +123,9 @@ export type DatePickerProps = Omit<
   disabledTimeRanges?: DisabledTimeRange[]; // Array of disabled time ranges
   showNowButton?: boolean; // Show "Now" button to select current time
   nowButtonLabel?: string; // Label for "Now" button (defaults to "Now")
-  timePickerLabel?: boolean | { hours?: string; minutes?: string; seconds?: string };
+  timePickerLabel?:
+    | boolean
+    | { hours?: string; minutes?: string; seconds?: string };
 };
 
 export function DatePicker({
@@ -250,7 +256,7 @@ export function DatePicker({
   const calendarSelection = (
     <div
       className={cn(
-        "flex items-stretch",
+        "flex items-stretch mx-auto",
         showTime && !hideDate ? "gap-0" : ""
       )}
     >
@@ -275,10 +281,10 @@ export function DatePicker({
           }}
           showOutsideDays={showOutsideDays}
           className={cn(
-            "mx-auto",
+            "my-auto bg-transparent",
             {
               "[--cell-size:clamp(0px,calc(100vw/7.5),52px)] mb-8 bg-transparent":
-                isMobile || desktopMode === "drawer",
+                (isMobile && !showTime) || desktopMode === "drawer",
               "[--cell-size:clamp(0px,calc(100vw/7.5),34px)]":
                 !isMobile && desktopMode !== "drawer",
             },

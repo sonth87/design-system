@@ -485,10 +485,15 @@ export function TimePicker({
   // If standalone mode is disabled, return the content directly (for integration with DatePicker)
   if (!standalone) {
     return (
-      <div className={cn("flex flex-col gap-2 h-full justify-between", className)}>
+      <div
+        className={cn(
+          "flex flex-col gap-2 h-full justify-between",
+          className
+        )}
+      >
         <div
           className={cn(
-            "flex rounded overflow-clip",
+            "flex rounded overflow-clip my-auto",
             mode === "wheel"
               ? "items-end justify-center p-0"
               : "items-start justify-center gap-4"
@@ -518,7 +523,7 @@ export function TimePicker({
     <div className={cn("flex flex-col gap-4", className)}>
       <div
         className={cn(
-          "flex rounded overflow-clip",
+          "flex rounded overflow-clip my-auto",
           mode === "wheel"
             ? "items-end justify-center p-0"
             : "items-start justify-center gap-4"
@@ -561,7 +566,7 @@ export function TimePicker({
       </PopoverTrigger>
       <PopoverContent
         className={cn(
-          "w-auto overflow-hidden p-4",
+          "w-auto overflow-hidden p-0",
           "backdrop-blur bg-background/50"
         )}
       >
@@ -575,7 +580,7 @@ export function TimePicker({
       <DrawerTrigger asChild>{iconTrigger}</DrawerTrigger>
       <DrawerContent
         className={cn(
-          "w-auto overflow-hidden p-4",
+          "w-auto overflow-hidden p-0",
           "backdrop-blur bg-background/90"
         )}
       >

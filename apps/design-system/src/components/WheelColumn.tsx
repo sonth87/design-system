@@ -1,5 +1,5 @@
 import * as React from "react";
-import { memo, useCallback, useEffect, useRef } from "react";
+import { memo, useCallback, useEffect, useRef, useState } from "react";
 import { cn } from "@dsui/ui/index";
 
 const pad = (num: number): string => String(num).padStart(2, "0");
@@ -30,10 +30,15 @@ export const TimeColumnwheel = memo(
     ) => {
       const debounceTimerRef = useRef<number | null>(null);
       const containerRef = useRef<HTMLDivElement | null>(null);
+      const [scrollTop, setScrollTop] = useState(0);
 
       // Debounced scroll handler
       const handleScroll = useCallback(() => {
         if (!containerRef.current || disabled) return;
+
+        const container = containerRef.current;
+        const currentScrollTop = container.scrollTop;
+        setScrollTop(currentScrollTop);
 
         // Clear previous timer
         if (debounceTimerRef.current) {
@@ -42,9 +47,6 @@ export const TimeColumnwheel = memo(
 
         // Set new timer
         debounceTimerRef.current = setTimeout(() => {
-          const container = containerRef.current;
-          if (!container) return;
-
           const scrollTop = container.scrollTop;
           const itemHeight = 40; // h-10 = 40px
           const containerHeight = container.clientHeight;
@@ -81,9 +83,9 @@ export const TimeColumnwheel = memo(
       useEffect(() => {
         const container = containerRef.current;
         if (container) {
-          container.addEventListener('scroll', handleScroll, { passive: true });
+          container.addEventListener("scroll", handleScroll, { passive: true });
           return () => {
-            container.removeEventListener('scroll', handleScroll);
+            container.removeEventListener("scroll", handleScroll);
             if (debounceTimerRef.current) {
               clearTimeout(debounceTimerRef.current);
             }
@@ -100,10 +102,34 @@ export const TimeColumnwheel = memo(
         };
       }, []);
 
+      const getItemStyle = (index: number, isSelected: boolean) => {
+        const itemHeight = 40;
+        const containerHeight = 256; // h-64 = 256px
+        const centerY = containerHeight / 2;
+        const itemCenterY = 120 + index * itemHeight + itemHeight / 2; // 120px spacer + item position
+        const distanceFromCenter = Math.abs(
+          itemCenterY - (scrollTop + centerY)
+        );
+        const maxDistance = containerHeight / 2;
+
+        // Calculate opacity and scale based on distance
+        const opacity = Math.max(
+          0.3,
+          1 - (distanceFromCenter / maxDistance) * 0.7
+        );
+        const fontSize = isSelected ? "1.2rem" : "1rem";
+
+        return {
+          opacity,
+          fontSize,
+          transition: "opacity 0.2s ease, transform 0.2s ease",
+        };
+      };
+
       return (
         <div className="flex flex-col items-center gap-2">
           {timeLabel && (
-            <div className="text-xs font-semibold text-muted-foreground uppercase">
+            <div className="text-xs font-semibold text-muted-foreground uppercase p-2 border-b w-full text-center">
               {timeLabel}
             </div>
           )}
@@ -114,29 +140,31 @@ export const TimeColumnwheel = memo(
             <div
               ref={(el) => {
                 containerRef.current = el;
-                if (typeof ref === 'function') {
+                if (typeof ref === "function") {
                   ref(el);
                 } else if (ref) {
                   ref.current = el;
                 }
               }}
               className={cn(
-                "relative h-64 w-20 overflow-y-scroll scroll-smooth",
+                "relative h-64 w-16 md:w-20 overflow-y-scroll scroll-smooth",
                 "[&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-track]:bg-transparent",
                 "[&::-webkit-scrollbar-thumb]:bg-border [&::-webkit-scrollbar-thumb]:rounded",
                 "flex flex-col snap-y snap-mandatory",
                 itemClassName
               )}
               style={{
-                maskImage: `linear-gradient(to bottom, transparent 0%, black 25%, black 75%, transparent 100%)`,
-                WebkitMaskImage: `linear-gradient(to bottom, transparent 0%, black 25%, black 75%, transparent 100%)`,
+                maskImage: `linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)`,
+                WebkitMaskImage: `linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)`,
               }}
             >
               {/* Spacer Top */}
               <div className="h-30 flex-shrink-0" />
 
-              {items.map((item) => {
+              {items.map((item, index) => {
                 const itemDisabled = isItemDisabled(item);
+                const isSelected = item === selectedValue;
+                const itemStyle = getItemStyle(index, isSelected);
 
                 return (
                   <div
@@ -146,15 +174,16 @@ export const TimeColumnwheel = memo(
                         ? undefined
                         : () => onChangeCol(item)
                     }
-                    data-selected={item === selectedValue || undefined}
+                    data-selected={isSelected || undefined}
                     className={cn(
                       "h-10 flex-shrink-0 flex items-center justify-center transition-all snap-center",
-                      "cursor-pointer text-lg font-medium",
+                      "cursor-pointer text-lg font-medium select-none",
                       "disabled:opacity-30 disabled:cursor-not-allowed disabled:line-through",
-                      item === selectedValue
-                        ? "text-primary font-semibold"
+                      isSelected
+                        ? "text-primary font-bold"
                         : "text-muted-foreground"
                     )}
+                    style={itemStyle}
                   >
                     {pad(item)}
                   </div>
