@@ -53,6 +53,7 @@ export {
   DrawerTitle,
   DrawerDescription,
 } from "./components/drawer";
+export { ScrollArea, ScrollBar } from "./components/scroll-area";
 
 // Hooks
 

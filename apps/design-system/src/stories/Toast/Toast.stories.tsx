@@ -120,15 +120,15 @@ export const Variants: Story = {
 export const Usage: Story = {
   render: () => (
     <div className="p-6 max-w-2xl">
-      <h2 className="text-2xl font-bold mb-4">Hướng dẫn sử dụng Toast</h2>
+      <h2 className="text-2xl font-bold mb-4">Toast</h2>
       <p className="mb-4">
         Component Toast được sử dụng để hiển thị thông báo ngắn gọn cho người
-        dùng. Nó hỗ trợ nhiều loại thông báo như success, error, warning, info,
+        dùng. Hỗ trợ nhiều loại thông báo như success, error, warning, info,
         primary, và secondary.
       </p>
       <h3 className="text-xl font-semibold mb-2">Cài đặt</h3>
       <p className="mb-4">
-        Đầu tiên, import <code>Toaster</code> và <code>toast</code> từ component
+        Import <code>Toaster</code> và <code>toast</code> từ component
         Toast:
       </p>
       <pre className="bg-gray-100 p-4 rounded mb-4">
