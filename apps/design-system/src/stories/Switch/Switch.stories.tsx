@@ -228,47 +228,32 @@ const WithLabelComponent = () => {
   const [checkedTop, setCheckedTop] = useState(false);
   const [checkedBottom, setCheckedBottom] = useState(false);
   return (
-    <div className="flex flex-col gap-6">
-      <div className="flex items-center gap-8">
-        <div className="flex flex-col items-center gap-2">
-          <span className="text-sm font-medium">Top Label:</span>
-          <Switch
-            label="Enable notifications"
-            labelPosition="top"
-            checked={checkedTop}
-            onCheckedChange={setCheckedTop}
-          />
-        </div>
-        <div className="flex flex-col items-center gap-2">
-          <span className="text-sm font-medium">Bottom Label:</span>
-          <Switch
-            label="Enable notifications"
-            labelPosition="bottom"
-            checked={checkedBottom}
-            onCheckedChange={setCheckedBottom}
-          />
-        </div>
-      </div>
-      <div className="flex items-center gap-8">
-        <div className="flex flex-col items-center gap-2">
-          <span className="text-sm font-medium">Left Label:</span>
-          <Switch
-            label="Enable notifications"
-            labelPosition="left"
-            checked={checkedLeft}
-            onCheckedChange={setCheckedLeft}
-          />
-        </div>
-        <div className="flex flex-col items-center gap-2">
-          <span className="text-sm font-medium">Right Label:</span>
-          <Switch
-            label="Enable notifications"
-            labelPosition="right"
-            checked={checkedRight}
-            onCheckedChange={setCheckedRight}
-          />
-        </div>
-      </div>
+    <div className="flex flex-col items-center gap-8">
+      <Switch
+        label="Top Label"
+        labelPosition="top"
+        checked={checkedTop}
+        onCheckedChange={setCheckedTop}
+      />
+      <Switch
+        label="Bottom Label"
+        labelPosition="bottom"
+        checked={checkedBottom}
+        onCheckedChange={setCheckedBottom}
+      />
+
+      <Switch
+        label="Left Label"
+        labelPosition="left"
+        checked={checkedLeft}
+        onCheckedChange={setCheckedLeft}
+      />
+      <Switch
+        label="Right Label"
+        labelPosition="right"
+        checked={checkedRight}
+        onCheckedChange={setCheckedRight}
+      />
     </div>
   );
 };
@@ -606,9 +591,9 @@ export const WithAnimation: Story = {
   render: () => <WithAnimationComponent />,
 };
 
-export const GlassEffect: Story = {
-  render: () => <GlassEffectComponent />,
-};
+// export const GlassEffect: Story = {
+//   render: () => <GlassEffectComponent />,
+// };
 
 export const CustomColor: Story = {
   render: () => <CustomColorComponent />,

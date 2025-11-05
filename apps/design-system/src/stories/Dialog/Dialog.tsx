@@ -173,18 +173,12 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
     return animation ? animationClass(animation) : { className: "" };
   }, [animation]);
 
-  // Disable default animations if custom animation is provided
-  const animationOverrides = animation
-    ? "!animate-none data-[state=open]:!animate-none data-[state=closed]:!animate-none"
-    : "";
-
   const contentClasses = cn(
     // Remove default padding and gap to allow custom header/footer
     "!p-0 !gap-0 flex flex-col",
     sizeClasses[fullscreen ? "full" : size],
     positionClasses[position],
     variantColors[variant],
-    animationOverrides,
     animationResult.className,
     fullscreen ? "h-[95vh]" : "max-h-[min(600px,80vh)]"
   );
@@ -275,6 +269,7 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
           ref={ref}
           className={cn(className, contentClasses)}
           onEscapeKeyDown={(e) => !closeOnEsc && e.preventDefault()}
+          noDefaultAnimation={!!animation}
         >
           {stickyHeader && headerComponents}
 
@@ -304,6 +299,7 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
         showCloseButton={showCloseButton}
         onEscapeKeyDown={(e) => !closeOnEsc && e.preventDefault()}
         onInteractOutside={(e) => !closeOnOutside && e.preventDefault()}
+        noDefaultAnimation={!!animation}
       >
         {stickyHeader && (title || description) && (
           <DialogHeader

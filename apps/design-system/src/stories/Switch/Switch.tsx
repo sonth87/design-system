@@ -182,17 +182,9 @@ const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>(
 
       return (
         <div className={cn("flex gap-2", flexDirection, alignItems)}>
-          {labelFirst && (
-            <label className="text-sm font-medium cursor-pointer" htmlFor={id}>
-              {label}
-            </label>
-          )}
+          {labelFirst && <label htmlFor={id}>{label}</label>}
           {switchElement()}
-          {!labelFirst && (
-            <label className="text-sm font-medium cursor-pointer" htmlFor={id}>
-              {label}
-            </label>
-          )}
+          {!labelFirst && <label htmlFor={id}>{label}</label>}
         </div>
       );
     }
