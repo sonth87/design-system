@@ -2,6 +2,7 @@ import type { Meta } from "@storybook/react";
 import { useState } from "react";
 
 import Toggle, { type ToggleProps } from "./Toggle";
+import { BookmarkIcon, HeartIcon, StarIcon } from "lucide-react";
 
 const meta: Meta<ToggleProps> = {
   title: "Base/Toggle",
@@ -11,6 +12,13 @@ const meta: Meta<ToggleProps> = {
   },
   tags: ["autodocs"],
   argTypes: {
+    pressed: {
+      control: "boolean",
+      description: "The pressed state of the toggle",
+      table: {
+        defaultValue: { summary: "false" },
+      },
+    },
     variant: {
       control: "select",
       options: ["default", "outline"],
@@ -82,6 +90,34 @@ export const Variants = (args: ToggleProps) => {
         pressed={pressed2}
         onPressedChange={setPressed2}
       />
+    </div>
+  );
+};
+
+export const ToggleWithIcon = (args: ToggleProps) => {
+  return (
+    <div className="flex flex-row items-center gap-2">
+      <Toggle
+        {...args}
+        className="data-[state=on]:bg-transparent data-[state=on]:*:[svg]:fill-yellow-500 data-[state=on]:*:[svg]:stroke-yellow-500"
+      >
+        <StarIcon />
+        Star
+      </Toggle>
+      <Toggle
+        {...args}
+        className="data-[state=on]:bg-transparent data-[state=on]:*:[svg]:fill-red-500 data-[state=on]:*:[svg]:stroke-red-500"
+      >
+        <HeartIcon />
+        Heart
+      </Toggle>
+      <Toggle
+        {...args}
+        className="data-[state=on]:bg-transparent data-[state=on]:*:[svg]:fill-blue-500 data-[state=on]:*:[svg]:stroke-blue-500"
+      >
+        <BookmarkIcon />
+        Bookmark
+      </Toggle>
     </div>
   );
 };

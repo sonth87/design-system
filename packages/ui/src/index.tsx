@@ -40,6 +40,7 @@ export {
   type PopoverTriggerProps,
 } from "./components/popover";
 export { Separator, type SeparatorProps } from "./components/separator";
+export { Switch, switchVariants, type SwitchVariant } from "./components/switch";
 export {
   Drawer,
   DrawerPortal,
