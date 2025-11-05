@@ -9,6 +9,7 @@ import { useState } from "react";
 import { format } from "date-fns";
 import { enUS, es, vi, ja, ko } from "date-fns/locale";
 import Select from "../Select/Select";
+import Button from "../Button/Button";
 
 const meta: Meta<CalendarProps> = {
   title: "Components/Calendar",
@@ -44,6 +45,34 @@ const meta: Meta<CalendarProps> = {
     numberOfMonths: {
       control: { type: "number" },
       description: "Number of months to display",
+    },
+    month: {
+      control: { type: "date" },
+      description: "The month to display initially",
+    },
+    onMonthChange: {
+      action: "month changed",
+      description: "Callback when the month is changed",
+    },
+    selected: {
+      control: false,
+      description: "The selected date(s) in the calendar",
+    },
+    onSelect: {
+      action: "date selected",
+      description: "Callback when a date is selected",
+    },
+    defaultMonth: {
+      control: { type: "date" },
+      description: "The default month to display",
+    },
+    locale: {
+      control: false,
+      description: "Locale object for localization",
+    },
+    showWeekNumber: {
+      control: { type: "boolean" },
+      description: "Show week numbers in the calendar",
     },
   },
   args: {
@@ -431,6 +460,42 @@ export const CustomDaysAndFormatters: Story = {
               );
             },
           }}
+        />
+      </div>
+    );
+  },
+  args: {},
+};
+
+export const WithHomeButton: Story = {
+  render: function WithHomeButtonComponent(args: CalendarProps) {
+    const [date, setDate] = useState<Date | undefined>(new Date(2025, 5, 15));
+    const [month, setMonth] = useState<Date | undefined>(new Date());
+
+    return (
+      <div className="flex flex-col gap-4">
+        {date && (
+          <p className="text-sm">
+            Selected: <strong>{format(date, "dd/MM/yyyy")}</strong>
+          </p>
+        )}
+        <Button
+          size="sm"
+          variant="outline"
+          onClick={() => {
+            setMonth(new Date());
+            setDate(new Date());
+          }}
+        >
+          Today
+        </Button>
+        <Calendar
+          {...args}
+          mode="single"
+          month={month}
+          onMonthChange={setMonth}
+          selected={date}
+          onSelect={setDate}
         />
       </div>
     );

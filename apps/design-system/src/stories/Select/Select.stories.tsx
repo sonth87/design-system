@@ -77,7 +77,7 @@ const meta: Meta<SelectProps> = {
       control: "boolean",
       description: "Enable search functionality in dropdown",
       table: {
-        defaultValue: { summary: "true" },
+        defaultValue: { summary: "false" },
         type: {
           summary: "boolean | { placeholder?: string; emptyMessage?: string }",
         },
