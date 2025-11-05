@@ -22,6 +22,15 @@ export type BadgeAnimation =
   | "loading"
   | "draw";
 
+export type SwitchAnimation =
+  | "heartbeat"
+  | "shine"
+  | "bounce"
+  | "glow"
+  | "glass"
+  | "loading"
+  | "shake";
+
 export type BasicAnimation =
   | "bounce"
   | "slide-up"

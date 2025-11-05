@@ -59,7 +59,7 @@ const meta: Meta<SwitchProps> = {
         " ",
         "heartbeat",
         "shine",
-        "glass",
+        // "glass",
         "glow",
         "loading",
       ],
@@ -374,16 +374,16 @@ const WithAnimationComponent = () => {
   return (
     <div className="flex flex-col gap-6">
       <div className="flex flex-col gap-2">
-        <span className="text-sm font-medium">Bounce Animation:</span>
+        <span className="text-sm font-medium">Heartbeat</span>
         <Switch
-          animation="bounce"
+          animation="heartbeat"
           checked={checked}
           onCheckedChange={setChecked}
         />
       </div>
 
       <div className="flex flex-col gap-2">
-        <span className="text-sm font-medium">Glow Animation:</span>
+        <span className="text-sm font-medium">Glow</span>
         <Switch
           animation="glow"
           checked={checked}
@@ -392,13 +392,45 @@ const WithAnimationComponent = () => {
       </div>
 
       <div className="flex flex-col gap-2">
-        <span className="text-sm font-medium">Shake Animation:</span>
+        <span className="text-sm font-medium">Shine</span>
         <Switch
-          animation="shake"
+          animation="shine"
           checked={checked}
           onCheckedChange={setChecked}
         />
       </div>
+    </div>
+  );
+};
+
+const GlassEffectComponent = () => {
+  const [checked, setChecked] = useState(false);
+  return (
+    <div
+      className="w-200 h-60 p-4 flex items-center justify-center bg-cover [animation:move-background_400s_linear_infinite] gap-4"
+      style={{
+        backgroundImage:
+          "url('https://raw.githubusercontent.com/lucasromerodb/liquid-glass-effect-macos/refs/heads/main/assets/flowers.jpg')",
+      }}
+    >
+      <Switch
+        animation="glass"
+        size="normal"
+        checked={checked}
+        onCheckedChange={setChecked}
+      />
+      <Switch
+        animation="glass"
+        size="lg"
+        checked={checked}
+        onCheckedChange={setChecked}
+      />
+      <Switch
+        animation="glass"
+        size="xl"
+        checked={checked}
+        onCheckedChange={setChecked}
+      />
     </div>
   );
 };
@@ -572,6 +604,10 @@ export const WithOutsideLabels: Story = {
 
 export const WithAnimation: Story = {
   render: () => <WithAnimationComponent />,
+};
+
+export const GlassEffect: Story = {
+  render: () => <GlassEffectComponent />,
 };
 
 export const CustomColor: Story = {

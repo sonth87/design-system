@@ -1,16 +1,29 @@
 import React, { useMemo } from "react";
-import { Switch as SSwitch } from "@dsui/ui/components/switch";
+import {
+  Switch as SSwitch,
+  switchVariants,
+  type SwitchVariant,
+} from "@dsui/ui/components/switch";
 import { cn } from "@dsui/ui/lib/utils";
-import type { BasicAnimation } from "@/types/variables";
+import type { SwitchAnimation } from "@/types/variables";
 import { animationEffect } from "@/utils/css";
+import Glass from "@/stories/Glass/Glass";
 
 export type SwitchProps = React.ComponentProps<typeof SSwitch> & {
-  animation?: BasicAnimation;
+  animation?: SwitchAnimation;
   label?: React.ReactNode;
   labelPosition?: "left" | "right" | "top" | "bottom";
   offLabel?: React.ReactNode;
   onLabel?: React.ReactNode;
   showLabels?: "outside" | "inside" | "none";
+};
+
+type AnimResult = {
+  className?: string;
+  style?: React.CSSProperties;
+  children?: React.ReactNode;
+  variant?: SwitchVariant["variant"];
+  isGlass?: boolean; // Flag for glass effect
 };
 
 const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>(
@@ -25,6 +38,9 @@ const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>(
       checked = false,
       onCheckedChange,
       className,
+      variant = "default",
+      size = "normal",
+      color,
       ...rest
     } = props;
     const id = React.useId();
@@ -40,29 +56,77 @@ const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>(
       onCheckedChange?.(newChecked);
     };
 
-    const switchAnimation = useMemo<{
-      className?: string;
-      style?: React.CSSProperties;
-      children?: React.ReactNode;
-    } | null>(() => {
+    const switchAnimation = useMemo<AnimResult | null>(() => {
       if (!animation) return null;
-      return animationEffect({
-        animation,
-        className,
-      });
-    }, [animation, className]);
 
-    const switchElement = (switchClassName?: string) => (
-      <SSwitch
-        ref={ref}
-        id={id}
-        checked={isChecked}
-        onCheckedChange={handleCheckedChange}
-        className={cn(className, switchClassName, switchAnimation?.className)}
-        // thumbClassName={cn(switchAnimation?.className)}
-        {...rest}
-      />
-    );
+      // Handle glass animation separately for Switch (don't affect other components)
+      if (animation === "glass") {
+        return {
+          className: "!bg-transparent !shadow-none !border-none",
+          isGlass: true, // Custom flag for glass effect
+          variant: "default",
+        };
+      }
+
+      return animationEffect<SwitchAnimation, SwitchVariant["variant"]>({
+        animation,
+        children: null,
+        className,
+        rootClassName: switchVariants({
+          variant: variant,
+          size: size,
+          color: color,
+        }),
+        variantType: variant,
+      });
+    }, [animation, className, variant, size, color]);
+
+    const switchElement = (switchClassName?: string) => {
+      const baseSwitchElement = (
+        <SSwitch
+          ref={ref}
+          id={id}
+          checked={isChecked}
+          onCheckedChange={handleCheckedChange}
+          className={cn(className, switchClassName, switchAnimation?.className)}
+          variant={variant}
+          size={size}
+          color={color}
+          style={{ ...(rest.style || {}), ...(switchAnimation?.style || {}) }}
+          {...rest}
+        />
+      );
+
+      // If animation is glass effect, wrap the switch in Glass component
+      if (animation === "glass" && switchAnimation?.isGlass) {
+        const roundedMatches = switchVariants({
+          variant: variant,
+          size: size,
+          color: color,
+        })?.match(/((?:!)?rounded-\S+)/g);
+        const roundedClass = roundedMatches
+          ? roundedMatches[roundedMatches.length - 1]
+          : "rounded-full";
+
+        return (
+          <Glass
+            className={cn("hover:scale-110 [&_span]:opacity-80", roundedClass)}
+          >
+            {baseSwitchElement}
+          </Glass>
+        );
+      }
+
+      // If animation returns children wrapper, use it
+      if (
+        switchAnimation?.children &&
+        React.isValidElement(switchAnimation.children)
+      ) {
+        return React.cloneElement(switchAnimation.children, baseSwitchElement);
+      }
+
+      return baseSwitchElement;
+    };
 
     // Render with inside labels (icons inside thumb position)
     if (showLabels === "inside" && (offLabel || onLabel)) {
