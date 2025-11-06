@@ -2,6 +2,25 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
 import Sheet, { SheetClose, type SheetProps } from "./Sheet";
 import Button from "../Button/Button";
+import {
+  BookTextIcon,
+  CalendarDaysIcon,
+  ChevronRightIcon,
+  CircleSmallIcon,
+  HeartPlusIcon,
+  HomeIcon,
+  LayoutPanelTopIcon,
+  LogInIcon,
+  LogOutIcon,
+  MailIcon,
+  MessageSquareTextIcon,
+  PanelTopIcon,
+  ShoppingCartIcon,
+} from "lucide-react";
+import Collapsible, {
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "../Collapsible/Collapsible";
 
 const meta: Meta<SheetProps> = {
   title: "Components/Sheet",
@@ -71,16 +90,17 @@ const meta: Meta<SheetProps> = {
         defaultValue: { summary: "true" },
       },
     },
-    fullHeight: {
+    autoDrawerOnMobile: {
       control: "boolean",
-      description: "Make sheet full height",
+      description: "Automatically use Drawer on mobile devices",
       table: {
-        defaultValue: { summary: "false" },
+        defaultValue: { summary: "true" },
       },
     },
-    scrollable: {
+    autoHeight: {
       control: "boolean",
-      description: "Enable scrolling for long content",
+      description:
+        "Use automatic height for drawer on mobile (up to 80vh), or fixed height based on size",
       table: {
         defaultValue: { summary: "true" },
       },
@@ -130,10 +150,11 @@ const meta: Meta<SheetProps> = {
     closeOnEsc: true,
     closeOnOutside: true,
     showCloseButton: true,
-    fullHeight: false,
-    scrollable: true,
     stickyHeader: false,
     stickyFooter: false,
+    autoHeight: true,
+    title: "Sheet Title",
+    description: "This is a default sheet with a simple message.",
   },
 };
 
@@ -150,8 +171,6 @@ export const Default: Story = {
         open={open}
         onOpenChange={setOpen}
         trigger={<Button>Open Sheet</Button>}
-        title="Sheet Title"
-        description="This is a default sheet with a simple message."
         footer={
           <div className="flex gap-2 justify-end w-full">
             <SheetClose asChild>
@@ -161,10 +180,67 @@ export const Default: Story = {
           </div>
         }
       >
-        <p className="text-sm text-muted-foreground">
-          You can place any content here. The sheet will automatically handle
-          the layout and styling.
-        </p>
+        <div className="space-y-4">
+          <h2 className="text-lg font-semibold flex items-center gap-2">
+            📖 Introduction
+          </h2>
+          <p className="text-sm text-muted-foreground">
+            🏠 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat.
+          </p>
+          <p className="text-sm text-muted-foreground">
+            💬 Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+            cupidatat non proident, sunt in culpa qui officia deserunt mollit
+            anim id est laborum.
+          </p>
+          <p className="text-sm text-muted-foreground">
+            📅 Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+            accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
+            quae ab illo inventore veritatis et quasi architecto beatae vitae
+            dicta sunt explicabo.
+          </p>
+          <p className="text-sm text-muted-foreground">
+            ❤️ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
+            aut fugit, sed quia consequuntur magni dolores eos qui ratione
+            voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem
+            ipsum quia dolor sit amet, consectetur, adipisci velit.
+          </p>
+          <p className="text-sm text-muted-foreground">
+            ✉️ At vero eos et accusamus et iusto odio dignissimos ducimus qui
+            blanditiis praesentium voluptatum deleniti atque corrupti quos
+            dolores et quas molestias excepturi sint occaecati cupiditate non
+            provident, similique sunt in culpa qui officia deserunt mollitia
+            animi.
+          </p>
+          <p className="text-sm text-muted-foreground">
+            🛒 Et harum quidem rerum facilis est et expedita distinctio. Nam
+            libero tempore, cum soluta nobis est eligendi optio cumque nihil
+            impedit quo minus id quod maxime placeat facere possimus, omnis
+            voluptas assumenda est, omnis dolor repellendus.
+          </p>
+          <p className="text-sm text-muted-foreground">
+            📋 Temporibus autem quibusdam et aut officiis debitis aut rerum
+            necessitatibus saepe eveniet ut et voluptates repudiandae sint et
+            molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente
+            delectus, ut aut reiciendis voluptatibus maiores alias consequatur
+            aut perferendis doloribus asperiores repellat.
+          </p>
+          <p className="text-sm text-muted-foreground">
+            📄 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat.
+          </p>
+          <p className="text-sm text-muted-foreground">
+            🔐 Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+            cupidatat non proident, sunt in culpa qui officia deserunt mollit
+            anim id est laborum.
+          </p>
+        </div>
       </Sheet>
     );
   },
@@ -305,13 +381,13 @@ export const Sizes: Story = {
 
       <Sheet
         size="full"
-        trigger={<Button>Full Width</Button>}
-        title="Full Width Sheet"
-        description="This sheet takes up the full width."
+        trigger={<Button>Full Size</Button>}
+        title="Full Size Sheet"
+        description="This sheet takes up the full size."
       >
         <div className="py-4">
           <p className="text-sm">
-            Full width sheet content. Great for complex forms or detailed
+            Full size sheet content. Great for complex forms or detailed
             information.
           </p>
         </div>
@@ -662,13 +738,160 @@ export const NavigationMenu: Story = {
   render: function RenderNavigationMenu() {
     const [open, setOpen] = useState(false);
 
-    const menuItems = [
-      { label: "Dashboard", icon: "📊" },
-      { label: "Projects", icon: "📁" },
-      { label: "Team", icon: "👥" },
-      { label: "Settings", icon: "⚙️" },
-      { label: "Help", icon: "❓" },
+    const navigationMenu = [
+      {
+        name: "Dashboard",
+        icon: HomeIcon,
+        type: "page",
+      },
+      {
+        name: "Layouts",
+        icon: LayoutPanelTopIcon,
+        type: "category",
+        children: [
+          {
+            name: "Content Navbar",
+            icon: LayoutPanelTopIcon,
+            type: "page",
+          },
+          {
+            name: "Horizontal",
+            icon: LayoutPanelTopIcon,
+            type: "page",
+          },
+          {
+            name: "Without Menu",
+            icon: LayoutPanelTopIcon,
+            type: "page",
+          },
+        ],
+      },
+      {
+        name: "Front Pages",
+        icon: PanelTopIcon,
+        type: "category",
+        children: [
+          {
+            name: "Landing Page",
+            icon: PanelTopIcon,
+            type: "page",
+          },
+          {
+            name: "Pricing Page",
+            icon: PanelTopIcon,
+            type: "page",
+          },
+          {
+            name: "Checkout Page",
+            icon: PanelTopIcon,
+            type: "page",
+          },
+        ],
+      },
+      {
+        name: "Chat",
+        icon: MessageSquareTextIcon,
+        type: "page",
+      },
+      {
+        name: "Email",
+        icon: MailIcon,
+        type: "page",
+      },
+      {
+        name: "Calendar",
+        icon: CalendarDaysIcon,
+        type: "page",
+      },
+      {
+        name: "Ecommerce",
+        icon: ShoppingCartIcon,
+        type: "category",
+        children: [
+          {
+            name: "Products",
+            icon: ShoppingCartIcon,
+            type: "page",
+          },
+          {
+            name: "Categories",
+            icon: ShoppingCartIcon,
+            type: "page",
+          },
+          {
+            name: "Shopping & Delivery",
+            icon: ShoppingCartIcon,
+            type: "page",
+          },
+          {
+            name: "Location",
+            icon: ShoppingCartIcon,
+            type: "page",
+          },
+        ],
+      },
+      {
+        name: "Sign In",
+        icon: LogInIcon,
+        type: "page",
+      },
+      {
+        name: "Sign Out",
+        icon: LogOutIcon,
+        type: "page",
+      },
+      {
+        name: "Support",
+        icon: HeartPlusIcon,
+        type: "page",
+      },
+      {
+        name: "Documentation",
+        icon: BookTextIcon,
+        type: "page",
+      },
     ];
+
+    const NavigationMenu = ({ item, level }: { level: number; item: any }) => {
+      if (item.type === "page") {
+        return (
+          <div
+            className="focus-visible:ring-ring/50 flex items-center gap-2 rounded-md p-1 outline-none focus-visible:ring-[3px]"
+            style={{ paddingLeft: `${level === 0 ? 0.25 : 1.75}rem` }}
+          >
+            {level === 0 ? (
+              <item.icon className="size-4 shrink-0" />
+            ) : (
+              <CircleSmallIcon className="size-4 shrink-0" />
+            )}
+            <span className="text-sm">{item.name}</span>
+          </div>
+        );
+      }
+
+      return (
+        <Collapsible
+          className="flex flex-col gap-1.5"
+          style={{ paddingLeft: `${level === 0 ? 0 : 1.5}rem` }}
+          variant="ghost"
+        >
+          <CollapsibleTrigger className="focus-visible:ring-ring/50 flex items-center gap-2 rounded-md p-1 outline-none focus-visible:ring-[3px]">
+            {level === 0 ? (
+              <item.icon className="size-4 shrink-0" />
+            ) : (
+              <CircleSmallIcon className="size-4 shrink-0" />
+            )}
+            <span className="flex-1 text-start text-sm">{item.name}</span>
+            <ChevronRightIcon className='size-4 shrink-0 transition-transform [[data-state="open"]>&]:rotate-90' />
+          </CollapsibleTrigger>
+          <CollapsibleContent className="data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down flex flex-col gap-1.5 overflow-hidden transition-all duration-300">
+            {item.children.map((item: any) => (
+              <NavigationMenu key={item.name} item={item} level={level + 1} />
+            ))}
+          </CollapsibleContent>
+        </Collapsible>
+      );
+    };
 
     return (
       <Sheet
@@ -681,126 +904,10 @@ export const NavigationMenu: Story = {
         description="Main menu"
       >
         <nav className="space-y-1">
-          {menuItems.map((item, index) => (
-            <button
-              key={index}
-              className="w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-colors"
-              onClick={() => {
-                console.log(`Navigate to ${item.label}`);
-                setOpen(false);
-              }}
-            >
-              <span className="text-xl">{item.icon}</span>
-              <span className="text-sm font-medium">{item.label}</span>
-            </button>
+          {navigationMenu.map((item) => (
+            <NavigationMenu key={item.name} item={item} level={0} />
           ))}
         </nav>
-      </Sheet>
-    );
-  },
-};
-
-// Filters panel example
-export const FiltersPanel: Story = {
-  render: function RenderFiltersPanel() {
-    const [open, setOpen] = useState(false);
-    const [filters, setFilters] = useState({
-      category: "all",
-      priceRange: [0, 100],
-      inStock: false,
-    });
-
-    return (
-      <Sheet
-        open={open}
-        onOpenChange={setOpen}
-        trigger={<Button>Filters</Button>}
-        side="right"
-        size="md"
-        title="Filters"
-        description="Customize your search"
-        stickyFooter
-        footer={
-          <div className="flex gap-2 justify-end w-full">
-            <Button
-              variant="outline"
-              onClick={() => {
-                setFilters({
-                  category: "all",
-                  priceRange: [0, 100],
-                  inStock: false,
-                });
-              }}
-            >
-              Reset
-            </Button>
-            <Button onClick={() => setOpen(false)}>Apply Filters</Button>
-          </div>
-        }
-      >
-        <div className="space-y-6 py-4">
-          <div>
-            <label className="block text-sm font-medium mb-3">Category</label>
-            <select
-              className="w-full px-3 py-2 border rounded-md"
-              value={filters.category}
-              onChange={(e) =>
-                setFilters({ ...filters, category: e.target.value })
-              }
-            >
-              <option value="all">All Categories</option>
-              <option value="electronics">Electronics</option>
-              <option value="clothing">Clothing</option>
-              <option value="books">Books</option>
-            </select>
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium mb-3">
-              Price Range: ${filters.priceRange[0]} - ${filters.priceRange[1]}
-            </label>
-            <div className="flex gap-4">
-              <input
-                type="number"
-                className="w-full px-3 py-2 border rounded-md"
-                value={filters.priceRange[0]}
-                onChange={(e) =>
-                  setFilters({
-                    ...filters,
-                    priceRange: [Number(e.target.value), filters.priceRange[1]],
-                  })
-                }
-                placeholder="Min"
-              />
-              <input
-                type="number"
-                className="w-full px-3 py-2 border rounded-md"
-                value={filters.priceRange[1]}
-                onChange={(e) =>
-                  setFilters({
-                    ...filters,
-                    priceRange: [filters.priceRange[0], Number(e.target.value)],
-                  })
-                }
-                placeholder="Max"
-              />
-            </div>
-          </div>
-
-          <div>
-            <label className="flex items-center gap-2">
-              <input
-                type="checkbox"
-                checked={filters.inStock}
-                onChange={(e) =>
-                  setFilters({ ...filters, inStock: e.target.checked })
-                }
-                className="rounded"
-              />
-              <span className="text-sm font-medium">In Stock Only</span>
-            </label>
-          </div>
-        </div>
       </Sheet>
     );
   },
