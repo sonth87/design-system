@@ -186,6 +186,37 @@ export const Default: Story = {
     );
   },
 };
+export const Standalone: Story = {
+  render: function RenderDefault(args) {
+    const [open, setOpen] = useState(false);
+    return (
+      <div>
+        <Button onClick={() => setOpen(true)}>Open Dialog</Button>
+
+        <Dialog
+          {...args}
+          open={open}
+          onOpenChange={setOpen}
+          title="Dialog Title"
+          description="This is a default dialog with a simple message."
+          footer={
+            <div className="flex gap-2 justify-end w-full">
+              <Button variant="outline" onClick={() => setOpen(false)}>
+                Cancel
+              </Button>
+              <Button onClick={() => setOpen(false)}>Save Changes</Button>
+            </div>
+          }
+        >
+          <p className="text-sm text-muted-foreground">
+            You can place any content here. The dialog will automatically handle
+            the layout and styling.
+          </p>
+        </Dialog>
+      </div>
+    );
+  },
+};
 
 // Different variants
 export const Variants: Story = {
