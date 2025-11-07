@@ -101,12 +101,12 @@ const parseTimeString = (
   format: string = "HH:mm"
 ): Date | undefined => {
   if (!timeStr) return undefined;
-  
+
   const referenceDate = new Date();
   const parsedDate = parse(timeStr, format, referenceDate);
-  
+
   if (!isValid(parsedDate)) return undefined;
-  
+
   return parsedDate;
 };
 
@@ -572,13 +572,17 @@ export function TimePicker({
 
   // Render the time picker content
   const timePickerContent = (
-    <div className={cn("flex flex-col gap-4", className)}>
+    <div className={cn("flex flex-col gap-4 h-full", className)}>
       <div
         className={cn(
-          "flex rounded overflow-clip my-auto",
+          "flex rounded overflow-clip my-auto mx-auto max-w-sm md:max-w-md lg:max-w-lg",
           mode === "wheel"
             ? "items-end justify-center p-0"
-            : "items-start justify-center gap-2"
+            : "items-start justify-center gap-2",
+          {
+            "h-72": mode === "wheel",
+            "w-xs": standalone && (isMobile || desktopMode === "drawer"),
+          }
         )}
       >
         {renderColumns()}

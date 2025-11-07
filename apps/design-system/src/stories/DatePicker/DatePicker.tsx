@@ -191,6 +191,8 @@ export function DatePicker({
       ? enUS
       : vi;
 
+  const mode = isMobile ? mobileMode : desktopMode;
+
   // Helper to format date-time based on showTime and timeFormat
   const formatDateTimeValue = (d: Date | undefined): string => {
     if (!d) return "";
@@ -281,8 +283,9 @@ export function DatePicker({
   const calendarSelection = (
     <div
       className={cn(
-        "flex items-stretch mx-auto",
-        showTime && !hideDate ? "gap-0" : ""
+        "flex items-stretch mx-auto w-full max-w-md md:max-w-md lg:max-w-lg",
+        showTime && !hideDate ? "gap-0 md:max-w-lg" : "",
+        mode === "drawer" ? "mb-6" : ""
       )}
     >
       {!hideDate && (
@@ -298,7 +301,12 @@ export function DatePicker({
             let newDate = selectedDate;
             if (selectedDate && date && showTime) {
               newDate = new Date(selectedDate);
-              newDate.setHours(date.getHours(), date.getMinutes(), date.getSeconds(), date.getMilliseconds());
+              newDate.setHours(
+                date.getHours(),
+                date.getMinutes(),
+                date.getSeconds(),
+                date.getMilliseconds()
+              );
             }
             setDate(newDate);
             setInputValue(formatDateTimeValue(newDate));
@@ -312,12 +320,13 @@ export function DatePicker({
           }}
           showOutsideDays={showOutsideDays}
           className={cn(
-            "my-auto bg-transparent",
+            "my-auto bg-transparent mx-auto",
             {
               "[--cell-size:clamp(0px,calc(100vw/7.5),52px)] mb-8 bg-transparent":
                 (isMobile && !showTime) || desktopMode === "drawer",
               "[--cell-size:clamp(0px,calc(100vw/7.5),34px)]":
                 !isMobile && desktopMode !== "drawer",
+              "w-full": mode === "drawer" && showTime,
             },
             calendarClassName
           )}
@@ -377,7 +386,7 @@ export function DatePicker({
       >
         <DrawerHeader className="sr-only">
           <DrawerTitle>Select date</DrawerTitle>
-          <DrawerDescription>Set your date of birth</DrawerDescription>
+          <DrawerDescription>Set date</DrawerDescription>
         </DrawerHeader>
         {calendarSelection}
       </DrawerContent>
@@ -386,7 +395,6 @@ export function DatePicker({
 
   // If children is provided, use render prop pattern with picker
   if (children) {
-    const mode = isMobile ? mobileMode : desktopMode;
     return mode === "drawer" ? drawPicker : popPicker;
   }
 
@@ -425,15 +433,7 @@ export function DatePicker({
           setOpen(true);
         }
       }}
-      suffixIcon={
-        isMobile
-          ? mobileMode === "drawer"
-            ? drawPicker
-            : popPicker
-          : desktopMode === "drawer"
-            ? drawPicker
-            : popPicker
-      }
+      suffixIcon={mode === "drawer" ? drawPicker : popPicker}
     />
   );
 }

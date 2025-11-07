@@ -117,7 +117,7 @@ export const TimeColumnwheel = memo(
           0.3,
           1 - (distanceFromCenter / maxDistance) * 0.7
         );
-        const fontSize = isSelected ? "1.2rem" : "1rem";
+        const fontSize = isSelected ? "1.3rem" : "1rem";
 
         return {
           opacity,
@@ -127,13 +127,18 @@ export const TimeColumnwheel = memo(
       };
 
       return (
-        <div className="flex flex-col items-center gap-2">
+        <div className="flex flex-col items-center gap-2 w-full h-full max-h-72">
           {timeLabel && (
-            <div className="text-xs font-semibold text-muted-foreground uppercase p-2 border-b w-full text-center">
+            <div className="text-xs font-semibold text-muted-foreground uppercase p-2 border-b w-full text-center h-8">
               {timeLabel}
             </div>
           )}
-          <div className="relative">
+          <div
+            className={cn(
+              "relative w-full",
+              timeLabel ? "h-[calc(100%_-_2rem)]" : " h-full"
+            )}
+          >
             {/* wheel style divider lines */}
             <div className="absolute top-1/2 left-0 right-0 h-10 -translate-y-1/2 border-t border-b border-border pointer-events-none z-10" />
 
@@ -147,7 +152,7 @@ export const TimeColumnwheel = memo(
                 }
               }}
               className={cn(
-                "relative h-64 w-16 md:w-20 overflow-y-scroll scroll-smooth",
+                "relative h-full w-full min-w-20 min-h-60 overflow-y-scroll scroll-smooth",
                 "[&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-track]:bg-transparent",
                 "[&::-webkit-scrollbar-thumb]:bg-border [&::-webkit-scrollbar-thumb]:rounded",
                 "flex flex-col snap-y snap-mandatory",
@@ -159,7 +164,7 @@ export const TimeColumnwheel = memo(
               }}
             >
               {/* Spacer Top */}
-              <div className="h-30 flex-shrink-0" />
+              <div className="h-[calc(50%-1.25rem)] flex-shrink-0" />
 
               {items.map((item, index) => {
                 const itemDisabled = isItemDisabled(item);
@@ -191,7 +196,7 @@ export const TimeColumnwheel = memo(
               })}
 
               {/* Spacer Bottom */}
-              <div className="h-30 flex-shrink-0" />
+              <div className="h-[calc(50%-1.25rem)] flex-shrink-0" />
             </div>
           </div>
         </div>
