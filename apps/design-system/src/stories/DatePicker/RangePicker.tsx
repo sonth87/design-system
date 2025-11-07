@@ -22,7 +22,7 @@ import { cn } from "@dsui/ui/index";
 import Input, { type InputProps } from "../Input/Input";
 import Button from "../Button/Button";
 import { TimePicker } from "./TimePicker";
-import { CalendarIcon } from "lucide-react";
+import { CalendarIcon, MoveRight } from "lucide-react";
 import type { VariantProps } from "class-variance-authority";
 import { isMobile } from "react-device-detect";
 import { format as dfFormat, parse, isValid, type Locale } from "date-fns";
@@ -120,7 +120,7 @@ export type RangePickerProps = Omit<
   desktopMode?: "popover" | "drawer";
   mobileMode?: "popover" | "drawer";
   children?: (props: RangePickerRenderProps) => React.ReactNode;
-  separator?: string;
+  separator?: React.ReactNode;
   showTime?: boolean;
   timeFormat?: "HH:mm" | "HH:mm:ss";
   hideDate?: boolean;
@@ -144,7 +144,7 @@ export function RangePicker({
   desktopMode = "popover",
   mobileMode = "drawer",
   children,
-  separator = "~",
+  separator = <MoveRight className="size-5" />,
   showTime = false,
   timeFormat = "HH:mm",
   hideDate = false,

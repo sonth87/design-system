@@ -98,7 +98,6 @@ const meta: Meta<typeof RangePicker> = {
   args: {
     language: "vi",
     format: "dd/MM/yyyy",
-    separator: "~",
     isFloatLabel: true,
   },
 };
