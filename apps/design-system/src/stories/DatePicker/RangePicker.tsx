@@ -28,6 +28,7 @@ import { isMobile } from "react-device-detect";
 import { format as dfFormat, parse, isValid, type Locale } from "date-fns";
 import { vi, enUS } from "date-fns/locale";
 import { DATE_FORMAT } from "@/constants/common";
+import { FloatingLabel } from "@/components/FloatLabel";
 
 export type DateRange = {
   from?: Date | undefined;
@@ -149,6 +150,8 @@ export function RangePicker({
   hideDate = false,
   ...props
 }: RangePickerProps) {
+  const inputId = React.useId();
+
   let inputFormat: string;
   let outputFormat: string;
   if (typeof format === "string") {
@@ -185,6 +188,8 @@ export function RangePicker({
   );
   const [fromInputValue, setFromInputValue] = React.useState(value?.from || "");
   const [toInputValue, setToInputValue] = React.useState(value?.to || "");
+
+  const shouldFloat = !!(fromInputValue.trim() || toInputValue.trim());
 
   const _locale: Locale = calendarConfig?.locale
     ? (calendarConfig?.locale as Locale)
@@ -448,12 +453,20 @@ export function RangePicker({
 
   // Default input rendering with two inputs
   return (
-    <div className="flex items-center gap-2">
+    <div className="group relative flex items-center border border-input rounded-md focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2 bg-background transition-[color,box-shadow]">
       <Input
         {...props}
-        label={Array.isArray(label) ? label[0] : label}
+        id={inputId}
+        size={
+          props.isFloatLabel ? (props.size ? props.size : "xl") : props.size
+        }
+        className={cn(
+          props.className,
+          "relative peer border-0 focus:ring-0 rounded-none hover:bg-transparent active:bg-transparent focus-visible:ring-0 focus-visible:border-0 pr-1"
+        )}
+        label={Array.isArray(label) ? label[0] : ""}
         placeholder={Array.isArray(placeholder) ? placeholder[0] : placeholder}
-        clearable
+        clearable={false}
         value={fromInputValue}
         mask={maskToUse}
         onChange={(e) => {
@@ -499,22 +512,22 @@ export function RangePicker({
             setOpen(true);
           }
         }}
-        suffixIcon={
-          isMobile
-            ? mobileMode === "drawer"
-              ? drawPicker
-              : popPicker
-            : desktopMode === "drawer"
-              ? drawPicker
-              : popPicker
-        }
       />
-      <span className="text-muted-foreground select-none">{separator}</span>
+      <span className="text-muted-foreground select-none px-2">
+        {separator}
+      </span>
       <Input
         {...props}
+        id={inputId}
+        size={
+          props.isFloatLabel ? (props.size ? props.size : "xl") : props.size
+        }
+        className={cn(
+          props.className,
+          "relative peer border-0 focus:ring-0 rounded-none hover:bg-transparent active:bg-transparent focus-visible:ring-0 focus-visible:border-0 pl-1"
+        )}
         label={Array.isArray(label) ? label[1] : ""}
         placeholder={Array.isArray(placeholder) ? placeholder[1] : placeholder}
-        clearable
         value={toInputValue}
         mask={maskToUse}
         onChange={(e) => {
@@ -545,6 +558,14 @@ export function RangePicker({
             });
           }
         }}
+        onClear={() => {
+          setFromInputValue("");
+          setToInputValue("");
+          const newRange: DateRange = { from: undefined, to: undefined };
+          setRange(newRange);
+          onSelect?.(newRange, newRange as DateRangeText);
+          onChange?.(newRange, newRange as DateRangeText);
+        }}
         onBlur={() => {
           const parsedDate = parseDate(toInputValue, inputFormat);
           if (!parsedDate) {
@@ -563,7 +584,27 @@ export function RangePicker({
             setOpen(true);
           }
         }}
+        suffixIcon={
+          isMobile
+            ? mobileMode === "drawer"
+              ? drawPicker
+              : popPicker
+            : desktopMode === "drawer"
+              ? drawPicker
+              : popPicker
+        }
       />
+      {props.isFloatLabel && typeof label === "string" && (
+        <FloatingLabel
+          htmlFor={inputId}
+          size={props.size}
+          infoTooltip={props.infoTooltip}
+          className="z-10"
+          shouldFloat={shouldFloat}
+        >
+          {label}
+        </FloatingLabel>
+      )}
     </div>
   );
 }

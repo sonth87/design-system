@@ -34,6 +34,8 @@ const FloatingLabel = React.forwardRef<
             // // State focus - nằm trên input
             "peer-focus:top-0.5 peer-focus:origin-left peer-focus:scale-75 peer-focus:translate-x-1 peer-focus:text-primary peer-focus:max-w-full peer-focus:h-3 peer-focus:py-0 peer-focus:bg-transparent":
               !lagerSize,
+            "group-focus-within:top-0.5 group-focus-within:origin-left group-focus-within:scale-75 group-focus-within:translate-x-1 group-focus-within:text-primary group-focus-within:max-w-full group-focus-within:h-3 group-focus-within:py-0 group-focus-within:bg-transparent":
+              !lagerSize,
           },
           {
             "-top-3.5 origin-left scale-75 translate-x-0 max-w-full w-auto h-3 py-0":
@@ -43,6 +45,8 @@ const FloatingLabel = React.forwardRef<
               lagerSize,
             // // State focus - nằm trên input
             "peer-focus:-top-3.5 peer-focus:origin-left peer-focus:scale-75 peer-focus:text-primary peer-focus:max-w-full peer-focus:w-auto peer-focus:h-3 peer-focus:py-0":
+              lagerSize,
+            "group-focus-within:-top-3.5 group-focus-within:origin-left group-focus-within:scale-75 group-focus-within:text-primary group-focus-within:max-w-full group-focus-within:w-auto group-focus-within:h-3 group-focus-within:py-0":
               lagerSize,
           },
 

@@ -87,6 +87,13 @@ const meta: Meta<typeof RangePicker> = {
       control: { type: "boolean" },
       description: "Hide date picker and show only time picker",
     },
+    clearable: {
+      control: "boolean",
+      description: "Show clear button when input has value",
+      table: {
+        defaultValue: { summary: "false" },
+      },
+    },
   },
   args: {
     language: "vi",
@@ -107,7 +114,14 @@ export const Default: Story = {
       t: DateRangeText | undefined
     ) => setRange(t);
 
-    return <RangePicker {...args} value={range} onSelect={handleSelect} />;
+    return (
+      <div>
+        <span className="mb-4 block">
+          Selected date: {range?.from} - {range?.to}
+        </span>
+        <RangePicker {...args} value={range} onSelect={handleSelect} />
+      </div>
+    );
   },
   args: {},
 };

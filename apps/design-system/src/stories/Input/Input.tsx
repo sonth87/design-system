@@ -234,7 +234,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         {!isFloatLabel && label && (
           <label
             htmlFor={inputId}
-            className="flex gap-2 text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+            className="flex gap-2 text-sm font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
           >
             {label}
             {infoTooltip && (
