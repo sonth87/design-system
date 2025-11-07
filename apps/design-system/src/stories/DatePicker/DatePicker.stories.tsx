@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { DatePicker } from "./DatePicker";
 import { useState } from "react";
 import { format } from "date-fns";
-import { vi } from "date-fns/locale";
+import { tr, vi } from "date-fns/locale";
 import { DATE_FORMAT } from "@/constants/common";
 
 const meta: Meta<typeof DatePicker> = {
@@ -13,122 +13,167 @@ const meta: Meta<typeof DatePicker> = {
   },
   tags: ["autodocs"],
   argTypes: {
+    // Basic Input Props
     label: {
       control: { type: "text" },
+      description: "Label text displayed above the input field",
     },
     helperText: {
       control: { type: "text" },
+      description: "Helper text displayed below the input field",
     },
     isFloatLabel: {
       control: { type: "boolean" },
+      description: "Enable floating label that moves when input has value",
+      table: {
+        defaultValue: { summary: "false" },
+        type: { summary: "boolean" },
+      },
     },
     state: {
       control: { type: "select" },
-      options: [undefined, "default", "success", "warning", "error"],
+      options: ["", "default", "success", "warning", "error"],
+      description: "Visual state of the input field",
+      table: {
+        type: { summary: "string" },
+        defaultValue: { summary: "default" },
+      },
     },
     size: {
       control: { type: "select" },
-      options: [undefined, "xs", "sm", "select", "lg", "xl"],
+      options: ["", "xs", "sm", "select", "lg", "xl"],
+      description: "Size variant of the input field",
+      table: { type: { summary: "string" }, defaultValue: { summary: "md" } },
     },
     disabled: {
       control: { type: "boolean" },
+      description: "Disable the date picker input",
+      table: {
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
+      },
     },
     placeholder: {
       control: { type: "text" },
+      description: "Placeholder text shown when input is empty",
     },
+
+    // Format & Mask
     mask: {
       control: { type: "text" },
       description:
-        "Input mask for the date picker. True means auto-generated, String means custom. Eg: '99/99/9999'",
+        "Input mask for date input. True for auto-generated mask, or custom string like '99/99/9999'",
     },
     format: {
       control: { type: "object" },
       description:
         "Date format: string (e.g., 'dd/MM/yyyy') or object { input: string, output: string }. For more: <a href='https://date-fns.org/v4.1.0/docs/format'>https://date-fns.org/v4.1.0/docs/format</a>",
     },
+
+    // UI/UX
     infoTooltip: {
       control: { type: "text" },
+      description: "Tooltip text displayed when hovering over the info icon",
+      table: { type: { summary: "ReactNode" } },
     },
     clearable: {
       control: { type: "boolean" },
+      description: "Show clear button to reset the selected date",
     },
     side: {
       control: { type: "select" },
       options: ["top", "right", "bottom", "left"],
+      description: "Preferred side to render the calendar popover",
     },
     align: {
       control: { type: "select" },
       options: ["start", "center", "end"],
+      description: "Alignment of the calendar popover relative to the trigger",
     },
+
+    // Language
     language: {
       control: { type: "select" },
       options: ["vi", "en"],
       description:
-        "Language for the date picker calendar. 'vi', 'en' or date-fns/locale",
+        "Language for calendar localization ('vi' for Vietnamese, 'en' for English, or date-fns locale object)",
     },
+
+    // Events
     onChange: {
       description:
-        "Called when date value changes. Receives the new value and date. Example: onChange(event, newValue, newDate)",
+        "Called when input value changes. Receives (event, newValue, newDate)",
     },
     onSelect: {
       description:
-        "Called when a date is selected. Receives the new value and date. Example: onSelect(newDate, newValue)",
+        "Called when a date is selected. Receives (newDate, newValue)",
     },
+
+    // Calendar Behavior
     closeOnSelect: {
       control: { type: "boolean" },
+      description: "Close the calendar popover when a date is selected",
     },
     desktopMode: {
       control: { type: "select" },
       options: ["popover", "drawer"],
-      description: "Display mode for desktop devices",
+      description: "Display mode for desktop devices: popover or drawer",
     },
     mobileMode: {
       control: { type: "select" },
       options: ["popover", "drawer"],
-      description: "Display mode for mobile devices",
+      description: "Display mode for mobile devices: popover or drawer",
     },
     showOutsideDays: {
       control: { type: "boolean" },
+      description: "Show days from previous/next month in the calendar grid",
     },
     calendarConfig: {
       control: { type: "object" },
-      description: "Additional configuration props for the Calendar component",
+      description:
+        "Additional configuration props passed to the Calendar component",
     },
+
+    // Time Picker
     showTime: {
       control: { type: "boolean" },
       description: "Show time picker alongside date picker",
     },
     hideDate: {
       control: { type: "boolean" },
-      description: "Hide date picker and show only time picker",
+      description:
+        "Hide date picker and show only time picker (time-only mode)",
     },
     timePickerMode: {
       control: { type: "select" },
       options: ["wheel", "select", "compact"],
       description:
-        "Display mode for time picker: iOS wheel, normal dropdown, or grid selection",
+        "Display mode for time picker: 'wheel' (iOS-style), 'select' (dropdown), or 'compact' (grid)",
     },
     hourInterval: {
       control: { type: "number" },
-      description: "Hour interval (e.g., 1, 2, 3) - defaults to 1",
+      description:
+        "Hour interval for time picker (e.g., 1, 2, 3) - defaults to 1",
     },
     minuteInterval: {
       control: { type: "number" },
-      description: "Minute interval (e.g., 5, 10, 15, 30) - defaults to 1",
+      description:
+        "Minute interval for time picker (e.g., 5, 10, 15, 30) - defaults to 1",
     },
     secondInterval: {
       control: { type: "number" },
-      description: "Second interval (e.g., 5, 10, 15, 30) - defaults to 1",
+      description:
+        "Second interval for time picker (e.g., 5, 10, 15, 30) - defaults to 1",
     },
     disabledTimes: {
       control: { type: "object" },
       description:
-        "Array of disabled times in 'HH:mm' format (e.g., ['09:00', '12:00'])",
+        "Array of specific times to disable in 'HH:mm' format (e.g., ['09:00', '12:00'])",
     },
     disabledTimeRanges: {
       control: { type: "object" },
       description:
-        "Array of disabled time ranges (e.g., [{ from: '01:00', to: '05:00' }])",
+        "Array of time ranges to disable (e.g., [{ from: '01:00', to: '05:00' }])",
     },
     showNowButton: {
       control: { type: "boolean" },
@@ -137,17 +182,60 @@ const meta: Meta<typeof DatePicker> = {
     },
     nowButtonLabel: {
       control: { type: "text" },
-      description: "Label for 'Now' button (defaults to 'Now')",
+      description: "Custom label for the 'Now' button (defaults to 'Now')",
     },
     timePickerLabel: {
       control: { type: "object" },
       description:
-        "Labels for time picker columns (e.g., { hours: 'Hour', minutes: 'Minute' })",
+        "Custom labels for time picker columns (e.g., { hours: 'Hour', minutes: 'Minute' })",
     },
   },
   args: {
-    language: "vi",
+    // Basic Input Props
+    label: "",
+    helperText: "",
+    isFloatLabel: false,
+    state: "default",
+    size: "normal",
+    disabled: false,
+    placeholder: "",
+
+    // Format & Mask
+    mask: "",
     format: "dd/MM/yyyy",
+
+    // UI/UX
+    infoTooltip: "",
+    clearable: false,
+    side: "top",
+    align: "center",
+
+    // Language
+    language: "vi",
+
+    // Events
+    onChange: undefined,
+    onSelect: undefined,
+
+    // Calendar Behavior
+    closeOnSelect: undefined,
+    desktopMode: "popover",
+    mobileMode: "drawer",
+    showOutsideDays: true,
+    calendarConfig: undefined,
+
+    // Time Picker
+    showTime: false,
+    hideDate: false,
+    timePickerMode: "wheel",
+    hourInterval: 1,
+    minuteInterval: 5,
+    secondInterval: undefined,
+    disabledTimes: undefined,
+    disabledTimeRanges: undefined,
+    showNowButton: false,
+    nowButtonLabel: "",
+    timePickerLabel: undefined,
   },
 };
 

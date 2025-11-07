@@ -11,6 +11,7 @@ const meta: Meta<typeof TimePicker> = {
   },
   tags: ["autodocs"],
   argTypes: {
+    // Basic Input Props
     label: {
       control: { type: "text" },
     },
@@ -28,59 +29,16 @@ const meta: Meta<typeof TimePicker> = {
       control: { type: "select" },
       options: [undefined, "xs", "sm", "select", "lg", "xl"],
     },
-    showHours: {
-      control: { type: "boolean" },
-      description: "Show hours column",
-    },
-    showMinutes: {
-      control: { type: "boolean" },
-      description: "Show minutes column",
-    },
-    showSeconds: {
-      control: { type: "boolean" },
-      description: "Show seconds column",
-    },
     disabled: {
       control: { type: "boolean" },
       description: "Disable the time picker",
     },
+
+    // Display Mode
     mode: {
       control: { type: "select" },
       options: ["wheel", "select", "compact"],
       description: "Display mode: wheel, select, or compact",
-    },
-    hourInterval: {
-      control: { type: "number" },
-      description: "Hour interval (e.g., 1, 2, 3)",
-    },
-    minuteInterval: {
-      control: { type: "number" },
-      description: "Minute interval (e.g., 5, 10, 15, 30)",
-    },
-    secondInterval: {
-      control: { type: "number" },
-      description: "Second interval (e.g., 5, 10, 15, 30)",
-    },
-    showNowButton: {
-      control: { type: "boolean" },
-      description: "Show 'Now' button to select current time",
-    },
-    timeLabel: {
-      control: { type: "boolean" },
-      description: "Label for the time picker",
-    },
-    disabledTimes: {
-      control: { type: "object" },
-      description: "Array of specific times to disable (format: 'HH:mm')",
-    },
-    disabledTimeRanges: {
-      control: { type: "object" },
-      description:
-        "Array of time ranges to disable Array<{ from: 'HH:mm', to: 'HH:mm' }>",
-    },
-    nowButtonLabel: {
-      control: { type: "text" },
-      description: "Label for the 'Now' button",
     },
     desktopMode: {
       control: { type: "select" },
@@ -94,27 +52,108 @@ const meta: Meta<typeof TimePicker> = {
       description:
         "Mobile mode for standalone TimePicker: popover or drawer (default: drawer)",
     },
-    mask: {
-      control: { type: "text" },
-      description:
-        "Input mask for the date picker. True means auto-generated, String means custom. Eg: '99:99'",
+
+    // Time Units Visibility
+    showHours: {
+      control: { type: "boolean" },
+      description: "Show hours column",
     },
+    showMinutes: {
+      control: { type: "boolean" },
+      description: "Show minutes column",
+    },
+    showSeconds: {
+      control: { type: "boolean" },
+      description: "Show seconds column",
+    },
+    timeLabel: {
+      control: { type: "boolean" },
+      description: "Label for the time picker",
+    },
+
+    // Intervals
+    hourInterval: {
+      control: { type: "number" },
+      description: "Hour interval (e.g., 1, 2, 3)",
+    },
+    minuteInterval: {
+      control: { type: "number" },
+      description: "Minute interval (e.g., 5, 10, 15, 30)",
+    },
+    secondInterval: {
+      control: { type: "number" },
+      description: "Second interval (e.g., 5, 10, 15, 30)",
+    },
+
+    // Disabled Times
+    disabledTimes: {
+      control: { type: "object" },
+      description: "Array of specific times to disable (format: 'HH:mm')",
+    },
+    disabledTimeRanges: {
+      control: { type: "object" },
+      description:
+        "Array of time ranges to disable Array<{ from: 'HH:mm', to: 'HH:mm' }>",
+    },
+
+    // Now Button
+    showNowButton: {
+      control: { type: "boolean" },
+      description: "Show 'Now' button to select current time",
+    },
+    nowButtonLabel: {
+      control: { type: "text" },
+      description: "Label for the 'Now' button",
+    },
+
+    // Format & Mask
     format: {
       control: { type: "object" },
       description:
         "Date format: string (e.g., 'HH:mm:ss') or object { input: string, output: string }. For more: <a href='https://date-fns.org/v4.1.0/docs/format'>https://date-fns.org/v4.1.0/docs/format</a>",
     },
+    mask: {
+      control: { type: "text" },
+      description:
+        "Input mask for the date picker. True means auto-generated, String means custom. Eg: '99:99'",
+    },
   },
   args: {
+    // Basic Input Props
+    label: undefined,
+    helperText: undefined,
+    isFloatLabel: undefined,
+    state: undefined,
+    size: undefined,
+    disabled: false,
+
+    // Display Mode
+    mode: "wheel",
+    desktopMode: undefined,
+    mobileMode: undefined,
+
+    // Time Units Visibility
     showHours: true,
     showMinutes: true,
     showSeconds: false,
-    disabled: false,
-    mode: "wheel",
+    timeLabel: undefined,
+
+    // Intervals
     hourInterval: 1,
     minuteInterval: 1,
     secondInterval: 1,
+
+    // Disabled Times
+    disabledTimes: undefined,
+    disabledTimeRanges: undefined,
+
+    // Now Button
     showNowButton: false,
+    nowButtonLabel: undefined,
+
+    // Format & Mask
+    format: undefined,
+    mask: undefined,
   },
 };
 

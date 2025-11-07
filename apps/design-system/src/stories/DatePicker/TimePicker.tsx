@@ -547,7 +547,7 @@ export function TimePicker({
           className={cn(
             "flex rounded overflow-clip my-auto",
             mode === "wheel"
-              ? "items-end justify-center p-0"
+              ? "items-end justify-center p-0 h-72"
               : "items-start justify-center gap-4"
           )}
         >

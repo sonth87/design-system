@@ -30,9 +30,11 @@ import { vi, enUS } from "date-fns/locale";
 import { DATE_FORMAT } from "@/constants/common";
 
 export type DateRange = {
-  from: Date | undefined;
+  from?: Date | undefined;
   to?: Date | undefined;
-};
+} | null;
+
+export type DateRangeText = { from?: string; to?: string } | null;
 
 function formatDate(
   date: Date | undefined,
@@ -89,11 +91,21 @@ export type RangePickerRenderProps = {
   onToChange: (text: string) => void;
 };
 
-export type RangePickerProps = {
-  fromValue?: string;
-  toValue?: string;
-  onChange?: (fromValue?: string, toValue?: string, range?: DateRange) => void;
-  onSelect?: (range?: DateRange, fromValue?: string, toValue?: string) => void;
+export type RangePickerProps = Omit<
+  InputProps,
+  | "label"
+  | "value"
+  | "placeholder"
+  | "onChange"
+  | "onSelect"
+  | "mask"
+  | "children"
+> & {
+  label?: string | [string, string];
+  placeholder?: string | [string, string];
+  value?: DateRangeText;
+  onChange?: (value?: DateRange, text?: DateRangeText) => void;
+  onSelect?: (value?: DateRange, text?: DateRangeText) => void;
   calendarClassName?: string;
   side?: "top" | "right" | "bottom" | "left";
   align?: "start" | "center" | "end";
@@ -107,8 +119,6 @@ export type RangePickerProps = {
   desktopMode?: "popover" | "drawer";
   mobileMode?: "popover" | "drawer";
   children?: (props: RangePickerRenderProps) => React.ReactNode;
-  fromInputProps?: Omit<InputProps, "value" | "onChange" | "mask">;
-  toInputProps?: Omit<InputProps, "value" | "onChange" | "mask">;
   separator?: string;
   showTime?: boolean;
   timeFormat?: "HH:mm" | "HH:mm:ss";
@@ -116,8 +126,9 @@ export type RangePickerProps = {
 };
 
 export function RangePicker({
-  fromValue,
-  toValue,
+  label,
+  value,
+  placeholder,
   onChange,
   onSelect,
   calendarClassName,
@@ -132,12 +143,11 @@ export function RangePicker({
   desktopMode = "popover",
   mobileMode = "drawer",
   children,
-  fromInputProps = {},
-  toInputProps = {},
   separator = "~",
   showTime = false,
   timeFormat = "HH:mm",
   hideDate = false,
+  ...props
 }: RangePickerProps) {
   let inputFormat: string;
   let outputFormat: string;
@@ -157,10 +167,12 @@ export function RangePicker({
     maskToUse = mask;
   }
 
-  const initialFromDate = fromValue
-    ? parseDate(fromValue, inputFormat)
+  const initialFromDate = value?.from
+    ? parseDate(value.from, inputFormat)
     : undefined;
-  const initialToDate = toValue ? parseDate(toValue, inputFormat) : undefined;
+  const initialToDate = value?.to
+    ? parseDate(value.to, inputFormat)
+    : undefined;
   const initialRange: DateRange = {
     from: initialFromDate,
     to: initialToDate,
@@ -171,8 +183,8 @@ export function RangePicker({
   const [month, setMonth] = React.useState<Date | undefined>(
     initialFromDate || new Date()
   );
-  const [fromInputValue, setFromInputValue] = React.useState(fromValue || "");
-  const [toInputValue, setToInputValue] = React.useState(toValue || "");
+  const [fromInputValue, setFromInputValue] = React.useState(value?.from || "");
+  const [toInputValue, setToInputValue] = React.useState(value?.to || "");
 
   const _locale: Locale = calendarConfig?.locale
     ? (calendarConfig?.locale as Locale)
@@ -197,31 +209,26 @@ export function RangePicker({
     const toFormatted = formatDateTimeValue(range?.to);
     setFromInputValue(fromFormatted);
     setToInputValue(toFormatted);
-    onSelect?.(range, fromFormatted, toFormatted);
+    onSelect?.(range, { from: fromFormatted, to: toFormatted });
   };
 
   const handleFromChangeForRenderProp = (text: string) => {
     setFromInputValue(text);
     const parsedDate = parseDate(text, inputFormat);
-    const newRange: DateRange = {
-      from: parsedDate,
-      to: range?.to,
-    };
+    const newRange: DateRange = { from: parsedDate, to: range?.to };
     if (parsedDate) {
       setRange(newRange);
       setMonth(parsedDate);
-      onSelect?.(
-        newRange,
-        formatDateTimeValue(parsedDate),
-        formatDateTimeValue(range?.to)
-      );
+      onSelect?.(newRange, {
+        from: formatDateTimeValue(parsedDate),
+        to: formatDateTimeValue(range?.to),
+      });
     } else {
       setRange(newRange);
-      onSelect?.(
-        newRange,
-        undefined,
-        formatDateTimeValue(range?.to)
-      );
+      onSelect?.(newRange, {
+        from: formatDateTimeValue(range?.from),
+        to: formatDateTimeValue(range?.to),
+      });
     }
   };
 
@@ -234,22 +241,24 @@ export function RangePicker({
     };
     if (parsedDate) {
       setRange(newRange);
-      onSelect?.(
-        newRange,
-        formatDateTimeValue(range?.from),
-        formatDateTimeValue(parsedDate)
-      );
+      onSelect?.(newRange, {
+        from: formatDateTimeValue(range?.from),
+        to: formatDateTimeValue(parsedDate),
+      });
     } else {
       setRange(newRange);
-      onSelect?.(
-        newRange,
-        formatDateTimeValue(range?.from),
-        undefined
-      );
+      onSelect?.(newRange, {
+        from: formatDateTimeValue(range?.from),
+        to: undefined,
+      });
     }
   };
 
-  const handleTimeChangeFrom = (_event?: React.ChangeEvent<HTMLInputElement>, _value?: string, date?: Date) => {
+  const handleTimeChangeFrom = (
+    _event?: React.ChangeEvent<HTMLInputElement>,
+    _value?: string,
+    date?: Date
+  ) => {
     if (date) {
       const newRange: DateRange = {
         from: date,
@@ -257,12 +266,22 @@ export function RangePicker({
       };
       setRange(newRange);
       setFromInputValue(formatDateTimeValue(date));
-      onSelect?.(newRange, formatDateTimeValue(date), formatDateTimeValue(range?.to));
-      onChange?.(formatDateTimeValue(date), formatDateTimeValue(range?.to), newRange);
+      onSelect?.(newRange, {
+        from: formatDateTimeValue(date),
+        to: formatDateTimeValue(range?.to),
+      });
+      onChange?.(newRange, {
+        from: formatDateTimeValue(date),
+        to: formatDateTimeValue(range?.to),
+      });
     }
   };
 
-  const handleTimeChangeTo = (_event?: React.ChangeEvent<HTMLInputElement>, _value?: string, date?: Date) => {
+  const handleTimeChangeTo = (
+    _event?: React.ChangeEvent<HTMLInputElement>,
+    _value?: string,
+    date?: Date
+  ) => {
     if (date) {
       const newRange: DateRange = {
         from: range?.from,
@@ -270,8 +289,14 @@ export function RangePicker({
       };
       setRange(newRange);
       setToInputValue(formatDateTimeValue(date));
-      onSelect?.(newRange, formatDateTimeValue(range?.from), formatDateTimeValue(date));
-      onChange?.(formatDateTimeValue(range?.from), formatDateTimeValue(date), newRange);
+      onSelect?.(newRange, {
+        from: formatDateTimeValue(range?.from),
+        to: formatDateTimeValue(date),
+      });
+      onChange?.(newRange, {
+        from: formatDateTimeValue(range?.from),
+        to: formatDateTimeValue(date),
+      });
     }
   };
 
@@ -289,15 +314,13 @@ export function RangePicker({
     <Button
       variant="ghost"
       className="!p-1 !leading-0 h-auto rounded hover:bg-accent transition-colors"
-      size={fromInputProps.size}
+      size={props?.size}
     >
       <CalendarIcon
         className={cn({
-          "size-3":
-            fromInputProps.size === "xs" || fromInputProps.size === "sm",
-          "size-3.5": !fromInputProps.size || fromInputProps.size === "normal",
-          "size-4":
-            fromInputProps.size === "lg" || fromInputProps.size === "xl",
+          "size-3": props.size === "xs" || props.size === "sm",
+          "size-3.5": !props.size || props.size === "normal",
+          "size-4": props.size === "lg" || props.size === "xl",
         })}
       />
       <span className="sr-only">Select date range</span>
@@ -306,16 +329,13 @@ export function RangePicker({
 
   const calendarSelection = (
     <div
-      className={cn(
-        "flex items-stretch",
-        showTime && !hideDate ? "gap-0" : ""
-      )}
+      className={cn("flex items-stretch", showTime && !hideDate ? "gap-0" : "")}
     >
       {!hideDate && (
         <Calendar
           {...calendarConfig}
           mode="range"
-          selected={range}
+          selected={undefined} //range}
           captionLayout="dropdown"
           month={month}
           onMonthChange={setMonth}
@@ -325,9 +345,14 @@ export function RangePicker({
             const toFormatted = formatDateTimeValue(selectedRange?.to);
             setFromInputValue(fromFormatted);
             setToInputValue(toFormatted);
-            onSelect?.(selectedRange, fromFormatted, toFormatted);
-            onChange?.(fromFormatted, toFormatted, selectedRange);
-            if (closeOnSelect && selectedRange?.from && selectedRange?.to && !showTime) {
+            onSelect?.(selectedRange, { from: fromFormatted, to: toFormatted });
+            onChange?.(selectedRange, { from: fromFormatted, to: toFormatted });
+            if (
+              closeOnSelect &&
+              selectedRange?.from &&
+              selectedRange?.to &&
+              !showTime
+            ) {
               setOpen(false);
             }
           }}
@@ -381,7 +406,7 @@ export function RangePicker({
 
   const popPicker = (
     <Popover open={open} onOpenChange={setOpen}>
-      <PopoverTrigger asChild disabled={fromInputProps.disabled}>
+      <PopoverTrigger asChild disabled={props.disabled}>
         {triggerComponent}
       </PopoverTrigger>
       <PopoverContent
@@ -425,7 +450,9 @@ export function RangePicker({
   return (
     <div className="flex items-center gap-2">
       <Input
-        {...fromInputProps}
+        {...props}
+        label={Array.isArray(label) ? label[0] : label}
+        placeholder={Array.isArray(placeholder) ? placeholder[0] : placeholder}
         clearable
         value={fromInputValue}
         mask={maskToUse}
@@ -441,19 +468,17 @@ export function RangePicker({
             setMonth(date);
             const fromFormatted = formatDate(date, outputFormat, _locale);
             const toFormatted = formatDate(range?.to, outputFormat, _locale);
-            onSelect?.(newRange, fromFormatted, toFormatted);
-            onChange?.(fromFormatted, toFormatted, newRange);
+            onSelect?.(newRange, { from: fromFormatted, to: toFormatted });
+            onChange?.(newRange, { from: fromFormatted, to: toFormatted });
           } else {
-            onSelect?.(
-              newRange,
-              undefined,
-              formatDate(range?.to, outputFormat, _locale)
-            );
-            onChange?.(
-              undefined,
-              formatDate(range?.to, outputFormat, _locale),
-              newRange
-            );
+            onSelect?.(newRange, {
+              from: formatDate(range?.from, outputFormat, _locale),
+              to: formatDate(range?.to, outputFormat, _locale),
+            });
+            onChange?.(newRange, {
+              from: formatDate(range?.from, outputFormat, _locale),
+              to: formatDate(range?.to, outputFormat, _locale),
+            });
           }
         }}
         onBlur={() => {
@@ -462,11 +487,10 @@ export function RangePicker({
             setFromInputValue("");
             const newRange: DateRange = { from: undefined, to: range?.to };
             setRange(newRange);
-            onSelect?.(
-              newRange,
-              undefined,
-              formatDate(range?.to, outputFormat, _locale)
-            );
+            onSelect?.(newRange, {
+              from: formatDate(range?.from, outputFormat, _locale),
+              to: formatDate(range?.to, outputFormat, _locale),
+            });
           }
         }}
         onKeyDown={(e) => {
@@ -487,7 +511,9 @@ export function RangePicker({
       />
       <span className="text-muted-foreground select-none">{separator}</span>
       <Input
-        {...toInputProps}
+        {...props}
+        label={Array.isArray(label) ? label[1] : ""}
+        placeholder={Array.isArray(placeholder) ? placeholder[1] : placeholder}
         clearable
         value={toInputValue}
         mask={maskToUse}
@@ -506,19 +532,17 @@ export function RangePicker({
               _locale
             );
             const toFormatted = formatDate(date, outputFormat, _locale);
-            onSelect?.(newRange, fromFormatted, toFormatted);
-            onChange?.(fromFormatted, toFormatted, newRange);
+            onSelect?.(newRange, { from: fromFormatted, to: toFormatted });
+            onChange?.(newRange, { from: fromFormatted, to: toFormatted });
           } else {
-            onSelect?.(
-              newRange,
-              formatDate(range?.from, outputFormat, _locale),
-              undefined
-            );
-            onChange?.(
-              formatDate(range?.from, outputFormat, _locale),
-              undefined,
-              newRange
-            );
+            onSelect?.(newRange, {
+              from: formatDate(range?.from, outputFormat, _locale),
+              to: undefined,
+            });
+            onChange?.(newRange, {
+              from: formatDate(range?.from, outputFormat, _locale),
+              to: undefined,
+            });
           }
         }}
         onBlur={() => {
@@ -527,11 +551,10 @@ export function RangePicker({
             setToInputValue("");
             const newRange: DateRange = { from: range?.from, to: undefined };
             setRange(newRange);
-            onSelect?.(
-              newRange,
-              formatDate(range?.from, outputFormat, _locale),
-              undefined
-            );
+            onSelect?.(newRange, {
+              from: formatDate(range?.from, outputFormat, _locale),
+              to: undefined,
+            });
           }
         }}
         onKeyDown={(e) => {
