@@ -381,7 +381,7 @@ export function DatePicker({
       <DrawerContent
         className={cn(
           "w-auto overflow-hidden p-0",
-          "backdrop-blur bg-background/90"
+          "backdrop-blur bg-background"
         )}
       >
         <DrawerHeader className="sr-only">
