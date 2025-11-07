@@ -340,7 +340,7 @@ export function RangePicker({
         <Calendar
           {...calendarConfig}
           mode="range"
-          selected={undefined} //range}
+          selected={range as any}
           captionLayout="dropdown"
           month={month}
           onMonthChange={setMonth}
@@ -451,130 +451,97 @@ export function RangePicker({
     return mode === "drawer" ? drawPicker : popPicker;
   }
 
-  // Default input rendering with two inputs
-  return (
-    <div className="group relative flex items-center border border-input rounded-md focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2 bg-background transition-[color,box-shadow]">
+  // Helper function to render range input
+  const renderRangeInput = (
+    type: "from" | "to",
+    inputValue: string,
+    setInputValue: (value: string) => void,
+    additionalProps?: Partial<InputProps>
+  ) => {
+    const isFrom = type === "from";
+
+    return (
       <Input
         {...props}
+        {...additionalProps}
         id={inputId}
         size={
           props.isFloatLabel ? (props.size ? props.size : "xl") : props.size
         }
         className={cn(
           props.className,
-          "relative peer border-0 focus:ring-0 rounded-none hover:bg-transparent active:bg-transparent focus-visible:ring-0 focus-visible:border-0 pr-1"
+          "relative peer border-0 focus:ring-0 rounded-none hover:bg-transparent active:bg-transparent focus-visible:ring-0 focus-visible:border-0",
+          isFrom ? "pr-1" : "pl-1"
         )}
-        label={Array.isArray(label) ? label[0] : ""}
-        placeholder={Array.isArray(placeholder) ? placeholder[0] : placeholder}
-        clearable={false}
-        value={fromInputValue}
-        mask={maskToUse}
-        onChange={(e) => {
-          setFromInputValue(e.target.value);
-          const date = parseDate(e.target.value, inputFormat);
-          const newRange: DateRange = {
-            from: date,
-            to: range?.to,
-          };
-          if (date) {
-            setRange(newRange);
-            setMonth(date);
-            const fromFormatted = formatDate(date, outputFormat, _locale);
-            const toFormatted = formatDate(range?.to, outputFormat, _locale);
-            onSelect?.(newRange, { from: fromFormatted, to: toFormatted });
-            onChange?.(newRange, { from: fromFormatted, to: toFormatted });
-          } else {
-            onSelect?.(newRange, {
-              from: formatDate(range?.from, outputFormat, _locale),
-              to: formatDate(range?.to, outputFormat, _locale),
-            });
-            onChange?.(newRange, {
-              from: formatDate(range?.from, outputFormat, _locale),
-              to: formatDate(range?.to, outputFormat, _locale),
-            });
-          }
-        }}
-        onBlur={() => {
-          const parsedDate = parseDate(fromInputValue, inputFormat);
-          if (!parsedDate) {
-            setFromInputValue("");
-            const newRange: DateRange = { from: undefined, to: range?.to };
-            setRange(newRange);
-            onSelect?.(newRange, {
-              from: formatDate(range?.from, outputFormat, _locale),
-              to: formatDate(range?.to, outputFormat, _locale),
-            });
-          }
-        }}
-        onKeyDown={(e) => {
-          if (e.key === "ArrowDown") {
-            e.preventDefault();
-            setOpen(true);
-          }
-        }}
-      />
-      <span className="text-muted-foreground select-none px-2">
-        {separator}
-      </span>
-      <Input
-        {...props}
-        id={inputId}
-        size={
-          props.isFloatLabel ? (props.size ? props.size : "xl") : props.size
+        label={Array.isArray(label) ? label[isFrom ? 0 : 1] : ""}
+        placeholder={
+          Array.isArray(placeholder) ? placeholder[isFrom ? 0 : 1] : placeholder
         }
-        className={cn(
-          props.className,
-          "relative peer border-0 focus:ring-0 rounded-none hover:bg-transparent active:bg-transparent focus-visible:ring-0 focus-visible:border-0 pl-1"
-        )}
-        label={Array.isArray(label) ? label[1] : ""}
-        placeholder={Array.isArray(placeholder) ? placeholder[1] : placeholder}
-        value={toInputValue}
+        clearable={!isFrom}
+        value={inputValue}
         mask={maskToUse}
         onChange={(e) => {
-          setToInputValue(e.target.value);
+          setInputValue(e.target.value);
           const date = parseDate(e.target.value, inputFormat);
-          const newRange: DateRange = {
-            from: range?.from,
-            to: date,
-          };
+          const newRange: DateRange = isFrom
+            ? { from: date, to: range?.to }
+            : { from: range?.from, to: date };
+
           if (date) {
             setRange(newRange);
+            if (isFrom) setMonth(date);
             const fromFormatted = formatDate(
-              range?.from,
+              isFrom ? date : range?.from,
               outputFormat,
               _locale
             );
-            const toFormatted = formatDate(date, outputFormat, _locale);
+            const toFormatted = formatDate(
+              isFrom ? range?.to : date,
+              outputFormat,
+              _locale
+            );
             onSelect?.(newRange, { from: fromFormatted, to: toFormatted });
             onChange?.(newRange, { from: fromFormatted, to: toFormatted });
           } else {
             onSelect?.(newRange, {
               from: formatDate(range?.from, outputFormat, _locale),
-              to: undefined,
+              to: isFrom
+                ? formatDate(range?.to, outputFormat, _locale)
+                : undefined,
             });
             onChange?.(newRange, {
               from: formatDate(range?.from, outputFormat, _locale),
-              to: undefined,
+              to: isFrom
+                ? formatDate(range?.to, outputFormat, _locale)
+                : undefined,
             });
           }
         }}
-        onClear={() => {
-          setFromInputValue("");
-          setToInputValue("");
-          const newRange: DateRange = { from: undefined, to: undefined };
-          setRange(newRange);
-          onSelect?.(newRange, newRange as DateRangeText);
-          onChange?.(newRange, newRange as DateRangeText);
-        }}
+        onClear={
+          !isFrom
+            ? () => {
+                setFromInputValue("");
+                setToInputValue("");
+                const newRange: DateRange = { from: undefined, to: undefined };
+                setRange(newRange);
+                onSelect?.(newRange, newRange as DateRangeText);
+                onChange?.(newRange, newRange as DateRangeText);
+              }
+            : undefined
+        }
         onBlur={() => {
-          const parsedDate = parseDate(toInputValue, inputFormat);
+          const parsedDate = parseDate(inputValue, inputFormat);
           if (!parsedDate) {
-            setToInputValue("");
-            const newRange: DateRange = { from: range?.from, to: undefined };
+            setInputValue("");
+            const newRange: DateRange = isFrom
+              ? { from: undefined, to: range?.to }
+              : { from: range?.from, to: undefined };
             setRange(newRange);
             onSelect?.(newRange, {
               from: formatDate(range?.from, outputFormat, _locale),
-              to: undefined,
+              to: isFrom
+                ? formatDate(range?.to, outputFormat, _locale)
+                : undefined,
             });
           }
         }}
@@ -584,16 +551,26 @@ export function RangePicker({
             setOpen(true);
           }
         }}
-        suffixIcon={
-          isMobile
-            ? mobileMode === "drawer"
-              ? drawPicker
-              : popPicker
-            : desktopMode === "drawer"
-              ? drawPicker
-              : popPicker
-        }
       />
+    );
+  };
+
+  // Default input rendering with two inputs
+  return (
+    <div className="group relative flex items-center border border-input rounded-md focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2 bg-background transition-[color,box-shadow]">
+      {renderRangeInput("from", fromInputValue, setFromInputValue)}
+      <span className="text-muted-foreground select-none px-2">
+        {separator}
+      </span>
+      {renderRangeInput("to", toInputValue, setToInputValue, {
+        suffixIcon: isMobile
+          ? mobileMode === "drawer"
+            ? drawPicker
+            : popPicker
+          : desktopMode === "drawer"
+            ? drawPicker
+            : popPicker,
+      })}
       {props.isFloatLabel && typeof label === "string" && (
         <FloatingLabel
           htmlFor={inputId}
