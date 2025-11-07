@@ -27,7 +27,7 @@ const meta: Meta<typeof TimePicker> = {
     },
     size: {
       control: { type: "select" },
-      options: [undefined, "xs", "sm", "select", "lg", "xl"],
+      options: [undefined, "xs", "sm", "normal", "lg", "xl"],
     },
     disabled: {
       control: { type: "boolean" },

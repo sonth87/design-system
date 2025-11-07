@@ -41,7 +41,7 @@ const meta: Meta<typeof DatePicker> = {
     },
     size: {
       control: { type: "select" },
-      options: ["", "xs", "sm", "select", "lg", "xl"],
+      options: ["", "xs", "sm", "normal", "lg", "xl"],
       description: "Size variant of the input field",
       table: { type: { summary: "string" }, defaultValue: { summary: "md" } },
     },

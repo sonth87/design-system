@@ -471,9 +471,9 @@ export function RangePicker({
         className={cn(
           props.className,
           "relative peer border-0 focus:ring-0 rounded-none hover:bg-transparent active:bg-transparent focus-visible:ring-0 focus-visible:border-0",
-          isFrom ? "pr-1" : "pl-1"
+          isFrom ? "pr-0" : ""
         )}
-        label={Array.isArray(label) ? label[isFrom ? 0 : 1] : ""}
+        label={props.isFloatLabel && Array.isArray(label) ? label[isFrom ? 0 : 1] : ""}
         placeholder={
           Array.isArray(placeholder) ? placeholder[isFrom ? 0 : 1] : placeholder
         }
@@ -559,7 +559,7 @@ export function RangePicker({
   return (
     <div className="group relative flex items-center border border-input rounded-md focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2 bg-background transition-[color,box-shadow]">
       {renderRangeInput("from", fromInputValue, setFromInputValue)}
-      <span className="text-muted-foreground select-none px-2">
+      <span className="text-muted-foreground select-none pl-2">
         {separator}
       </span>
       {renderRangeInput("to", toInputValue, setToInputValue, {

@@ -18,14 +18,49 @@ const meta: Meta<typeof RangePicker> = {
       description:
         "Label for the range picker. `string` or `[fromLabel, toLabel]`",
     },
-    value: {
-      control: { type: "object" },
-      description: "Controlled date range value. `[fromDate, toDate]`",
+    helperText: {
+      control: { type: "text" },
+      description: "Helper text displayed below the input field",
+    },
+    isFloatLabel: {
+      control: { type: "boolean" },
+      description: "Enable floating label that moves when input has value",
+      table: {
+        defaultValue: { summary: "false" },
+        type: { summary: "boolean" },
+      },
+    },
+    state: {
+      control: { type: "select" },
+      options: ["", "default", "success", "warning", "error"],
+      description: "Visual state of the input field",
+      table: {
+        type: { summary: "string" },
+        defaultValue: { summary: "default" },
+      },
+    },
+    size: {
+      control: { type: "select" },
+      options: ["", "xs", "sm", "normal", "lg", "xl"],
+      description: "Size variant of the input field",
+      table: { type: { summary: "string" }, defaultValue: { summary: "md" } },
+    },
+    disabled: {
+      control: { type: "boolean" },
+      description: "Disable the date picker input",
+      table: {
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
+      },
     },
     placeholder: {
       control: { type: "text" },
       description:
         "Placeholder for the inputs. `string` or `[fromPlaceholder, toPlaceholder]`",
+    },
+    value: {
+      control: { type: "object" },
+      description: "Controlled date range value. `[fromDate, toDate]`",
     },
     mask: {
       control: { type: "text" },
@@ -98,6 +133,7 @@ const meta: Meta<typeof RangePicker> = {
   args: {
     language: "vi",
     format: "dd/MM/yyyy",
+    label: ["Ngày bắt đầu", "Ngày kết thúc"],
     isFloatLabel: true,
   },
 };
