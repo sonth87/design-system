@@ -56,7 +56,7 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
       isFloatLabel,
       infoTooltip,
       clearable = false,
-      placeholder = "Select items...",
+      placeholder = "",
       options = [],
       tagRender,
       multiple = false,

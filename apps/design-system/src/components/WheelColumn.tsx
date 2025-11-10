@@ -6,7 +6,7 @@ const pad = (num: number): string => String(num).padStart(2, "0");
 
 type TimeColumnwheelProps = {
   items: number[];
-  value: number;
+  value: number | undefined;
   onChange: (val: number) => void;
   timeLabel?: string;
   itemClassName?: string;
@@ -168,7 +168,7 @@ export const TimeColumnwheel = memo(
 
               {items.map((item, index) => {
                 const itemDisabled = isItemDisabled(item);
-                const isSelected = item === selectedValue;
+                const isSelected = selectedValue !== undefined && item === selectedValue;
                 const itemStyle = getItemStyle(index, isSelected);
 
                 return (

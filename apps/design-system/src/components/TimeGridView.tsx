@@ -8,8 +8,8 @@ const pad = (num: number): string => String(num).padStart(2, "0");
 type TimeGridViewProps = {
   HOURS: number[];
   MINUTES: number[];
-  hours: number;
-  minutes: number;
+  hours: number | undefined;
+  minutes: number | undefined;
   disabled: boolean;
   isTimeDisabled: (h: number, m: number, s: number) => boolean;
   onTimeSelect: (h: number, m: number) => void;
@@ -46,7 +46,7 @@ export const TimeGridView = memo(
         return options;
       }, [HOURS, MINUTES]);
 
-      const currentValue = `${pad(hours)}:${pad(minutes)}`;
+      const currentValue = hours !== undefined && minutes !== undefined ? `${pad(hours)}:${pad(minutes)}` : "";
 
       const handleTimeSelect = (h: number, m: number) => {
         // Always set seconds to 0 in grid mode

@@ -170,15 +170,30 @@ export function TimePicker({
 
   // Parse value string to Date using date-fns
   const date = React.useMemo(() => {
-    if (!value) return new Date();
+    if (!value) return undefined;
     const parsed = parseTimeString(value, inputFormat);
-    return parsed || new Date();
+    return parsed;
   }, [value, inputFormat]);
 
-  const [hours, setHours] = useState(date.getHours());
-  const [minutes, setMinutes] = useState(date.getMinutes());
-  const [seconds, setSeconds] = useState(date.getSeconds());
+  const [hours, setHours] = useState<number | undefined>(undefined);
+  const [minutes, setMinutes] = useState<number | undefined>(undefined);
+  const [seconds, setSeconds] = useState<number | undefined>(undefined);
   const [standaloneOpen, setStandaloneOpen] = useState(false);
+
+  useEffect(() => {
+    if (value) {
+      const parsed = parseTimeString(value, inputFormat);
+      if (parsed) {
+        setHours(parsed.getHours());
+        setMinutes(parsed.getMinutes());
+        setSeconds(parsed.getSeconds());
+      }
+    } else {
+      setHours(undefined);
+      setMinutes(undefined);
+      setSeconds(undefined);
+    }
+  }, [value, inputFormat]);
 
   const hoursRef = useRef<HTMLDivElement>(null);
   const minutesRef = useRef<HTMLDivElement>(null);
@@ -201,8 +216,12 @@ export function TimePicker({
 
   // Helper function to check if a time is disabled
   const isTimeDisabled = useCallback(
-    (h: number, m: number, s: number = 0): boolean => {
-      const timeStr = `${pad(h)}:${pad(m)}${showSeconds ? `:${pad(s)}` : ""}`;
+    (
+      h: number | undefined,
+      m: number | undefined,
+      s: number | undefined = 0
+    ): boolean => {
+      const timeStr = `${pad(h ?? 0)}:${pad(m ?? 0)}${showSeconds ? `:${pad(s ?? 0)}` : ""}`;
 
       // Check if specific time is disabled
       if (disabledTimes.includes(timeStr)) {
@@ -214,7 +233,7 @@ export function TimePicker({
         const [fromH, fromM, fromS = 0] = range.from.split(":").map(Number);
         const [toH, toM, toS = 0] = range.to.split(":").map(Number);
 
-        const currentTime = h * 3600 + m * 60 + s;
+        const currentTime = (h ?? 0) * 3600 + (m ?? 0) * 60 + (s ?? 0);
         const fromTime = fromH * 3600 + fromM * 60 + fromS;
         const toTime = toH * 3600 + toM * 60 + toS;
 
@@ -308,32 +327,32 @@ export function TimePicker({
 
   const updateDateTime = useCallback(
     (h: number, m: number, s: number) => {
-      const newDate = new Date(date);
+      const newDate = new Date();
       newDate.setHours(h, m, s, 0);
       const formattedValue = formatTime(newDate, outputFormat);
       onSelect?.(newDate, formattedValue);
     },
-    [date, outputFormat, onSelect]
+    [outputFormat, onSelect]
   );
 
   const handleHourChange = (h: number) => {
     if (!isTimeDisabled(h, minutes, seconds)) {
       setHours(h);
-      updateDateTime(h, minutes, seconds);
+      updateDateTime(h, minutes ?? 0, seconds ?? 0);
     }
   };
 
   const handleMinuteChange = (m: number) => {
     if (!isTimeDisabled(hours, m, seconds)) {
       setMinutes(m);
-      updateDateTime(hours, m, seconds);
+      updateDateTime(hours ?? 0, m, seconds ?? 0);
     }
   };
 
   const handleSecondChange = (s: number) => {
     if (!isTimeDisabled(hours, minutes, s)) {
       setSeconds(s);
-      updateDateTime(hours, minutes, s);
+      updateDateTime(hours ?? 0, minutes ?? 0, s);
     }
   };
 
@@ -404,7 +423,7 @@ export function TimePicker({
       type,
     }: {
       items: number[];
-      value: number;
+      value: number | undefined;
       onChange: (val: number) => void;
       timeLabel?: string;
       type: "hours" | "minutes" | "seconds";
@@ -417,7 +436,7 @@ export function TimePicker({
         )}
         <div className="p-2">
           <Select
-            value={selectedValue.toString()}
+            value={selectedValue?.toString() || ""}
             onValueChange={(value) => onChangeCol(Number(value))}
             disabled={disabled}
             clearable={false}
@@ -581,7 +600,7 @@ export function TimePicker({
             "flex rounded overflow-clip mb-auto",
             mode === "wheel"
               ? "items-end justify-center p-0 h-72"
-              : "items-start justify-center gap-4"
+              : "items-start justify-center"
           )}
         >
           {renderColumns()}
@@ -613,7 +632,7 @@ export function TimePicker({
           "flex rounded overflow-clip my-auto mx-auto max-w-sm md:max-w-md lg:max-w-lg relative",
           mode === "wheel"
             ? "items-end justify-center p-0"
-            : "items-start justify-center gap-2",
+            : "items-start justify-center",
           {
             "h-72": mode === "wheel",
             "w-xs": standalone && (isMobile || desktopMode === "drawer"),
@@ -707,7 +726,12 @@ export function TimePicker({
       onChange?.(e, formattedValue, parsedDate);
       onSelect?.(parsedDate, formattedValue);
     } else {
+      // Reset state when input is cleared
+      setHours(0);
+      setMinutes(0);
+      setSeconds(0);
       onChange?.(e, inputValue, undefined);
+      onSelect?.(undefined, inputValue);
     }
   };
 

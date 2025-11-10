@@ -162,7 +162,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   render: function DefaultComponent(args) {
-    const [value, setValue] = useState("14:30");
+    const [value, setValue] = useState<string | undefined>("14:30");
 
     return (
       <div className="flex flex-col gap-4">
@@ -174,11 +174,11 @@ export const Default: Story = {
           value={value}
           onSelect={(date, newValue) => {
             console.log("onSelect:", { date, newValue });
-            if (newValue) setValue(newValue);
+            setValue(newValue);
           }}
           onChange={(event, newValue, date) => {
             console.log("onChange:", { event, newValue, date });
-            if (newValue) setValue(newValue);
+            setValue(newValue);
           }}
         />
       </div>
