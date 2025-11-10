@@ -170,33 +170,71 @@ export const Default: Story = {
 
 export const States: Story = {
   render: function StatesComponent(args) {
-    const [rangeDefault, setRangeDefault] = useState<DateRangeText | undefined>();
-    const [rangeSuccess, setRangeSuccess] = useState<DateRangeText | undefined>();
-    const [rangeWarning, setRangeWarning] = useState<DateRangeText | undefined>();
+    const [rangeDefault, setRangeDefault] = useState<
+      DateRangeText | undefined
+    >();
+    const [rangeSuccess, setRangeSuccess] = useState<
+      DateRangeText | undefined
+    >();
+    const [rangeWarning, setRangeWarning] = useState<
+      DateRangeText | undefined
+    >();
     const [rangeError, setRangeError] = useState<DateRangeText | undefined>();
 
-    const handleSelectDefault = (_r: DateRange | undefined, t: DateRangeText | undefined) => setRangeDefault(t);
-    const handleSelectSuccess = (_r: DateRange | undefined, t: DateRangeText | undefined) => setRangeSuccess(t);
-    const handleSelectWarning = (_r: DateRange | undefined, t: DateRangeText | undefined) => setRangeWarning(t);
-    const handleSelectError = (_r: DateRange | undefined, t: DateRangeText | undefined) => setRangeError(t);
+    const handleSelectDefault = (
+      _r: DateRange | undefined,
+      t: DateRangeText | undefined
+    ) => setRangeDefault(t);
+    const handleSelectSuccess = (
+      _r: DateRange | undefined,
+      t: DateRangeText | undefined
+    ) => setRangeSuccess(t);
+    const handleSelectWarning = (
+      _r: DateRange | undefined,
+      t: DateRangeText | undefined
+    ) => setRangeWarning(t);
+    const handleSelectError = (
+      _r: DateRange | undefined,
+      t: DateRangeText | undefined
+    ) => setRangeError(t);
 
     return (
       <div className="space-y-4">
         <div>
           <label>Default</label>
-          <RangePicker {...args} state="default" value={rangeDefault} onSelect={handleSelectDefault} />
+          <RangePicker
+            {...args}
+            state="default"
+            value={rangeDefault}
+            onSelect={handleSelectDefault}
+          />
         </div>
         <div>
           <label>Success</label>
-          <RangePicker {...args} state="success" value={rangeSuccess} onSelect={handleSelectSuccess} />
+          <RangePicker
+            {...args}
+            state="success"
+            value={rangeSuccess}
+            onSelect={handleSelectSuccess}
+          />
         </div>
         <div>
           <label>Warning</label>
-          <RangePicker {...args} state="warning" value={rangeWarning} onSelect={handleSelectWarning} />
+          <RangePicker
+            {...args}
+            state="warning"
+            value={rangeWarning}
+            onSelect={handleSelectWarning}
+          />
         </div>
         <div>
           <label>Error</label>
-          <RangePicker {...args} state="error" value={rangeError} onSelect={handleSelectError} />
+          <RangePicker
+            {...args}
+            state="error"
+            value={rangeError}
+            onSelect={handleSelectError}
+          />
         </div>
       </div>
     );
@@ -212,41 +250,93 @@ export const Sizes: Story = {
     const [rangeLg, setRangeLg] = useState<DateRangeText | undefined>();
     const [rangeXl, setRangeXl] = useState<DateRangeText | undefined>();
 
-    const handleSelectXs = (_r: DateRange | undefined, t: DateRangeText | undefined) => setRangeXs(t);
-    const handleSelectSm = (_r: DateRange | undefined, t: DateRangeText | undefined) => setRangeSm(t);
-    const handleSelectNormal = (_r: DateRange | undefined, t: DateRangeText | undefined) => setRangeNormal(t);
-    const handleSelectLg = (_r: DateRange | undefined, t: DateRangeText | undefined) => setRangeLg(t);
-    const handleSelectXl = (_r: DateRange | undefined, t: DateRangeText | undefined) => setRangeXl(t);
+    const handleSelectXs = (
+      _r: DateRange | undefined,
+      t: DateRangeText | undefined
+    ) => setRangeXs(t);
+    const handleSelectSm = (
+      _r: DateRange | undefined,
+      t: DateRangeText | undefined
+    ) => setRangeSm(t);
+    const handleSelectNormal = (
+      _r: DateRange | undefined,
+      t: DateRangeText | undefined
+    ) => setRangeNormal(t);
+    const handleSelectLg = (
+      _r: DateRange | undefined,
+      t: DateRangeText | undefined
+    ) => setRangeLg(t);
+    const handleSelectXl = (
+      _r: DateRange | undefined,
+      t: DateRangeText | undefined
+    ) => setRangeXl(t);
 
     return (
       <div className="space-y-4">
         <div>
           <label>Extra Small</label>
-          <RangePicker {...args} size="xs" value={rangeXs} onSelect={handleSelectXs} />
+          <RangePicker
+            {...args}
+            size="xs"
+            value={rangeXs}
+            onSelect={handleSelectXs}
+          />
         </div>
         <div>
           <label>Small</label>
-          <RangePicker {...args} size="sm" value={rangeSm} onSelect={handleSelectSm} />
+          <RangePicker
+            {...args}
+            size="sm"
+            value={rangeSm}
+            onSelect={handleSelectSm}
+          />
         </div>
         <div>
           <label>Normal</label>
-          <RangePicker {...args} size="normal" value={rangeNormal} onSelect={handleSelectNormal} />
+          <RangePicker
+            {...args}
+            size="normal"
+            value={rangeNormal}
+            onSelect={handleSelectNormal}
+          />
         </div>
         <div>
           <label>Large</label>
-          <RangePicker {...args} size="lg" value={rangeLg} onSelect={handleSelectLg} />
+          <RangePicker
+            {...args}
+            size="lg"
+            value={rangeLg}
+            onSelect={handleSelectLg}
+          />
         </div>
         <div>
           <label>Extra Large</label>
-          <RangePicker {...args} size="xl" value={rangeXl} onSelect={handleSelectXl} />
+          <RangePicker
+            {...args}
+            size="xl"
+            value={rangeXl}
+            onSelect={handleSelectXl}
+          />
         </div>
         <div>
           <label>Large with Float label</label>
-          <RangePicker {...args} size="lg" value={rangeLg} onSelect={handleSelectLg} isFloatLabel />
+          <RangePicker
+            {...args}
+            size="lg"
+            value={rangeLg}
+            onSelect={handleSelectLg}
+            isFloatLabel
+          />
         </div>
         <div>
           <label>Extra Large with Float label</label>
-          <RangePicker {...args} size="xl" value={rangeXl} onSelect={handleSelectXl} isFloatLabel />
+          <RangePicker
+            {...args}
+            size="xl"
+            value={rangeXl}
+            onSelect={handleSelectXl}
+            isFloatLabel
+          />
         </div>
       </div>
     );
@@ -259,18 +349,51 @@ export const WithTime: Story = {
     const [rangeHHmm, setRangeHHmm] = useState<DateRangeText | undefined>();
     const [rangeHHmmss, setRangeHHmmss] = useState<DateRangeText | undefined>();
 
-    const handleSelectHHmm = (_r: DateRange | undefined, t: DateRangeText | undefined) => setRangeHHmm(t);
-    const handleSelectHHmmss = (_r: DateRange | undefined, t: DateRangeText | undefined) => setRangeHHmmss(t);
+    const handleSelectHHmm = (
+      _r: DateRange | undefined,
+      t: DateRangeText | undefined
+    ) => setRangeHHmm(t);
+    const handleSelectHHmmss = (
+      _r: DateRange | undefined,
+      t: DateRangeText | undefined
+    ) => setRangeHHmmss(t);
 
     return (
       <div className="space-y-4">
         <div>
           <label>Time Format HH:mm</label>
-          <RangePicker {...args} showTime timeFormat="HH:mm" value={rangeHHmm} onSelect={handleSelectHHmm} />
+          <RangePicker
+            {...args}
+            showTime
+            timeFormat="HH:mm"
+            value={rangeHHmm}
+            onSelect={handleSelectHHmm}
+            timeConfig={[{ timeLabel: "From" }, { timeLabel: "To" }]}
+          />
         </div>
         <div>
           <label>Time Format HH:mm:ss</label>
-          <RangePicker {...args} showTime timeFormat="HH:mm:ss" value={rangeHHmmss} onSelect={handleSelectHHmmss} />
+          <RangePicker
+            {...args}
+            showTime
+            timeFormat="HH:mm:ss"
+            value={rangeHHmmss}
+            onSelect={handleSelectHHmmss}
+            timeConfig={[{ timeLabel: "From" }, { timeLabel: "To" }]}
+          />
+        </div>
+        <div>
+          <label>Time picker mode</label>
+          <RangePicker
+            {...args}
+            showTime
+            value={rangeHHmmss}
+            onSelect={handleSelectHHmmss}
+            timeConfig={[
+              { timeLabel: "From", mode: "select" },
+              { timeLabel: "To", mode: "select" },
+            ]}
+          />
         </div>
       </div>
     );
@@ -280,9 +403,7 @@ export const WithTime: Story = {
 
 export const Disabled: Story = {
   render: function DisabledComponent(args) {
-    return (
-      <RangePicker {...args} disabled />
-    );
+    return <RangePicker {...args} disabled />;
   },
   args: {},
 };
@@ -290,14 +411,22 @@ export const Disabled: Story = {
 export const Clearable: Story = {
   render: function ClearableComponent(args) {
     const [range, setRange] = useState<DateRangeText | undefined>();
-    const handleSelect = (_r: DateRange | undefined, t: DateRangeText | undefined) => setRange(t);
+    const handleSelect = (
+      _r: DateRange | undefined,
+      t: DateRangeText | undefined
+    ) => setRange(t);
 
     return (
       <div>
         <span className="mb-4 block">
           Selected date: {range?.from} - {range?.to}
         </span>
-        <RangePicker {...args} clearable value={range} onSelect={handleSelect} />
+        <RangePicker
+          {...args}
+          clearable
+          value={range}
+          onSelect={handleSelect}
+        />
       </div>
     );
   },

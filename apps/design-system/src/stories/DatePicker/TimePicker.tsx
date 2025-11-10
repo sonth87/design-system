@@ -56,7 +56,10 @@ export type TimePickerProps = Omit<
   showSeconds?: boolean;
   disabled?: boolean;
   className?: string;
-  timeLabel?: boolean | { hours?: string; minutes?: string; seconds?: string };
+  timeLabel?:
+    | boolean
+    | string
+    | { hours?: string; minutes?: string; seconds?: string };
   mask?: boolean | string; // Enable mask for time input: true (auto-generate), string (custom mask), false/undefined (no mask)
   format?: FormatType; // Time format using date-fns format tokens (default: auto from showSeconds)
 
@@ -223,6 +226,43 @@ export function TimePicker({
       return false;
     },
     [disabledTimes, disabledTimeRanges, showSeconds]
+  );
+
+  // Helper function to get time label based on type and timeLabel prop
+  const getTimeLabel = useCallback(
+    (type: "hours" | "minutes" | "seconds"): string | undefined => {
+      if (!timeLabel) return undefined;
+
+      if (typeof timeLabel === "boolean") {
+        return timeLabel
+          ? type === "hours"
+            ? "Hour"
+            : type === "minutes"
+              ? "Minute"
+              : "Second"
+          : undefined;
+      }
+
+      if (typeof timeLabel === "string") {
+        return timeLabel;
+      }
+
+      // Object case
+      if (type === "hours") return timeLabel.hours || "Hour";
+      if (type === "minutes") return timeLabel.minutes || "Minute";
+      return timeLabel.seconds || "Second";
+    },
+    [timeLabel]
+  );
+
+  // If timeLabel is a string, show it as a common label above all columns
+  const shareLabel = typeof timeLabel === "string" && (
+    <div
+      key="common-label"
+      className="text-xs font-semibold text-muted-foreground uppercase p-2 border-b w-full text-center"
+    >
+      {timeLabel}
+    </div>
   );
 
   // Find nearest valid time
@@ -412,6 +452,8 @@ export function TimePicker({
   };
 
   const renderColumns = () => {
+    const columns = [];
+
     // Grid mode shows combined time options
     if (mode === "compact") {
       return (
@@ -428,14 +470,9 @@ export function TimePicker({
       );
     }
 
-    const columns = [];
-
     if (showHours) {
-      const hourLabel = timeLabel
-        ? typeof timeLabel === "boolean"
-          ? "Hour"
-          : timeLabel.hours
-        : undefined;
+      const hourLabel =
+        typeof timeLabel === "string" ? undefined : getTimeLabel("hours");
 
       if (mode === "wheel") {
         columns.push(
@@ -465,11 +502,8 @@ export function TimePicker({
     }
 
     if (showMinutes) {
-      const minuteLabel = timeLabel
-        ? typeof timeLabel === "boolean"
-          ? "Minute"
-          : timeLabel.minutes
-        : undefined;
+      const minuteLabel =
+        typeof timeLabel === "string" ? undefined : getTimeLabel("minutes");
 
       if (mode === "wheel") {
         columns.push(
@@ -500,11 +534,8 @@ export function TimePicker({
     }
 
     if (showSeconds) {
-      const secondLabel = timeLabel
-        ? typeof timeLabel === "boolean"
-          ? "Second"
-          : timeLabel.seconds
-        : undefined;
+      const secondLabel =
+        typeof timeLabel === "string" ? undefined : getTimeLabel("seconds");
 
       if (mode === "wheel") {
         columns.push(
@@ -543,9 +574,11 @@ export function TimePicker({
       <div
         className={cn("flex flex-col gap-2 h-full justify-between", className)}
       >
+        {shareLabel}
+
         <div
           className={cn(
-            "flex rounded overflow-clip my-auto",
+            "flex rounded overflow-clip mb-auto",
             mode === "wheel"
               ? "items-end justify-center p-0 h-72"
               : "items-start justify-center gap-4"
@@ -573,9 +606,11 @@ export function TimePicker({
   // Render the time picker content
   const timePickerContent = (
     <div className={cn("flex flex-col gap-4 h-full", className)}>
+      {shareLabel}
+
       <div
         className={cn(
-          "flex rounded overflow-clip my-auto mx-auto max-w-sm md:max-w-md lg:max-w-lg",
+          "flex rounded overflow-clip my-auto mx-auto max-w-sm md:max-w-md lg:max-w-lg relative",
           mode === "wheel"
             ? "items-end justify-center p-0"
             : "items-start justify-center gap-2",

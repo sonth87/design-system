@@ -68,7 +68,7 @@ const meta: Meta<typeof TimePicker> = {
     },
     timeLabel: {
       control: { type: "boolean" },
-      description: "Label for the time picker",
+      description: "Label for time columns. Can be boolean (default labels), string (same for all), or object { hours?, minutes?, seconds? }",
     },
 
     // Intervals
@@ -752,29 +752,94 @@ export const WithCustomMask: Story = {
   args: {},
 };
 
-export const FormatInputOutputWithSeconds: Story = {
-  render: function FormatInputOutputWithSecondsComponent(args) {
-    const [value, setValue] = useState("14:30:45");
+export const TimeLabels: Story = {
+  render: function TimeLabelsComponent(args) {
+    const [value1, setValue1] = useState("14:30:45");
+    const [value2, setValue2] = useState("14:30:45");
+    const [value3, setValue3] = useState("14:30:45");
+    const [value4, setValue4] = useState("14:30:45");
 
     return (
-      <div className="flex flex-col gap-4">
-        <p className="text-sm">
-          Value String: <strong>{value || "N/A"}</strong>
-        </p>
-        <TimePicker
-          {...args}
-          value={value}
-          format={{ input: "HH:mm:ss", output: "hh:mm:ss a" }}
-          showSeconds
-          mask={true}
-          onSelect={(_date, newValue) => {
-            if (newValue) setValue(newValue);
-          }}
-          onChange={(_event, newValue) => {
-            console.log("onChange:", { newValue });
-            if (newValue) setValue(newValue);
-          }}
-        />
+      <div className="flex flex-col gap-8">
+        <div className="flex flex-col gap-4">
+          <h3 className="text-lg font-semibold">Boolean Labels (Default)</h3>
+          <p className="text-sm text-muted-foreground">
+            timeLabel=true shows default labels: "Hour", "Minute", "Second"
+          </p>
+          <p className="text-sm">
+            Selected: <strong>{value1}</strong>
+          </p>
+          <TimePicker
+            {...args}
+            value={value1}
+            onSelect={(_date, newValue) => newValue && setValue1(newValue)}
+            showHours
+            showMinutes
+            showSeconds
+            timeLabel={true}
+            mode="wheel"
+          />
+        </div>
+
+        <div className="flex flex-col gap-4">
+          <h3 className="text-lg font-semibold">String Label (Same for All)</h3>
+          <p className="text-sm text-muted-foreground">
+            timeLabel="Time" shows the same label for all columns
+          </p>
+          <p className="text-sm">
+            Selected: <strong>{value2}</strong>
+          </p>
+          <TimePicker
+            {...args}
+            value={value2}
+            onSelect={(_date, newValue) => newValue && setValue2(newValue)}
+            showHours
+            showMinutes
+            showSeconds
+            timeLabel="Time"
+            mode="wheel"
+          />
+        </div>
+
+        <div className="flex flex-col gap-4">
+          <h3 className="text-lg font-semibold">Custom Labels (Object)</h3>
+          <p className="text-sm text-muted-foreground">
+            timeLabel=&#123;&#123; hours: "Giờ", minutes: "Phút", seconds: "Giây" &#125;&#125; shows custom labels for each column
+          </p>
+          <p className="text-sm">
+            Selected: <strong>{value3}</strong>
+          </p>
+          <TimePicker
+            {...args}
+            value={value3}
+            onSelect={(_date, newValue) => newValue && setValue3(newValue)}
+            showHours
+            showMinutes
+            showSeconds
+            timeLabel={{ hours: "Giờ", minutes: "Phút", seconds: "Giây" }}
+            mode="wheel"
+          />
+        </div>
+
+        <div className="flex flex-col gap-4">
+          <h3 className="text-lg font-semibold">Partial Custom Labels</h3>
+          <p className="text-sm text-muted-foreground">
+            timeLabel=&#123;&#123; hours: "Hour", seconds: "Second" &#125;&#125; uses custom labels where provided, defaults otherwise
+          </p>
+          <p className="text-sm">
+            Selected: <strong>{value4}</strong>
+          </p>
+          <TimePicker
+            {...args}
+            value={value4}
+            onSelect={(_date, newValue) => newValue && setValue4(newValue)}
+            showHours
+            showMinutes
+            showSeconds
+            timeLabel={{ hours: "Hour", seconds: "Second" }}
+            mode="wheel"
+          />
+        </div>
       </div>
     );
   },
