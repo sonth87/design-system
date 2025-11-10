@@ -108,6 +108,7 @@ export type RangePickerProps = Omit<
   children?: (props: RangePickerRenderProps) => React.ReactNode;
   separator?: React.ReactNode;
   timeConfig?: [TimeConfig, TimeConfig];
+  numberOfMonths?: number;
 };
 
 export function RangePicker({
@@ -133,6 +134,7 @@ export function RangePicker({
   showTime = false,
   timeFormat = "HH:mm",
   hideDate = false,
+  numberOfMonths = 1,
   ...props
 }: RangePickerProps) {
   const inputId = React.useId();
@@ -175,6 +177,8 @@ export function RangePicker({
   const [toInputValue, setToInputValue] = React.useState(value?.to || "");
   const [fromTime, setFromTime] = React.useState<Date | undefined>(undefined);
   const [toTime, setToTime] = React.useState<Date | undefined>(undefined);
+  const fromInputRef = React.useRef<HTMLInputElement>(null);
+  const toInputRef = React.useRef<HTMLInputElement>(null);
 
   const shouldFloat = !!(fromInputValue.trim() || toInputValue.trim());
 
@@ -206,9 +210,22 @@ export function RangePicker({
 
   const handleFromChangeForRenderProp = (text: string) => {
     setFromInputValue(text);
-    // Try to parse with date + time format first, then date only
-    let parsedDate = parseDate(text, `${inputFormat} ${timeFormat}`);
-    if (!parsedDate) {
+
+    // If the input is cleared (empty), clear both fields
+    if (text.trim() === "") {
+      setFromInputValue("");
+      setToInputValue("");
+      const newRange: DateRange = { from: undefined, to: undefined };
+      setRange(newRange);
+      onSelect?.(newRange, newRange as DateRangeText);
+      return;
+    }
+
+    // Try to parse based on showTime
+    let parsedDate: Date | undefined;
+    if (showTime) {
+      parsedDate = parseDate(text, `${inputFormat} ${timeFormat}`);
+    } else {
       parsedDate = parseDate(text, inputFormat);
     }
     const newRange: DateRange = { from: parsedDate, to: range?.to };
@@ -231,9 +248,22 @@ export function RangePicker({
 
   const handleToChangeForRenderProp = (text: string) => {
     setToInputValue(text);
-    // Try to parse with date + time format first, then date only
-    let parsedDate = parseDate(text, `${inputFormat} ${timeFormat}`);
-    if (!parsedDate) {
+
+    // If the input is cleared (empty), clear both fields
+    if (text.trim() === "") {
+      setFromInputValue("");
+      setToInputValue("");
+      const newRange: DateRange = { from: undefined, to: undefined };
+      setRange(newRange);
+      onSelect?.(newRange, newRange as DateRangeText);
+      return;
+    }
+
+    // Try to parse based on showTime
+    let parsedDate: Date | undefined;
+    if (showTime) {
+      parsedDate = parseDate(text, `${inputFormat} ${timeFormat}`);
+    } else {
       parsedDate = parseDate(text, inputFormat);
     }
     const newRange: DateRange = {
@@ -353,6 +383,7 @@ export function RangePicker({
           captionLayout="dropdown"
           month={month}
           onMonthChange={setMonth}
+          numberOfMonths={isMobile ? 1 : numberOfMonths || 1}
           onSelect={(selectedRange) => {
             // Preserve time from TimePicker values if showTime is enabled
             let preservedRange = selectedRange;
@@ -507,6 +538,7 @@ export function RangePicker({
       <Input
         {...props}
         {...additionalProps}
+        ref={isFrom ? fromInputRef : toInputRef}
         id={inputId}
         size={
           props.isFloatLabel ? (props.size ? props.size : "xl") : props.size
@@ -534,11 +566,26 @@ export function RangePicker({
         value={inputValue}
         mask={maskToUse}
         onChange={(e) => {
-          setInputValue(e.target.value);
-          // Try to parse with date + time format first, then date only
-          let date = parseDate(e.target.value, `${inputFormat} ${timeFormat}`);
-          if (!date) {
-            date = parseDate(e.target.value, inputFormat);
+          const inputValue = e.target.value;
+          setInputValue(inputValue);
+
+          // If the input is cleared (empty), clear both fields
+          if (inputValue.trim() === "") {
+            setFromInputValue("");
+            setToInputValue("");
+            const newRange: DateRange = { from: undefined, to: undefined };
+            setRange(newRange);
+            onSelect?.(newRange, newRange as DateRangeText);
+            onChange?.(newRange, newRange as DateRangeText);
+            return;
+          }
+
+          // Try to parse based on showTime
+          let date: Date | undefined;
+          if (showTime) {
+            date = parseDate(inputValue, `${inputFormat} ${timeFormat}`);
+          } else {
+            date = parseDate(inputValue, inputFormat);
           }
           const newRange: DateRange = isFrom
             ? { from: date, to: range?.to }
@@ -550,15 +597,22 @@ export function RangePicker({
             // Update time state if time was parsed
             if (isFrom) {
               setFromTime(date);
+              // setFromInputValue(formatDateTimeValue(date)); // Sync input value
             } else {
               setToTime(date);
+              // setToInputValue(formatDateTimeValue(date)); // Sync input value
             }
             const fromFormatted = formatDateTimeValue(
               isFrom ? date : range?.from
             );
             const toFormatted = formatDateTimeValue(isFrom ? range?.to : date);
             onSelect?.(newRange, { from: fromFormatted, to: toFormatted });
-            onChange?.(newRange, { from: fromFormatted, to: toFormatted });
+            onChange?.(newRange, { from: isFrom ? inputValue : fromInputValue, to: isFrom ? toInputValue : inputValue });
+
+            // If from input and date is valid, auto-focus to to input if to is empty
+            // if (isFrom && toInputRef.current && !toInputValue.trim()) {
+            //   requestAnimationFrame(() => toInputRef.current?.focus());
+            // }
           } else {
             onSelect?.(newRange, {
               from: formatDateTimeValue(range?.from),
@@ -583,24 +637,53 @@ export function RangePicker({
             : undefined
         }
         onBlur={() => {
-          // Try to parse with date + time format first, then date only
-          let parsedDate = parseDate(
-            inputValue,
-            `${inputFormat} ${timeFormat}`
-          );
-          if (!parsedDate) {
-            parsedDate = parseDate(inputValue, inputFormat);
-          }
-          if (!parsedDate) {
-            setInputValue("");
-            const newRange: DateRange = isFrom
-              ? { from: undefined, to: range?.to }
-              : { from: range?.from, to: undefined };
-            setRange(newRange);
-            onSelect?.(newRange, {
-              from: formatDateTimeValue(range?.from),
-              to: isFrom ? formatDateTimeValue(range?.to) : undefined,
-            });
+          // Check if blurring out of the entire range picker group
+          const activeElement = document.activeElement;
+          if (
+            activeElement !== fromInputRef.current &&
+            activeElement !== toInputRef.current
+          ) {
+            // Delay validation by 100ms
+            setTimeout(() => {
+              // Check again if still blurred out of the group
+              const currentActiveElement = document.activeElement;
+              if (
+                currentActiveElement !== fromInputRef.current &&
+                currentActiveElement !== toInputRef.current
+              ) {
+                // Blurred out of the group, validate both inputs
+                const validateInput = (val: string) => {
+                  if (val.trim() === "") return true; // empty is valid (will clear)
+                  let parsed: Date | undefined;
+                  if (showTime) {
+                    parsed = parseDate(val, `${inputFormat} ${timeFormat}`);
+                  } else {
+                    parsed = parseDate(val, inputFormat);
+                  }
+                  return !!parsed;
+                };
+
+                const fromValid = validateInput(fromInputValue);
+                const toValid = validateInput(toInputValue);
+
+                // Clear if either is invalid, or if only one has value
+                const shouldClear =
+                  !fromValid ||
+                  !toValid ||
+                  (fromInputValue.trim() && !toInputValue.trim()) ||
+                  (!fromInputValue.trim() && toInputValue.trim());
+
+                if (shouldClear) {
+                  // If either is invalid, clear both
+                  setFromInputValue("");
+                  setToInputValue("");
+                  const newRange: DateRange = { from: undefined, to: undefined };
+                  setRange(newRange);
+                  onSelect?.(newRange, newRange as DateRangeText);
+                  onChange?.(newRange, newRange as DateRangeText);
+                }
+              }
+            }, 100);
           }
         }}
         onKeyDown={(e) => {
@@ -629,7 +712,7 @@ export function RangePicker({
       {renderRangeInput("from", fromInputValue, setFromInputValue)}
       <span
         className={cn("text-muted-foreground select-none pl-2", {
-          "opacity-50": props.disabled,
+          "opacity-30": props.disabled,
         })}
       >
         {separator}

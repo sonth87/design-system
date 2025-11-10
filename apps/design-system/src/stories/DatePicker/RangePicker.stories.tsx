@@ -86,6 +86,11 @@ const meta: Meta<typeof RangePicker> = {
         defaultValue: { summary: "false" },
       },
     },
+    numberOfMonths: {
+      control: { type: "number" },
+      description: "Number of months to display in the calendar",
+      table: { type: { summary: "number" }, defaultValue: { summary: "1" } },
+    },
     side: {
       control: { type: "select" },
       options: ["top", "right", "bottom", "left"],
@@ -140,6 +145,7 @@ const meta: Meta<typeof RangePicker> = {
   args: {
     language: "vi",
     format: "dd/MM/yyyy",
+    mask: "99/99/9999",
     label: { from: "From", to: "To" },
     isFloatLabel: false,
   },

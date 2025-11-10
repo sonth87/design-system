@@ -30,7 +30,7 @@ import { CalendarIcon } from "lucide-react";
 import type { VariantProps } from "class-variance-authority";
 import { isMobile } from "react-device-detect";
 import { format as dfFormat, parse, isValid, type Locale } from "date-fns";
-import { vi, enUS } from "date-fns/locale";
+import { vi, enUS, is } from "date-fns/locale";
 import { DATE_FORMAT } from "@/constants/common";
 
 function formatDate(
@@ -113,6 +113,7 @@ export type DatePickerProps = Omit<
   showTime?: boolean;
   timeFormat?: "HH:mm" | "HH:mm:ss";
   hideDate?: boolean;
+  numberOfMonths?: number;
 
   // TimePicker configuration options
   timePickerMode?: TimePickerMode; // Display mode: 'wheel' (default), 'select', 'compact'
@@ -147,6 +148,7 @@ export function DatePicker({
   showTime = false,
   timeFormat = "HH:mm",
   hideDate = false,
+  numberOfMonths = 1,
   // TimePicker props
   timePickerMode = "wheel",
   hourInterval = 1,
@@ -283,9 +285,10 @@ export function DatePicker({
   const calendarSelection = (
     <div
       className={cn(
-        "flex items-stretch mx-auto w-full max-w-md md:max-w-md lg:max-w-lg",
+        "flex items-stretch mx-auto w-full",
         showTime && !hideDate ? "gap-0 md:max-w-lg" : "",
-        mode === "drawer" ? "mb-6" : ""
+        // mode === "drawer" ? "mb-6" : "",
+        isMobile ? "max-w-md md:max-w-md lg:max-w-lg" : ""
       )}
     >
       {!hideDate && (
@@ -296,6 +299,7 @@ export function DatePicker({
           captionLayout="dropdown"
           month={month}
           onMonthChange={setMonth}
+          numberOfMonths={isMobile ? 1 : numberOfMonths || 1}
           onSelect={(selectedDate) => {
             // Preserve time from current date when selecting new date
             let newDate = selectedDate;

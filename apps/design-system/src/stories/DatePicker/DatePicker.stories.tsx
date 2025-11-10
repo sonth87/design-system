@@ -128,6 +128,11 @@ const meta: Meta<typeof DatePicker> = {
       control: { type: "boolean" },
       description: "Show days from previous/next month in the calendar grid",
     },
+    numberOfMonths: {
+      control: { type: "number" },
+      description: "Number of months to display in the calendar",
+      table: { type: { summary: "number" }, defaultValue: { summary: "1" } },
+    },
     calendarConfig: {
       control: { type: "object" },
       description:
