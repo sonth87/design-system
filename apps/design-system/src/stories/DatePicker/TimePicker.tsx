@@ -168,13 +168,6 @@ export function TimePicker({
     outputFormat = showSeconds ? "HH:mm:ss" : "HH:mm";
   }
 
-  // Parse value string to Date using date-fns
-  const date = React.useMemo(() => {
-    if (!value) return undefined;
-    const parsed = parseTimeString(value, inputFormat);
-    return parsed;
-  }, [value, inputFormat]);
-
   const [hours, setHours] = useState<number | undefined>(undefined);
   const [minutes, setMinutes] = useState<number | undefined>(undefined);
   const [seconds, setSeconds] = useState<number | undefined>(undefined);
