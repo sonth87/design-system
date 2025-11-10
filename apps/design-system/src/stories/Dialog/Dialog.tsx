@@ -26,7 +26,15 @@ import { animationClass } from "@/utils/css";
 import { AlertTriangle, Info, CheckCircle2, AlertCircle } from "lucide-react";
 
 export type DialogVariant = "dialog" | "confirm" | "alert" | "info" | "warning";
-export type DialogSize = "sm" | "md" | "lg" | "xl" | "full";
+export type DialogSize =
+  | "sm"
+  | "md"
+  | "lg"
+  | "xl"
+  | "2xl"
+  | "3xl"
+  | "4xl"
+  | "full";
 export type DialogPosition =
   | "center"
   | "top"
@@ -120,6 +128,9 @@ const sizeClasses: Record<DialogSize, string> = {
   md: "sm:max-w-md",
   lg: "sm:max-w-lg",
   xl: "sm:max-w-xl",
+  "2xl": "sm:max-w-2xl",
+  "3xl": "sm:max-w-3xl",
+  "4xl": "sm:max-w-4xl",
   full: "sm:max-w-[95vw] h-[95vh]",
 };
 

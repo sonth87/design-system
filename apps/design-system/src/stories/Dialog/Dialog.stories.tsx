@@ -21,7 +21,7 @@ const meta: Meta<DialogProps> = {
     },
     size: {
       control: "select",
-      options: ["sm", "md", "lg", "xl", "full"],
+      options: ["sm", "md", "lg", "xl", "2xl", "3xl", "4xl", "full"],
       description: "The size of the dialog",
       table: {
         defaultValue: { summary: "md" },
