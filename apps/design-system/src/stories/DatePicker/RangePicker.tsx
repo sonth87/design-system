@@ -3,7 +3,6 @@ import {
   CalendarDayButton as SCalendarDayButton,
   type CalendarDayButtonProps as SCalendarDayButtonProps,
   Calendar,
-  type CalendarProps,
 } from "@dsui/ui/components/calendar";
 import {
   Popover,
@@ -21,9 +20,11 @@ import {
 import { cn } from "@dsui/ui/index";
 import Input, { type InputProps } from "../Input/Input";
 import Button from "../Button/Button";
-import { TimePicker } from "./TimePicker";
+import {
+  TimePicker,
+} from "./TimePicker";
+import { type DatePickerProps } from "./DatePicker";
 import { CalendarIcon, MoveRight } from "lucide-react";
-import type { VariantProps } from "class-variance-authority";
 import { isMobile } from "react-device-detect";
 import { format as dfFormat, parse, isValid, type Locale } from "date-fns";
 import { vi, enUS } from "date-fns/locale";
@@ -33,7 +34,7 @@ import { FloatingLabel } from "@/components/FloatLabel";
 export type DateRange = {
   from?: Date | undefined;
   to?: Date | undefined;
-} | null;
+};
 
 export type DateRangeText = { from?: string; to?: string } | null;
 
@@ -93,37 +94,21 @@ export type RangePickerRenderProps = {
 };
 
 export type RangePickerProps = Omit<
-  InputProps,
-  | "label"
+  DatePickerProps,
   | "value"
-  | "placeholder"
   | "onChange"
   | "onSelect"
-  | "mask"
   | "children"
+  | "label"
+  | "placeholder"
 > & {
-  label?: string | [string, string];
-  placeholder?: string | [string, string];
+  label?: string | DateRangeText;
+  placeholder?: string | DateRangeText;
   value?: DateRangeText;
   onChange?: (value?: DateRange, text?: DateRangeText) => void;
   onSelect?: (value?: DateRange, text?: DateRangeText) => void;
-  calendarClassName?: string;
-  side?: "top" | "right" | "bottom" | "left";
-  align?: "start" | "center" | "end";
-  size?: VariantProps<typeof Input>["size"];
-  format?: FormatType;
-  language?: "vi" | "en";
-  mask?: boolean | string;
-  closeOnSelect?: boolean;
-  showOutsideDays?: boolean;
-  calendarConfig?: CalendarProps;
-  desktopMode?: "popover" | "drawer";
-  mobileMode?: "popover" | "drawer";
   children?: (props: RangePickerRenderProps) => React.ReactNode;
   separator?: React.ReactNode;
-  showTime?: boolean;
-  timeFormat?: "HH:mm" | "HH:mm:ss";
-  hideDate?: boolean;
 };
 
 export function RangePicker({
@@ -188,6 +173,8 @@ export function RangePicker({
   );
   const [fromInputValue, setFromInputValue] = React.useState(value?.from || "");
   const [toInputValue, setToInputValue] = React.useState(value?.to || "");
+  const [fromTime, setFromTime] = React.useState<Date | undefined>(undefined);
+  const [toTime, setToTime] = React.useState<Date | undefined>(undefined);
 
   const shouldFloat = !!(fromInputValue.trim() || toInputValue.trim());
 
@@ -219,11 +206,16 @@ export function RangePicker({
 
   const handleFromChangeForRenderProp = (text: string) => {
     setFromInputValue(text);
-    const parsedDate = parseDate(text, inputFormat);
+    // Try to parse with date + time format first, then date only
+    let parsedDate = parseDate(text, `${inputFormat} ${timeFormat}`);
+    if (!parsedDate) {
+      parsedDate = parseDate(text, inputFormat);
+    }
     const newRange: DateRange = { from: parsedDate, to: range?.to };
     if (parsedDate) {
       setRange(newRange);
       setMonth(parsedDate);
+      setFromTime(parsedDate);
       onSelect?.(newRange, {
         from: formatDateTimeValue(parsedDate),
         to: formatDateTimeValue(range?.to),
@@ -239,13 +231,18 @@ export function RangePicker({
 
   const handleToChangeForRenderProp = (text: string) => {
     setToInputValue(text);
-    const parsedDate = parseDate(text, inputFormat);
+    // Try to parse with date + time format first, then date only
+    let parsedDate = parseDate(text, `${inputFormat} ${timeFormat}`);
+    if (!parsedDate) {
+      parsedDate = parseDate(text, inputFormat);
+    }
     const newRange: DateRange = {
       from: range?.from,
       to: parsedDate,
     };
     if (parsedDate) {
       setRange(newRange);
+      setToTime(parsedDate);
       onSelect?.(newRange, {
         from: formatDateTimeValue(range?.from),
         to: formatDateTimeValue(parsedDate),
@@ -259,48 +256,60 @@ export function RangePicker({
     }
   };
 
-  const handleTimeChangeFrom = (
-    _event?: React.ChangeEvent<HTMLInputElement>,
-    _value?: string,
-    date?: Date
-  ) => {
+  const handleTimeChangeFrom = (date?: Date) => {
     if (date) {
+      setFromTime(date);
+      // Merge: keep date (year, month, day) from existing range.from, take time (hours, minutes, seconds) from TimePicker
+      const mergedDate = new Date(range?.from || new Date());
+      mergedDate.setHours(
+        date.getHours(),
+        date.getMinutes(),
+        date.getSeconds(),
+        0
+      );
+
       const newRange: DateRange = {
-        from: date,
+        from: mergedDate,
         to: range?.to,
       };
       setRange(newRange);
-      setFromInputValue(formatDateTimeValue(date));
+      setFromInputValue(formatDateTimeValue(mergedDate));
       onSelect?.(newRange, {
-        from: formatDateTimeValue(date),
+        from: formatDateTimeValue(mergedDate),
         to: formatDateTimeValue(range?.to),
       });
       onChange?.(newRange, {
-        from: formatDateTimeValue(date),
+        from: formatDateTimeValue(mergedDate),
         to: formatDateTimeValue(range?.to),
       });
     }
   };
 
-  const handleTimeChangeTo = (
-    _event?: React.ChangeEvent<HTMLInputElement>,
-    _value?: string,
-    date?: Date
-  ) => {
+  const handleTimeChangeTo = (date?: Date) => {
     if (date) {
+      setToTime(date);
+      // Merge: keep date (year, month, day) from existing range.to, take time (hours, minutes, seconds) from TimePicker
+      const mergedDate = new Date(range?.to || new Date());
+      mergedDate.setHours(
+        date.getHours(),
+        date.getMinutes(),
+        date.getSeconds(),
+        0
+      );
+
       const newRange: DateRange = {
         from: range?.from,
-        to: date,
+        to: mergedDate,
       };
       setRange(newRange);
-      setToInputValue(formatDateTimeValue(date));
+      setToInputValue(formatDateTimeValue(mergedDate));
       onSelect?.(newRange, {
         from: formatDateTimeValue(range?.from),
-        to: formatDateTimeValue(date),
+        to: formatDateTimeValue(mergedDate),
       });
       onChange?.(newRange, {
         from: formatDateTimeValue(range?.from),
-        to: formatDateTimeValue(date),
+        to: formatDateTimeValue(mergedDate),
       });
     }
   };
@@ -345,17 +354,47 @@ export function RangePicker({
           month={month}
           onMonthChange={setMonth}
           onSelect={(selectedRange) => {
-            setRange(selectedRange);
-            const fromFormatted = formatDateTimeValue(selectedRange?.from);
-            const toFormatted = formatDateTimeValue(selectedRange?.to);
+            // Preserve time from TimePicker values if showTime is enabled
+            let preservedRange = selectedRange;
+            if (showTime) {
+              // Get current time from TimePicker state
+              const fromTimeObj = fromTime;
+              const toTimeObj = toTime;
+
+              preservedRange = {
+                from: selectedRange?.from
+                  ? new Date(
+                      selectedRange.from.getFullYear(),
+                      selectedRange.from.getMonth(),
+                      selectedRange.from.getDate(),
+                      fromTimeObj?.getHours() || 0,
+                      fromTimeObj?.getMinutes() || 0,
+                      fromTimeObj?.getSeconds() || 0
+                    )
+                  : undefined,
+                to: selectedRange?.to
+                  ? new Date(
+                      selectedRange.to.getFullYear(),
+                      selectedRange.to.getMonth(),
+                      selectedRange.to.getDate(),
+                      toTimeObj?.getHours() || 0,
+                      toTimeObj?.getMinutes() || 0,
+                      toTimeObj?.getSeconds() || 0
+                    )
+                  : undefined,
+              };
+            }
+            setRange(preservedRange);
+            const fromFormatted = formatDateTimeValue(preservedRange?.from);
+            const toFormatted = formatDateTimeValue(preservedRange?.to);
             setFromInputValue(fromFormatted);
             setToInputValue(toFormatted);
-            onSelect?.(selectedRange, { from: fromFormatted, to: toFormatted });
-            onChange?.(selectedRange, { from: fromFormatted, to: toFormatted });
+            onSelect?.(preservedRange, { from: fromFormatted, to: toFormatted });
+            onChange?.(preservedRange, { from: fromFormatted, to: toFormatted });
             if (
               closeOnSelect &&
-              selectedRange?.from &&
-              selectedRange?.to &&
+              preservedRange?.from &&
+              preservedRange?.to &&
               !showTime
             ) {
               setOpen(false);
@@ -381,29 +420,25 @@ export function RangePicker({
       )}
       {showTime && (
         <div className="flex gap-0 border-l border-border">
-          {range?.from && (
-            <TimePicker
-              value={dfFormat(range.from, timeFormat)}
-              onChange={handleTimeChangeFrom}
-              format={timeFormat}
-              showHours
-              showMinutes
-              showSeconds={timeFormat === "HH:mm:ss"}
-            />
-          )}
-          {range?.to && (
-            <>
-              <div className="border-l border-border" />
-              <TimePicker
-                value={dfFormat(range.to, timeFormat)}
-                onChange={handleTimeChangeTo}
-                format={timeFormat}
-                showHours
-                showMinutes
-                showSeconds={timeFormat === "HH:mm:ss"}
-              />
-            </>
-          )}
+          <TimePicker
+            value={fromTime ? dfFormat(fromTime, timeFormat) : undefined}
+            onSelect={handleTimeChangeFrom}
+            format={timeFormat}
+            showHours
+            showMinutes
+            showSeconds={timeFormat === "HH:mm:ss"}
+            standalone={false}
+          />
+          <div className="border-l border-border" />
+          <TimePicker
+            value={toTime ? dfFormat(toTime, timeFormat) : undefined}
+            onSelect={handleTimeChangeTo}
+            format={timeFormat}
+            showHours
+            showMinutes
+            showSeconds={timeFormat === "HH:mm:ss"}
+            standalone={false}
+          />
         </div>
       )}
     </div>
@@ -473,16 +508,30 @@ export function RangePicker({
           "relative peer border-0 focus:ring-0 rounded-none hover:bg-transparent active:bg-transparent focus-visible:ring-0 focus-visible:border-0",
           isFrom ? "pr-0" : ""
         )}
-        label={props.isFloatLabel && Array.isArray(label) ? label[isFrom ? 0 : 1] : ""}
+        label={
+          props.isFloatLabel && typeof label === "object"
+            ? isFrom
+              ? label?.from || ""
+              : label?.to || ""
+            : ""
+        }
         placeholder={
-          Array.isArray(placeholder) ? placeholder[isFrom ? 0 : 1] : placeholder
+          typeof placeholder === "object"
+            ? isFrom
+              ? placeholder?.from || ""
+              : placeholder?.to || ""
+            : placeholder
         }
         clearable={!isFrom}
         value={inputValue}
         mask={maskToUse}
         onChange={(e) => {
           setInputValue(e.target.value);
-          const date = parseDate(e.target.value, inputFormat);
+          // Try to parse with date + time format first, then date only
+          let date = parseDate(e.target.value, `${inputFormat} ${timeFormat}`);
+          if (!date) {
+            date = parseDate(e.target.value, inputFormat);
+          }
           const newRange: DateRange = isFrom
             ? { from: date, to: range?.to }
             : { from: range?.from, to: date };
@@ -490,29 +539,31 @@ export function RangePicker({
           if (date) {
             setRange(newRange);
             if (isFrom) setMonth(date);
-            const fromFormatted = formatDate(
-              isFrom ? date : range?.from,
-              outputFormat,
-              _locale
+            // Update time state if time was parsed
+            if (isFrom) {
+              setFromTime(date);
+            } else {
+              setToTime(date);
+            }
+            const fromFormatted = formatDateTimeValue(
+              isFrom ? date : range?.from
             );
-            const toFormatted = formatDate(
-              isFrom ? range?.to : date,
-              outputFormat,
-              _locale
+            const toFormatted = formatDateTimeValue(
+              isFrom ? range?.to : date
             );
             onSelect?.(newRange, { from: fromFormatted, to: toFormatted });
             onChange?.(newRange, { from: fromFormatted, to: toFormatted });
           } else {
             onSelect?.(newRange, {
-              from: formatDate(range?.from, outputFormat, _locale),
+              from: formatDateTimeValue(range?.from),
               to: isFrom
-                ? formatDate(range?.to, outputFormat, _locale)
+                ? formatDateTimeValue(range?.to)
                 : undefined,
             });
             onChange?.(newRange, {
-              from: formatDate(range?.from, outputFormat, _locale),
+              from: formatDateTimeValue(range?.from),
               to: isFrom
-                ? formatDate(range?.to, outputFormat, _locale)
+                ? formatDateTimeValue(range?.to)
                 : undefined,
             });
           }
@@ -530,7 +581,11 @@ export function RangePicker({
             : undefined
         }
         onBlur={() => {
-          const parsedDate = parseDate(inputValue, inputFormat);
+          // Try to parse with date + time format first, then date only
+          let parsedDate = parseDate(inputValue, `${inputFormat} ${timeFormat}`);
+          if (!parsedDate) {
+            parsedDate = parseDate(inputValue, inputFormat);
+          }
           if (!parsedDate) {
             setInputValue("");
             const newRange: DateRange = isFrom
@@ -538,9 +593,9 @@ export function RangePicker({
               : { from: range?.from, to: undefined };
             setRange(newRange);
             onSelect?.(newRange, {
-              from: formatDate(range?.from, outputFormat, _locale),
+              from: formatDateTimeValue(range?.from),
               to: isFrom
-                ? formatDate(range?.to, outputFormat, _locale)
+                ? formatDateTimeValue(range?.to)
                 : undefined,
             });
           }
@@ -557,9 +612,23 @@ export function RangePicker({
 
   // Default input rendering with two inputs
   return (
-    <div className="group relative flex items-center border border-input rounded-md focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2 bg-background transition-[color,box-shadow]">
+    <div
+      className={cn(
+        "group relative flex items-center border rounded-md focus-within:ring-2 focus-within:ring-offset-2 bg-background transition-[color,box-shadow]",
+        {
+          "border-input focus-within:ring-ring": !props.state,
+          "border-success focus-within:ring-success": props.state === "success",
+          "border-warning focus-within:ring-warning": props.state === "warning",
+          "border-error focus-within:ring-error": props.state === "error",
+        }
+      )}
+    >
       {renderRangeInput("from", fromInputValue, setFromInputValue)}
-      <span className="text-muted-foreground select-none pl-2">
+      <span
+        className={cn("text-muted-foreground select-none pl-2", {
+          "opacity-50": props.disabled,
+        })}
+      >
         {separator}
       </span>
       {renderRangeInput("to", toInputValue, setToInputValue, {

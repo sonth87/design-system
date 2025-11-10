@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { DatePicker } from "./DatePicker";
 import { useState } from "react";
 import { format } from "date-fns";
-import { tr, vi } from "date-fns/locale";
+import { vi } from "date-fns/locale";
 import { DATE_FORMAT } from "@/constants/common";
 
 const meta: Meta<typeof DatePicker> = {

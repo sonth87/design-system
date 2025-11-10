@@ -227,7 +227,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
     return (
       <div
-        className={cn("flex flex-col gap-1.5 relative", {
+        className={cn("flex flex-col gap-1.5 relative flex-auto", {
           "floating-label relative": isFloatLabel,
         })}
       >
