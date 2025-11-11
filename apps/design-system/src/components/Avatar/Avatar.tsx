@@ -6,7 +6,7 @@ import {
 } from "@dsui/ui/components/avatar";
 import { cn } from "@dsui/ui/index";
 import type { BasicAnimation, BasicColor } from "@/types/variables";
-import { animationClass } from "@/utils/css";
+import { animationClass } from "@/utils/animations";
 
 type Color = BasicColor | "dark" | "light" | "inverted";
 

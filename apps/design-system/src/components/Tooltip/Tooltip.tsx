@@ -10,7 +10,7 @@ import { cn } from "@dsui/ui/index";
 import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
 import type { BasicAnimation, BasicColor } from "@/types/variables";
 import { useMemo, useCallback } from "react";
-import { animationClass } from "@/utils/css";
+import { animationClass } from "@/utils/animations";
 
 type Color = BasicColor | "dark" | "light" | "inverted";
 

@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { cn } from "@dsui/ui/lib/utils";
 import { Label } from "@dsui/ui/components/label";
-import { Tooltip } from "../stories/Tooltip/Tooltip";
+import { Tooltip } from "./Tooltip/Tooltip";
 import { Info } from "lucide-react";
 
 const FloatingLabel = React.forwardRef<

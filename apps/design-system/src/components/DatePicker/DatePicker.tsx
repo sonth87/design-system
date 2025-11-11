@@ -30,7 +30,7 @@ import { CalendarIcon } from "lucide-react";
 import type { VariantProps } from "class-variance-authority";
 import { isMobile } from "react-device-detect";
 import { format as dfFormat, parse, isValid, type Locale } from "date-fns";
-import { vi, enUS, is } from "date-fns/locale";
+import { vi, enUS } from "date-fns/locale";
 import { DATE_FORMAT } from "@/constants/common";
 
 function formatDate(

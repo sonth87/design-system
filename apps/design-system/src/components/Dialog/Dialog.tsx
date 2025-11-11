@@ -22,7 +22,7 @@ import {
 import { ScrollArea } from "@dsui/ui/components/scroll-area";
 import { cn } from "@dsui/ui/lib/utils";
 import type { BasicAnimation } from "@/types/variables";
-import { animationClass } from "@/utils/css";
+import { animationClass } from "@/utils/animations";
 import { AlertTriangle, Info, CheckCircle2, AlertCircle } from "lucide-react";
 
 export type DialogVariant = "dialog" | "confirm" | "alert" | "info" | "warning";

@@ -6,8 +6,8 @@ import {
 } from "@dsui/ui/components/switch";
 import { cn } from "@dsui/ui/lib/utils";
 import type { SwitchAnimation } from "@/types/variables";
-import { animationEffect } from "@/utils/css";
-import Glass from "@/stories/Glass/Glass";
+import { animationEffect } from "@/utils/animations";
+import Glass from "../Glass/Glass";
 
 export type SwitchProps = React.ComponentProps<typeof SSwitch> & {
   animation?: SwitchAnimation;

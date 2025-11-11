@@ -3,8 +3,8 @@
 @import "./theme.css";
 
 /* component style */
-@import "./stories/Button/button.css";
-@import "./stories/Input/input.css";
+@import "./components/Button/button.css";
+@import "./components/Input/input.css";
 
 /* animation */
 @import "./animation.css";

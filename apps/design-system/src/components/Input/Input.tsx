@@ -7,7 +7,7 @@ import { cn } from "@dsui/ui/lib/utils";
 import { FloatingLabel } from "@/components/FloatLabel";
 import { Eye, EyeOff, ChevronDown, ChevronUp, Info, X } from "lucide-react";
 import { withMask, type Options } from "use-mask-input";
-import { Tooltip } from "@/stories/Tooltip/Tooltip";
+import { Tooltip } from "../Tooltip/Tooltip";
 
 export type InputProps = SInputProps & {
   label?: string;

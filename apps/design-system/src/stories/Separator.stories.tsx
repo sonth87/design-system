@@ -67,8 +67,14 @@ const meta: Meta<SeparatorProps> = {
 export default meta;
 
 export const Default = (args: SeparatorProps) => (
-  <div className="w-64 h-48 flex items-center justify-center">
-    <Separator {...args} className="w-full h-full">{args?.children}</Separator>
+  <div
+    className={`w-64 h-48 flex items-center justify-center ${args.orientation === "vertical" ? "flex-row" : "flex-col"}`}
+  >
+    <div className="p-4">Content 1</div>
+    <Separator {...args} className="w-full h-full">
+      {args?.children}
+    </Separator>
+    <div className="p-4">Content 2</div>
   </div>
 );
 

@@ -1,7 +1,7 @@
 import * as React from "react";
 import { memo, useMemo } from "react";
 import { cn } from "@dsui/ui/index";
-import Button from "../stories/Button/Button";
+import Button from "./Button/Button";
 
 const pad = (num: number): string => String(num).padStart(2, "0");
 

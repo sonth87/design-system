@@ -1,0 +1,22 @@
+{
+  "locale": "vi",
+  "messages": {
+    "storybook.toolbar.language": "Ngôn ngữ",
+    "storybook.toolbar.theme": "Giao diện",
+    "common.welcome": "Chào mừng",
+    "common.hello": "Xin chào",
+    "common.button.submit": "Gửi",
+    "common.button.cancel": "Hủy",
+    "common.button.save": "Lưu",
+    "common.button.delete": "Xóa",
+    "common.button.edit": "Sửa",
+    "common.button.close": "Đóng",
+    "common.button.open": "Mở",
+    "form.label.name": "Tên",
+    "form.label.email": "Email",
+    "form.label.password": "Mật khẩu",
+    "form.placeholder.name": "Nhập tên của bạn",
+    "form.placeholder.email": "Nhập email của bạn",
+    "form.placeholder.password": "Nhập mật khẩu"
+  }
+}

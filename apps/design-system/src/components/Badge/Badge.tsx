@@ -7,7 +7,7 @@ import {
 import { cn } from "@dsui/ui/lib/utils";
 import type { BadgeAnimation } from "@/types/variables";
 import { LoaderCircle } from "lucide-react";
-import { animationEffect } from "@/utils/css";
+import { animationEffect } from "@/utils/animations";
 
 export type BadgeProps = SBadgeProps & {
   animation?: BadgeAnimation;

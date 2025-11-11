@@ -7,7 +7,7 @@ import {
 import { cn } from "@dsui/ui/lib/utils";
 import type { ButtonAnimation } from "@/types/variables";
 import { LoaderCircle } from "lucide-react";
-import { animationEffect } from "@/utils/css";
+import { animationEffect } from "@/utils/animations";
 
 export type ButtonProps = SButtonProps & {
   animation?: ButtonAnimation;

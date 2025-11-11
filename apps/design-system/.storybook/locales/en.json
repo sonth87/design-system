@@ -1,0 +1,22 @@
+{
+  "locale": "en",
+  "messages": {
+    "storybook.toolbar.language": "Language",
+    "storybook.toolbar.theme": "Theme",
+    "common.welcome": "Welcome",
+    "common.hello": "Hello",
+    "common.button.submit": "Submit",
+    "common.button.cancel": "Cancel",
+    "common.button.save": "Save",
+    "common.button.delete": "Delete",
+    "common.button.edit": "Edit",
+    "common.button.close": "Close",
+    "common.button.open": "Open",
+    "form.label.name": "Name",
+    "form.label.email": "Email",
+    "form.label.password": "Password",
+    "form.placeholder.name": "Enter your name",
+    "form.placeholder.email": "Enter your email",
+    "form.placeholder.password": "Enter your password"
+  }
+}

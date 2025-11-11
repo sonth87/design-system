@@ -22,7 +22,7 @@ import {
 import { cn } from "@dsui/ui/lib/utils";
 import { ScrollArea } from "@dsui/ui/components/scroll-area";
 import type { BasicAnimation } from "@/types/variables";
-import { animationClass } from "@/utils/css";
+import { animationClass } from "@/utils/animations";
 import { isMobile } from "react-device-detect";
 
 export type SheetSide = "top" | "right" | "bottom" | "left";

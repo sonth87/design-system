@@ -16,7 +16,7 @@ import {
 import { cn } from "@dsui/ui/lib/utils";
 import { FloatingLabel } from "@/components/FloatLabel";
 import { Info } from "lucide-react";
-import { Tooltip } from "@/stories/Tooltip/Tooltip";
+import { Tooltip } from "../Tooltip/Tooltip";
 
 export type SelectOption = SSelectOption;
 

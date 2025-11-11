@@ -388,37 +388,9 @@ const WithAnimationComponent = () => {
   );
 };
 
-const GlassEffectComponent = () => {
-  const [checked, setChecked] = useState(false);
-  return (
-    <div
-      className="w-200 h-60 p-4 flex items-center justify-center bg-cover [animation:move-background_400s_linear_infinite] gap-4"
-      style={{
-        backgroundImage:
-          "url('https://raw.githubusercontent.com/lucasromerodb/liquid-glass-effect-macos/refs/heads/main/assets/flowers.jpg')",
-      }}
-    >
-      <Switch
-        animation="glass"
-        size="normal"
-        checked={checked}
-        onCheckedChange={setChecked}
-      />
-      <Switch
-        animation="glass"
-        size="lg"
-        checked={checked}
-        onCheckedChange={setChecked}
-      />
-      <Switch
-        animation="glass"
-        size="xl"
-        checked={checked}
-        onCheckedChange={setChecked}
-      />
-    </div>
-  );
-};
+// export const GlassEffect: Story = {
+//   render: () => <GlassEffectComponent />,
+// };
 
 const CustomColorComponent = () => {
   return (

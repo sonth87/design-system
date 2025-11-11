@@ -1,8 +1,10 @@
 import type { Preview } from "@storybook/react";
 import React, { useEffect } from "react";
+import { I18nextProvider } from "react-i18next";
+import i18n from "./i18n";
 import "../src/index.css";
 import "./storystyle.css";
-import { Toaster } from "../src/stories/Toast/Toast";
+// import { Toaster } from "../src/components/Toast/Toast";
 
 const preview: Preview = {
   parameters: {
@@ -28,6 +30,7 @@ const preview: Preview = {
   decorators: [
     (Story, context) => {
       const theme = context.globals.theme || "light";
+      const locale = context.globals.locale || "en";
 
       useEffect(() => {
         const root = document.documentElement;
@@ -40,8 +43,12 @@ const preview: Preview = {
         }
       }, [theme]);
 
+      useEffect(() => {
+        i18n.changeLanguage(locale);
+      }, [locale]);
+
       return (
-        <>
+        <I18nextProvider i18n={i18n}>
           <div className="">
             <Story />
           </div>
@@ -53,7 +60,7 @@ const preview: Preview = {
             closeButton
             duration={3000}
           /> */}
-        </>
+        </I18nextProvider>
       );
     },
   ],
@@ -69,6 +76,19 @@ export const globalTypes = {
       items: [
         { value: "light", title: "Light 🌞" },
         { value: "dark", title: "Dark 🌛" },
+      ],
+      dynamicTitle: true,
+    },
+  },
+  locale: {
+    name: "Language",
+    description: "Internationalization locale",
+    defaultValue: "en",
+    toolbar: {
+      icon: "globe",
+      items: [
+        { value: "en", title: "English 🇺🇸", right: "EN" },
+        { value: "vi", title: "Tiếng Việt 🇻🇳", right: "VI" },
       ],
       dynamicTitle: true,
     },
