@@ -45,6 +45,38 @@ const meta: Meta<TabsProps> = {
         defaultValue: { summary: "start" },
       },
     },
+    variant: {
+      control: "select",
+      options: [
+        "solid",
+        "bordered",
+        "pills",
+        "text",
+        "outline",
+        "underlined",
+        "enclosed",
+      ],
+      description: "Visual style variant of the tabs",
+      table: {
+        defaultValue: { summary: "solid" },
+      },
+    },
+    color: {
+      control: "select",
+      options: [
+        "primary",
+        "secondary",
+        "muted",
+        "accent",
+        "destructive",
+        "success",
+        "warning",
+      ],
+      description: "Color theme for active tab",
+      table: {
+        defaultValue: { summary: "muted" },
+      },
+    },
     fullWidth: {
       control: "boolean",
       description: "Make tabs full width",
@@ -116,7 +148,7 @@ export const WithIcons: Story = {
         label: "Overview",
         icon: <Home className="size-4" />,
         children: (
-          <div className="p-4 border rounded-lg mt-2">
+          <div className="p-4 border rounded-lg">
             <h3 className="font-semibold mb-2">Overview</h3>
             <p className="text-sm text-muted-foreground">
               Dashboard overview with key metrics and statistics.
@@ -129,7 +161,7 @@ export const WithIcons: Story = {
         label: "Profile",
         icon: <User className="size-4" />,
         children: (
-          <div className="p-4 border rounded-lg mt-2">
+          <div className="p-4 border rounded-lg">
             <h3 className="font-semibold mb-2">Profile</h3>
             <p className="text-sm text-muted-foreground">
               Manage your profile information and preferences.
@@ -142,7 +174,7 @@ export const WithIcons: Story = {
         label: "Settings",
         icon: <Settings className="size-4" />,
         children: (
-          <div className="p-4 border rounded-lg mt-2">
+          <div className="p-4 border rounded-lg">
             <h3 className="font-semibold mb-2">Settings</h3>
             <p className="text-sm text-muted-foreground">
               Configure your application settings and preferences.
@@ -155,7 +187,7 @@ export const WithIcons: Story = {
         label: "Notifications",
         icon: <Bell className="size-4" />,
         children: (
-          <div className="p-4 border rounded-lg mt-2">
+          <div className="p-4 border rounded-lg">
             <h3 className="font-semibold mb-2">Notifications</h3>
             <p className="text-sm text-muted-foreground">
               Manage your notification preferences and alerts.
@@ -165,7 +197,14 @@ export const WithIcons: Story = {
       },
     ];
 
-    return <Tabs defaultActiveKey="overview" items={items} className="w-[500px]" fullWidth />;
+    return (
+      <Tabs
+        defaultActiveKey="overview"
+        items={items}
+        className="w-[500px]"
+        fullWidth
+      />
+    );
   },
 };
 
@@ -177,7 +216,7 @@ export const FullWidth: Story = {
         key: "all",
         label: "All",
         children: (
-          <div className="p-4 border rounded-lg mt-2">
+          <div className="p-4 border rounded-lg">
             <div className="space-y-2">
               <h3 className="font-semibold">All Messages</h3>
               <div className="space-y-2">
@@ -206,7 +245,7 @@ export const FullWidth: Story = {
         key: "unread",
         label: "Unread",
         children: (
-          <div className="p-4 border rounded-lg mt-2">
+          <div className="p-4 border rounded-lg">
             <div className="space-y-2">
               <h3 className="font-semibold">Unread Messages</h3>
               <p className="text-sm text-muted-foreground">
@@ -220,7 +259,7 @@ export const FullWidth: Story = {
         key: "archived",
         label: "Archived",
         children: (
-          <div className="p-4 border rounded-lg mt-2">
+          <div className="p-4 border rounded-lg">
             <div className="space-y-2">
               <h3 className="font-semibold">Archived Messages</h3>
               <p className="text-sm text-muted-foreground">
@@ -232,7 +271,14 @@ export const FullWidth: Story = {
       },
     ];
 
-    return <Tabs defaultActiveKey="all" items={items} className="w-[600px]" fullWidth />;
+    return (
+      <Tabs
+        defaultActiveKey="all"
+        items={items}
+        className="w-[600px]"
+        fullWidth
+      />
+    );
   },
 };
 
@@ -246,7 +292,7 @@ export const Controlled: Story = {
         key: "tab1",
         label: "Tab 1",
         children: (
-          <div className="p-4 border rounded-lg mt-2">
+          <div className="p-4 border rounded-lg">
             <p className="text-sm">Content for Tab 1</p>
             <p className="text-xs text-muted-foreground mt-2">
               Current tab: {activeTab}
@@ -258,7 +304,7 @@ export const Controlled: Story = {
         key: "tab2",
         label: "Tab 2",
         children: (
-          <div className="p-4 border rounded-lg mt-2">
+          <div className="p-4 border rounded-lg">
             <p className="text-sm">Content for Tab 2</p>
             <p className="text-xs text-muted-foreground mt-2">
               Current tab: {activeTab}
@@ -270,7 +316,7 @@ export const Controlled: Story = {
         key: "tab3",
         label: "Tab 3",
         children: (
-          <div className="p-4 border rounded-lg mt-2">
+          <div className="p-4 border rounded-lg">
             <p className="text-sm">Content for Tab 3</p>
             <p className="text-xs text-muted-foreground mt-2">
               Current tab: {activeTab}
@@ -305,7 +351,12 @@ export const Controlled: Story = {
             Go to Tab 3
           </Button>
         </div>
-        <Tabs activeKey={activeTab} onChange={setActiveTab} items={items} fullWidth />
+        <Tabs
+          activeKey={activeTab}
+          onChange={setActiveTab}
+          items={items}
+          fullWidth
+        />
       </div>
     );
   },
@@ -364,7 +415,9 @@ export const CardStyle: Story = {
             <h3 className="font-semibold mb-4">Frequently Asked Questions</h3>
             <div className="space-y-4">
               <div>
-                <p className="font-medium text-sm">Can I change my plan later?</p>
+                <p className="font-medium text-sm">
+                  Can I change my plan later?
+                </p>
                 <p className="text-sm text-muted-foreground mt-1">
                   Yes, you can upgrade or downgrade at any time.
                 </p>
@@ -381,7 +434,9 @@ export const CardStyle: Story = {
       },
     ];
 
-    return <Tabs defaultActiveKey="pricing" items={items} className="w-[500px]" />;
+    return (
+      <Tabs defaultActiveKey="pricing" items={items} className="w-[500px]" />
+    );
   },
 };
 
@@ -451,7 +506,9 @@ export const Minimal: Story = {
       },
     ];
 
-    return <Tabs defaultActiveKey="today" items={items} className="w-[400px]" />;
+    return (
+      <Tabs defaultActiveKey="today" items={items} className="w-[400px]" />
+    );
   },
 };
 
@@ -471,7 +528,7 @@ export const WithBadges: Story = {
         ),
         icon: <Mail className="size-4" />,
         children: (
-          <div className="p-4 border rounded-lg mt-2">
+          <div className="p-4 border rounded-lg">
             <h3 className="font-semibold mb-2">Inbox (5)</h3>
             <p className="text-sm text-muted-foreground">
               You have 5 unread messages in your inbox.
@@ -483,7 +540,7 @@ export const WithBadges: Story = {
         key: "sent",
         label: "Sent",
         children: (
-          <div className="p-4 border rounded-lg mt-2">
+          <div className="p-4 border rounded-lg">
             <h3 className="font-semibold mb-2">Sent Messages</h3>
             <p className="text-sm text-muted-foreground">
               View all your sent messages here.
@@ -502,7 +559,7 @@ export const WithBadges: Story = {
           </>
         ),
         children: (
-          <div className="p-4 border rounded-lg mt-2">
+          <div className="p-4 border rounded-lg">
             <h3 className="font-semibold mb-2">Drafts (2)</h3>
             <p className="text-sm text-muted-foreground">
               You have 2 draft messages.
@@ -512,7 +569,9 @@ export const WithBadges: Story = {
       },
     ];
 
-    return <Tabs defaultActiveKey="inbox" items={items} className="w-[500px]" />;
+    return (
+      <Tabs defaultActiveKey="inbox" items={items} className="w-[500px]" />
+    );
   },
 };
 
@@ -579,17 +638,29 @@ export const Sizes: Story = {
       {
         key: "1",
         label: "Tab 1",
-        children: <div className="p-4 border rounded-lg mt-2"><p className="text-sm">Content of Tab Pane 1</p></div>,
+        children: (
+          <div className="p-4 border rounded-lg">
+            <p className="text-sm">Content of Tab Pane 1</p>
+          </div>
+        ),
       },
       {
         key: "2",
         label: "Tab 2",
-        children: <div className="p-4 border rounded-lg mt-2"><p className="text-sm">Content of Tab Pane 2</p></div>,
+        children: (
+          <div className="p-4 border rounded-lg">
+            <p className="text-sm">Content of Tab Pane 2</p>
+          </div>
+        ),
       },
       {
         key: "3",
         label: "Tab 3",
-        children: <div className="p-4 border rounded-lg mt-2"><p className="text-sm">Content of Tab Pane 3</p></div>,
+        children: (
+          <div className="p-4 border rounded-lg">
+            <p className="text-sm">Content of Tab Pane 3</p>
+          </div>
+        ),
       },
     ];
 
@@ -619,21 +690,624 @@ export const DisabledTabs: Story = {
       {
         key: "1",
         label: "Tab 1",
-        children: <div className="p-4 border rounded-lg mt-2"><p className="text-sm">Content of Tab Pane 1</p></div>,
+        children: (
+          <div className="p-4 border rounded-lg">
+            <p className="text-sm">Content of Tab Pane 1</p>
+          </div>
+        ),
       },
       {
         key: "2",
         label: "Tab 2 (Disabled)",
-        children: <div className="p-4 border rounded-lg mt-2"><p className="text-sm">Content of Tab Pane 2</p></div>,
+        children: (
+          <div className="p-4 border rounded-lg">
+            <p className="text-sm">Content of Tab Pane 2</p>
+          </div>
+        ),
         disabled: true,
       },
       {
         key: "3",
         label: "Tab 3",
-        children: <div className="p-4 border rounded-lg mt-2"><p className="text-sm">Content of Tab Pane 3</p></div>,
+        children: (
+          <div className="p-4 border rounded-lg">
+            <p className="text-sm">Content of Tab Pane 3</p>
+          </div>
+        ),
       },
     ];
 
     return <Tabs defaultActiveKey="1" items={items} className="w-[400px]" />;
+  },
+};
+
+// Solid variant - Default style with muted background
+export const SolidVariant: Story = {
+  render: () => {
+    const items: TabsProps["items"] = [
+      {
+        key: "1",
+        label: "Overview",
+        children: (
+          <div className="p-4 border rounded-lg">
+            <p className="text-sm">Default variant with muted background</p>
+          </div>
+        ),
+      },
+      {
+        key: "2",
+        label: "Analytics",
+        children: (
+          <div className="p-4 border rounded-lg">
+            <p className="text-sm">Active tab has white background</p>
+          </div>
+        ),
+      },
+      {
+        key: "3",
+        label: "Reports",
+        children: (
+          <div className="p-4 border rounded-lg">
+            <p className="text-sm">Shadow on active state</p>
+          </div>
+        ),
+      },
+    ];
+
+    return (
+      <div className="space-y-8 w-[600px]">
+        <div>
+          <h3 className="text-sm font-semibold mb-4">Horizontal</h3>
+          <Tabs defaultActiveKey="1" items={items} variant="solid" />
+        </div>
+        <div>
+          <h3 className="text-sm font-semibold mb-4">Vertical</h3>
+          <Tabs
+            defaultActiveKey="1"
+            items={items}
+            variant="solid"
+            tabPosition="left"
+          />
+        </div>
+      </div>
+    );
+  },
+};
+
+// Variant 2 - With border and colored background
+export const BorderedVariant: Story = {
+  render: () => {
+    const items: TabsProps["items"] = [
+      {
+        key: "1",
+        label: "Primary",
+        children: (
+          <div className="p-4 border rounded-lg">
+            <p className="text-sm">
+              Variant 2 with border on group and colored active background
+            </p>
+          </div>
+        ),
+      },
+      {
+        key: "2",
+        label: "Secondary",
+        children: (
+          <div className="p-4 border rounded-lg">
+            <p className="text-sm">Active tab uses the selected color</p>
+          </div>
+        ),
+      },
+      {
+        key: "3",
+        label: "Success",
+        children: (
+          <div className="p-4 border rounded-lg">
+            <p className="text-sm">Gap between tabs</p>
+          </div>
+        ),
+      },
+    ];
+
+    return (
+      <div className="space-y-8 w-[600px]">
+        <div>
+          <h3 className="text-sm font-semibold mb-4">
+            Primary Color - Horizontal
+          </h3>
+          <Tabs
+            defaultActiveKey="1"
+            items={items}
+            variant="bordered"
+            color="primary"
+          />
+        </div>
+        <div>
+          <h3 className="text-sm font-semibold mb-4">
+            Success Color - Horizontal
+          </h3>
+          <Tabs
+            defaultActiveKey="1"
+            items={items}
+            variant="bordered"
+            color="success"
+          />
+        </div>
+        <div>
+          <h3 className="text-sm font-semibold mb-4">
+            Primary Color - Vertical
+          </h3>
+          <Tabs
+            defaultActiveKey="1"
+            items={items}
+            variant="bordered"
+            color="primary"
+            tabPosition="left"
+          />
+        </div>
+      </div>
+    );
+  },
+};
+
+// Variant 3 - No border, colored background on active
+export const PillsVariant: Story = {
+  render: () => {
+    const items: TabsProps["items"] = [
+      {
+        key: "1",
+        label: "Dashboard",
+        children: (
+          <div className="p-4 border rounded-lg">
+            <p className="text-sm">No border or background on group</p>
+          </div>
+        ),
+      },
+      {
+        key: "2",
+        label: "Analytics",
+        children: (
+          <div className="p-4 border rounded-lg">
+            <p className="text-sm">Active tab has colored background</p>
+          </div>
+        ),
+      },
+      {
+        key: "3",
+        label: "Reports",
+        children: (
+          <div className="p-4 border rounded-lg">
+            <p className="text-sm">Clean minimal style</p>
+          </div>
+        ),
+      },
+    ];
+
+    return (
+      <div className="space-y-8 w-[600px]">
+        <div>
+          <h3 className="text-sm font-semibold mb-4">Primary Color</h3>
+          <Tabs
+            defaultActiveKey="1"
+            items={items}
+            variant="pills"
+            color="primary"
+          />
+        </div>
+        <div>
+          <h3 className="text-sm font-semibold mb-4">Secondary Color</h3>
+          <Tabs
+            defaultActiveKey="1"
+            items={items}
+            variant="pills"
+            color="secondary"
+          />
+        </div>
+        <div>
+          <h3 className="text-sm font-semibold mb-4">
+            Warning Color - Vertical
+          </h3>
+          <Tabs
+            defaultActiveKey="1"
+            items={items}
+            variant="pills"
+            color="warning"
+            tabPosition="left"
+          />
+        </div>
+      </div>
+    );
+  },
+};
+
+// Variant 4 - Text color only
+export const TextVariant: Story = {
+  render: () => {
+    const items: TabsProps["items"] = [
+      {
+        key: "1",
+        label: "Home",
+        children: (
+          <div className="p-4 border rounded-lg">
+            <p className="text-sm">Only text color changes on active</p>
+          </div>
+        ),
+      },
+      {
+        key: "2",
+        label: "Products",
+        children: (
+          <div className="p-4 border rounded-lg">
+            <p className="text-sm">No background or border</p>
+          </div>
+        ),
+      },
+      {
+        key: "3",
+        label: "Services",
+        children: (
+          <div className="p-4 border rounded-lg">
+            <p className="text-sm">Minimal text-only variant</p>
+          </div>
+        ),
+      },
+    ];
+
+    return (
+      <div className="space-y-8 w-[600px]">
+        <div>
+          <h3 className="text-sm font-semibold mb-4">Primary Color</h3>
+          <Tabs
+            defaultActiveKey="1"
+            items={items}
+            variant="text"
+            color="primary"
+          />
+        </div>
+        <div>
+          <h3 className="text-sm font-semibold mb-4">Destructive Color</h3>
+          <Tabs
+            defaultActiveKey="1"
+            items={items}
+            variant="text"
+            color="destructive"
+          />
+        </div>
+        <div>
+          <h3 className="text-sm font-semibold mb-4">
+            Success Color - Vertical
+          </h3>
+          <Tabs
+            defaultActiveKey="1"
+            items={items}
+            variant="text"
+            color="success"
+            tabPosition="left"
+          />
+        </div>
+      </div>
+    );
+  },
+};
+
+// Variant 5 - Border (stroke) only
+export const OutlineVariant: Story = {
+  render: () => {
+    const items: TabsProps["items"] = [
+      {
+        key: "1",
+        label: "Overview",
+        children: (
+          <div className="p-4 border rounded-lg">
+            <p className="text-sm">Border outline on active tab</p>
+          </div>
+        ),
+      },
+      {
+        key: "2",
+        label: "Details",
+        children: (
+          <div className="p-4 border rounded-lg">
+            <p className="text-sm">Stroke style variant</p>
+          </div>
+        ),
+      },
+      {
+        key: "3",
+        label: "Settings",
+        children: (
+          <div className="p-4 border rounded-lg">
+            <p className="text-sm">Clean outlined tabs</p>
+          </div>
+        ),
+      },
+    ];
+
+    return (
+      <div className="space-y-8 w-[600px]">
+        <div>
+          <h3 className="text-sm font-semibold mb-4">Primary Border</h3>
+          <Tabs
+            defaultActiveKey="1"
+            items={items}
+            variant="outline"
+            color="primary"
+          />
+        </div>
+        <div>
+          <h3 className="text-sm font-semibold mb-4">Success Border</h3>
+          <Tabs
+            defaultActiveKey="1"
+            items={items}
+            variant="outline"
+            color="success"
+          />
+        </div>
+        <div>
+          <h3 className="text-sm font-semibold mb-4">
+            Secondary Border - Vertical
+          </h3>
+          <Tabs
+            defaultActiveKey="1"
+            items={items}
+            variant="outline"
+            color="secondary"
+            tabPosition="left"
+          />
+        </div>
+      </div>
+    );
+  },
+};
+
+// Variant 6 - Underline style
+export const UnderlinedVariant: Story = {
+  render: () => {
+    const items: TabsProps["items"] = [
+      {
+        key: "1",
+        label: "Home",
+        children: (
+          <div className="p-4 border rounded-lg">
+            <p className="text-sm">Underline style tabs</p>
+          </div>
+        ),
+      },
+      {
+        key: "2",
+        label: "About",
+        children: (
+          <div className="p-4 border rounded-lg">
+            <p className="text-sm">Active tab has colored underline</p>
+          </div>
+        ),
+      },
+      {
+        key: "3",
+        label: "Contact",
+        children: (
+          <div className="p-4 border rounded-lg">
+            <p className="text-sm">Clean modern style</p>
+          </div>
+        ),
+      },
+    ];
+
+    return (
+      <div className="space-y-8 w-[600px]">
+        <div>
+          <h3 className="text-sm font-semibold mb-4">Primary Underline</h3>
+          <Tabs
+            defaultActiveKey="1"
+            items={items}
+            variant="underlined"
+            color="primary"
+          />
+        </div>
+        <div>
+          <h3 className="text-sm font-semibold mb-4">Warning Underline</h3>
+          <Tabs
+            defaultActiveKey="1"
+            items={items}
+            variant="underlined"
+            color="warning"
+          />
+        </div>
+        <div>
+          <h3 className="text-sm font-semibold mb-4">
+            Success Side-line - Vertical
+          </h3>
+          <Tabs
+            defaultActiveKey="1"
+            items={items}
+            variant="underlined"
+            color="success"
+            tabPosition="left"
+          />
+        </div>
+      </div>
+    );
+  },
+};
+
+// Variant 7 - Browser tab style
+export const EnclosedVariant: Story = {
+  render: () => {
+    const items: TabsProps["items"] = [
+      {
+        key: "1",
+        label: "index.html",
+        children: (
+          <div className="p-4 border rounded-lg">
+            <p className="text-sm">Browser-like tab style</p>
+          </div>
+        ),
+      },
+      {
+        key: "2",
+        label: "styles.css",
+        children: (
+          <div className="p-4 border rounded-lg">
+            <p className="text-sm">Active tab connects to content</p>
+          </div>
+        ),
+      },
+      {
+        key: "3",
+        label: "script.js",
+        children: (
+          <div className="p-4 border rounded-lg">
+            <p className="text-sm">Classic tab appearance</p>
+          </div>
+        ),
+      },
+    ];
+
+    return (
+      <div className="space-y-8 w-[600px]">
+        <div>
+          <h3 className="text-sm font-semibold mb-4">Primary Border</h3>
+          <Tabs
+            defaultActiveKey="1"
+            items={items}
+            variant="enclosed"
+            color="primary"
+          />
+        </div>
+        <div>
+          <h3 className="text-sm font-semibold mb-4">Accent Border</h3>
+          <Tabs
+            defaultActiveKey="1"
+            items={items}
+            variant="enclosed"
+            color="accent"
+          />
+        </div>
+        <div>
+          <h3 className="text-sm font-semibold mb-4">
+            Secondary Border - Vertical
+          </h3>
+          <Tabs
+            defaultActiveKey="1"
+            items={items}
+            variant="enclosed"
+            color="secondary"
+            tabPosition="left"
+          />
+        </div>
+      </div>
+    );
+  },
+};
+
+// All Variants Comparison
+export const AllVariants: Story = {
+  render: () => {
+    const items: TabsProps["items"] = [
+      {
+        key: "1",
+        label: "Tab 1",
+        children: (
+          <div className="p-4 border rounded-lg">
+            <p className="text-sm">Content 1</p>
+          </div>
+        ),
+      },
+      {
+        key: "2",
+        label: "Tab 2",
+        children: (
+          <div className="p-4 border rounded-lg">
+            <p className="text-sm">Content 2</p>
+          </div>
+        ),
+      },
+      {
+        key: "3",
+        label: "Tab 3",
+        children: (
+          <div className="p-4 border rounded-lg">
+            <p className="text-sm">Content 3</p>
+          </div>
+        ),
+      },
+    ];
+
+    return (
+      <div className="space-y-8 w-[600px]">
+        <div>
+          <h3 className="text-sm font-semibold mb-2">
+            Solid - Default (Muted)
+          </h3>
+          <Tabs defaultActiveKey="1" items={items} variant="solid" />
+        </div>
+        <div>
+          <h3 className="text-sm font-semibold mb-2">
+            Bordered - With Border (Primary)
+          </h3>
+          <Tabs
+            defaultActiveKey="1"
+            items={items}
+            variant="bordered"
+            color="primary"
+          />
+        </div>
+        <div>
+          <h3 className="text-sm font-semibold mb-2">
+            Pills - Background Only (Secondary)
+          </h3>
+          <Tabs
+            defaultActiveKey="1"
+            items={items}
+            variant="pills"
+            color="secondary"
+          />
+        </div>
+        <div>
+          <h3 className="text-sm font-semibold mb-2">
+            Text - Text Color Only (Success)
+          </h3>
+          <Tabs
+            defaultActiveKey="1"
+            items={items}
+            variant="text"
+            color="success"
+          />
+        </div>
+        <div>
+          <h3 className="text-sm font-semibold mb-2">
+            Outline - Border Stroke (Warning)
+          </h3>
+          <Tabs
+            defaultActiveKey="1"
+            items={items}
+            variant="outline"
+            color="warning"
+          />
+        </div>
+        <div>
+          <h3 className="text-sm font-semibold mb-2">
+            Underlined - Bottom Line (Primary)
+          </h3>
+          <Tabs
+            defaultActiveKey="1"
+            items={items}
+            variant="underlined"
+            color="primary"
+          />
+        </div>
+        <div>
+          <h3 className="text-sm font-semibold mb-2">
+            Enclosed - Browser Tab Style (Accent)
+          </h3>
+          <Tabs
+            defaultActiveKey="1"
+            items={items}
+            variant="enclosed"
+            color="accent"
+          />
+        </div>
+      </div>
+    );
   },
 };
