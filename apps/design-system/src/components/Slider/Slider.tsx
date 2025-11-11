@@ -11,6 +11,7 @@ type LabelAnimation = "number-flow" | "spec" | "none";
 type LabelDisplay = false | "hover" | "always";
 type SliderColor = BasicColor | "muted" | "accent";
 type SliderSize = "sm" | "md" | "lg";
+type LabelPosition = "top" | "bottom" | "left" | "right";
 
 export type SliderProps = React.ComponentProps<typeof SSlider> & {
   color?: SliderColor;
@@ -19,6 +20,12 @@ export type SliderProps = React.ComponentProps<typeof SSlider> & {
   labelArrow?: boolean;
   labelAnimation?: LabelAnimation;
   labelFormatter?: (value: number) => string;
+  labelPosition?: LabelPosition;
+  labelColor?: string; // Custom label background color (e.g., "bg-yellow-500")
+  labelTextColor?: string; // Custom label text color (e.g., "text-yellow-950")
+  labelArrowColor?: string; // Custom label arrow color (e.g., "border-t-yellow-500")
+  sliderColor?: string; // Custom slider track color (e.g., "bg-pink-500")
+  thumbBorderColor?: string; // Custom thumb border color (e.g., "border-pink-500/50")
 };
 
 const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
@@ -31,6 +38,12 @@ const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
       labelArrow = false,
       labelAnimation = "none",
       labelFormatter = (value) => `${value}`,
+      labelPosition = "top",
+      labelColor,
+      labelTextColor,
+      labelArrowColor,
+      sliderColor,
+      thumbBorderColor,
       defaultValue,
       value,
       min = 0,
@@ -86,6 +99,15 @@ const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
     );
 
     const sliderColorClass = useMemo(() => {
+      // If custom colors are provided, use them
+      if (sliderColor || thumbBorderColor) {
+        return {
+          range: sliderColor || "bg-primary",
+          thumb: thumbBorderColor || "border-primary/50",
+        };
+      }
+
+      // Otherwise use predefined colors
       const rangeColors = {
         primary: "bg-primary",
         secondary: "bg-secondary",
@@ -112,7 +134,7 @@ const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
         range: rangeColors[color],
         thumb: thumbColors[color],
       };
-    }, [color]);
+    }, [color, sliderColor, thumbBorderColor]);
 
     const sliderSizeClass = useMemo(() => {
       const trackSizes = {
@@ -134,50 +156,143 @@ const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
     }, [size]);
 
     const labelColorClass = useMemo(() => {
+      // If custom label colors are provided, use them
+      if (labelColor || labelTextColor) {
+        return cn(labelColor, labelTextColor);
+      }
+
+      const orientation = props.orientation || "horizontal";
+      let arrowDirection = "t"; // default top
+
+      if (orientation === "horizontal") {
+        if (labelPosition === "bottom") arrowDirection = "b";
+        else if (labelPosition === "left") arrowDirection = "l";
+        else if (labelPosition === "right") arrowDirection = "r";
+        else arrowDirection = "t";
+      } else {
+        if (labelPosition === "right") arrowDirection = "r";
+        else if (labelPosition === "top") arrowDirection = "t";
+        else if (labelPosition === "bottom") arrowDirection = "b";
+        else arrowDirection = "l";
+      }
+
       switch (color) {
         case "primary":
-          return "bg-primary text-primary-foreground [&>div.arrow]:border-t-primary";
+          return `bg-primary text-primary-foreground [&>div.arrow]:border-${arrowDirection}-primary`;
         case "secondary":
-          return "bg-secondary text-secondary-foreground [&>div.arrow]:border-t-secondary";
+          return `bg-secondary text-secondary-foreground [&>div.arrow]:border-${arrowDirection}-secondary`;
         case "success":
-          return "bg-success text-success-foreground [&>div.arrow]:border-t-success";
+          return `bg-success text-success-foreground [&>div.arrow]:border-${arrowDirection}-success`;
         case "warning":
-          return "bg-warning text-warning-foreground [&>div.arrow]:border-t-warning";
+          return `bg-warning text-warning-foreground [&>div.arrow]:border-${arrowDirection}-warning`;
         case "error":
-          return "bg-error text-error-foreground [&>div.arrow]:border-t-error";
+          return `bg-error text-error-foreground [&>div.arrow]:border-${arrowDirection}-error`;
         case "glass":
-          return "bg-white/15 text-foreground backdrop-blur-sm shadow-lg [&>div.arrow]:border-t-white/15";
+          return `bg-white/15 text-foreground backdrop-blur-sm shadow-lg [&>div.arrow]:border-${arrowDirection}-white/15`;
         case "muted":
-          return "bg-muted text-muted-foreground [&>div.arrow]:border-t-muted";
+          return `bg-muted text-muted-foreground [&>div.arrow]:border-${arrowDirection}-muted`;
         case "accent":
-          return "bg-accent text-accent-foreground [&>div.arrow]:border-t-accent";
+          return `bg-accent text-accent-foreground [&>div.arrow]:border-${arrowDirection}-accent`;
         default:
-          return "bg-primary text-primary-foreground [&>div.arrow]:border-t-primary";
+          return `bg-primary text-primary-foreground [&>div.arrow]:border-${arrowDirection}-primary`;
       }
-    }, [color]);
+    }, [color, labelPosition, props.orientation, labelColor, labelTextColor]);
 
     const arrowColorClass = useMemo(() => {
-      switch (color) {
-        case "primary":
-          return "border-t-primary";
-        case "secondary":
-          return "border-t-secondary";
-        case "success":
-          return "border-t-success";
-        case "warning":
-          return "border-t-warning";
-        case "error":
-          return "border-t-error";
-        case "glass":
-          return "border-t-white/15";
-        case "muted":
-          return "border-t-muted";
-        case "accent":
-          return "border-t-accent";
-        default:
-          return "border-t-primary";
+      // If custom arrow color is provided, use it
+      if (labelArrowColor) {
+        return labelArrowColor;
       }
-    }, [color]);
+
+      const orientation = props.orientation || "horizontal";
+
+      // Create complete class strings for Tailwind
+      const getArrowClasses = (
+        direction: "top" | "bottom" | "left" | "right"
+      ) => {
+        const colorClasses: Record<
+          SliderColor,
+          Record<"top" | "bottom" | "left" | "right", string>
+        > = {
+          primary: {
+            top: "border-t-primary",
+            bottom: "border-b-primary",
+            left: "border-l-primary",
+            right: "border-r-primary",
+          },
+          secondary: {
+            top: "border-t-secondary",
+            bottom: "border-b-secondary",
+            left: "border-l-secondary",
+            right: "border-r-secondary",
+          },
+          success: {
+            top: "border-t-success",
+            bottom: "border-b-success",
+            left: "border-l-success",
+            right: "border-r-success",
+          },
+          warning: {
+            top: "border-t-warning",
+            bottom: "border-b-warning",
+            left: "border-l-warning",
+            right: "border-r-warning",
+          },
+          error: {
+            top: "border-t-error",
+            bottom: "border-b-error",
+            left: "border-l-error",
+            right: "border-r-error",
+          },
+          glass: {
+            top: "border-t-white/15",
+            bottom: "border-b-white/15",
+            left: "border-l-white/15",
+            right: "border-r-white/15",
+          },
+          muted: {
+            top: "border-t-muted",
+            bottom: "border-b-muted",
+            left: "border-l-muted",
+            right: "border-r-muted",
+          },
+          accent: {
+            top: "border-t-accent",
+            bottom: "border-b-accent",
+            left: "border-l-accent",
+            right: "border-r-accent",
+          },
+        };
+
+        return (
+          colorClasses[color]?.[direction] || colorClasses.primary[direction]
+        );
+      };
+
+      // For horizontal orientation
+      if (orientation === "horizontal") {
+        if (labelPosition === "bottom") {
+          return getArrowClasses("bottom");
+        } else if (labelPosition === "left") {
+          return getArrowClasses("left");
+        } else if (labelPosition === "right") {
+          return getArrowClasses("right");
+        }
+        // Default: top
+        return getArrowClasses("top");
+      }
+
+      // For vertical orientation
+      if (labelPosition === "right") {
+        return getArrowClasses("right");
+      } else if (labelPosition === "top") {
+        return getArrowClasses("top");
+      } else if (labelPosition === "bottom") {
+        return getArrowClasses("bottom");
+      }
+      // Default: left
+      return getArrowClasses("left");
+    }, [color, labelPosition, props.orientation, labelArrowColor]);
 
     const labelVisibilityClass = useMemo(() => {
       if (showLabel === "hover") {
@@ -188,6 +303,94 @@ const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
       }
       return "hidden";
     }, [showLabel]);
+
+    const labelPositionClass = useMemo(() => {
+      const orientation = props.orientation || "horizontal";
+
+      // For horizontal orientation
+      if (orientation === "horizontal") {
+        if (labelPosition === "bottom") {
+          return {
+            badge: "left-1/2 -translate-x-1/2 top-full translate-y-1/2",
+            arrow:
+              "bottom-full left-1/2 -translate-x-1/2 border-b-[6px] border-l-[6px] border-r-[6px] border-t-0 border-l-transparent border-r-transparent",
+          };
+        } else if (labelPosition === "left") {
+          return {
+            badge: "top-1/2 -translate-y-1/2 right-full -translate-x-1/2",
+            arrow:
+              "left-full top-1/2 -translate-y-1/2 border-l-[6px] border-t-[6px] border-b-[6px] border-r-0 border-t-transparent border-b-transparent",
+          };
+        } else if (labelPosition === "right") {
+          return {
+            badge: "top-1/2 -translate-y-1/2 left-full translate-x-1/2",
+            arrow:
+              "right-full top-1/2 -translate-y-1/2 border-r-[6px] border-t-[6px] border-b-[6px] border-l-0 border-t-transparent border-b-transparent",
+          };
+        }
+        // Default: top
+        return {
+          badge: "left-1/2 -translate-x-1/2 bottom-full -translate-y-1/2",
+          arrow:
+            "top-full left-1/2 -translate-x-1/2 border-t-[6px] border-l-[6px] border-r-[6px] border-b-0 border-l-transparent border-r-transparent",
+        };
+      }
+
+      // For vertical orientation
+      if (labelPosition === "right") {
+        return {
+          badge: "top-1/2 -translate-y-1/2 left-full translate-x-1/2",
+          arrow:
+            "right-full top-1/2 -translate-y-1/2 border-r-[6px] border-t-[6px] border-b-[6px] border-l-0 border-t-transparent border-b-transparent",
+        };
+      } else if (labelPosition === "top") {
+        return {
+          badge: "left-1/2 -translate-x-1/2 bottom-full -translate-y-1/2",
+          arrow:
+            "top-full left-1/2 -translate-x-1/2 border-t-[6px] border-l-[6px] border-r-[6px] border-b-0 border-l-transparent border-r-transparent",
+        };
+      } else if (labelPosition === "bottom") {
+        return {
+          badge: "left-1/2 -translate-x-1/2 top-full translate-y-1/2",
+          arrow:
+            "bottom-full left-1/2 -translate-x-1/2 border-b-[6px] border-l-[6px] border-r-[6px] border-t-0 border-l-transparent border-r-transparent",
+        };
+      }
+      // Default: left
+      return {
+        badge: "top-1/2 -translate-y-1/2 right-full -translate-x-1/2",
+        arrow:
+          "left-full top-1/2 -translate-y-1/2 border-l-[6px] border-t-[6px] border-b-[6px] border-r-0 border-t-transparent border-b-transparent",
+      };
+    }, [labelPosition, props.orientation]);
+
+    const labelPositionClassSpec = useMemo(() => {
+      const orientation = props.orientation || "horizontal";
+
+      // For horizontal orientation
+      if (orientation === "horizontal") {
+        if (labelPosition === "bottom") {
+          return "data-[orientation=horizontal]:top-full data-[orientation=horizontal]:left-1/2 data-[orientation=horizontal]:-translate-x-1/2 data-[orientation=horizontal]:translate-y-1/2";
+        } else if (labelPosition === "left") {
+          return "data-[orientation=horizontal]:top-1/2 data-[orientation=horizontal]:right-full data-[orientation=horizontal]:-translate-y-1/2 data-[orientation=horizontal]:-translate-x-1/2";
+        } else if (labelPosition === "right") {
+          return "data-[orientation=horizontal]:top-1/2 data-[orientation=horizontal]:left-full data-[orientation=horizontal]:-translate-y-1/2 data-[orientation=horizontal]:translate-x-1/2";
+        }
+        // Default: top
+        return "data-[orientation=horizontal]:bottom-full data-[orientation=horizontal]:left-1/2 data-[orientation=horizontal]:-translate-x-1/2 data-[orientation=horizontal]:-translate-y-1/2";
+      }
+
+      // For vertical orientation
+      if (labelPosition === "right") {
+        return "data-[orientation=vertical]:left-full data-[orientation=vertical]:top-1/2 data-[orientation=vertical]:translate-x-1/2 data-[orientation=vertical]:-translate-y-1/2";
+      } else if (labelPosition === "top") {
+        return "data-[orientation=vertical]:bottom-full data-[orientation=vertical]:left-1/2 data-[orientation=vertical]:-translate-x-1/2 data-[orientation=vertical]:-translate-y-1/2";
+      } else if (labelPosition === "bottom") {
+        return "data-[orientation=vertical]:top-full data-[orientation=vertical]:left-1/2 data-[orientation=vertical]:-translate-x-1/2 data-[orientation=vertical]:translate-y-1/2";
+      }
+      // Default: left
+      return "data-[orientation=vertical]:right-full data-[orientation=vertical]:top-1/2 data-[orientation=vertical]:-translate-x-1/2 data-[orientation=vertical]:-translate-y-1/2";
+    }, [labelPosition, props.orientation]);
 
     // Render without label - use custom slider with color
     if (!showLabel) {
@@ -279,15 +482,28 @@ const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
             >
               <motion.div
                 className={cn(
-                  "pointer-events-none absolute -top-2 left-1/2 z-50 flex -translate-x-1/2 -translate-y-full flex-col items-center justify-center rounded-md px-3 py-1.5 text-xs shadow-xl",
-                  labelColorClass
+                  "pointer-events-none absolute z-50 flex flex-col items-center justify-center rounded-md px-3 py-1.5 text-xs shadow-xl",
+                  labelPositionClassSpec,
+                  // Apply custom colors if provided, otherwise use labelColorClass
+                  labelColor && labelColor,
+                  labelTextColor && labelTextColor,
+                  !labelColor && !labelTextColor && labelColorClass
                 )}
-                initial={{ opacity: 0, y: 20, scale: 0 }}
-                whileHover={{
-                  opacity: 1,
-                  y: -5,
-                  scale: 1,
-                }}
+                data-orientation={props.orientation || "horizontal"}
+                initial={
+                  showLabel === "always"
+                    ? { opacity: 1, y: -5, scale: 1 }
+                    : { opacity: 0, y: 20, scale: 0 }
+                }
+                whileHover={
+                  showLabel === "hover" || showLabel === "always"
+                    ? {
+                        opacity: 1,
+                        y: -5,
+                        scale: 1,
+                      }
+                    : undefined
+                }
                 transition={{
                   type: "tween",
                   duration: 0.2,
@@ -352,20 +568,29 @@ const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
             <Badge
               size="lg"
               color={
-                color === "glass"
+                // If custom colors are provided, use "custom" to avoid Badge's default colors
+                labelColor || labelTextColor
                   ? "custom"
-                  : color === "muted"
-                    ? "muted"
-                    : color === "accent"
-                      ? "accent"
-                      : color
+                  : color === "glass"
+                    ? "custom"
+                    : color === "muted"
+                      ? "muted"
+                      : color === "accent"
+                        ? "accent"
+                        : color
               }
               variant="solid"
               className={cn(
-                "transition-transform absolute left-1/2 -translate-x-1/2 -translate-y-1/2 px-3 rounded-md",
-                labelArrow ? "-top-5 overflow-visible" : "-top-4",
+                "transition-transform absolute px-3 rounded-md",
+                labelPositionClass.badge,
                 labelVisibilityClass,
-                color === "glass" &&
+                // Apply custom colors if provided
+                labelColor && labelColor,
+                labelTextColor && labelTextColor,
+                // Glass effect only if no custom colors
+                !labelColor &&
+                  !labelTextColor &&
+                  color === "glass" &&
                   "bg-white/15 text-foreground backdrop-blur-sm shadow-lg [&>div.arrow]:border-t-white/15"
               )}
             >
@@ -380,7 +605,8 @@ const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
               {labelArrow && (
                 <div
                   className={cn(
-                    "arrow absolute border-[6px] left-1/2 -translate-x-1/2 border-transparent top-full",
+                    "arrow absolute border-transparent",
+                    labelPositionClass.arrow,
                     arrowColorClass
                   )}
                 />

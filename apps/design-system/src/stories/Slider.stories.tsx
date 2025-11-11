@@ -33,7 +33,8 @@ const meta: Meta<SliderProps> = {
     },
     defaultValue: {
       control: "object",
-      description: "Default value (uncontrolled). Must be an array of numbers, e.g., [50] for single thumb or [25, 75] for range.",
+      description:
+        "Default value (uncontrolled). Must be an array of numbers, e.g., [50] for single thumb or [25, 75] for range.",
       table: {
         type: { summary: "number[]" },
         defaultValue: { summary: "[50]" },
@@ -41,7 +42,8 @@ const meta: Meta<SliderProps> = {
     },
     value: {
       control: "object",
-      description: "Controlled value. Must be an array of numbers, e.g., [50] for single thumb or [25, 75] for range.",
+      description:
+        "Controlled value. Must be an array of numbers, e.g., [50] for single thumb or [25, 75] for range.",
       table: {
         type: { summary: "number[]" },
       },
@@ -107,6 +109,15 @@ const meta: Meta<SliderProps> = {
       description: "Label animation type",
       table: {
         defaultValue: { summary: "none" },
+      },
+    },
+    labelPosition: {
+      control: "select",
+      options: ["top", "bottom", "left", "right"],
+      description:
+        "Label position relative to thumb. For horizontal sliders: top/bottom. For vertical sliders: left/right.",
+      table: {
+        defaultValue: { summary: "top" },
       },
     },
     className: {
@@ -193,30 +204,6 @@ export const Marks: Story = {
             <span key={expansion}>{expansion}</span>
           ))}
         </div>
-      </div>
-    </div>
-  ),
-};
-
-// Different ranges
-export const Ranges: Story = {
-  render: () => (
-    <div className="w-80 space-y-8">
-      <div className="space-y-2">
-        <label className="text-sm font-medium">0 to 100</label>
-        <Slider defaultValue={[50]} min={0} max={100} />
-      </div>
-      <div className="space-y-2">
-        <label className="text-sm font-medium">0 to 10</label>
-        <Slider defaultValue={[5]} min={0} max={10} step={0.1} />
-      </div>
-      <div className="space-y-2">
-        <label className="text-sm font-medium">-50 to 50</label>
-        <Slider defaultValue={[0]} min={-50} max={50} />
-      </div>
-      <div className="space-y-2">
-        <label className="text-sm font-medium">1000 to 10000</label>
-        <Slider defaultValue={[5000]} min={1000} max={10000} step={100} />
       </div>
     </div>
   ),
@@ -417,11 +404,7 @@ export const SliderColors: Story = {
       <div className="w-80 space-y-6">
         <div className="space-y-2">
           <label className="text-sm font-medium">Primary</label>
-          <Slider
-            value={primary}
-            onValueChange={setPrimary}
-            color="primary"
-          />
+          <Slider value={primary} onValueChange={setPrimary} color="primary" />
         </div>
         <div className="space-y-2">
           <label className="text-sm font-medium">Secondary</label>
@@ -433,19 +416,11 @@ export const SliderColors: Story = {
         </div>
         <div className="space-y-2">
           <label className="text-sm font-medium">Success</label>
-          <Slider
-            value={success}
-            onValueChange={setSuccess}
-            color="success"
-          />
+          <Slider value={success} onValueChange={setSuccess} color="success" />
         </div>
         <div className="space-y-2">
           <label className="text-sm font-medium">Warning</label>
-          <Slider
-            value={warning}
-            onValueChange={setWarning}
-            color="warning"
-          />
+          <Slider value={warning} onValueChange={setWarning} color="warning" />
         </div>
         <div className="space-y-2">
           <label className="text-sm font-medium">Error</label>
@@ -544,16 +519,10 @@ export const LabelOnHover: Story = {
     return (
       <div className="w-80 space-y-4">
         <div className="flex justify-between items-center">
-          <label className="text-sm font-medium">
-            Hover to see value
-          </label>
+          <label className="text-sm font-medium">Hover to see value</label>
           <span className="text-sm text-muted-foreground">{value[0]}%</span>
         </div>
-        <Slider
-          value={value}
-          onValueChange={setValue}
-          showLabel="hover"
-        />
+        <Slider value={value} onValueChange={setValue} showLabel="hover" />
       </div>
     );
   },
@@ -569,11 +538,7 @@ export const LabelAlwaysVisible: Story = {
         <div className="flex justify-between items-center">
           <label className="text-sm font-medium">Label always visible</label>
         </div>
-        <Slider
-          value={value}
-          onValueChange={setValue}
-          showLabel="always"
-        />
+        <Slider value={value} onValueChange={setValue} showLabel="always" />
       </div>
     );
   },
@@ -612,7 +577,9 @@ export const LabelColors: Story = {
     return (
       <div className="w-80 space-y-6">
         <div className="space-y-2">
-          <label className="text-sm font-medium">Primary (slider + label)</label>
+          <label className="text-sm font-medium">
+            Primary (slider + label)
+          </label>
           <Slider
             value={primary}
             onValueChange={setPrimary}
@@ -674,9 +641,7 @@ export const NumberFlowAnimation: Story = {
     return (
       <div className="w-80 space-y-4">
         <div className="flex justify-between items-center">
-          <label className="text-sm font-medium">
-            Number Flow Animation
-          </label>
+          <label className="text-sm font-medium">Number Flow Animation</label>
           <span className="text-sm text-muted-foreground">
             Drag to see animation
           </span>
@@ -836,6 +801,321 @@ export const VolumeWithLabel: Story = {
         <div className="flex justify-between text-xs text-muted-foreground">
           <span>Muted</span>
           <span>Max</span>
+        </div>
+      </div>
+    );
+  },
+};
+
+// Spec animation with different positions
+export const SpecAnimationPositions: Story = {
+  render: function SpecAnimationPositionsDemo() {
+    const [topValue, setTopValue] = React.useState([50]);
+    const [bottomValue, setBottomValue] = React.useState([60]);
+
+    return (
+      <div className="w-80 space-y-12">
+        <div className="space-y-4">
+          <label className="text-sm font-medium">Spec Animation - Top</label>
+          <p className="text-xs text-muted-foreground">Hover and move mouse</p>
+          <Slider
+            value={topValue}
+            onValueChange={setTopValue}
+            showLabel="always"
+            labelAnimation="spec"
+            labelPosition="top"
+            color="primary"
+          />
+        </div>
+        <div className="space-y-4">
+          <label className="text-sm font-medium">Spec Animation - Bottom</label>
+          <p className="text-xs text-muted-foreground">Hover and move mouse</p>
+          <Slider
+            value={bottomValue}
+            onValueChange={setBottomValue}
+            showLabel="always"
+            labelAnimation="spec"
+            labelPosition="bottom"
+            color="secondary"
+          />
+        </div>
+      </div>
+    );
+  },
+};
+
+// All horizontal positions test
+export const AllHorizontalPositions: Story = {
+  render: function AllHorizontalPositionsDemo() {
+    const [topValue, setTopValue] = React.useState([50]);
+    const [bottomValue, setBottomValue] = React.useState([60]);
+    const [leftValue, setLeftValue] = React.useState([40]);
+    const [rightValue, setRightValue] = React.useState([70]);
+
+    return (
+      <div className="w-96 space-y-16 p-8">
+        <div className="space-y-4">
+          <label className="text-sm font-medium">Horizontal - Label Top</label>
+          <Slider
+            value={topValue}
+            onValueChange={setTopValue}
+            showLabel="always"
+            labelPosition="top"
+            labelArrow
+            color="primary"
+          />
+        </div>
+        <div className="space-y-4">
+          <label className="text-sm font-medium">
+            Horizontal - Label Bottom
+          </label>
+          <Slider
+            value={bottomValue}
+            onValueChange={setBottomValue}
+            showLabel="always"
+            labelPosition="bottom"
+            labelArrow
+            color="secondary"
+          />
+        </div>
+        <div className="space-y-4">
+          <label className="text-sm font-medium">Horizontal - Label Left</label>
+          <Slider
+            value={leftValue}
+            onValueChange={setLeftValue}
+            showLabel="always"
+            labelPosition="left"
+            labelArrow
+            color="success"
+          />
+        </div>
+        <div className="space-y-4">
+          <label className="text-sm font-medium">
+            Horizontal - Label Right
+          </label>
+          <Slider
+            value={rightValue}
+            onValueChange={setRightValue}
+            showLabel="always"
+            labelPosition="right"
+            labelArrow
+            color="warning"
+          />
+        </div>
+      </div>
+    );
+  },
+};
+
+// All vertical positions test
+export const AllVerticalPositions: Story = {
+  render: function AllVerticalPositionsDemo() {
+    const [topValue, setTopValue] = React.useState([50]);
+    const [bottomValue, setBottomValue] = React.useState([60]);
+    const [leftValue, setLeftValue] = React.useState([40]);
+    const [rightValue, setRightValue] = React.useState([70]);
+
+    return (
+      <div className="flex gap-12 h-96 items-center p-8">
+        <div className="flex flex-col items-center gap-4">
+          <Slider
+            value={topValue}
+            onValueChange={setTopValue}
+            orientation="vertical"
+            showLabel="always"
+            labelPosition="top"
+            labelArrow
+            color="primary"
+            className="h-64"
+          />
+          <label className="text-sm font-medium">Label Top</label>
+        </div>
+        <div className="flex flex-col items-center gap-4">
+          <Slider
+            value={bottomValue}
+            onValueChange={setBottomValue}
+            orientation="vertical"
+            showLabel="always"
+            labelPosition="bottom"
+            labelArrow
+            color="secondary"
+            className="h-64"
+          />
+          <label className="text-sm font-medium">Label Bottom</label>
+        </div>
+        <div className="flex flex-col items-center gap-4">
+          <Slider
+            value={leftValue}
+            onValueChange={setLeftValue}
+            orientation="vertical"
+            showLabel="always"
+            labelPosition="left"
+            labelArrow
+            color="success"
+            className="h-64"
+          />
+          <label className="text-sm font-medium">Label Left</label>
+        </div>
+        <div className="flex flex-col items-center gap-4">
+          <Slider
+            value={rightValue}
+            onValueChange={setRightValue}
+            orientation="vertical"
+            showLabel="always"
+            labelPosition="right"
+            labelArrow
+            color="warning"
+            className="h-64"
+          />
+          <label className="text-sm font-medium">Label Right</label>
+        </div>
+      </div>
+    );
+  },
+};
+
+// === CUSTOM COLOR COMBINATIONS ===
+
+// Pink slider with yellow label
+export const CustomColorPinkYellow: Story = {
+  render: function CustomColorPinkYellowSlider() {
+    const [value, setValue] = React.useState([50]);
+
+    return (
+      <div className="w-80 space-y-4">
+        <div className="flex justify-between items-center">
+          <label className="text-sm font-medium">
+            Pink Slider + Yellow Label
+          </label>
+        </div>
+        <Slider
+          value={value}
+          onValueChange={setValue}
+          showLabel="always"
+          labelArrow
+          sliderColor="bg-pink-500"
+          thumbBorderColor="border-pink-500/50"
+          labelColor="bg-yellow-500"
+          labelTextColor="text-yellow-950"
+          labelArrowColor="border-t-yellow-500"
+        />
+      </div>
+    );
+  },
+};
+
+// Purple slider with brown label
+export const CustomColorPurpleBrown: Story = {
+  render: function CustomColorPurpleBrownSlider() {
+    const [value, setValue] = React.useState([60]);
+
+    return (
+      <div className="w-80 space-y-4">
+        <div className="flex justify-between items-center">
+          <label className="text-sm font-medium">
+            Purple Slider + Brown Label
+          </label>
+        </div>
+        <Slider
+          value={value}
+          onValueChange={setValue}
+          showLabel="always"
+          labelArrow
+          sliderColor="bg-purple-600"
+          thumbBorderColor="border-purple-600/50"
+          labelColor="bg-amber-800"
+          labelTextColor="text-amber-50"
+          labelArrowColor="border-t-amber-800"
+        />
+      </div>
+    );
+  },
+};
+
+// Blue slider with orange label
+export const CustomColorBlueOrange: Story = {
+  render: function CustomColorBlueOrangeSlider() {
+    const [value, setValue] = React.useState([70]);
+
+    return (
+      <div className="w-80 space-y-4">
+        <div className="flex justify-between items-center">
+          <label className="text-sm font-medium">
+            Blue Slider + Orange Label
+          </label>
+        </div>
+        <Slider
+          value={value}
+          onValueChange={setValue}
+          showLabel="always"
+          labelArrow
+          sliderColor="bg-blue-600"
+          thumbBorderColor="border-blue-600/50"
+          labelColor="bg-orange-500"
+          labelTextColor="text-orange-950"
+          labelArrowColor="border-t-orange-500"
+        />
+      </div>
+    );
+  },
+};
+
+// All custom colors together
+export const CustomColorsShowcase: Story = {
+  render: function CustomColorsShowcaseSlider() {
+    const [pink, setPink] = React.useState([50]);
+    const [purple, setPurple] = React.useState([60]);
+    const [blue, setBlue] = React.useState([70]);
+
+    return (
+      <div className="w-80 space-y-8">
+        <div className="space-y-2">
+          <label className="text-sm font-medium">
+            Pink Slider + Yellow Label
+          </label>
+          <Slider
+            value={pink}
+            onValueChange={setPink}
+            showLabel="always"
+            labelArrow
+            sliderColor="bg-pink-500"
+            thumbBorderColor="border-pink-500/50"
+            labelColor="bg-yellow-200"
+            labelTextColor="text-yellow-500"
+            labelArrowColor="border-t-yellow-200"
+          />
+        </div>
+        <div className="space-y-2">
+          <label className="text-sm font-medium">
+            Purple Slider + Brown Label
+          </label>
+          <Slider
+            value={purple}
+            onValueChange={setPurple}
+            showLabel="always"
+            labelArrow
+            sliderColor="bg-purple-600"
+            thumbBorderColor="border-purple-600/50"
+            labelColor="bg-amber-800"
+            labelTextColor="text-amber-50"
+            labelArrowColor="border-t-amber-800"
+          />
+        </div>
+        <div className="space-y-2">
+          <label className="text-sm font-medium">
+            Blue Slider + Orange Label
+          </label>
+          <Slider
+            value={blue}
+            onValueChange={setBlue}
+            showLabel="always"
+            labelArrow
+            sliderColor="bg-blue-600"
+            thumbBorderColor="border-blue-600/50"
+            labelColor="bg-red-500"
+            labelTextColor="text-red-950"
+            labelArrowColor="border-t-red-500"
+          />
         </div>
       </div>
     );
