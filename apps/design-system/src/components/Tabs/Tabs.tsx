@@ -266,10 +266,10 @@ const getEnclosedTriggerClasses = (tabPosition: TabPosition): string => {
     "bg-background dark:bg-background border border-transparent data-[state=active]:shadow-none rounded-none";
 
   const positionMap: Record<TabPosition, string> = {
-    top: `${baseClasses} rounded-t data-[state=active]:border-t data-[state=active]:border-l data-[state=active]:border-r data-[state=active]:border-b-0 data-[state=active]:border-b-background dark:data-[state=active]:border-b-background h-full data-[state=active]:-mb-0.5 data-[state=active]:translate-y-[0px]`,
-    bottom: `${baseClasses} rounded-b data-[state=active]:border-b data-[state=active]:border-l data-[state=active]:border-r data-[state=active]:border-t-0 data-[state=active]:border-t-background dark:data-[state=active]:border-t-background h-full data-[state=active]:-mt-0.5 data-[state=active]:translate-y-[0px]`,
-    left: `${baseClasses} rounded-l data-[state=active]:border-t data-[state=active]:border-l data-[state=active]:border-b data-[state=active]:border-r-0 data-[state=active]:border-r-background dark:data-[state=active]:border-r-background w-full data-[state=active]:-mr-0.5 data-[state=active]:translate-x-[1px]`,
-    right: `${baseClasses} rounded-r data-[state=active]:border-t data-[state=active]:border-r data-[state=active]:border-b data-[state=active]:border-l-0 data-[state=active]:border-l-background dark:data-[state=active]:border-l-background w-full data-[state=active]:-ml-0.5 data-[state=active]:translate-x-[1px]`,
+    top: `${baseClasses} rounded-t-md data-[state=active]:border-t data-[state=active]:border-l data-[state=active]:border-r data-[state=active]:border-b-0 data-[state=active]:border-b-background dark:data-[state=active]:border-b-background h-full data-[state=active]:-mb-0.5 data-[state=active]:translate-y-[0px]`,
+    bottom: `${baseClasses} rounded-b-md data-[state=active]:border-b data-[state=active]:border-l data-[state=active]:border-r data-[state=active]:border-t-0 data-[state=active]:border-t-background dark:data-[state=active]:border-t-background h-full data-[state=active]:-mt-0.5 data-[state=active]:translate-y-[0px]`,
+    left: `${baseClasses} rounded-l-md data-[state=active]:border-t data-[state=active]:border-l data-[state=active]:border-b data-[state=active]:border-r-0 data-[state=active]:border-r-background dark:data-[state=active]:border-r-background w-full data-[state=active]:-mr-0.5 data-[state=active]:translate-x-[1px]`,
+    right: `${baseClasses} rounded-r-md data-[state=active]:border-t data-[state=active]:border-r data-[state=active]:border-b data-[state=active]:border-l-0 data-[state=active]:border-l-background dark:data-[state=active]:border-l-background w-full data-[state=active]:-ml-0.5 data-[state=active]:translate-x-[1px]`,
   };
 
   return positionMap[tabPosition];
