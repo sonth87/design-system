@@ -110,9 +110,9 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
 
   const isVertical = tabPosition === "left" || tabPosition === "right";
 
-  // Check if tabs are overflowing
-  React.useEffect(() => {
-    if (!overflowMode) return;
+  // Check if tabs are overflowing (for scroll and fade modes)
+  React.useLayoutEffect(() => {
+    if (!overflowMode || overflowMode === "dropdown") return;
 
     const checkOverflow = () => {
       const container = containerRef.current;
@@ -129,29 +129,6 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
 
       const hasOverflow = listSize > containerSize;
       setIsOverflowing(hasOverflow);
-
-      if (hasOverflow && overflowMode === "dropdown") {
-        // Calculate how many tabs can fit
-        let totalSize = 0;
-        const dropdownButtonSize = 48; // Approximate size of [...] button
-        const availableSize = containerSize - dropdownButtonSize;
-
-        let count = 0;
-        for (let i = 0; i < tabRefs.current.length; i++) {
-          const tab = tabRefs.current[i];
-          if (!tab) break;
-
-          const tabSize = isVertical ? tab.offsetHeight : tab.offsetWidth;
-          if (totalSize + tabSize <= availableSize) {
-            totalSize += tabSize;
-            count++;
-          } else {
-            break;
-          }
-        }
-
-        setVisibleTabsCount(Math.max(1, count));
-      }
     };
 
     // Initial check
@@ -170,6 +147,82 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
       resizeObserver.disconnect();
     };
   }, [items, overflowMode, isVertical]);
+
+  // Calculate visible tabs for dropdown mode
+  React.useLayoutEffect(() => {
+    if (overflowMode !== "dropdown") return;
+
+    const calculateVisibleTabs = () => {
+      const container = containerRef.current;
+      if (!container) return;
+
+      const containerSize = isVertical
+        ? container.clientHeight
+        : container.clientWidth;
+
+      // Calculate how many tabs can fit including the [...] button
+      let totalSize = 0;
+      const dropdownButtonSize = 48; // Size of [...] button with gap
+      const listPadding = 6; // p-[3px] = 6px total padding for some variants
+      const gap =
+        variant === "enclosed-fill" ||
+        variant === "bordered" ||
+        variant === "pills" ||
+        variant === "pill-stroke" ||
+        variant === "text" ||
+        variant === "outline"
+          ? 4
+          : 0; // gap-1 = 4px
+
+      let count = 0;
+      for (let i = 0; i < tabRefs.current.length; i++) {
+        const tab = tabRefs.current[i];
+        if (!tab) break;
+
+        const tabSize = isVertical ? tab.offsetHeight : tab.offsetWidth;
+        const withGap = i > 0 ? gap : 0;
+
+        // Check if we can fit this tab + [...] button if there are more tabs
+        const hasMoreTabs = i < tabRefs.current.length - 1;
+        const requiredSize =
+          totalSize +
+          tabSize +
+          withGap +
+          (hasMoreTabs ? dropdownButtonSize : 0) +
+          listPadding;
+
+        if (requiredSize <= containerSize) {
+          totalSize += tabSize + withGap;
+          count++;
+        } else {
+          break;
+        }
+      }
+
+      // Only show overflow if we can't fit all tabs
+      const hasHiddenTabs = count < items.length;
+      setIsOverflowing(hasHiddenTabs);
+      setVisibleTabsCount(Math.max(1, count));
+    };
+
+    // Initial calculation
+    calculateVisibleTabs();
+
+    // Use ResizeObserver for responsive updates
+    const resizeObserver = new ResizeObserver(calculateVisibleTabs);
+    if (containerRef.current) {
+      resizeObserver.observe(containerRef.current);
+    }
+
+    // Also observe each tab for size changes
+    tabRefs.current.forEach((tab) => {
+      if (tab) resizeObserver.observe(tab);
+    });
+
+    return () => {
+      resizeObserver.disconnect();
+    };
+  }, [items, overflowMode, isVertical, variant]);
 
   React.useLayoutEffect(() => {
     const activeIndex = items.findIndex((tab) => tab.key === currentActiveKey);
@@ -377,6 +430,10 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
         ? items
         : [];
 
+  // For dropdown mode: show [...] button only if there are hidden tabs
+  const showDropdownButton =
+    overflowMode === "dropdown" && isOverflowing && overflowTabs.length > 0;
+
   // Check if active tab is in overflow (hidden) tabs
   const isActiveTabInOverflow =
     overflowMode === "dropdown" &&
@@ -460,6 +517,8 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
           {
             "overflow-hidden": overflowMode === "fade" && isOverflowing,
             "max-w-full": overflowMode === "fade", // Limit width for fade mode
+            // For overflow modes, allow natural width expansion
+            "w-auto": overflowMode === "dropdown" || overflowMode === "fade",
           }
         )}
       >
@@ -542,7 +601,8 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
                   variant === "pill-stroke" && color === "primary",
                 "border rounded-full border-secondary":
                   variant === "pill-stroke" && color === "secondary",
-                "rounded-full border-muted": variant === "pill-stroke" && color === "muted",
+                "rounded-full border-muted":
+                  variant === "pill-stroke" && color === "muted",
                 "border rounded-full border-accent":
                   variant === "pill-stroke" && color === "accent",
                 "border rounded-full border-destructive":
@@ -585,69 +645,130 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
       );
     }
 
-    // Mode 2 & 3: Dropdown or Fade with overflow button
-    if (
-      (overflowMode === "dropdown" || overflowMode === "fade") &&
-      isOverflowing
-    ) {
+    // Mode 2: Dropdown - show visible tabs + [...] button for overflow tabs
+    if (overflowMode === "dropdown" && showDropdownButton) {
       return (
         <div
           className={cn("relative flex items-start gap-1", {
             "flex-col": isVertical,
-            "flex-1 w-full": overflowMode === "fade", // Take full width for fade mode
+          })}
+        >
+          {/* Show only visible tabs */}
+          {tabsListContent}
+
+          {/* Overflow menu button - only show if there are hidden tabs */}
+          <Popover
+            open={dropdownOpen}
+            onOpenChange={setDropdownOpen}
+            trigger={
+              <button
+                className={cn(
+                  "inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors",
+                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+                  "disabled:pointer-events-none disabled:opacity-50",
+                  "hover:bg-accent hover:text-accent-foreground",
+                  "h-9 px-3 shrink-0",
+                  {
+                    "bg-accent text-accent-foreground": dropdownOpen,
+                  }
+                )}
+                aria-label="More tabs"
+              >
+                <MoreHorizontal className="h-4 w-4" />
+              </button>
+            }
+            content={
+              <div className={cn("flex flex-col gap-1 p-1")}>
+                {overflowTabs.map((item) => (
+                  <button
+                    key={item.key}
+                    onClick={() => {
+                      handleValueChange(item.key);
+                      setDropdownOpen(false);
+                    }}
+                    disabled={item.disabled}
+                    className={cn(
+                      "flex items-center gap-2 rounded-sm px-2 py-1.5 text-sm",
+                      "hover:bg-accent hover:text-accent-foreground",
+                      "disabled:pointer-events-none disabled:opacity-50",
+                      "text-left",
+                      {
+                        "bg-accent text-accent-foreground":
+                          item.key === currentActiveKey,
+                      }
+                    )}
+                  >
+                    {item.icon && (
+                      <span className="inline-flex items-center">
+                        {item.icon}
+                      </span>
+                    )}
+                    {item.label}
+                  </button>
+                ))}
+              </div>
+            }
+            side={isVertical ? "right" : "bottom"}
+            align="end"
+            className="w-auto min-w-32 max-w-sm max-h-96 overflow-auto p-0"
+          />
+        </div>
+      );
+    }
+
+    // Mode 3: Fade with overflow button
+    if (overflowMode === "fade" && isOverflowing) {
+      return (
+        <div
+          className={cn("relative flex items-start gap-1", {
+            "flex-col": isVertical,
+            "flex-1 w-full": true, // Take full width for fade mode
           })}
         >
           {/* Fade effect for mode 3 */}
-          {overflowMode === "fade" && (
-            <div
-              className={cn("relative flex-1 overflow-hidden", {
+          <div
+            className={cn("relative flex-1 overflow-hidden", {
+              "w-full": !isVertical,
+              "h-full": isVertical,
+            })}
+          >
+            <ScrollArea
+              ref={scrollAreaRef}
+              className={cn({
                 "w-full": !isVertical,
                 "h-full": isVertical,
               })}
             >
-              <ScrollArea
-                ref={scrollAreaRef}
-                className={cn({
-                  "w-full": !isVertical,
-                  "h-full": isVertical,
+              {tabsListContent}
+              <ScrollBar orientation={isVertical ? "vertical" : "horizontal"} />
+            </ScrollArea>
+
+            {/* Start gradient overlay (left/top) - only show when scrolled */}
+            {showStartFade && (
+              <div
+                className={cn("absolute pointer-events-none z-20", {
+                  "top-0 left-0 bottom-0 w-24 bg-linear-to-r from-background to-transparent":
+                    !isVertical,
+                  "left-0 right-0 top-0 h-24 bg-linear-to-b from-background to-transparent":
+                    isVertical,
                 })}
-              >
-                {tabsListContent}
-                <ScrollBar
-                  orientation={isVertical ? "vertical" : "horizontal"}
-                />
-              </ScrollArea>
+              />
+            )}
 
-              {/* Start gradient overlay (left/top) - only show when scrolled */}
-              {showStartFade && (
-                <div
-                  className={cn("absolute pointer-events-none z-20", {
-                    "top-0 left-0 bottom-0 w-24 bg-linear-to-r from-background to-transparent":
-                      !isVertical,
-                    "left-0 right-0 top-0 h-24 bg-linear-to-b from-background to-transparent":
-                      isVertical,
-                  })}
-                />
-              )}
+            {/* End gradient overlay (right/bottom) - only show when not at end */}
+            {showEndFade && (
+              <div
+                className={cn("absolute pointer-events-none z-20", {
+                  "top-0 right-0 bottom-0 w-24 bg-linear-to-l from-background to-transparent":
+                    !isVertical,
+                  "left-0 right-0 bottom-0 h-24 bg-linear-to-t from-background to-transparent":
+                    isVertical,
+                })}
+              />
+            )}
+          </div>
 
-              {/* End gradient overlay (right/bottom) - only show when not at end */}
-              {showEndFade && (
-                <div
-                  className={cn("absolute pointer-events-none z-20", {
-                    "top-0 right-0 bottom-0 w-24 bg-linear-to-l from-background to-transparent":
-                      !isVertical,
-                    "left-0 right-0 bottom-0 h-24 bg-linear-to-t from-background to-transparent":
-                      isVertical,
-                  })}
-                />
-              )}
-            </div>
-          )}
-
-          {/* Show tabs list without fade for dropdown mode */}
-          {overflowMode === "dropdown" && tabsListContent}
-
-          {/* Overflow menu button */}
+          {/* Overflow menu button - shows all tabs */}
           <Popover
             open={dropdownOpen}
             onOpenChange={setDropdownOpen}
@@ -670,7 +791,7 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
             }
             content={
               <div className={cn("flex flex-col gap-1 p-1 min-w-[150px]")}>
-                {overflowTabs.map((item) => (
+                {items.map((item) => (
                   <button
                     key={item.key}
                     onClick={() => {
@@ -723,7 +844,13 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
         className={cn("flex", {
           [alignmentClasses[alignment].horizontal]: !isVertical,
           [alignmentClasses[alignment].vertical]: isVertical,
-          "w-full": fullWidth && !isVertical,
+          "w-full":
+            (fullWidth ||
+              overflowMode === "dropdown" ||
+              overflowMode === "fade") &&
+            !isVertical,
+          "overflow-hidden":
+            overflowMode === "dropdown" || overflowMode === "fade",
         })}
       >
         {renderTabsList()}
