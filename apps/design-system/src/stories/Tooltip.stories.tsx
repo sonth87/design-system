@@ -4,7 +4,7 @@ import Button from "../components/Button/Button";
 import { Info } from "lucide-react";
 
 const meta: Meta<typeof Tooltip> = {
-  title: "Base/Tooltip",
+  title: "Overlays/Tooltip",
   component: Tooltip,
   parameters: {
     layout: "centered",

@@ -3,7 +3,7 @@ import React from "react";
 import Slider, { type SliderProps } from "../components/Slider/Slider";
 
 const meta: Meta<SliderProps> = {
-  title: "Components/Slider",
+  title: "Form Components/Slider",
   component: Slider,
   parameters: {
     layout: "centered",

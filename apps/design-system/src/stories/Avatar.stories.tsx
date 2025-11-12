@@ -5,7 +5,7 @@ import Badge from "../components/Badge/Badge";
 import { Tooltip } from "../components/Tooltip/Tooltip";
 
 const meta: Meta<AvatarProps> = {
-  title: "Base/Avatar",
+  title: "Data Display/Avatar",
   component: Avatar,
   parameters: {
     layout: "centered",

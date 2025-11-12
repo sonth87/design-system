@@ -10,8 +10,8 @@ import { ChevronRight, Info, Settings, User } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@dsui/ui/index";
 
-const meta: Meta<CollapsibleProps> = {
-  title: "Base/Collapsible",
+const meta: Meta<typeof Collapsible> = {
+  title: "Layout/Collapsible",
   component: Collapsible,
   parameters: {
     layout: "centered",

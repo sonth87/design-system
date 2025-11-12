@@ -3,8 +3,8 @@ import { useState } from "react";
 import Dialog, { type DialogProps } from "../components/Dialog/Dialog";
 import Button from "../components/Button/Button";
 
-const meta: Meta<DialogProps> = {
-  title: "Components/Dialog",
+const meta: Meta<typeof Dialog> = {
+  title: "Overlays/Dialog",
   component: Dialog,
   parameters: {
     layout: "centered",

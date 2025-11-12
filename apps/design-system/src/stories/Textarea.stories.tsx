@@ -3,8 +3,8 @@ import type { Meta } from "@storybook/react";
 import Textarea, { type TextareaProps } from "../components/Textarea/Textarea";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
-const meta: Meta<TextareaProps> = {
-  title: "Base/Textarea",
+const meta: Meta<typeof Textarea> = {
+  title: "Form Components/Textarea",
   component: Textarea,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout

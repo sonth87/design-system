@@ -11,8 +11,8 @@ import { enUS, es, vi, ja, ko } from "date-fns/locale";
 import Select from "../components/Select/Select";
 import Button from "../components/Button/Button";
 
-const meta: Meta<CalendarProps> = {
-  title: "Components/Calendar",
+const meta: Meta<typeof Calendar> = {
+  title: "Date & Time/Calendar",
   component: Calendar,
   parameters: {
     layout: "centered",

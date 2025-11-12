@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import Glass from "../components/Glass/Glass";
 
-const meta = {
-  title: "Components/Glass",
+const meta: Meta<typeof Glass> = {
+  title: "Layout/Glass",
   component: Glass,
   parameters: {
     layout: "centered",

@@ -6,7 +6,7 @@ type SeparatorProps = React.ComponentProps<typeof Separator>;
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta: Meta<SeparatorProps> = {
-  title: "Base/Separator",
+  title: "Layout/Separator",
   component: Separator,
   parameters: {
     layout: "centered",

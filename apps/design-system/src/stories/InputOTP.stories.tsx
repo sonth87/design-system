@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import InputOTP from "../components/InputOTP/InputOTP";
 
 const meta: Meta<typeof InputOTP> = {
-  title: "Form/InputOTP",
+  title: "Form Components/InputOTP",
   component: InputOTP,
   parameters: {
     layout: "centered",

@@ -6,7 +6,7 @@ import { vi } from "date-fns/locale";
 import { DATE_FORMAT } from "@/constants/common";
 
 const meta: Meta<typeof DatePicker> = {
-  title: "Components/DatePicker",
+  title: "Date & Time/DatePicker",
   component: DatePicker,
   parameters: {
     layout: "centered",

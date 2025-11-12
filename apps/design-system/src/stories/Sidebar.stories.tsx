@@ -28,8 +28,8 @@ import {
   MoreHorizontal,
 } from "lucide-react";
 
-const meta: Meta<SidebarProps> = {
-  title: "Components/Sidebar",
+const meta: Meta<typeof Sidebar> = {
+  title: "Navigation/Sidebar",
   component: Sidebar,
   parameters: {
     layout: "fullscreen",

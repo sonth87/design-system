@@ -6,7 +6,7 @@ import Input from "../components/Input/Input";
 import { User, Settings, Bell, Mail, Home } from "lucide-react";
 
 const meta: Meta<TabsProps> = {
-  title: "Components/Tabs",
+  title: "Navigation/Tabs",
   component: Tabs,
   parameters: {
     layout: "centered",

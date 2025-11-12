@@ -5,7 +5,7 @@ import Checkbox, { type CheckboxProps } from "../components/Checkbox/Checkbox";
 import { Angry, Heart, Star } from "lucide-react";
 
 const meta: Meta<CheckboxProps> = {
-  title: "Base/Checkbox",
+  title: "Form Components/Checkbox",
   component: Checkbox,
   parameters: {
     layout: "centered",

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { format } from "date-fns";
 
 const meta: Meta<typeof TimePicker> = {
-  title: "Components/TimePicker",
+  title: "Date & Time/TimePicker",
   component: TimePicker,
   parameters: {
     layout: "centered",

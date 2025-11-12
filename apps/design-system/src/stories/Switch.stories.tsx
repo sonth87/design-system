@@ -5,8 +5,8 @@ import Switch, { type SwitchProps } from "../components/Switch/Switch";
 import { Moon, Sun, Zap, Heart } from "lucide-react";
 import { useState } from "react";
 
-const meta: Meta<SwitchProps> = {
-  title: "Base/Switch",
+const meta: Meta<typeof Switch> = {
+  title: "Form Components/Switch",
   component: Switch,
   parameters: {
     layout: "centered",

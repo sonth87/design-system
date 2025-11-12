@@ -22,8 +22,8 @@ import Collapsible, {
   CollapsibleTrigger,
 } from "../components/Collapsible/Collapsible";
 
-const meta: Meta<SheetProps> = {
-  title: "Components/Sheet",
+const meta: Meta<typeof Sheet> = {
+  title: "Overlays/Sheet",
   component: Sheet,
   parameters: {
     layout: "centered",

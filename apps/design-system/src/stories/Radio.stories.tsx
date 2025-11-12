@@ -6,7 +6,7 @@ import { Angry, Annoyed } from "lucide-react";
 import Badge from "../components/Badge/Badge";
 
 const meta: Meta<RadioProps> = {
-  title: "Base/Radio",
+  title: "Form Components/Radio",
   component: Radio,
   parameters: {
     layout: "centered",

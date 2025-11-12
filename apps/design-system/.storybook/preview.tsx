@@ -10,7 +10,36 @@ const preview: Preview = {
   parameters: {
     options: {
       storySort: {
-        order: ["Theme", "Configuration", "*"],
+        order: [
+          "Introduction",
+          "Theme",
+          "Form Components",
+          [
+            "Input",
+            "Textarea",
+            "Select",
+            "Checkbox",
+            "Radio",
+            "Switch",
+            "Toggle",
+            "Slider",
+            "InputOTP",
+          ],
+          "Date & Time",
+          ["DatePicker", "RangePicker", "TimePicker", "Calendar"],
+          "Buttons",
+          ["Button", "ButtonGroup"],
+          "Navigation",
+          ["Tabs", "Sidebar"],
+          "Overlays",
+          ["Dialog", "Sheet", "Popover", "Tooltip"],
+          "Feedback",
+          ["Toast", "Badge", "Skeleton"],
+          "Data Display",
+          ["Avatar"],
+          "Layout",
+          ["ScrollArea", "Collapsible", "Separator", "Glass"],
+        ],
       },
     },
     controls: {

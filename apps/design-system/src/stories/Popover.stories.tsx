@@ -5,8 +5,8 @@ import Button from "../components/Button/Button";
 import Input from "../components/Input/Input";
 import { Settings, User, Info } from "lucide-react";
 
-const meta: Meta<PopoverProps> = {
-  title: "Components/Popover",
+const meta: Meta<typeof Popover> = {
+  title: "Overlays/Popover",
   component: Popover,
   parameters: {
     layout: "centered",

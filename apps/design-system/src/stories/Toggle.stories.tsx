@@ -4,8 +4,8 @@ import { useState } from "react";
 import Toggle, { type ToggleProps } from "../components/Toggle/Toggle";
 import { BookmarkIcon, HeartIcon, StarIcon } from "lucide-react";
 
-const meta: Meta<ToggleProps> = {
-  title: "Base/Toggle",
+const meta: Meta<typeof Toggle> = {
+  title: "Form Components/Toggle",
   component: Toggle,
   parameters: {
     layout: "centered",

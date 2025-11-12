@@ -7,7 +7,7 @@ import {
 import { useState } from "react";
 
 const meta: Meta<typeof RangePicker> = {
-  title: "Components/RangePicker",
+  title: "Date & Time/RangePicker",
   component: RangePicker,
   parameters: {
     layout: "centered",

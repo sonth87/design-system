@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import Skeleton, { type SkeletonProps } from "../components/Skeleton/Skeleton";
 
-const meta: Meta<SkeletonProps> = {
-  title: "Components/Skeleton",
+const meta: Meta<typeof Skeleton> = {
+  title: "Feedback/Skeleton",
   component: Skeleton,
   parameters: {
     layout: "centered",

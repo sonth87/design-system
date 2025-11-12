@@ -4,8 +4,8 @@ import Select, {
   type SelectProps,
 } from "../components/Select/Select";
 
-const meta: Meta<SelectProps> = {
-  title: "Base/Select",
+const meta: Meta<typeof Select> = {
+  title: "Form Components/Select",
   component: Select,
   parameters: {
     layout: "centered",
