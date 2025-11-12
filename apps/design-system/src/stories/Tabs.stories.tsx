@@ -90,6 +90,15 @@ const meta: Meta<TabsProps> = {
         defaultValue: { summary: "false" },
       },
     },
+    overflowMode: {
+      control: "select",
+      options: ["scroll", "dropdown", "fade"],
+      description:
+        "How to handle tab overflow: 'scroll' (scrollable), 'dropdown' (visible tabs + dropdown), 'fade' (all tabs with gradient fade)",
+      table: {
+        defaultValue: { summary: "undefined" },
+      },
+    },
     className: {
       control: "text",
       description: "Additional CSS classes",
@@ -128,6 +137,114 @@ const defaultItems: TabsProps["items"] = [
         <Input label="Current password" type="password" />
         <Input label="New password" type="password" />
         <Button>Save password</Button>
+      </div>
+    ),
+  },
+  {
+    key: "tab3",
+    label: "Tab 3",
+    children: (
+      <div className="space-y-4 p-4 border rounded-lg bg-blue-100">
+        <h3 className="text-lg font-semibold">Tab 3 Content</h3>
+        <p className="text-sm text-muted-foreground">
+          This is the content for Tab 3.
+        </p>
+      </div>
+    ),
+  },
+  {
+    key: "tab4",
+    label: "Tab 4",
+    children: (
+      <div className="space-y-4 p-4 border rounded-lg bg-red-100">
+        <h3 className="text-lg font-semibold">Tab 4 Content</h3>
+        <p className="text-sm text-muted-foreground">
+          This is the content for Tab 4.
+        </p>
+      </div>
+    ),
+  },
+  {
+    key: "tab5",
+    label: "Tab 5",
+    children: (
+      <div className="space-y-4 p-4 border rounded-lg bg-green-100">
+        <h3 className="text-lg font-semibold">Tab 5 Content</h3>
+        <p className="text-sm text-muted-foreground">
+          This is the content for Tab 5.
+        </p>
+      </div>
+    ),
+  },
+  {
+    key: "tab6",
+    label: "Tab 6",
+    children: (
+      <div className="space-y-4 p-4 border rounded-lg bg-gray-100">
+        <h3 className="text-lg font-semibold">Tab 6 Content</h3>
+        <p className="text-sm text-muted-foreground">
+          This is the content for Tab 6.
+        </p>
+      </div>
+    ),
+  },
+  {
+    key: "tab7",
+    label: "Tab 7",
+    children: (
+      <div className="space-y-4 p-4 border rounded-lg bg-amber-100">
+        <h3 className="text-lg font-semibold">Tab 7 Content</h3>
+        <p className="text-sm text-muted-foreground">
+          This is the content for Tab 7.
+        </p>
+      </div>
+    ),
+  },
+  {
+    key: "tab8",
+    label: "Tab 8",
+    children: (
+      <div className="space-y-4 p-4 border rounded-lg bg-pink-100">
+        <h3 className="text-lg font-semibold">Tab 8 Content</h3>
+        <p className="text-sm text-muted-foreground">
+          This is the content for Tab 8.
+        </p>
+      </div>
+    ),
+  },
+  {
+    key: "tab9",
+    label: "Tab 9",
+    children: (
+      <div className="space-y-4 p-4 border rounded-lg bg-purple-100">
+        <h3 className="text-lg font-semibold">Tab 9 Content</h3>
+        <p className="text-sm text-muted-foreground">
+          This is the content for Tab 9.
+        </p>
+      </div>
+    ),
+  },
+  {
+    key: "tab10",
+    label: "Tab 10",
+    children: (
+      <div className="space-y-4 p-4 border rounded-lg bg-lime-100">
+        <h3 className="text-lg font-semibold">Tab 10 Content</h3>
+        <p className="text-sm text-muted-foreground">
+          This is the content for Tab 10.
+        </p>
+      </div>
+    ),
+  },
+  {
+    key: "tab11",
+    label: "Tab 11",
+    children: (
+      <div className="space-y-4 p-4 border rounded-lg">
+        <h3 className="text-lg font-semibold">Tab 11 Content</h3>
+        <p className="text-sm text-muted-foreground">
+          This is the content for Tab 11.
+        </p>
       </div>
     ),
   },
@@ -1501,6 +1618,322 @@ export const CustomColor: Story = {
             <li>• Use Tailwind's arbitrary value syntax for dynamic colors</li>
             <li>• For more control, create custom variants in your theme</li>
           </ul>
+        </div>
+      </div>
+    );
+  },
+};
+
+// Overflow Mode: Scroll
+export const OverflowScroll: Story = {
+  render: () => {
+    const manyItems: TabsProps["items"] = Array.from(
+      { length: 20 },
+      (_, i) => ({
+        key: `tab-${i + 1}`,
+        label: `Tab ${i + 1}`,
+        children: (
+          <div className="p-4 border rounded-lg">
+            <h3 className="text-lg font-semibold">Tab {i + 1} Content</h3>
+            <p className="text-sm text-muted-foreground mt-2">
+              This is the content for tab {i + 1}. With scroll overflow mode,
+              all tabs are visible and can be scrolled horizontally or
+              vertically.
+            </p>
+          </div>
+        ),
+      })
+    );
+
+    return (
+      <div className="space-y-8">
+        <div>
+          <h3 className="text-sm font-semibold mb-4">
+            Scroll Mode - Horizontal (20 tabs)
+          </h3>
+          <div className="w-[600px]">
+            <Tabs
+              defaultActiveKey="tab-1"
+              items={manyItems}
+              overflowMode="scroll"
+              variant="solid"
+            />
+          </div>
+        </div>
+
+        <div>
+          <h3 className="text-sm font-semibold mb-4">
+            Scroll Mode - Vertical (20 tabs)
+          </h3>
+          <div className="h-[400px]">
+            <Tabs
+              defaultActiveKey="tab-1"
+              items={manyItems}
+              overflowMode="scroll"
+              variant="solid"
+              tabPosition="left"
+            />
+          </div>
+        </div>
+
+        <div>
+          <h3 className="text-sm font-semibold mb-4">
+            Scroll Mode - Underlined Variant (20 tabs)
+          </h3>
+          <div className="w-[600px]">
+            <Tabs
+              defaultActiveKey="tab-1"
+              items={manyItems}
+              overflowMode="scroll"
+              variant="underlined"
+              color="primary"
+            />
+          </div>
+        </div>
+      </div>
+    );
+  },
+};
+
+// Overflow Mode: Dropdown
+export const OverflowDropdown: Story = {
+  render: () => {
+    const manyItems: TabsProps["items"] = Array.from(
+      { length: 15 },
+      (_, i) => ({
+        key: `tab-${i + 1}`,
+        label: `Tab ${i + 1}`,
+        icon: i === 0 ? <Home className="size-4" /> : undefined,
+        children: (
+          <div className="p-4 border rounded-lg">
+            <h3 className="text-lg font-semibold">Tab {i + 1} Content</h3>
+            <p className="text-sm text-muted-foreground mt-2">
+              This is the content for tab {i + 1}. With dropdown overflow mode,
+              only visible tabs are shown, and the rest appear in a [...]
+              dropdown menu.
+            </p>
+          </div>
+        ),
+      })
+    );
+
+    return (
+      <div className="space-y-8">
+        <div>
+          <h3 className="text-sm font-semibold mb-4">
+            Dropdown Mode - Horizontal (15 tabs)
+          </h3>
+          <div className="w-[600px]">
+            <Tabs
+              defaultActiveKey="tab-1"
+              items={manyItems}
+              overflowMode="dropdown"
+              variant="solid"
+            />
+          </div>
+          <p className="text-xs text-muted-foreground mt-2">
+            Tabs that don't fit are accessible via the [...] button
+          </p>
+        </div>
+
+        <div>
+          <h3 className="text-sm font-semibold mb-4">
+            Dropdown Mode - Pills Variant (15 tabs)
+          </h3>
+          <div className="w-[600px]">
+            <Tabs
+              defaultActiveKey="tab-1"
+              items={manyItems}
+              overflowMode="dropdown"
+              variant="pills"
+              color="primary"
+            />
+          </div>
+        </div>
+
+        <div>
+          <h3 className="text-sm font-semibold mb-4">
+            Dropdown Mode - Vertical (15 tabs)
+          </h3>
+          <div className="h-[300px]">
+            <Tabs
+              defaultActiveKey="tab-1"
+              items={manyItems}
+              overflowMode="dropdown"
+              variant="bordered"
+              color="secondary"
+              tabPosition="left"
+            />
+          </div>
+        </div>
+      </div>
+    );
+  },
+};
+
+// Overflow Mode: Fade
+export const OverflowFade: Story = {
+  render: () => {
+    const manyItems: TabsProps["items"] = Array.from(
+      { length: 18 },
+      (_, i) => ({
+        key: `tab-${i + 1}`,
+        label: `Tab ${i + 1}`,
+        icon: i < 3 ? <Settings className="size-4" /> : undefined,
+        children: (
+          <div className="p-4 border rounded-lg">
+            <h3 className="text-lg font-semibold">Tab {i + 1} Content</h3>
+            <p className="text-sm text-muted-foreground mt-2">
+              This is the content for tab {i + 1}. With fade overflow mode, all
+              tabs are shown but overflow tabs fade out with a gradient effect.
+              A [...] button provides access to all tabs.
+            </p>
+          </div>
+        ),
+      })
+    );
+
+    return (
+      <div className="space-y-8">
+        <div>
+          <h3 className="text-sm font-semibold mb-4">
+            Fade Mode - Horizontal (18 tabs)
+          </h3>
+          <div className="w-[600px]">
+            <Tabs
+              defaultActiveKey="tab-1"
+              items={manyItems}
+              overflowMode="fade"
+              variant="solid"
+            />
+          </div>
+          <p className="text-xs text-muted-foreground mt-2">
+            Notice the gradient fade effect on the right and the [...] button
+          </p>
+        </div>
+
+        <div>
+          <h3 className="text-sm font-semibold mb-4">
+            Fade Mode - Bordered Variant (18 tabs)
+          </h3>
+          <div className="w-[600px]">
+            <Tabs
+              defaultActiveKey="tab-1"
+              items={manyItems}
+              overflowMode="fade"
+              variant="bordered"
+              color="primary"
+            />
+          </div>
+        </div>
+
+        <div>
+          <h3 className="text-sm font-semibold mb-4">
+            Fade Mode - Underlined Variant (18 tabs)
+          </h3>
+          <div className="w-[600px]">
+            <Tabs
+              defaultActiveKey="tab-1"
+              items={manyItems}
+              overflowMode="fade"
+              variant="underlined"
+              color="success"
+            />
+          </div>
+        </div>
+
+        <div>
+          <h3 className="text-sm font-semibold mb-4">
+            Fade Mode - Vertical (18 tabs)
+          </h3>
+          <div className="h-[300px]">
+            <Tabs
+              defaultActiveKey="tab-1"
+              items={manyItems}
+              overflowMode="fade"
+              variant="pills"
+              color="accent"
+              tabPosition="left"
+            />
+          </div>
+          <p className="text-xs text-muted-foreground mt-2">
+            Gradient fade effect appears at the bottom for vertical tabs
+          </p>
+        </div>
+      </div>
+    );
+  },
+};
+
+// Overflow Modes Comparison
+export const OverflowModesComparison: Story = {
+  render: () => {
+    const items: TabsProps["items"] = Array.from({ length: 12 }, (_, i) => ({
+      key: `tab-${i + 1}`,
+      label: `Tab ${i + 1}`,
+      children: (
+        <div className="p-4 border rounded-lg">
+          <h3 className="text-lg font-semibold">Tab {i + 1}</h3>
+          <p className="text-sm text-muted-foreground mt-2">
+            Content for tab {i + 1}
+          </p>
+        </div>
+      ),
+    }));
+
+    return (
+      <div className="space-y-10">
+        <div>
+          <h3 className="text-sm font-semibold mb-2">
+            Mode 1: Scroll - Show all tabs with scrolling
+          </h3>
+          <p className="text-xs text-muted-foreground mb-4">
+            All tabs are visible and scrollable when they overflow the container
+          </p>
+          <div className="w-[500px]">
+            <Tabs
+              defaultActiveKey="tab-1"
+              items={items}
+              overflowMode="scroll"
+              variant="solid"
+            />
+          </div>
+        </div>
+
+        <div>
+          <h3 className="text-sm font-semibold mb-2">
+            Mode 2: Dropdown - Show visible tabs, rest in dropdown
+          </h3>
+          <p className="text-xs text-muted-foreground mb-4">
+            Only visible tabs are shown, overflow tabs are in a [...] dropdown
+            menu
+          </p>
+          <div className="w-[500px]">
+            <Tabs
+              defaultActiveKey="tab-1"
+              items={items}
+              overflowMode="dropdown"
+              variant="solid"
+            />
+          </div>
+        </div>
+
+        <div>
+          <h3 className="text-sm font-semibold mb-2">
+            Mode 3: Fade - Show all with gradient fade and dropdown
+          </h3>
+          <p className="text-xs text-muted-foreground mb-4">
+            All tabs are shown with a gradient fade effect, [...] button
+            provides full access
+          </p>
+          <div className="w-[500px]">
+            <Tabs
+              defaultActiveKey="tab-1"
+              items={items}
+              overflowMode="fade"
+              variant="solid"
+            />
+          </div>
         </div>
       </div>
     );
