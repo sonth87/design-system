@@ -1,6 +1,8 @@
 export { default as Tabs } from "./Tabs";
 export type {
   TabsProps,
+} from "./Tabs";
+export type {
   TabItem,
   TabPosition,
   TabSize,
@@ -8,4 +10,4 @@ export type {
   TabColor,
   TabAlignment,
   TabOverflowMode,
-} from "./Tabs";
+} from "./types";
