@@ -13,6 +13,10 @@ const meta: Meta<TabsProps> = {
   },
   tags: ["autodocs"],
   argTypes: {
+    items: {
+      control: "object",
+      description: "Array of tab items",
+    },
     defaultActiveKey: {
       control: "text",
       description: "Default active tab key (uncontrolled)",
@@ -51,6 +55,7 @@ const meta: Meta<TabsProps> = {
         "solid",
         "bordered",
         "pills",
+        "pill-stroke",
         "text",
         "outline",
         "underlined",
@@ -850,8 +855,8 @@ export const BorderedVariant: Story = {
   },
 };
 
-// Variant 3 - No border, colored background on active
-export const PillsVariant: Story = {
+// Variant 3.5 - Pill stroke style
+export const PillStrokeVariant: Story = {
   render: () => {
     const items: TabsProps["items"] = [
       {
@@ -859,7 +864,7 @@ export const PillsVariant: Story = {
         label: "Dashboard",
         children: (
           <div className="p-4 border rounded-lg">
-            <p className="text-sm">No border or background on group</p>
+            <p className="text-sm">Pill-style with stroke border</p>
           </div>
         ),
       },
@@ -868,7 +873,7 @@ export const PillsVariant: Story = {
         label: "Analytics",
         children: (
           <div className="p-4 border rounded-lg">
-            <p className="text-sm">Active tab has colored background</p>
+            <p className="text-sm">Stronger border radius than pills</p>
           </div>
         ),
       },
@@ -877,7 +882,7 @@ export const PillsVariant: Story = {
         label: "Reports",
         children: (
           <div className="p-4 border rounded-lg">
-            <p className="text-sm">Clean minimal style</p>
+            <p className="text-sm">Active has border color, no background</p>
           </div>
         ),
       },
@@ -890,7 +895,7 @@ export const PillsVariant: Story = {
           <Tabs
             defaultActiveKey="1"
             items={items}
-            variant="pills"
+            variant="pill-stroke"
             color="primary"
           />
         </div>
@@ -899,7 +904,7 @@ export const PillsVariant: Story = {
           <Tabs
             defaultActiveKey="1"
             items={items}
-            variant="pills"
+            variant="pill-stroke"
             color="secondary"
           />
         </div>
@@ -910,7 +915,7 @@ export const PillsVariant: Story = {
           <Tabs
             defaultActiveKey="1"
             items={items}
-            variant="pills"
+            variant="pill-stroke"
             color="warning"
             tabPosition="left"
           />
@@ -1265,6 +1270,17 @@ export const AllVariants: Story = {
         </div>
         <div>
           <h3 className="text-sm font-semibold mb-2">
+            Pill Stroke - Border Only (Secondary)
+          </h3>
+          <Tabs
+            defaultActiveKey="1"
+            items={items}
+            variant="pill-stroke"
+            color="secondary"
+          />
+        </div>
+        <div>
+          <h3 className="text-sm font-semibold mb-2">
             Text - Text Color Only (Success)
           </h3>
           <Tabs
@@ -1300,12 +1316,132 @@ export const AllVariants: Story = {
           <h3 className="text-sm font-semibold mb-2">
             Enclosed - Browser Tab Style (Accent)
           </h3>
-          <Tabs
-            defaultActiveKey="1"
-            items={items}
-            variant="enclosed"
-            color="accent"
+          <Tabs defaultActiveKey="1" items={items} variant="enclosed" />
+        </div>
+      </div>
+    );
+  },
+};
+
+export const CustomColor: Story = {
+  render: function CustomColorTabs() {
+    const [customColor, setCustomColor] = React.useState("#ff6b6b");
+
+    const items: TabsProps["items"] = [
+      {
+        key: "1",
+        label: "Custom Red",
+        children: (
+          <div className="p-4 border rounded-lg">
+            <p className="text-sm">Using custom color: {customColor}</p>
+            <p className="text-sm text-muted-foreground mt-2">
+              You can customize the active tab color by overriding CSS variables
+              or using custom classes.
+            </p>
+          </div>
+        ),
+      },
+      {
+        key: "2",
+        label: "Tab 2",
+        children: (
+          <div className="p-4 border rounded-lg">
+            <p className="text-sm">Inactive tabs maintain default styling</p>
+          </div>
+        ),
+      },
+      {
+        key: "3",
+        label: "Tab 3",
+        children: (
+          <div className="p-4 border rounded-lg">
+            <p className="text-sm">Custom color applied to active state only</p>
+          </div>
+        ),
+      },
+    ];
+
+    return (
+      <div className="w-[600px] space-y-4">
+        <div className="flex items-center gap-4">
+          <label htmlFor="custom-color" className="text-sm font-medium">
+            Custom Color:
+          </label>
+          <input
+            id="custom-color"
+            type="color"
+            value={customColor}
+            onChange={(e) => setCustomColor(e.target.value)}
+            className="w-12 h-8 border rounded cursor-pointer"
           />
+          <span className="text-sm text-muted-foreground">{customColor}</span>
+        </div>
+
+        <div className="space-y-6">
+          <div>
+            <h3 className="text-sm font-semibold mb-4">
+              Pill Stroke Variant with Custom Color
+            </h3>
+            <div
+              style={{ "--custom-color": customColor } as React.CSSProperties}
+            >
+              <Tabs
+                defaultActiveKey="1"
+                items={items}
+                variant="pill-stroke"
+                tabTriggerClassName="[&[data-state=active]]:border-[var(--custom-color)] [&[data-state=active]]:text-[var(--custom-color)]"
+              />
+            </div>
+          </div>
+
+          <div>
+            <h3 className="text-sm font-semibold mb-4">
+              Outline Variant with Custom Color
+            </h3>
+            <div
+              style={{ "--custom-color": customColor } as React.CSSProperties}
+            >
+              <Tabs
+                defaultActiveKey="1"
+                items={items}
+                variant="outline"
+                tabTriggerClassName="[&[data-state=active]]:border-[var(--custom-color)] [&[data-state=active]]:text-[var(--custom-color)]"
+              />
+            </div>
+          </div>
+
+          <div>
+            <h3 className="text-sm font-semibold mb-4">
+              Text Variant with Custom Color
+            </h3>
+            <div
+              style={{ "--custom-color": customColor } as React.CSSProperties}
+            >
+              <Tabs
+                defaultActiveKey="1"
+                items={items}
+                variant="text"
+                tabTriggerClassName="[&[data-state=active]]:text-[var(--custom-color)]"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-6 p-4 bg-muted rounded-lg">
+          <h4 className="text-sm font-semibold mb-2">
+            How to customize colors:
+          </h4>
+          <ul className="text-sm text-muted-foreground space-y-1">
+            <li>
+              • Use <code>tabTriggerClassName</code> to override active state
+              styles
+            </li>
+            <li>
+              • Apply custom color via CSS custom properties (CSS variables)
+            </li>
+            <li>• Use Tailwind's arbitrary value syntax for dynamic colors</li>
+            <li>• For more control, create custom variants in your theme</li>
+          </ul>
         </div>
       </div>
     );

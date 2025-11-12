@@ -13,6 +13,7 @@ export type TabVariant =
   | "solid" // Default muted background with shadow on active
   | "bordered" // Border around group + colored background on active
   | "pills" // Colored pills without group border
+  | "pill-stroke" // Pill-style with stroke border, no background on active
   | "text" // Text color only, minimal style
   | "outline" // Outlined/stroked border on active
   | "underlined" // Underline/border-bottom style
@@ -169,6 +170,9 @@ const getColorClasses = (variant: TabVariant, color: TabColor): string => {
     case "pills":
       // Background color on active state
       return `${colors.bg} dark:data-[state=active]:border-transparent`;
+    case "pill-stroke":
+      // Border color on active state, no background
+      return `${colors.border} data-[state=active]:bg-transparent dark:data-[state=active]:bg-transparent`;
     case "text":
       // Text color only on active state
       return colors.text;
@@ -177,10 +181,10 @@ const getColorClasses = (variant: TabVariant, color: TabColor): string => {
       return colors.border;
     case "underlined":
       // Bottom/side border color on active state
-      return colors.border;
+      return cn(colors.border, colors.text);
     case "enclosed":
       // Border color on active state (except bottom/side)
-      return colors.border;
+      return cn(colors.border, colors.text);
     default:
       return "";
   }
@@ -211,11 +215,8 @@ const getListBorderClasses = (
       left: "border-r",
       right: "border-l",
     };
-    
-    const colorBorderMap: Record<
-      TabPosition,
-      Record<TabColor, string>
-    > = {
+
+    const colorBorderMap: Record<TabPosition, Record<TabColor, string>> = {
       top: {
         primary: "border-b-primary",
         secondary: "border-b-secondary",
@@ -267,8 +268,8 @@ const getEnclosedTriggerClasses = (tabPosition: TabPosition): string => {
   const positionMap: Record<TabPosition, string> = {
     top: `${baseClasses} rounded-t data-[state=active]:border-t data-[state=active]:border-l data-[state=active]:border-r data-[state=active]:border-b-0 data-[state=active]:border-b-background dark:data-[state=active]:border-b-background h-full data-[state=active]:-mb-0.5 data-[state=active]:translate-y-[0px]`,
     bottom: `${baseClasses} rounded-b data-[state=active]:border-b data-[state=active]:border-l data-[state=active]:border-r data-[state=active]:border-t-0 data-[state=active]:border-t-background dark:data-[state=active]:border-t-background h-full data-[state=active]:-mt-0.5 data-[state=active]:translate-y-[0px]`,
-    left: `${baseClasses} rounded-l data-[state=active]:border-t data-[state=active]:border-l data-[state=active]:border-b data-[state=active]:border-r-0 data-[state=active]:border-r-background dark:data-[state=active]:border-r-background w-full data-[state=active]:-mr-0.5 data-[state=active]:translate-x-[0.5px]`,
-    right: `${baseClasses} rounded-r data-[state=active]:border-t data-[state=active]:border-r data-[state=active]:border-b data-[state=active]:border-l-0 data-[state=active]:border-l-background dark:data-[state=active]:border-l-background w-full data-[state=active]:-ml-0.5 data-[state=active]:translate-x-[0.5px]`,
+    left: `${baseClasses} rounded-l data-[state=active]:border-t data-[state=active]:border-l data-[state=active]:border-b data-[state=active]:border-r-0 data-[state=active]:border-r-background dark:data-[state=active]:border-r-background w-full data-[state=active]:-mr-0.5 data-[state=active]:translate-x-[1px]`,
+    right: `${baseClasses} rounded-r data-[state=active]:border-t data-[state=active]:border-r data-[state=active]:border-b data-[state=active]:border-l-0 data-[state=active]:border-l-background dark:data-[state=active]:border-l-background w-full data-[state=active]:-ml-0.5 data-[state=active]:translate-x-[1px]`,
   };
 
   return positionMap[tabPosition];
@@ -335,6 +336,18 @@ const variantClasses: Record<
     },
   },
 
+  // Pill-stroke: Pill-style with stroke border, stronger border radius, no background on active
+  "pill-stroke": {
+    list: {
+      horizontal: "bg-transparent p-0 gap-1",
+      vertical: "bg-transparent p-0 gap-1",
+    },
+    trigger: {
+      horizontal: "border border-border rounded-full bg-transparent",
+      vertical: "border border-border rounded-full bg-transparent",
+    },
+  },
+
   // Text: No border/background on group, colored text on active button
   text: {
     list: {
@@ -380,8 +393,7 @@ const variantClasses: Record<
     list: {
       horizontal:
         "bg-background dark:bg-background justify-start rounded-none p-0",
-      vertical:
-        "bg-background dark:bg-background items-start rounded-none p-0",
+      vertical: "bg-background dark:bg-background items-start rounded-none p-0",
     },
     trigger: {
       horizontal: "", // Will be set dynamically
@@ -415,11 +427,11 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
   const variantConfig = variantClasses[variant];
   const listVariantClass =
     variantConfig.list[isVertical ? "vertical" : "horizontal"];
-  
+
   // Get trigger variant class based on variant type
   let triggerVariantClass =
     variantConfig.trigger[isVertical ? "vertical" : "horizontal"];
-  
+
   // For underlined and enclosed variants, use dynamic classes based on position
   if (variant === "underlined") {
     triggerVariantClass = getUnderlinedTriggerClasses(tabPosition);
