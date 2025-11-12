@@ -39,7 +39,7 @@ export type DateRangeText = { from?: string; to?: string } | null;
 function formatDate(
   date: Date | undefined,
   outputFormat: string = DATE_FORMAT,
-  locale?: Locale
+  locale?: Locale,
 ) {
   if (!date) return "";
 
@@ -48,7 +48,7 @@ function formatDate(
 
 const parseDate = (
   str: string,
-  inputFormat: string = DATE_FORMAT
+  inputFormat: string = DATE_FORMAT,
 ): Date | undefined => {
   const date = parse(str, inputFormat, new Date());
   return isValid(date) ? date : undefined;
@@ -171,7 +171,7 @@ export function RangePicker({
   const [open, setOpen] = React.useState(false);
   const [range, setRange] = React.useState<DateRange | undefined>(initialRange);
   const [month, setMonth] = React.useState<Date | undefined>(
-    initialFromDate || new Date()
+    initialFromDate || new Date(),
   );
   const [fromInputValue, setFromInputValue] = React.useState(value?.from || "");
   const [toInputValue, setToInputValue] = React.useState(value?.to || "");
@@ -295,7 +295,7 @@ export function RangePicker({
         date.getHours(),
         date.getMinutes(),
         date.getSeconds(),
-        0
+        0,
       );
 
       const newRange: DateRange = {
@@ -324,7 +324,7 @@ export function RangePicker({
         date.getHours(),
         date.getMinutes(),
         date.getSeconds(),
-        0
+        0,
       );
 
       const newRange: DateRange = {
@@ -400,7 +400,7 @@ export function RangePicker({
                       selectedRange.from.getDate(),
                       fromTimeObj?.getHours() || 0,
                       fromTimeObj?.getMinutes() || 0,
-                      fromTimeObj?.getSeconds() || 0
+                      fromTimeObj?.getSeconds() || 0,
                     )
                   : undefined,
                 to: selectedRange?.to
@@ -410,7 +410,7 @@ export function RangePicker({
                       selectedRange.to.getDate(),
                       toTimeObj?.getHours() || 0,
                       toTimeObj?.getMinutes() || 0,
-                      toTimeObj?.getSeconds() || 0
+                      toTimeObj?.getSeconds() || 0,
                     )
                   : undefined,
               };
@@ -451,7 +451,7 @@ export function RangePicker({
               "[--cell-size:clamp(0px,calc(100vw/7.5),34px)]":
                 !isMobile && desktopMode !== "drawer",
             },
-            calendarClassName
+            calendarClassName,
           )}
         />
       )}
@@ -491,7 +491,7 @@ export function RangePicker({
       <PopoverContent
         className={cn(
           "w-auto overflow-hidden p-0",
-          "backdrop-blur bg-background/50"
+          "backdrop-blur bg-background/50",
         )}
         side={side}
         align={align}
@@ -507,7 +507,7 @@ export function RangePicker({
       <DrawerContent
         className={cn(
           "w-auto overflow-hidden p-0",
-          "backdrop-blur bg-background"
+          "backdrop-blur bg-background",
         )}
       >
         <DrawerHeader className="sr-only">
@@ -530,7 +530,7 @@ export function RangePicker({
     type: "from" | "to",
     inputValue: string,
     setInputValue: (value: string) => void,
-    additionalProps?: Partial<InputProps>
+    additionalProps?: Partial<InputProps>,
   ) => {
     const isFrom = type === "from";
 
@@ -546,7 +546,7 @@ export function RangePicker({
         className={cn(
           props.className,
           "relative peer border-0 focus:ring-0 rounded-none hover:bg-transparent active:bg-transparent focus-visible:ring-0 focus-visible:border-0",
-          isFrom ? "pr-0" : ""
+          isFrom ? "pr-0" : "",
         )}
         label={
           props.isFloatLabel && typeof label === "object"
@@ -603,11 +603,14 @@ export function RangePicker({
               // setToInputValue(formatDateTimeValue(date)); // Sync input value
             }
             const fromFormatted = formatDateTimeValue(
-              isFrom ? date : range?.from
+              isFrom ? date : range?.from,
             );
             const toFormatted = formatDateTimeValue(isFrom ? range?.to : date);
             onSelect?.(newRange, { from: fromFormatted, to: toFormatted });
-            onChange?.(newRange, { from: isFrom ? inputValue : fromInputValue, to: isFrom ? toInputValue : inputValue });
+            onChange?.(newRange, {
+              from: isFrom ? inputValue : fromInputValue,
+              to: isFrom ? toInputValue : inputValue,
+            });
 
             // If from input and date is valid, auto-focus to to input if to is empty
             // if (isFrom && toInputRef.current && !toInputValue.trim()) {
@@ -677,7 +680,10 @@ export function RangePicker({
                   // If either is invalid, clear both
                   setFromInputValue("");
                   setToInputValue("");
-                  const newRange: DateRange = { from: undefined, to: undefined };
+                  const newRange: DateRange = {
+                    from: undefined,
+                    to: undefined,
+                  };
                   setRange(newRange);
                   onSelect?.(newRange, newRange as DateRangeText);
                   onChange?.(newRange, newRange as DateRangeText);
@@ -706,7 +712,7 @@ export function RangePicker({
           "border-success focus-within:ring-success": props.state === "success",
           "border-warning focus-within:ring-warning": props.state === "warning",
           "border-error focus-within:ring-error": props.state === "error",
-        }
+        },
       )}
     >
       {renderRangeInput("from", fromInputValue, setFromInputValue)}

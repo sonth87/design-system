@@ -36,7 +36,7 @@ import { DATE_FORMAT } from "@/constants/common";
 function formatDate(
   date: Date | undefined,
   outputFormat: string = DATE_FORMAT,
-  locale?: Locale
+  locale?: Locale,
 ) {
   if (!date) return "";
 
@@ -45,7 +45,7 @@ function formatDate(
 
 const parseDate = (
   str: string,
-  inputFormat: string = DATE_FORMAT
+  inputFormat: string = DATE_FORMAT,
 ): Date | undefined => {
   const date = parse(str, inputFormat, new Date());
   return isValid(date) ? date : undefined;
@@ -94,7 +94,7 @@ export type DatePickerProps = Omit<
   onChange?: (
     event?: React.ChangeEvent<HTMLInputElement>,
     value?: string,
-    date?: Date
+    date?: Date,
   ) => void;
   onSelect?: (date?: Date, value?: string) => void;
   calendarClassName?: string;
@@ -234,7 +234,7 @@ export function DatePicker({
   const handleTimeChange = (
     event?: React.ChangeEvent<HTMLInputElement>,
     value?: string,
-    newDate?: Date
+    newDate?: Date,
   ) => {
     if (!newDate) {
       // Handle clear/invalid time
@@ -248,7 +248,7 @@ export function DatePicker({
       newDate.getHours(),
       newDate.getMinutes(),
       newDate.getSeconds(),
-      0
+      0,
     );
 
     setDate(mergedDate);
@@ -288,7 +288,7 @@ export function DatePicker({
         "flex items-stretch mx-auto w-full",
         showTime && !hideDate ? "gap-0 md:max-w-lg" : "",
         // mode === "drawer" ? "mb-6" : "",
-        isMobile ? "max-w-md md:max-w-md lg:max-w-lg" : ""
+        isMobile ? "max-w-md md:max-w-md lg:max-w-lg" : "",
       )}
     >
       {!hideDate && (
@@ -309,7 +309,7 @@ export function DatePicker({
                 date.getHours(),
                 date.getMinutes(),
                 date.getSeconds(),
-                date.getMilliseconds()
+                date.getMilliseconds(),
               );
             }
             setDate(newDate);
@@ -332,7 +332,7 @@ export function DatePicker({
                 !isMobile && desktopMode !== "drawer",
               "w-full": mode === "drawer" && showTime,
             },
-            calendarClassName
+            calendarClassName,
           )}
         />
       )}
@@ -369,7 +369,7 @@ export function DatePicker({
       <PopoverContent
         className={cn(
           "w-auto overflow-hidden p-0",
-          "backdrop-blur bg-background/50"
+          "backdrop-blur bg-background/50",
         )}
         side={side}
         align={align}
@@ -385,7 +385,7 @@ export function DatePicker({
       <DrawerContent
         className={cn(
           "w-auto overflow-hidden p-0",
-          "backdrop-blur bg-background"
+          "backdrop-blur bg-background",
         )}
       >
         <DrawerHeader className="sr-only">

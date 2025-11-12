@@ -27,7 +27,7 @@ export const TimeGridView = memo(
         isTimeDisabled,
         onTimeSelect,
       },
-      ref
+      ref,
     ) => {
       // Generate all time combinations based on intervals (always HH:mm, never shows seconds)
       const timeOptions = useMemo(() => {
@@ -46,7 +46,10 @@ export const TimeGridView = memo(
         return options;
       }, [HOURS, MINUTES]);
 
-      const currentValue = hours !== undefined && minutes !== undefined ? `${pad(hours)}:${pad(minutes)}` : "";
+      const currentValue =
+        hours !== undefined && minutes !== undefined
+          ? `${pad(hours)}:${pad(minutes)}`
+          : "";
 
       const handleTimeSelect = (h: number, m: number) => {
         // Always set seconds to 0 in grid mode
@@ -77,7 +80,7 @@ export const TimeGridView = memo(
                   className={cn(
                     isSelected
                       ? "bg-primary text-primary-foreground font-semibold"
-                      : "text-foreground"
+                      : "text-foreground",
                   )}
                 >
                   {display}
@@ -87,8 +90,8 @@ export const TimeGridView = memo(
           </div>
         </div>
       );
-    }
-  )
+    },
+  ),
 );
 
 TimeGridView.displayName = "TimeGridView";

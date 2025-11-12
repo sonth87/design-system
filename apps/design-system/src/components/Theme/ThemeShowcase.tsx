@@ -43,7 +43,7 @@ export const ThemeShowcase: React.FC = () => {
   // Handle color change from color picker
   const handleColorChange = (cssVar: string, newColor: string) => {
     const updatedVariables = themeVariables.map((v) =>
-      v.cssVar === cssVar ? { ...v, value: newColor } : v
+      v.cssVar === cssVar ? { ...v, value: newColor } : v,
     );
     setThemeVariables(updatedVariables);
     applyTheme(updatedVariables);
@@ -58,7 +58,7 @@ export const ThemeShowcase: React.FC = () => {
   // Handle radius change from slider
   const handleRadiusChange = (cssVar: string, newValue: string) => {
     const updatedVariables = themeVariables.map((v) =>
-      v.cssVar === cssVar ? { ...v, value: newValue } : v
+      v.cssVar === cssVar ? { ...v, value: newValue } : v,
     );
     setThemeVariables(updatedVariables);
     applyTheme(updatedVariables);
@@ -174,7 +174,7 @@ export const ThemeShowcase: React.FC = () => {
             {["base", "brand", "surface", "state", "chart", "sidebar"].map(
               (groupName) => {
                 const groupVariables = themeVariables.filter(
-                  (v) => v.group === groupName
+                  (v) => v.group === groupName,
                 );
                 if (groupVariables.length === 0) return null;
 
@@ -210,7 +210,7 @@ export const ThemeShowcase: React.FC = () => {
                                 onChange={(e) =>
                                   handleColorChange(
                                     variable.cssVar,
-                                    e.target.value
+                                    e.target.value,
                                   )
                                 }
                                 className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
@@ -235,7 +235,7 @@ export const ThemeShowcase: React.FC = () => {
                                     onChange={(e) =>
                                       handleRadiusChange(
                                         variable.cssVar,
-                                        `${e.target.value}rem`
+                                        `${e.target.value}rem`,
                                       )
                                     }
                                     className="w-full h-2 bg-muted rounded-lg appearance-none cursor-pointer accent-primary"
@@ -278,7 +278,7 @@ export const ThemeShowcase: React.FC = () => {
                     </div>
                   </div>
                 );
-              }
+              },
             )}
           </section>
 

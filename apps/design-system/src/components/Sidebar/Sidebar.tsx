@@ -89,15 +89,11 @@ export type SidebarTriggerProps = React.ComponentProps<typeof SSidebarTrigger>;
 const SidebarProvider = React.forwardRef<HTMLDivElement, SidebarProviderProps>(
   ({ className, children, ...props }, ref) => {
     return (
-      <SSidebarProvider
-        ref={ref}
-        className={cn(className)}
-        {...props}
-      >
+      <SSidebarProvider ref={ref} className={cn(className)} {...props}>
         {children}
       </SSidebarProvider>
     );
-  }
+  },
 );
 SidebarProvider.displayName = "SidebarProvider";
 
@@ -109,17 +105,15 @@ const Sidebar = React.forwardRef<HTMLDivElement, SidebarProps>(
         {children}
       </SSidebar>
     );
-  }
+  },
 );
 Sidebar.displayName = "Sidebar";
 
 // Sidebar Content
 const SidebarContent = React.forwardRef<HTMLDivElement, SidebarContentProps>(
   ({ className, ...props }, ref) => {
-    return (
-      <SSidebarContent ref={ref} className={cn(className)} {...props} />
-    );
-  }
+    return <SSidebarContent ref={ref} className={cn(className)} {...props} />;
+  },
 );
 SidebarContent.displayName = "SidebarContent";
 
@@ -127,7 +121,7 @@ SidebarContent.displayName = "SidebarContent";
 const SidebarFooter = React.forwardRef<HTMLDivElement, SidebarFooterProps>(
   ({ className, ...props }, ref) => {
     return <SSidebarFooter ref={ref} className={cn(className)} {...props} />;
-  }
+  },
 );
 SidebarFooter.displayName = "SidebarFooter";
 
@@ -135,7 +129,7 @@ SidebarFooter.displayName = "SidebarFooter";
 const SidebarGroup = React.forwardRef<HTMLDivElement, SidebarGroupProps>(
   ({ className, ...props }, ref) => {
     return <SSidebarGroup ref={ref} className={cn(className)} {...props} />;
-  }
+  },
 );
 SidebarGroup.displayName = "SidebarGroup";
 
@@ -144,9 +138,7 @@ const SidebarGroupAction = React.forwardRef<
   HTMLButtonElement,
   SidebarGroupActionProps
 >(({ className, ...props }, ref) => {
-  return (
-    <SSidebarGroupAction ref={ref} className={cn(className)} {...props} />
-  );
+  return <SSidebarGroupAction ref={ref} className={cn(className)} {...props} />;
 });
 SidebarGroupAction.displayName = "SidebarGroupAction";
 
@@ -166,9 +158,7 @@ const SidebarGroupLabel = React.forwardRef<
   HTMLDivElement,
   SidebarGroupLabelProps
 >(({ className, ...props }, ref) => {
-  return (
-    <SSidebarGroupLabel ref={ref} className={cn(className)} {...props} />
-  );
+  return <SSidebarGroupLabel ref={ref} className={cn(className)} {...props} />;
 });
 SidebarGroupLabel.displayName = "SidebarGroupLabel";
 
@@ -176,7 +166,7 @@ SidebarGroupLabel.displayName = "SidebarGroupLabel";
 const SidebarHeader = React.forwardRef<HTMLDivElement, SidebarHeaderProps>(
   ({ className, ...props }, ref) => {
     return <SSidebarHeader ref={ref} className={cn(className)} {...props} />;
-  }
+  },
 );
 SidebarHeader.displayName = "SidebarHeader";
 
@@ -184,7 +174,7 @@ SidebarHeader.displayName = "SidebarHeader";
 const SidebarInput = React.forwardRef<HTMLInputElement, SidebarInputProps>(
   ({ className, ...props }, ref) => {
     return <SSidebarInput ref={ref} className={cn(className)} {...props} />;
-  }
+  },
 );
 SidebarInput.displayName = "SidebarInput";
 
@@ -192,7 +182,7 @@ SidebarInput.displayName = "SidebarInput";
 const SidebarInset = React.forwardRef<HTMLElement, SidebarInsetProps>(
   ({ className, ...props }, ref) => {
     return <SSidebarInset ref={ref} className={cn(className)} {...props} />;
-  }
+  },
 );
 SidebarInset.displayName = "SidebarInset";
 
@@ -200,7 +190,7 @@ SidebarInset.displayName = "SidebarInset";
 const SidebarMenu = React.forwardRef<HTMLUListElement, SidebarMenuProps>(
   ({ className, ...props }, ref) => {
     return <SSidebarMenu ref={ref} className={cn(className)} {...props} />;
-  }
+  },
 );
 SidebarMenu.displayName = "SidebarMenu";
 
@@ -209,9 +199,7 @@ const SidebarMenuAction = React.forwardRef<
   HTMLButtonElement,
   SidebarMenuActionProps
 >(({ className, ...props }, ref) => {
-  return (
-    <SSidebarMenuAction ref={ref} className={cn(className)} {...props} />
-  );
+  return <SSidebarMenuAction ref={ref} className={cn(className)} {...props} />;
 });
 SidebarMenuAction.displayName = "SidebarMenuAction";
 
@@ -229,9 +217,7 @@ const SidebarMenuButton = React.forwardRef<
   HTMLButtonElement,
   SidebarMenuButtonProps
 >(({ className, ...props }, ref) => {
-  return (
-    <SSidebarMenuButton ref={ref} className={cn(className)} {...props} />
-  );
+  return <SSidebarMenuButton ref={ref} className={cn(className)} {...props} />;
 });
 SidebarMenuButton.displayName = "SidebarMenuButton";
 
@@ -239,7 +225,7 @@ SidebarMenuButton.displayName = "SidebarMenuButton";
 const SidebarMenuItem = React.forwardRef<HTMLLIElement, SidebarMenuItemProps>(
   ({ className, ...props }, ref) => {
     return <SSidebarMenuItem ref={ref} className={cn(className)} {...props} />;
-  }
+  },
 );
 SidebarMenuItem.displayName = "SidebarMenuItem";
 
@@ -258,7 +244,7 @@ SidebarMenuSkeleton.displayName = "SidebarMenuSkeleton";
 const SidebarMenuSub = React.forwardRef<HTMLUListElement, SidebarMenuSubProps>(
   ({ className, ...props }, ref) => {
     return <SSidebarMenuSub ref={ref} className={cn(className)} {...props} />;
-  }
+  },
 );
 SidebarMenuSub.displayName = "SidebarMenuSub";
 
@@ -278,9 +264,7 @@ const SidebarMenuSubItem = React.forwardRef<
   HTMLLIElement,
   SidebarMenuSubItemProps
 >(({ className, ...props }, ref) => {
-  return (
-    <SSidebarMenuSubItem ref={ref} className={cn(className)} {...props} />
-  );
+  return <SSidebarMenuSubItem ref={ref} className={cn(className)} {...props} />;
 });
 SidebarMenuSubItem.displayName = "SidebarMenuSubItem";
 
@@ -288,7 +272,7 @@ SidebarMenuSubItem.displayName = "SidebarMenuSubItem";
 const SidebarRail = React.forwardRef<HTMLButtonElement, SidebarRailProps>(
   ({ className, ...props }, ref) => {
     return <SSidebarRail ref={ref} className={cn(className)} {...props} />;
-  }
+  },
 );
 SidebarRail.displayName = "SidebarRail";
 
@@ -305,7 +289,7 @@ SidebarSeparator.displayName = "SidebarSeparator";
 const SidebarTrigger = React.forwardRef<HTMLButtonElement, SidebarTriggerProps>(
   ({ className, ...props }, ref) => {
     return <SSidebarTrigger ref={ref} className={cn(className)} {...props} />;
-  }
+  },
 );
 SidebarTrigger.displayName = "SidebarTrigger";
 

@@ -167,7 +167,7 @@ const ColorsComponent = () => {
     Object.fromEntries(colors.map((c) => [c, false])) as Record<
       (typeof colors)[number],
       boolean
-    >
+    >,
   );
 
   const updateState = (key: (typeof colors)[number]) => {
@@ -199,7 +199,7 @@ const SizesComponent = () => {
     Object.fromEntries(sizes.map((s) => [s, false])) as Record<
       (typeof sizes)[number],
       boolean
-    >
+    >,
   );
 
   const updateState = (key: (typeof sizes)[number]) => {

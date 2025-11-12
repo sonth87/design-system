@@ -88,9 +88,15 @@ export const CustomColorVariants: Story = {
   render: () => (
     <div className="flex flex-col items-center gap-4">
       <InputOTP size="normal" childClassName="border-red-500 text-red-500" />
-      <InputOTP size="normal" childClassName="border-purple-500 text-purple-500" />
+      <InputOTP
+        size="normal"
+        childClassName="border-purple-500 text-purple-500"
+      />
       <InputOTP size="normal" childClassName="border-blue-500 text-blue-500" />
-      <InputOTP size="normal" childClassName="border-green-500 text-green-500" />
+      <InputOTP
+        size="normal"
+        childClassName="border-green-500 text-green-500"
+      />
       <InputOTP
         size="normal"
         className="[&>div:first-child]:border-red-500 [&>div:nth-child(2)]:border-green-500  [&>div:nth-child(3)]:border-blue-500 [&>div:nth-child(4)]:border-yellow-500 [&>div:nth-child(5)]:border-purple-500"

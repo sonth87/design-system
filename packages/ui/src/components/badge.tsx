@@ -67,7 +67,7 @@ const generateCompoundVariants = () => {
           className: colorVariants[color][variant],
         });
       });
-    }
+    },
   );
 
   return variants;
@@ -98,7 +98,7 @@ const badgeVariants = cva(
         success: "",
         error: "",
         warning: "",
-        custom: ""
+        custom: "",
       },
       border: {
         true: "",
@@ -139,7 +139,7 @@ const badgeVariants = cva(
       color: "primary",
       border: false,
     },
-  }
+  },
 );
 
 type BadgeProps = React.ComponentProps<"span"> &
@@ -150,7 +150,7 @@ type BadgeProps = React.ComponentProps<"span"> &
 const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
   (
     { className, variant, size, color, border, asChild = false, ...props },
-    ref
+    ref,
   ) => {
     const Comp = asChild ? Slot : "span";
     return (
@@ -159,12 +159,12 @@ const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
         data-slot="badge"
         className={cn(
           badgeVariants({ variant, size, color, border }),
-          className
+          className,
         )}
         {...props}
       />
     );
-  }
+  },
 );
 
 Badge.displayName = "Badge";

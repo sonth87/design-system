@@ -195,9 +195,7 @@ export const WithActiveStates: Story = {
           </header>
           <div className="flex flex-1 flex-col gap-4 p-4">
             <div className="min-h-screen flex-1 rounded-xl bg-muted/50 p-4">
-              <p className="text-muted-foreground">
-                Content for {active} page
-              </p>
+              <p className="text-muted-foreground">Content for {active} page</p>
             </div>
           </div>
         </SidebarInset>
@@ -340,7 +338,7 @@ export const RightSide: Story = {
                         <span>{item}</span>
                       </SidebarMenuButton>
                     </SidebarMenuItem>
-                  )
+                  ),
                 )}
               </SidebarMenu>
             </SidebarGroupContent>

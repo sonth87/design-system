@@ -1501,7 +1501,7 @@ export const AllVariants: Story = {
 
 export const CustomColor: Story = {
   render: function CustomColorTabs() {
-    const [customColor, setCustomColor] = React.useState("#ff6b6b");
+    const [customColor, setCustomColor] = React.useState("#fb00ff");
 
     const items: TabsProps["items"] = [
       {
@@ -1642,7 +1642,7 @@ export const OverflowScroll: Story = {
             </p>
           </div>
         ),
-      })
+      }),
     );
 
     return (
@@ -1714,7 +1714,7 @@ export const OverflowDropdown: Story = {
             </p>
           </div>
         ),
-      })
+      }),
     );
 
     return (
@@ -1755,7 +1755,7 @@ export const OverflowDropdown: Story = {
           <h3 className="text-sm font-semibold mb-4">
             Dropdown Mode - Vertical (15 tabs)
           </h3>
-          <div className="h-[300px]">
+          <div>
             <Tabs
               defaultActiveKey="tab-1"
               items={manyItems}
@@ -1790,7 +1790,7 @@ export const OverflowFade: Story = {
             </p>
           </div>
         ),
-      })
+      }),
     );
 
     return (
@@ -1846,7 +1846,7 @@ export const OverflowFade: Story = {
           <h3 className="text-sm font-semibold mb-4">
             Fade Mode - Vertical (18 tabs)
           </h3>
-          <div className="h-[300px]">
+          <div>
             <Tabs
               defaultActiveKey="tab-1"
               items={manyItems}

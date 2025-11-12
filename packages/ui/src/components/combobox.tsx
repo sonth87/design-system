@@ -42,7 +42,7 @@ const comboboxVariants = cva(
       size: "normal",
       state: "default",
     },
-  }
+  },
 );
 
 type SelectOption = {
@@ -70,7 +70,7 @@ type ComboboxProps = Omit<
   state?: "default" | "success" | "error" | "warning";
   searchable?: boolean;
   tagRender?: (
-    option: SelectOption & { onClick?: () => void }
+    option: SelectOption & { onClick?: () => void },
   ) => React.ReactNode;
 } & VariantProps<typeof comboboxVariants>;
 
@@ -102,7 +102,7 @@ function Combobox({
                 "truncate w-full inline-block align-middle text-left",
                 {
                   "pr-8": clearable,
-                }
+                },
               )}
             >
               {value
@@ -117,7 +117,7 @@ function Combobox({
                     "size-4 min-w-4": size === "sm" || size === "xs",
                     "size-5 min-w-5": size === "lg" || size === "xl",
                   },
-                  dropdownClassName
+                  dropdownClassName,
                 )}
               />
             )}
@@ -129,7 +129,7 @@ function Combobox({
                     "size-4 min-w-4": size === "sm" || size === "xs",
                     "size-5 min-w-5": size === "lg" || size === "xl",
                   },
-                  dropdownClassName
+                  dropdownClassName,
                 )}
               />
             )}
@@ -170,7 +170,7 @@ function Combobox({
                   }
                   className={cn(
                     option?.disabled &&
-                      "opacity-50 cursor-not-allowed grayscale"
+                      "opacity-50 cursor-not-allowed grayscale",
                   )}
                 >
                   {tagRender ? (
@@ -188,7 +188,7 @@ function Combobox({
                   <Check
                     className={cn(
                       "ml-auto",
-                      value === option.value ? "opacity-100" : "opacity-0" // So sánh theo value
+                      value === option.value ? "opacity-100" : "opacity-0", // So sánh theo value
                     )}
                   />
                 </CommandItem>

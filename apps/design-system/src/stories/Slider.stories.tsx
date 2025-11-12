@@ -145,7 +145,7 @@ type Story = StoryObj<SliderProps>;
 export const Default: Story = {
   render: function DefaultSlider(args) {
     const [value, setValue] = React.useState(
-      args.value || args.defaultValue || [50]
+      args.value || args.defaultValue || [50],
     );
 
     return (

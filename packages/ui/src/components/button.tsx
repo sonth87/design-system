@@ -139,7 +139,7 @@ const generateCompoundVariants = () => {
           className: colorVariants[color][variant],
         });
       });
-    }
+    },
   );
 
   return variants;
@@ -198,7 +198,7 @@ const buttonVariants = cva(
       size: "normal",
       color: null,
     },
-  }
+  },
 );
 
 type ButtonProps = React.ComponentProps<"button"> &
@@ -218,7 +218,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       />
     );
-  }
+  },
 );
 
 Button.displayName = "Button";

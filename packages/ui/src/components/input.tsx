@@ -27,7 +27,7 @@ const inputVariants = cva(
       size: "normal",
       state: "default",
     },
-  }
+  },
 );
 
 type InputProps = Omit<React.ComponentProps<"input">, "size"> & {
@@ -46,7 +46,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         {...props}
       />
     );
-  }
+  },
 );
 
 Input.displayName = "Input";

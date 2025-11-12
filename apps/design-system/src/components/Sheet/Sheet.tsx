@@ -115,14 +115,14 @@ const Sheet = React.forwardRef<HTMLDivElement, SheetProps>((props, ref) => {
     "!p-0 !gap-0 flex flex-col",
     getSizeClasses(size, side),
     animationResult.className,
-    className
+    className,
   );
 
   const headerClasses = cn("px-6 pt-6 text-left", headerClassName);
 
   const footerClasses = cn(
     "px-6 pb-6 flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2",
-    footerClassName
+    footerClassName,
   );
 
   const headerComponents = useMemo(() => {
@@ -162,7 +162,7 @@ const Sheet = React.forwardRef<HTMLDivElement, SheetProps>((props, ref) => {
     const drawerContentClasses = cn(
       "flex flex-col",
       animationResult.className,
-      className
+      className,
     );
 
     return (
@@ -172,7 +172,7 @@ const Sheet = React.forwardRef<HTMLDivElement, SheetProps>((props, ref) => {
           ref={ref}
           className={cn(
             drawerContentClasses,
-            autoHeight ? "" : getSizeClasses(size, "bottom")
+            autoHeight ? "" : getSizeClasses(size, "bottom"),
           )}
         >
           {(title || description) && (

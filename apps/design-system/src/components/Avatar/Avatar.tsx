@@ -100,7 +100,7 @@ export function Avatar({
         avatarVariant,
         avatarAnimation?.className,
         avatarColor,
-        className
+        className,
       )}
       {...props}
     >

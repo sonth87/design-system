@@ -68,7 +68,7 @@ const ScrollArea = React.forwardRef<HTMLDivElement, ScrollAreaProps>(
     useEffect(() => {
       if (scrollAreaRef.current && (snapClass || viewportClassName)) {
         const viewport = scrollAreaRef.current.querySelector(
-          "[data-radix-scroll-area-viewport]"
+          "[data-radix-scroll-area-viewport]",
         );
         if (viewport) {
           const classes = cn(snapClass, viewportClassName);
@@ -95,14 +95,14 @@ const ScrollArea = React.forwardRef<HTMLDivElement, ScrollAreaProps>(
         {children}
       </SScrollArea>
     );
-  }
+  },
 );
 ScrollArea.displayName = "ScrollArea";
 
 const ScrollBar = React.forwardRef<HTMLDivElement, ScrollBarProps>(
   ({ className, ...props }, ref) => {
     return <SScrollBar ref={ref} className={cn(className)} {...props} />;
-  }
+  },
 );
 ScrollBar.displayName = "ScrollBar";
 

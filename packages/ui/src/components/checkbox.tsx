@@ -113,7 +113,7 @@ const generateCompoundVariants = () => {
           className: colorVariants[color][variant],
         });
       });
-    }
+    },
   );
 
   return variants;
@@ -149,7 +149,7 @@ const checkboxVariants = cva(
       size: "default",
       color: null,
     },
-  }
+  },
 );
 
 function Checkbox({
@@ -183,7 +183,7 @@ function Checkbox({
         {
           "group focus-visible:ring-ring/50 outline-none focus-visible:ring-3 !border-none !bg-transparent shadow-none":
             icon,
-        }
+        },
       )}
       {...props}
     >
@@ -196,9 +196,9 @@ function Checkbox({
                 (icon as React.ReactElement<{ className?: string }>).props
                   .className,
                 color ? iconClass : "",
-                iconSizeClass
+                iconSizeClass,
               ),
-            }
+            },
           )
         ) : (
           icon

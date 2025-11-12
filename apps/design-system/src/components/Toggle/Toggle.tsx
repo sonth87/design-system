@@ -21,7 +21,7 @@ const Toggle = React.forwardRef<HTMLButtonElement, ToggleProps>(
         color={color}
       />
     );
-  }
+  },
 );
 
 Toggle.displayName = "Toggle";

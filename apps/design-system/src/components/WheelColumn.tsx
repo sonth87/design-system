@@ -26,7 +26,7 @@ export const TimeColumnwheel = memo(
         isItemDisabled,
         disabled,
       },
-      ref
+      ref,
     ) => {
       const debounceTimerRef = useRef<number | null>(null);
       const containerRef = useRef<HTMLDivElement | null>(null);
@@ -108,14 +108,14 @@ export const TimeColumnwheel = memo(
         const centerY = containerHeight / 2;
         const itemCenterY = 120 + index * itemHeight + itemHeight / 2; // 120px spacer + item position
         const distanceFromCenter = Math.abs(
-          itemCenterY - (scrollTop + centerY)
+          itemCenterY - (scrollTop + centerY),
         );
         const maxDistance = containerHeight / 2;
 
         // Calculate opacity and scale based on distance
         const opacity = Math.max(
           0.3,
-          1 - (distanceFromCenter / maxDistance) * 0.7
+          1 - (distanceFromCenter / maxDistance) * 0.7,
         );
         const fontSize = isSelected ? "1.3rem" : "1rem";
 
@@ -136,7 +136,7 @@ export const TimeColumnwheel = memo(
           <div
             className={cn(
               "relative w-full",
-              timeLabel ? "h-[calc(100%_-_2rem)]" : " h-full"
+              timeLabel ? "h-[calc(100%_-_2rem)]" : " h-full",
             )}
           >
             {/* wheel style divider lines */}
@@ -156,7 +156,7 @@ export const TimeColumnwheel = memo(
                 "[&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-track]:bg-transparent",
                 "[&::-webkit-scrollbar-thumb]:bg-border [&::-webkit-scrollbar-thumb]:rounded",
                 "flex flex-col snap-y snap-mandatory",
-                itemClassName
+                itemClassName,
               )}
               style={{
                 maskImage: `linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)`,
@@ -168,7 +168,8 @@ export const TimeColumnwheel = memo(
 
               {items.map((item, index) => {
                 const itemDisabled = isItemDisabled(item);
-                const isSelected = selectedValue !== undefined && item === selectedValue;
+                const isSelected =
+                  selectedValue !== undefined && item === selectedValue;
                 const itemStyle = getItemStyle(index, isSelected);
 
                 return (
@@ -186,7 +187,7 @@ export const TimeColumnwheel = memo(
                       "disabled:opacity-30 disabled:cursor-not-allowed disabled:line-through",
                       isSelected
                         ? "text-primary font-bold"
-                        : "text-muted-foreground"
+                        : "text-muted-foreground",
                     )}
                     style={itemStyle}
                   >
@@ -201,8 +202,8 @@ export const TimeColumnwheel = memo(
           </div>
         </div>
       );
-    }
-  )
+    },
+  ),
 );
 
 TimeColumnwheel.displayName = "TimeColumnwheel";

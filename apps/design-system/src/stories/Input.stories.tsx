@@ -364,7 +364,7 @@ export const IconsWithBuiltInFeatures = () => (
       defaultValue="example@email.com"
       helperText="Prefix icon + clearable button"
     />
-    
+
     <Input
       label="Password with prefix icon"
       type="password"

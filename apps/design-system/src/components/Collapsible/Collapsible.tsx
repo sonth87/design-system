@@ -104,14 +104,14 @@ const Collapsible = React.forwardRef<
         className={cn(
           "flex w-full items-center justify-between transition-colors",
           styles.trigger,
-          triggerClassName
+          triggerClassName,
         )}
       >
         {iconPosition === "left" && showIcon && (
           <ChevronDown
             className={cn(
               "size-4 transition-transform duration-200",
-              iconRotation && isOpen && "rotate-180"
+              iconRotation && isOpen && "rotate-180",
             )}
           />
         )}
@@ -120,7 +120,7 @@ const Collapsible = React.forwardRef<
           <ChevronDown
             className={cn(
               "size-4 transition-transform duration-200",
-              iconRotation && isOpen && "rotate-180"
+              iconRotation && isOpen && "rotate-180",
             )}
           />
         )}

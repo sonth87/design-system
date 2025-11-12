@@ -191,19 +191,19 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
     positionClasses[position],
     variantColors[variant],
     animationResult.className,
-    fullscreen ? "h-[95vh]" : "max-h-[min(600px,80vh)]"
+    fullscreen ? "h-[95vh]" : "max-h-[min(600px,80vh)]",
   );
 
   const headerClasses = cn(
     "px-6 pt-6 text-left",
     !scrollable && "contents space-y-0",
-    headerClassName
+    headerClassName,
   );
 
   const footerClasses = cn(
     "px-6 pb-6 sm:justify-end",
     !scrollable && "border-t py-4",
-    footerClassName
+    footerClassName,
   );
 
   const icon = variantIcons[variant];
@@ -214,7 +214,7 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
         className={cn(
           "flex items-center gap-2 py-4",
           { "border-b": stickyHeader },
-          headerClasses
+          headerClasses,
         )}
       >
         {(title || icon) && (

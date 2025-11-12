@@ -68,7 +68,7 @@ export const positionClasses: Record<
 // Color classes for backgrounds, text, and borders
 export const getColorClasses = (
   variant: TabVariant,
-  color: TabColor
+  color: TabColor,
 ): string => {
   // Helper to generate color-specific classes based on variant
   const colorMap: Record<
@@ -153,7 +153,7 @@ export const getColorClasses = (
 export const getListBorderClasses = (
   variant: TabVariant,
   color: TabColor,
-  tabPosition: TabPosition
+  tabPosition: TabPosition,
 ): string => {
   if (variant === "underlined") {
     // Underlined variant: border on the opposite side from where tabs connect
@@ -271,7 +271,7 @@ export const getListBorderClasses = (
 
 // Get trigger border classes for underlined variant based on position
 export const getUnderlinedTriggerClasses = (
-  tabPosition: TabPosition
+  tabPosition: TabPosition,
 ): string => {
   const baseClasses =
     "bg-background dark:bg-background rounded-none border-0 border-transparent data-[state=active]:shadow-none";
@@ -303,7 +303,7 @@ export const getEnclosedTriggerClasses = (tabPosition: TabPosition): string => {
 
 // Get trigger border classes for enclosed-fill variant based on position
 export const getEnclosedFillTriggerClasses = (
-  tabPosition: TabPosition
+  tabPosition: TabPosition,
 ): string => {
   const baseClasses =
     "bg-muted dark:bg-muted border border-transparent data-[state=active]:bg-background dark:data-[state=active]:bg-background data-[state=active]:shadow-none rounded-none";

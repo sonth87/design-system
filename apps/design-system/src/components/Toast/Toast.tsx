@@ -33,7 +33,7 @@ const renderToastContent = (variant: Variant, message: React.ReactNode) => (
   <div
     className={cn(
       "flex items-center gap-2 rounded-md px-3 py-2 shadow-md text-sm font-medium",
-      variantStyles[variant]
+      variantStyles[variant],
     )}
   >
     {variantIcons[variant]}
@@ -52,35 +52,35 @@ const toast = Object.assign(
   {
     success: (
       message: React.ReactNode,
-      opts?: Parameters<typeof sonnerToast>[1]
+      opts?: Parameters<typeof sonnerToast>[1],
     ) => sonnerToast.custom(() => renderToastContent("success", message), opts),
 
     error: (
       message: React.ReactNode,
-      opts?: Parameters<typeof sonnerToast>[1]
+      opts?: Parameters<typeof sonnerToast>[1],
     ) => sonnerToast.custom(() => renderToastContent("error", message), opts),
 
     warning: (
       message: React.ReactNode,
-      opts?: Parameters<typeof sonnerToast>[1]
+      opts?: Parameters<typeof sonnerToast>[1],
     ) => sonnerToast.custom(() => renderToastContent("warning", message), opts),
 
     info: (
       message: React.ReactNode,
-      opts?: Parameters<typeof sonnerToast>[1]
+      opts?: Parameters<typeof sonnerToast>[1],
     ) => sonnerToast.custom(() => renderToastContent("info", message), opts),
 
     primary: (
       message: React.ReactNode,
-      opts?: Parameters<typeof sonnerToast>[1]
+      opts?: Parameters<typeof sonnerToast>[1],
     ) => sonnerToast.custom(() => renderToastContent("primary", message), opts),
 
     secondary: (
       message: React.ReactNode,
-      opts?: Parameters<typeof sonnerToast>[1]
+      opts?: Parameters<typeof sonnerToast>[1],
     ) =>
       sonnerToast.custom(() => renderToastContent("secondary", message), opts),
-  }
+  },
 );
 
 function Toaster({

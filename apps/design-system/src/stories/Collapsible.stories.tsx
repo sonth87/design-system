@@ -302,7 +302,7 @@ const CustomImplementationComponent = () => {
           <ChevronRight
             className={cn(
               "size-4 transition-transform duration-300",
-              isOpen && "rotate-90"
+              isOpen && "rotate-90",
             )}
           />
         </CollapsibleTrigger>

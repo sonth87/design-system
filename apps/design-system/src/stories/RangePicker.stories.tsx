@@ -163,7 +163,7 @@ export const Default: Story = {
     const [range, setRange] = useState<DateRangeText | undefined>();
     const handleSelect = (
       _r: DateRange | undefined,
-      t: DateRangeText | undefined
+      t: DateRangeText | undefined,
     ) => setRange(t);
 
     return (
@@ -193,19 +193,19 @@ export const States: Story = {
 
     const handleSelectDefault = (
       _r: DateRange | undefined,
-      t: DateRangeText | undefined
+      t: DateRangeText | undefined,
     ) => setRangeDefault(t);
     const handleSelectSuccess = (
       _r: DateRange | undefined,
-      t: DateRangeText | undefined
+      t: DateRangeText | undefined,
     ) => setRangeSuccess(t);
     const handleSelectWarning = (
       _r: DateRange | undefined,
-      t: DateRangeText | undefined
+      t: DateRangeText | undefined,
     ) => setRangeWarning(t);
     const handleSelectError = (
       _r: DateRange | undefined,
-      t: DateRangeText | undefined
+      t: DateRangeText | undefined,
     ) => setRangeError(t);
 
     return (
@@ -262,23 +262,23 @@ export const Sizes: Story = {
 
     const handleSelectXs = (
       _r: DateRange | undefined,
-      t: DateRangeText | undefined
+      t: DateRangeText | undefined,
     ) => setRangeXs(t);
     const handleSelectSm = (
       _r: DateRange | undefined,
-      t: DateRangeText | undefined
+      t: DateRangeText | undefined,
     ) => setRangeSm(t);
     const handleSelectNormal = (
       _r: DateRange | undefined,
-      t: DateRangeText | undefined
+      t: DateRangeText | undefined,
     ) => setRangeNormal(t);
     const handleSelectLg = (
       _r: DateRange | undefined,
-      t: DateRangeText | undefined
+      t: DateRangeText | undefined,
     ) => setRangeLg(t);
     const handleSelectXl = (
       _r: DateRange | undefined,
-      t: DateRangeText | undefined
+      t: DateRangeText | undefined,
     ) => setRangeXl(t);
 
     return (
@@ -361,11 +361,11 @@ export const WithTime: Story = {
 
     const handleSelectHHmm = (
       _r: DateRange | undefined,
-      t: DateRangeText | undefined
+      t: DateRangeText | undefined,
     ) => setRangeHHmm(t);
     const handleSelectHHmmss = (
       _r: DateRange | undefined,
-      t: DateRangeText | undefined
+      t: DateRangeText | undefined,
     ) => setRangeHHmmss(t);
 
     return (
@@ -423,7 +423,7 @@ export const Clearable: Story = {
     const [range, setRange] = useState<DateRangeText | undefined>();
     const handleSelect = (
       _r: DateRange | undefined,
-      t: DateRangeText | undefined
+      t: DateRangeText | undefined,
     ) => setRange(t);
 
     return (

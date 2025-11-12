@@ -28,7 +28,7 @@ const textareaVariants = cva(
       size: "normal",
       state: "default",
     },
-  }
+  },
 );
 
 type TextareaProps = Omit<React.ComponentProps<"textarea">, "size"> & {
