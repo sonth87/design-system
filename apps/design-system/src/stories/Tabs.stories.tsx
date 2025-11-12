@@ -1841,25 +1841,6 @@ export const OverflowFade: Story = {
             />
           </div>
         </div>
-
-        <div>
-          <h3 className="text-sm font-semibold mb-4">
-            Fade Mode - Vertical (18 tabs)
-          </h3>
-          <div>
-            <Tabs
-              defaultActiveKey="tab-1"
-              items={manyItems}
-              overflowMode="fade"
-              variant="pills"
-              color="accent"
-              tabPosition="left"
-            />
-          </div>
-          <p className="text-xs text-muted-foreground mt-2">
-            Gradient fade effect appears at the bottom for vertical tabs
-          </p>
-        </div>
       </div>
     );
   },
