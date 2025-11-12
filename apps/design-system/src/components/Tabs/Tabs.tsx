@@ -538,19 +538,18 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
                   (variant === "bordered" || variant === "pills") &&
                   color === "warning",
 
-                "border rounded-full": variant === "pill-stroke",
-                "border-primary":
+                "border rounded-full border-primary":
                   variant === "pill-stroke" && color === "primary",
-                "border-secondary":
+                "border rounded-full border-secondary":
                   variant === "pill-stroke" && color === "secondary",
-                "border-muted": variant === "pill-stroke" && color === "muted",
-                "border-accent":
+                "rounded-full border-muted": variant === "pill-stroke" && color === "muted",
+                "border rounded-full border-accent":
                   variant === "pill-stroke" && color === "accent",
-                "border-destructive":
+                "border rounded-full border-destructive":
                   variant === "pill-stroke" && color === "destructive",
-                "border-success":
+                "border rounded-full border-success":
                   variant === "pill-stroke" && color === "success",
-                "border-warning":
+                "border rounded-full border-warning":
                   variant === "pill-stroke" && color === "warning",
               })}
               animate={{
@@ -576,7 +575,7 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
           ref={scrollAreaRef}
           className={cn({
             "w-full": !isVertical,
-            "pb-3": !isVertical && isOverflowing,
+            "pb-2": !isVertical && isOverflowing,
             "max-h-80": isVertical,
           })}
         >
