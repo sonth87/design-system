@@ -1,1 +1,1 @@
-export {Avatar, type AvatarProps} from "./stories/Avatar/Avatar";
+export {Avatar, type AvatarProps} from "./components/Avatar/Avatar";

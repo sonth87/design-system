@@ -5,6 +5,7 @@ import {
   TabsTrigger as STabsTrigger,
   TabsContent as STabsContent,
 } from "@dsui/ui/components/tabs";
+import { motion } from "motion/react";
 import { cn } from "@dsui/ui/lib/utils";
 
 export type TabPosition = "top" | "bottom" | "left" | "right";
@@ -17,7 +18,8 @@ export type TabVariant =
   | "text" // Text color only, minimal style
   | "outline" // Outlined/stroked border on active
   | "underlined" // Underline/border-bottom style
-  | "enclosed"; // Browser tab style, connects to content
+  | "enclosed" // Browser tab style, connects to content
+  | "enclosed-fill"; // Browser tab style with background on inactive tabs
 export type TabColor =
   | "primary"
   | "secondary"
@@ -185,6 +187,9 @@ const getColorClasses = (variant: TabVariant, color: TabColor): string => {
     case "enclosed":
       // Border color on active state (except bottom/side)
       return cn(colors.border, colors.text);
+    case "enclosed-fill":
+      // Border color on active state (except bottom/side)
+      return cn(colors.border, colors.text);
     default:
       return "";
   }
@@ -257,7 +262,72 @@ const getListBorderClasses = (
     return `${borderBaseMap[tabPosition]} ${colorBorderMap[tabPosition][color]}`;
   }
 
+  if (variant === "enclosed-fill") {
+    // Enclosed-fill variant: colored border on the opposite side
+    const borderBaseMap: Record<TabPosition, string> = {
+      top: "border-b",
+      bottom: "border-t",
+      left: "border-r",
+      right: "border-l",
+    };
+
+    const colorBorderMap: Record<TabPosition, Record<TabColor, string>> = {
+      top: {
+        primary: "border-b-primary",
+        secondary: "border-b-secondary",
+        muted: "border-b-border",
+        accent: "border-b-accent",
+        destructive: "border-b-destructive",
+        success: "border-b-success",
+        warning: "border-b-warning",
+      },
+      bottom: {
+        primary: "border-t-primary",
+        secondary: "border-t-secondary",
+        muted: "border-t-border",
+        accent: "border-t-accent",
+        destructive: "border-t-destructive",
+        success: "border-t-success",
+        warning: "border-t-warning",
+      },
+      left: {
+        primary: "border-r-primary",
+        secondary: "border-r-secondary",
+        muted: "border-r-border",
+        accent: "border-r-accent",
+        destructive: "border-r-destructive",
+        success: "border-r-success",
+        warning: "border-r-warning",
+      },
+      right: {
+        primary: "border-l-primary",
+        secondary: "border-l-secondary",
+        muted: "border-l-border",
+        accent: "border-l-accent",
+        destructive: "border-l-destructive",
+        success: "border-l-success",
+        warning: "border-l-warning",
+      },
+    };
+    return `${borderBaseMap[tabPosition]} ${colorBorderMap[tabPosition][color]}`;
+  }
+
   return "";
+};
+
+// Get trigger border classes for underlined variant based on position
+const getUnderlinedTriggerClasses = (tabPosition: TabPosition): string => {
+  const baseClasses =
+    "bg-background dark:bg-background rounded-none border-0 border-transparent data-[state=active]:shadow-none";
+
+  const positionMap: Record<TabPosition, string> = {
+    top: `${baseClasses} border-b-2 h-full`,
+    bottom: `${baseClasses} border-t-2 h-full`,
+    left: `${baseClasses} border-r-2 w-full`,
+    right: `${baseClasses} border-l-2 w-full`,
+  };
+
+  return positionMap[tabPosition];
 };
 
 // Get trigger border classes for enclosed variant based on position
@@ -275,16 +345,16 @@ const getEnclosedTriggerClasses = (tabPosition: TabPosition): string => {
   return positionMap[tabPosition];
 };
 
-// Get trigger border classes for underlined variant based on position
-const getUnderlinedTriggerClasses = (tabPosition: TabPosition): string => {
+// Get trigger border classes for enclosed-fill variant based on position
+const getEnclosedFillTriggerClasses = (tabPosition: TabPosition): string => {
   const baseClasses =
-    "bg-background dark:bg-background rounded-none border-0 border-transparent data-[state=active]:shadow-none";
+    "bg-muted dark:bg-muted border border-transparent data-[state=active]:bg-background dark:data-[state=active]:bg-background data-[state=active]:shadow-none rounded-none";
 
   const positionMap: Record<TabPosition, string> = {
-    top: `${baseClasses} border-b-2 h-full`,
-    bottom: `${baseClasses} border-t-2 h-full`,
-    left: `${baseClasses} border-r-2 w-full`,
-    right: `${baseClasses} border-l-2 w-full`,
+    top: `${baseClasses} rounded-t-md data-[state=active]:border-t data-[state=active]:border-l data-[state=active]:border-r data-[state=active]:border-b-0 data-[state=active]:border-b-background dark:data-[state=active]:border-b-background h-full data-[state=active]:-mb-0.5 data-[state=active]:translate-y-[0px]`,
+    bottom: `${baseClasses} rounded-b-md data-[state=active]:border-b data-[state=active]:border-l data-[state=active]:border-r data-[state=active]:border-t-0 data-[state=active]:border-t-background dark:data-[state=active]:border-t-background h-full data-[state=active]:-mt-0.5 data-[state=active]:translate-y-[0px]`,
+    left: `${baseClasses} rounded-l-md data-[state=active]:border-t data-[state=active]:border-l data-[state=active]:border-b data-[state=active]:border-r-0 data-[state=active]:border-r-background dark:data-[state=active]:border-r-background w-full data-[state=active]:-mr-0.5 data-[state=active]:translate-x-[1px]`,
+    right: `${baseClasses} rounded-r-md data-[state=active]:border-t data-[state=active]:border-r data-[state=active]:border-b data-[state=active]:border-l-0 data-[state=active]:border-l-background dark:data-[state=active]:border-l-background w-full data-[state=active]:-ml-0.5 data-[state=active]:translate-x-[1px]`,
   };
 
   return positionMap[tabPosition];
@@ -304,10 +374,8 @@ const variantClasses: Record<
       vertical: "bg-muted dark:bg-muted rounded-lg p-[3px]",
     },
     trigger: {
-      horizontal:
-        "data-[state=active]:bg-background dark:data-[state=active]:bg-background data-[state=active]:shadow-sm",
-      vertical:
-        "data-[state=active]:bg-background dark:data-[state=active]:bg-background data-[state=active]:shadow-sm",
+      horizontal: "",
+      vertical: "",
     },
   },
 
@@ -400,6 +468,20 @@ const variantClasses: Record<
       vertical: "", // Will be set dynamically
     },
   },
+
+  // Enclosed-fill: Border on active tab except bottom border with background on inactive tabs
+  "enclosed-fill": {
+    list: {
+      horizontal:
+        "bg-background dark:bg-background justify-start rounded-none p-0 gap-1",
+      vertical:
+        "bg-background dark:bg-background items-start rounded-none p-0 gap-1",
+    },
+    trigger: {
+      horizontal: "", // Will be set dynamically
+      vertical: "", // Will be set dynamically
+    },
+  },
 };
 
 const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
@@ -419,8 +501,57 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
     tabContentClassName,
     tabTriggerClassName,
   } = props;
+  const tabRefs = React.useRef<(HTMLButtonElement | null)[]>([]);
+  const tabsListRef = React.useRef<HTMLDivElement | null>(null);
+  const [indicatorStyle, setIndicatorStyle] = React.useState<{
+    left: number;
+    width: number;
+    top: number;
+    height: number;
+  }>({
+    left: 0,
+    width: 0,
+    top: 0,
+    height: 0,
+  });
+  const [internalActiveKey, setInternalActiveKey] = React.useState<
+    string | undefined
+  >(activeKey || defaultActiveKey || items[0]?.key);
+
+  const currentActiveKey =
+    activeKey !== undefined ? activeKey : internalActiveKey;
 
   const isVertical = tabPosition === "left" || tabPosition === "right";
+
+  React.useLayoutEffect(() => {
+    const activeIndex = items.findIndex((tab) => tab.key === currentActiveKey);
+    const activeTabElement = tabRefs.current[activeIndex];
+    const listElement = tabsListRef.current;
+
+    if (activeTabElement && listElement) {
+      const listRect = listElement.getBoundingClientRect();
+      const tabRect = activeTabElement.getBoundingClientRect();
+
+      // Calculate relative position within the list
+      const left = tabRect.left - listRect.left;
+      const top = tabRect.top - listRect.top;
+
+      setIndicatorStyle({
+        left: left,
+        width: tabRect.width,
+        top: top,
+        height: tabRect.height,
+      });
+    }
+  }, [currentActiveKey, items, isVertical]);
+
+  const handleValueChange = (key: string) => {
+    if (activeKey === undefined) {
+      setInternalActiveKey(key);
+    }
+    onChange?.(key);
+  };
+
   const orientation = isVertical ? "vertical" : "horizontal";
 
   // Get variant classes
@@ -437,6 +568,8 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
     triggerVariantClass = getUnderlinedTriggerClasses(tabPosition);
   } else if (variant === "enclosed") {
     triggerVariantClass = getEnclosedTriggerClasses(tabPosition);
+  } else if (variant === "enclosed-fill") {
+    triggerVariantClass = getEnclosedFillTriggerClasses(tabPosition);
   }
 
   // Get color classes based on variant
@@ -447,8 +580,8 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
     <STabs
       ref={ref}
       defaultValue={defaultActiveKey}
-      value={activeKey}
-      onValueChange={onChange}
+      value={currentActiveKey}
+      onValueChange={handleValueChange}
       orientation={orientation}
       className={cn("gap-2", positionClasses[tabPosition].root, className)}
     >
@@ -460,26 +593,61 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
         })}
       >
         <STabsList
+          ref={tabsListRef}
           className={cn(
             positionClasses[tabPosition].list,
             sizeClasses[size][isVertical ? "vertical" : "horizontal"],
             listVariantClass,
             listBorderClass,
-            tabListClassName
+            tabListClassName,
+            "relative"
           )}
         >
-          {items.map((item) => (
+          {items.map((item, index) => (
             <STabsTrigger
               key={item.key}
+              ref={(el) => {
+                tabRefs.current[index] = el;
+              }}
               value={item.key}
               disabled={item.disabled}
               className={cn(
                 triggerVariantClass,
-                triggerColorClass,
+                // Apply styles based on variant
                 {
+                  // For sliding indicator variants, remove default background
+                  "relative z-10 bg-transparent data-[state=active]:bg-transparent":
+                    variant === "solid" ||
+                    variant === "bordered" ||
+                    variant === "pills",
+                  // Apply text color for active state with sliding indicator
+                  "data-[state=active]:text-primary-foreground":
+                    (variant === "bordered" || variant === "pills") &&
+                    color === "primary",
+                  "data-[state=active]:text-secondary-foreground":
+                    (variant === "bordered" || variant === "pills") &&
+                    color === "secondary",
+                  "data-[state=active]:text-muted-foreground":
+                    (variant === "bordered" || variant === "pills") &&
+                    color === "muted",
+                  "data-[state=active]:text-accent-foreground":
+                    (variant === "bordered" || variant === "pills") &&
+                    color === "accent",
+                  "data-[state=active]:text-destructive-foreground":
+                    (variant === "bordered" || variant === "pills") &&
+                    color === "destructive",
+                  "data-[state=active]:text-white":
+                    (variant === "bordered" || variant === "pills") &&
+                    (color === "success" || color === "warning"),
                   "flex-1": fullWidth && !isVertical,
                   "w-full justify-start": isVertical,
                 },
+                // For other variants, apply normal color classes
+                !(
+                  variant === "solid" ||
+                  variant === "bordered" ||
+                  variant === "pills"
+                ) && triggerColorClass,
                 item.className,
                 tabTriggerClassName
               )}
@@ -492,6 +660,86 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
               {item.label}
             </STabsTrigger>
           ))}
+          {/* Sliding indicator for underlined variant */}
+          {variant === "underlined" && indicatorStyle.width > 0 && (
+            <motion.div
+              className={cn("absolute rounded-full z-10", {
+                // Horizontal positions (top/bottom)
+                "h-0.5 bottom-0": tabPosition === "top",
+                "h-0.5 top-0": tabPosition === "bottom",
+                // Vertical positions (left/right)
+                "w-0.5 right-0": tabPosition === "left",
+                "w-0.5 left-0": tabPosition === "right",
+                // Colors
+                "bg-primary": color === "primary",
+                "bg-secondary": color === "secondary",
+                "bg-muted-foreground": color === "muted",
+                "bg-accent": color === "accent",
+                "bg-destructive": color === "destructive",
+                "bg-green-500": color === "success",
+                "bg-yellow-500": color === "warning",
+              })}
+              animate={
+                isVertical
+                  ? {
+                      top: indicatorStyle.top,
+                      height: indicatorStyle.height,
+                    }
+                  : {
+                      left: indicatorStyle.left,
+                      width: indicatorStyle.width,
+                    }
+              }
+              transition={{
+                type: "spring",
+                stiffness: 300,
+                damping: 30,
+              }}
+            />
+          )}
+          {/* Sliding indicator for solid, bordered, pills variants */}
+          {(variant === "solid" ||
+            variant === "bordered" ||
+            variant === "pills") &&
+            indicatorStyle.width > 0 && (
+              <motion.div
+                className={cn("absolute rounded-md pointer-events-none z-0", {
+                  "bg-background shadow-sm": variant === "solid",
+                  "bg-primary":
+                    (variant === "bordered" || variant === "pills") &&
+                    color === "primary",
+                  "bg-secondary":
+                    (variant === "bordered" || variant === "pills") &&
+                    color === "secondary",
+                  "bg-muted":
+                    (variant === "bordered" || variant === "pills") &&
+                    color === "muted",
+                  "bg-accent":
+                    (variant === "bordered" || variant === "pills") &&
+                    color === "accent",
+                  "bg-destructive":
+                    (variant === "bordered" || variant === "pills") &&
+                    color === "destructive",
+                  "bg-success":
+                    (variant === "bordered" || variant === "pills") &&
+                    color === "success",
+                  "bg-warning":
+                    (variant === "bordered" || variant === "pills") &&
+                    color === "warning",
+                })}
+                animate={{
+                  left: indicatorStyle.left,
+                  width: indicatorStyle.width,
+                  top: indicatorStyle.top,
+                  height: indicatorStyle.height,
+                }}
+                transition={{
+                  type: "spring",
+                  stiffness: 300,
+                  damping: 30,
+                }}
+              />
+            )}
         </STabsList>
       </div>
       {items.map((item) => (

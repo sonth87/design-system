@@ -60,6 +60,7 @@ const meta: Meta<TabsProps> = {
         "outline",
         "underlined",
         "enclosed",
+        "enclosed-fill",
       ],
       description: "Visual style variant of the tabs",
       table: {
@@ -1180,12 +1181,64 @@ export const EnclosedVariant: Story = {
           />
         </div>
         <div>
-          <h3 className="text-sm font-semibold mb-4">Accent Border</h3>
+          <h3 className="text-sm font-semibold mb-4">
+            Secondary Border - Vertical
+          </h3>
           <Tabs
             defaultActiveKey="1"
             items={items}
             variant="enclosed"
-            color="accent"
+            color="secondary"
+            tabPosition="left"
+          />
+        </div>
+      </div>
+    );
+  },
+};
+
+// Variant 8 - Browser tab style with background on inactive tabs
+export const EnclosedFillVariant: Story = {
+  render: () => {
+    const items: TabsProps["items"] = [
+      {
+        key: "1",
+        label: "index.html",
+        children: (
+          <div className="p-4 border rounded-lg">
+            <p className="text-sm">Browser-like tab style with background</p>
+          </div>
+        ),
+      },
+      {
+        key: "2",
+        label: "styles.css",
+        children: (
+          <div className="p-4 border rounded-lg">
+            <p className="text-sm">Inactive tabs have muted background</p>
+          </div>
+        ),
+      },
+      {
+        key: "3",
+        label: "script.js",
+        children: (
+          <div className="p-4 border rounded-lg">
+            <p className="text-sm">Active tab connects to content</p>
+          </div>
+        ),
+      },
+    ];
+
+    return (
+      <div className="space-y-8 w-[600px]">
+        <div>
+          <h3 className="text-sm font-semibold mb-4">Primary Border</h3>
+          <Tabs
+            defaultActiveKey="1"
+            items={items}
+            variant="enclosed-fill"
+            color="primary"
           />
         </div>
         <div>
@@ -1195,7 +1248,7 @@ export const EnclosedVariant: Story = {
           <Tabs
             defaultActiveKey="1"
             items={items}
-            variant="enclosed"
+            variant="enclosed-fill"
             color="secondary"
             tabPosition="left"
           />
@@ -1317,6 +1370,12 @@ export const AllVariants: Story = {
             Enclosed - Browser Tab Style (Accent)
           </h3>
           <Tabs defaultActiveKey="1" items={items} variant="enclosed" />
+        </div>
+        <div>
+          <h3 className="text-sm font-semibold mb-2">
+            Enclosed Fill - Browser Tab with Background (Accent)
+          </h3>
+          <Tabs defaultActiveKey="1" items={items} variant="enclosed-fill" />
         </div>
       </div>
     );
