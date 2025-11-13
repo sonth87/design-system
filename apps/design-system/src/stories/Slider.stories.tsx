@@ -170,7 +170,9 @@ const meta: Meta<SliderProps> = {
     },
     labelArrowColor: {
       control: "text",
-      description: i18n.t("stories.slider.argTypes.labelArrowColor.description"),
+      description: i18n.t(
+        "stories.slider.argTypes.labelArrowColor.description",
+      ),
       table: {
         category: i18n.t("stories.category.advanced"),
       },

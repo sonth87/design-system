@@ -402,6 +402,7 @@
     "stories.breadcrumb.argTypes.maxItems.description": "Maximum number of breadcrumb items to display",
     "stories.breadcrumb.argTypes.ellipsis.description": "Show ellipsis when items exceed maxItems",
     "stories.breadcrumb.argTypes.items.description": "Array of breadcrumb items",
+    "stories.breadcrumb.argTypes.separator.description": "Custom separator element between breadcrumb items",
     "stories.breadcrumb.argTypes.className.description": "Additional CSS classes",
 
     "stories.category.basic": "Basic",

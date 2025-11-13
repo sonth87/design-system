@@ -402,6 +402,7 @@
     "stories.breadcrumb.argTypes.maxItems.description": "Số lượng mục breadcrumb tối đa để hiển thị",
     "stories.breadcrumb.argTypes.ellipsis.description": "Hiển thị dấu ba chấm khi mục vượt quá maxItems",
     "stories.breadcrumb.argTypes.items.description": "Mảng các mục breadcrumb",
+    "stories.breadcrumb.argTypes.separator.description": "Phần tử phân cách tùy chỉnh giữa các mục breadcrumb",
     "stories.breadcrumb.argTypes.className.description": "Các lớp CSS bổ sung",
 
     "stories.category.basic": "Cơ bản",

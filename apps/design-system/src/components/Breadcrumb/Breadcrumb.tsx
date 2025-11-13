@@ -91,7 +91,7 @@ const Breadcrumb = React.forwardRef<HTMLElement, BreadcrumbProps>(
       showPopoverOnEllipsis = false,
       ...props
     },
-    ref
+    ref,
   ) => {
     const [popoverOpen, setPopoverOpen] = React.useState(false);
     const userItems = items;
@@ -224,7 +224,7 @@ const Breadcrumb = React.forwardRef<HTMLElement, BreadcrumbProps>(
         </SBreadcrumbList>
       </SBreadcrumb>
     );
-  }
+  },
 );
 
 Breadcrumb.displayName = "Breadcrumb";

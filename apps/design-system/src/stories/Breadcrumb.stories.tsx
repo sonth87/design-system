@@ -77,6 +77,14 @@ const meta: Meta<typeof Breadcrumb> = {
         category: i18n.t("stories.category.behavior"),
       },
     },
+    separator: {
+      control: "text",
+      description: i18n.t("stories.breadcrumb.argTypes.separator.description"),
+      table: {
+        defaultValue: { summary: "undefined" },
+        category: i18n.t("stories.category.appearance"),
+      },
+    },
     items: {
       control: "object",
       description: i18n.t("stories.breadcrumb.argTypes.items.description"),
