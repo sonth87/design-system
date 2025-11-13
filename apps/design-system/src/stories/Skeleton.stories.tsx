@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import Skeleton, { type SkeletonProps } from "../components/Skeleton/Skeleton";
+import i18n from "../../.storybook/i18n";
 
 const meta: Meta<typeof Skeleton> = {
   title: "Feedback/Skeleton",
@@ -11,7 +12,10 @@ const meta: Meta<typeof Skeleton> = {
   argTypes: {
     className: {
       control: "text",
-      description: "Additional CSS classes",
+      description: i18n.t("stories.skeleton.argTypes.className.description"),
+      table: {
+        category: i18n.t("stories.category.advanced"),
+      },
     },
   },
 };

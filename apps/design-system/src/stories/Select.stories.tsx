@@ -3,6 +3,7 @@ import Select, {
   type SelectOption,
   type SelectProps,
 } from "../components/Select/Select";
+import i18n from "../../.storybook/i18n";
 
 const meta: Meta<typeof Select> = {
   title: "Form Components/Select",
@@ -14,99 +15,139 @@ const meta: Meta<typeof Select> = {
   argTypes: {
     label: {
       control: "text",
-      description: "Label for the select",
+      description: i18n.t("stories.select.argTypes.label.description"),
+      table: {
+        category: i18n.t("stories.category.content"),
+      },
     },
     placeholder: {
       control: "text",
-      description: "Placeholder text",
+      description: i18n.t("stories.select.argTypes.placeholder.description"),
+      table: {
+        category: i18n.t("stories.category.content"),
+      },
     },
     size: {
       control: "select",
       options: ["xs", "sm", "normal", "lg", "xl"],
-      description: "The size of the select",
+      description: i18n.t("stories.select.argTypes.size.description"),
       table: {
         defaultValue: { summary: "normal" },
+        category: i18n.t("stories.category.appearance"),
       },
     },
     isFloatLabel: {
       control: "boolean",
-      description: "Enable floating label behavior",
+      description: i18n.t("stories.select.argTypes.isFloatLabel.description"),
       table: {
         defaultValue: { summary: "false" },
+        category: i18n.t("stories.category.ui"),
       },
     },
     disabled: {
       control: "boolean",
-      description: "Disable the select",
+      description: i18n.t("stories.select.argTypes.disabled.description"),
       table: {
         defaultValue: { summary: "false" },
+        category: i18n.t("stories.category.behavior"),
       },
     },
     state: {
       control: "select",
       options: ["default", "success", "warning", "error"],
-      description: "State of the select (default, success, warning, error)",
+      description: i18n.t("stories.select.argTypes.state.description"),
       table: {
         defaultValue: { summary: "default" },
+        category: i18n.t("stories.category.validation"),
       },
     },
     helperText: {
       control: "text",
-      description: "Helper text to display below the select",
+      description: i18n.t("stories.select.argTypes.helperText.description"),
+      table: {
+        category: i18n.t("stories.category.content"),
+      },
     },
     infoTooltip: {
       control: "text",
-      description: "Tooltip info icon next to the label",
+      description: i18n.t("stories.select.argTypes.infoTooltip.description"),
+      table: {
+        category: i18n.t("stories.category.ui"),
+      },
     },
     multiple: {
       control: "boolean",
-      description: "Enable multiple selection mode",
+      description: i18n.t("stories.select.argTypes.multiple.description"),
+      table: {
+        category: i18n.t("stories.category.behavior"),
+      },
     },
     clearable: {
       control: "boolean",
-      description: "Allow clearing selected items by clicking on badges",
+      description: i18n.t("stories.select.argTypes.clearable.description"),
       table: {
         defaultValue: { summary: "true" },
+        category: i18n.t("stories.category.ui"),
       },
     },
     clickToRemove: {
       control: "boolean",
-      description: "Enable clicking on badges to remove them",
+      description: i18n.t("stories.select.argTypes.clickToRemove.description"),
       table: {
         defaultValue: { summary: "true" },
+        category: i18n.t("stories.category.ui"),
       },
     },
     search: {
       control: "boolean",
-      description: "Enable search functionality in dropdown",
+      description: i18n.t("stories.select.argTypes.search.description"),
       table: {
         defaultValue: { summary: "false" },
         type: {
           summary: "boolean | { placeholder?: string; emptyMessage?: string }",
         },
+        category: i18n.t("stories.category.ui"),
       },
     },
     overflowBehavior: {
       control: "select",
       options: ["wrap", "wrap-when-open", "cutoff"],
-      description: "How to handle overflow of selected items",
+      description: i18n.t(
+        "stories.select.argTypes.overflowBehavior.description",
+      ),
       table: {
         defaultValue: { summary: "wrap-when-open" },
         type: { summary: "wrap | wrap-when-open | cutoff" },
+        category: i18n.t("stories.category.ui"),
       },
     },
     options: {
       control: "object",
-      description: "Array of options for the select",
+      description: i18n.t("stories.select.argTypes.options.description"),
+      table: {
+        category: i18n.t("stories.category.content"),
+      },
     },
     tagRender: {
-      description: "Custom render function for selected tags",
+      description: i18n.t("stories.select.argTypes.tagRender.description"),
+      table: {
+        category: i18n.t("stories.category.advanced"),
+      },
     },
     onValuesChange: {
       action: "values changed",
-      description: "Callback when selected values change",
+      description: i18n.t("stories.select.argTypes.onValuesChange.description"),
+      table: {
+        category: i18n.t("stories.category.events"),
+      },
     },
-    className: { control: "text", description: "Additional CSS classes" },
+    className: {
+      control: "text",
+      description: i18n.t("stories.select.argTypes.className.description"),
+      table: {
+        category: i18n.t("stories.category.advanced"),
+      },
+    },
   },
   args: {
     label: "Select items",

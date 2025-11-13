@@ -27,6 +27,7 @@ import {
   ChevronRight,
   MoreHorizontal,
 } from "lucide-react";
+import i18n from "../../.storybook/i18n";
 
 const meta: Meta<typeof Sidebar> = {
   title: "Navigation/Sidebar",
@@ -39,25 +40,28 @@ const meta: Meta<typeof Sidebar> = {
     side: {
       control: "select",
       options: ["left", "right"],
-      description: "Side where the sidebar appears",
+      description: i18n.t("stories.sidebar.argTypes.side.description"),
       table: {
         defaultValue: { summary: "left" },
+        category: i18n.t("stories.category.layout"),
       },
     },
     variant: {
       control: "select",
       options: ["sidebar", "floating", "inset"],
-      description: "Visual variant of the sidebar",
+      description: i18n.t("stories.sidebar.argTypes.variant.description"),
       table: {
         defaultValue: { summary: "sidebar" },
+        category: i18n.t("stories.category.appearance"),
       },
     },
     collapsible: {
       control: "select",
       options: ["offcanvas", "icon", "none"],
-      description: "Collapsible behavior",
+      description: i18n.t("stories.sidebar.argTypes.collapsible.description"),
       table: {
         defaultValue: { summary: "offcanvas" },
+        category: i18n.t("stories.category.behavior"),
       },
     },
   },

@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
 import Dialog, { type DialogProps } from "../components/Dialog/Dialog";
 import Button from "../components/Button/Button";
+import i18n from "../../.storybook/i18n";
 
 const meta: Meta<typeof Dialog> = {
   title: "Overlays/Dialog",
@@ -14,17 +15,19 @@ const meta: Meta<typeof Dialog> = {
     variant: {
       control: "select",
       options: ["dialog", "confirm", "alert", "info", "warning"],
-      description: "The variant of the dialog",
+      description: i18n.t("stories.dialog.argTypes.variant.description"),
       table: {
         defaultValue: { summary: "dialog" },
+        category: i18n.t("stories.category.appearance"),
       },
     },
     size: {
       control: "select",
       options: ["sm", "md", "lg", "xl", "2xl", "3xl", "4xl", "full"],
-      description: "The size of the dialog",
+      description: i18n.t("stories.dialog.argTypes.size.description"),
       table: {
         defaultValue: { summary: "md" },
+        category: i18n.t("stories.category.appearance"),
       },
     },
     position: {
@@ -40,9 +43,10 @@ const meta: Meta<typeof Dialog> = {
         "bottom-left",
         "bottom-right",
       ],
-      description: "The position of the dialog",
+      description: i18n.t("stories.dialog.argTypes.position.description"),
       table: {
         defaultValue: { summary: "center" },
+        category: i18n.t("stories.category.layout"),
       },
     },
     animation: {
@@ -62,81 +66,104 @@ const meta: Meta<typeof Dialog> = {
         "glow",
         "spec",
       ],
-      description: "Animation effect for the dialog",
+      description: i18n.t("stories.dialog.argTypes.animation.description"),
+      table: {
+        category: i18n.t("stories.category.ui"),
+      },
     },
     open: {
       control: "boolean",
-      description: "Controlled open state",
+      description: i18n.t("stories.dialog.argTypes.open.description"),
+      table: {
+        category: i18n.t("stories.category.behavior"),
+      },
     },
     closeOnEsc: {
       control: "boolean",
-      description: "Close dialog on Escape key press",
+      description: i18n.t("stories.dialog.argTypes.closeOnEsc.description"),
       table: {
         defaultValue: { summary: "true" },
+        category: i18n.t("stories.category.behavior"),
       },
     },
     closeOnOutside: {
       control: "boolean",
-      description: "Close dialog when clicking outside",
+      description: i18n.t("stories.dialog.argTypes.closeOnOutside.description"),
       table: {
         defaultValue: { summary: "true" },
+        category: i18n.t("stories.category.behavior"),
       },
     },
     showCloseButton: {
       control: "boolean",
-      description: "Show the close button",
+      description: i18n.t(
+        "stories.dialog.argTypes.showCloseButton.description",
+      ),
       table: {
         defaultValue: { summary: "true" },
+        category: i18n.t("stories.category.ui"),
       },
     },
     fullscreen: {
       control: "boolean",
-      description: "Make dialog fullscreen",
+      description: i18n.t("stories.dialog.argTypes.fullscreen.description"),
       table: {
         defaultValue: { summary: "false" },
+        category: i18n.t("stories.category.layout"),
       },
     },
     scrollable: {
       control: "boolean",
-      description: "Enable scrolling for long content",
+      description: i18n.t("stories.dialog.argTypes.scrollable.description"),
       table: {
         defaultValue: { summary: "true" },
+        category: i18n.t("stories.category.scroll"),
       },
     },
     stickyHeader: {
       control: "boolean",
-      description: "Keep header outside scroll area (header won't scroll)",
+      description: i18n.t("stories.dialog.argTypes.stickyHeader.description"),
       table: {
         defaultValue: { summary: "false" },
+        category: i18n.t("stories.category.scroll"),
       },
     },
     stickyFooter: {
       control: "boolean",
-      description: "Keep footer outside scroll area (footer won't scroll)",
+      description: i18n.t("stories.dialog.argTypes.stickyFooter.description"),
       table: {
         defaultValue: { summary: "false" },
+        category: i18n.t("stories.category.scroll"),
       },
     },
     title: {
       control: "text",
-      description: "Dialog title",
+      description: i18n.t("stories.dialog.argTypes.title.description"),
+      table: {
+        category: i18n.t("stories.category.content"),
+      },
     },
     description: {
       control: "text",
-      description: "Dialog description",
+      description: i18n.t("stories.dialog.argTypes.description.description"),
+      table: {
+        category: i18n.t("stories.category.content"),
+      },
     },
     confirmText: {
       control: "text",
-      description: "Text for confirm button (alert variants)",
+      description: i18n.t("stories.dialog.argTypes.confirmText.description"),
       table: {
         defaultValue: { summary: "Confirm" },
+        category: i18n.t("stories.category.content"),
       },
     },
     cancelText: {
       control: "text",
-      description: "Text for cancel button (alert variants)",
+      description: i18n.t("stories.dialog.argTypes.cancelText.description"),
       table: {
         defaultValue: { summary: "Cancel" },
+        category: i18n.t("stories.category.content"),
       },
     },
   },

@@ -4,6 +4,7 @@ import Popover, { type PopoverProps } from "../components/Popover/Popover";
 import Button from "../components/Button/Button";
 import Input from "../components/Input/Input";
 import { Settings, User, Info } from "lucide-react";
+import i18n from "../../.storybook/i18n";
 
 const meta: Meta<typeof Popover> = {
   title: "Overlays/Popover",
@@ -15,107 +16,122 @@ const meta: Meta<typeof Popover> = {
   argTypes: {
     open: {
       control: "boolean",
-      description: "Controlled open state of the popover",
+      description: i18n.t("stories.popover.argTypes.open.description"),
       table: {
         type: { summary: "boolean" },
+        category: i18n.t("stories.category.behavior"),
       },
     },
     defaultOpen: {
       control: "boolean",
-      description: "Default open state for uncontrolled usage",
+      description: i18n.t("stories.popover.argTypes.defaultOpen.description"),
       table: {
         type: { summary: "boolean" },
         defaultValue: { summary: "false" },
+        category: i18n.t("stories.category.behavior"),
       },
     },
     onOpenChange: {
-      description: "Callback function called when the open state changes",
+      description: i18n.t("stories.popover.argTypes.onOpenChange.description"),
       table: {
         type: { summary: "(open: boolean) => void" },
+        category: i18n.t("stories.category.events"),
       },
     },
     modal: {
       control: "boolean",
-      description:
-        "Whether the popover should be modal (trap focus and prevent interaction with outside content)",
+      description: i18n.t("stories.popover.argTypes.modal.description"),
       table: {
         type: { summary: "boolean" },
         defaultValue: { summary: "false" },
+        category: i18n.t("stories.category.behavior"),
       },
     },
     trigger: {
-      description: "React element to use as the trigger for the popover",
+      description: i18n.t("stories.popover.argTypes.trigger.description"),
       table: {
         type: { summary: "React.ReactNode" },
+        category: i18n.t("stories.category.content"),
       },
     },
     children: {
-      description:
-        "If provided without trigger prop, children will be used as the trigger element",
+      description: i18n.t("stories.popover.argTypes.children.description"),
       table: {
         type: { summary: "React.ReactNode" },
+        category: i18n.t("stories.category.content"),
       },
     },
     content: {
-      description: "Content to display inside the popover",
+      description: i18n.t("stories.popover.argTypes.content.description"),
       table: {
         type: { summary: "React.ReactNode" },
+        category: i18n.t("stories.category.content"),
       },
     },
     side: {
       control: "select",
       options: ["top", "right", "bottom", "left"],
-      description: "The preferred side of the trigger to render the popover",
+      description: i18n.t("stories.popover.argTypes.side.description"),
       table: {
         type: { summary: "enum" },
         defaultValue: { summary: "bottom" },
+        category: i18n.t("stories.category.layout"),
       },
     },
     align: {
       control: "select",
       options: ["start", "center", "end"],
-      description:
-        "The preferred alignment of the popover relative to the trigger",
+      description: i18n.t("stories.popover.argTypes.align.description"),
       table: {
         type: { summary: "enum" },
         defaultValue: { summary: "center" },
+        category: i18n.t("stories.category.layout"),
       },
     },
     sideOffset: {
       control: "number",
-      description: "Distance in pixels from the trigger",
+      description: i18n.t("stories.popover.argTypes.sideOffset.description"),
       table: {
         type: { summary: "number" },
         defaultValue: { summary: "4" },
+        category: i18n.t("stories.category.layout"),
       },
     },
     alignOffset: {
       control: "number",
-      description: "Offset in pixels along the align axis",
+      description: i18n.t("stories.popover.argTypes.alignOffset.description"),
       table: {
         type: { summary: "number" },
         defaultValue: { summary: "0" },
+        category: i18n.t("stories.category.layout"),
       },
     },
     className: {
       control: "text",
-      description: "Additional CSS classes for the popover wrapper",
+      description: i18n.t("stories.popover.argTypes.className.description"),
       table: {
         type: { summary: "string" },
+        category: i18n.t("stories.category.advanced"),
       },
     },
     contentClassName: {
       control: "text",
-      description: "Additional CSS classes for the popover content",
+      description: i18n.t(
+        "stories.popover.argTypes.contentClassName.description",
+      ),
       table: {
         type: { summary: "string" },
+        category: i18n.t("stories.category.advanced"),
       },
     },
     triggerClassName: {
       control: "text",
-      description: "Additional CSS classes for the trigger wrapper",
+      description: i18n.t(
+        "stories.popover.argTypes.triggerClassName.description",
+      ),
       table: {
         type: { summary: "string" },
+        category: i18n.t("stories.category.advanced"),
       },
     },
   },

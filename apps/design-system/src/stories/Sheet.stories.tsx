@@ -21,6 +21,7 @@ import Collapsible, {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "../components/Collapsible/Collapsible";
+import i18n from "../../.storybook/i18n";
 
 const meta: Meta<typeof Sheet> = {
   title: "Overlays/Sheet",
@@ -33,17 +34,19 @@ const meta: Meta<typeof Sheet> = {
     side: {
       control: "select",
       options: ["top", "right", "bottom", "left"],
-      description: "The side from which the sheet slides in",
+      description: i18n.t("stories.sheet.argTypes.side.description"),
       table: {
         defaultValue: { summary: "right" },
+        category: i18n.t("stories.category.layout"),
       },
     },
     size: {
       control: "select",
       options: ["sm", "md", "lg", "xl", "full"],
-      description: "The size of the sheet",
+      description: i18n.t("stories.sheet.argTypes.size.description"),
       table: {
         defaultValue: { summary: "md" },
+        category: i18n.t("stories.category.appearance"),
       },
     },
     animation: {
@@ -63,85 +66,144 @@ const meta: Meta<typeof Sheet> = {
         "glow",
         "spec",
       ],
-      description: "Animation effect for the sheet",
+      description: i18n.t("stories.sheet.argTypes.animation.description"),
+      table: {
+        category: i18n.t("stories.category.ui"),
+      },
     },
     open: {
       control: "boolean",
-      description: "Controlled open state",
+      description: i18n.t("stories.sheet.argTypes.open.description"),
+      table: {
+        category: i18n.t("stories.category.behavior"),
+      },
     },
     closeOnEsc: {
       control: "boolean",
-      description: "Close sheet on Escape key press",
+      description: i18n.t("stories.sheet.argTypes.closeOnEsc.description"),
       table: {
         defaultValue: { summary: "true" },
+        category: i18n.t("stories.category.behavior"),
       },
     },
     closeOnOutside: {
       control: "boolean",
-      description: "Close sheet when clicking outside",
+      description: i18n.t("stories.sheet.argTypes.closeOnOutside.description"),
       table: {
         defaultValue: { summary: "true" },
+        category: i18n.t("stories.category.behavior"),
       },
     },
     showCloseButton: {
       control: "boolean",
-      description: "Show the close button",
+      description: i18n.t("stories.sheet.argTypes.showCloseButton.description"),
       table: {
         defaultValue: { summary: "true" },
+        category: i18n.t("stories.category.ui"),
       },
     },
     autoDrawerOnMobile: {
       control: "boolean",
-      description: "Automatically use Drawer on mobile devices",
+      description: i18n.t(
+        "stories.sheet.argTypes.autoDrawerOnMobile.description",
+      ),
       table: {
         defaultValue: { summary: "true" },
+        category: i18n.t("stories.category.ui"),
       },
     },
     autoHeight: {
       control: "boolean",
-      description:
-        "Use automatic height for drawer on mobile (up to 80vh), or fixed height based on size",
+      description: i18n.t("stories.sheet.argTypes.autoHeight.description"),
       table: {
         defaultValue: { summary: "true" },
+        category: i18n.t("stories.category.layout"),
       },
     },
     stickyHeader: {
       control: "boolean",
-      description: "Keep header outside scroll area (header won't scroll)",
+      description: i18n.t("stories.sheet.argTypes.stickyHeader.description"),
       table: {
         defaultValue: { summary: "false" },
+        category: i18n.t("stories.category.scroll"),
       },
     },
     stickyFooter: {
       control: "boolean",
-      description: "Keep footer outside scroll area (footer won't scroll)",
+      description: i18n.t("stories.sheet.argTypes.stickyFooter.description"),
       table: {
         defaultValue: { summary: "false" },
+        category: i18n.t("stories.category.scroll"),
       },
     },
     title: {
       control: "text",
-      description: "Sheet title",
+      description: i18n.t("stories.sheet.argTypes.title.description"),
+      table: {
+        category: i18n.t("stories.category.content"),
+      },
     },
     description: {
       control: "text",
-      description: "Sheet description",
+      description: i18n.t("stories.sheet.argTypes.description.description"),
+      table: {
+        category: i18n.t("stories.category.content"),
+      },
     },
-    className: { control: "text", description: "Additional CSS classes" },
+    className: {
+      control: "text",
+      description: i18n.t("stories.sheet.argTypes.className.description"),
+      table: {
+        category: i18n.t("stories.category.advanced"),
+      },
+    },
     contentClassName: {
       control: "text",
-      description: "CSS classes for content area",
+      description: i18n.t(
+        "stories.sheet.argTypes.contentClassName.description",
+      ),
+      table: {
+        category: i18n.t("stories.category.advanced"),
+      },
     },
-    headerClassName: { control: "text", description: "CSS classes for header" },
-    titleClassName: { control: "text", description: "CSS classes for title" },
+    headerClassName: {
+      control: "text",
+      description: i18n.t("stories.sheet.argTypes.headerClassName.description"),
+      table: {
+        category: i18n.t("stories.category.advanced"),
+      },
+    },
+    titleClassName: {
+      control: "text",
+      description: i18n.t("stories.sheet.argTypes.titleClassName.description"),
+      table: {
+        category: i18n.t("stories.category.advanced"),
+      },
+    },
     descriptionClassName: {
       control: "text",
-      description: "CSS classes for description",
+      description: i18n.t(
+        "stories.sheet.argTypes.descriptionClassName.description",
+      ),
+      table: {
+        category: i18n.t("stories.category.advanced"),
+      },
     },
-    footerClassName: { control: "text", description: "CSS classes for footer" },
+    footerClassName: {
+      control: "text",
+      description: i18n.t("stories.sheet.argTypes.footerClassName.description"),
+      table: {
+        category: i18n.t("stories.category.advanced"),
+      },
+    },
     overlayClassName: {
       control: "text",
-      description: "CSS classes for overlay",
+      description: i18n.t(
+        "stories.sheet.argTypes.overlayClassName.description",
+      ),
+      table: {
+        category: i18n.t("stories.category.advanced"),
+      },
     },
   },
   args: {

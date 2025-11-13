@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import Slider, { type SliderProps } from "../components/Slider/Slider";
+import i18n from "../../.storybook/i18n";
 
 const meta: Meta<SliderProps> = {
   title: "Form Components/Slider",
@@ -12,63 +13,69 @@ const meta: Meta<SliderProps> = {
   argTypes: {
     min: {
       control: "number",
-      description: "Minimum value",
+      description: i18n.t("stories.slider.argTypes.min.description"),
       table: {
         defaultValue: { summary: "0" },
+        category: i18n.t("stories.category.basic"),
       },
     },
     max: {
       control: "number",
-      description: "Maximum value",
+      description: i18n.t("stories.slider.argTypes.max.description"),
       table: {
         defaultValue: { summary: "100" },
+        category: i18n.t("stories.category.basic"),
       },
     },
     step: {
       control: "number",
-      description: "Step increment",
+      description: i18n.t("stories.slider.argTypes.step.description"),
       table: {
         defaultValue: { summary: "1" },
+        category: i18n.t("stories.category.basic"),
       },
     },
     defaultValue: {
       control: "object",
-      description:
-        "Default value (uncontrolled). Must be an array of numbers, e.g., [50] for single thumb or [25, 75] for range.",
+      description: i18n.t("stories.slider.argTypes.defaultValue.description"),
       table: {
         type: { summary: "number[]" },
         defaultValue: { summary: "[50]" },
+        category: i18n.t("stories.category.behavior"),
       },
     },
     value: {
       control: "object",
-      description:
-        "Controlled value. Must be an array of numbers, e.g., [50] for single thumb or [25, 75] for range.",
+      description: i18n.t("stories.slider.argTypes.value.description"),
       table: {
         type: { summary: "number[]" },
+        category: i18n.t("stories.category.behavior"),
       },
     },
     disabled: {
       control: "boolean",
-      description: "Disable the slider",
+      description: i18n.t("stories.slider.argTypes.disabled.description"),
       table: {
         defaultValue: { summary: "false" },
+        category: i18n.t("stories.category.behavior"),
       },
     },
     orientation: {
       control: "select",
       options: ["horizontal", "vertical"],
-      description: "Orientation of the slider",
+      description: i18n.t("stories.slider.argTypes.orientation.description"),
       table: {
         defaultValue: { summary: "horizontal" },
+        category: i18n.t("stories.category.layout"),
       },
     },
     showLabel: {
       control: "select",
       options: [false, "hover", "always"],
-      description: "Show sticky label on thumb",
+      description: i18n.t("stories.slider.argTypes.showLabel.description"),
       table: {
         defaultValue: { summary: "false" },
+        category: i18n.t("stories.category.ui"),
       },
     },
     color: {
@@ -79,50 +86,117 @@ const meta: Meta<SliderProps> = {
         "success",
         "warning",
         "error",
-        "glass",
-        "muted",
+        "neutral",
         "accent",
       ],
-      description: "Color variant for slider and label",
+      description: i18n.t("stories.slider.argTypes.color.description"),
       table: {
         defaultValue: { summary: "primary" },
+        category: i18n.t("stories.category.appearance"),
+      },
+    },
+    onValueChange: {
+      action: "valueChanged",
+      description: i18n.t("stories.slider.argTypes.onValueChange.description"),
+      table: {
+        category: i18n.t("stories.category.events"),
+      },
+    },
+    onValueCommit: {
+      action: "valueCommitted",
+      description: i18n.t("stories.slider.argTypes.onValueCommit.description"),
+      table: {
+        category: i18n.t("stories.category.events"),
       },
     },
     size: {
       control: "select",
       options: ["sm", "md", "lg"],
-      description: "Size of slider track and thumb",
+      description: i18n.t("stories.slider.argTypes.size.description"),
       table: {
         defaultValue: { summary: "md" },
+        category: i18n.t("stories.category.appearance"),
       },
     },
     labelArrow: {
       control: "boolean",
-      description: "Show arrow on label",
+      description: i18n.t("stories.slider.argTypes.labelArrow.description"),
       table: {
         defaultValue: { summary: "false" },
+        category: i18n.t("stories.category.ui"),
       },
     },
     labelAnimation: {
       control: "select",
       options: ["none", "number-flow", "spec"],
-      description: "Label animation type",
+      description: i18n.t("stories.slider.argTypes.labelAnimation.description"),
       table: {
         defaultValue: { summary: "none" },
+        category: i18n.t("stories.category.ui"),
       },
     },
     labelPosition: {
       control: "select",
       options: ["top", "bottom", "left", "right"],
-      description:
-        "Label position relative to thumb. For horizontal sliders: top/bottom. For vertical sliders: left/right.",
+      description: i18n.t("stories.slider.argTypes.labelPosition.description"),
       table: {
         defaultValue: { summary: "top" },
+        category: i18n.t("stories.category.ui"),
+      },
+    },
+    labelFormatter: {
+      control: "text",
+      description: i18n.t("stories.slider.argTypes.labelFormatter.description"),
+      table: {
+        type: { summary: "(value: number) => string" },
+        defaultValue: { summary: "(value) => `${value}`" },
+        category: i18n.t("stories.category.formatting"),
       },
     },
     className: {
       control: "text",
-      description: "Additional CSS classes",
+      description: i18n.t("stories.slider.argTypes.className.description"),
+      table: {
+        category: i18n.t("stories.category.advanced"),
+        type: { summary: "string" },
+      },
+    },
+    labelColor: {
+      control: "text",
+      description: i18n.t("stories.slider.argTypes.labelColor.description"),
+      table: {
+        category: i18n.t("stories.category.advanced"),
+      },
+    },
+    labelArrowColor: {
+      control: "text",
+      description: i18n.t("stories.slider.argTypes.labelArrowColor.description"),
+      table: {
+        category: i18n.t("stories.category.advanced"),
+      },
+    },
+    labelTextColor: {
+      control: "text",
+      description: i18n.t("stories.slider.argTypes.labelTextColor.description"),
+      table: {
+        category: i18n.t("stories.category.advanced"),
+      },
+    },
+    sliderColor: {
+      control: "text",
+      description: i18n.t("stories.slider.argTypes.sliderColor.description"),
+      table: {
+        category: i18n.t("stories.category.advanced"),
+      },
+    },
+    thumbBorderColor: {
+      control: "text",
+      description: i18n.t(
+        "stories.slider.argTypes.thumbBorderColor.description",
+      ),
+      table: {
+        category: i18n.t("stories.category.advanced"),
+      },
     },
   },
   args: {
@@ -689,6 +763,25 @@ export const CustomFormatter: Story = {
     const [temperature, setTemperature] = React.useState([22]);
     const [price, setPrice] = React.useState([5000]);
     const [percentage, setPercentage] = React.useState([0.75]);
+    const [fileSize, setFileSize] = React.useState([2048]); // KB
+    const [rating, setRating] = React.useState([4.5]);
+    const [duration, setDuration] = React.useState([90]); // seconds
+
+    const formatFileSize = (kb: number) => {
+      if (kb < 1024) return `${kb} KB`;
+      if (kb < 1024 * 1024) return `${(kb / 1024).toFixed(1)} MB`;
+      return `${(kb / (1024 * 1024)).toFixed(1)} GB`;
+    };
+
+    const formatRating = (value: number) => {
+      return `${value.toFixed(1)} ★`;
+    };
+
+    const formatDuration = (seconds: number) => {
+      const mins = Math.floor(seconds / 60);
+      const secs = seconds % 60;
+      return `${mins}:${secs.toString().padStart(2, "0")}`;
+    };
 
     return (
       <div className="w-80 space-y-8">
@@ -732,6 +825,48 @@ export const CustomFormatter: Story = {
             labelFormatter={(v) => `${Math.round(v * 100)}%`}
             labelArrow
             color="primary"
+          />
+        </div>
+        <div className="space-y-2">
+          <label className="text-sm font-medium">File Size</label>
+          <Slider
+            value={fileSize}
+            onValueChange={setFileSize}
+            min={100}
+            max={1024 * 1024} // 1GB in KB
+            step={100}
+            showLabel="always"
+            labelFormatter={formatFileSize}
+            labelArrow
+            color="accent"
+          />
+        </div>
+        <div className="space-y-2">
+          <label className="text-sm font-medium">Rating</label>
+          <Slider
+            value={rating}
+            onValueChange={setRating}
+            min={1}
+            max={5}
+            step={0.1}
+            showLabel="always"
+            labelFormatter={formatRating}
+            labelArrow
+            color="warning"
+          />
+        </div>
+        <div className="space-y-2">
+          <label className="text-sm font-medium">Duration</label>
+          <Slider
+            value={duration}
+            onValueChange={setDuration}
+            min={30}
+            max={300}
+            step={5}
+            showLabel="always"
+            labelFormatter={formatDuration}
+            labelArrow
+            color="glass"
           />
         </div>
       </div>

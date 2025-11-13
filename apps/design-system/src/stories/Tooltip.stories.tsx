@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Tooltip, type TooltipProps } from "../components/Tooltip/Tooltip";
 import Button from "../components/Button/Button";
 import { Info } from "lucide-react";
+import i18n from "../../.storybook/i18n";
 
 const meta: Meta<typeof Tooltip> = {
   title: "Overlays/Tooltip",
@@ -11,16 +12,34 @@ const meta: Meta<typeof Tooltip> = {
   },
   tags: ["autodocs"],
   argTypes: {
-    content: { control: "text", description: "Tooltip content" },
-    sideOffset: { control: "number", description: "Offset from trigger" },
+    content: {
+      control: "text",
+      description: i18n.t("stories.tooltip.argTypes.content.description"),
+      table: {
+        category: i18n.t("stories.category.content"),
+      },
+    },
+    sideOffset: {
+      control: "number",
+      description: i18n.t("stories.tooltip.argTypes.sideOffset.description"),
+      table: {
+        category: i18n.t("stories.category.layout"),
+      },
+    },
     position: {
       control: "select",
-      description: "Tooltip position",
+      description: i18n.t("stories.tooltip.argTypes.position.description"),
       options: ["top", "right", "bottom", "left"],
+      table: {
+        category: i18n.t("stories.category.layout"),
+      },
     },
     noArrow: {
       control: "boolean",
-      description: "Whether to hide the arrow",
+      description: i18n.t("stories.tooltip.argTypes.noArrow.description"),
+      table: {
+        category: i18n.t("stories.category.appearance"),
+      },
     },
     color: {
       control: "select",
@@ -36,11 +55,14 @@ const meta: Meta<typeof Tooltip> = {
         "error",
         "glass",
       ],
-      description: "Tooltip color variant",
+      description: i18n.t("stories.tooltip.argTypes.color.description"),
+      table: {
+        category: i18n.t("stories.category.appearance"),
+      },
     },
     animation: {
       control: "select",
-      description: "Tooltip animation style",
+      description: i18n.t("stories.tooltip.argTypes.animation.description"),
       options: [
         "bounce",
         "slide-up",
@@ -54,13 +76,31 @@ const meta: Meta<typeof Tooltip> = {
         "flip",
         "spec",
       ],
+      table: {
+        category: i18n.t("stories.category.ui"),
+      },
     },
     delayDuration: {
       control: "number",
-      description: "Delay before showing (ms)",
+      description: i18n.t("stories.tooltip.argTypes.delayDuration.description"),
+      table: {
+        category: i18n.t("stories.category.behavior"),
+      },
     },
-    className: { control: "text", description: "Custom class for content" },
-    children: { control: false, description: "Trigger element" },
+    className: {
+      control: "text",
+      description: i18n.t("stories.tooltip.argTypes.className.description"),
+      table: {
+        category: i18n.t("stories.category.advanced"),
+      },
+    },
+    children: {
+      control: false,
+      description: i18n.t("stories.tooltip.argTypes.children.description"),
+      table: {
+        category: i18n.t("stories.category.content"),
+      },
+    },
   },
   args: {
     content: "Tooltip text",

@@ -43,9 +43,12 @@ const preview: Preview = {
       },
     },
     controls: {
+      // tự detect các thuộc tính theo pattern để tự động tạo controls
+      // ví dụ như loại argTypes có chứa text 'color', 'background' sẽ được tạo control color picker
+      // hay loại argTypes có chứa 'Date' sẽ được tạo control date picker
       matchers: {
-        color: /(background|color)$/i,
-        date: /Date$/i,
+        // color: /(background|color)$/i,
+        // date: /Date$/i,
       },
     },
 

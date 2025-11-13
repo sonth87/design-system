@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { TimePicker } from "../components/DatePicker/TimePicker";
 import { useState } from "react";
 import { format } from "date-fns";
+import i18n from "../../.storybook/i18n";
 
 const meta: Meta<typeof TimePicker> = {
   title: "Date & Time/TimePicker",
@@ -14,109 +15,196 @@ const meta: Meta<typeof TimePicker> = {
     // Basic Input Props
     label: {
       control: { type: "text" },
+      description: i18n.t("stories.timepicker.argTypes.label.description"),
+      table: {
+        category: i18n.t("stories.category.basic"),
+      },
     },
     helperText: {
       control: { type: "text" },
+      description: i18n.t("stories.timepicker.argTypes.helperText.description"),
+      table: {
+        category: i18n.t("stories.category.basic"),
+      },
     },
     isFloatLabel: {
       control: { type: "boolean" },
+      description: i18n.t(
+        "stories.timepicker.argTypes.isFloatLabel.description",
+      ),
+      table: {
+        category: i18n.t("stories.category.ui"),
+      },
     },
     state: {
       control: { type: "select" },
       options: [undefined, "default", "success", "warning", "error"],
+      description: i18n.t("stories.timepicker.argTypes.state.description"),
+      table: {
+        category: i18n.t("stories.category.appearance"),
+      },
     },
     size: {
       control: { type: "select" },
       options: [undefined, "xs", "sm", "normal", "lg", "xl"],
+      description: i18n.t("stories.timepicker.argTypes.size.description"),
+      table: {
+        category: i18n.t("stories.category.appearance"),
+      },
     },
     disabled: {
       control: { type: "boolean" },
-      description: "Disable the time picker",
+      description: i18n.t("stories.timepicker.argTypes.disabled.description"),
+      table: {
+        category: i18n.t("stories.category.behavior"),
+      },
     },
 
     // Display Mode
     mode: {
       control: { type: "select" },
       options: ["wheel", "select", "compact"],
-      description: "Display mode: wheel, select, or compact",
+      description: i18n.t("stories.timepicker.argTypes.mode.description"),
+      table: {
+        category: i18n.t("stories.category.appearance"),
+      },
     },
     desktopMode: {
       control: { type: "select" },
       options: [undefined, "popover", "drawer"],
-      description:
-        "Desktop mode for standalone TimePicker: popover or drawer (default: popover)",
+      description: i18n.t(
+        "stories.timepicker.argTypes.desktopMode.description",
+      ),
+      table: {
+        category: i18n.t("stories.category.ui"),
+      },
     },
     mobileMode: {
       control: { type: "select" },
       options: [undefined, "popover", "drawer"],
-      description:
-        "Mobile mode for standalone TimePicker: popover or drawer (default: drawer)",
+      description: i18n.t("stories.timepicker.argTypes.mobileMode.description"),
+      table: {
+        category: i18n.t("stories.category.ui"),
+      },
     },
 
     // Time Units Visibility
     showHours: {
       control: { type: "boolean" },
-      description: "Show hours column",
+      description: i18n.t("stories.timepicker.argTypes.showHours.description"),
+      table: {
+        category: i18n.t("stories.category.time"),
+      },
     },
     showMinutes: {
       control: { type: "boolean" },
-      description: "Show minutes column",
+      description: i18n.t(
+        "stories.timepicker.argTypes.showMinutes.description",
+      ),
+      table: {
+        category: i18n.t("stories.category.time"),
+      },
     },
     showSeconds: {
       control: { type: "boolean" },
-      description: "Show seconds column",
+      description: i18n.t(
+        "stories.timepicker.argTypes.showSeconds.description",
+      ),
+      table: {
+        category: i18n.t("stories.category.time"),
+      },
     },
     timeLabel: {
       control: { type: "boolean" },
-      description:
-        "Label for time columns. Can be boolean (default labels), string (same for all), or object { hours?, minutes?, seconds? }",
+      description: i18n.t("stories.timepicker.argTypes.timeLabel.description"),
+      table: {
+        category: i18n.t("stories.category.time"),
+      },
     },
 
     // Intervals
     hourInterval: {
       control: { type: "number" },
-      description: "Hour interval (e.g., 1, 2, 3)",
+      description: i18n.t(
+        "stories.timepicker.argTypes.hourInterval.description",
+      ),
+      table: {
+        category: i18n.t("stories.category.time"),
+      },
     },
     minuteInterval: {
       control: { type: "number" },
-      description: "Minute interval (e.g., 5, 10, 15, 30)",
+      description: i18n.t(
+        "stories.timepicker.argTypes.minuteInterval.description",
+      ),
+      table: {
+        category: i18n.t("stories.category.time"),
+      },
     },
     secondInterval: {
       control: { type: "number" },
-      description: "Second interval (e.g., 5, 10, 15, 30)",
+      description: i18n.t(
+        "stories.timepicker.argTypes.secondInterval.description",
+      ),
+      table: {
+        category: i18n.t("stories.category.time"),
+      },
     },
 
     // Disabled Times
     disabledTimes: {
       control: { type: "object" },
-      description: "Array of specific times to disable (format: 'HH:mm')",
+      description: i18n.t(
+        "stories.timepicker.argTypes.disabledTimes.description",
+      ),
+      table: {
+        category: i18n.t("stories.category.behavior"),
+      },
     },
     disabledTimeRanges: {
       control: { type: "object" },
-      description:
-        "Array of time ranges to disable Array<{ from: 'HH:mm', to: 'HH:mm' }>",
+      description: i18n.t(
+        "stories.timepicker.argTypes.disabledTimeRanges.description",
+      ),
+      table: {
+        category: i18n.t("stories.category.behavior"),
+      },
     },
 
     // Now Button
     showNowButton: {
       control: { type: "boolean" },
-      description: "Show 'Now' button to select current time",
+      description: i18n.t(
+        "stories.timepicker.argTypes.showNowButton.description",
+      ),
+      table: {
+        category: i18n.t("stories.category.ui"),
+      },
     },
     nowButtonLabel: {
       control: { type: "text" },
-      description: "Label for the 'Now' button",
+      description: i18n.t(
+        "stories.timepicker.argTypes.nowButtonLabel.description",
+      ),
+      table: {
+        category: i18n.t("stories.category.content"),
+      },
     },
 
     // Format & Mask
     format: {
       control: { type: "object" },
-      description:
-        "Date format: string (e.g., 'HH:mm:ss') or object { input: string, output: string }. For more: <a href='https://date-fns.org/v4.1.0/docs/format'>https://date-fns.org/v4.1.0/docs/format</a>",
+      description: i18n.t("stories.timepicker.argTypes.format.description"),
+      table: {
+        category: i18n.t("stories.category.formatting"),
+      },
     },
     mask: {
       control: { type: "text" },
-      description:
-        "Input mask for the date picker. True means auto-generated, String means custom. Eg: '99:99'",
+      description: i18n.t("stories.timepicker.argTypes.mask.description"),
+      table: {
+        category: i18n.t("stories.category.formatting"),
+      },
     },
   },
   args: {

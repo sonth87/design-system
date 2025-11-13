@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Toaster, toast } from "../components/Toast/Toast";
 import Button from "../components/Button/Button";
+import i18n from "../../.storybook/i18n";
 
 const meta: Meta<typeof Toaster> = {
   title: "Feedback/Toast",
@@ -21,32 +22,50 @@ const meta: Meta<typeof Toaster> = {
         "bottom-center",
       ],
       defaultValue: "top-right",
-      description: "Position of the toast container on the screen",
+      description: i18n.t("stories.toast.argTypes.position.description"),
+      table: {
+        category: i18n.t("stories.category.layout"),
+      },
     },
     richColors: {
       control: { type: "boolean" },
       defaultValue: false,
-      description: "Enable rich colors for different toast types",
+      description: i18n.t("stories.toast.argTypes.richColors.description"),
+      table: {
+        category: i18n.t("stories.category.appearance"),
+      },
     },
     expand: {
       control: { type: "boolean" },
       defaultValue: true,
-      description: "Allow toasts to expand when content is long",
+      description: i18n.t("stories.toast.argTypes.expand.description"),
+      table: {
+        category: i18n.t("stories.category.behavior"),
+      },
     },
     closeButton: {
       control: { type: "boolean" },
       defaultValue: false,
-      description: "Show close button on toasts",
+      description: i18n.t("stories.toast.argTypes.closeButton.description"),
+      table: {
+        category: i18n.t("stories.category.ui"),
+      },
     },
     duration: {
       control: { type: "number" },
       defaultValue: 4000,
-      description: "Duration in milliseconds for toasts to auto-dismiss",
+      description: i18n.t("stories.toast.argTypes.duration.description"),
+      table: {
+        category: i18n.t("stories.category.behavior"),
+      },
     },
     visibleToasts: {
       control: { type: "number" },
       defaultValue: 3,
-      description: "Maximum number of toasts to display at once",
+      description: i18n.t("stories.toast.argTypes.visibleToasts.description"),
+      table: {
+        category: i18n.t("stories.category.ui"),
+      },
     },
   },
   args: {

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { format } from "date-fns";
 import { vi } from "date-fns/locale";
 import { DATE_FORMAT } from "@/constants/common";
+import i18n from "../../.storybook/i18n";
 
 const meta: Meta<typeof DatePicker> = {
   title: "Date & Time/DatePicker",
@@ -16,183 +17,297 @@ const meta: Meta<typeof DatePicker> = {
     // Basic Input Props
     label: {
       control: { type: "text" },
-      description: "Label text displayed above the input field",
+      description: i18n.t("stories.datepicker.argTypes.label.description"),
+      table: {
+        category: i18n.t("stories.category.content"),
+      },
     },
     helperText: {
       control: { type: "text" },
-      description: "Helper text displayed below the input field",
+      description: i18n.t("stories.datepicker.argTypes.helperText.description"),
+      table: {
+        category: i18n.t("stories.category.content"),
+      },
     },
     isFloatLabel: {
       control: { type: "boolean" },
-      description: "Enable floating label that moves when input has value",
+      description: i18n.t(
+        "stories.datepicker.argTypes.isFloatLabel.description",
+      ),
       table: {
         defaultValue: { summary: "false" },
         type: { summary: "boolean" },
+        category: i18n.t("stories.category.ui"),
       },
     },
     state: {
       control: { type: "select" },
       options: ["", "default", "success", "warning", "error"],
-      description: "Visual state of the input field",
+      description: i18n.t("stories.datepicker.argTypes.state.description"),
       table: {
         type: { summary: "string" },
         defaultValue: { summary: "default" },
+        category: i18n.t("stories.category.validation"),
       },
     },
     size: {
       control: { type: "select" },
       options: ["", "xs", "sm", "normal", "lg", "xl"],
-      description: "Size variant of the input field",
-      table: { type: { summary: "string" }, defaultValue: { summary: "md" } },
+      description: i18n.t("stories.datepicker.argTypes.size.description"),
+      table: {
+        type: { summary: "string" },
+        defaultValue: { summary: "md" },
+        category: i18n.t("stories.category.appearance"),
+      },
     },
     disabled: {
       control: { type: "boolean" },
-      description: "Disable the date picker input",
+      description: i18n.t("stories.datepicker.argTypes.disabled.description"),
       table: {
         type: { summary: "boolean" },
         defaultValue: { summary: "false" },
+        category: i18n.t("stories.category.behavior"),
       },
     },
     placeholder: {
       control: { type: "text" },
-      description: "Placeholder text shown when input is empty",
+      description: i18n.t(
+        "stories.datepicker.argTypes.placeholder.description",
+      ),
+      table: {
+        category: i18n.t("stories.category.content"),
+      },
     },
 
     // Format & Mask
     mask: {
       control: { type: "text" },
-      description:
-        "Input mask for date input. True for auto-generated mask, or custom string like '99/99/9999'",
+      description: i18n.t("stories.datepicker.argTypes.mask.description"),
+      table: {
+        category: i18n.t("stories.category.formatting"),
+      },
     },
     format: {
       control: { type: "object" },
-      description:
-        "Date format: string (e.g., 'dd/MM/yyyy') or object { input: string, output: string }. For more: <a href='https://date-fns.org/v4.1.0/docs/format'>https://date-fns.org/v4.1.0/docs/format</a>",
+      description: i18n.t("stories.datepicker.argTypes.format.description"),
+      table: {
+        category: i18n.t("stories.category.formatting"),
+      },
     },
 
     // UI/UX
     infoTooltip: {
       control: { type: "text" },
-      description: "Tooltip text displayed when hovering over the info icon",
-      table: { type: { summary: "ReactNode" } },
+      description: i18n.t(
+        "stories.datepicker.argTypes.infoTooltip.description",
+      ),
+      table: {
+        type: { summary: "ReactNode" },
+        category: i18n.t("stories.category.ui"),
+      },
     },
     clearable: {
       control: { type: "boolean" },
-      description: "Show clear button to reset the selected date",
+      description: i18n.t("stories.datepicker.argTypes.clearable.description"),
+      table: {
+        category: i18n.t("stories.category.ui"),
+      },
     },
     side: {
       control: { type: "select" },
       options: ["top", "right", "bottom", "left"],
-      description: "Preferred side to render the calendar popover",
+      description: i18n.t("stories.datepicker.argTypes.side.description"),
+      table: {
+        category: i18n.t("stories.category.ui"),
+      },
     },
     align: {
       control: { type: "select" },
       options: ["start", "center", "end"],
-      description: "Alignment of the calendar popover relative to the trigger",
+      description: i18n.t("stories.datepicker.argTypes.align.description"),
+      table: {
+        category: i18n.t("stories.category.ui"),
+      },
     },
 
     // Language
     language: {
       control: { type: "select" },
       options: ["vi", "en"],
-      description:
-        "Language for calendar localization ('vi' for Vietnamese, 'en' for English, or date-fns locale object)",
+      description: i18n.t("stories.datepicker.argTypes.language.description"),
+      table: {
+        category: i18n.t("stories.category.language"),
+      },
     },
 
     // Events
     onChange: {
-      description:
-        "Called when input value changes. Receives (event, newValue, newDate)",
+      description: i18n.t("stories.datepicker.argTypes.onChange.description"),
+      table: {
+        category: i18n.t("stories.category.events"),
+      },
     },
     onSelect: {
-      description:
-        "Called when a date is selected. Receives (newDate, newValue)",
+      description: i18n.t("stories.datepicker.argTypes.onSelect.description"),
+      table: {
+        category: i18n.t("stories.category.events"),
+      },
     },
 
     // Calendar Behavior
     closeOnSelect: {
       control: { type: "boolean" },
-      description: "Close the calendar popover when a date is selected",
+      description: i18n.t(
+        "stories.datepicker.argTypes.closeOnSelect.description",
+      ),
+      table: {
+        category: i18n.t("stories.category.calendar"),
+      },
     },
     desktopMode: {
       control: { type: "select" },
       options: ["popover", "drawer"],
-      description: "Display mode for desktop devices: popover or drawer",
+      description: i18n.t(
+        "stories.datepicker.argTypes.desktopMode.description",
+      ),
+      table: {
+        category: i18n.t("stories.category.calendar"),
+      },
     },
     mobileMode: {
       control: { type: "select" },
       options: ["popover", "drawer"],
-      description: "Display mode for mobile devices: popover or drawer",
+      description: i18n.t("stories.datepicker.argTypes.mobileMode.description"),
+      table: {
+        category: i18n.t("stories.category.calendar"),
+      },
     },
     showOutsideDays: {
       control: { type: "boolean" },
-      description: "Show days from previous/next month in the calendar grid",
+      description: i18n.t(
+        "stories.datepicker.argTypes.showOutsideDays.description",
+      ),
+      table: {
+        category: i18n.t("stories.category.calendar"),
+      },
     },
     numberOfMonths: {
       control: { type: "number" },
-      description: "Number of months to display in the calendar",
-      table: { type: { summary: "number" }, defaultValue: { summary: "1" } },
+      description: i18n.t(
+        "stories.datepicker.argTypes.numberOfMonths.description",
+      ),
+      table: {
+        type: { summary: "number" },
+        defaultValue: { summary: "1" },
+        category: i18n.t("stories.category.calendar"),
+      },
     },
     calendarConfig: {
       control: { type: "object" },
-      description:
-        "Additional configuration props passed to the Calendar component",
+      description: i18n.t(
+        "stories.datepicker.argTypes.calendarConfig.description",
+      ),
+      table: {
+        category: i18n.t("stories.category.calendar"),
+      },
     },
 
     // Time Picker
     showTime: {
       control: { type: "boolean" },
-      description: "Show time picker alongside date picker",
+      description: i18n.t("stories.datepicker.argTypes.showTime.description"),
+      table: {
+        category: i18n.t("stories.category.time"),
+      },
     },
     hideDate: {
       control: { type: "boolean" },
-      description:
-        "Hide date picker and show only time picker (time-only mode)",
+      description: i18n.t("stories.datepicker.argTypes.hideDate.description"),
+      table: {
+        category: i18n.t("stories.category.time"),
+      },
     },
     timePickerMode: {
       control: { type: "select" },
       options: ["wheel", "select", "compact"],
-      description:
-        "Display mode for time picker: 'wheel' (iOS-style), 'select' (dropdown), or 'compact' (grid)",
+      description: i18n.t(
+        "stories.datepicker.argTypes.timePickerMode.description",
+      ),
+      table: {
+        category: i18n.t("stories.category.time"),
+      },
     },
     hourInterval: {
       control: { type: "number" },
-      description:
-        "Hour interval for time picker (e.g., 1, 2, 3) - defaults to 1",
+      description: i18n.t(
+        "stories.datepicker.argTypes.hourInterval.description",
+      ),
+      table: {
+        category: i18n.t("stories.category.time"),
+      },
     },
     minuteInterval: {
       control: { type: "number" },
-      description:
-        "Minute interval for time picker (e.g., 5, 10, 15, 30) - defaults to 1",
+      description: i18n.t(
+        "stories.datepicker.argTypes.minuteInterval.description",
+      ),
+      table: {
+        category: i18n.t("stories.category.time"),
+      },
     },
     secondInterval: {
       control: { type: "number" },
-      description:
-        "Second interval for time picker (e.g., 5, 10, 15, 30) - defaults to 1",
+      description: i18n.t(
+        "stories.datepicker.argTypes.secondInterval.description",
+      ),
+      table: {
+        category: i18n.t("stories.category.time"),
+      },
     },
     disabledTimes: {
       control: { type: "object" },
-      description:
-        "Array of specific times to disable in 'HH:mm' format (e.g., ['09:00', '12:00'])",
+      description: i18n.t(
+        "stories.datepicker.argTypes.disabledTimes.description",
+      ),
+      table: {
+        category: i18n.t("stories.category.time"),
+      },
     },
     disabledTimeRanges: {
       control: { type: "object" },
-      description:
-        "Array of time ranges to disable (e.g., [{ from: '01:00', to: '05:00' }])",
+      description: i18n.t(
+        "stories.datepicker.argTypes.disabledTimeRanges.description",
+      ),
+      table: {
+        category: i18n.t("stories.category.time"),
+      },
     },
     showNowButton: {
       control: { type: "boolean" },
-      description:
-        "Show 'Now' button to select current time or nearest available time",
+      description: i18n.t(
+        "stories.datepicker.argTypes.showNowButton.description",
+      ),
+      table: {
+        category: i18n.t("stories.category.time"),
+      },
     },
     nowButtonLabel: {
       control: { type: "text" },
-      description: "Custom label for the 'Now' button (defaults to 'Now')",
+      description: i18n.t(
+        "stories.datepicker.argTypes.nowButtonLabel.description",
+      ),
+      table: {
+        category: i18n.t("stories.category.time"),
+      },
     },
     timePickerLabel: {
       control: { type: "object" },
-      description:
-        "Custom labels for time picker columns (e.g., { hours: 'Hour', minutes: 'Minute' })",
+      description: i18n.t(
+        "stories.datepicker.argTypes.timePickerLabel.description",
+      ),
+      table: {
+        category: i18n.t("stories.category.time"),
+      },
     },
   },
   args: {

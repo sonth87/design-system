@@ -9,6 +9,7 @@ import Collapsible, {
 import { ChevronRight, Info, Settings, User } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@dsui/ui/index";
+import i18n from "../../.storybook/i18n";
 
 const meta: Meta<typeof Collapsible> = {
   title: "Layout/Collapsible",
@@ -20,62 +21,97 @@ const meta: Meta<typeof Collapsible> = {
   argTypes: {
     trigger: {
       control: false,
-      description: "Content for the trigger button",
+      description: i18n.t("stories.collapsible.argTypes.trigger.description"),
+      table: {
+        category: i18n.t("stories.category.content"),
+      },
     },
     content: {
       control: false,
-      description: "Content to show/hide when collapsed",
+      description: i18n.t("stories.collapsible.argTypes.content.description"),
+      table: {
+        category: i18n.t("stories.category.content"),
+      },
     },
     showIcon: {
       control: "boolean",
-      description: "Show/hide the chevron icon",
+      description: i18n.t("stories.collapsible.argTypes.showIcon.description"),
       table: {
         defaultValue: { summary: "true" },
+        category: i18n.t("stories.category.ui"),
       },
     },
     iconPosition: {
       control: "select",
       options: ["left", "right"],
-      description: "Position of the chevron icon",
+      description: i18n.t(
+        "stories.collapsible.argTypes.iconPosition.description",
+      ),
       table: {
         defaultValue: { summary: "right" },
+        category: i18n.t("stories.category.layout"),
       },
     },
     iconRotation: {
       control: "boolean",
-      description: "Enable icon rotation animation",
+      description: i18n.t(
+        "stories.collapsible.argTypes.iconRotation.description",
+      ),
       table: {
         defaultValue: { summary: "true" },
+        category: i18n.t("stories.category.ui"),
       },
     },
     variant: {
       control: "select",
       options: ["default", "bordered", "ghost"],
-      description: "Visual style variant",
+      description: i18n.t("stories.collapsible.argTypes.variant.description"),
       table: {
         defaultValue: { summary: "default" },
+        category: i18n.t("stories.category.appearance"),
       },
     },
     open: {
       control: "boolean",
-      description: "Controlled open state",
+      description: i18n.t("stories.collapsible.argTypes.open.description"),
+      table: {
+        category: i18n.t("stories.category.behavior"),
+      },
     },
     defaultOpen: {
       control: "boolean",
-      description: "Default open state",
+      description: i18n.t(
+        "stories.collapsible.argTypes.defaultOpen.description",
+      ),
       table: {
         defaultValue: { summary: "false" },
+        category: i18n.t("stories.category.behavior"),
       },
     },
     disabled: {
       control: "boolean",
-      description: "Disable the collapsible",
+      description: i18n.t("stories.collapsible.argTypes.disabled.description"),
       table: {
         defaultValue: { summary: "false" },
+        category: i18n.t("stories.category.behavior"),
       },
     },
-    className: { control: "text", description: "Additional CSS classes" },
-    onOpenChange: { action: "open changed" },
+    className: {
+      control: "text",
+      description: i18n.t("stories.collapsible.argTypes.className.description"),
+      table: {
+        category: i18n.t("stories.category.advanced"),
+      },
+    },
+    onOpenChange: {
+      action: "open changed",
+      description: i18n.t(
+        "stories.collapsible.argTypes.onOpenChange.description",
+      ),
+      table: {
+        category: i18n.t("stories.category.events"),
+      },
+    },
   },
   args: {
     variant: "default",

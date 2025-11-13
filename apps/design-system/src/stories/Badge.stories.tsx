@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import Badge from "../components/Badge/Badge";
+import i18n from "../../.storybook/i18n";
 
 const meta: Meta<typeof Badge> = {
   title: "Feedback/Badge",
@@ -12,8 +13,11 @@ const meta: Meta<typeof Badge> = {
     variant: {
       control: "select",
       options: ["solid", "light", "outline"],
-      description: "Badge variant style",
-      table: { defaultValue: { summary: "solid" } },
+      description: i18n.t("stories.badge.argTypes.variant.description"),
+      table: {
+        defaultValue: { summary: "solid" },
+        category: i18n.t("stories.category.appearance"),
+      },
     },
     color: {
       control: "select",
@@ -27,25 +31,35 @@ const meta: Meta<typeof Badge> = {
         "error",
         "warning",
       ],
-      description: "Badge color",
-      table: { defaultValue: { summary: "primary" } },
+      description: i18n.t("stories.badge.argTypes.color.description"),
+      table: {
+        defaultValue: { summary: "primary" },
+        category: i18n.t("stories.category.appearance"),
+      },
     },
     size: {
       control: "select",
       options: ["xs", "sm", "normal", "lg", "xl"],
-      description: "Badge size (6px, 12px, 16px, 24px, 32px)",
-      table: { defaultValue: { summary: "normal" } },
+      description: i18n.t("stories.badge.argTypes.size.description"),
+      table: {
+        defaultValue: { summary: "normal" },
+        category: i18n.t("stories.category.appearance"),
+      },
     },
     border: {
       control: "boolean",
-      description: "Show border or not",
-      table: { defaultValue: { summary: "false" } },
+      description: i18n.t("stories.badge.argTypes.border.description"),
+      table: {
+        defaultValue: { summary: "false" },
+        category: i18n.t("stories.category.appearance"),
+      },
     },
     isLoading: {
       control: "boolean",
-      description: "Show loading state",
+      description: i18n.t("stories.badge.argTypes.isLoading.description"),
       table: {
         defaultValue: { summary: "false" },
+        category: i18n.t("stories.category.behavior"),
       },
     },
     animation: {
@@ -62,10 +76,25 @@ const meta: Meta<typeof Badge> = {
         "loading",
         "draw",
       ],
-      description: "Animation effect for the badge",
+      description: i18n.t("stories.badge.argTypes.animation.description"),
+      table: {
+        category: i18n.t("stories.category.appearance"),
+      },
     },
-    children: { control: "text", description: "Badge content" },
-    className: { control: "text", description: "Custom class" },
+    children: {
+      control: "text",
+      description: i18n.t("stories.badge.argTypes.children.description"),
+      table: {
+        category: i18n.t("stories.category.content"),
+      },
+    },
+    className: {
+      control: "text",
+      description: i18n.t("stories.badge.argTypes.className.description"),
+      table: {
+        category: i18n.t("stories.category.advanced"),
+      },
+    },
   },
   args: {
     children: "Badge",

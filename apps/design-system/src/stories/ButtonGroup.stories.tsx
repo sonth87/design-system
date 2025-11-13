@@ -13,6 +13,7 @@ import {
   ThumbsUpIcon,
   ThumbsDownIcon,
 } from "lucide-react";
+import i18n from "../../.storybook/i18n";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta: Meta<ButtonGroupProps> = {
@@ -29,9 +30,10 @@ const meta: Meta<ButtonGroupProps> = {
     variant: {
       control: "select",
       options: ["solid", "mix", "light", "outline", "ghost", "link"],
-      description: "The visual style variant of the buttons",
+      description: i18n.t("stories.buttongroup.argTypes.variant.description"),
       table: {
         defaultValue: { summary: "solid" },
+        category: i18n.t("stories.category.appearance"),
       },
     },
     size: {
@@ -53,9 +55,10 @@ const meta: Meta<ButtonGroupProps> = {
         "circle-icon-lg",
         "circle-icon-xl",
       ],
-      description: "The size of the buttons",
+      description: i18n.t("stories.buttongroup.argTypes.size.description"),
       table: {
         defaultValue: { summary: "default" },
+        category: i18n.t("stories.category.appearance"),
       },
     },
     color: {
@@ -71,23 +74,26 @@ const meta: Meta<ButtonGroupProps> = {
         "error",
         "warning",
       ],
-      description: "The color theme of the buttons",
+      description: i18n.t("stories.buttongroup.argTypes.color.description"),
       table: {
         defaultValue: { summary: "primary" },
+        category: i18n.t("stories.category.appearance"),
       },
     },
     disabled: {
       control: "boolean",
-      description: "Disable the buttons",
+      description: i18n.t("stories.buttongroup.argTypes.disabled.description"),
       table: {
         defaultValue: { summary: "false" },
+        category: i18n.t("stories.category.behavior"),
       },
     },
     isLoading: {
       control: "boolean",
-      description: "Show loading state for buttons",
+      description: i18n.t("stories.buttongroup.argTypes.isLoading.description"),
       table: {
         defaultValue: { summary: "false" },
+        category: i18n.t("stories.category.behavior"),
       },
     },
     animation: {
@@ -106,17 +112,29 @@ const meta: Meta<ButtonGroupProps> = {
         "loading",
         "draw",
       ],
-      description: "Animation effect for the buttons",
+      description: i18n.t("stories.buttongroup.argTypes.animation.description"),
+      table: {
+        category: i18n.t("stories.category.ui"),
+      },
     },
     orientation: {
       control: "select",
       options: ["horizontal", "vertical"],
-      description: "The orientation of the button group",
+      description: i18n.t(
+        "stories.buttongroup.argTypes.orientation.description",
+      ),
       table: {
         defaultValue: { summary: "horizontal" },
+        category: i18n.t("stories.category.layout"),
       },
     },
-    className: { control: "text", description: "Additional CSS classes" },
+    className: {
+      control: "text",
+      description: i18n.t("stories.buttongroup.argTypes.className.description"),
+      table: {
+        category: i18n.t("stories.category.advanced"),
+      },
+    },
   },
   args: {
     variant: "solid",

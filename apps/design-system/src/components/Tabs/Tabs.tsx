@@ -240,7 +240,7 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
       // For fade mode, account for scroll position
       if (overflowMode === "fade" && scrollAreaRef.current) {
         const scrollAreaViewport = scrollAreaRef.current.querySelector(
-          "[data-radix-scroll-area-viewport]"
+          "[data-radix-scroll-area-viewport]",
         ) as HTMLElement;
 
         if (scrollAreaViewport) {
@@ -262,7 +262,7 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
       // Auto-scroll to active tab in fade mode
       if (overflowMode === "fade" && scrollAreaRef.current) {
         const scrollAreaViewport = scrollAreaRef.current.querySelector(
-          "[data-radix-scroll-area-viewport]"
+          "[data-radix-scroll-area-viewport]",
         ) as HTMLElement;
 
         if (scrollAreaViewport) {
@@ -301,7 +301,7 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
               // Ensure we don't scroll beyond bounds and leave space for fade
               const clampedScroll = Math.max(
                 fadeWidth / 2,
-                Math.min(targetScrollTop, maxScroll - fadeWidth / 2)
+                Math.min(targetScrollTop, maxScroll - fadeWidth / 2),
               );
 
               scrollAreaViewport.scrollTo({
@@ -341,7 +341,7 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
               // Ensure we don't scroll beyond bounds and leave space for fade
               const clampedScroll = Math.max(
                 fadeWidth / 2,
-                Math.min(targetScrollLeft, maxScroll - fadeWidth / 2)
+                Math.min(targetScrollLeft, maxScroll - fadeWidth / 2),
               );
 
               scrollAreaViewport.scrollTo({
@@ -360,7 +360,7 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
     if (overflowMode !== "fade" || !scrollAreaRef.current) return;
 
     const scrollAreaViewport = scrollAreaRef.current.querySelector(
-      "[data-radix-scroll-area-viewport]"
+      "[data-radix-scroll-area-viewport]",
     ) as HTMLElement;
 
     if (!scrollAreaViewport) return;
@@ -386,7 +386,7 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
 
       // Update indicator position when scrolling
       const activeIndex = items.findIndex(
-        (tab) => tab.key === currentActiveKey
+        (tab) => tab.key === currentActiveKey,
       );
       const activeTabElement = tabRefs.current[activeIndex];
       const listElement = tabsListRef.current;
@@ -533,7 +533,7 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
                 variant === "pills"
               ) && triggerColorClass,
               item.className,
-              tabTriggerClassName
+              tabTriggerClassName,
             )}
           >
             {item.icon && (
@@ -562,7 +562,7 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
             "max-w-full": overflowMode === "fade", // Limit width for fade mode
             // For overflow modes, allow natural width expansion
             "w-auto": overflowMode === "dropdown" || overflowMode === "fade",
-          }
+          },
         )}
       >
         {renderTabTriggers(visibleTabs)}
@@ -714,7 +714,7 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
                   "h-9 px-3 shrink-0",
                   {
                     "bg-accent text-accent-foreground": dropdownOpen,
-                  }
+                  },
                 )}
                 aria-label="More tabs"
               >
@@ -739,7 +739,7 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
                       {
                         "bg-accent text-accent-foreground":
                           item.key === currentActiveKey,
-                      }
+                      },
                     )}
                   >
                     {item.icon && (
@@ -826,7 +826,7 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
                   "h-9 px-3 shrink-0",
                   {
                     "bg-accent text-accent-foreground": dropdownOpen,
-                  }
+                  },
                 )}
                 aria-label="More tabs"
               >
@@ -851,7 +851,7 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
                       {
                         "bg-accent text-accent-foreground":
                           item.key === currentActiveKey,
-                      }
+                      },
                     )}
                   >
                     {item.icon && (

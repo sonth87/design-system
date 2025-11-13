@@ -4,6 +4,7 @@ import ScrollArea, {
   type ScrollAreaProps,
 } from "../components/ScrollArea/ScrollArea";
 import Separator from "../components/Separator/Separator";
+import i18n from "../../.storybook/i18n";
 
 const meta: Meta<typeof ScrollArea> = {
   title: "Layout/ScrollArea",
@@ -15,17 +16,20 @@ const meta: Meta<typeof ScrollArea> = {
   argTypes: {
     className: {
       control: "text",
-      description: "Additional CSS classes for the scroll area container",
+      description: i18n.t("stories.scrollarea.argTypes.className.description"),
       table: {
         type: { summary: "string" },
+        category: i18n.t("stories.category.layout"),
       },
     },
     viewportClassName: {
       control: "text",
-      description:
-        "Additional CSS classes for the viewport (where scroll happens)",
+      description: i18n.t(
+        "stories.scrollarea.argTypes.viewportClassName.description",
+      ),
       table: {
         type: { summary: "string" },
+        category: i18n.t("stories.category.layout"),
       },
     },
     snapType: {
@@ -42,20 +46,11 @@ const meta: Meta<typeof ScrollArea> = {
         "y proximity",
         "both proximity",
       ],
-      description:
-        "Controls scroll snap behavior using CSS scroll-snap-type. " +
-        "**Directions**: 'x' (horizontal), 'y' (vertical), 'both' (both axes), 'none' (disable). " +
-        "**Strictness**: 'mandatory' forces snap to closest point, 'proximity' snaps only when near. " +
-        "**Examples**: 'y mandatory' for vertical carousel (always snaps), 'x proximity' for horizontal gallery (snaps when near). " +
-        "\n\n**Child Item Classes**: Apply these Tailwind classes to child elements to control snap alignment:\n" +
-        "• `snap-start` - Snap to the start edge of the item\n" +
-        "• `snap-center` - Snap to the center of the item\n" +
-        "• `snap-end` - Snap to the end edge of the item\n" +
-        "• `snap-align-none` - Disable snap for specific item",
+      description: i18n.t("stories.scrollarea.argTypes.snapType.description"),
       table: {
         type: { summary: "string" },
         defaultValue: { summary: "undefined" },
-        category: "Scroll Behavior",
+        category: i18n.t("stories.category.scroll"),
       },
     },
   },

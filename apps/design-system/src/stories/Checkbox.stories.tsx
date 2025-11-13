@@ -3,6 +3,7 @@ import { useState } from "react";
 
 import Checkbox, { type CheckboxProps } from "../components/Checkbox/Checkbox";
 import { Angry, Heart, Star } from "lucide-react";
+import i18n from "../../.storybook/i18n";
 
 const meta: Meta<CheckboxProps> = {
   title: "Form Components/Checkbox",
@@ -12,41 +13,58 @@ const meta: Meta<CheckboxProps> = {
   },
   tags: ["autodocs"],
   argTypes: {
-    label: { control: "text", description: "Checkbox label text" },
+    label: {
+      control: "text",
+      description: i18n.t("stories.checkbox.argTypes.label.description"),
+      table: {
+        category: i18n.t("stories.category.content"),
+      },
+    },
     infoTooltip: {
       control: "text",
-      description: "Info tooltip content displayed next to the label",
+      description: i18n.t("stories.checkbox.argTypes.infoTooltip.description"),
+      table: {
+        category: i18n.t("stories.category.ui"),
+      },
     },
     labelPosition: {
       control: "select",
       options: ["top", "left", "right", "bottom"],
-      description: "Position of the label relative to the checkbox",
+      description: i18n.t(
+        "stories.checkbox.argTypes.labelPosition.description",
+      ),
       table: {
         defaultValue: { summary: "top" },
+        category: i18n.t("stories.category.layout"),
       },
     },
     labelAlignment: {
       control: "select",
       options: ["start", "center", "end"],
-      description: "Alignment of the label text",
+      description: i18n.t(
+        "stories.checkbox.argTypes.labelAlignment.description",
+      ),
       table: {
         defaultValue: { summary: "start" },
+        category: i18n.t("stories.category.layout"),
       },
     },
     variant: {
       control: "select",
       options: ["default", "circle"],
-      description: "The visual style variant of the checkbox",
+      description: i18n.t("stories.checkbox.argTypes.variant.description"),
       table: {
         defaultValue: { summary: "default" },
+        category: i18n.t("stories.category.appearance"),
       },
     },
     size: {
       control: "select",
       options: ["default", "sm", "lg"],
-      description: "The size of the checkbox",
+      description: i18n.t("stories.checkbox.argTypes.size.description"),
       table: {
         defaultValue: { summary: "default" },
+        category: i18n.t("stories.category.appearance"),
       },
     },
     color: {
@@ -61,48 +79,67 @@ const meta: Meta<CheckboxProps> = {
         "error",
         "warning",
       ],
-      description: "The color theme of the checkbox",
+      description: i18n.t("stories.checkbox.argTypes.color.description"),
       table: {
         defaultValue: { summary: "primary" },
+        category: i18n.t("stories.category.appearance"),
       },
     },
     checked: {
       control: "select",
       options: [false, true, "indeterminate"],
-      description: "Checked state",
+      description: i18n.t("stories.checkbox.argTypes.checked.description"),
       table: {
         defaultValue: { summary: "false" },
+        category: i18n.t("stories.category.behavior"),
       },
     },
     disabled: {
       control: "boolean",
-      description: "Disable the checkbox",
+      description: i18n.t("stories.checkbox.argTypes.disabled.description"),
       table: {
         defaultValue: { summary: "false" },
+        category: i18n.t("stories.category.behavior"),
       },
     },
     helperText: {
       control: "text",
-      description: "Helper text displayed below the checkbox",
+      description: i18n.t("stories.checkbox.argTypes.helperText.description"),
+      table: {
+        category: i18n.t("stories.category.content"),
+      },
     },
     state: {
       control: "select",
       options: ["default", "error", "success", "warning"],
-      description: "The visual state of the checkbox",
+      description: i18n.t("stories.checkbox.argTypes.state.description"),
       table: {
         defaultValue: { summary: "default" },
+        category: i18n.t("stories.category.validation"),
       },
     },
     icon: {
       control: "object",
-      description: "Custom icon for checked/indeterminate state",
+      description: i18n.t("stories.checkbox.argTypes.icon.description"),
+      table: {
+        category: i18n.t("stories.category.content"),
+      },
     },
-    className: { control: "text", description: "Additional CSS classes" },
+    className: {
+      control: "text",
+      description: i18n.t("stories.checkbox.argTypes.className.description"),
+      table: {
+        category: i18n.t("stories.category.advanced"),
+      },
+    },
     onCheckedChange: { action: "checked changed" },
     animation: {
       control: "select",
       options: ["confetti", undefined],
-      description: "Animation effect when checkbox is checked",
+      description: i18n.t("stories.checkbox.argTypes.animation.description"),
+      table: {
+        category: i18n.t("stories.category.appearance"),
+      },
     },
   },
   args: {

@@ -2,6 +2,7 @@ import type { Meta } from "@storybook/react";
 
 import Button, { type ButtonProps } from "../components/Button/Button";
 import { ArrowLeft, ArrowRight, BottleWine, ShoppingBag } from "lucide-react";
+import i18n from "../../.storybook/i18n";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta: Meta<ButtonProps> = {
@@ -18,9 +19,10 @@ const meta: Meta<ButtonProps> = {
     variant: {
       control: "select",
       options: ["solid", "mix", "light", "outline", "ghost", "link"],
-      description: "The visual style variant of the button",
+      description: i18n.t("stories.button.argTypes.variant.description"),
       table: {
         defaultValue: { summary: "solid" },
+        category: i18n.t("stories.category.appearance"),
       },
     },
     size: {
@@ -42,9 +44,10 @@ const meta: Meta<ButtonProps> = {
         "circle-icon-lg",
         "circle-icon-xl",
       ],
-      description: "The size of the button",
+      description: i18n.t("stories.button.argTypes.size.description"),
       table: {
         defaultValue: { summary: "default" },
+        category: i18n.t("stories.category.appearance"),
       },
     },
     color: {
@@ -59,23 +62,26 @@ const meta: Meta<ButtonProps> = {
         "error",
         "warning",
       ],
-      description: "The color theme of the button",
+      description: i18n.t("stories.button.argTypes.color.description"),
       table: {
         defaultValue: { summary: "primary" },
+        category: i18n.t("stories.category.appearance"),
       },
     },
     disabled: {
       control: "boolean",
-      description: "Disable the button",
+      description: i18n.t("stories.button.argTypes.disabled.description"),
       table: {
         defaultValue: { summary: "false" },
+        category: i18n.t("stories.category.behavior"),
       },
     },
     isLoading: {
       control: "boolean",
-      description: "Show loading state",
+      description: i18n.t("stories.button.argTypes.isLoading.description"),
       table: {
         defaultValue: { summary: "false" },
+        category: i18n.t("stories.category.behavior"),
       },
     },
     animation: {
@@ -94,15 +100,33 @@ const meta: Meta<ButtonProps> = {
         "loading",
         "draw",
       ],
-      description: "Animation effect for the button",
+      description: i18n.t("stories.button.argTypes.animation.description"),
+      table: {
+        category: i18n.t("stories.category.appearance"),
+      },
     },
-    className: { control: "text", description: "Additional CSS classes" },
+    className: {
+      control: "text",
+      description: i18n.t("stories.button.argTypes.className.description"),
+      table: {
+        category: i18n.t("stories.category.advanced"),
+      },
+    },
     asChild: {
       control: "boolean",
-      description: "Render as a child component",
+      description: i18n.t("stories.button.argTypes.asChild.description"),
+      table: {
+        category: i18n.t("stories.category.advanced"),
+      },
     },
     onClick: { action: "clicked" },
-    children: { control: "text", description: "Button label text" },
+    children: {
+      control: "text",
+      description: i18n.t("stories.button.argTypes.children.description"),
+      table: {
+        category: i18n.t("stories.category.content"),
+      },
+    },
   },
   // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args
   args: {

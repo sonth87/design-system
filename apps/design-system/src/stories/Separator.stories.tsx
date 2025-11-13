@@ -1,6 +1,7 @@
 import type { Meta } from "@storybook/react";
 
 import Separator from "../components/Separator/Separator";
+import i18n from "../../.storybook/i18n";
 
 type SeparatorProps = React.ComponentProps<typeof Separator>;
 
@@ -16,24 +17,29 @@ const meta: Meta<SeparatorProps> = {
     orientation: {
       control: "select",
       options: ["horizontal", "vertical"],
-      description: "The orientation of the separator",
+      description: i18n.t("stories.separator.argTypes.orientation.description"),
       table: {
         defaultValue: { summary: "horizontal" },
+        category: i18n.t("stories.category.layout"),
       },
     },
     decorative: {
       control: "boolean",
-      description: "Whether the separator is decorative",
+      description: i18n.t("stories.separator.argTypes.decorative.description"),
       table: {
         defaultValue: { summary: "true" },
+        category: i18n.t("stories.category.behavior"),
       },
     },
     textPosition: {
       control: "select",
       options: ["start", "center", "end"],
-      description: "Position of the text when children are provided",
+      description: i18n.t(
+        "stories.separator.argTypes.textPosition.description",
+      ),
       table: {
         defaultValue: { summary: "center" },
+        category: i18n.t("stories.category.layout"),
       },
     },
     color: {
@@ -49,13 +55,25 @@ const meta: Meta<SeparatorProps> = {
         "error",
         "warning",
       ],
-      description: "Color variant of the separator",
+      description: i18n.t("stories.separator.argTypes.color.description"),
+      table: {
+        category: i18n.t("stories.category.appearance"),
+      },
     },
     children: {
       control: "text",
-      description: "Text content to display in the separator",
+      description: i18n.t("stories.separator.argTypes.children.description"),
+      table: {
+        category: i18n.t("stories.category.content"),
+      },
     },
-    className: { control: "text", description: "Additional CSS classes" },
+    className: {
+      control: "text",
+      description: i18n.t("stories.separator.argTypes.className.description"),
+      table: {
+        category: i18n.t("stories.category.advanced"),
+      },
+    },
   },
   // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args
   args: {

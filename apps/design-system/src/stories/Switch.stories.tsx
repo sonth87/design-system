@@ -4,6 +4,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import Switch, { type SwitchProps } from "../components/Switch/Switch";
 import { Moon, Sun, Zap, Heart } from "lucide-react";
 import { useState } from "react";
+import i18n from "../../.storybook/i18n";
 
 const meta: Meta<typeof Switch> = {
   title: "Form Components/Switch",
@@ -16,17 +17,19 @@ const meta: Meta<typeof Switch> = {
     variant: {
       control: "select",
       options: ["default", "square1", "square2", "mini"],
-      description: "The visual style variant of the switch",
+      description: i18n.t("stories.switch.argTypes.variant.description"),
       table: {
         defaultValue: { summary: "default" },
+        category: i18n.t("stories.category.appearance"),
       },
     },
     size: {
       control: "select",
       options: ["xs", "sm", "normal", "lg", "xl"],
-      description: "The size of the switch",
+      description: i18n.t("stories.switch.argTypes.size.description"),
       table: {
         defaultValue: { summary: "normal" },
+        category: i18n.t("stories.category.appearance"),
       },
     },
     color: {
@@ -41,16 +44,18 @@ const meta: Meta<typeof Switch> = {
         "error",
         "warning",
       ],
-      description: "The color theme of the switch",
+      description: i18n.t("stories.switch.argTypes.color.description"),
       table: {
         defaultValue: { summary: "primary" },
+        category: i18n.t("stories.category.appearance"),
       },
     },
     disabled: {
       control: "boolean",
-      description: "Disable the switch",
+      description: i18n.t("stories.switch.argTypes.disabled.description"),
       table: {
         defaultValue: { summary: "false" },
+        category: i18n.t("stories.category.behavior"),
       },
     },
     animation: {
@@ -63,29 +68,43 @@ const meta: Meta<typeof Switch> = {
         "glow",
         "loading",
       ],
-      description: "Animation effect for the switch",
+      description: i18n.t("stories.switch.argTypes.animation.description"),
+      table: {
+        category: i18n.t("stories.category.appearance"),
+      },
     },
     label: {
       control: "text",
-      description: "Label text for the switch",
+      description: i18n.t("stories.switch.argTypes.label.description"),
+      table: {
+        category: i18n.t("stories.category.content"),
+      },
     },
     labelPosition: {
       control: "select",
       options: ["left", "right", "top", "bottom"],
-      description: "Position of the label relative to the switch",
+      description: i18n.t("stories.switch.argTypes.labelPosition.description"),
       table: {
         defaultValue: { summary: "right" },
+        category: i18n.t("stories.category.layout"),
       },
     },
     showLabels: {
       control: "select",
       options: ["none", "inside", "outside"],
-      description: "Show labels inside or outside the switch",
+      description: i18n.t("stories.switch.argTypes.showLabels.description"),
       table: {
         defaultValue: { summary: "none" },
+        category: i18n.t("stories.category.ui"),
       },
     },
-    className: { control: "text", description: "Additional CSS classes" },
+    className: {
+      control: "text",
+      description: i18n.t("stories.switch.argTypes.className.description"),
+      table: {
+        category: i18n.t("stories.category.advanced"),
+      },
+    },
     onCheckedChange: { action: "checked" },
   },
   args: {

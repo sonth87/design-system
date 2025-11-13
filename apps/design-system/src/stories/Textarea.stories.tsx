@@ -1,6 +1,7 @@
 import type { Meta } from "@storybook/react";
 
 import Textarea, { type TextareaProps } from "../components/Textarea/Textarea";
+import i18n from "../../.storybook/i18n";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta: Meta<typeof Textarea> = {
@@ -16,77 +17,112 @@ const meta: Meta<typeof Textarea> = {
   argTypes: {
     placeholder: {
       control: "text",
-      description: "Placeholder text",
+      description: i18n.t("stories.textarea.argTypes.placeholder.description"),
+      table: {
+        category: i18n.t("stories.category.content"),
+      },
     },
     size: {
       control: "select",
       options: ["xs", "sm", "normal", "lg", "xl"],
-      description: "The size of the textarea",
+      description: i18n.t("stories.textarea.argTypes.size.description"),
       table: {
         defaultValue: { summary: "normal" },
+        category: i18n.t("stories.category.appearance"),
       },
     },
     isFloatLabel: {
       control: "boolean",
-      description: "Enable floating label behavior",
+      description: i18n.t("stories.textarea.argTypes.isFloatLabel.description"),
       table: {
         defaultValue: { summary: "false" },
+        category: i18n.t("stories.category.ui"),
       },
     },
     disabled: {
       control: "boolean",
-      description: "Disable the textarea",
+      description: i18n.t("stories.textarea.argTypes.disabled.description"),
       table: {
         defaultValue: { summary: "false" },
+        category: i18n.t("stories.category.behavior"),
       },
     },
     label: {
       control: "text",
-      description: "Label for the textarea",
+      description: i18n.t("stories.textarea.argTypes.label.description"),
+      table: {
+        category: i18n.t("stories.category.content"),
+      },
     },
     state: {
       control: "select",
       options: ["default", "success", "warning", "error"],
-      description: "Type of helper text (default, success, warning, error)",
+      description: i18n.t("stories.textarea.argTypes.state.description"),
       table: {
         defaultValue: { summary: "default" },
+        category: i18n.t("stories.category.validation"),
       },
     },
     helperText: {
       control: "text",
-      description: "Helper text to display below the textarea",
+      description: i18n.t("stories.textarea.argTypes.helperText.description"),
+      table: {
+        category: i18n.t("stories.category.content"),
+      },
     },
     infoTooltip: {
       control: "text",
-      description: "Tooltip info icon next to the label",
+      description: i18n.t("stories.textarea.argTypes.infoTooltip.description"),
+      table: {
+        category: i18n.t("stories.category.ui"),
+      },
     },
     maxLength: {
       control: "number",
-      description: "Maximum number of characters allowed",
+      description: i18n.t("stories.textarea.argTypes.maxLength.description"),
+      table: {
+        category: i18n.t("stories.category.validation"),
+      },
     },
     showCharCount: {
       control: "boolean",
-      description: "Show character count below the textarea",
+      description: i18n.t(
+        "stories.textarea.argTypes.showCharCount.description",
+      ),
       table: {
         defaultValue: { summary: "false" },
+        category: i18n.t("stories.category.ui"),
       },
     },
     clearable: {
       control: "boolean",
-      description: "Show clear button when input has value",
+      description: i18n.t("stories.textarea.argTypes.clearable.description"),
       table: {
         defaultValue: { summary: "false" },
+        category: i18n.t("stories.category.ui"),
       },
     },
     onClear: {
       action: "cleared",
-      description: "Callback function when clear button is clicked",
+      description: i18n.t("stories.textarea.argTypes.onClear.description"),
+      table: {
+        category: i18n.t("stories.category.events"),
+      },
     },
     rows: {
       control: "number",
       description: "Number of visible text lines",
+      table: {
+        category: i18n.t("stories.category.basic"),
+      },
     },
-    className: { control: "text", description: "Additional CSS classes" },
+    className: {
+      control: "text",
+      description: i18n.t("stories.textarea.argTypes.className.description"),
+      table: {
+        category: i18n.t("stories.category.advanced"),
+      },
+    },
   },
   // Use `fn` to spy on the onChange arg, which will appear in the actions panel once invoked
   args: {

@@ -2,6 +2,7 @@ import type { Meta } from "@storybook/react";
 
 import Input, { type InputProps } from "../components/Input/Input";
 import { Mail, Search, Eye } from "lucide-react";
+import i18n from "../../.storybook/i18n";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta: Meta<InputProps> = {
@@ -18,97 +19,139 @@ const meta: Meta<InputProps> = {
     type: {
       control: "select",
       options: ["text", "email", "password", "number", "search", "tel", "url"],
-      description: "The type of the input",
+      description: i18n.t("stories.input.argTypes.type.description"),
       table: {
         defaultValue: { summary: "text" },
+        category: i18n.t("stories.category.basic"),
       },
     },
     placeholder: {
       control: "text",
-      description: "Placeholder text",
+      description: i18n.t("stories.input.argTypes.placeholder.description"),
+      table: {
+        category: i18n.t("stories.category.content"),
+      },
     },
     size: {
       control: "select",
       options: ["normal", "sm", "xs", "lg", "xl"],
-      description: "The size of the input",
+      description: i18n.t("stories.input.argTypes.size.description"),
       table: {
         defaultValue: { summary: "normal" },
+        category: i18n.t("stories.category.appearance"),
       },
     },
     isFloatLabel: {
       control: "boolean",
-      description: "Enable floating label behavior",
+      description: i18n.t("stories.input.argTypes.isFloatLabel.description"),
       table: {
         defaultValue: { summary: "false" },
+        category: i18n.t("stories.category.ui"),
       },
     },
     disabled: {
       control: "boolean",
-      description: "Disable the input",
+      description: i18n.t("stories.input.argTypes.disabled.description"),
       table: {
         defaultValue: { summary: "false" },
+        category: i18n.t("stories.category.behavior"),
       },
     },
     label: {
       control: "text",
-      description: "Label for the input",
+      description: i18n.t("stories.input.argTypes.label.description"),
+      table: {
+        category: i18n.t("stories.category.content"),
+      },
     },
     state: {
       control: "select",
       options: ["default", "success", "warning", "error"],
-      description: "Type of helper text (default, success, warning, error)",
+      description: i18n.t("stories.input.argTypes.state.description"),
       table: {
         defaultValue: { summary: "default" },
+        category: i18n.t("stories.category.validation"),
       },
     },
     helperText: {
       control: "text",
-      description: "Helper text to display below the input",
+      description: i18n.t("stories.input.argTypes.helperText.description"),
+      table: {
+        category: i18n.t("stories.category.content"),
+      },
     },
     infoTooltip: {
       control: "text",
-      description: "Tooltip info icon next to the label",
+      description: i18n.t("stories.input.argTypes.infoTooltip.description"),
+      table: {
+        category: i18n.t("stories.category.ui"),
+      },
     },
     mask: {
       control: "text",
-      description:
-        "Input mask pattern. E.g., 'currency', 'url', 'ip', '+1 (999) 999-9999'... For more info: <a href='https://www.npmjs.com/package/use-mask-input'>use-mask-input</a>",
+      description: i18n.t("stories.input.argTypes.mask.description"),
+      table: {
+        category: i18n.t("stories.category.formatting"),
+      },
     },
     maskOptions: {
       control: "object",
-      description: "Options for input masking",
+      description: i18n.t("stories.input.argTypes.maskOptions.description"),
+      table: {
+        category: i18n.t("stories.category.formatting"),
+      },
     },
     maxLength: {
       control: "number",
-      description: "Maximum number of characters allowed",
+      description: i18n.t("stories.input.argTypes.maxLength.description"),
+      table: {
+        category: i18n.t("stories.category.validation"),
+      },
     },
     showCharCount: {
       control: "boolean",
-      description: "Show character count below the input",
+      description: i18n.t("stories.input.argTypes.showCharCount.description"),
       table: {
         defaultValue: { summary: "false" },
+        category: i18n.t("stories.category.ui"),
       },
     },
     clearable: {
       control: "boolean",
-      description: "Show clear button when input has value",
+      description: i18n.t("stories.input.argTypes.clearable.description"),
       table: {
         defaultValue: { summary: "false" },
+        category: i18n.t("stories.category.ui"),
       },
     },
     onClear: {
       action: "cleared",
-      description: "Callback function when clear button is clicked",
+      description: i18n.t("stories.input.argTypes.onClear.description"),
+      table: {
+        category: i18n.t("stories.category.events"),
+      },
     },
     prefixIcon: {
       control: false,
-      description: "Icon to display at the start of the input",
+      description: i18n.t("stories.input.argTypes.prefixIcon.description"),
+      table: {
+        category: i18n.t("stories.category.content"),
+      },
     },
     suffixIcon: {
       control: false,
-      description: "Icon to display at the end of the input",
+      description: i18n.t("stories.input.argTypes.suffixIcon.description"),
+      table: {
+        category: i18n.t("stories.category.content"),
+      },
     },
-    className: { control: "text", description: "Additional CSS classes" },
+    className: {
+      control: "text",
+      description: i18n.t("stories.input.argTypes.className.description"),
+      table: {
+        category: i18n.t("stories.category.advanced"),
+      },
+    },
   },
   // Use `fn` to spy on the onChange arg, which will appear in the actions panel once invoked
   args: {

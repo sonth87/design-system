@@ -5,6 +5,7 @@ import {
   type DateRangeText,
 } from "../components/DatePicker/RangePicker";
 import { useState } from "react";
+import i18n from "../../.storybook/i18n";
 
 const meta: Meta<typeof RangePicker> = {
   title: "Date & Time/RangePicker",
@@ -16,134 +17,218 @@ const meta: Meta<typeof RangePicker> = {
   argTypes: {
     label: {
       control: { type: "text" },
-      description:
-        "Label for the range picker. `string` or `{ from: string; to: string }`",
+      description: i18n.t("stories.rangepicker.argTypes.label.description"),
+      table: {
+        category: i18n.t("stories.category.basic"),
+      },
     },
     helperText: {
       control: { type: "text" },
-      description: "Helper text displayed below the input field",
+      description: i18n.t(
+        "stories.rangepicker.argTypes.helperText.description",
+      ),
+      table: {
+        category: i18n.t("stories.category.basic"),
+      },
     },
     isFloatLabel: {
       control: { type: "boolean" },
-      description: "Enable floating label that moves when input has value",
+      description: i18n.t(
+        "stories.rangepicker.argTypes.isFloatLabel.description",
+      ),
       table: {
         defaultValue: { summary: "false" },
         type: { summary: "boolean" },
+        category: i18n.t("stories.category.ui"),
       },
     },
     state: {
       control: { type: "select" },
       options: ["", "default", "success", "warning", "error"],
-      description: "Visual state of the input field",
+      description: i18n.t("stories.rangepicker.argTypes.state.description"),
       table: {
         type: { summary: "string" },
         defaultValue: { summary: "default" },
+        category: i18n.t("stories.category.appearance"),
       },
     },
     size: {
       control: { type: "select" },
       options: ["", "xs", "sm", "normal", "lg", "xl"],
-      description: "Size variant of the input field",
-      table: { type: { summary: "string" }, defaultValue: { summary: "md" } },
+      description: i18n.t("stories.rangepicker.argTypes.size.description"),
+      table: {
+        type: { summary: "string" },
+        defaultValue: { summary: "md" },
+        category: i18n.t("stories.category.appearance"),
+      },
     },
     disabled: {
       control: { type: "boolean" },
-      description: "Disable the date picker input",
+      description: i18n.t("stories.rangepicker.argTypes.disabled.description"),
       table: {
         type: { summary: "boolean" },
         defaultValue: { summary: "false" },
+        category: i18n.t("stories.category.behavior"),
       },
     },
     placeholder: {
       control: { type: "text" },
-      description:
-        "Placeholder for the inputs. `string` or `{ from: string; to: string }`",
+      description: i18n.t(
+        "stories.rangepicker.argTypes.placeholder.description",
+      ),
+      table: {
+        category: i18n.t("stories.category.basic"),
+      },
     },
     value: {
       control: { type: "object" },
-      description:
-        "Controlled date range value. `{ from: string; to: string }`",
+      description: i18n.t("stories.rangepicker.argTypes.value.description"),
+      table: {
+        category: i18n.t("stories.category.behavior"),
+      },
     },
 
     // Format & Mask
     mask: {
       control: { type: "text" },
-      description:
-        "Input mask for date input. True for auto-generated mask, or custom string like '99/99/9999'",
+      description: i18n.t("stories.rangepicker.argTypes.mask.description"),
+      table: {
+        category: i18n.t("stories.category.formatting"),
+      },
     },
     format: {
       control: { type: "object" },
-      description:
-        "Date format: string (e.g., 'dd/MM/yyyy') or object { input: string, output: string }. For more: <a href='https://date-fns.org/v4.1.0/docs/format'>https://date-fns.org/v4.1.0/docs/format</a>",
+      description: i18n.t("stories.rangepicker.argTypes.format.description"),
+      table: {
+        category: i18n.t("stories.category.formatting"),
+      },
     },
 
     // UI/UX
     infoTooltip: {
       control: { type: "text" },
-      description: "Tooltip text displayed when hovering over the info icon",
-      table: { type: { summary: "ReactNode" } },
+      description: i18n.t(
+        "stories.rangepicker.argTypes.infoTooltip.description",
+      ),
+      table: {
+        type: { summary: "ReactNode" },
+        category: i18n.t("stories.category.ui"),
+      },
     },
     clearable: {
       control: "boolean",
-      description: "Show clear button when input has value",
+      description: i18n.t("stories.rangepicker.argTypes.clearable.description"),
       table: {
         defaultValue: { summary: "false" },
+        category: i18n.t("stories.category.ui"),
       },
     },
     numberOfMonths: {
       control: { type: "number" },
-      description: "Number of months to display in the calendar",
-      table: { type: { summary: "number" }, defaultValue: { summary: "1" } },
+      description: i18n.t(
+        "stories.rangepicker.argTypes.numberOfMonths.description",
+      ),
+      table: {
+        type: { summary: "number" },
+        defaultValue: { summary: "1" },
+        category: i18n.t("stories.category.calendar"),
+      },
     },
     side: {
       control: { type: "select" },
       options: ["top", "right", "bottom", "left"],
+      description: i18n.t("stories.rangepicker.argTypes.side.description"),
+      table: {
+        category: i18n.t("stories.category.layout"),
+      },
     },
     align: {
       control: { type: "select" },
       options: ["start", "center", "end"],
+      description: i18n.t("stories.rangepicker.argTypes.align.description"),
+      table: {
+        category: i18n.t("stories.category.layout"),
+      },
     },
     language: {
       control: { type: "select" },
       options: ["vi", "en"],
+      description: i18n.t("stories.rangepicker.argTypes.language.description"),
+      table: {
+        category: i18n.t("stories.category.language"),
+      },
     },
     onChange: {
-      description:
-        "Called when date range changes. Receives fromValue, toValue, and range. Example: onChange(fromValue, toValue, range)",
+      description: i18n.t("stories.rangepicker.argTypes.onChange.description"),
+      table: {
+        category: i18n.t("stories.category.events"),
+      },
     },
     onSelect: {
-      description:
-        "Called when a date range is selected. Receives range, fromValue, and toValue. Example: onSelect(range, fromValue, toValue)",
+      description: i18n.t("stories.rangepicker.argTypes.onSelect.description"),
+      table: {
+        category: i18n.t("stories.category.events"),
+      },
     },
     closeOnSelect: {
       control: { type: "boolean" },
+      description: i18n.t(
+        "stories.rangepicker.argTypes.closeOnSelect.description",
+      ),
+      table: {
+        category: i18n.t("stories.category.behavior"),
+      },
     },
     desktopMode: {
       control: { type: "select" },
       options: ["popover", "drawer"],
-      description: "Display mode for desktop devices",
+      description: i18n.t(
+        "stories.rangepicker.argTypes.desktopMode.description",
+      ),
+      table: {
+        category: i18n.t("stories.category.ui"),
+      },
     },
     mobileMode: {
       control: { type: "select" },
       options: ["popover", "drawer"],
-      description: "Display mode for mobile devices",
+      description: i18n.t(
+        "stories.rangepicker.argTypes.mobileMode.description",
+      ),
+      table: {
+        category: i18n.t("stories.category.ui"),
+      },
     },
     separator: {
       control: { type: "text" },
-      description: "Separator between from and to inputs",
+      description: i18n.t("stories.rangepicker.argTypes.separator.description"),
+      table: {
+        category: i18n.t("stories.category.ui"),
+      },
     },
     showTime: {
       control: { type: "boolean" },
-      description: "Show time picker alongside date picker",
+      description: i18n.t("stories.rangepicker.argTypes.showTime.description"),
+      table: {
+        category: i18n.t("stories.category.time"),
+      },
     },
     timeFormat: {
       control: { type: "select" },
       options: ["HH:mm", "HH:mm:ss"],
-      description: "Time format: HH:mm or HH:mm:ss",
+      description: i18n.t(
+        "stories.rangepicker.argTypes.timeFormat.description",
+      ),
+      table: {
+        category: i18n.t("stories.category.time"),
+      },
     },
     hideDate: {
       control: { type: "boolean" },
-      description: "Hide date picker and show only time picker",
+      description: i18n.t("stories.rangepicker.argTypes.hideDate.description"),
+      table: {
+        category: i18n.t("stories.category.calendar"),
+      },
     },
   },
   args: {

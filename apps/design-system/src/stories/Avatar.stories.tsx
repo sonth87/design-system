@@ -3,6 +3,7 @@ import { Avatar, type AvatarProps } from "../components/Avatar/Avatar";
 import { AlarmClock, Angry, Baby, CheckIcon } from "lucide-react";
 import Badge from "../components/Badge/Badge";
 import { Tooltip } from "../components/Tooltip/Tooltip";
+import i18n from "../../.storybook/i18n";
 
 const meta: Meta<AvatarProps> = {
   title: "Data Display/Avatar",
@@ -15,12 +16,18 @@ const meta: Meta<AvatarProps> = {
     size: {
       control: "select",
       options: ["xs", "sm", "md", "lg", "xl"],
-      description: "Avatar size",
+      description: i18n.t("stories.avatar.argTypes.size.description"),
+      table: {
+        category: i18n.t("stories.category.appearance"),
+      },
     },
     variant: {
       control: "select",
       options: ["circle", "square"],
-      description: "Avatar shape variant",
+      description: i18n.t("stories.avatar.argTypes.variant.description"),
+      table: {
+        category: i18n.t("stories.category.appearance"),
+      },
     },
     color: {
       control: "select",
@@ -36,11 +43,14 @@ const meta: Meta<AvatarProps> = {
         "error",
         "glass",
       ],
-      description: "Avatar color variant",
+      description: i18n.t("stories.avatar.argTypes.color.description"),
+      table: {
+        category: i18n.t("stories.category.appearance"),
+      },
     },
     animation: {
       control: "select",
-      description: "Avatar animation style",
+      description: i18n.t("stories.avatar.argTypes.animation.description"),
       options: [
         "bounce",
         "slide-up",
@@ -53,11 +63,38 @@ const meta: Meta<AvatarProps> = {
         "shake",
         "flip",
       ],
+      table: {
+        category: i18n.t("stories.category.appearance"),
+      },
     },
-    src: { control: "text", description: "Image source URL" },
-    alt: { control: "text", description: "Alt text for image" },
-    fallback: { control: "text", description: "Fallback content" },
-    className: { control: "text", description: "Custom class" },
+    src: {
+      control: "text",
+      description: i18n.t("stories.avatar.argTypes.src.description"),
+      table: {
+        category: i18n.t("stories.category.content"),
+      },
+    },
+    alt: {
+      control: "text",
+      description: i18n.t("stories.avatar.argTypes.alt.description"),
+      table: {
+        category: i18n.t("stories.category.content"),
+      },
+    },
+    fallback: {
+      control: "text",
+      description: i18n.t("stories.avatar.argTypes.fallback.description"),
+      table: {
+        category: i18n.t("stories.category.content"),
+      },
+    },
+    className: {
+      control: "text",
+      description: i18n.t("stories.avatar.argTypes.className.description"),
+      table: {
+        category: i18n.t("stories.category.advanced"),
+      },
+    },
   },
   args: {
     src: "https://github.com/sonth87.png",

@@ -4,6 +4,7 @@ import { useState } from "react";
 import Radio, { type RadioProps } from "../components/Radio/Radio";
 import { Angry, Annoyed } from "lucide-react";
 import Badge from "../components/Badge/Badge";
+import i18n from "../../.storybook/i18n";
 
 const meta: Meta<RadioProps> = {
   title: "Form Components/Radio",
@@ -13,25 +14,36 @@ const meta: Meta<RadioProps> = {
   },
   tags: ["autodocs"],
   argTypes: {
-    label: { control: "text", description: "Group label text" },
+    label: {
+      control: "text",
+      description: i18n.t("stories.radio.argTypes.label.description"),
+      table: {
+        category: i18n.t("stories.category.content"),
+      },
+    },
     helperText: {
       control: "text",
-      description: "Helper text displayed below the radio group",
+      description: i18n.t("stories.radio.argTypes.helperText.description"),
+      table: {
+        category: i18n.t("stories.category.content"),
+      },
     },
     variant: {
       control: "select",
       options: ["option", "button-group"],
-      description: "The visual style variant of the radio group",
+      description: i18n.t("stories.radio.argTypes.variant.description"),
       table: {
         defaultValue: { summary: "option" },
+        category: i18n.t("stories.category.appearance"),
       },
     },
     size: {
       control: "select",
       options: ["default", "sm", "lg"],
-      description: "The size of the radio items",
+      description: i18n.t("stories.radio.argTypes.size.description"),
       table: {
         defaultValue: { summary: "default" },
+        category: i18n.t("stories.category.appearance"),
       },
     },
     color: {
@@ -47,26 +59,40 @@ const meta: Meta<RadioProps> = {
         "error",
         "warning",
       ],
-      description: "The color theme of the radio items",
+      description: i18n.t("stories.radio.argTypes.color.description"),
       table: {
         defaultValue: { summary: "primary" },
+        category: i18n.t("stories.category.appearance"),
       },
     },
     options: {
       control: "object",
-      description: "Array of options for auto-generating radio items",
+      description: i18n.t("stories.radio.argTypes.options.description"),
+      table: {
+        category: i18n.t("stories.category.content"),
+      },
     },
     value: {
       control: "text",
-      description: "The selected value",
+      description: i18n.t("stories.radio.argTypes.value.description"),
+      table: {
+        category: i18n.t("stories.category.behavior"),
+      },
     },
     onValueChange: { action: "value changed" },
-    className: { control: "text", description: "Additional CSS classes" },
+    className: {
+      control: "text",
+      description: i18n.t("stories.radio.argTypes.className.description"),
+      table: {
+        category: i18n.t("stories.category.advanced"),
+      },
+    },
     disabled: {
       control: "boolean",
-      description: "Disable the entire radio group",
+      description: i18n.t("stories.radio.argTypes.disabled.description"),
       table: {
         defaultValue: { summary: "false" },
+        category: i18n.t("stories.category.behavior"),
       },
     },
   },

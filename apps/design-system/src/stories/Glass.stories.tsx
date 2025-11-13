@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import Glass from "../components/Glass/Glass";
+import i18n from "../../.storybook/i18n";
 
 const meta: Meta<typeof Glass> = {
   title: "Layout/Glass",
@@ -9,10 +10,20 @@ const meta: Meta<typeof Glass> = {
   },
   tags: ["autodocs"],
   argTypes: {
-    // size: {
-    //   control: "select",
-    //   options: ["sm", "default", "lg"],
-    // },
+    className: {
+      control: "text",
+      description: i18n.t("stories.glass.argTypes.className.description"),
+      table: {
+        category: i18n.t("stories.category.advanced"),
+      },
+    },
+    children: {
+      control: false,
+      description: i18n.t("stories.glass.argTypes.children.description"),
+      table: {
+        category: i18n.t("stories.category.content"),
+      },
+    },
   },
 } satisfies Meta<typeof Glass>;
 

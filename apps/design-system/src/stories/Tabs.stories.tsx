@@ -4,6 +4,7 @@ import Tabs, { type TabsProps } from "../components/Tabs/Tabs";
 import Button from "../components/Button/Button";
 import Input from "../components/Input/Input";
 import { User, Settings, Bell, Mail, Home } from "lucide-react";
+import i18n from "../../.storybook/i18n";
 
 const meta: Meta<TabsProps> = {
   title: "Navigation/Tabs",
@@ -15,38 +16,50 @@ const meta: Meta<TabsProps> = {
   argTypes: {
     items: {
       control: "object",
-      description: "Array of tab items",
+      description: i18n.t("stories.tabs.argTypes.items.description"),
+      table: {
+        category: i18n.t("stories.category.content"),
+      },
     },
     defaultActiveKey: {
       control: "text",
-      description: "Default active tab key (uncontrolled)",
+      description: i18n.t("stories.tabs.argTypes.defaultActiveKey.description"),
+      table: {
+        category: i18n.t("stories.category.behavior"),
+      },
     },
     activeKey: {
       control: "text",
-      description: "Controlled active tab key",
+      description: i18n.t("stories.tabs.argTypes.activeKey.description"),
+      table: {
+        category: i18n.t("stories.category.behavior"),
+      },
     },
     tabPosition: {
       control: "select",
       options: ["top", "bottom", "left", "right"],
-      description: "Position of the tabs",
+      description: i18n.t("stories.tabs.argTypes.tabPosition.description"),
       table: {
         defaultValue: { summary: "top" },
+        category: i18n.t("stories.category.layout"),
       },
     },
     size: {
       control: "select",
       options: ["sm", "md", "lg"],
-      description: "Size of the tabs",
+      description: i18n.t("stories.tabs.argTypes.size.description"),
       table: {
         defaultValue: { summary: "md" },
+        category: i18n.t("stories.category.appearance"),
       },
     },
     alignment: {
       control: "select",
       options: ["start", "center", "end"],
-      description: "Alignment of the tabs",
+      description: i18n.t("stories.tabs.argTypes.alignment.description"),
       table: {
         defaultValue: { summary: "start" },
+        category: i18n.t("stories.category.layout"),
       },
     },
     variant: {
@@ -62,9 +75,10 @@ const meta: Meta<TabsProps> = {
         "enclosed",
         "enclosed-fill",
       ],
-      description: "Visual style variant of the tabs",
+      description: i18n.t("stories.tabs.argTypes.variant.description"),
       table: {
         defaultValue: { summary: "solid" },
+        category: i18n.t("stories.category.appearance"),
       },
     },
     color: {
@@ -78,30 +92,35 @@ const meta: Meta<TabsProps> = {
         "success",
         "warning",
       ],
-      description: "Color theme for active tab",
+      description: i18n.t("stories.tabs.argTypes.color.description"),
       table: {
         defaultValue: { summary: "muted" },
+        category: i18n.t("stories.category.appearance"),
       },
     },
     fullWidth: {
       control: "boolean",
-      description: "Make tabs full width",
+      description: i18n.t("stories.tabs.argTypes.fullWidth.description"),
       table: {
         defaultValue: { summary: "false" },
+        category: i18n.t("stories.category.layout"),
       },
     },
     overflowMode: {
       control: "select",
       options: ["scroll", "dropdown", "fade"],
-      description:
-        "How to handle tab overflow: 'scroll' (scrollable), 'dropdown' (visible tabs + dropdown), 'fade' (all tabs with gradient fade)",
+      description: i18n.t("stories.tabs.argTypes.overflowMode.description"),
       table: {
         defaultValue: { summary: "undefined" },
+        category: i18n.t("stories.category.behavior"),
       },
     },
     className: {
       control: "text",
-      description: "Additional CSS classes",
+      description: i18n.t("stories.tabs.argTypes.className.description"),
+      table: {
+        category: i18n.t("stories.category.advanced"),
+      },
     },
   },
 };

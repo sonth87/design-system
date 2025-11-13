@@ -10,6 +10,7 @@ import { format } from "date-fns";
 import { enUS, es, vi, ja, ko } from "date-fns/locale";
 import Select from "../components/Select/Select";
 import Button from "../components/Button/Button";
+import i18n from "../../.storybook/i18n";
 
 const meta: Meta<typeof Calendar> = {
   title: "Date & Time/Calendar",
@@ -22,63 +23,120 @@ const meta: Meta<typeof Calendar> = {
     mode: {
       control: { type: "select" },
       options: ["single", "multiple", "range"],
-      description: "Selection mode for the calendar",
+      description: i18n.t("stories.calendar.argTypes.mode.description"),
+      table: {
+        category: i18n.t("stories.category.behavior"),
+      },
     },
     language: {
       control: { type: "select" },
       options: ["vi", "en"],
-      description: "Language for month/day names",
+      description: i18n.t("stories.calendar.argTypes.language.description"),
+      table: {
+        category: i18n.t("stories.category.language"),
+      },
     },
     captionLayout: {
       control: { type: "select" },
       options: ["label", "dropdown", "dropdown-months", "dropdown-years"],
-      description: "Layout of the month/year navigation",
+      description: i18n.t(
+        "stories.calendar.argTypes.captionLayout.description",
+      ),
+      table: {
+        category: i18n.t("stories.category.ui"),
+      },
     },
     showOutsideDays: {
       control: { type: "boolean" },
-      description: "Show days from previous/next months",
+      description: i18n.t(
+        "stories.calendar.argTypes.showOutsideDays.description",
+      ),
+      table: {
+        category: i18n.t("stories.category.calendar"),
+      },
     },
     disabled: {
       control: { type: "boolean" },
-      description: "Disable the entire calendar",
+      description: i18n.t("stories.calendar.argTypes.disabled.description"),
+      table: {
+        category: i18n.t("stories.category.behavior"),
+      },
     },
     numberOfMonths: {
       control: { type: "number" },
-      description: "Number of months to display",
+      description: i18n.t(
+        "stories.calendar.argTypes.numberOfMonths.description",
+      ),
+      table: {
+        category: i18n.t("stories.category.layout"),
+      },
     },
     month: {
       control: { type: "date" },
-      description: "The month to display initially",
+      description: i18n.t("stories.calendar.argTypes.month.description"),
+      table: {
+        category: i18n.t("stories.category.calendar"),
+      },
     },
     onMonthChange: {
       action: "month changed",
-      description: "Callback when the month is changed",
+      description: i18n.t(
+        "stories.calendar.argTypes.onMonthChange.description",
+      ),
+      table: {
+        category: i18n.t("stories.category.events"),
+      },
     },
     selected: {
       control: false,
-      description: "The selected date(s) in the calendar",
+      description: i18n.t("stories.calendar.argTypes.selected.description"),
+      table: {
+        category: i18n.t("stories.category.calendar"),
+      },
     },
     onSelect: {
       action: "date selected",
-      description: "Callback when a date is selected",
+      description: i18n.t("stories.calendar.argTypes.onSelect.description"),
+      table: {
+        category: i18n.t("stories.category.events"),
+      },
     },
     defaultMonth: {
       control: { type: "date" },
-      description: "The default month to display",
+      description: i18n.t("stories.calendar.argTypes.defaultMonth.description"),
+      table: {
+        category: i18n.t("stories.category.calendar"),
+      },
     },
     locale: {
       control: false,
-      description: "Locale object for localization",
+      description: i18n.t("stories.calendar.argTypes.locale.description"),
+      table: {
+        category: i18n.t("stories.category.language"),
+      },
     },
     showWeekNumber: {
       control: { type: "boolean" },
-      description: "Show week numbers in the calendar",
+      description: i18n.t(
+        "stories.calendar.argTypes.showWeekNumber.description",
+      ),
+      table: {
+        category: i18n.t("stories.category.calendar"),
+      },
     },
-    className: { control: "text", description: "Additional CSS classes" },
+    className: {
+      control: "text",
+      description: i18n.t("stories.calendar.argTypes.className.description"),
+      table: {
+        category: i18n.t("stories.category.advanced"),
+      },
+    },
     classNames: {
       control: false,
-      description:
-        "Override default class names. {range_start: string, range_end: string, day_button: string, today: string}",
+      description: i18n.t("stories.calendar.argTypes.classNames.description"),
+      table: {
+        category: i18n.t("stories.category.advanced"),
+      },
     },
   },
   args: {

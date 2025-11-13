@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import InputOTP from "../components/InputOTP/InputOTP";
+import i18n from "../../.storybook/i18n";
 
 const meta: Meta<typeof InputOTP> = {
   title: "Form Components/InputOTP",
@@ -9,36 +10,78 @@ const meta: Meta<typeof InputOTP> = {
   },
   tags: ["autodocs"],
   argTypes: {
-    label: { control: { type: "text" } },
-    length: { control: { type: "number" }, defaultValue: 4 },
+    label: {
+      control: { type: "text" },
+      description: i18n.t("stories.inputotp.argTypes.label.description"),
+      table: {
+        category: i18n.t("stories.category.content"),
+      },
+    },
+    length: {
+      control: { type: "number" },
+      defaultValue: 4,
+      description: i18n.t("stories.inputotp.argTypes.length.description"),
+      table: {
+        category: i18n.t("stories.category.basic"),
+      },
+    },
     inputType: {
       control: { type: "select" },
       options: ["digits", "chars", "digits-and-chars"],
       defaultValue: "digits",
-      description:
-        "`digits`: only numbers<br />`chars`: only letters<br />`digits-and-chars`: both numbers and letters",
+      description: i18n.t("stories.inputotp.argTypes.inputType.description"),
+      table: {
+        category: i18n.t("stories.category.validation"),
+      },
     },
     regexPattern: {
       control: { type: "text" },
-      description: "Custom regex pattern for input validation",
+      description: i18n.t("stories.inputotp.argTypes.regexPattern.description"),
+      table: {
+        category: i18n.t("stories.category.validation"),
+      },
     },
     size: {
       control: { type: "select" },
       options: ["xs", "sm", "normal", "lg", "xl"],
       defaultValue: "normal",
+      description: i18n.t("stories.inputotp.argTypes.size.description"),
+      table: {
+        category: i18n.t("stories.category.appearance"),
+      },
     },
-    gapSize: { control: { type: "number" } },
+    gapSize: {
+      control: { type: "number" },
+      description: i18n.t("stories.inputotp.argTypes.gapSize.description"),
+      table: {
+        category: i18n.t("stories.category.layout"),
+      },
+    },
     state: {
       control: { type: "select" },
       options: ["default", "success", "error", "warning"],
       defaultValue: "default",
+      description: i18n.t("stories.inputotp.argTypes.state.description"),
+      table: {
+        category: i18n.t("stories.category.appearance"),
+      },
     },
     variant: {
       control: { type: "select" },
       options: ["outlined", "underlined"],
       defaultValue: "outlined",
+      description: i18n.t("stories.inputotp.argTypes.variant.description"),
+      table: {
+        category: i18n.t("stories.category.appearance"),
+      },
     },
-    helperText: { control: { type: "text" } },
+    helperText: {
+      control: { type: "text" },
+      description: i18n.t("stories.inputotp.argTypes.helperText.description"),
+      table: {
+        category: i18n.t("stories.category.content"),
+      },
+    },
   },
 };
 

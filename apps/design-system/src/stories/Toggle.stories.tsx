@@ -3,6 +3,7 @@ import { useState } from "react";
 
 import Toggle, { type ToggleProps } from "../components/Toggle/Toggle";
 import { BookmarkIcon, HeartIcon, StarIcon } from "lucide-react";
+import i18n from "../../.storybook/i18n";
 
 const meta: Meta<typeof Toggle> = {
   title: "Form Components/Toggle",
@@ -14,25 +15,28 @@ const meta: Meta<typeof Toggle> = {
   argTypes: {
     pressed: {
       control: "boolean",
-      description: "The pressed state of the toggle",
+      description: i18n.t("stories.toggle.argTypes.pressed.description"),
       table: {
         defaultValue: { summary: "false" },
+        category: i18n.t("stories.category.behavior"),
       },
     },
     variant: {
       control: "select",
       options: ["default", "outline"],
-      description: "The visual style variant of the toggle",
+      description: i18n.t("stories.toggle.argTypes.variant.description"),
       table: {
         defaultValue: { summary: "default" },
+        category: i18n.t("stories.category.appearance"),
       },
     },
     size: {
       control: "select",
       options: ["default", "sm", "lg"],
-      description: "The size of the toggle",
+      description: i18n.t("stories.toggle.argTypes.size.description"),
       table: {
         defaultValue: { summary: "default" },
+        category: i18n.t("stories.category.appearance"),
       },
     },
     color: {
@@ -47,21 +51,43 @@ const meta: Meta<typeof Toggle> = {
         "error",
         "warning",
       ],
-      description: "The color theme of the toggle",
+      description: i18n.t("stories.toggle.argTypes.color.description"),
       table: {
         defaultValue: { summary: "primary" },
+        category: i18n.t("stories.category.appearance"),
       },
     },
     disabled: {
       control: "boolean",
-      description: "Disable the toggle",
+      description: i18n.t("stories.toggle.argTypes.disabled.description"),
       table: {
         defaultValue: { summary: "false" },
+        category: i18n.t("stories.category.behavior"),
       },
     },
-    className: { control: "text", description: "Additional CSS classes" },
-    onPressedChange: { action: "pressed changed" },
-    children: { control: "text", description: "Toggle label text" },
+    className: {
+      control: "text",
+      description: i18n.t("stories.toggle.argTypes.className.description"),
+      table: {
+        category: i18n.t("stories.category.advanced"),
+      },
+    },
+    onPressedChange: {
+      action: "pressed changed",
+      description: i18n.t(
+        "stories.toggle.argTypes.onPressedChange.description",
+      ),
+      table: {
+        category: i18n.t("stories.category.events"),
+      },
+    },
+    children: {
+      control: "text",
+      description: i18n.t("stories.toggle.argTypes.children.description"),
+      table: {
+        category: i18n.t("stories.category.content"),
+      },
+    },
   },
   args: {
     children: "Toggle",
