@@ -397,6 +397,13 @@
     "stories.rangepicker.argTypes.timeFormat.description": "Time format: HH:mm or HH:mm:ss",
     "stories.rangepicker.argTypes.hideDate.description": "Hide date picker and show only time picker",
 
+    "stories.breadcrumb.argTypes.variant.description": "The visual style variant of the breadcrumb",
+    "stories.breadcrumb.argTypes.color.description": "The color theme of the breadcrumb",
+    "stories.breadcrumb.argTypes.maxItems.description": "Maximum number of breadcrumb items to display",
+    "stories.breadcrumb.argTypes.ellipsis.description": "Show ellipsis when items exceed maxItems",
+    "stories.breadcrumb.argTypes.items.description": "Array of breadcrumb items",
+    "stories.breadcrumb.argTypes.className.description": "Additional CSS classes",
+
     "stories.category.basic": "Basic",
     "stories.category.appearance": "Appearance",
     "stories.category.behavior": "Behavior",

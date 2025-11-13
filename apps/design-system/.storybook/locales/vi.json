@@ -397,6 +397,13 @@
     "stories.rangepicker.argTypes.timeFormat.description": "Định dạng thời gian: HH:mm hoặc HH:mm:ss",
     "stories.rangepicker.argTypes.hideDate.description": "Ẩn bộ chọn ngày và chỉ hiển thị bộ chọn thời gian",
 
+    "stories.breadcrumb.argTypes.variant.description": "Kiểu hiển thị của breadcrumb",
+    "stories.breadcrumb.argTypes.color.description": "Màu chủ đề của breadcrumb",
+    "stories.breadcrumb.argTypes.maxItems.description": "Số lượng mục breadcrumb tối đa để hiển thị",
+    "stories.breadcrumb.argTypes.ellipsis.description": "Hiển thị dấu ba chấm khi mục vượt quá maxItems",
+    "stories.breadcrumb.argTypes.items.description": "Mảng các mục breadcrumb",
+    "stories.breadcrumb.argTypes.className.description": "Các lớp CSS bổ sung",
+
     "stories.category.basic": "Cơ bản",
     "stories.category.appearance": "Hiển thị",
     "stories.category.behavior": "Hành vi",
