@@ -1,102 +1,229 @@
-import Image, { type ImageProps } from "next/image";
-import { Button } from "@dsui/ui/button";
-import styles from "./page.module.css";
+'use client';
 
-type Props = Omit<ImageProps, "src"> & {
-  srcLight: string;
-  srcDark: string;
-};
+import { AdminLayout } from '@/components/admin-layout';
+import { 
+  TrendingUp, 
+  Users, 
+  ShoppingCart, 
+  DollarSign,
+  ArrowUpRight,
+  ArrowDownRight 
+} from 'lucide-react';
+import { Button } from 'dsui/button';
+import { Badge } from 'dsui/badge';
+import { Avatar } from 'dsui/avatar';
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from 'dsui/tabs';
 
-const ThemeImage = (props: Props) => {
-  const { srcLight, srcDark, ...rest } = props;
+const stats = [
+  {
+    title: 'Total Revenue',
+    value: '$45,231.89',
+    change: '+20.1%',
+    trend: 'up',
+    icon: DollarSign,
+  },
+  {
+    title: 'Active Users',
+    value: '2,350',
+    change: '+180.1%',
+    trend: 'up',
+    icon: Users,
+  },
+  {
+    title: 'Sales',
+    value: '+12,234',
+    change: '+19%',
+    trend: 'up',
+    icon: ShoppingCart,
+  },
+  {
+    title: 'Conversion Rate',
+    value: '3.2%',
+    change: '-4.3%',
+    trend: 'down',
+    icon: TrendingUp,
+  },
+];
 
+const recentUsers = [
+  {
+    name: 'Olivia Martin',
+    email: 'olivia.martin@email.com',
+    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Olivia',
+    status: 'active',
+  },
+  {
+    name: 'Jackson Lee',
+    email: 'jackson.lee@email.com',
+    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Jackson',
+    status: 'inactive',
+  },
+  {
+    name: 'Isabella Nguyen',
+    email: 'isabella.nguyen@email.com',
+    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Isabella',
+    status: 'active',
+  },
+  {
+    name: 'William Kim',
+    email: 'william.kim@email.com',
+    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=William',
+    status: 'active',
+  },
+];
+
+export default function DashboardPage() {
   return (
-    <>
-      <Image {...rest} src={srcLight} className="imgLight" />
-      <Image {...rest} src={srcDark} className="imgDark" />
-    </>
-  );
-};
-
-export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <ThemeImage
-          className={styles.logo}
-          srcLight="turborepo-dark.svg"
-          srcDark="turborepo-light.svg"
-          alt="Turborepo logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>apps/docs/app/page.tsx</code>
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new/clone?demo-description=Learn+to+implement+a+monorepo+with+a+two+Next.js+sites+that+has+installed+three+local+packages.&demo-image=%2F%2Fimages.ctfassets.net%2Fe5382hct74si%2F4K8ZISWAzJ8X1504ca0zmC%2F0b21a1c6246add355e55816278ef54bc%2FBasic.png&demo-title=Monorepo+with+Turborepo&demo-url=https%3A%2F%2Fexamples-basic-web.vercel.sh%2F&from=templates&project-name=Monorepo+with+Turborepo&repository-name=monorepo-turborepo&repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fturborepo%2Ftree%2Fmain%2Fexamples%2Fbasic&root-directory=apps%2Fdocs&skippable-integrations=1&teamSlug=vercel&utm_source=create-turbo"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://turborepo.com/docs?utm_source"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
+    <AdminLayout>
+      <div className="space-y-6">
+        {/* Page Header */}
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
+            <p className="text-muted-foreground">
+              Welcome back! Here's what's happening with your business.
+            </p>
+          </div>
+          <div className="flex gap-2">
+            <Button variant="outline">Download</Button>
+            <Button>Create Report</Button>
+          </div>
         </div>
-        <Button appName="docs" className={styles.secondary}>
-          Open alert
-        </Button>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com/templates?search=turborepo&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://turborepo.com?utm_source=create-turbo"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to turborepo.com →
-        </a>
-      </footer>
-    </div>
+
+        {/* Stats Grid */}
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {stats.map((stat) => {
+            const Icon = stat.icon;
+            const TrendIcon = stat.trend === 'up' ? ArrowUpRight : ArrowDownRight;
+            
+            return (
+              <div
+                key={stat.title}
+                className="rounded-lg border bg-card p-6 shadow-sm"
+              >
+                <div className="flex items-center justify-between">
+                  <p className="text-sm font-medium text-muted-foreground">
+                    {stat.title}
+                  </p>
+                  <Icon className="h-4 w-4 text-muted-foreground" />
+                </div>
+                <div className="mt-3">
+                  <p className="text-2xl font-bold">{stat.value}</p>
+                  <div className="mt-1 flex items-center gap-1 text-xs">
+                    <TrendIcon
+                      className={`h-3 w-3 ${
+                        stat.trend === 'up' ? 'text-green-600' : 'text-red-600'
+                      }`}
+                    />
+                    <span
+                      className={
+                        stat.trend === 'up' ? 'text-green-600' : 'text-red-600'
+                      }
+                    >
+                      {stat.change}
+                    </span>
+                    <span className="text-muted-foreground">from last month</span>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Content Tabs */}
+        <Tabs defaultValue="overview" className="space-y-4">
+          <TabsList>
+            <TabsTrigger value="overview">Overview</TabsTrigger>
+            <TabsTrigger value="analytics">Analytics</TabsTrigger>
+            <TabsTrigger value="reports">Reports</TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="overview" className="space-y-4">
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
+              {/* Recent Activity */}
+              <div className="col-span-4 rounded-lg border bg-card p-6 shadow-sm">
+                <div className="mb-4 flex items-center justify-between">
+                  <h3 className="text-lg font-semibold">Recent Activity</h3>
+                  <Button variant="ghost" size="sm">
+                    View All
+                  </Button>
+                </div>
+                <div className="space-y-4">
+                  {[1, 2, 3, 4].map((i) => (
+                    <div key={i} className="flex items-center gap-4">
+                      <div className="h-2 w-2 rounded-full bg-blue-500" />
+                      <div className="flex-1">
+                        <p className="text-sm font-medium">
+                          New order from customer #{1000 + i}
+                        </p>
+                        <p className="text-xs text-muted-foreground">
+                          {i} hours ago
+                        </p>
+                      </div>
+                      <Badge variant="secondary">Pending</Badge>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Recent Users */}
+              <div className="col-span-3 rounded-lg border bg-card p-6 shadow-sm">
+                <div className="mb-4 flex items-center justify-between">
+                  <h3 className="text-lg font-semibold">Recent Users</h3>
+                  <Button variant="ghost" size="sm">
+                    View All
+                  </Button>
+                </div>
+                <div className="space-y-4">
+                  {recentUsers.map((user) => (
+                    <div key={user.email} className="flex items-center gap-3">
+                      <Avatar
+                        src={user.avatar}
+                        alt={user.name}
+                        fallback={user.name.charAt(0)}
+                      />
+                      <div className="flex-1">
+                        <p className="text-sm font-medium">{user.name}</p>
+                        <p className="text-xs text-muted-foreground">
+                          {user.email}
+                        </p>
+                      </div>
+                      <Badge
+                        variant={user.status === 'active' ? 'default' : 'secondary'}
+                      >
+                        {user.status}
+                      </Badge>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </TabsContent>
+
+          <TabsContent value="analytics">
+            <div className="rounded-lg border bg-card p-6 shadow-sm">
+              <h3 className="text-lg font-semibold mb-4">Analytics Overview</h3>
+              <p className="text-muted-foreground">
+                Analytics data will be displayed here...
+              </p>
+            </div>
+          </TabsContent>
+
+          <TabsContent value="reports">
+            <div className="rounded-lg border bg-card p-6 shadow-sm">
+              <h3 className="text-lg font-semibold mb-4">Reports</h3>
+              <p className="text-muted-foreground">
+                Reports will be displayed here...
+              </p>
+            </div>
+          </TabsContent>
+        </Tabs>
+      </div>
+    </AdminLayout>
   );
 }
