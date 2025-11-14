@@ -2,18 +2,12 @@
 
 import { AdminLayout } from '@/components/admin-layout';
 import { Search, Plus, MoreVertical, Mail, Phone } from 'lucide-react';
-import { Button } from 'dsui/button';
-import { Badge } from 'dsui/badge';
-import { Avatar } from 'dsui/avatar';
-import { Input } from 'dsui/input';
-import { Checkbox } from 'dsui/checkbox';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from 'dsui/select';
+import Button from '@dsui/design-system/button';
+import Badge from '@dsui/design-system/badge';
+import { Avatar } from '@dsui/design-system/avatar';
+import Input from '@dsui/design-system/input';
+import Checkbox from '@dsui/design-system/checkbox';
+import Select from '@dsui/design-system/select';
 
 const users = [
   {
@@ -97,27 +91,25 @@ export default function UsersPage() {
             />
           </div>
           <div className="flex gap-2">
-            <Select defaultValue="all">
-              <SelectTrigger className="w-[140px]">
-                <SelectValue placeholder="Status" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">All Status</SelectItem>
-                <SelectItem value="active">Active</SelectItem>
-                <SelectItem value="inactive">Inactive</SelectItem>
-              </SelectContent>
-            </Select>
-            <Select defaultValue="all">
-              <SelectTrigger className="w-[140px]">
-                <SelectValue placeholder="Role" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">All Roles</SelectItem>
-                <SelectItem value="admin">Admin</SelectItem>
-                <SelectItem value="moderator">Moderator</SelectItem>
-                <SelectItem value="user">User</SelectItem>
-              </SelectContent>
-            </Select>
+            <Select
+              options={[
+                { value: 'all', label: 'All Status' },
+                { value: 'active', label: 'Active' },
+                { value: 'inactive', label: 'Inactive' },
+              ]}
+              defaultValue="all"
+              placeholder="Status"
+            />
+            <Select
+              options={[
+                { value: 'all', label: 'All Roles' },
+                { value: 'admin', label: 'Admin' },
+                { value: 'moderator', label: 'Moderator' },
+                { value: 'user', label: 'User' },
+              ]}
+              defaultValue="all"
+              placeholder="Role"
+            />
           </div>
         </div>
 
@@ -162,6 +154,8 @@ export default function UsersPage() {
                           src={user.avatar}
                           alt={user.name}
                           fallback={user.name.charAt(0)}
+                          animation="scale"
+                          color="primary"
                         />
                         <div>
                           <p className="font-medium">{user.name}</p>
@@ -187,9 +181,9 @@ export default function UsersPage() {
                       <Badge
                         variant={
                           user.role === 'Admin'
-                            ? 'default'
+                            ? 'solid'
                             : user.role === 'Moderator'
-                            ? 'secondary'
+                            ? 'light'
                             : 'outline'
                         }
                       >
@@ -199,7 +193,7 @@ export default function UsersPage() {
                     <td className="p-4 align-middle">
                       <Badge
                         variant={
-                          user.status === 'active' ? 'default' : 'secondary'
+                          user.status === 'active' ? 'solid' : 'outline'
                         }
                       >
                         {user.status}

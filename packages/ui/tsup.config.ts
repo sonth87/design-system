@@ -3,12 +3,19 @@ import { defineConfig } from "tsup";
 const useClientRegex = /['"]use client['"]\s?;/i;
 
 export default defineConfig({
-  entry: ["src/**/*.tsx"],
+  entry: ["src/**/*.tsx", "src/**/*.ts"],
   format: ["cjs", "esm"],
   minify: true,
   bundle: false,
   clean: true,
   dts: true,
+  outDir: "dist",
+  // Keep source directory structure in output
+  outExtension({ format }) {
+    return {
+      js: format === "cjs" ? ".js" : ".mjs",
+    };
+  },
   esbuildPlugins: [
     {
       name: "use-client",

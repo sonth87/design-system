@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import "dsui/theme.css";
-import "dsui/index.css";
-import "dsui/animation.css";
+import "@dsui/design-system/theme.css";
+import "@dsui/design-system/index.css";
+import "@dsui/design-system/animation.css";
 import "./globals.css";
 
 const geistSans = localFont({

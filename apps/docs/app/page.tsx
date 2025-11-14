@@ -9,15 +9,10 @@ import {
   ArrowUpRight,
   ArrowDownRight 
 } from 'lucide-react';
-import { Button } from 'dsui/button';
-import { Badge } from 'dsui/badge';
-import { Avatar } from 'dsui/avatar';
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from 'dsui/tabs';
+import Button from '@dsui/design-system/button';
+import Badge from '@dsui/design-system/badge';
+import { Avatar } from '@dsui/design-system/avatar';
+import Tabs from '@dsui/design-system/tabs';
 
 const stats = [
   {
@@ -136,93 +131,105 @@ export default function DashboardPage() {
         </div>
 
         {/* Content Tabs */}
-        <Tabs defaultValue="overview" className="space-y-4">
-          <TabsList>
-            <TabsTrigger value="overview">Overview</TabsTrigger>
-            <TabsTrigger value="analytics">Analytics</TabsTrigger>
-            <TabsTrigger value="reports">Reports</TabsTrigger>
-          </TabsList>
-
-          <TabsContent value="overview" className="space-y-4">
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
-              {/* Recent Activity */}
-              <div className="col-span-4 rounded-lg border bg-card p-6 shadow-sm">
-                <div className="mb-4 flex items-center justify-between">
-                  <h3 className="text-lg font-semibold">Recent Activity</h3>
-                  <Button variant="ghost" size="sm">
-                    View All
-                  </Button>
-                </div>
+        <Tabs
+          items={[
+            {
+              key: 'overview',
+              label: 'Overview',
+              children: (
                 <div className="space-y-4">
-                  {[1, 2, 3, 4].map((i) => (
-                    <div key={i} className="flex items-center gap-4">
-                      <div className="h-2 w-2 rounded-full bg-blue-500" />
-                      <div className="flex-1">
-                        <p className="text-sm font-medium">
-                          New order from customer #{1000 + i}
-                        </p>
-                        <p className="text-xs text-muted-foreground">
-                          {i} hours ago
-                        </p>
+                  <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
+                    {/* Recent Activity */}
+                    <div className="col-span-4 rounded-lg border bg-card p-6 shadow-sm">
+                      <div className="mb-4 flex items-center justify-between">
+                        <h3 className="text-lg font-semibold">Recent Activity</h3>
+                        <Button variant="ghost" size="sm">
+                          View All
+                        </Button>
                       </div>
-                      <Badge variant="secondary">Pending</Badge>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Recent Users */}
-              <div className="col-span-3 rounded-lg border bg-card p-6 shadow-sm">
-                <div className="mb-4 flex items-center justify-between">
-                  <h3 className="text-lg font-semibold">Recent Users</h3>
-                  <Button variant="ghost" size="sm">
-                    View All
-                  </Button>
-                </div>
-                <div className="space-y-4">
-                  {recentUsers.map((user) => (
-                    <div key={user.email} className="flex items-center gap-3">
-                      <Avatar
-                        src={user.avatar}
-                        alt={user.name}
-                        fallback={user.name.charAt(0)}
-                      />
-                      <div className="flex-1">
-                        <p className="text-sm font-medium">{user.name}</p>
-                        <p className="text-xs text-muted-foreground">
-                          {user.email}
-                        </p>
+                      <div className="space-y-4">
+                        {[1, 2, 3, 4].map((i) => (
+                          <div key={i} className="flex items-center gap-4">
+                            <div className="h-2 w-2 rounded-full bg-blue-500" />
+                            <div className="flex-1">
+                              <p className="text-sm font-medium">
+                                New order from customer #{1000 + i}
+                              </p>
+                              <p className="text-xs text-muted-foreground">
+                                {i} hours ago
+                              </p>
+                            </div>
+                            <Badge variant="outline">Pending</Badge>
+                          </div>
+                        ))}
                       </div>
-                      <Badge
-                        variant={user.status === 'active' ? 'default' : 'secondary'}
-                      >
-                        {user.status}
-                      </Badge>
                     </div>
-                  ))}
+
+                    {/* Recent Users */}
+                    <div className="col-span-3 rounded-lg border bg-card p-6 shadow-sm">
+                      <div className="mb-4 flex items-center justify-between">
+                        <h3 className="text-lg font-semibold">Recent Users</h3>
+                        <Button variant="ghost" size="sm">
+                          View All
+                        </Button>
+                      </div>
+                      <div className="space-y-4">
+                        {recentUsers.map((user) => (
+                          <div key={user.email} className="flex items-center gap-3">
+                            <Avatar
+                              src={user.avatar}
+                              alt={user.name}
+                              fallback={user.name.charAt(0)}
+                              animation="none"
+                              color="default"
+                              className=""
+                            />
+                            <div className="flex-1">
+                              <p className="text-sm font-medium">{user.name}</p>
+                              <p className="text-xs text-muted-foreground">
+                                {user.email}
+                              </p>
+                            </div>
+                            <Badge
+                              variant={user.status === 'active' ? 'solid' : 'outline'}
+                            >
+                              {user.status}
+                            </Badge>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          </TabsContent>
-
-          <TabsContent value="analytics">
-            <div className="rounded-lg border bg-card p-6 shadow-sm">
-              <h3 className="text-lg font-semibold mb-4">Analytics Overview</h3>
-              <p className="text-muted-foreground">
-                Analytics data will be displayed here...
-              </p>
-            </div>
-          </TabsContent>
-
-          <TabsContent value="reports">
-            <div className="rounded-lg border bg-card p-6 shadow-sm">
-              <h3 className="text-lg font-semibold mb-4">Reports</h3>
-              <p className="text-muted-foreground">
-                Reports will be displayed here...
-              </p>
-            </div>
-          </TabsContent>
-        </Tabs>
+              ),
+            },
+            {
+              key: 'analytics',
+              label: 'Analytics',
+              children: (
+                <div className="rounded-lg border bg-card p-6 shadow-sm">
+                  <h3 className="text-lg font-semibold mb-4">Analytics Overview</h3>
+                  <p className="text-muted-foreground">
+                    Analytics data will be displayed here...
+                  </p>
+                </div>
+              ),
+            },
+            {
+              key: 'reports',
+              label: 'Reports',
+              children: (
+                <div className="rounded-lg border bg-card p-6 shadow-sm">
+                  <h3 className="text-lg font-semibold mb-4">Reports</h3>
+                  <p className="text-muted-foreground">
+                    Reports will be displayed here...
+                  </p>
+                </div>
+              ),
+            },
+          ]}
+          className="space-y-4"
+        />
       </div>
     </AdminLayout>
   );
