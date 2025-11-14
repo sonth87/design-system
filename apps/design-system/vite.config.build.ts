@@ -3,13 +3,14 @@ import react from "@vitejs/plugin-react";
 import path from "path";
 import { glob } from "glob";
 import fs from "fs";
+import tailwindcss from "@tailwindcss/vite";
 
 /**
  * Vite config for building the library (ESM + CJS)
  * Supports tree-shaking and per-component imports
  */
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), tailwindcss()],
   
   build: {
     // Output directory

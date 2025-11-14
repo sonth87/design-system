@@ -7,14 +7,25 @@ export const ThemeShowcase: React.FC = () => {
     Array<ThemeVariable & { value: string }>
   >(getThemeWithValues(LIGHT_THEME));
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isCopied, setIsCopied] = useState(false);
 
   const [textareaValue, setTextareaValue] = useState("");
 
+  // Format CSS variables with selector
+  const formatCSSWithSelector = (
+    variables: Array<ThemeVariable & { value: string }>,
+    isDark: boolean,
+  ) => {
+    const selector = isDark ? ".dark" : ":root";
+    const cssVars = variables
+      .map((v) => `  ${v.cssVar}: ${v.value};`)
+      .join("\n");
+    return `${selector} {\n${cssVars}\n}`;
+  };
+
   // Initialize textarea with current values
   useEffect(() => {
-    const cssText = themeVariables
-      .map((v) => `${v.cssVar}: ${v.value};`)
-      .join("\n");
+    const cssText = formatCSSWithSelector(themeVariables, false);
     setTextareaValue(cssText);
 
     // Check if dark mode is already applied (from Storybook)
@@ -24,9 +35,7 @@ export const ThemeShowcase: React.FC = () => {
       setIsDarkMode(true);
       const darkVariables = getThemeWithValues(DARK_THEME);
       setThemeVariables(darkVariables);
-      const darkCssText = darkVariables
-        .map((v) => `${v.cssVar}: ${v.value};`)
-        .join("\n");
+      const darkCssText = formatCSSWithSelector(darkVariables, true);
       setTextareaValue(darkCssText);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -49,9 +58,7 @@ export const ThemeShowcase: React.FC = () => {
     applyTheme(updatedVariables);
 
     // Update textarea
-    const cssText = updatedVariables
-      .map((v) => `${v.cssVar}: ${v.value};`)
-      .join("\n");
+    const cssText = formatCSSWithSelector(updatedVariables, isDarkMode);
     setTextareaValue(cssText);
   };
 
@@ -64,9 +71,7 @@ export const ThemeShowcase: React.FC = () => {
     applyTheme(updatedVariables);
 
     // Update textarea
-    const cssText = updatedVariables
-      .map((v) => `${v.cssVar}: ${v.value};`)
-      .join("\n");
+    const cssText = formatCSSWithSelector(updatedVariables, isDarkMode);
     setTextareaValue(cssText);
   };
 
@@ -75,14 +80,18 @@ export const ThemeShowcase: React.FC = () => {
     const value = e.target.value;
     setTextareaValue(value);
 
-    // Parse the textarea content
-    const lines = value.split("\n");
+    // Parse the textarea content - extract content between { and }
+    const match = value.match(/\{([^}]+)\}/);
+    if (!match) return;
+
+    const cssContent = match[1];
+    const lines = cssContent.split("\n");
     const updatedVariables = [...themeVariables];
 
     lines.forEach((line) => {
-      const match = line.match(/(--[\w-]+):\s*([^;]+);?/);
-      if (match) {
-        const [, cssVar, newValue] = match;
+      const varMatch = line.match(/(--[\w-]+):\s*([^;]+);?/);
+      if (varMatch) {
+        const [, cssVar, newValue] = varMatch;
         const index = updatedVariables.findIndex((v) => v.cssVar === cssVar);
         if (index !== -1) {
           updatedVariables[index] = {
@@ -109,9 +118,7 @@ export const ThemeShowcase: React.FC = () => {
       applyTheme(lightVariables);
 
       // Update textarea
-      const cssText = lightVariables
-        .map((v) => `${v.cssVar}: ${v.value};`)
-        .join("\n");
+      const cssText = formatCSSWithSelector(lightVariables, false);
       setTextareaValue(cssText);
     } else {
       // Switch to dark mode
@@ -122,9 +129,7 @@ export const ThemeShowcase: React.FC = () => {
       applyTheme(darkVariables);
 
       // Update textarea
-      const cssText = darkVariables
-        .map((v) => `${v.cssVar}: ${v.value};`)
-        .join("\n");
+      const cssText = formatCSSWithSelector(darkVariables, true);
       setTextareaValue(cssText);
     }
   };
@@ -289,24 +294,56 @@ export const ThemeShowcase: React.FC = () => {
                 Theme Editor
               </h2>
               <p className="text-sm text-muted-foreground">
-                Chỉnh sửa giá trị các biến CSS (format: HSL hoặc giá trị CSS)
+                Copy CSS này vào file theme.css của bạn để áp dụng theme
               </p>
             </div>
             <div className="space-y-4">
-              <textarea
-                value={textareaValue}
-                onChange={handleTextareaChange}
-                className="w-full h-[600px] p-4 rounded-lg border border-border bg-card text-foreground font-mono text-sm resize-none focus:outline-none focus:ring-2 focus:ring-ring"
-                spellCheck={false}
-                placeholder="--background: 0 0% 100%;
---foreground: 222.2 84% 4.9%;
-..."
-              />
+              <div className="relative">
+                <textarea
+                  value={textareaValue}
+                  onChange={handleTextareaChange}
+                  className="w-full h-[600px] p-4 rounded-lg border border-border bg-card text-foreground font-mono text-sm resize-none focus:outline-none focus:ring-2 focus:ring-ring"
+                  spellCheck={false}
+                  placeholder=":root {
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+  ...
+}"
+                />
+                <button
+                  onClick={() => {
+                    navigator.clipboard.writeText(textareaValue);
+                    setIsCopied(true);
+                    setTimeout(() => setIsCopied(false), 2000);
+                  }}
+                  className="absolute top-4 right-4 px-3 py-1.5 bg-primary text-primary-foreground rounded-md hover:opacity-90 transition-opacity text-xs font-medium shadow-md"
+                  title="Copy to clipboard"
+                >
+                  {isCopied ? (
+                    <>
+                      <span className="inline-block animate-scale">✓</span>{" "}
+                      Copied!
+                    </>
+                  ) : (
+                    <>📋 Copy CSS</>
+                  )}
+                </button>
+              </div>
               <div className="bg-muted p-4 rounded-lg space-y-2">
                 <h3 className="text-sm font-semibold text-foreground">
-                  💡 Hướng dẫn:
+                  💡 Hướng dẫn sử dụng:
                 </h3>
                 <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
+                  <li>
+                    <strong>Light mode:</strong> Copy CSS từ{" "}
+                    <code className="bg-background px-1 rounded">:root</code> và
+                    paste vào file CSS của bạn
+                  </li>
+                  <li>
+                    <strong>Dark mode:</strong> Copy CSS từ{" "}
+                    <code className="bg-background px-1 rounded">.dark</code> và
+                    paste vào file CSS của bạn
+                  </li>
                   <li>
                     Format màu:{" "}
                     <code className="bg-background px-1 rounded">#ffffff</code>{" "}
@@ -317,6 +354,10 @@ export const ThemeShowcase: React.FC = () => {
                   </li>
                   <li>Radius: Giá trị CSS (ví dụ: 0.625rem, 8px)</li>
                   <li>Thay đổi sẽ được áp dụng ngay lập tức</li>
+                  <li>
+                    Click vào màu sắc bên trái để thay đổi, hoặc edit trực tiếp
+                    trong textarea
+                  </li>
                 </ul>
               </div>
             </div>

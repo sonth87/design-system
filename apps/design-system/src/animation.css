@@ -15,6 +15,7 @@
   --animate-shake: shake 0.4s cubic-bezier(.36, .07, .19, .97) both;
   --animate-flip-in: flip-in 0.4s cubic-bezier(.68, -0.55, .27, 1.55);
   --animate-glow: animate-glow 3s linear infinite;
+  --animate-scale: scale-in 0.3s cubic-bezier(.68, -0.55, .27, 1.55);
 
   @keyframes heartbeat {
     0% {
@@ -226,6 +227,22 @@
     100% {
       opacity: 1;
       transform: rotateY(0deg);
+    }
+  }
+
+  @keyframes scale-in {
+    0% {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+
+    50% {
+      transform: scale(1.1);
+    }
+
+    100% {
+      opacity: 1;
+      transform: scale(1);
     }
   }
 }
