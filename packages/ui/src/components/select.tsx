@@ -27,7 +27,6 @@ import {
 } from "react";
 import { Badge } from "./badge";
 import { Label } from "./label";
-import { SelectOption } from "./combobox";
 
 const multiSelectTriggerVariants = cva(
   "flex h-auto w-fit items-center justify-between gap-2 overflow-hidden rounded-md border bg-transparent shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50 data-[placeholder]:text-muted-foreground dark:bg-background dark:hover:bg-input/50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground",
