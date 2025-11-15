@@ -83,11 +83,12 @@ const badgeVariants = cva(
         outline: "border",
       },
       size: {
-        xs: "size-1.5 text-[0px] leading-0 [&>svg]:size-2",
-        sm: "h-3 min-w-3 text-[8px] leading-0 [&>svg]:size-3",
-        normal: "h-4 min-w-4 text-[10px] leading-0 px-0.5 [&>svg]:size-3.5",
-        lg: "h-6 min-w-6 text-xs leading-0 px-1 [&>svg]:size-4",
-        xl: "h-8 min-w-8 text-sm leading-0 px-1 [&>svg]:size-5",
+        dot: "size-1.5 text-[0px] leading-0 [&>svg]:size-2", 
+        xs: "h-4 min-w-4 text-[8px] leading-0 px-1 [&>svg]:size-2",
+        sm: "h-5 min-w-5 text-[10px] leading-0 px-1 [&>svg]:size-3",
+        normal: "h-6 min-w-6 text-[10px] leading-0 px-1.25 [&>svg]:size-3.5",
+        lg: "h-7 min-w-7 text-xs leading-0 px-1.25 [&>svg]:size-4",
+        xl: "h-8 min-w-8 text-sm leading-0 px-1.5 [&>svg]:size-5",
       },
       color: {
         primary: "",
@@ -107,6 +108,11 @@ const badgeVariants = cva(
     },
     compoundVariants: [
       ...generateCompoundVariants(),
+      {
+        border: true,
+        size: "dot",
+        className: "border border-background",
+      },
       {
         border: true,
         size: "xs",

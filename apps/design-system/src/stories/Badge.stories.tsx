@@ -39,7 +39,7 @@ const meta: Meta<typeof Badge> = {
     },
     size: {
       control: "select",
-      options: ["xs", "sm", "normal", "lg", "xl"],
+      options: ["dot", "xs", "sm", "normal", "lg", "xl"],
       description: i18n.t("stories.badge.argTypes.size.description"),
       table: {
         defaultValue: { summary: "normal" },
@@ -117,6 +117,7 @@ export const Default: Story = {
 export const Sizes: Story = {
   render: () => (
     <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
+      <Badge size="dot"></Badge>
       <Badge size="xs">XS</Badge>
       <Badge size="sm">SM</Badge>
       <Badge size="normal">MD</Badge>
@@ -343,6 +344,7 @@ export const AllCombinations: Story = {
                 style={{ display: "flex", gap: 12, alignItems: "center" }}
               >
                 <div style={{ width: 100, fontWeight: "500" }}>{color}:</div>
+                <Badge size="dot" variant={variant} color={color}></Badge>
                 <Badge size="xs" variant={variant} color={color}>
                   XS
                 </Badge>
