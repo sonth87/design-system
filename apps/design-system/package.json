@@ -360,7 +360,7 @@
     "build:lib": "vite build --config vite.config.build.ts",
     "build:types": "tsc --project tsconfig.build.json && node scripts/fix-types.js",
     "build:exports": "node scripts/generate-exports.js",
-    "prebuild": "pnpm run clean",
+    "prebuild": "#pnpm run clean",
     "postbuild": "pnpm run build:exports",
     "clean": "rm -rf dist",
     "lint": "eslint .",
