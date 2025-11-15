@@ -152,7 +152,7 @@ function Combobox({
           <X className="h-4 w-4" />
         </Label>
       )}
-      <PopoverContent 
+      <PopoverContent
         className={cn("p-0 w-(--radix-popover-trigger-width)")}
         onInteractOutside={(e) => {
           // Prevent closing when clicking the trigger

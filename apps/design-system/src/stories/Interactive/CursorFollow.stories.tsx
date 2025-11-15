@@ -3,7 +3,9 @@ import {
   CursorProvider,
   Cursor,
   CursorFollow,
+  useCursorFollow,
 } from "../../components/Interactive/CursorFollow";
+import i18n from "../../../.storybook/i18n";
 
 const meta: Meta<typeof CursorFollow> = {
   title: "Interactive/CursorFollow",
@@ -13,6 +15,7 @@ const meta: Meta<typeof CursorFollow> = {
   },
   tags: ["autodocs"],
   argTypes: {
+    // CursorFollow Props
     align: {
       control: "select",
       options: [
@@ -26,24 +29,80 @@ const meta: Meta<typeof CursorFollow> = {
         "right",
         "center",
       ],
-      description: "Alignment of the follow element relative to the cursor",
+      description: i18n.t("stories.cursorfollow.argTypes.align.description"),
+      table: {
+        category: "CursorFollow",
+      },
     },
     sideOffset: {
       control: { type: "range", min: 0, max: 100, step: 5 },
-      description: "Distance offset from the cursor in pixels",
-    },
-    variant: {
-      control: "select",
-      options: ["default", "pointer", "text", "crosshair", "grab", "custom"],
-      description: "Predefined cursor variant style",
+      description: i18n.t(
+        "stories.cursorfollow.argTypes.sideOffset.description",
+      ),
+      table: {
+        category: "CursorFollow",
+        defaultValue: { summary: "15" },
+      },
     },
     followText: {
       control: "text",
-      description: "Custom text to display in the follow element",
+      description: i18n.t(
+        "stories.cursorfollow.argTypes.followText.description",
+      ),
+      table: {
+        category: "CursorFollow",
+      },
     },
-    transition: {
-      control: "object",
-      description: "Spring transition configuration",
+    children: {
+      control: false,
+      description: i18n.t("stories.cursorfollow.argTypes.children.description"),
+      table: {
+        category: "CursorFollow",
+      },
+    },
+
+    // Cursor Props
+    variant: {
+      control: "select",
+      options: ["default", "pointer", "custom"],
+      description: i18n.t("stories.cursorfollow.argTypes.variant.description"),
+      table: {
+        category: "Cursor",
+        defaultValue: { summary: "default" },
+      },
+    },
+
+    // Animation Props
+    transitionPreset: {
+      control: "select",
+      options: ["slow", "normal", "fast", "realtime"],
+      description: i18n.t(
+        "stories.cursorfollow.argTypes.transitionPreset.description",
+      ),
+      table: {
+        category: "Animation",
+        defaultValue: { summary: "normal" },
+      },
+    },
+    // transition: {
+    //   control: "object",
+    //   description: i18n.t(
+    //     "stories.cursorfollow.argTypes.transition.description"
+    //   ),
+    //   table: {
+    //     category: "Animation",
+    //   },
+    // },
+
+    // Styling
+    className: {
+      control: "text",
+      description: i18n.t(
+        "stories.cursorfollow.argTypes.className.description",
+      ),
+      table: {
+        category: "Styling",
+      },
     },
   },
 };
@@ -57,37 +116,12 @@ export const Default: Story = {
     sideOffset: 15,
   },
   render: (args) => (
-    <div className="relative h-[400px] w-[600px] flex items-center justify-center bg-gradient-to-br from-slate-900 to-slate-800 rounded-xl">
+    <div className="relative h-[300px] w-[500px] flex items-center justify-center bg-gradient-to-br from-slate-900 to-slate-800 rounded-xl">
       <CursorProvider>
         <div className="text-white text-lg">Move your cursor here</div>
-        <Cursor>
-          <div className="h-5 w-5 rounded-full bg-white/30 border-2 border-white" />
-        </Cursor>
         <CursorFollow {...args}>
           <div className="px-4 py-2 bg-white rounded-lg shadow-lg text-sm font-medium">
             Follow me!
-          </div>
-        </CursorFollow>
-      </CursorProvider>
-    </div>
-  ),
-};
-
-export const WithEmoji: Story = {
-  args: {
-    align: "bottom-right",
-    sideOffset: 20,
-  },
-  render: (args) => (
-    <div className="relative h-[400px] w-[600px] flex items-center justify-center bg-gradient-to-br from-purple-900 to-pink-800 rounded-xl">
-      <CursorProvider>
-        <div className="text-white text-lg">Hover to see emoji cursor</div>
-        <Cursor>
-          <div className="text-4xl">👆</div>
-        </Cursor>
-        <CursorFollow {...args}>
-          <div className="px-3 py-1.5 bg-white/90 backdrop-blur-sm rounded-full text-xs font-semibold text-purple-900">
-            Click me!
           </div>
         </CursorFollow>
       </CursorProvider>
@@ -100,20 +134,20 @@ export const DifferentAlignments: Story = {
     <div className="grid grid-cols-3 gap-4">
       {(
         [
-          "top",
           "top-left",
+          "top",
           "top-right",
-          "bottom",
-          "bottom-left",
-          "bottom-right",
           "left",
-          "right",
           "center",
+          "right",
+          "bottom-left",
+          "bottom",
+          "bottom-right",
         ] as const
       ).map((align) => (
         <div
           key={align}
-          className="relative h-[200px] w-[200px] flex items-center justify-center bg-gradient-to-br from-blue-900 to-blue-700 rounded-lg"
+          className="relative h-[100px] w-[100px] flex items-center justify-center bg-gradient-to-br from-blue-900 to-blue-700 rounded-lg"
         >
           <CursorProvider>
             <div className="text-white text-xs text-center">{align}</div>
@@ -138,7 +172,7 @@ export const CustomCursor: Story = {
     sideOffset: 25,
   },
   render: (args) => (
-    <div className="relative h-[500px] w-[700px] flex items-center justify-center bg-gradient-to-br from-emerald-900 to-teal-800 rounded-xl">
+    <div className="relative h-[300px] w-[500px] flex items-center justify-center bg-gradient-to-br from-emerald-900 to-teal-800 rounded-xl">
       <CursorProvider>
         <div className="text-white text-xl">Custom animated cursor</div>
         <Cursor>
@@ -167,7 +201,7 @@ export const SlowTransition: Story = {
     transition: { stiffness: 100, damping: 20, bounce: 0 },
   },
   render: (args) => (
-    <div className="relative h-[400px] w-[600px] flex items-center justify-center bg-gradient-to-br from-orange-900 to-red-800 rounded-xl">
+    <div className="relative h-[300px] w-[500px] flex items-center justify-center bg-gradient-to-br from-orange-900 to-red-800 rounded-xl">
       <CursorProvider>
         <div className="text-white text-lg">Slow, smooth follow effect</div>
         <Cursor>
@@ -190,7 +224,7 @@ export const FastTransition: Story = {
     transition: { stiffness: 1000, damping: 80, bounce: 0 },
   },
   render: (args) => (
-    <div className="relative h-[400px] w-[600px] flex items-center justify-center bg-gradient-to-br from-cyan-900 to-blue-800 rounded-xl">
+    <div className="relative h-[300px] w-[500px] flex items-center justify-center bg-gradient-to-br from-cyan-900 to-blue-800 rounded-xl">
       <CursorProvider>
         <div className="text-white text-lg">Fast, snappy follow effect</div>
         <Cursor>
@@ -212,13 +246,13 @@ export const InteractiveCard: Story = {
     sideOffset: 0,
   },
   render: (args) => (
-    <div className="relative h-[500px] w-[800px] flex items-center justify-center bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 rounded-xl p-8">
+    <div className="relative h-[300px] w-[500px] flex items-center justify-center bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 rounded-xl p-8">
       <CursorProvider>
         <div className="grid grid-cols-3 gap-6">
           {[1, 2, 3, 4, 5, 6].map((item) => (
             <div
               key={item}
-              className="h-32 w-32 bg-white/10 backdrop-blur-sm rounded-lg flex items-center justify-center text-white text-2xl font-bold border border-white/20 hover:bg-white/20 transition-colors"
+              className="h-24 w-24 bg-white/10 backdrop-blur-sm rounded-lg flex items-center justify-center text-white text-2xl font-bold border border-white/20 hover:bg-white/20 transition-colors"
             >
               {item}
             </div>
@@ -237,203 +271,151 @@ export const InteractiveCard: Story = {
   ),
 };
 
-export const ProductShowcase: Story = {
-  args: {
-    align: "bottom-right",
-    sideOffset: 20,
-    transition: { stiffness: 300, damping: 30, bounce: 0.2 },
-  },
-  render: (args) => (
-    <div className="relative h-[600px] w-[900px] flex items-center justify-center bg-black rounded-xl overflow-hidden">
+// ===============================================
+// CÁCH 1: Manual Setup
+// ===============================================
+export const Method1_Manual: Story = {
+  name: "1: Manual Setup",
+  render: () => (
+    <div className="relative h-[300px] w-[500px] flex items-center justify-center bg-gradient-to-br from-blue-900 to-indigo-800 rounded-xl">
       <CursorProvider>
-        <div className="text-center space-y-4">
-          <h1 className="text-4xl font-bold text-white">Product Showcase</h1>
-          <p className="text-gray-400">
-            Move your cursor to explore our features
+        <div className="text-white text-lg text-center space-y-4">
+          <h3 className="font-bold">Cách 1: Manual Setup</h3>
+          <p className="text-sm text-gray-300">
+            Sử dụng CursorProvider + Cursor + CursorFollow riêng biệt
           </p>
-          <div className="grid grid-cols-2 gap-8 mt-8">
-            <div className="p-8 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-xl backdrop-blur-sm border border-white/10">
-              <h3 className="text-xl font-semibold text-white mb-2">
-                Feature 1
-              </h3>
-              <p className="text-gray-300 text-sm">
-                Amazing functionality that will blow your mind
-              </p>
-            </div>
-            <div className="p-8 bg-gradient-to-br from-pink-500/20 to-orange-500/20 rounded-xl backdrop-blur-sm border border-white/10">
-              <h3 className="text-xl font-semibold text-white mb-2">
-                Feature 2
-              </h3>
-              <p className="text-gray-300 text-sm">
-                Incredible performance and smooth animations
-              </p>
-            </div>
+          <div className="mt-4 p-4 bg-white/10 rounded-lg">
+            <p className="text-xs font-mono text-left">
+              <pre>
+                {`<CursorProvider>
+  <div>Nội dung</div> // content
+
+  <Cursor variant="macos" /> // custom cursor
+
+  <CursorFollow 
+    followText="Click me"
+    align="bottom-right" 
+  /> // follow element
+</CursorProvider>`}
+              </pre>
+            </p>
           </div>
         </div>
-        <Cursor>
-          <div className="relative">
-            <div className="h-10 w-10 rounded-full bg-gradient-to-br from-blue-400 to-purple-400 opacity-60" />
-            <div className="absolute inset-0 h-10 w-10 rounded-full bg-gradient-to-br from-blue-400 to-purple-400 opacity-30 blur-md" />
-          </div>
-        </Cursor>
-        <CursorFollow {...args}>
-          <div className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full shadow-2xl border border-white/20">
-            <div className="h-2 w-2 rounded-full bg-white animate-pulse" />
-            <span className="text-sm font-semibold text-white">Explore</span>
-          </div>
-        </CursorFollow>
+        <Cursor cursorType="pointer" />
+        <CursorFollow followText="Click me" align="bottom-right" />
       </CursorProvider>
     </div>
   ),
 };
 
-// New Stories showcasing built-in variants
-export const BuiltInVariants: Story = {
-  render: () => (
-    <div className="grid grid-cols-2 gap-4">
-      {(["default", "pointer", "text", "crosshair", "grab"] as const).map(
-        (variant) => (
-          <div
-            key={variant}
-            className="relative h-[250px] w-[300px] flex items-center justify-center bg-gradient-to-br from-slate-900 to-slate-700 rounded-xl"
-          >
-            <CursorProvider>
-              <div className="text-white text-sm capitalize">{variant}</div>
-              <Cursor variant={variant} />
-              <CursorFollow variant={variant} align="bottom-right" />
-            </CursorProvider>
-          </div>
-        )
+// ===============================================
+// CÁCH 2: Hook-based Setup
+// ===============================================
+export const Method2_Hook = () => {
+  const cursorProps = useCursorFollow({
+    cursorType: "pointer",
+    followText: "Click me",
+    align: "bottom-right",
+  });
+
+  return (
+    <div
+      {...cursorProps}
+      className="h-[400px] w-[500px] flex items-center justify-center bg-gradient-to-br from-purple-900 to-pink-800 rounded-xl"
+    >
+      {cursorProps.children(
+        <div className="text-white text-lg text-center space-y-4">
+          <h3 className="font-bold">Cách 2: Hook-based Setup</h3>
+          <p className="text-sm text-gray-300">
+            Sử dụng hook useCursorFollow và spread props
+          </p>
+          <div className="mt-4 p-4 bg-white/10 rounded-lg">
+            <p className="text-xs font-mono text-left whitespace-pre">
+              {`function MyComponent() {
+  const cursorProps = useCursorFollow({
+    cursorType: "pointer",
+    followText: "Click me",
+    align: "bottom-right"
+  });
+  
+  return (
+    <div {...cursorProps}>
+      {cursorProps.children(
+        <div>Nội dung</div>
       )}
     </div>
-  ),
-};
-
-export const PointerVariant: Story = {
-  args: {
-    variant: "pointer",
-    align: "bottom-right",
-    sideOffset: 15,
-  },
-  render: (args) => (
-    <div className="relative h-[400px] w-[600px] flex items-center justify-center bg-gradient-to-br from-blue-900 to-indigo-800 rounded-xl">
-      <CursorProvider>
-        <div className="text-white text-lg">
-          Pointer variant with default follow text
-        </div>
-        <Cursor variant="pointer" />
-        <CursorFollow {...args} />
-      </CursorProvider>
+  );
+}`}
+            </p>
+          </div>
+        </div>,
+      )}
     </div>
-  ),
+  );
 };
 
-export const TextVariant: Story = {
-  args: {
-    variant: "text",
-    align: "bottom-right",
-    sideOffset: 15,
-  },
-  render: (args) => (
-    <div className="relative h-[400px] w-[600px] flex items-center justify-center bg-gradient-to-br from-purple-900 to-pink-800 rounded-xl">
-      <CursorProvider>
-        <div className="text-white text-lg">
-          Text cursor variant - hover to see I-beam cursor
-        </div>
-        <Cursor variant="text" />
-        <CursorFollow {...args} />
-      </CursorProvider>
-    </div>
-  ),
-};
-
-export const GrabVariant: Story = {
-  args: {
-    variant: "grab",
-    align: "bottom-right",
-    sideOffset: 20,
-  },
-  render: (args) => (
-    <div className="relative h-[400px] w-[600px] flex items-center justify-center bg-gradient-to-br from-amber-900 to-orange-800 rounded-xl">
-      <CursorProvider>
-        <div className="text-white text-lg">
-          Grab variant - perfect for draggable elements
-        </div>
-        <Cursor variant="grab" />
-        <CursorFollow {...args} />
-      </CursorProvider>
-    </div>
-  ),
-};
-
-export const CrosshairVariant: Story = {
-  args: {
-    variant: "crosshair",
-    align: "bottom-right",
-    sideOffset: 20,
-  },
-  render: (args) => (
-    <div className="relative h-[400px] w-[600px] flex items-center justify-center bg-gradient-to-br from-red-900 to-pink-800 rounded-xl">
-      <CursorProvider>
-        <div className="text-white text-lg">
-          Crosshair variant - ideal for targeting or selection
-        </div>
-        <Cursor variant="crosshair" />
-        <CursorFollow {...args} />
-      </CursorProvider>
-    </div>
-  ),
-};
-
-export const WithFollowText: Story = {
-  args: {
-    variant: "pointer",
-    followText: "Click to continue",
-    align: "bottom-right",
-    sideOffset: 15,
-  },
-  render: (args) => (
-    <div className="relative h-[400px] w-[600px] flex items-center justify-center bg-gradient-to-br from-teal-900 to-cyan-800 rounded-xl">
-      <CursorProvider>
-        <div className="text-white text-lg">
-          Custom follow text with variant
-        </div>
-        <Cursor variant="pointer" />
-        <CursorFollow {...args} />
-      </CursorProvider>
-    </div>
-  ),
-};
-
-export const QuickSetup: Story = {
-  args: {
-    variant: "default",
-    followText: "Explore",
-    align: "bottom-right",
-    sideOffset: 15,
-  },
-  render: (args) => (
-    <div className="relative h-[500px] w-[700px] flex items-center justify-center bg-gradient-to-br from-violet-900 to-fuchsia-800 rounded-xl p-8">
-      <CursorProvider>
-        <div className="space-y-6 text-center">
-          <h2 className="text-3xl font-bold text-white">Quick Setup Demo</h2>
-          <p className="text-gray-300">
-            No custom styling needed - just use variant and followText props
+// ===============================================
+// CÁCH 3: Auto Setup with CursorProvider
+// ===============================================
+export const Method3_AutoSetup: Story = {
+  name: "3: Auto Setup",
+  render: () => (
+    <div className="h-[300px] w-[500px] flex items-center justify-center bg-gradient-to-br from-emerald-900 to-teal-800 rounded-xl">
+      <CursorProvider
+        cursorType="pointer"
+        followText="Click me"
+        showFollow={true}
+      >
+        <div className="text-white text-lg text-center space-y-4">
+          <h3 className="font-bold">Cách 3: Auto Setup</h3>
+          <p className="text-sm text-gray-300">
+            CursorProvider tự động render cursor và follow
           </p>
-          <div className="grid grid-cols-3 gap-4 mt-8">
-            {["Option A", "Option B", "Option C"].map((option) => (
-              <div
-                key={option}
-                className="p-6 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 hover:bg-white/20 transition-colors"
-              >
-                <p className="text-white font-semibold">{option}</p>
-              </div>
-            ))}
+          <div className="mt-4 p-4 bg-white/10 rounded-lg">
+            <p className="text-xs font-mono text-left">
+              <pre>{`<CursorProvider
+  cursorType="macos" 
+  followText="Click me"
+  showFollow={true}
+>
+  <div>Nội dung</div>
+</CursorProvider>`}</pre>
+            </p>
           </div>
         </div>
-        <Cursor variant={args.variant || "default"} />
-        <CursorFollow {...args} />
       </CursorProvider>
     </div>
   ),
+};
+
+export const HookCustomVariant = () => {
+  const cursorProps = useCursorFollow({
+    cursorType: "custom", // custom variant
+    followText: "System cursor + Follow",
+    align: "bottom-right",
+  });
+
+  return (
+    <div
+      {...cursorProps}
+      className="h-[300px] w-[500px] flex items-center justify-center bg-gradient-to-br from-violet-900 to-fuchsia-800 rounded-xl"
+    >
+      {cursorProps.children(
+        <div className="text-white text-lg text-center space-y-4">
+          <h3 className="font-bold">Hook with Custom Variant</h3>
+          <p className="text-sm text-gray-300">
+            useCursorFollow với type="custom"
+          </p>
+          <div className="mt-4 p-4 bg-white/10 rounded-lg">
+            <p className="text-xs font-mono text-left whitespace-pre">
+              {`const cursorProps = useCursorFollow({
+  cursorType: "custom", // không ẩn cursor
+  followText: "System cursor + Follow",
+});`}
+            </p>
+          </div>
+        </div>,
+      )}
+    </div>
+  );
 };

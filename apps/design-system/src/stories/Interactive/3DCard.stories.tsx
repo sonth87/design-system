@@ -4,6 +4,7 @@ import {
   CardBody,
   CardItem,
 } from "../../components/Interactive/3DCard";
+import i18n from "../../../.storybook/i18n";
 
 const meta: Meta<typeof CardContainer | typeof CardBody | typeof CardItem> = {
   title: "Interactive/3DCard",
@@ -13,23 +14,30 @@ const meta: Meta<typeof CardContainer | typeof CardBody | typeof CardItem> = {
   },
   tags: ["autodocs"],
   argTypes: {
+    // CardContainer Props
     containerClassName: {
       control: "text",
-      description: "Class name for the container",
+      description: i18n.t(
+        "stories.3dcard.argTypes.containerClassName.description",
+      ),
       table: {
         category: "CardContainer",
       },
     },
+
+    // CardBody Props
     className: {
       control: "text",
-      description: "Class name for the card wrapper",
+      description: i18n.t("stories.3dcard.argTypes.className.description"),
       table: {
         category: "CardBody",
       },
     },
+
+    // CardItem Props
     as: {
       control: "text",
-      description: "HTML element type to render",
+      description: i18n.t("stories.3dcard.argTypes.as.description"),
       table: {
         defaultValue: { summary: "div" },
         category: "CardItem",
@@ -37,57 +45,61 @@ const meta: Meta<typeof CardContainer | typeof CardBody | typeof CardItem> = {
     },
     children: {
       control: false,
-      description: "Content to be rendered inside the item",
+      description: i18n.t("stories.3dcard.argTypes.children.description"),
       table: {
         category: "CardItem",
       },
     },
+
+    // Transform Props - Translation
     translateX: {
       control: { type: "number" },
-      description: "X-axis translation in pixels",
+      description: i18n.t("stories.3dcard.argTypes.translateX.description"),
       table: {
         defaultValue: { summary: "0" },
-        category: "CardItem",
+        category: "CardItem - Transform",
       },
     },
     translateY: {
       control: { type: "number" },
-      description: "Y-axis translation in pixels",
+      description: i18n.t("stories.3dcard.argTypes.translateY.description"),
       table: {
         defaultValue: { summary: "0" },
-        category: "CardItem",
+        category: "CardItem - Transform",
       },
     },
     translateZ: {
       control: { type: "number" },
-      description: "Z-axis translation in pixels",
+      description: i18n.t("stories.3dcard.argTypes.translateZ.description"),
       table: {
         defaultValue: { summary: "0" },
-        category: "CardItem",
+        category: "CardItem - Transform",
       },
     },
+
+    // Transform Props - Rotation
     rotateX: {
       control: { type: "number" },
-      description: "X-axis rotation in degrees",
+      description: i18n.t("stories.3dcard.argTypes.rotateX.description"),
       table: {
         defaultValue: { summary: "0" },
-        category: "CardItem",
+        category: "CardItem - Transform",
       },
     },
     rotateY: {
       control: { type: "number" },
-      description: "Y-axis rotation in degrees",
+      description: i18n.t("stories.3dcard.argTypes.rotateY.description"),
       table: {
         defaultValue: { summary: "0" },
-        category: "CardItem",
+        category: "CardItem - Transform",
       },
     },
     rotateZ: {
       control: { type: "number" },
-      description: "Z-axis rotation in degrees",
+      description: i18n.t("stories.3dcard.argTypes.rotateZ.description"),
       table: {
         defaultValue: { summary: "0" },
-        category: "CardItem",
+        category: "CardItem - Transform",
       },
     },
   },

@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { ThreeDMarquee } from "../../components/Interactive/3DMarquee";
+import i18n from "../../../.storybook/i18n";
 
 const meta: Meta<typeof ThreeDMarquee> = {
   title: "Interactive/3DMarquee",
@@ -11,23 +12,43 @@ const meta: Meta<typeof ThreeDMarquee> = {
   argTypes: {
     images: {
       control: false,
-      description: "Array of image URLs to display in the marquee",
+      description: i18n.t("stories.3dmarquee.argTypes.images.description"),
+      table: {
+        category: "Content",
+      },
     },
     className: {
       control: "text",
-      description: "Additional CSS classes for styling",
+      description: i18n.t("stories.3dmarquee.argTypes.className.description"),
+      table: {
+        category: "Styling",
+      },
     },
+
+    // Rotation Props
     rotateX: {
       control: { type: "range", min: -180, max: 180, step: 1 },
-      description: "Rotation angle around X-axis in degrees (default: 55)",
+      description: i18n.t("stories.3dmarquee.argTypes.rotateX.description"),
+      table: {
+        defaultValue: { summary: "55" },
+        category: "Transform",
+      },
     },
     rotateY: {
       control: { type: "range", min: -180, max: 180, step: 1 },
-      description: "Rotation angle around Y-axis in degrees (default: 0)",
+      description: i18n.t("stories.3dmarquee.argTypes.rotateY.description"),
+      table: {
+        defaultValue: { summary: "0" },
+        category: "Transform",
+      },
     },
     rotateZ: {
       control: { type: "range", min: -180, max: 180, step: 1 },
-      description: "Rotation angle around Z-axis in degrees (default: -45)",
+      description: i18n.t("stories.3dmarquee.argTypes.rotateZ.description"),
+      table: {
+        defaultValue: { summary: "-45" },
+        category: "Transform",
+      },
     },
   },
 };

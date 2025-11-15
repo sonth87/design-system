@@ -11,12 +11,12 @@ export type ThreeDMarqueeProps = {
   rotateZ?: number; // Góc xoay trục Z (mặc định: -45)
 };
 
-export const ThreeDMarquee = ({ 
-  images, 
+export const ThreeDMarquee = ({
+  images,
   className,
   rotateX = 55,
   rotateY = 0,
-  rotateZ = -45
+  rotateZ = -45,
 }: ThreeDMarqueeProps) => {
   // Split the images array into 4 equal parts
   const chunkSize = Math.ceil(images.length / 4);
@@ -28,7 +28,7 @@ export const ThreeDMarquee = ({
     <div
       className={cn(
         "mx-auto block h-[300px] overflow-hidden rounded-2xl max-sm:h-100",
-        className
+        className,
       )}
     >
       <div className="flex size-full items-center justify-center">
@@ -108,7 +108,7 @@ const GridLineHorizontal = ({ className, offset }: GridLineHorizontalProps) => {
         "[mask-composite:exclude]",
         "z-30",
         "dark:bg-[linear-gradient(to_right,var(--color-dark),var(--color-dark)_50%,transparent_0,transparent)]",
-        className
+        className,
       )}
     ></div>
   );
@@ -142,7 +142,7 @@ const GridLineVertical = ({ className, offset }: GridLineVerticalProps) => {
         "[mask-composite:exclude]",
         "z-30",
         "dark:bg-[linear-gradient(to_bottom,var(--color-dark),var(--color-dark)_50%,transparent_0,transparent)]",
-        className
+        className,
       )}
     ></div>
   );

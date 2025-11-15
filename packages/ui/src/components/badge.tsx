@@ -83,7 +83,7 @@ const badgeVariants = cva(
         outline: "border",
       },
       size: {
-        dot: "size-1.5 text-[0px] leading-0 [&>svg]:size-2", 
+        dot: "size-1.5 text-[0px] leading-0 [&>svg]:size-2",
         xs: "h-4 min-w-4 text-[8px] leading-0 px-1 [&>svg]:size-2",
         sm: "h-5 min-w-5 text-[10px] leading-0 px-1 [&>svg]:size-3",
         normal: "h-6 min-w-6 text-[10px] leading-0 px-1.25 [&>svg]:size-3.5",
