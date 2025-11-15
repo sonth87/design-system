@@ -1,0 +1,52 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "skipLibCheck": true,
+    "strict": true,
+    
+    /* Build Output */
+    "outDir": "./dist/types",
+    "declarationDir": "./dist/types",
+    "declaration": true,
+    "declarationMap": true,
+    "emitDeclarationOnly": true,
+    
+    /* JSX */
+    "jsx": "react-jsx",
+    
+    /* Module Resolution */
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "moduleDetection": "force",
+    
+    /* Type Checking */
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noFallthroughCasesInSwitch": true,
+    
+    /* Paths */
+    "paths": {
+      "@/*": ["src/*"],
+      "@dsui/ui": ["../../packages/ui/src/index.ts"],
+      "@dsui/ui/*": ["../../packages/ui/src/*"]
+    }
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "src/**/*.stories.tsx",
+    "src/**/*.test.tsx",
+    "src/**/*.test.ts",
+    ".storybook",
+    "src/App.tsx",
+    "src/main.tsx"
+  ]
+}

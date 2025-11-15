@@ -1,0 +1,63 @@
+# Source files
+src/
+*.ts
+!*.d.ts
+
+# Config files
+tsconfig*.json
+vite.config*.ts
+eslint.config.*
+.storybook/
+
+# Stories and tests
+*.stories.*
+*.test.*
+*.spec.*
+__tests__/
+__mocks__/
+
+# Development
+node_modules/
+.turbo/
+.vite/
+.cache/
+
+# Build artifacts (keep dist only)
+coverage/
+storybook-static/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+.travis.yml
+
+# Documentation (except README)
+BUILD_GUIDE.md
+CONTRIBUTING.md
+
+# Misc
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Public assets (if not needed)
+public/

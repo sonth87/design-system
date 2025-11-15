@@ -1,51 +1,6 @@
-export { default as Sidebar } from "./Sidebar";
-export {
-  SidebarProvider,
-  SidebarContent,
-  SidebarFooter,
-  SidebarGroup,
-  SidebarGroupAction,
-  SidebarGroupContent,
-  SidebarGroupLabel,
-  SidebarHeader,
-  SidebarInput,
-  SidebarInset,
-  SidebarMenu,
-  SidebarMenuAction,
-  SidebarMenuBadge,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarMenuSkeleton,
-  SidebarMenuSub,
-  SidebarMenuSubButton,
-  SidebarMenuSubItem,
-  SidebarRail,
-  SidebarSeparator,
-  SidebarTrigger,
-} from "./Sidebar";
-export { useSidebar } from "./hooks";
-export type {
-  SidebarProviderProps,
-  SidebarProps,
-  SidebarContentProps,
-  SidebarFooterProps,
-  SidebarGroupProps,
-  SidebarGroupActionProps,
-  SidebarGroupContentProps,
-  SidebarGroupLabelProps,
-  SidebarHeaderProps,
-  SidebarInputProps,
-  SidebarInsetProps,
-  SidebarMenuProps,
-  SidebarMenuActionProps,
-  SidebarMenuBadgeProps,
-  SidebarMenuButtonProps,
-  SidebarMenuItemProps,
-  SidebarMenuSkeletonProps,
-  SidebarMenuSubProps,
-  SidebarMenuSubButtonProps,
-  SidebarMenuSubItemProps,
-  SidebarRailProps,
-  SidebarSeparatorProps,
-  SidebarTriggerProps,
-} from "./Sidebar";
+// Export all from Sidebar.tsx
+export * from "./Sidebar";
+export { default } from "./Sidebar";
+
+// Re-export useSidebar hook from @dsui/ui
+export { useSidebar } from "@dsui/ui/components/sidebar";

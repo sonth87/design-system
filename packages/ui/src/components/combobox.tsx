@@ -92,8 +92,12 @@ function Combobox({
 }: ComboboxProps) {
   const [open, setOpen] = React.useState(false);
 
+  const handleOpenChange = React.useCallback((newOpen: boolean) => {
+    setOpen(newOpen);
+  }, []);
+
   return (
-    <Popover open={open} onOpenChange={setOpen}>
+    <Popover open={open} onOpenChange={handleOpenChange} modal={true}>
       <PopoverTrigger asChild {...props}>
         {children ?? (
           <Label className={cn(comboboxVariants({ size, state }), className)}>
@@ -148,7 +152,16 @@ function Combobox({
           <X className="h-4 w-4" />
         </Label>
       )}
-      <PopoverContent className={cn("p-0 w-(--radix-popover-trigger-width)")}>
+      <PopoverContent 
+        className={cn("p-0 w-(--radix-popover-trigger-width)")}
+        onInteractOutside={(e) => {
+          // Prevent closing when clicking the trigger
+          const target = e.target as HTMLElement;
+          if (target.closest('[data-slot="popover-trigger"]')) {
+            e.preventDefault();
+          }
+        }}
+      >
         <Command>
           {searchable && (
             <CommandInput placeholder={placeHolder} className="h-9" />

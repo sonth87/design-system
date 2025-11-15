@@ -282,4 +282,4 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
 );
 
 Select.displayName = "Select";
-export default Select as unknown as React.ComponentType<SelectProps>;
+export default Select;
