@@ -10,11 +10,16 @@ import {
   FileText,
   Bell,
   Search,
+  CheckCircle2,
+  AlertCircle,
+  UserPlus,
+  MessageSquare,
 } from "lucide-react";
 import Button from "@dsui/design-system/button";
 import { Avatar } from "@dsui/design-system/avatar";
 import Input from "@dsui/design-system/input";
 import Badge from "@dsui/design-system/badge";
+import Popover from "@dsui/design-system/popover";
 import {
   Sidebar,
   SidebarProvider,
@@ -41,6 +46,54 @@ const menuItems = [
   { icon: BarChart3, label: "Analytics", href: "/analytics", badge: null },
   { icon: FileText, label: "Reports", href: "/reports", badge: "3" },
   { icon: Settings, label: "Settings", href: "/settings", badge: null },
+];
+
+const notifications = [
+  {
+    id: 1,
+    type: "success",
+    icon: CheckCircle2,
+    title: "Report generated successfully",
+    description: "Monthly revenue report is ready to download",
+    time: "2 min ago",
+    unread: true,
+  },
+  {
+    id: 2,
+    type: "info",
+    icon: UserPlus,
+    title: "New user registered",
+    description: "Olivia Martin joined the platform",
+    time: "15 min ago",
+    unread: true,
+  },
+  {
+    id: 3,
+    type: "warning",
+    icon: AlertCircle,
+    title: "System update required",
+    description: "Security patch available for installation",
+    time: "1 hour ago",
+    unread: true,
+  },
+  {
+    id: 4,
+    type: "info",
+    icon: MessageSquare,
+    title: "New comment on report",
+    description: "Sarah Johnson commented on Q4 Performance",
+    time: "2 hours ago",
+    unread: false,
+  },
+  {
+    id: 5,
+    type: "success",
+    icon: CheckCircle2,
+    title: "Backup completed",
+    description: "Database backup finished successfully",
+    time: "5 hours ago",
+    unread: false,
+  },
 ];
 
 export function AdminLayout({ children }: AdminLayoutProps) {
@@ -116,20 +169,90 @@ export function AdminLayout({ children }: AdminLayoutProps) {
             <div className="flex-1 max-w-md">
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-                <Input
-                  type="search"
-                  placeholder="Search..."
-                  className="pl-9"
-                />
+                <Input type="search" placeholder="Search..." className="pl-9" />
               </div>
             </div>
 
             {/* Right Actions */}
             <div className="flex items-center gap-2 ml-auto">
-              <Button variant="ghost" size="icon" className="relative">
-                <Bell className="h-5 w-5" />
-                <span className="absolute top-1 right-1 h-2 w-2 rounded-full bg-red-500" />
-              </Button>
+              <Popover
+                side="bottom"
+                align="end"
+                sideOffset={8}
+                trigger={
+                  <Button variant="ghost" size="icon" className="relative">
+                    <Bell className="h-5 w-5" />
+                    {notifications.filter((n) => n.unread).length > 0 && (
+                      <span className="absolute top-1 right-1 h-2 w-2 rounded-full bg-red-500" />
+                    )}
+                  </Button>
+                }
+                content={
+                  <div className="w-[320px]">
+                    {/* Header */}
+                    <div className="flex items-center justify-between p-4 py-3 border-b">
+                      <div>
+                        <h3 className="font-semibold">Notifications</h3>
+                        <p className="text-xs text-muted-foreground">
+                          You have{" "}
+                          {notifications.filter((n) => n.unread).length} unread
+                          messages
+                        </p>
+                      </div>
+                      <Button variant="ghost" size="sm">
+                        Mark all read
+                      </Button>
+                    </div>
+
+                    {/* Notifications List */}
+                    <div className="max-h-[400px] overflow-y-auto">
+                      {notifications.map((notification) => (
+                        <div
+                          key={notification.id}
+                          className={`flex gap-3 px-4 py-3 border-b last:border-0 hover:bg-accent/50 cursor-pointer transition-colors ${
+                            notification.unread ? "bg-accent/20" : ""
+                          }`}
+                        >
+                          <div
+                            className={`flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full ${
+                              notification.type === "success"
+                                ? "bg-green-100 text-green-600"
+                                : notification.type === "warning"
+                                  ? "bg-yellow-100 text-yellow-600"
+                                  : "bg-blue-100 text-blue-600"
+                            }`}
+                          >
+                            <notification.icon className="h-5 w-5" />
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-start justify-between gap-2">
+                              <p className="text-sm font-medium">
+                                {notification.title}
+                              </p>
+                              {notification.unread && (
+                                <span className="h-2 w-2 rounded-full bg-blue-600 flex-shrink-0 mt-1" />
+                              )}
+                            </div>
+                            <p className="text-sm text-muted-foreground line-clamp-2">
+                              {notification.description}
+                            </p>
+                            <p className="text-xs text-muted-foreground mt-1">
+                              {notification.time}
+                            </p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Footer */}
+                    <div className="px-4 py-3 border-t">
+                      <Button variant="ghost" className="w-full">
+                        View all notifications
+                      </Button>
+                    </div>
+                  </div>
+                }
+              />
               <Avatar
                 src="https://api.dicebear.com/7.x/avataaars/svg?seed=admin"
                 alt="Admin User"

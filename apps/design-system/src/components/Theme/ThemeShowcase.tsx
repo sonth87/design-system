@@ -351,6 +351,10 @@ export const ThemeShowcase: React.FC = () => {
                     <code className="bg-background px-1 rounded">
                       rgb(255, 255, 255)
                     </code>
+                    hoặc{" "}
+                    <code className="bg-background px-1 rounded">
+                      oklch(1 0.37 62)
+                    </code>
                   </li>
                   <li>Radius: Giá trị CSS (ví dụ: 0.625rem, 8px)</li>
                   <li>Thay đổi sẽ được áp dụng ngay lập tức</li>

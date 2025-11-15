@@ -5,6 +5,7 @@
 ## 📋 Tổng quan
 
 Ứng dụng này demo:
+
 - ✅ Tích hợp DSUI như một package dependency (sử dụng bản build)
 - ✅ Import components từ DSUI với tree-shaking support
 - ✅ Sử dụng CSS và theme system từ DSUI
@@ -78,10 +79,10 @@ DSUI hỗ trợ tree-shaking, import từng component riêng lẻ:
 
 ```tsx
 // Import individual components
-import { Button } from 'dsui/button';
-import { Input } from 'dsui/input';
-import { Avatar } from 'dsui/avatar';
-import { Badge } from 'dsui/badge';
+import { Button } from "dsui/button";
+import { Input } from "dsui/input";
+import { Avatar } from "dsui/avatar";
+import { Badge } from "dsui/badge";
 
 // Sử dụng
 export default function MyPage() {
@@ -99,12 +100,12 @@ export default function MyPage() {
 Các components của DSUI sử dụng React hooks, cần thêm `'use client'` directive:
 
 ```tsx
-'use client';
+"use client";
 
-import { Button } from 'dsui/button';
+import { Button } from "dsui/button";
 
 export default function ClientComponent() {
-  return <Button onClick={() => alert('Hello!')}>Click</Button>;
+  return <Button onClick={() => alert("Hello!")}>Click</Button>;
 }
 ```
 
@@ -113,10 +114,12 @@ export default function ClientComponent() {
 Ứng dụng demo này sử dụng các components sau từ DSUI:
 
 ### Layout Components
+
 - **Sidebar** - Navigation sidebar với collapse/expand
 - **SidebarProvider** - Context provider cho sidebar
 
 ### UI Components
+
 - **Button** - Buttons với nhiều variants
 - **Input** - Text input fields
 - **Textarea** - Multi-line text input
@@ -128,6 +131,7 @@ export default function ClientComponent() {
 - **Separator** - Dividers
 
 ### Display Components
+
 - **Tabs** - Tabbed interface
 - **Dialog** - Modal dialogs
 - **Tooltip** - Tooltips
@@ -167,12 +171,14 @@ apps/docs/
 ## 🎯 Features Demo
 
 ### Dashboard (/)
+
 - Statistics cards với trending indicators
 - Recent activity feed
 - Recent users list
 - Tabbed content areas
 
 ### Users (/users)
+
 - User management table
 - Search và filters
 - Status badges
@@ -180,12 +186,14 @@ apps/docs/
 - Contact information display
 
 ### Analytics (/analytics)
+
 - Metrics overview
 - Chart placeholders (ready for chart library integration)
 - Top pages analytics
 - Multiple analytics tabs
 
 ### Settings (/settings)
+
 - General settings
 - Security settings
 - Notification preferences

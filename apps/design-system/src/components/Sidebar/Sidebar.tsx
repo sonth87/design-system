@@ -28,28 +28,52 @@ import {
 } from "@dsui/ui/components/sidebar";
 
 // Export types derived from component props
-export type SidebarProviderProps = React.ComponentProps<typeof SSidebarProvider>;
+export type SidebarProviderProps = React.ComponentProps<
+  typeof SSidebarProvider
+>;
 export type SidebarProps = React.ComponentProps<typeof SSidebar>;
 export type SidebarContentProps = React.ComponentProps<typeof SSidebarContent>;
 export type SidebarFooterProps = React.ComponentProps<typeof SSidebarFooter>;
 export type SidebarGroupProps = React.ComponentProps<typeof SSidebarGroup>;
-export type SidebarGroupActionProps = React.ComponentProps<typeof SSidebarGroupAction>;
-export type SidebarGroupContentProps = React.ComponentProps<typeof SSidebarGroupContent>;
-export type SidebarGroupLabelProps = React.ComponentProps<typeof SSidebarGroupLabel>;
+export type SidebarGroupActionProps = React.ComponentProps<
+  typeof SSidebarGroupAction
+>;
+export type SidebarGroupContentProps = React.ComponentProps<
+  typeof SSidebarGroupContent
+>;
+export type SidebarGroupLabelProps = React.ComponentProps<
+  typeof SSidebarGroupLabel
+>;
 export type SidebarHeaderProps = React.ComponentProps<typeof SSidebarHeader>;
 export type SidebarInputProps = React.ComponentProps<typeof SSidebarInput>;
 export type SidebarInsetProps = React.ComponentProps<typeof SSidebarInset>;
 export type SidebarMenuProps = React.ComponentProps<typeof SSidebarMenu>;
-export type SidebarMenuActionProps = React.ComponentProps<typeof SSidebarMenuAction>;
-export type SidebarMenuBadgeProps = React.ComponentProps<typeof SSidebarMenuBadge>;
-export type SidebarMenuButtonProps = React.ComponentProps<typeof SSidebarMenuButton>;
-export type SidebarMenuItemProps = React.ComponentProps<typeof SSidebarMenuItem>;
-export type SidebarMenuSkeletonProps = React.ComponentProps<typeof SSidebarMenuSkeleton>;
+export type SidebarMenuActionProps = React.ComponentProps<
+  typeof SSidebarMenuAction
+>;
+export type SidebarMenuBadgeProps = React.ComponentProps<
+  typeof SSidebarMenuBadge
+>;
+export type SidebarMenuButtonProps = React.ComponentProps<
+  typeof SSidebarMenuButton
+>;
+export type SidebarMenuItemProps = React.ComponentProps<
+  typeof SSidebarMenuItem
+>;
+export type SidebarMenuSkeletonProps = React.ComponentProps<
+  typeof SSidebarMenuSkeleton
+>;
 export type SidebarMenuSubProps = React.ComponentProps<typeof SSidebarMenuSub>;
-export type SidebarMenuSubButtonProps = React.ComponentProps<typeof SSidebarMenuSubButton>;
-export type SidebarMenuSubItemProps = React.ComponentProps<typeof SSidebarMenuSubItem>;
+export type SidebarMenuSubButtonProps = React.ComponentProps<
+  typeof SSidebarMenuSubButton
+>;
+export type SidebarMenuSubItemProps = React.ComponentProps<
+  typeof SSidebarMenuSubItem
+>;
 export type SidebarRailProps = React.ComponentProps<typeof SSidebarRail>;
-export type SidebarSeparatorProps = React.ComponentProps<typeof SSidebarSeparator>;
+export type SidebarSeparatorProps = React.ComponentProps<
+  typeof SSidebarSeparator
+>;
 export type SidebarTriggerProps = React.ComponentProps<typeof SSidebarTrigger>;
 
 // Re-export components (using const to prevent tree-shaking)

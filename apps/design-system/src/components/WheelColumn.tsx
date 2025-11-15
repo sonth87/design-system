@@ -28,7 +28,9 @@ export const TimeColumnwheel = memo(
       },
       ref,
     ) => {
-      const debounceTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+      const debounceTimerRef = useRef<ReturnType<typeof setTimeout> | null>(
+        null,
+      );
       const containerRef = useRef<HTMLDivElement | null>(null);
       const [scrollTop, setScrollTop] = useState(0);
 

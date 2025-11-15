@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import { AdminLayout } from '@/components/admin-layout';
-import { Save } from 'lucide-react';
-import Button from '@dsui/design-system/button';
-import Input from '@dsui/design-system/input';
-import Textarea from '@dsui/design-system/textarea';
-import Switch from '@dsui/design-system/switch';
-import Separator from '@dsui/design-system/separator';
-import Tabs from '@dsui/design-system/tabs';
-import Select from '@dsui/design-system/select';
+import { AdminLayout } from "@/components/admin-layout";
+import { Save } from "lucide-react";
+import Button from "@dsui/design-system/button";
+import Input from "@dsui/design-system/input";
+import Textarea from "@dsui/design-system/textarea";
+import Switch from "@dsui/design-system/switch";
+import Separator from "@dsui/design-system/separator";
+import Tabs from "@dsui/design-system/tabs";
+import Select from "@dsui/design-system/select";
 
 export default function SettingsPage() {
   return (
@@ -34,12 +34,14 @@ export default function SettingsPage() {
           className="space-y-6"
           items={[
             {
-              key: 'general',
-              label: 'General',
+              key: "general",
+              label: "General",
               children: (
                 <div className="space-y-6">
                   <div className="rounded-lg border bg-card p-6 shadow-sm">
-                    <h3 className="text-lg font-semibold mb-4">General Settings</h3>
+                    <h3 className="text-lg font-semibold mb-4">
+                      General Settings
+                    </h3>
                     <div className="space-y-4">
                       <div className="grid gap-2">
                         <label className="text-sm font-medium">Site Name</label>
@@ -50,7 +52,9 @@ export default function SettingsPage() {
                       </div>
 
                       <div className="grid gap-2">
-                        <label className="text-sm font-medium">Site Description</label>
+                        <label className="text-sm font-medium">
+                          Site Description
+                        </label>
                         <Textarea
                           defaultValue="A modern admin dashboard built with DSUI design system"
                           rows={3}
@@ -64,9 +68,9 @@ export default function SettingsPage() {
                         <label className="text-sm font-medium">Language</label>
                         <Select
                           options={[
-                            { value: 'en', label: 'English' },
-                            { value: 'vi', label: 'Tiếng Việt' },
-                            { value: 'ja', label: '日本語' },
+                            { value: "en", label: "English" },
+                            { value: "vi", label: "Tiếng Việt" },
+                            { value: "ja", label: "日本語" },
                           ]}
                           defaultValue="en"
                           placeholder="Select language"
@@ -77,10 +81,10 @@ export default function SettingsPage() {
                         <label className="text-sm font-medium">Timezone</label>
                         <Select
                           options={[
-                            { value: 'utc', label: 'UTC' },
-                            { value: 'est', label: 'Eastern Time' },
-                            { value: 'pst', label: 'Pacific Time' },
-                            { value: 'jst', label: 'Japan Standard Time' },
+                            { value: "utc", label: "UTC" },
+                            { value: "est", label: "Eastern Time" },
+                            { value: "pst", label: "Pacific Time" },
+                            { value: "jst", label: "Japan Standard Time" },
                           ]}
                           defaultValue="utc"
                           placeholder="Select timezone"
@@ -92,16 +96,20 @@ export default function SettingsPage() {
               ),
             },
             {
-              key: 'security',
-              label: 'Security',
+              key: "security",
+              label: "Security",
               children: (
                 <div className="space-y-6">
                   <div className="rounded-lg border bg-card p-6 shadow-sm">
-                    <h3 className="text-lg font-semibold mb-4">Security Settings</h3>
+                    <h3 className="text-lg font-semibold mb-4">
+                      Security Settings
+                    </h3>
                     <div className="space-y-6">
                       <div className="flex items-center justify-between">
                         <div className="space-y-0.5">
-                          <label className="text-sm font-medium">Two-Factor Authentication</label>
+                          <label className="text-sm font-medium">
+                            Two-Factor Authentication
+                          </label>
                           <p className="text-xs text-muted-foreground">
                             Add an extra layer of security to your account
                           </p>
@@ -113,7 +121,9 @@ export default function SettingsPage() {
 
                       <div className="flex items-center justify-between">
                         <div className="space-y-0.5">
-                          <label className="text-sm font-medium">Session Timeout</label>
+                          <label className="text-sm font-medium">
+                            Session Timeout
+                          </label>
                           <p className="text-xs text-muted-foreground">
                             Automatically log out after inactivity
                           </p>
@@ -126,9 +136,15 @@ export default function SettingsPage() {
                       <div className="space-y-4">
                         <h4 className="text-sm font-medium">Change Password</h4>
                         <div className="space-y-3">
-                          <Input type="password" placeholder="Current password" />
+                          <Input
+                            type="password"
+                            placeholder="Current password"
+                          />
                           <Input type="password" placeholder="New password" />
-                          <Input type="password" placeholder="Confirm new password" />
+                          <Input
+                            type="password"
+                            placeholder="Confirm new password"
+                          />
                           <Button variant="outline">Update Password</Button>
                         </div>
                       </div>
@@ -138,16 +154,20 @@ export default function SettingsPage() {
               ),
             },
             {
-              key: 'notifications',
-              label: 'Notifications',
+              key: "notifications",
+              label: "Notifications",
               children: (
                 <div className="space-y-6">
                   <div className="rounded-lg border bg-card p-6 shadow-sm">
-                    <h3 className="text-lg font-semibold mb-4">Notification Preferences</h3>
+                    <h3 className="text-lg font-semibold mb-4">
+                      Notification Preferences
+                    </h3>
                     <div className="space-y-6">
                       <div className="flex items-center justify-between">
                         <div className="space-y-0.5">
-                          <label className="text-sm font-medium">Email Notifications</label>
+                          <label className="text-sm font-medium">
+                            Email Notifications
+                          </label>
                           <p className="text-xs text-muted-foreground">
                             Receive email updates about your account
                           </p>
@@ -159,7 +179,9 @@ export default function SettingsPage() {
 
                       <div className="flex items-center justify-between">
                         <div className="space-y-0.5">
-                          <label className="text-sm font-medium">Push Notifications</label>
+                          <label className="text-sm font-medium">
+                            Push Notifications
+                          </label>
                           <p className="text-xs text-muted-foreground">
                             Receive push notifications in your browser
                           </p>
@@ -171,7 +193,9 @@ export default function SettingsPage() {
 
                       <div className="flex items-center justify-between">
                         <div className="space-y-0.5">
-                          <label className="text-sm font-medium">Marketing Emails</label>
+                          <label className="text-sm font-medium">
+                            Marketing Emails
+                          </label>
                           <p className="text-xs text-muted-foreground">
                             Receive emails about new features and updates
                           </p>
@@ -183,7 +207,9 @@ export default function SettingsPage() {
 
                       <div className="flex items-center justify-between">
                         <div className="space-y-0.5">
-                          <label className="text-sm font-medium">Security Alerts</label>
+                          <label className="text-sm font-medium">
+                            Security Alerts
+                          </label>
                           <p className="text-xs text-muted-foreground">
                             Get notified about security events
                           </p>
@@ -196,20 +222,22 @@ export default function SettingsPage() {
               ),
             },
             {
-              key: 'appearance',
-              label: 'Appearance',
+              key: "appearance",
+              label: "Appearance",
               children: (
                 <div className="space-y-6">
                   <div className="rounded-lg border bg-card p-6 shadow-sm">
-                    <h3 className="text-lg font-semibold mb-4">Appearance Settings</h3>
+                    <h3 className="text-lg font-semibold mb-4">
+                      Appearance Settings
+                    </h3>
                     <div className="space-y-6">
                       <div className="grid gap-2">
                         <label className="text-sm font-medium">Theme</label>
                         <Select
                           options={[
-                            { value: 'light', label: 'Light' },
-                            { value: 'dark', label: 'Dark' },
-                            { value: 'system', label: 'System' },
+                            { value: "light", label: "Light" },
+                            { value: "dark", label: "Dark" },
+                            { value: "system", label: "System" },
                           ]}
                           defaultValue="system"
                           placeholder="Select theme"
@@ -223,7 +251,9 @@ export default function SettingsPage() {
 
                       <div className="flex items-center justify-between">
                         <div className="space-y-0.5">
-                          <label className="text-sm font-medium">Compact Mode</label>
+                          <label className="text-sm font-medium">
+                            Compact Mode
+                          </label>
                           <p className="text-xs text-muted-foreground">
                             Use a more compact layout
                           </p>
@@ -235,7 +265,9 @@ export default function SettingsPage() {
 
                       <div className="flex items-center justify-between">
                         <div className="space-y-0.5">
-                          <label className="text-sm font-medium">Show Animations</label>
+                          <label className="text-sm font-medium">
+                            Show Animations
+                          </label>
                           <p className="text-xs text-muted-foreground">
                             Enable interface animations
                           </p>

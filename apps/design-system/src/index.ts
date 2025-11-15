@@ -1,7 +1,7 @@
 /**
  * @dsui/design-system
  * Main entry point for the design system library
- * 
+ *
  * Import examples:
  * import { Button, Avatar, Dialog } from "@dsui/design-system"
  * import "@dsui/design-system/theme.css"
@@ -107,5 +107,3 @@ export { TimeColumnwheel as WheelColumn } from "./components/WheelColumn";
 // import "@dsui/design-system/theme.css"
 // import "@dsui/design-system/index.css"
 // import "@dsui/design-system/animation.css"
-
-

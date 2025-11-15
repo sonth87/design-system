@@ -62,11 +62,11 @@ import { Button, Dialog } from "@dsui/design-system";
 
 function App() {
   const [open, setOpen] = useState(false);
-  
+
   return (
     <div>
       <Button variant="default">Click me</Button>
-      
+
       {/* Dialog with trigger prop */}
       <Dialog
         trigger={<Button>Open Dialog</Button>}
@@ -255,15 +255,11 @@ function MyComponent() {
           <Button variant="outline" onClick={() => setOpen(false)}>
             Cancel
           </Button>
-          <Button onClick={() => setOpen(false)}>
-            Save Changes
-          </Button>
+          <Button onClick={() => setOpen(false)}>Save Changes</Button>
         </div>
       }
     >
-      <p className="text-sm text-muted-foreground">
-        Dialog content goes here
-      </p>
+      <p className="text-sm text-muted-foreground">Dialog content goes here</p>
     </Dialog>
   );
 }
@@ -339,11 +335,11 @@ function MyComponent() {
 ```tsx
 function MyComponent() {
   const [open, setOpen] = useState(false);
-  
+
   return (
     <>
       <Button onClick={() => setOpen(true)}>Open</Button>
-      
+
       <Dialog
         open={open}
         onOpenChange={setOpen}
@@ -369,11 +365,7 @@ function MyComponent() {
   const [date, setDate] = useState<Date>();
 
   return (
-    <DatePicker
-      selected={date}
-      onSelect={setDate}
-      placeholder="Pick a date"
-    />
+    <DatePicker selected={date} onSelect={setDate} placeholder="Pick a date" />
   );
 }
 ```
@@ -389,12 +381,8 @@ function App() {
       <Button onClick={() => toast.success("Success message!")}>
         Show Toast
       </Button>
-      <Button onClick={() => toast.error("Error message!")}>
-        Show Error
-      </Button>
-      <Button onClick={() => toast.info("Info message!")}>
-        Show Info
-      </Button>
+      <Button onClick={() => toast.error("Error message!")}>Show Error</Button>
+      <Button onClick={() => toast.info("Info message!")}>Show Info</Button>
       <Toaster />
     </>
   );
@@ -407,11 +395,13 @@ function App() {
 
 ```tsx
 // Override specific component styles
-<Button 
-  style={{ 
-    '--primary': '200 100% 50%',
-    '--primary-foreground': '0 0% 100%'
-  } as React.CSSProperties}
+<Button
+  style={
+    {
+      "--primary": "200 100% 50%",
+      "--primary-foreground": "0 0% 100%",
+    } as React.CSSProperties
+  }
 >
   Custom Styled Button
 </Button>
@@ -479,6 +469,7 @@ MIT © [Your Name]
 ## 🙏 Credits
 
 This design system is built on top of [shadcn/ui](https://ui.shadcn.com/), enhancing it with:
+
 - Additional component variants and sizes
 - Enhanced animation support with Motion
 - Extended theming capabilities
@@ -486,6 +477,7 @@ This design system is built on top of [shadcn/ui](https://ui.shadcn.com/), enhan
 - Improved Dialog with positions, animations, and scroll options
 
 Built with:
+
 - [shadcn/ui](https://ui.shadcn.com/) - Base component library
 - [Radix UI](https://www.radix-ui.com/) - Unstyled, accessible primitives
 - [TailwindCSS](https://tailwindcss.com/) - Utility-first CSS framework
