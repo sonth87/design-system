@@ -190,7 +190,7 @@ export const ControlledState = () => {
         console.error("Crop failed:", e);
       }
     },
-    [rotation, shape, allowOverflow]
+    [rotation, shape]
   );
 
   const onCropAreaChange = React.useCallback(
@@ -360,25 +360,28 @@ export const CropperWithHook = () => {
       format: "image/png",
       quality: 0.95,
     },
-    // type: "blob", // or 'base64'
+    type: "base64", // or 'blob'
   });
 
   const id = React.useId();
 
+  const handleDownload = React.useCallback(() => {
+    if (croppedImage && typeof croppedImage === "string") {
+      downloadImage(croppedImage, "cropped-image.png");
+    }
+  }, [croppedImage]);
+
   return (
     <div className="flex flex-col gap-4 p-4">
       <div className="flex items-center gap-4">
-        {croppedImage && (
+        {croppedImage && typeof croppedImage === "string" && (
           <div className="flex flex-col gap-2">
             <span className="text-sm font-medium">Cropped Image</span>
             <img src={croppedImage} alt="Cropped result" className="size-32" />
           </div>
         )}
         {croppedImage && (
-          <Button
-            onClick={() => downloadImage(croppedImage, "cropped-image.png")}
-            size="sm"
-          >
+          <Button onClick={handleDownload} size="sm">
             <DownloadIcon className="size-4 mr-2" />
             Download
           </Button>
@@ -445,8 +448,18 @@ export const CropperWithCropperTool = () => {
   const [rotation, setRotation] = React.useState(0);
   const id = React.useId();
 
-  const handleCropComplete = React.useCallback((base64: string) => {
-    setCroppedImage(base64);
+  const handleCropComplete = React.useCallback((result: string | Blob) => {
+    // Handle both base64 string and Blob
+    if (typeof result === "string") {
+      setCroppedImage(result);
+    } else {
+      // Convert Blob to base64 for preview
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setCroppedImage(reader.result as string);
+      };
+      reader.readAsDataURL(result);
+    }
   }, []);
 
   const handleDownload = React.useCallback(() => {
@@ -494,6 +507,7 @@ export const CropperWithCropperTool = () => {
         cropOptions={{
           format: "image/png",
           quality: 0.95,
+          type: "base64", // or 'blob'
         }}
         className="min-h-72 w-full"
         crossOrigin="anonymous"
@@ -527,6 +541,153 @@ export const CropperWithCropperTool = () => {
       </div>
 
       <Button variant="outline" onClick={handleReset} className="w-fit">
+        <RotateCcwIcon className="size-4 mr-2" />
+        Reset
+      </Button>
+    </div>
+  );
+};
+
+export const CropperWithBlobOutput = () => {
+  const {
+    crop,
+    zoom,
+    rotation,
+    setCrop,
+    setZoom,
+    setRotation,
+    croppedImage,
+    handleCropAreaChange,
+    reset,
+  } = useCropperTool({
+    imageSrc: sampleImage,
+    cropOptions: {
+      shape: "rectangle",
+      format: "image/jpeg",
+      quality: 0.9,
+    },
+    type: "blob", // Get Blob output instead of base64
+  });
+
+  const id = React.useId();
+  const [previewUrl, setPreviewUrl] = React.useState<string | null>(null);
+
+  // Convert blob to object URL for preview
+  React.useEffect(() => {
+    if (croppedImage && croppedImage instanceof Blob) {
+      console.log("Cropped Blob:", croppedImage);
+      const url = URL.createObjectURL(croppedImage);
+      setPreviewUrl(url);
+
+      // Cleanup
+      return () => {
+        URL.revokeObjectURL(url);
+      };
+    }
+  }, [croppedImage]);
+
+  const handleDownload = React.useCallback(() => {
+    if (croppedImage && croppedImage instanceof Blob) {
+      const url = URL.createObjectURL(croppedImage);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "cropped-image.jpg";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    }
+  }, [croppedImage]);
+
+  const handleUpload = React.useCallback(() => {
+    if (croppedImage && croppedImage instanceof Blob) {
+      // Example: Upload the blob to a server
+      const formData = new FormData();
+      formData.append("image", croppedImage, "cropped-image.jpg");
+
+      console.log("Blob ready for upload:", croppedImage);
+      console.log("Blob size:", croppedImage.size, "bytes");
+      console.log("Blob type:", croppedImage.type);
+      alert(
+        `Blob ready for upload!\nSize: ${croppedImage.size} bytes\nType: ${croppedImage.type}`
+      );
+
+      // Here you would typically use fetch to upload:
+      // fetch('/api/upload', { method: 'POST', body: formData })
+    }
+  }, [croppedImage]);
+
+  return (
+    <div className="flex flex-col gap-4 p-4">
+      <div className="flex items-center gap-4">
+        {previewUrl && (
+          <div className="flex flex-col gap-2">
+            <span className="text-sm font-medium">
+              Cropped Image (from Blob)
+            </span>
+            <img src={previewUrl} alt="Cropped result" className="w-32 h-auto" />
+          </div>
+        )}
+        {croppedImage && (
+          <div className="flex gap-2">
+            <Button onClick={handleDownload} size="sm">
+              <DownloadIcon className="size-4 mr-2" />
+              Download
+            </Button>
+            <Button onClick={handleUpload} size="sm" variant="outline">
+              Upload (Demo)
+            </Button>
+          </div>
+        )}
+      </div>
+
+      <Cropper
+        aspectRatio={16 / 9}
+        crop={crop}
+        zoom={zoom}
+        rotation={rotation}
+        onCropChange={setCrop}
+        onZoomChange={setZoom}
+        onCropAreaChange={handleCropAreaChange}
+        className="min-h-72 w-full"
+        shape="rectangle"
+      >
+        <CropperImage
+          src={sampleImage}
+          alt="Sample landscape"
+          crossOrigin="anonymous"
+        />
+        <CropperArea />
+      </Cropper>
+
+      <div className="flex flex-col items-center gap-4 sm:flex-row">
+        <div className="flex w-full flex-col gap-2.5">
+          <label htmlFor={`${id}-zoom`}>Zoom: {zoom.toFixed(2)}</label>
+          <Slider
+            id={`${id}-zoom`}
+            value={[zoom]}
+            onValueChange={(value) => setZoom(value[0] ?? 1)}
+            min={1}
+            max={3}
+            step={0.1}
+          />
+        </div>
+        <div className="flex w-full flex-col gap-2.5">
+          <label htmlFor={`${id}-rotation`}>
+            Rotation: {rotation.toFixed(0)}°
+          </label>
+          <Slider
+            id={`${id}-rotation`}
+            value={[rotation]}
+            onValueChange={(value) => setRotation(value[0] ?? 0)}
+            min={-180}
+            max={180}
+            step={1}
+          />
+        </div>
+      </div>
+
+      <Button variant="outline" onClick={reset} className="w-fit">
         <RotateCcwIcon className="size-4 mr-2" />
         Reset
       </Button>

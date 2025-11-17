@@ -39,16 +39,21 @@ export interface CroppedImageOptions {
     horizontal?: boolean;
     vertical?: boolean;
   };
+  /**
+   * Output type: 'base64' (data URL) or 'blob' (Blob object)
+   */
+  type?: "base64" | "blob";
 }
 
 /**
- * Creates a cropped image from the given parameters and returns it as a base64 data URL
+ * Creates a cropped image from the given parameters and returns it as a base64 data URL or Blob
  *
  * @param options - Options for creating the cropped image
- * @returns Promise that resolves to a base64 data URL string
+ * @returns Promise that resolves to a base64 data URL string or Blob based on the type option
  *
  * @example
  * ```tsx
+ * // Get base64 data URL (default)
  * const croppedImageBase64 = await getCroppedImg({
  *   imageSrc: 'https://example.com/image.jpg',
  *   pixelCrop: { x: 100, y: 100, width: 200, height: 200 },
@@ -57,11 +62,24 @@ export interface CroppedImageOptions {
  *   format: 'image/png',
  *   quality: 0.95
  * });
+ * 
+ * // Get Blob
+ * const croppedImageBlob = await getCroppedImg({
+ *   imageSrc: 'https://example.com/image.jpg',
+ *   pixelCrop: { x: 100, y: 100, width: 200, height: 200 },
+ *   type: 'blob'
+ * });
  * ```
  */
 export async function getCroppedImg(
+  options: CroppedImageOptions & { type: "blob" }
+): Promise<Blob>;
+export async function getCroppedImg(
+  options: CroppedImageOptions & { type?: "base64" }
+): Promise<string>;
+export async function getCroppedImg(
   options: CroppedImageOptions
-): Promise<string> {
+): Promise<string | Blob> {
   const {
     imageSrc,
     pixelCrop,
@@ -70,6 +88,7 @@ export async function getCroppedImg(
     format = "image/png",
     quality = 0.92,
     flip = {},
+    type = "base64",
   } = options;
 
   // Load image if URL is provided
@@ -183,6 +202,23 @@ export async function getCroppedImg(
       Math.PI * 2
     );
     ctx.fill();
+  }
+
+  // Return as blob or base64 based on type
+  if (type === "blob") {
+    return new Promise<Blob>((resolve, reject) => {
+      canvas.toBlob(
+        (blob) => {
+          if (blob) {
+            resolve(blob);
+          } else {
+            reject(new Error("Failed to create blob from canvas"));
+          }
+        },
+        format,
+        quality
+      );
+    });
   }
 
   // Convert to base64
