@@ -84,6 +84,9 @@ export const CropperTool = React.forwardRef<HTMLDivElement, CropperToolProps>(
       ...cropperProps
     } = props;
 
+    // State to manage crop position
+    const [crop, setCrop] = React.useState<CropperPoint>({ x: 0, y: 0 });
+
     // Debounce timer ref
     const debounceTimerRef = React.useRef<number | null>(null);
     // Store previous crop area to compare
@@ -169,8 +172,10 @@ export const CropperTool = React.forwardRef<HTMLDivElement, CropperToolProps>(
       <Cropper
         ref={ref}
         {...cropperProps}
+        crop={crop}
         rotation={rotation}
         shape={shape}
+        onCropChange={setCrop}
         onCropComplete={handleCropComplete}
         onCropAreaChange={onCropAreaChange}
       >
