@@ -11,6 +11,7 @@ import {
   getCroppedImg,
   downloadImage,
   useCropperTool,
+  CropperTool,
 } from "../../components/Cropper";
 import Select from "@/components/Select";
 import Switch from "@/components/Switch";
@@ -341,7 +342,7 @@ export const ControlledState = () => {
   );
 };
 
-const CropperWithHookExample = () => {
+export const CropperWithHook = () => {
   const {
     crop,
     zoom,
@@ -359,6 +360,7 @@ const CropperWithHookExample = () => {
       format: "image/png",
       quality: 0.95,
     },
+    // type: "blob", // or 'base64'
   });
 
   const id = React.useId();
@@ -437,6 +439,97 @@ const CropperWithHookExample = () => {
   );
 };
 
-export const CropperWithHook: Story = {
-  render: () => <CropperWithHookExample />,
+export const CropperWithCropperTool = () => {
+  const [croppedImage, setCroppedImage] = React.useState<string | null>(null);
+  const [zoom, setZoom] = React.useState(1);
+  const [rotation, setRotation] = React.useState(0);
+  const id = React.useId();
+
+  const handleCropComplete = React.useCallback((base64: string) => {
+    setCroppedImage(base64);
+  }, []);
+
+  const handleDownload = React.useCallback(() => {
+    if (croppedImage) {
+      downloadImage(croppedImage, "cropped-avatar.png");
+    }
+  }, [croppedImage]);
+
+  const handleReset = React.useCallback(() => {
+    setZoom(1);
+    setRotation(0);
+    setCroppedImage(null);
+  }, []);
+
+  return (
+    <div className="flex flex-col gap-4 p-4">
+      <div className="flex items-center gap-4">
+        {croppedImage && (
+          <>
+            <div className="flex flex-col gap-2">
+              <span className="text-sm font-medium">Cropped Avatar</span>
+              <img
+                src={croppedImage}
+                alt="Cropped avatar"
+                className="size-32 rounded-full border-2 border-gray-200"
+              />
+            </div>
+            <Button onClick={handleDownload} size="sm">
+              <DownloadIcon className="size-4 mr-2" />
+              Download
+            </Button>
+          </>
+        )}
+      </div>
+
+      <CropperTool
+        src={sampleImage}
+        alt="Sample landscape"
+        aspectRatio={1}
+        shape="circle"
+        zoom={zoom}
+        rotation={rotation}
+        onZoomChange={setZoom}
+        onCropComplete={handleCropComplete}
+        cropOptions={{
+          format: "image/png",
+          quality: 0.95,
+        }}
+        className="min-h-72 w-full"
+        crossOrigin="anonymous"
+      />
+
+      <div className="flex flex-col items-center gap-4 sm:flex-row">
+        <div className="flex w-full flex-col gap-2.5">
+          <label htmlFor={`${id}-zoom`}>Zoom: {zoom.toFixed(2)}</label>
+          <Slider
+            id={`${id}-zoom`}
+            value={[zoom]}
+            onValueChange={(value) => setZoom(value[0] ?? 1)}
+            min={1}
+            max={3}
+            step={0.1}
+          />
+        </div>
+        <div className="flex w-full flex-col gap-2.5">
+          <label htmlFor={`${id}-rotation`}>
+            Rotation: {rotation.toFixed(0)}°
+          </label>
+          <Slider
+            id={`${id}-rotation`}
+            value={[rotation]}
+            onValueChange={(value) => setRotation(value[0] ?? 0)}
+            min={-180}
+            max={180}
+            step={1}
+          />
+        </div>
+      </div>
+
+      <Button variant="outline" onClick={handleReset} className="w-fit">
+        <RotateCcwIcon className="size-4 mr-2" />
+        Reset
+      </Button>
+    </div>
+  );
 };
