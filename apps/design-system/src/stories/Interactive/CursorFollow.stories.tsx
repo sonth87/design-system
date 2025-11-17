@@ -7,7 +7,7 @@ import {
 } from "../../components/Interactive/CursorFollow";
 import i18n from "../../../.storybook/i18n";
 
-const meta: Meta<typeof CursorFollow> = {
+const meta = {
   title: "Interactive/CursorFollow",
   component: CursorFollow,
   parameters: {
@@ -37,7 +37,7 @@ const meta: Meta<typeof CursorFollow> = {
     sideOffset: {
       control: { type: "range", min: 0, max: 100, step: 5 },
       description: i18n.t(
-        "stories.cursorfollow.argTypes.sideOffset.description",
+        "stories.cursorfollow.argTypes.sideOffset.description"
       ),
       table: {
         category: "CursorFollow",
@@ -47,7 +47,7 @@ const meta: Meta<typeof CursorFollow> = {
     followText: {
       control: "text",
       description: i18n.t(
-        "stories.cursorfollow.argTypes.followText.description",
+        "stories.cursorfollow.argTypes.followText.description"
       ),
       table: {
         category: "CursorFollow",
@@ -60,52 +60,121 @@ const meta: Meta<typeof CursorFollow> = {
         category: "CursorFollow",
       },
     },
-
-    // Cursor Props
-    variant: {
-      control: "select",
-      options: ["default", "pointer", "custom"],
-      description: i18n.t("stories.cursorfollow.argTypes.variant.description"),
+    transition: {
+      control: "object",
+      description: i18n.t(
+        "stories.cursorfollow.argTypes.transition.description"
+      ),
       table: {
-        category: "Cursor",
+        category: "CursorFollow",
+        type: { summary: "SpringOptions" },
+      },
+    },
+
+    // CursorProvider Props
+    cursorType: {
+      control: "select",
+      options: ["default", "pointer"],
+      description: i18n.t(
+        "stories.cursorfollow.argTypes.cursorType.description"
+      ),
+      table: {
+        category: "CursorProvider",
         defaultValue: { summary: "default" },
       },
     },
+    showFollow: {
+      control: "boolean",
+      description: i18n.t(
+        "stories.cursorfollow.argTypes.showFollow.description"
+      ),
+      table: {
+        category: "CursorProvider",
+        defaultValue: { summary: "true when followText is provided" },
+      },
+    },
+    followAlign: {
+      control: "select",
+      options: [
+        "top",
+        "top-left",
+        "top-right",
+        "bottom",
+        "bottom-left",
+        "bottom-right",
+        "left",
+        "right",
+        "center",
+      ],
+      description: i18n.t(
+        "stories.cursorfollow.argTypes.followAlign.description"
+      ),
+      table: {
+        category: "CursorProvider",
+        defaultValue: { summary: "bottom-right" },
+      },
+    },
+    followSideOffset: {
+      control: { type: "range", min: 0, max: 100, step: 5 },
+      description: i18n.t(
+        "stories.cursorfollow.argTypes.followSideOffset.description"
+      ),
+      table: {
+        category: "CursorProvider",
+        defaultValue: { summary: "15" },
+      },
+    },
+    followTransition: {
+      control: "select",
+      options: ["slow", "normal", "fast", "realtime"],
+      description: i18n.t(
+        "stories.cursorfollow.argTypes.followTransition.description"
+      ),
+      table: {
+        category: "CursorProvider",
+        defaultValue: { summary: "normal" },
+      },
+    },
+
+    // Cursor Props
+    // cursorType is shared with CursorProvider
+
+    // useCursorFollow Hook Options
+    // (documented separately as these are hook options, not component props)
 
     // Animation Props
     transitionPreset: {
       control: "select",
       options: ["slow", "normal", "fast", "realtime"],
       description: i18n.t(
-        "stories.cursorfollow.argTypes.transitionPreset.description",
+        "stories.cursorfollow.argTypes.transitionPreset.description"
       ),
       table: {
         category: "Animation",
         defaultValue: { summary: "normal" },
       },
     },
-    // transition: {
-    //   control: "object",
-    //   description: i18n.t(
-    //     "stories.cursorfollow.argTypes.transition.description"
-    //   ),
-    //   table: {
-    //     category: "Animation",
-    //   },
-    // },
 
     // Styling
     className: {
       control: "text",
       description: i18n.t(
-        "stories.cursorfollow.argTypes.className.description",
+        "stories.cursorfollow.argTypes.className.description"
       ),
       table: {
         category: "Styling",
       },
     },
-  },
-};
+    style: {
+      control: "object",
+      description: i18n.t("stories.cursorfollow.argTypes.style.description"),
+      table: {
+        category: "Styling",
+      },
+    },
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } as any, // Include CursorProvider and Cursor props for documentation
+} satisfies Meta<typeof CursorFollow>;
 
 export default meta;
 type Story = StoryObj<typeof CursorFollow>;
@@ -114,16 +183,13 @@ export const Default: Story = {
   args: {
     align: "bottom-right",
     sideOffset: 15,
+    followText: "Follow me!",
   },
   render: (args) => (
     <div className="relative h-[300px] w-[500px] flex items-center justify-center bg-gradient-to-br from-slate-900 to-slate-800 rounded-xl">
-      <CursorProvider>
+      <CursorProvider cursorType="default">
         <div className="text-white text-lg">Move your cursor here</div>
-        <CursorFollow {...args}>
-          <div className="px-4 py-2 bg-white rounded-lg shadow-lg text-sm font-medium">
-            Follow me!
-          </div>
-        </CursorFollow>
+        <CursorFollow {...args} />
       </CursorProvider>
     </div>
   ),
@@ -290,7 +356,7 @@ export const Method1_Manual: Story = {
                 {`<CursorProvider>
   <div>Nội dung</div> // content
 
-  <Cursor variant="macos" /> // custom cursor
+  <Cursor cursorType="pointer" /> // custom cursor
 
   <CursorFollow 
     followText="Click me"
@@ -348,7 +414,7 @@ export const Method2_Hook = () => {
 }`}
             </p>
           </div>
-        </div>,
+        </div>
       )}
     </div>
   );
@@ -374,7 +440,7 @@ export const Method3_AutoSetup: Story = {
           <div className="mt-4 p-4 bg-white/10 rounded-lg">
             <p className="text-xs font-mono text-left">
               <pre>{`<CursorProvider
-  cursorType="macos" 
+  cursorType="pointer" 
   followText="Click me"
   showFollow={true}
 >
@@ -388,9 +454,9 @@ export const Method3_AutoSetup: Story = {
   ),
 };
 
-export const HookCustomVariant = () => {
+export const HookWithDefaultCursor = () => {
   const cursorProps = useCursorFollow({
-    cursorType: "custom", // custom variant
+    cursorType: "default", // System cursor with follow element
     followText: "System cursor + Follow",
     align: "bottom-right",
   });
@@ -402,20 +468,112 @@ export const HookCustomVariant = () => {
     >
       {cursorProps.children(
         <div className="text-white text-lg text-center space-y-4">
-          <h3 className="font-bold">Hook with Custom Variant</h3>
+          <h3 className="font-bold">Hook with System Cursor</h3>
           <p className="text-sm text-gray-300">
-            useCursorFollow với type="custom"
+            useCursorFollow với type="default" - hiển thị cursor hệ thống
           </p>
           <div className="mt-4 p-4 bg-white/10 rounded-lg">
             <p className="text-xs font-mono text-left whitespace-pre">
               {`const cursorProps = useCursorFollow({
-  cursorType: "custom", // không ẩn cursor
+  cursorType: "default", // Cursor hệ thống
   followText: "System cursor + Follow",
 });`}
             </p>
           </div>
-        </div>,
+        </div>
       )}
     </div>
   );
+};
+
+export const FollowWithReactNode: Story = {
+  name: "Follow with ReactNode",
+  render: () => (
+    <div className="relative h-[300px] w-[500px] flex items-center justify-center bg-gradient-to-br from-rose-900 to-orange-800 rounded-xl">
+      <CursorProvider cursorType="pointer">
+        <div className="text-white text-lg">followText accepts ReactNode!</div>
+        <CursorFollow
+          followText={
+            <div className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-rose-500 to-orange-500 rounded-lg shadow-xl">
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+              <span className="text-sm font-bold text-white">
+                Custom ReactNode!
+              </span>
+              <div className="w-2 h-2 rounded-full bg-white animate-pulse" />
+            </div>
+          }
+          align="bottom-right"
+        />
+      </CursorProvider>
+    </div>
+  ),
+};
+
+export const CustomCursorTypeAsReactNode: Story = {
+  name: "Custom cursorType as ReactNode",
+  render: () => (
+    <div className="relative h-[300px] w-[500px] flex items-center justify-center bg-gradient-to-br from-purple-900 to-pink-800 rounded-xl">
+      <CursorProvider
+        cursorType={
+          <div className="relative">
+            <div className="h-8 w-8 rounded-full bg-pink-400 border-2 border-white shadow-lg" />
+            <div className="absolute inset-0 h-8 w-8 rounded-full bg-pink-400/50 animate-ping" />
+          </div>
+        }
+        followText="Custom cursor type!"
+        followAlign="bottom-right"
+      >
+        <div className="text-white text-lg text-center space-y-4">
+          <h3 className="font-bold">cursorType as ReactNode</h3>
+          <p className="text-sm text-gray-300">
+            Bạn có thể truyền custom ReactNode trực tiếp vào cursorType prop
+          </p>
+          <div className="mt-4 p-4 bg-white/10 rounded-lg">
+            <p className="text-xs font-mono text-left whitespace-pre">
+              {`<CursorProvider
+  cursorType={
+    <div className="custom-cursor">
+      ...
+    </div>
+  }
+  followText="Custom cursor!"
+>
+  ...
+</CursorProvider>`}
+            </p>
+          </div>
+        </div>
+      </CursorProvider>
+    </div>
+  ),
+};
+
+export const CursorComponentWithReactNode: Story = {
+  name: "Cursor Component with ReactNode",
+  render: () => (
+    <div className="relative h-[300px] w-[500px] flex items-center justify-center bg-gradient-to-br from-cyan-900 to-blue-800 rounded-xl">
+      <CursorProvider>
+        <div className="text-white text-lg text-center space-y-4">
+          <h3 className="font-bold">Cursor với cursorType ReactNode</h3>
+          <p className="text-sm text-gray-300">
+            Truyền custom cursor trực tiếp vào Cursor component
+          </p>
+        </div>
+        <Cursor
+          cursorType={
+            <div className="flex items-center gap-1">
+              <div className="h-6 w-6 rounded-full bg-cyan-400 border-2 border-white" />
+              <div className="h-2 w-2 rounded-full bg-cyan-400 animate-bounce" />
+            </div>
+          }
+        />
+        <CursorFollow
+          followText="Following custom cursor!"
+          align="bottom-right"
+        />
+      </CursorProvider>
+    </div>
+  ),
 };

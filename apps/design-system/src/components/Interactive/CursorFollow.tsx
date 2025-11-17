@@ -30,7 +30,7 @@ type CursorContextType = {
 };
 
 const CursorContext = React.createContext<CursorContextType | undefined>(
-  undefined,
+  undefined
 );
 
 const useCursor = (): CursorContextType => {
@@ -41,12 +41,34 @@ const useCursor = (): CursorContextType => {
   return context;
 };
 
+type Align =
+  | "top"
+  | "top-left"
+  | "top-right"
+  | "bottom"
+  | "bottom-left"
+  | "bottom-right"
+  | "left"
+  | "right"
+  | "center";
+
+type CursorVariantKey = "default" | "pointer";
+type CursorVariant = CursorVariantKey | React.ReactNode;
+
+// Predefined cursor variants
+const cursorVariants: Record<CursorVariantKey, React.ReactNode> = {
+  default: null, // Use system cursor
+  pointer: (
+    <div className="h-5 w-5 rounded-full bg-white/30 border-2 border-white" />
+  ),
+};
+
 type CursorProviderProps = React.ComponentProps<"div"> & {
   children: React.ReactNode;
-  /** Auto-setup cursor with variant */
+  /** Auto-setup cursor with variant (preset key or custom ReactNode) */
   cursorType?: CursorVariant;
-  /** Auto-setup follow element with text */
-  followText?: string;
+  /** Auto-setup follow element with content */
+  followText?: React.ReactNode;
   /** Show follow element (default: true when followText is provided) */
   showFollow?: boolean;
   /** Follow element alignment */
@@ -60,7 +82,7 @@ type CursorProviderProps = React.ComponentProps<"div"> & {
 function CursorProvider({
   ref,
   children,
-  cursorType,
+  cursorType = "default",
   followText,
   showFollow,
   followAlign = "bottom-right",
@@ -115,12 +137,11 @@ function CursorProvider({
         {children}
 
         {/* Auto-setup Cursor */}
-        {shouldShowCursor && <Cursor variant={cursorType} />}
+        {shouldShowCursor && <Cursor cursorType={cursorType} />}
 
         {/* Auto-setup CursorFollow */}
         {shouldShowFollowElement && (
           <CursorFollow
-            variant={cursorType}
             followText={followText}
             align={followAlign}
             sideOffset={followSideOffset}
@@ -151,29 +172,40 @@ function Cursor({
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
-  // Only hide default cursor if we have content to show
-  const hasContent = children || cursorType !== "custom";
+  // Determine which content to render
+  const getCursorContent = () => {
+    if (children) return children;
+    
+    // Check if cursorType is a preset key
+    if (typeof cursorType === 'string' && cursorType in cursorVariants) {
+      return cursorVariants[cursorType as CursorVariantKey];
+    }
+    
+    // Otherwise treat it as custom ReactNode
+    return cursorType;
+  };
+
+  const cursorContent = getCursorContent();
+
+  // Only hide system cursor if we have custom content to show
+  const shouldHideSystemCursor = cursorContent !== null;
 
   React.useEffect(() => {
     const parentElement = containerRef.current?.parentElement;
 
-    if (parentElement && isActive && hasContent) {
+    if (parentElement && isActive && shouldHideSystemCursor) {
       parentElement.style.cursor = "none";
     }
 
     return () => {
       if (parentElement) parentElement.style.cursor = "default";
     };
-  }, [containerRef, cursorPos, isActive, hasContent]);
+  }, [containerRef, isActive, shouldHideSystemCursor]);
 
   React.useEffect(() => {
     x.set(cursorPos.x);
     y.set(cursorPos.y);
   }, [cursorPos, x, y]);
-
-  // Determine which content to render
-  const cursorContent =
-    children || (cursorType !== "custom" ? cursorVariants[cursorType] : null);
 
   // Only render if we have content to show
   if (!cursorContent) return null;
@@ -186,7 +218,7 @@ function Cursor({
           data-slot="cursor"
           className={cn(
             "transform-[translate(-50%,-50%)] pointer-events-none z-[9999] absolute",
-            className,
+            className
           )}
           style={{ top: y, left: x, ...style }}
           initial={{ scale: 0, opacity: 0 }}
@@ -201,38 +233,13 @@ function Cursor({
   );
 }
 
-type Align =
-  | "top"
-  | "top-left"
-  | "top-right"
-  | "bottom"
-  | "bottom-left"
-  | "bottom-right"
-  | "left"
-  | "right"
-  | "center";
-
-type CursorVariant = "default" | "pointer" | "custom";
-
-// Predefined cursor variants
-const cursorVariants: Record<
-  Exclude<CursorVariant, "custom">,
-  React.ReactNode
-> = {
-  default: null, // Use system default cursor
-  pointer: (
-    <div className="h-5 w-5 rounded-full bg-white/30 border-2 border-white" />
-  ),
-};
-
 type CursorFollowProps = HTMLMotionProps<"div"> & {
   sideOffset?: number;
   align?: Align;
   transition?: SpringOptions;
   transitionPreset?: TransitionPreset;
   children?: React.ReactNode;
-  variant?: CursorVariant;
-  followText?: string;
+  followText?: React.ReactNode;
 };
 
 function CursorFollow({
@@ -251,7 +258,7 @@ function CursorFollow({
   const cursorFollowRef = React.useRef<HTMLDivElement>(null);
   React.useImperativeHandle(
     ref,
-    () => cursorFollowRef.current as HTMLDivElement,
+    () => cursorFollowRef.current as HTMLDivElement
   );
 
   const x = useMotionValue(0);
@@ -315,16 +322,21 @@ function CursorFollow({
     y.set(cursorPos.y - offset.y + cursorHeight / 2);
   }, [calculateOffset, cursorPos, cursorRef, x, y]);
 
-  // Determine follow content based on variant and followText
+  // Determine follow content based on children or followText
   const getFollowContent = () => {
     if (children) return children;
 
     if (followText) {
-      return (
-        <div className="px-4 py-2 bg-white rounded-lg shadow-lg text-sm font-medium">
-          {followText}
-        </div>
-      );
+      // If followText is a string, wrap it with default styling
+      if (typeof followText === "string") {
+        return (
+          <div className="px-4 py-2 bg-white rounded-md shadow-lg text-sm font-medium">
+            {followText}
+          </div>
+        );
+      }
+      // If it's a ReactNode, render it directly
+      return followText;
     }
 
     return null;
@@ -338,7 +350,7 @@ function CursorFollow({
           data-slot="cursor-follow"
           className={cn(
             "transform-[translate(-50%,-50%)] pointer-events-none z-[9998] absolute",
-            className,
+            className
           )}
           style={{ top: springY, left: springX, ...style }}
           initial={{ scale: 0, opacity: 0 }}
@@ -355,10 +367,10 @@ function CursorFollow({
 
 // Hook for easy cursor setup (Method 2)
 type useCursorFollowOptions = {
-  /** Cursor variant type */
+  /** Cursor variant type (preset key or custom ReactNode) */
   cursorType?: CursorVariant;
-  /** Follow element text */
-  followText?: string;
+  /** Follow element content */
+  followText?: React.ReactNode;
   /** Show follow element */
   showFollow?: boolean;
   /** Follow element alignment */
@@ -414,17 +426,17 @@ function useCursorFollow(options: useCursorFollowOptions = {}) {
     };
   }, []);
 
-  // Only hide cursor if we have a custom cursor to show
-  const hasCustomCursor = cursorType !== "custom";
+  // Only hide system cursor if cursorType is not 'default'
+  const shouldHideSystemCursor = cursorType !== "default";
 
   React.useEffect(() => {
-    if (!containerRef.current || !isActive || !hasCustomCursor) return;
+    if (!containerRef.current || !isActive || !shouldHideSystemCursor) return;
     const element = containerRef.current;
     element.style.cursor = "none";
     return () => {
       element.style.cursor = "default";
     };
-  }, [isActive, hasCustomCursor]);
+  }, [isActive, shouldHideSystemCursor]);
 
   // Render function for cursor elements
   const renderCursorElements = React.useCallback(() => {
@@ -434,10 +446,9 @@ function useCursorFollow(options: useCursorFollowOptions = {}) {
       <CursorContext.Provider
         value={{ cursorPos, isActive, containerRef, cursorRef }}
       >
-        <Cursor variant={cursorType} />
+        <Cursor cursorType={cursorType} />
         {(showFollow ?? followText !== undefined) && (
           <CursorFollow
-            variant={cursorType}
             followText={followText}
             align={align}
             sideOffset={sideOffset}
@@ -484,6 +495,7 @@ export {
   type CursorProps,
   type CursorFollowProps,
   type CursorVariant,
+  type CursorVariantKey,
   type Align,
   type useCursorFollowOptions,
   type TransitionPreset,
