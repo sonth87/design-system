@@ -92,11 +92,14 @@ export const CropperTool = React.forwardRef<HTMLDivElement, CropperToolProps>(
     // Store previous crop area to compare
     const prevCropAreaRef = React.useRef<CropperAreaData | null>(null);
 
-    const handleCropComplete = React.useCallback(
+    const handleCropAreaChange = React.useCallback(
       async (
         _croppedArea: CropperAreaData,
         croppedAreaPixels: CropperAreaData
       ) => {
+        // Call the user's onCropAreaChange if provided
+        onCropAreaChange?.(_croppedArea, croppedAreaPixels);
+
         if (!onCropComplete) return;
 
         // Check if crop area actually changed
@@ -156,7 +159,7 @@ export const CropperTool = React.forwardRef<HTMLDivElement, CropperToolProps>(
           }
         }, 300); // 300ms debounce delay
       },
-      [src, rotation, shape, cropOptions, onCropComplete]
+      [src, rotation, shape, cropOptions, onCropComplete, onCropAreaChange]
     );
 
     // Cleanup debounce timer on unmount
@@ -176,8 +179,7 @@ export const CropperTool = React.forwardRef<HTMLDivElement, CropperToolProps>(
         rotation={rotation}
         shape={shape}
         onCropChange={setCrop}
-        onCropComplete={handleCropComplete}
-        onCropAreaChange={onCropAreaChange}
+        onCropAreaChange={handleCropAreaChange}
       >
         <CropperImage src={src} alt={alt} crossOrigin={crossOrigin} />
         <CropperArea />
