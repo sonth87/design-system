@@ -450,6 +450,28 @@
     "stories.category.time": "Time Picker",
     "stories.category.scroll": "Scroll Behavior",
     "stories.category.layout": "Layout",
-    "stories.category.advanced": "Advanced"
+    "stories.category.advanced": "Advanced",
+
+    "stories.cropper.argTypes.aspectRatio.description": "Aspect ratio of the crop area (width/height)",
+    "stories.cropper.argTypes.shape.description": "Shape of the crop area",
+    "stories.cropper.argTypes.objectFit.description": "How the media should fit within the container",
+    "stories.cropper.argTypes.withGrid.description": "Show grid lines within the crop area",
+    "stories.cropper.argTypes.zoom.description": "Current zoom level",
+    "stories.cropper.argTypes.minZoom.description": "Minimum zoom level",
+    "stories.cropper.argTypes.maxZoom.description": "Maximum zoom level",
+    "stories.cropper.argTypes.rotation.description": "Rotation angle in degrees",
+    "stories.cropper.argTypes.allowOverflow.description": "Allow crop area to overflow the media boundaries",
+    "stories.cropper.argTypes.preventScrollZoom.description": "Prevent zoom on mouse wheel scroll",
+
+    "stories.qrcode.argTypes.value.description": "The data to encode in the QR code",
+    "stories.qrcode.argTypes.size.description": "The size of the QR code in pixels",
+    "stories.qrcode.argTypes.level.description": "Error correction level: L (7%), M (15%), Q (25%), H (30%)",
+    "stories.qrcode.argTypes.margin.description": "Margin around the QR code in modules",
+    "stories.qrcode.argTypes.quality.description": "Image quality for PNG output (0-1)",
+    "stories.qrcode.argTypes.backgroundColor.description": "Background color of the QR code",
+    "stories.qrcode.argTypes.foregroundColor.description": "Foreground color of the QR code",
+    "stories.qrcode.argTypes.onError.description": "Callback function called when QR code generation fails",
+    "stories.qrcode.argTypes.onGenerated.description": "Callback function called when QR code is successfully generated",
+    "stories.qrcode.argTypes.asChild.description": "Render as a child component instead of div"
   }
 }

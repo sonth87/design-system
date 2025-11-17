@@ -450,6 +450,28 @@
     "stories.category.time": "Bộ chọn Thời gian",
     "stories.category.scroll": "Hành vi Cuộn",
     "stories.category.layout": "Bố cục",
-    "stories.category.advanced": "Nâng cao"
+    "stories.category.advanced": "Nâng cao",
+
+    "stories.cropper.argTypes.aspectRatio.description": "Tỷ lệ khung hình của vùng cắt (chiều rộng/chiều cao)",
+    "stories.cropper.argTypes.shape.description": "Hình dạng của vùng cắt",
+    "stories.cropper.argTypes.objectFit.description": "Cách phương tiện vừa với container",
+    "stories.cropper.argTypes.withGrid.description": "Hiển thị đường lưới trong vùng cắt",
+    "stories.cropper.argTypes.zoom.description": "Mức thu phóng hiện tại",
+    "stories.cropper.argTypes.minZoom.description": "Mức thu phóng tối thiểu",
+    "stories.cropper.argTypes.maxZoom.description": "Mức thu phóng tối đa",
+    "stories.cropper.argTypes.rotation.description": "Góc xoay tính bằng độ",
+    "stories.cropper.argTypes.allowOverflow.description": "Cho phép vùng cắt tràn ra ngoài biên giới phương tiện",
+    "stories.cropper.argTypes.preventScrollZoom.description": "Ngăn chặn thu phóng bằng bánh xe chuột",
+
+    "stories.qrcode.argTypes.value.description": "Dữ liệu để mã hóa trong mã QR",
+    "stories.qrcode.argTypes.size.description": "Kích thước của mã QR tính bằng pixel",
+    "stories.qrcode.argTypes.level.description": "Mức sửa lỗi: L (7%), M (15%), Q (25%), H (30%)",
+    "stories.qrcode.argTypes.margin.description": "Lề xung quanh mã QR tính bằng module",
+    "stories.qrcode.argTypes.quality.description": "Chất lượng hình ảnh cho đầu ra PNG (0-1)",
+    "stories.qrcode.argTypes.backgroundColor.description": "Màu nền của mã QR",
+    "stories.qrcode.argTypes.foregroundColor.description": "Màu nền trước của mã QR",
+    "stories.qrcode.argTypes.onError.description": "Hàm callback được gọi khi tạo mã QR thất bại",
+    "stories.qrcode.argTypes.onGenerated.description": "Hàm callback được gọi khi mã QR được tạo thành công",
+    "stories.qrcode.argTypes.asChild.description": "Render như một thành phần con thay vì div"
   }
 }

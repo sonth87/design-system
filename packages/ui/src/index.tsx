@@ -1,3 +1,5 @@
+export { Slot } from "@radix-ui/react-slot";
+
 // Components
 export { Button, type ButtonProps, buttonVariants } from "./components/button";
 export {
@@ -63,3 +65,7 @@ export { ScrollArea, ScrollBar } from "./components/scroll-area";
 
 // Libs
 export { cn } from "./lib/utils";
+export { useComposedRefs, composeRefs } from "./lib/compose-refs";
+
+// Types
+export type { VariantProps } from "class-variance-authority";

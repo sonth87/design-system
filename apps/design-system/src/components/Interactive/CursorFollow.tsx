@@ -385,7 +385,15 @@ type useCursorFollowOptions = {
   style?: React.CSSProperties;
 };
 
-function useCursorFollow(options: useCursorFollowOptions = {}) {
+type UseCursorFollowType = {
+  ref: React.RefObject<HTMLDivElement | null>;
+  className: string;
+  style: React.CSSProperties;
+  "data-cursor-container": true;
+  children: (originalChildren: React.ReactNode) => React.ReactElement;
+};
+
+function useCursorFollow(options: useCursorFollowOptions = {}): UseCursorFollowType {
   const {
     cursorType = "default",
     followText,

@@ -101,6 +101,13 @@ export { TimeGridView } from "./components/TimeGridView";
 export { TimeColumnwheel as WheelColumn } from "./components/WheelColumn";
 
 // ============================================
+// INTERACTIVE COMPONENTS
+// ============================================
+
+export * from "./components/Cropper";
+export * from "./components/Interactive";
+
+// ============================================
 // CSS IMPORTS
 // ============================================
 // Users can import CSS files separately:

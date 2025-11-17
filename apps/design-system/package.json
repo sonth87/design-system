@@ -102,6 +102,16 @@
         "default": "./dist/cjs/components/Collapsible/Collapsible.cjs"
       }
     },
+    "./cropper": {
+      "import": {
+        "types": "./dist/types/components/Cropper/Cropper.d.ts",
+        "default": "./dist/esm/components/Cropper/Cropper.js"
+      },
+      "require": {
+        "types": "./dist/types/components/Cropper/Cropper.d.ts",
+        "default": "./dist/cjs/components/Cropper/Cropper.cjs"
+      }
+    },
     "./datepicker": {
       "import": {
         "types": "./dist/types/components/DatePicker/DatePicker.d.ts",
@@ -170,6 +180,16 @@
       "require": {
         "types": "./dist/types/components/Popover/Popover.d.ts",
         "default": "./dist/cjs/components/Popover/Popover.cjs"
+      }
+    },
+    "./qrcode": {
+      "import": {
+        "types": "./dist/types/components/QrCode/QrCode.d.ts",
+        "default": "./dist/esm/components/QrCode/QrCode.js"
+      },
+      "require": {
+        "types": "./dist/types/components/QrCode/QrCode.d.ts",
+        "default": "./dist/cjs/components/QrCode/QrCode.cjs"
       }
     },
     "./radio": {
@@ -372,6 +392,7 @@
   "dependencies": {
     "@number-flow/react": "^0.5.10",
     "@radix-ui/react-slider": "^1.3.6",
+    "@types/qrcode": "^1.5.6",
     "class-variance-authority": "^0.7.1",
     "date-fns": "^4.1.0",
     "lucide-react": "^0.546.0",
@@ -381,7 +402,8 @@
     "sonner": "^2.0.7",
     "tailwindcss": "^4.1.14",
     "tailwindcss-animate": "^1.0.7",
-    "use-mask-input": "^3.5.2"
+    "use-mask-input": "^3.5.2",
+    "qrcode": "^1.5.4"
   },
   "devDependencies": {
     "@dsui/ui": "workspace:*",
@@ -440,6 +462,9 @@
       "collapsible": [
         "./dist/types/components/Collapsible/Collapsible.d.ts"
       ],
+      "cropper": [
+        "./dist/types/components/Cropper/Cropper.d.ts"
+      ],
       "datepicker": [
         "./dist/types/components/DatePicker/DatePicker.d.ts"
       ],
@@ -460,6 +485,9 @@
       ],
       "popover": [
         "./dist/types/components/Popover/Popover.d.ts"
+      ],
+      "qrcode": [
+        "./dist/types/components/QrCode/QrCode.d.ts"
       ],
       "radio": [
         "./dist/types/components/Radio/Radio.d.ts"
