@@ -293,7 +293,9 @@ function QRCodeRoot(props: QRCodeRootProps) {
               ...style,
             } as React.CSSProperties
           }
-        />
+        >
+          {rootProps?.children ? rootProps.children : <QRCodeCanvas />}
+        </RootPrimitive>
       </QRCodeContext.Provider>
     </StoreContext.Provider>
   );

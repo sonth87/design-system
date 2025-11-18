@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import * as QRCode from "../components/QrCode/QrCode";
+import { QRCode, Canvas, Overlay } from "../components/QrCode/QrCode";
 import i18n from "../../.storybook/i18n";
 
-const meta: Meta<typeof QRCode.Root> = {
+const meta: Meta<typeof QRCode> = {
   title: "Media/QRCode",
-  component: QRCode.Root,
+  component: QRCode,
   parameters: {
     layout: "centered",
   },
@@ -97,20 +97,47 @@ export const Default: Story = {
   args: {
     value: "https://example.com",
   },
-  render: (args) => (
-    <QRCode.Root {...args}>
-      <QRCode.Canvas />
-    </QRCode.Root>
+  render: (args) => <QRCode {...args} />,
+};
+
+export const Colorful: Story = {
+  render: () => (
+    <div className="flex gap-2">
+      <QRCode
+        value="https://example.com"
+        size={100}
+        foregroundColor="#3b82f6"
+        backgroundColor="#f1f5f9"
+      >
+        <Canvas />
+      </QRCode>
+      <QRCode
+        value="https://example.com"
+        size={100}
+        foregroundColor="#ffb9fd"
+        backgroundColor="#ff00ee"
+      >
+        <Canvas />
+      </QRCode>
+      <QRCode
+        value="https://example.com"
+        size={100}
+        foregroundColor="#fff200"
+        backgroundColor="#b3f4bc"
+      >
+        <Canvas />
+      </QRCode>
+    </div>
   ),
 };
 
 export const WithOverlay: Story = {
   render: () => (
-    <QRCode.Root value="https://example.com">
-      <QRCode.Canvas />
-      <QRCode.Overlay>
-        <span>Scan me!</span>
-      </QRCode.Overlay>
-    </QRCode.Root>
+    <QRCode value="https://example.com">
+      <Canvas />
+      <Overlay className="rounded-full border-2 border-white bg-linear-to-br from-primary to-secondary p-2 text-white">
+        <span>Hi!</span>
+      </Overlay>
+    </QRCode>
   ),
 };

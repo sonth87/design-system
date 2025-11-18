@@ -187,7 +187,7 @@ export const Default: Story = {
   },
   render: (args) => (
     <div className="relative h-[300px] w-[500px] flex items-center justify-center bg-gradient-to-br from-slate-900 to-slate-800 rounded-xl">
-      <CursorProvider cursorType="default">
+      <CursorProvider cursorType={<div className="h-12 w-12 rounded-full bg-gradient-to-br from-pink-400 to-purple-400 opacity-50 blur-sm" />}>
         <div className="text-white text-lg">Move your cursor here</div>
         <CursorFollow {...args} />
       </CursorProvider>
