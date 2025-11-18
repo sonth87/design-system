@@ -62,7 +62,7 @@ export interface CroppedImageOptions {
  *   format: 'image/png',
  *   quality: 0.95
  * });
- * 
+ *
  * // Get Blob
  * const croppedImageBlob = await getCroppedImg({
  *   imageSrc: 'https://example.com/image.jpg',
@@ -72,13 +72,13 @@ export interface CroppedImageOptions {
  * ```
  */
 export async function getCroppedImg(
-  options: CroppedImageOptions & { type: "blob" }
+  options: CroppedImageOptions & { type: "blob" },
 ): Promise<Blob>;
 export async function getCroppedImg(
-  options: CroppedImageOptions & { type?: "base64" }
+  options: CroppedImageOptions & { type?: "base64" },
 ): Promise<string>;
 export async function getCroppedImg(
-  options: CroppedImageOptions
+  options: CroppedImageOptions,
 ): Promise<string | Blob> {
   const {
     imageSrc,
@@ -138,7 +138,7 @@ export async function getCroppedImg(
     -image.width / 2,
     -image.height / 2,
     image.width,
-    image.height
+    image.height,
   );
 
   // Step 2: Create output canvas and crop from temp canvas
@@ -163,11 +163,11 @@ export async function getCroppedImg(
   // Calculate how much of the crop area is actually within the image bounds
   const sourceWidth = Math.min(
     pixelCrop.width - Math.max(0, -pixelCrop.x), // Reduce width if crop starts before image
-    bBoxWidth - sourceX // Don't exceed image right edge
+    bBoxWidth - sourceX, // Don't exceed image right edge
   );
   const sourceHeight = Math.min(
     pixelCrop.height - Math.max(0, -pixelCrop.y), // Reduce height if crop starts before image
-    bBoxHeight - sourceY // Don't exceed image bottom edge
+    bBoxHeight - sourceY, // Don't exceed image bottom edge
   );
 
   // Calculate where to place the cropped portion on the output canvas
@@ -186,7 +186,7 @@ export async function getCroppedImg(
       destX,
       destY,
       sourceWidth,
-      sourceHeight
+      sourceHeight,
     );
   }
 
@@ -199,7 +199,7 @@ export async function getCroppedImg(
       canvas.height / 2,
       Math.min(canvas.width, canvas.height) / 2,
       0,
-      Math.PI * 2
+      Math.PI * 2,
     );
     ctx.fill();
   }
@@ -216,7 +216,7 @@ export async function getCroppedImg(
           }
         },
         format,
-        quality
+        quality,
       );
     });
   }
@@ -259,7 +259,7 @@ function getRadianAngle(degreeValue: number): number {
 export function rotateSize(
   width: number,
   height: number,
-  rotation: number
+  rotation: number,
 ): { width: number; height: number } {
   const rotRad = getRadianAngle(rotation);
   const cosRot = Math.cos(rotRad);
@@ -285,7 +285,7 @@ export function rotateSize(
  */
 export function downloadImage(
   base64Data: string,
-  filename: string = "cropped-image.jpg"
+  filename: string = "cropped-image.jpg",
 ): void {
   const link = document.createElement("a");
   link.href = base64Data;

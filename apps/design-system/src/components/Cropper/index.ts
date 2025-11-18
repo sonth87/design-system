@@ -1,9 +1,4 @@
 export {
-  Root,
-  Image,
-  Video,
-  Area,
-  //
   Cropper,
   CropperImage,
   CropperVideo,
@@ -20,6 +15,12 @@ export {
 } from "./Cropper";
 
 export {
+  CropperTool,
+  useCropperTool,
+  type CropperToolProps,
+} from "./CropperTool";
+
+export {
   getCroppedImg,
   downloadImage,
   base64ToBlob,
@@ -27,9 +28,3 @@ export {
   rotateSize,
   type CroppedImageOptions,
 } from "./utils";
-
-export {
-  CropperTool,
-  useCropperTool,
-  type CropperToolProps,
-} from "./CropperTool";

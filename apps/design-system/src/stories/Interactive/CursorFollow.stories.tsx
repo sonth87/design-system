@@ -37,7 +37,7 @@ const meta = {
     sideOffset: {
       control: { type: "range", min: 0, max: 100, step: 5 },
       description: i18n.t(
-        "stories.cursorfollow.argTypes.sideOffset.description"
+        "stories.cursorfollow.argTypes.sideOffset.description",
       ),
       table: {
         category: "CursorFollow",
@@ -47,7 +47,7 @@ const meta = {
     followText: {
       control: "text",
       description: i18n.t(
-        "stories.cursorfollow.argTypes.followText.description"
+        "stories.cursorfollow.argTypes.followText.description",
       ),
       table: {
         category: "CursorFollow",
@@ -63,7 +63,7 @@ const meta = {
     transition: {
       control: "object",
       description: i18n.t(
-        "stories.cursorfollow.argTypes.transition.description"
+        "stories.cursorfollow.argTypes.transition.description",
       ),
       table: {
         category: "CursorFollow",
@@ -76,7 +76,7 @@ const meta = {
       control: "select",
       options: ["default", "pointer"],
       description: i18n.t(
-        "stories.cursorfollow.argTypes.cursorType.description"
+        "stories.cursorfollow.argTypes.cursorType.description",
       ),
       table: {
         category: "CursorProvider",
@@ -86,7 +86,7 @@ const meta = {
     showFollow: {
       control: "boolean",
       description: i18n.t(
-        "stories.cursorfollow.argTypes.showFollow.description"
+        "stories.cursorfollow.argTypes.showFollow.description",
       ),
       table: {
         category: "CursorProvider",
@@ -107,7 +107,7 @@ const meta = {
         "center",
       ],
       description: i18n.t(
-        "stories.cursorfollow.argTypes.followAlign.description"
+        "stories.cursorfollow.argTypes.followAlign.description",
       ),
       table: {
         category: "CursorProvider",
@@ -117,7 +117,7 @@ const meta = {
     followSideOffset: {
       control: { type: "range", min: 0, max: 100, step: 5 },
       description: i18n.t(
-        "stories.cursorfollow.argTypes.followSideOffset.description"
+        "stories.cursorfollow.argTypes.followSideOffset.description",
       ),
       table: {
         category: "CursorProvider",
@@ -128,7 +128,7 @@ const meta = {
       control: "select",
       options: ["slow", "normal", "fast", "realtime"],
       description: i18n.t(
-        "stories.cursorfollow.argTypes.followTransition.description"
+        "stories.cursorfollow.argTypes.followTransition.description",
       ),
       table: {
         category: "CursorProvider",
@@ -147,7 +147,7 @@ const meta = {
       control: "select",
       options: ["slow", "normal", "fast", "realtime"],
       description: i18n.t(
-        "stories.cursorfollow.argTypes.transitionPreset.description"
+        "stories.cursorfollow.argTypes.transitionPreset.description",
       ),
       table: {
         category: "Animation",
@@ -159,7 +159,7 @@ const meta = {
     className: {
       control: "text",
       description: i18n.t(
-        "stories.cursorfollow.argTypes.className.description"
+        "stories.cursorfollow.argTypes.className.description",
       ),
       table: {
         category: "Styling",
@@ -187,7 +187,11 @@ export const Default: Story = {
   },
   render: (args) => (
     <div className="relative h-[300px] w-[500px] flex items-center justify-center bg-gradient-to-br from-slate-900 to-slate-800 rounded-xl">
-      <CursorProvider cursorType={<div className="h-12 w-12 rounded-full bg-gradient-to-br from-pink-400 to-purple-400 opacity-50 blur-sm" />}>
+      <CursorProvider
+        cursorType={
+          <div className="h-12 w-12 rounded-full bg-gradient-to-br from-pink-400 to-purple-400 opacity-50 blur-sm" />
+        }
+      >
         <div className="text-white text-lg">Move your cursor here</div>
         <CursorFollow {...args} />
       </CursorProvider>
@@ -414,7 +418,7 @@ export const Method2_Hook = () => {
 }`}
             </p>
           </div>
-        </div>
+        </div>,
       )}
     </div>
   );
@@ -480,7 +484,7 @@ export const HookWithDefaultCursor = () => {
 });`}
             </p>
           </div>
-        </div>
+        </div>,
       )}
     </div>
   );

@@ -472,6 +472,19 @@
     "stories.qrcode.argTypes.foregroundColor.description": "Màu nền trước của mã QR",
     "stories.qrcode.argTypes.onError.description": "Hàm callback được gọi khi tạo mã QR thất bại",
     "stories.qrcode.argTypes.onGenerated.description": "Hàm callback được gọi khi mã QR được tạo thành công",
-    "stories.qrcode.argTypes.asChild.description": "Render như một thành phần con thay vì div"
+    "stories.qrcode.argTypes.asChild.description": "Render như một thành phần con thay vì div",
+
+    "stories.marquee.argTypes.children.description": "Nội dung được hiển thị bên trong marquee",
+    "stories.marquee.argTypes.items.description": "Mảng các mục hiển thị trong marquee",
+    "stories.marquee.argTypes.fade.description": "Bật hiệu ứng mờ dần ở các cạnh",
+    "stories.marquee.argTypes.side.description": "Hướng di chuyển của marquee",
+    "stories.marquee.argTypes.speed.description": "Tốc độ hoạt hình của marquee",
+    "stories.marquee.argTypes.delay.description": "Độ trễ trước khi bắt đầu hoạt hình",
+    "stories.marquee.argTypes.loopCount.description": "Số lần lặp lại hoạt hình",
+    "stories.marquee.argTypes.gap.description": "Khoảng cách giữa các mục",
+    "stories.marquee.argTypes.autoFill.description": "Tự động điền marquee với các mục",
+    "stories.marquee.argTypes.pauseOnHover.description": "Tạm dừng hoạt hình khi di chuột",
+    "stories.marquee.argTypes.pauseOnKeyboard.description": "Tạm dừng hoạt hình khi tương tác bàn phím",
+    "stories.marquee.argTypes.reverse.description": "Đảo ngược hướng hoạt hình"
   }
 }

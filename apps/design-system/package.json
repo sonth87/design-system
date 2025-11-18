@@ -172,6 +172,16 @@
         "default": "./dist/cjs/components/InputOTP/InputOTP.cjs"
       }
     },
+    "./marquee": {
+      "import": {
+        "types": "./dist/types/components/Marquee/Marquee.d.ts",
+        "default": "./dist/esm/components/Marquee/Marquee.js"
+      },
+      "require": {
+        "types": "./dist/types/components/Marquee/Marquee.d.ts",
+        "default": "./dist/cjs/components/Marquee/Marquee.cjs"
+      }
+    },
     "./popover": {
       "import": {
         "types": "./dist/types/components/Popover/Popover.d.ts",
@@ -482,6 +492,9 @@
       ],
       "inputotp": [
         "./dist/types/components/InputOTP/InputOTP.d.ts"
+      ],
+      "marquee": [
+        "./dist/types/components/Marquee/Marquee.d.ts"
       ],
       "popover": [
         "./dist/types/components/Popover/Popover.d.ts"

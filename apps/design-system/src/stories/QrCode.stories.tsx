@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { QRCode, Canvas, Overlay } from "../components/QrCode/QrCode";
+import { QRCode } from "../components/QrCode";
 import i18n from "../../.storybook/i18n";
 
 const meta: Meta<typeof QRCode> = {
@@ -49,7 +49,7 @@ const meta: Meta<typeof QRCode> = {
     },
     backgroundColor: {
       description: i18n.t(
-        "stories.qrcode.argTypes.backgroundColor.description"
+        "stories.qrcode.argTypes.backgroundColor.description",
       ),
       control: "color",
       table: {
@@ -58,7 +58,7 @@ const meta: Meta<typeof QRCode> = {
     },
     foregroundColor: {
       description: i18n.t(
-        "stories.qrcode.argTypes.foregroundColor.description"
+        "stories.qrcode.argTypes.foregroundColor.description",
       ),
       control: "color",
       table: {
@@ -109,7 +109,7 @@ export const Colorful: Story = {
         foregroundColor="#3b82f6"
         backgroundColor="#f1f5f9"
       >
-        <Canvas />
+        <QRCode.Canvas />
       </QRCode>
       <QRCode
         value="https://example.com"
@@ -117,7 +117,7 @@ export const Colorful: Story = {
         foregroundColor="#ffb9fd"
         backgroundColor="#ff00ee"
       >
-        <Canvas />
+        <QRCode.Canvas />
       </QRCode>
       <QRCode
         value="https://example.com"
@@ -125,7 +125,7 @@ export const Colorful: Story = {
         foregroundColor="#fff200"
         backgroundColor="#b3f4bc"
       >
-        <Canvas />
+        <QRCode.Canvas />
       </QRCode>
     </div>
   ),
@@ -134,10 +134,10 @@ export const Colorful: Story = {
 export const WithOverlay: Story = {
   render: () => (
     <QRCode value="https://example.com">
-      <Canvas />
-      <Overlay className="rounded-full border-2 border-white bg-linear-to-br from-primary to-secondary p-2 text-white">
+      <QRCode.Canvas />
+      <QRCode.Overlay className="rounded-full border-2 border-white bg-linear-to-br from-primary to-secondary p-2 text-white">
         <span>Hi!</span>
-      </Overlay>
+      </QRCode.Overlay>
     </QRCode>
   ),
 };

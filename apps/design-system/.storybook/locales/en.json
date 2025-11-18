@@ -472,6 +472,19 @@
     "stories.qrcode.argTypes.foregroundColor.description": "Foreground color of the QR code",
     "stories.qrcode.argTypes.onError.description": "Callback function called when QR code generation fails",
     "stories.qrcode.argTypes.onGenerated.description": "Callback function called when QR code is successfully generated",
-    "stories.qrcode.argTypes.asChild.description": "Render as a child component instead of div"
+    "stories.qrcode.argTypes.asChild.description": "Render as a child component instead of div",
+
+    "stories.marquee.argTypes.children.description": "Content to be rendered inside the marquee",
+    "stories.marquee.argTypes.items.description": "Array of items to display in the marquee",
+    "stories.marquee.argTypes.fade.description": "Enable fade effect at the edges",
+    "stories.marquee.argTypes.side.description": "Direction of the marquee movement",
+    "stories.marquee.argTypes.speed.description": "Speed of the marquee animation",
+    "stories.marquee.argTypes.delay.description": "Delay before starting the animation",
+    "stories.marquee.argTypes.loopCount.description": "Number of times to loop the animation",
+    "stories.marquee.argTypes.gap.description": "Gap between items",
+    "stories.marquee.argTypes.autoFill.description": "Automatically fill the marquee with items",
+    "stories.marquee.argTypes.pauseOnHover.description": "Pause animation on hover",
+    "stories.marquee.argTypes.pauseOnKeyboard.description": "Pause animation on keyboard interaction",
+    "stories.marquee.argTypes.reverse.description": "Reverse the direction of animation"
   }
 }

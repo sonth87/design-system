@@ -30,7 +30,7 @@ type CursorContextType = {
 };
 
 const CursorContext = React.createContext<CursorContextType | undefined>(
-  undefined
+  undefined,
 );
 
 const useCursor = (): CursorContextType => {
@@ -175,12 +175,12 @@ function Cursor({
   // Determine which content to render
   const getCursorContent = () => {
     if (children) return children;
-    
+
     // Check if cursorType is a preset key
-    if (typeof cursorType === 'string' && cursorType in cursorVariants) {
+    if (typeof cursorType === "string" && cursorType in cursorVariants) {
       return cursorVariants[cursorType as CursorVariantKey];
     }
-    
+
     // Otherwise treat it as custom ReactNode
     return cursorType;
   };
@@ -218,7 +218,7 @@ function Cursor({
           data-slot="cursor"
           className={cn(
             "transform-[translate(-50%,-50%)] pointer-events-none z-[9999] absolute",
-            className
+            className,
           )}
           style={{ top: y, left: x, ...style }}
           initial={{ scale: 0, opacity: 0 }}
@@ -258,7 +258,7 @@ function CursorFollow({
   const cursorFollowRef = React.useRef<HTMLDivElement>(null);
   React.useImperativeHandle(
     ref,
-    () => cursorFollowRef.current as HTMLDivElement
+    () => cursorFollowRef.current as HTMLDivElement,
   );
 
   const x = useMotionValue(0);
@@ -350,7 +350,7 @@ function CursorFollow({
           data-slot="cursor-follow"
           className={cn(
             "transform-[translate(-50%,-50%)] pointer-events-none z-[9998] absolute",
-            className
+            className,
           )}
           style={{ top: springY, left: springX, ...style }}
           initial={{ scale: 0, opacity: 0 }}
@@ -393,7 +393,9 @@ type UseCursorFollowType = {
   children: (originalChildren: React.ReactNode) => React.ReactElement;
 };
 
-function useCursorFollow(options: useCursorFollowOptions = {}): UseCursorFollowType {
+function useCursorFollow(
+  options: useCursorFollowOptions = {},
+): UseCursorFollowType {
   const {
     cursorType = "default",
     followText,

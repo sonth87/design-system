@@ -92,6 +92,12 @@ export * from "./components/Toggle";
 // Tooltip
 export * from "./components/Tooltip";
 
+// QR Code
+export * from "./components/QrCode";
+
+// Marquee
+export * from "./components/Marquee";
+
 // ============================================
 // STANDALONE COMPONENTS
 // ============================================
