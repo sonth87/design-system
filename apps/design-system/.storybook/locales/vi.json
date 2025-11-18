@@ -223,6 +223,19 @@
     "stories.tooltip.argTypes.className.description": "Lớp CSS tùy chỉnh cho nội dung",
     "stories.tooltip.argTypes.children.description": "Phần tử kích hoạt",
 
+    "stories.treeselect.argTypes.data.description": "Cấu trúc dữ liệu cây với các mục và con",
+    "stories.treeselect.argTypes.initialSelectedItemId.description": "ID của mục được chọn ban đầu",
+    "stories.treeselect.argTypes.onSelectChange.description": "Hàm callback khi thay đổi lựa chọn mục",
+    "stories.treeselect.argTypes.expandAll.description": "Mở rộng tất cả các nút cây theo mặc định",
+    "stories.treeselect.argTypes.defaultNodeIcon.description": "Icon mặc định cho các nút có con (thư mục)",
+    "stories.treeselect.argTypes.defaultLeafIcon.description": "Icon mặc định cho các nút lá (tệp tin)",
+    "stories.treeselect.argTypes.multiSelect.description": "Bật chế độ chọn nhiều với checkbox",
+    "stories.treeselect.argTypes.selectedIds.description": "Mảng các ID mục đã chọn (chế độ controlled)",
+    "stories.treeselect.argTypes.onMultiSelectChange.description": "Hàm callback khi thay đổi lựa chọn nhiều",
+    "stories.treeselect.argTypes.showIcon.description": "Hiển thị icon cho các nút cây (thư mục)",
+    "stories.treeselect.argTypes.showLeafIcon.description": "Hiển thị icon cho các nút lá (tệp tin)",
+    "stories.treeselect.argTypes.treeLine.description": "Hiển thị đường kẻ nối giữa các nút",
+
     "stories.toast.argTypes.position.description": "Vị trí của container toast trên màn hình",
     "stories.toast.argTypes.richColors.description": "Bật màu sắc phong phú cho các loại toast khác nhau",
     "stories.toast.argTypes.expand.description": "Cho phép toast mở rộng khi nội dung dài",
@@ -406,6 +419,8 @@
     "stories.breadcrumb.argTypes.className.description": "Các lớp CSS bổ sung",
 
     "stories.category.basic": "Cơ bản",
+    "stories.category.data": "Dữ liệu",
+    "stories.category.state": "Trạng thái",
     "stories.category.appearance": "Hiển thị",
     "stories.category.behavior": "Hành vi",
     "stories.category.content": "Nội dung",

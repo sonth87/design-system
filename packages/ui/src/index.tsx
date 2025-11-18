@@ -58,6 +58,7 @@ export {
   DrawerDescription,
 } from "./components/drawer";
 export { ScrollArea, ScrollBar } from "./components/scroll-area";
+export { TreeView, type TreeDataItem } from "./components/tree-view";
 
 // Hooks
 

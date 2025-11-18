@@ -223,6 +223,19 @@
     "stories.tooltip.argTypes.className.description": "Custom CSS class for content",
     "stories.tooltip.argTypes.children.description": "Trigger element",
 
+    "stories.treeselect.argTypes.data.description": "Tree data structure with items and children",
+    "stories.treeselect.argTypes.initialSelectedItemId.description": "Initial selected item ID",
+    "stories.treeselect.argTypes.onSelectChange.description": "Callback function when item selection changes",
+    "stories.treeselect.argTypes.expandAll.description": "Expand all tree nodes by default",
+    "stories.treeselect.argTypes.defaultNodeIcon.description": "Default icon for nodes with children (folders)",
+    "stories.treeselect.argTypes.defaultLeafIcon.description": "Default icon for leaf nodes (files)",
+    "stories.treeselect.argTypes.multiSelect.description": "Enable multi-select mode with checkboxes",
+    "stories.treeselect.argTypes.selectedIds.description": "Array of selected item IDs (controlled mode)",
+    "stories.treeselect.argTypes.onMultiSelectChange.description": "Callback function when multi-select changes",
+    "stories.treeselect.argTypes.showIcon.description": "Show icons for tree nodes (folders)",
+    "stories.treeselect.argTypes.showLeafIcon.description": "Show icons for leaf nodes (files)",
+    "stories.treeselect.argTypes.treeLine.description": "Show tree lines connecting nodes",
+
     "stories.toast.argTypes.position.description": "Position of the toast container on the screen",
     "stories.toast.argTypes.richColors.description": "Enable rich colors for different toast types",
     "stories.toast.argTypes.expand.description": "Allow toasts to expand when content is long",
@@ -406,6 +419,8 @@
     "stories.breadcrumb.argTypes.className.description": "Additional CSS classes",
 
     "stories.category.basic": "Basic",
+    "stories.category.data": "Data",
+    "stories.category.state": "State",
     "stories.category.appearance": "Appearance",
     "stories.category.behavior": "Behavior",
     "stories.category.content": "Content",
