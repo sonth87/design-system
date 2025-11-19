@@ -506,6 +506,19 @@
     "stories.marquee.argTypes.autoFill.description": "Tự động điền marquee với các mục",
     "stories.marquee.argTypes.pauseOnHover.description": "Tạm dừng hoạt hình khi di chuột",
     "stories.marquee.argTypes.pauseOnKeyboard.description": "Tạm dừng hoạt hình khi tương tác bàn phím",
-    "stories.marquee.argTypes.reverse.description": "Đảo ngược hướng hoạt hình"
+    "stories.marquee.argTypes.reverse.description": "Đảo ngược hướng hoạt hình",
+
+    "stories.pagination.argTypes.total.description": "Tổng số trang có sẵn để phân trang",
+    "stories.pagination.argTypes.currentPage.description": "Số trang đang hoạt động",
+    "stories.pagination.argTypes.onPageChange.description": "Hàm callback được gọi khi trang thay đổi",
+    "stories.pagination.argTypes.showPreviousNext.description": "Có hiển thị các nút điều hướng Trước/Sau hay không",
+    "stories.pagination.argTypes.color.description": "Màu chủ đề cho các nút phân trang",
+    "stories.pagination.argTypes.size.description": "Kích thước biến thể cho các nút phân trang",
+    "stories.pagination.argTypes.maxPages.description": "Số lượng tối đa các nút trang để hiển thị",
+    "stories.pagination.argTypes.previousText.description": "Văn bản cho nút Trước. Đặt thành false để ẩn văn bản, true cho mặc định 'Trước', hoặc chuỗi tùy chỉnh",
+    "stories.pagination.argTypes.nextText.description": "Văn bản cho nút Sau. Đặt thành false để ẩn văn bản, true cho mặc định 'Sau', hoặc chuỗi tùy chỉnh",
+    "stories.pagination.argTypes.jumpOnEllipsis.description": "Bật tính năng nhảy-trên-dấu-chấm - di chuột qua dấu chấm hiển thị các nút Trước/Sau theo hướng",
+    "stories.pagination.argTypes.animation.description": "Cấu hình hoạt hình cho các nút phân trang",
+    "stories.pagination.argTypes.className.description": "Các lớp CSS bổ sung để áp dụng cho container phân trang"
   }
 }

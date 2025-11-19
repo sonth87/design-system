@@ -45,7 +45,7 @@ A flexible stepper component that provides navigation through a series of steps.
 />
 \`\`\`
 
-### 1.1. Basic Stepper with Custom Content
+### 1.1. Stepper with Custom Content
 Use the Stepper with custom JSX content for full control over step rendering:
 
 \`\`\`tsx
@@ -119,7 +119,7 @@ Use vertical layout for different UI requirements:
       control: { type: "select" },
       options: ["automatic", "manual"],
       description: i18n.t(
-        "stories.stepper.argTypes.activationMode.description"
+        "stories.stepper.argTypes.activationMode.description",
       ),
       table: {
         category: i18n.t("stories.category.behavior"),
@@ -201,7 +201,7 @@ Use vertical layout for different UI requirements:
     },
     onValueComplete: {
       description: i18n.t(
-        "stories.stepper.argTypes.onValueComplete.description"
+        "stories.stepper.argTypes.onValueComplete.description",
       ),
       table: {
         category: i18n.t("stories.category.events"),
@@ -236,7 +236,7 @@ Use vertical layout for different UI requirements:
     nonInteractive: {
       control: { type: "boolean" },
       description: i18n.t(
-        "stories.stepper.argTypes.nonInteractive.description"
+        "stories.stepper.argTypes.nonInteractive.description",
       ),
       table: {
         category: i18n.t("stories.category.behavior"),
@@ -327,7 +327,7 @@ export const Manual = () => {
             <Stepper.Content key={step.value} value={step.value}>
               {step.content}
             </Stepper.Content>
-          )
+          ),
       )}
     </Stepper>
   );
@@ -344,14 +344,14 @@ export const WithValidation = () => {
           .min(3, "Username must be at least 3 characters")
           .regex(
             /^[a-zA-Z0-9_]+$/,
-            "Username can only contain letters, numbers, and underscores"
+            "Username can only contain letters, numbers, and underscores",
           ),
         email: z.email("Please enter a valid email address"),
         firstName: z.string().min(1, "First name is required"),
         lastName: z.string().min(1, "Last name is required"),
         bio: z.string().min(10, "Bio must be at least 10 characters"),
       }),
-    []
+    [],
   );
 
   type FormSchema = z.infer<typeof formSchema>;
@@ -377,7 +377,7 @@ export const WithValidation = () => {
         fields: [] as const,
       },
     ],
-    []
+    [],
   );
 
   const form = useForm<FormSchema>({
@@ -393,7 +393,7 @@ export const WithValidation = () => {
 
   const stepIndex = React.useMemo(
     () => steps.findIndex((s) => s.value === step),
-    [step, steps]
+    [step, steps],
   );
 
   const onValidate: NonNullable<StepperProps["onValidate"]> = React.useCallback(
@@ -413,12 +413,12 @@ export const WithValidation = () => {
 
       return isValid;
     },
-    [form, step, steps]
+    [form, step, steps],
   );
 
   const onSubmit = React.useCallback((input: FormSchema) => {
     toast.success(
-      <pre className="w-full">{JSON.stringify(input, null, 2)}</pre>
+      <pre className="w-full">{JSON.stringify(input, null, 2)}</pre>,
     );
   }, []);
 

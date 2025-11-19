@@ -182,6 +182,16 @@
         "default": "./dist/cjs/components/Marquee/Marquee.cjs"
       }
     },
+    "./pagination": {
+      "import": {
+        "types": "./dist/types/components/Pagination/Pagination.d.ts",
+        "default": "./dist/esm/components/Pagination/Pagination.js"
+      },
+      "require": {
+        "types": "./dist/types/components/Pagination/Pagination.d.ts",
+        "default": "./dist/cjs/components/Pagination/Pagination.cjs"
+      }
+    },
     "./popover": {
       "import": {
         "types": "./dist/types/components/Popover/Popover.d.ts",
@@ -508,6 +518,9 @@
       ],
       "marquee": [
         "./dist/types/components/Marquee/Marquee.d.ts"
+      ],
+      "pagination": [
+        "./dist/types/components/Pagination/Pagination.d.ts"
       ],
       "popover": [
         "./dist/types/components/Popover/Popover.d.ts"

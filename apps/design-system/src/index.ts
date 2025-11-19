@@ -98,6 +98,12 @@ export * from "./components/QrCode";
 // Marquee
 export * from "./components/Marquee";
 
+// Stepper
+export * from "./components/Stepper";
+
+// Pagination
+export * from "./components/Pagination";
+
 // ============================================
 // STANDALONE COMPONENTS
 // ============================================

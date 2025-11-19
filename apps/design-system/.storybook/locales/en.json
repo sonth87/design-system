@@ -506,6 +506,19 @@
     "stories.marquee.argTypes.autoFill.description": "Automatically fill the marquee with items",
     "stories.marquee.argTypes.pauseOnHover.description": "Pause animation on hover",
     "stories.marquee.argTypes.pauseOnKeyboard.description": "Pause animation on keyboard interaction",
-    "stories.marquee.argTypes.reverse.description": "Reverse the direction of animation"
+    "stories.marquee.argTypes.reverse.description": "Reverse the direction of animation",
+
+    "stories.pagination.argTypes.total.description": "Total number of pages available for pagination",
+    "stories.pagination.argTypes.currentPage.description": "Currently active page number",
+    "stories.pagination.argTypes.onPageChange.description": "Callback function called when page changes",
+    "stories.pagination.argTypes.showPreviousNext.description": "Whether to show Previous/Next navigation buttons",
+    "stories.pagination.argTypes.color.description": "Color theme for pagination buttons",
+    "stories.pagination.argTypes.size.description": "Size variant for pagination buttons",
+    "stories.pagination.argTypes.maxPages.description": "Maximum number of page buttons to display",
+    "stories.pagination.argTypes.previousText.description": "Text for the Previous button. Set to false to hide text, true for default 'Previous', or custom string",
+    "stories.pagination.argTypes.nextText.description": "Text for the Next button. Set to false to hide text, true for default 'Next', or custom string",
+    "stories.pagination.argTypes.jumpOnEllipsis.description": "Enable jump-on-ellipsis feature - hovering over ellipsis shows directional Previous/Next buttons",
+    "stories.pagination.argTypes.animation.description": "Animation configuration for pagination buttons",
+    "stories.pagination.argTypes.className.description": "Additional CSS classes to apply to the pagination container"
   }
 }
