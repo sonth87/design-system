@@ -5,10 +5,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { toast } from "@/components/Toast";
-import { Button } from "@dsui/ui/index";
 import Input from "@/components/Input";
 import Textarea from "@/components/Textarea";
 import i18n from "../../.storybook/i18n";
+import Button from "@/components/Button";
 
 const meta: Meta<typeof Stepper> = {
   title: "Navigation/Stepper",
@@ -424,7 +424,12 @@ export const WithValidation = () => {
 
   return (
     <form className="w-full" onSubmit={form.handleSubmit(onSubmit)}>
-      <Stepper value={step} onValueChange={setStep} onValidate={onValidate}>
+      <Stepper
+        value={step}
+        onValueChange={setStep}
+        onValidate={onValidate}
+        steps={steps}
+      >
         <Stepper.Content
           value="account"
           className="flex flex-col gap-4 rounded-md border bg-card p-4 text-card-foreground"
