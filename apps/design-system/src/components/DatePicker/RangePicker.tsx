@@ -109,6 +109,7 @@ export type RangePickerProps = Omit<
   separator?: React.ReactNode;
   timeConfig?: [TimeConfig, TimeConfig];
   numberOfMonths?: number;
+  variant?: "default" | "rounded";
 };
 
 export function RangePicker({
@@ -135,6 +136,7 @@ export function RangePicker({
   timeFormat = "HH:mm",
   hideDate = false,
   numberOfMonths = 1,
+  variant = "default",
   ...props
 }: RangePickerProps) {
   const inputId = React.useId();
@@ -384,6 +386,7 @@ export function RangePicker({
           month={month}
           onMonthChange={setMonth}
           numberOfMonths={isMobile ? 1 : numberOfMonths || 1}
+          variant={variant}
           onSelect={(selectedRange) => {
             // Preserve time from TimePicker values if showTime is enabled
             let preservedRange = selectedRange;

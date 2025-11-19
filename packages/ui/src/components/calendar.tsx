@@ -13,6 +13,7 @@ import { Button, buttonVariants } from "@dsui/ui/components/button";
 
 type CalendarProps = React.ComponentProps<typeof DayPicker> & {
   buttonVariant?: React.ComponentProps<typeof Button>["variant"];
+  variant?: "default" | "rounded";
 };
 function Calendar({
   className,
@@ -20,6 +21,7 @@ function Calendar({
   showOutsideDays = true,
   captionLayout = "label",
   buttonVariant = "ghost",
+  variant = "default",
   formatters,
   components,
   ...props
@@ -108,13 +110,25 @@ function Calendar({
           defaultClassNames.day,
         ),
         range_start: cn(
-          "rounded-l-md bg-accent",
+          variant === "rounded"
+            ? "bg-primary/20 dark:bg-primary/10 rounded-l-full"
+            : "rounded-l-md bg-accent",
           defaultClassNames.range_start,
         ),
-        range_middle: cn("rounded-none", defaultClassNames.range_middle),
-        range_end: cn("rounded-r-md bg-accent", defaultClassNames.range_end),
+        range_middle: cn(
+          variant === "rounded" ? "rounded-none" : "rounded-none",
+          defaultClassNames.range_middle,
+        ),
+        range_end: cn(
+          variant === "rounded"
+            ? "bg-primary/20 dark:bg-primary/10 rounded-r-full"
+            : "rounded-r-md bg-accent",
+          defaultClassNames.range_end,
+        ),
         today: cn(
-          "bg-accent text-accent-foreground rounded-md data-[selected=true]:rounded-none",
+          variant === "rounded"
+            ? "rounded-full bg-accent data-[selected=true]:rounded-l-none data-[selected=true]:bg-primary/20 dark:data-[selected=true]:bg-primary/10 [&_button[data-range-middle=true]]:bg-transparent"
+            : "bg-accent text-accent-foreground rounded-md data-[selected=true]:rounded-none",
           defaultClassNames.today,
         ),
         outside: cn(
@@ -159,7 +173,9 @@ function Calendar({
             <ChevronDownIcon className={cn("size-4", className)} {...props} />
           );
         },
-        DayButton: CalendarDayButton,
+        DayButton: (props) => (
+          <CalendarDayButton {...props} variant={variant} />
+        ),
         WeekNumber: ({ children, ...props }) => {
           return (
             <td {...props}>
@@ -179,11 +195,14 @@ function Calendar({
 type CalendarDayButtonProps = Omit<
   React.ComponentProps<typeof DayButton>,
   "color"
->;
+> & {
+  variant?: "default" | "rounded";
+};
 function CalendarDayButton({
   className,
   day,
   modifiers,
+  variant = "default",
   ...props
 }: CalendarDayButtonProps) {
   const defaultClassNames = getDefaultClassNames();
@@ -210,6 +229,8 @@ function CalendarDayButton({
       data-range-middle={modifiers.range_middle}
       className={cn(
         "data-[selected-single=true]:bg-primary data-[selected-single=true]:text-primary-foreground data-[range-middle=true]:bg-accent data-[range-middle=true]:text-accent-foreground data-[range-start=true]:bg-primary data-[range-start=true]:text-primary-foreground data-[range-end=true]:bg-primary data-[range-end=true]:text-primary-foreground group-data-[focused=true]/day:border-ring group-data-[focused=true]/day:ring-ring/50 dark:hover:text-accent-foreground flex aspect-square size-auto w-full min-w-(--cell-size) flex-col gap-1 leading-none font-normal group-data-[focused=true]/day:relative group-data-[focused=true]/day:z-10 group-data-[focused=true]/day:ring-[3px] data-[range-end=true]:rounded-md data-[range-end=true]:rounded-r-md data-[range-middle=true]:rounded-none data-[range-start=true]:rounded-md data-[range-start=true]:rounded-l-md [&>span]:text-xs [&>span]:opacity-70 hover:bg-accent hover:text-accent-foreground",
+        variant === "rounded" &&
+          "data-[selected-single=true]:rounded-full data-[range-end=true]:rounded-full data-[range-start=true]:rounded-full data-[range-start=true]:bg-primary data-[range-start=true]:text-primary-foreground data-[range-start=true]:dark:bg-primary data-[range-start=true]:group-data-[focused=true]/day:ring-primary/20 data-[range-start=true]:dark:group-data-[focused=true]/day:ring-primary/40 data-[range-end=true]:bg-primary data-[range-end=true]:text-primary-foreground data-[range-end=true]:dark:bg-primary data-[range-end=true]:group-data-[focused=true]/day:ring-primary/20 data-[range-end=true]:dark:group-data-[focused=true]/day:ring-primary/40 data-[range-middle=true]:rounded-none data-[range-middle=true]:bg-primary/20 data-[range-middle=true]:dark:bg-primary/10 hover:rounded-full",
         defaultClassNames.day,
         className,
       )}

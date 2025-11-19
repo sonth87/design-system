@@ -230,6 +230,16 @@ const meta: Meta<typeof RangePicker> = {
         category: i18n.t("stories.category.calendar"),
       },
     },
+    variant: {
+      control: { type: "select" },
+      options: ["default", "rounded"],
+      description: i18n.t("stories.rangepicker.argTypes.variant.description"),
+      table: {
+        type: { summary: "string" },
+        defaultValue: { summary: "default" },
+        category: i18n.t("stories.category.appearance"),
+      },
+    },
   },
   args: {
     language: "vi",
@@ -237,6 +247,7 @@ const meta: Meta<typeof RangePicker> = {
     mask: "99/99/9999",
     label: { from: "From", to: "To" },
     isFloatLabel: false,
+    variant: "default",
   },
 };
 
@@ -522,6 +533,132 @@ export const Clearable: Story = {
           value={range}
           onSelect={handleSelect}
         />
+      </div>
+    );
+  },
+  args: {},
+};
+
+export const RoundedVariant: Story = {
+  render: function RoundedVariantComponent(args) {
+    const [range, setRange] = useState<DateRangeText | undefined>();
+    const handleSelect = (
+      _r: DateRange | undefined,
+      t: DateRangeText | undefined,
+    ) => setRange(t);
+
+    return (
+      <div className="space-y-4">
+        <p className="text-sm text-muted-foreground">
+          Rounded variant with pill-shaped range selection
+        </p>
+        <div>
+          <span className="mb-4 block">
+            Selected date: {range?.from} - {range?.to}
+          </span>
+          <RangePicker
+            {...args}
+            value={range}
+            onSelect={handleSelect}
+            variant="rounded"
+          />
+        </div>
+      </div>
+    );
+  },
+  args: {},
+};
+
+export const RoundedVariantWithMultipleMonths: Story = {
+  render: function RoundedVariantWithMultipleMonthsComponent(args) {
+    const [range, setRange] = useState<DateRangeText | undefined>();
+    const handleSelect = (
+      _r: DateRange | undefined,
+      t: DateRangeText | undefined,
+    ) => setRange(t);
+
+    return (
+      <div className="space-y-4">
+        <p className="text-sm text-muted-foreground">
+          Rounded variant with 2 months display
+        </p>
+        <div>
+          <span className="mb-4 block">
+            Selected date: {range?.from} - {range?.to}
+          </span>
+          <RangePicker
+            {...args}
+            value={range}
+            onSelect={handleSelect}
+            variant="rounded"
+            numberOfMonths={2}
+          />
+        </div>
+      </div>
+    );
+  },
+  args: {},
+};
+
+export const RoundedVariantWithTime: Story = {
+  render: function RoundedVariantWithTimeComponent(args) {
+    const [range, setRange] = useState<DateRangeText | undefined>();
+    const handleSelect = (
+      _r: DateRange | undefined,
+      t: DateRangeText | undefined,
+    ) => setRange(t);
+
+    return (
+      <div className="space-y-4">
+        <p className="text-sm text-muted-foreground">
+          Rounded variant with time picker (HH:mm format)
+        </p>
+        <div>
+          <span className="mb-4 block">
+            Selected date: {range?.from} - {range?.to}
+          </span>
+          <RangePicker
+            {...args}
+            value={range}
+            onSelect={handleSelect}
+            variant="rounded"
+            showTime
+            timeFormat="HH:mm"
+            timeConfig={[{ timeLabel: "From" }, { timeLabel: "To" }]}
+          />
+        </div>
+      </div>
+    );
+  },
+  args: {},
+};
+
+export const RoundedVariantFloatLabel: Story = {
+  render: function RoundedVariantFloatLabelComponent(args) {
+    const [range, setRange] = useState<DateRangeText | undefined>();
+    const handleSelect = (
+      _r: DateRange | undefined,
+      t: DateRangeText | undefined,
+    ) => setRange(t);
+
+    return (
+      <div className="space-y-4">
+        <p className="text-sm text-muted-foreground">
+          Rounded variant with floating labels and large size
+        </p>
+        <div>
+          <span className="mb-4 block">
+            Selected date: {range?.from} - {range?.to}
+          </span>
+          <RangePicker
+            {...args}
+            value={range}
+            onSelect={handleSelect}
+            variant="rounded"
+            isFloatLabel
+            size="lg"
+          />
+        </div>
       </div>
     );
   },

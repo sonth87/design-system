@@ -14,6 +14,7 @@ export type DateRange = {
 
 export type CalendarProps = SCalendarProps & {
   language?: "vi" | "en";
+  variant?: "default" | "rounded";
 };
 
 export function Calendar({
@@ -23,6 +24,7 @@ export function Calendar({
   formatters,
   buttonVariant,
   locale,
+  variant = "default",
   ...props
 }: CalendarProps) {
   const _locale = locale ? locale : language === "en" ? enUS : vi;
@@ -33,6 +35,7 @@ export function Calendar({
       locale={_locale}
       buttonVariant={buttonVariant}
       captionLayout={captionLayout}
+      variant={variant}
       formatters={{
         formatMonthDropdown: (date: Date) =>
           date.toLocaleString(_locale.code, { month: "short" }),

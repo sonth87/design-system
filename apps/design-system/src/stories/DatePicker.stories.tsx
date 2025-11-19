@@ -78,6 +78,16 @@ const meta: Meta<typeof DatePicker> = {
         category: i18n.t("stories.category.content"),
       },
     },
+    variant: {
+      control: { type: "select" },
+      options: ["default", "rounded"],
+      description: i18n.t("stories.datepicker.argTypes.variant.description"),
+      table: {
+        type: { summary: "string" },
+        defaultValue: { summary: "default" },
+        category: i18n.t("stories.category.appearance"),
+      },
+    },
 
     // Format & Mask
     mask: {
@@ -319,6 +329,7 @@ const meta: Meta<typeof DatePicker> = {
     size: "normal",
     disabled: false,
     placeholder: "",
+    variant: "default",
 
     // Format & Mask
     mask: "",
@@ -880,5 +891,92 @@ export const ComplexTimeConfiguration: Story = {
     disabledTimeRanges: [{ from: "22:00", to: "23:30" }],
     showNowButton: true,
     nowButtonLabel: "Now",
+  },
+};
+
+export const RoundedVariant: Story = {
+  render: function RoundedVariantComponent(args) {
+    const [date, setDate] = useState<Date | undefined>(new Date());
+    const handleSelect = (d: Date | undefined) => setDate(d);
+    return (
+      <div className="flex flex-col gap-4">
+        {date && (
+          <p className="text-sm">
+            Selected: <strong>{format(date, "dd/MM/yyyy")}</strong>
+          </p>
+        )}
+        <p className="text-xs text-muted-foreground">
+          Rounded variant with pill-shaped selection (for single date)
+        </p>
+        <DatePicker
+          {...args}
+          value={date ? format(date, DATE_FORMAT) : ""}
+          onSelect={handleSelect}
+        />
+      </div>
+    );
+  },
+  args: {
+    label: "Date with Rounded Variant",
+    variant: "rounded",
+  },
+};
+
+export const RoundedVariantWithTime: Story = {
+  render: function RoundedVariantWithTimeComponent(args) {
+    const [date, setDate] = useState<Date | undefined>(new Date());
+    const handleSelect = (d: Date | undefined) => setDate(d);
+    return (
+      <div className="flex flex-col gap-4">
+        {date && (
+          <p className="text-sm">
+            Selected: <strong>{format(date, "dd/MM/yyyy HH:mm")}</strong>
+          </p>
+        )}
+        <p className="text-xs text-muted-foreground">
+          Rounded variant also works with time picker
+        </p>
+        <DatePicker
+          {...args}
+          value={date ? format(date, "dd/MM/yyyy HH:mm") : ""}
+          onSelect={handleSelect}
+        />
+      </div>
+    );
+  },
+  args: {
+    label: "Date & Time with Rounded Variant",
+    variant: "rounded",
+    showTime: true,
+    timeFormat: "HH:mm",
+  },
+};
+
+export const RoundedVariantMultipleMonths: Story = {
+  render: function RoundedVariantMultipleMonthsComponent(args) {
+    const [date, setDate] = useState<Date | undefined>(new Date());
+    const handleSelect = (d: Date | undefined) => setDate(d);
+    return (
+      <div className="flex flex-col gap-4">
+        {date && (
+          <p className="text-sm">
+            Selected: <strong>{format(date, "dd/MM/yyyy")}</strong>
+          </p>
+        )}
+        <p className="text-xs text-muted-foreground">
+          Rounded variant with multiple months display
+        </p>
+        <DatePicker
+          {...args}
+          value={date ? format(date, DATE_FORMAT) : ""}
+          onSelect={handleSelect}
+        />
+      </div>
+    );
+  },
+  args: {
+    label: "Date with Rounded Variant (2 months)",
+    variant: "rounded",
+    numberOfMonths: 2,
   },
 };

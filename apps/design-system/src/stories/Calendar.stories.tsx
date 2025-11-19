@@ -16,7 +16,7 @@ const meta: Meta<typeof Calendar> = {
   title: "Date & Time/Calendar",
   component: Calendar,
   parameters: {
-    layout: "centered",
+    layout: "padded",
   },
   tags: ["autodocs"],
   argTypes: {
@@ -36,11 +36,21 @@ const meta: Meta<typeof Calendar> = {
         category: i18n.t("stories.category.language"),
       },
     },
+    variant: {
+      control: { type: "select" },
+      options: ["default", "rounded"],
+      description: i18n.t("stories.calendar.argTypes.variant.description"),
+      table: {
+        type: { summary: "string" },
+        defaultValue: { summary: "default" },
+        category: i18n.t("stories.category.appearance"),
+      },
+    },
     captionLayout: {
       control: { type: "select" },
       options: ["label", "dropdown", "dropdown-months", "dropdown-years"],
       description: i18n.t(
-        "stories.calendar.argTypes.captionLayout.description",
+        "stories.calendar.argTypes.captionLayout.description"
       ),
       table: {
         category: i18n.t("stories.category.ui"),
@@ -49,7 +59,7 @@ const meta: Meta<typeof Calendar> = {
     showOutsideDays: {
       control: { type: "boolean" },
       description: i18n.t(
-        "stories.calendar.argTypes.showOutsideDays.description",
+        "stories.calendar.argTypes.showOutsideDays.description"
       ),
       table: {
         category: i18n.t("stories.category.calendar"),
@@ -65,7 +75,7 @@ const meta: Meta<typeof Calendar> = {
     numberOfMonths: {
       control: { type: "number" },
       description: i18n.t(
-        "stories.calendar.argTypes.numberOfMonths.description",
+        "stories.calendar.argTypes.numberOfMonths.description"
       ),
       table: {
         category: i18n.t("stories.category.layout"),
@@ -81,7 +91,7 @@ const meta: Meta<typeof Calendar> = {
     onMonthChange: {
       action: "month changed",
       description: i18n.t(
-        "stories.calendar.argTypes.onMonthChange.description",
+        "stories.calendar.argTypes.onMonthChange.description"
       ),
       table: {
         category: i18n.t("stories.category.events"),
@@ -118,7 +128,7 @@ const meta: Meta<typeof Calendar> = {
     showWeekNumber: {
       control: { type: "boolean" },
       description: i18n.t(
-        "stories.calendar.argTypes.showWeekNumber.description",
+        "stories.calendar.argTypes.showWeekNumber.description"
       ),
       table: {
         category: i18n.t("stories.category.calendar"),
@@ -141,6 +151,7 @@ const meta: Meta<typeof Calendar> = {
   },
   args: {
     language: "vi",
+    variant: "default",
     captionLayout: "dropdown",
     showOutsideDays: true,
   },
@@ -160,7 +171,13 @@ export const SingleMode: Story = {
             Selected: <strong>{format(date, "dd/MM/yyyy")}</strong>
           </p>
         )}
-        <Calendar {...args} mode="single" selected={date} onSelect={setDate} />
+        <Calendar
+          {...args}
+          mode="single"
+          selected={date}
+          onSelect={setDate}
+          className="w-full"
+        />
       </div>
     );
   },
@@ -531,6 +548,96 @@ export const CustomDaysAndFormatters: Story = {
   args: {},
 };
 
+export const RoundedVariant: Story = {
+  render: function RoundedVariantComponent(args: CalendarProps) {
+    const [range, setRange] = useState<DateRange | undefined>({
+      from: new Date(2025, 5, 12),
+      to: new Date(2025, 5, 17),
+    });
+
+    return (
+      <div className="flex flex-col gap-4">
+        <p className="text-sm text-muted-foreground">
+          Rounded variant with pill-shaped range selection
+        </p>
+        <Calendar
+          {...args}
+          mode="range"
+          variant="rounded"
+          selected={range}
+          onSelect={setRange}
+          className="rounded-md border"
+        />
+      </div>
+    );
+  },
+  args: {},
+};
+
+export const RoundedVariantSingleMode: Story = {
+  render: function RoundedVariantSingleModeComponent(args: CalendarProps) {
+    const [date, setDate] = useState<Date>();
+
+    return (
+      <div className="flex flex-col gap-4">
+        {date && (
+          <p className="text-sm">
+            Selected: <strong>{format(date, "dd/MM/yyyy")}</strong>
+          </p>
+        )}
+        <p className="text-sm text-muted-foreground">
+          Rounded variant also works with single date selection
+        </p>
+        <Calendar
+          {...args}
+          mode="single"
+          variant="rounded"
+          selected={date}
+          onSelect={setDate}
+          className="rounded-md border"
+        />
+      </div>
+    );
+  },
+  args: {},
+};
+
+export const RoundedVariantMultipleMonths: Story = {
+  render: function RoundedVariantMultipleMonthsComponent(args: CalendarProps) {
+    const [range, setRange] = useState<DateRange | undefined>({
+      from: new Date(2025, 5, 12),
+      to: new Date(2025, 6, 5),
+    });
+
+    return (
+      <div className="flex flex-col gap-4">
+        {range?.from && (
+          <div className="text-sm">
+            <strong>Selected range:</strong>
+            <p>
+              From: {format(range.from, "dd/MM/yyyy")}
+              {range.to && ` ~ To: ${format(range.to, "dd/MM/yyyy")}`}
+            </p>
+          </div>
+        )}
+        <p className="text-sm text-muted-foreground">
+          Rounded variant with multiple months display
+        </p>
+        <Calendar
+          {...args}
+          mode="range"
+          variant="rounded"
+          selected={range}
+          onSelect={setRange}
+          numberOfMonths={2}
+          className="rounded-md border"
+        />
+      </div>
+    );
+  },
+  args: {},
+};
+
 export const CustomStyle: Story = {
   render: function CustomDaysAndFormattersComponent(args: CalendarProps) {
     const [range, setRange] = useState<DateRange | undefined>({
@@ -540,6 +647,9 @@ export const CustomStyle: Story = {
 
     return (
       <div className="flex flex-col gap-4">
+        <p className="text-sm text-muted-foreground">
+          Custom styling with classNames (manually styled rounded effect)
+        </p>
         <Calendar
           {...args}
           mode="range"

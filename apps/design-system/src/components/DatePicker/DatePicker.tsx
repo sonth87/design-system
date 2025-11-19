@@ -114,6 +114,7 @@ export type DatePickerProps = Omit<
   timeFormat?: "HH:mm" | "HH:mm:ss";
   hideDate?: boolean;
   numberOfMonths?: number;
+  variant?: "default" | "rounded";
 
   // TimePicker configuration options
   timePickerMode?: TimePickerMode; // Display mode: 'wheel' (default), 'select', 'compact'
@@ -149,6 +150,7 @@ export function DatePicker({
   timeFormat = "HH:mm",
   hideDate = false,
   numberOfMonths = 1,
+  variant = "default",
   // TimePicker props
   timePickerMode = "wheel",
   hourInterval = 1,
@@ -300,6 +302,7 @@ export function DatePicker({
           month={month}
           onMonthChange={setMonth}
           numberOfMonths={isMobile ? 1 : numberOfMonths || 1}
+          variant={variant}
           onSelect={(selectedDate) => {
             // Preserve time from current date when selecting new date
             let newDate = selectedDate;

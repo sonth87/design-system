@@ -106,6 +106,7 @@
     "stories.datepicker.argTypes.size.description": "Size variant of the input field",
     "stories.datepicker.argTypes.disabled.description": "Disable the date picker input",
     "stories.datepicker.argTypes.placeholder.description": "Placeholder text shown when input is empty",
+    "stories.datepicker.argTypes.variant.description": "Calendar style variant: 'default' for square selection, 'rounded' for pill-shaped range selection",
     "stories.datepicker.argTypes.mask.description": "Input mask for date input. True for auto-generated mask, or custom string like '99/99/9999'",
     "stories.datepicker.argTypes.format.description": "Date format: string (e.g., 'dd/MM/yyyy') or object { input: string, output: string }. For more: <a href='https://date-fns.org/v4.1.0/docs/format'>https://date-fns.org/v4.1.0/docs/format</a>",
     "stories.datepicker.argTypes.infoTooltip.description": "Tooltip text displayed when hovering over the info icon",
@@ -371,6 +372,7 @@
 
     "stories.calendar.argTypes.mode.description": "Selection mode for the calendar",
     "stories.calendar.argTypes.language.description": "Language for month/day names",
+    "stories.calendar.argTypes.variant.description": "Calendar style variant: 'default' for square selection, 'rounded' for pill-shaped range selection",
     "stories.calendar.argTypes.captionLayout.description": "Layout of the month/year navigation",
     "stories.calendar.argTypes.showOutsideDays.description": "Show days from previous/next months",
     "stories.calendar.argTypes.disabled.description": "Disable the entire calendar",
@@ -448,6 +450,7 @@
     "stories.rangepicker.argTypes.showTime.description": "Show time picker alongside date picker",
     "stories.rangepicker.argTypes.timeFormat.description": "Time format: HH:mm or HH:mm:ss",
     "stories.rangepicker.argTypes.hideDate.description": "Hide date picker and show only time picker",
+    "stories.rangepicker.argTypes.variant.description": "Calendar style variant: 'default' for square selection, 'rounded' for pill-shaped range selection",
 
     "stories.breadcrumb.argTypes.variant.description": "The visual style variant of the breadcrumb",
     "stories.breadcrumb.argTypes.color.description": "The color theme of the breadcrumb",

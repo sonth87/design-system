@@ -107,6 +107,7 @@
     "stories.datepicker.argTypes.size.description": "Kích thước của trường input",
     "stories.datepicker.argTypes.disabled.description": "Vô hiệu hóa input date picker",
     "stories.datepicker.argTypes.placeholder.description": "Văn bản placeholder hiển thị khi input trống",
+    "stories.datepicker.argTypes.variant.description": "Kiểu hiển thị lịch: 'default' cho chọn ngày vuông, 'rounded' cho chọn khoảng ngày hình viên thuốc",
     "stories.datepicker.argTypes.mask.description": "Mặt nạ input cho ngày tháng. True để tự động tạo mặt nạ, hoặc chuỗi tùy chỉnh như '99/99/9999'",
     "stories.datepicker.argTypes.format.description": "Định dạng ngày: chuỗi (ví dụ: 'dd/MM/yyyy') hoặc object { input: string, output: string }. Xem thêm: <a href='https://date-fns.org/v4.1.0/docs/format'>https://date-fns.org/v4.1.0/docs/format</a>",
     "stories.datepicker.argTypes.infoTooltip.description": "Văn bản tooltip hiển thị khi di chuột qua biểu tượng thông tin",
@@ -371,6 +372,7 @@
 
     "stories.calendar.argTypes.mode.description": "Chế độ chọn cho lịch",
     "stories.calendar.argTypes.language.description": "Ngôn ngữ cho tên tháng/ngày",
+    "stories.calendar.argTypes.variant.description": "Kiểu hiển thị lịch: 'default' cho chọn ngày vuông, 'rounded' cho chọn khoảng ngày hình viên thuốc",
     "stories.calendar.argTypes.captionLayout.description": "Bố cục của điều hướng tháng/năm",
     "stories.calendar.argTypes.showOutsideDays.description": "Hiển thị ngày từ tháng trước/sau",
     "stories.calendar.argTypes.disabled.description": "Vô hiệu hóa toàn bộ lịch",
@@ -448,6 +450,7 @@
     "stories.rangepicker.argTypes.showTime.description": "Hiển thị bộ chọn thời gian cùng với bộ chọn ngày",
     "stories.rangepicker.argTypes.timeFormat.description": "Định dạng thời gian: HH:mm hoặc HH:mm:ss",
     "stories.rangepicker.argTypes.hideDate.description": "Ẩn bộ chọn ngày và chỉ hiển thị bộ chọn thời gian",
+    "stories.rangepicker.argTypes.variant.description": "Kiểu hiển thị lịch: 'default' cho chọn ngày vuông, 'rounded' cho chọn khoảng ngày hình viên thuốc",
 
     "stories.breadcrumb.argTypes.variant.description": "Kiểu hiển thị của breadcrumb",
     "stories.breadcrumb.argTypes.color.description": "Màu chủ đề của breadcrumb",
