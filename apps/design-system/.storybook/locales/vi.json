@@ -167,6 +167,26 @@
     "stories.cursorfollow.argTypes.followSideOffset.description": "Khoảng cách offset cho phần tử theo dõi khi dùng auto-setup của CursorProvider",
     "stories.cursorfollow.argTypes.followTransition.description": "Preset chuyển động cho phần tử theo dõi khi dùng auto-setup của CursorProvider",
 
+    "stories.stepper.argTypes.orientation.description": "Hướng bố trí của stepper (ngang hoặc dọc)",
+    "stories.stepper.argTypes.activationMode.description": "Cách kích hoạt các bước: automatic (tự động khi focus) hoặc manual (bằng click/enter)",
+    "stories.stepper.argTypes.disabled.description": "Vô hiệu hóa tất cả tương tác với stepper",
+    "stories.stepper.argTypes.loop.description": "Cho phép lặp từ bước cuối về bước đầu khi điều hướng bằng bàn phím",
+    "stories.stepper.argTypes.value.description": "Giá trị được kiểm soát của bước đang hoạt động",
+    "stories.stepper.argTypes.defaultValue.description": "Giá trị mặc định của bước đang hoạt động (không được kiểm soát)",
+    "stories.stepper.argTypes.color.description": "Màu chủ đề của indicator và separator của stepper (primary, secondary, accent, destructive, muted, success, error, warning)",
+    "stories.stepper.argTypes.customColor.description": "Màu tùy chỉnh cho indicator và separator của stepper. Ghi đè thuộc tính color khi được đặt",
+    "stories.stepper.argTypes.variant.description": "Biến thể hiển thị của indicator stepper: 'normal' (mặc định với số bước) hoặc 'dot' (chấm nhỏ 8px không có số)",
+    "stories.stepper.argTypes.labelPosition.description": "Vị trí của tiêu đề và mô tả bước so với indicator (top, bottom, left, right)",
+    "stories.stepper.argTypes.onValueChange.description": "Callback khi bước đang hoạt động thay đổi. Nhận giá trị bước mới",
+    "stories.stepper.argTypes.onValueComplete.description": "Callback khi trạng thái hoàn thành của bước thay đổi. Nhận giá trị bước và boolean hoàn thành",
+    "stories.stepper.argTypes.onValueAdd.description": "Callback khi một bước mới được thêm vào stepper. Nhận giá trị bước",
+    "stories.stepper.argTypes.onValueRemove.description": "Callback khi một bước được xóa khỏi stepper. Nhận giá trị bước",
+    "stories.stepper.argTypes.onValidate.description": "Callback xác thực async trước khi điều hướng đến bước mới. Nhận giá trị bước và hướng. Trả về true để cho phép điều hướng",
+    "stories.stepper.argTypes.dir.description": "Hướng văn bản của stepper (ltr hoặc rtl)",
+    "stories.stepper.argTypes.nonInteractive.description": "Vô hiệu hóa tất cả tương tác, làm cho stepper chỉ hiển thị",
+    "stories.stepper.argTypes.steps.description": "Mảng các đối tượng bước với value, title, description và content tùy chọn",
+    "stories.stepper.argTypes.children.description": "Nội dung JSX tùy chỉnh cho stepper thay vì sử dụng thuộc tính steps",
+
     "stories.3dcard.argTypes.containerClassName.description": "Tên class cho container",
     "stories.3dcard.argTypes.className.description": "Tên class cho card wrapper",
     "stories.3dcard.argTypes.as.description": "Loại phần tử HTML để render",
@@ -486,23 +506,6 @@
     "stories.marquee.argTypes.autoFill.description": "Tự động điền marquee với các mục",
     "stories.marquee.argTypes.pauseOnHover.description": "Tạm dừng hoạt hình khi di chuột",
     "stories.marquee.argTypes.pauseOnKeyboard.description": "Tạm dừng hoạt hình khi tương tác bàn phím",
-    "stories.marquee.argTypes.reverse.description": "Đảo ngược hướng hoạt hình",
-
-    "stories.stepper.argTypes.orientation.description": "Hướng của stepper",
-    "stories.stepper.argTypes.activationMode.description": "Kiểm soát cách các bước được kích hoạt trong điều hướng bàn phím.\n\n\"automatic\": Phím mũi tên ngay lập tức kích hoạt bước được tập trung (lựa chọn theo sau tiêu điểm)\n\"manual\": Phím mũi tên chỉ di chuyển tiêu điểm, phím Enter/Space kích hoạt bước được tập trung",
-    "stories.stepper.argTypes.disabled.description": "Vô hiệu hóa toàn bộ stepper",
-    "stories.stepper.argTypes.loop.description": "Cho phép lặp qua các bước",
-
-    "stories.stepper.argTypes.value.description": "Giá trị được kiểm soát của stepper",
-    "stories.stepper.argTypes.defaultValue.description": "Giá trị mặc định của stepper",
-    "stories.stepper.argTypes.onValueChange.description": "Callback khi giá trị thay đổi",
-    "stories.stepper.argTypes.onValueComplete.description": "Callback khi một bước được hoàn thành",
-    "stories.stepper.argTypes.onValueAdd.description": "Callback khi một bước được thêm",
-    "stories.stepper.argTypes.onValueRemove.description": "Callback khi một bước được xóa",
-    "stories.stepper.argTypes.onValidate.description": "Callback xác thực trước khi thay đổi bước",
-    "stories.stepper.argTypes.dir.description": "Hướng văn bản",
-    "stories.stepper.argTypes.nonInteractive.description": "Vô hiệu hóa tương tác với stepper",
-    "stories.stepper.argTypes.steps.description": "Mảng các đối tượng bước với tiêu đề, mô tả và nội dung",
-    "stories.stepper.argTypes.children.description": "Nội dung JSX tùy chỉnh để render các bước và nội dung"
+    "stories.marquee.argTypes.reverse.description": "Đảo ngược hướng hoạt hình"
   }
 }

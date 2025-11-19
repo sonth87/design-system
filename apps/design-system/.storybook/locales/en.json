@@ -166,6 +166,26 @@
     "stories.cursorfollow.argTypes.followSideOffset.description": "Distance offset for follow element when using CursorProvider auto-setup",
     "stories.cursorfollow.argTypes.followTransition.description": "Transition preset for follow element when using CursorProvider auto-setup",
 
+    "stories.stepper.argTypes.orientation.description": "The layout orientation of the stepper (horizontal or vertical)",
+    "stories.stepper.argTypes.activationMode.description": "How steps are activated: automatic (on focus) or manual (on click/enter)",
+    "stories.stepper.argTypes.disabled.description": "Disable all stepper interactions",
+    "stories.stepper.argTypes.loop.description": "Allow looping from last to first step when navigating with keyboard",
+    "stories.stepper.argTypes.value.description": "The controlled value of the active step",
+    "stories.stepper.argTypes.defaultValue.description": "The default value of the active step (uncontrolled)",
+    "stories.stepper.argTypes.color.description": "The color theme of the stepper indicator and separator (primary, secondary, accent, destructive, muted, success, error, warning)",
+    "stories.stepper.argTypes.customColor.description": "Custom color for the stepper indicator and separator. Overrides the color prop when set",
+    "stories.stepper.argTypes.variant.description": "The visual variant of the stepper indicator: 'normal' (default with step number) or 'dot' (small 8px dot without number)",
+    "stories.stepper.argTypes.labelPosition.description": "The position of step title and description relative to the indicator (top, bottom, left, right)",
+    "stories.stepper.argTypes.onValueChange.description": "Callback when the active step changes. Receives the new step value",
+    "stories.stepper.argTypes.onValueComplete.description": "Callback when a step's completed state changes. Receives step value and completed boolean",
+    "stories.stepper.argTypes.onValueAdd.description": "Callback when a new step is added to the stepper. Receives the step value",
+    "stories.stepper.argTypes.onValueRemove.description": "Callback when a step is removed from the stepper. Receives the step value",
+    "stories.stepper.argTypes.onValidate.description": "Async validation callback before navigating to a new step. Receives step value and direction. Return true to allow navigation",
+    "stories.stepper.argTypes.dir.description": "Text direction for the stepper (ltr or rtl)",
+    "stories.stepper.argTypes.nonInteractive.description": "Disable all interactions, making the stepper display-only",
+    "stories.stepper.argTypes.steps.description": "Array of step objects with value, title, description, and optional content",
+    "stories.stepper.argTypes.children.description": "Custom JSX content for the stepper instead of using the steps prop",
+
     "stories.3dcard.argTypes.containerClassName.description": "Class name for the container",
     "stories.3dcard.argTypes.className.description": "Class name for the card wrapper",
     "stories.3dcard.argTypes.as.description": "HTML element type to render",
@@ -486,23 +506,6 @@
     "stories.marquee.argTypes.autoFill.description": "Automatically fill the marquee with items",
     "stories.marquee.argTypes.pauseOnHover.description": "Pause animation on hover",
     "stories.marquee.argTypes.pauseOnKeyboard.description": "Pause animation on keyboard interaction",
-    "stories.marquee.argTypes.reverse.description": "Reverse the direction of animation",
-
-    "stories.stepper.argTypes.orientation.description": "Orientation of the stepper",
-    "stories.stepper.argTypes.activationMode.description": "Controls how steps are activated during keyboard navigation.\n\n\"automatic\": Arrow keys immediately activate the focused step (selection follows focus)\n\"manual\": Arrow keys only move focus, Enter/Space keys activate the focused step",
-    "stories.stepper.argTypes.disabled.description": "Disable the entire stepper",
-    "stories.stepper.argTypes.loop.description": "Allow looping through steps",
-
-    "stories.stepper.argTypes.value.description": "The controlled value of the stepper",
-    "stories.stepper.argTypes.defaultValue.description": "The default value of the stepper",
-    "stories.stepper.argTypes.onValueChange.description": "Callback when the value changes",
-    "stories.stepper.argTypes.onValueComplete.description": "Callback when a step is completed",
-    "stories.stepper.argTypes.onValueAdd.description": "Callback when a step is added",
-    "stories.stepper.argTypes.onValueRemove.description": "Callback when a step is removed",
-    "stories.stepper.argTypes.onValidate.description": "Validation callback before changing steps",
-    "stories.stepper.argTypes.dir.description": "The text direction",
-    "stories.stepper.argTypes.nonInteractive.description": "Disable interaction with the stepper",
-    "stories.stepper.argTypes.steps.description": "Array of step objects with title, description, and content",
-    "stories.stepper.argTypes.children.description": "Custom JSX content for rendering steps and content"
+    "stories.marquee.argTypes.reverse.description": "Reverse the direction of animation"
   }
 }

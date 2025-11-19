@@ -20,11 +20,226 @@ const ENTRY_FOCUS = "stepperFocusGroup.onEntryFocus";
 const EVENT_OPTIONS = { bubbles: false, cancelable: true };
 const ARROW_KEYS = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"];
 
+const stepperColorClasses: Record<
+  StepperColor,
+  {
+    indicator: {
+      active: string;
+      completed: string;
+      inactive: string;
+    };
+    separator: {
+      active: string;
+      completed: string;
+      inactive: string;
+    };
+  }
+> = {
+  primary: {
+    indicator: {
+      active:
+        "border-primary bg-primary text-primary-foreground data-[variant=dot]:bg-primary/30 data-[variant=dot]:border-primary/0",
+      completed:
+        "border-primary bg-primary text-primary-foreground data-[variant=dot]:bg-primary/30 data-[variant=dot]:border-primary/0",
+      inactive:
+        "border-muted bg-background text-muted-foreground data-[variant=dot]:bg-muted/30 data-[variant=dot]:border-muted/0",
+    },
+    separator: {
+      active: "bg-primary",
+      completed: "bg-primary",
+      inactive: "bg-border",
+    },
+  },
+  secondary: {
+    indicator: {
+      active:
+        "border-secondary bg-secondary text-secondary-foreground data-[variant=dot]:bg-secondary/30 data-[variant=dot]:border-secondary/0",
+      completed:
+        "border-secondary bg-secondary text-secondary-foreground data-[variant=dot]:bg-secondary/30 data-[variant=dot]:border-secondary/0",
+      inactive:
+        "border-muted bg-background text-muted-foreground data-[variant=dot]:bg-muted/30 data-[variant=dot]:border-muted/0",
+    },
+    separator: {
+      active: "bg-secondary",
+      completed: "bg-secondary",
+      inactive: "bg-border",
+    },
+  },
+  accent: {
+    indicator: {
+      active:
+        "border-accent bg-accent text-accent-foreground data-[variant=dot]:bg-accent/30 data-[variant=dot]:border-accent/0",
+      completed:
+        "border-accent bg-accent text-accent-foreground data-[variant=dot]:bg-accent/30 data-[variant=dot]:border-accent/0",
+      inactive:
+        "border-muted bg-background text-muted-foreground data-[variant=dot]:bg-muted/30 data-[variant=dot]:border-muted/0",
+    },
+    separator: {
+      active: "bg-accent",
+      completed: "bg-accent",
+      inactive: "bg-border",
+    },
+  },
+  destructive: {
+    indicator: {
+      active:
+        "border-destructive bg-destructive text-destructive-foreground data-[variant=dot]:bg-destructive/30 data-[variant=dot]:border-destructive/0",
+      completed:
+        "border-destructive bg-destructive text-destructive-foreground data-[variant=dot]:bg-destructive/30 data-[variant=dot]:border-destructive/0",
+      inactive:
+        "border-muted bg-background text-muted-foreground data-[variant=dot]:bg-muted/30 data-[variant=dot]:border-muted/0",
+    },
+    separator: {
+      active: "bg-destructive",
+      completed: "bg-destructive",
+      inactive: "bg-border",
+    },
+  },
+  muted: {
+    indicator: {
+      active:
+        "border-muted bg-muted text-muted-foreground data-[variant=dot]:bg-muted/30 data-[variant=dot]:border-muted/0",
+      completed:
+        "border-muted bg-muted text-muted-foreground data-[variant=dot]:bg-muted/30 data-[variant=dot]:border-muted/0",
+      inactive:
+        "border-muted bg-background text-muted-foreground data-[variant=dot]:bg-muted/30 data-[variant=dot]:border-muted/0",
+    },
+    separator: {
+      active: "bg-muted",
+      completed: "bg-muted",
+      inactive: "bg-border",
+    },
+  },
+  success: {
+    indicator: {
+      active:
+        "border-success bg-success text-success-foreground data-[variant=dot]:bg-success/30 data-[variant=dot]:border-success/0",
+      completed:
+        "border-success bg-success text-success-foreground data-[variant=dot]:bg-success/30 data-[variant=dot]:border-success/0",
+      inactive:
+        "border-muted bg-background text-muted-foreground data-[variant=dot]:bg-muted/30 data-[variant=dot]:border-muted/0",
+    },
+    separator: {
+      active: "bg-success",
+      completed: "bg-success",
+      inactive: "bg-border",
+    },
+  },
+  error: {
+    indicator: {
+      active:
+        "border-error bg-error text-error-foreground data-[variant=dot]:bg-error/30 data-[variant=dot]:border-error/0",
+      completed:
+        "border-error bg-error text-error-foreground data-[variant=dot]:bg-error/30 data-[variant=dot]:border-error/0",
+      inactive:
+        "border-muted bg-background text-muted-foreground data-[variant=dot]:bg-muted/30 data-[variant=dot]:border-muted/0",
+    },
+    separator: {
+      active: "bg-error",
+      completed: "bg-error",
+      inactive: "bg-border",
+    },
+  },
+  warning: {
+    indicator: {
+      active:
+        "border-warning bg-warning text-warning-foreground data-[variant=dot]:bg-warning/30 data-[variant=dot]:border-warning/0",
+      completed:
+        "border-warning bg-warning text-warning-foreground data-[variant=dot]:bg-warning/30 data-[variant=dot]:border-warning/0",
+      inactive:
+        "border-muted bg-background text-muted-foreground data-[variant=dot]:bg-muted/30 data-[variant=dot]:border-muted/0",
+    },
+    separator: {
+      active: "bg-warning",
+      completed: "bg-warning",
+      inactive: "bg-border",
+    },
+  },
+};
+
+function getIndicatorColorClass(
+  color: StepperColor | undefined,
+  customColor: string | undefined,
+  dataState: DataState
+): string {
+  if (customColor) {
+    return "";
+  }
+
+  if (!color) {
+    // Default primary color
+    return stepperColorClasses.primary.indicator[dataState];
+  }
+
+  return stepperColorClasses[color].indicator[dataState];
+}
+
+function getSeparatorColorClass(
+  color: StepperColor | undefined,
+  customColor: string | undefined,
+  dataState: DataState
+): string {
+  if (customColor) {
+    return "";
+  }
+
+  if (!color) {
+    // Default primary color
+    return stepperColorClasses.primary.separator[dataState];
+  }
+
+  return stepperColorClasses[color].separator[dataState];
+}
+
+function getCustomColorStyle(
+  customColor: string | undefined,
+  dataState: DataState,
+  isIndicator: boolean
+): React.CSSProperties | undefined {
+  if (!customColor) return undefined;
+
+  if (isIndicator) {
+    if (dataState === "active" || dataState === "completed") {
+      return {
+        borderColor: customColor,
+        backgroundColor: customColor,
+        color: "white",
+      };
+    }
+    return {
+      borderColor: "hsl(var(--muted))",
+      backgroundColor: "hsl(var(--background))",
+      color: "hsl(var(--muted-foreground))",
+    };
+  } else {
+    // separator
+    if (dataState === "active" || dataState === "completed") {
+      return {
+        backgroundColor: customColor,
+      };
+    }
+    return {
+      backgroundColor: "hsl(var(--border))",
+    };
+  }
+}
+
 type Direction = "ltr" | "rtl";
 type Orientation = "horizontal" | "vertical";
 type NavigationDirection = "next" | "prev";
 type ActivationMode = "automatic" | "manual";
 type DataState = "inactive" | "active" | "completed";
+type StepperColor =
+  | "primary"
+  | "secondary"
+  | "accent"
+  | "destructive"
+  | "muted"
+  | "success"
+  | "error"
+  | "warning";
+type StepperVariant = "normal" | "dot";
+type LabelPosition = "top" | "bottom" | "left" | "right";
 
 interface DivProps extends React.ComponentProps<"div"> {
   asChild?: boolean;
@@ -39,7 +254,7 @@ type TriggerElement = React.ComponentRef<typeof StepperTrigger>;
 function getId(
   id: string,
   variant: "trigger" | "content" | "title" | "description",
-  value: string,
+  value: string
 ) {
   return `${id}-${variant}-${value}`;
 }
@@ -69,7 +284,7 @@ function getDirectionAwareKey(key: string, dir?: Direction) {
 function getFocusIntent(
   event: React.KeyboardEvent<TriggerElement>,
   dir?: Direction,
-  orientation?: Orientation,
+  orientation?: Orientation
 ) {
   const key = getDirectionAwareKey(event.key, dir);
   if (orientation === "horizontal" && ["ArrowUp", "ArrowDown"].includes(key))
@@ -81,7 +296,7 @@ function getFocusIntent(
 
 function focusFirst(
   candidates: React.RefObject<TriggerElement | null>[],
-  preventScroll = false,
+  preventScroll = false
 ) {
   const PREVIOUSLY_FOCUSED_ELEMENT = document.activeElement;
   for (const candidateRef of candidates) {
@@ -95,7 +310,7 @@ function focusFirst(
 
 function wrapArray<T>(array: T[], startIndex: number) {
   return array.map<T>(
-    (_, index) => array[(startIndex + index) % array.length] as T,
+    (_, index) => array[(startIndex + index) % array.length] as T
   );
 }
 
@@ -127,7 +342,7 @@ function getDataState(
   itemValue: string,
   stepState: StepState | undefined,
   steps: Map<string, StepState>,
-  variant: "item" | "separator" = "item",
+  variant: "item" | "separator" = "item"
 ): DataState {
   const stepKeys = Array.from(steps.keys());
   const currentIndex = stepKeys.indexOf(itemValue);
@@ -171,7 +386,7 @@ interface Store {
   setState: <K extends keyof StoreState>(key: K, value: StoreState[K]) => void;
   setStateWithValidation: (
     value: string,
-    direction: NavigationDirection,
+    direction: NavigationDirection
   ) => Promise<boolean>;
   hasValidation: () => boolean;
   notify: () => void;
@@ -195,7 +410,7 @@ function useStore<T>(selector: (state: StoreState) => T): T {
 
   const getSnapshot = React.useCallback(
     () => selector(store.getState()),
-    [store, selector],
+    [store, selector]
   );
 
   return React.useSyncExternalStore(store.subscribe, getSnapshot, getSnapshot);
@@ -217,6 +432,10 @@ interface StepperContextValue {
   disabled: boolean;
   nonInteractive: boolean;
   loop: boolean;
+  color?: StepperColor;
+  customColor?: string;
+  variant?: StepperVariant;
+  labelPosition?: LabelPosition;
 }
 
 const StepperContext = React.createContext<StepperContextValue | null>(null);
@@ -238,7 +457,7 @@ interface StepperRootProps extends DivProps {
   onValueRemove?: (value: string) => void;
   onValidate?: (
     value: string,
-    direction: NavigationDirection,
+    direction: NavigationDirection
   ) => boolean | Promise<boolean>;
   activationMode?: ActivationMode;
   dir?: Direction;
@@ -246,6 +465,10 @@ interface StepperRootProps extends DivProps {
   disabled?: boolean;
   loop?: boolean;
   nonInteractive?: boolean;
+  color?: StepperColor;
+  customColor?: string;
+  variant?: StepperVariant;
+  labelPosition?: LabelPosition;
 }
 
 function StepperRoot(props: StepperRootProps) {
@@ -265,6 +488,10 @@ function StepperRoot(props: StepperRootProps) {
     disabled = false,
     nonInteractive = false,
     loop = false,
+    color,
+    customColor,
+    variant = "normal",
+    labelPosition = "right",
     className,
     ...rootProps
   } = props;
@@ -371,8 +598,24 @@ function StepperRoot(props: StepperRootProps) {
       disabled,
       nonInteractive,
       loop,
+      color,
+      customColor,
+      variant,
+      labelPosition,
     }),
-    [rootId, dir, orientation, activationMode, disabled, nonInteractive, loop],
+    [
+      rootId,
+      dir,
+      orientation,
+      activationMode,
+      disabled,
+      nonInteractive,
+      loop,
+      color,
+      customColor,
+      variant,
+      labelPosition,
+    ]
   );
 
   const RootPrimitive = asChild ? Slot : "div";
@@ -390,7 +633,7 @@ function StepperRoot(props: StepperRootProps) {
           className={cn(
             "flex gap-6",
             orientation === "horizontal" ? "w-full flex-col" : "flex-row",
-            className,
+            className
           )}
         />
       </StepperContext.Provider>
@@ -415,7 +658,7 @@ function useFocusContext(consumerName: string) {
   const context = React.useContext(FocusContext);
   if (!context) {
     throw new Error(
-      `\`${consumerName}\` must be used within \`FocusProvider\``,
+      `\`${consumerName}\` must be used within \`FocusProvider\``
     );
   }
   return context;
@@ -489,7 +732,7 @@ function StepperList(props: StepperListProps) {
 
       setIsTabbingBackOut(false);
     },
-    [listProps.onBlur],
+    [listProps.onBlur]
   );
 
   const onFocus = React.useCallback(
@@ -508,7 +751,7 @@ function StepperList(props: StepperListProps) {
 
         if (!entryFocusEvent.defaultPrevented) {
           const items = Array.from(itemsRef.current.values()).filter(
-            (item) => !item.disabled,
+            (item) => !item.disabled
           );
           const selectedItem = currentValue
             ? items.find((item) => item.value === currentValue)
@@ -528,7 +771,7 @@ function StepperList(props: StepperListProps) {
       }
       isClickFocusRef.current = false;
     },
-    [listProps.onFocus, isTabbingBackOut, currentValue, tabStopId],
+    [listProps.onFocus, isTabbingBackOut, currentValue, tabStopId]
   );
 
   const onMouseDown = React.useCallback(
@@ -539,7 +782,7 @@ function StepperList(props: StepperListProps) {
 
       isClickFocusRef.current = true;
     },
-    [listProps.onMouseDown],
+    [listProps.onMouseDown]
   );
 
   const focusContextValue = React.useMemo<FocusContextValue>(
@@ -562,7 +805,7 @@ function StepperList(props: StepperListProps) {
       onItemRegister,
       onItemUnregister,
       getItems,
-    ],
+    ]
   );
 
   const ListPrimitive = asChild ? Slot : "div";
@@ -583,7 +826,7 @@ function StepperList(props: StepperListProps) {
           orientation === "horizontal"
             ? "flex-row items-center"
             : "flex-col items-start",
-          className,
+          className
         )}
         onBlur={onBlur}
         onFocus={onFocus}
@@ -601,7 +844,7 @@ interface StepperItemContextValue {
 }
 
 const StepperItemContext = React.createContext<StepperItemContextValue | null>(
-  null,
+  null
 );
 
 function useStepperItemContext(consumerName: string) {
@@ -633,6 +876,7 @@ function StepperItem(props: StepperItemProps) {
   const context = useStepperContext(ITEM_NAME);
   const store = useStoreContext(ITEM_NAME);
   const orientation = context.orientation;
+  const labelPosition = context.labelPosition ?? "right";
   const value = useStore((state) => state.value);
 
   useIsomorphicLayoutEffect(() => {
@@ -651,13 +895,164 @@ function StepperItem(props: StepperItemProps) {
   const steps = useStore((state) => state.steps);
   const dataState = getDataState(value, itemValue, stepState, steps);
 
+  const stepKeys = Array.from(steps.keys());
+  const stepIndex = stepKeys.indexOf(itemValue);
+  const isFirstStep = stepIndex === 0;
+  const isLastStep = stepIndex === stepKeys.length - 1;
+
   const itemContextValue = React.useMemo<StepperItemContextValue>(
     () => ({
       value: itemValue,
       stepState,
     }),
-    [itemValue, stepState],
+    [itemValue, stepState]
   );
+
+  // Determine item layout based on orientation and labelPosition
+  const getItemClasses = () => {
+    const baseClasses = "relative flex";
+
+    if (orientation === "horizontal") {
+      // Horizontal stepper
+      if (labelPosition === "top" || labelPosition === "bottom") {
+        // When labels are above/below, use flex-col to stack indicator row and label
+        // Each item takes equal space
+        return `${baseClasses} flex-col items-center flex-1 gap-2`;
+      }
+      // Default: labels left/right - flex-row
+      return `${baseClasses} flex-row items-center not-last:flex-1`;
+    } else {
+      // Vertical stepper - always flex-col for vertical orientation
+      return `${baseClasses} flex-col`;
+    }
+  };
+
+  // Reorganize children for top/bottom label positions
+  const processedChildren = React.useMemo(() => {
+    if (
+      orientation === "horizontal" &&
+      (labelPosition === "top" || labelPosition === "bottom")
+    ) {
+      const childArray = React.Children.toArray(children);
+      let trigger: React.ReactNode = null;
+      let indicator: React.ReactNode = null;
+      let separator: React.ReactNode = null;
+      const others: React.ReactNode[] = [];
+
+      childArray.forEach((child) => {
+        if (React.isValidElement(child)) {
+          const slot = (child.props as { "data-slot"?: string })["data-slot"];
+          if (slot === "stepper-trigger" || child.type === StepperTrigger) {
+            trigger = child;
+            // Extract indicator from trigger's children if it exists
+            const triggerChildren = React.Children.toArray(
+              (child as React.ReactElement<{ children?: React.ReactNode }>)
+                .props.children
+            );
+            triggerChildren.forEach((triggerChild) => {
+              if (React.isValidElement(triggerChild)) {
+                const triggerChildSlot = (
+                  triggerChild.props as { "data-slot"?: string }
+                )["data-slot"];
+                if (
+                  triggerChildSlot === "stepper-indicator" ||
+                  triggerChild.type === StepperIndicator
+                ) {
+                  indicator = triggerChild;
+                }
+              }
+            });
+          } else if (
+            slot === "stepper-separator" ||
+            child.type === StepperSeparator
+          ) {
+            separator = child;
+          } else {
+            others.push(child);
+          }
+        } else {
+          others.push(child);
+        }
+      });
+
+      // New structure: indicator row (with indicator + separator) then trigger
+      // For proper centering, we need separators on both sides
+
+      // Get the state for left separator (connects to previous step)
+      // Left separator should be active if current step or any previous step is active
+      const prevStepIndex = stepIndex - 1;
+      const prevStepValue = prevStepIndex >= 0 ? stepKeys[prevStepIndex] : null;
+      const leftSeparatorState = prevStepValue
+        ? getDataState(
+            value,
+            prevStepValue,
+            steps.get(prevStepValue),
+            steps,
+            "separator"
+          )
+        : "inactive";
+
+      // Create left separator (even if separator element doesn't exist)
+      let leftSeparator: React.ReactNode = null;
+      if (!isFirstStep) {
+        const color = context.color;
+        const customColor = context.customColor;
+
+        leftSeparator = (
+          <div
+            key="left-separator"
+            className={cn(
+              "h-px flex-1 transition-colors",
+              getSeparatorColorClass(color, customColor, leftSeparatorState)
+            )}
+            style={getCustomColorStyle(customColor, leftSeparatorState, false)}
+            aria-hidden="true"
+          />
+        );
+      }
+
+      const indicatorRow = (
+        <div
+          className="flex w-full items-center justify-center"
+          key="indicator-row"
+        >
+          {/* Left separator - connects to previous step */}
+          {leftSeparator}
+          {/* Spacer if first step */}
+          {isFirstStep && (
+            <div className="h-px flex-1 bg-transparent" aria-hidden="true" />
+          )}
+          {indicator}
+          {/* Right separator - connects to next step */}
+          {!isLastStep && separator}
+          {/* Spacer for last step to maintain centering */}
+          {isLastStep && (
+            <div className="h-px flex-1 bg-transparent" aria-hidden="true" />
+          )}
+        </div>
+      );
+
+      if (labelPosition === "top") {
+        return [trigger, indicatorRow, ...others];
+      } else {
+        return [indicatorRow, trigger, ...others];
+      }
+    }
+
+    return children;
+  }, [
+    children,
+    orientation,
+    labelPosition,
+    isFirstStep,
+    isLastStep,
+    stepIndex,
+    stepKeys,
+    steps,
+    value,
+    context.color,
+    context.customColor,
+  ]);
 
   const ItemPrimitive = asChild ? Slot : "div";
 
@@ -668,16 +1063,13 @@ function StepperItem(props: StepperItemProps) {
         data-orientation={orientation}
         data-state={dataState}
         data-slot="stepper-item"
+        data-label-position={labelPosition}
         dir={context.dir}
         {...itemProps}
         ref={ref}
-        className={cn(
-          "relative flex not-last:flex-1 items-center",
-          orientation === "horizontal" ? "flex-row" : "flex-col",
-          className,
-        )}
+        className={cn(getItemClasses(), className)}
       >
-        {children}
+        {processedChildren}
       </ItemPrimitive>
     </StepperItemContext.Provider>
   );
@@ -696,6 +1088,7 @@ function StepperTrigger(props: ButtonProps) {
   const activationMode = context.activationMode;
   const orientation = context.orientation;
   const loop = context.loop;
+  const labelPosition = context.labelPosition ?? "right";
 
   const steps = useStore((state) => state.steps);
   const stepIndex = Array.from(steps.keys()).indexOf(itemValue);
@@ -777,7 +1170,7 @@ function StepperTrigger(props: ButtonProps) {
       value,
       steps,
       triggerProps.onClick,
-    ],
+    ]
   );
 
   const onFocus = React.useCallback(
@@ -817,7 +1210,7 @@ function StepperTrigger(props: ButtonProps) {
       value,
       steps,
       triggerProps.onFocus,
-    ],
+    ]
   );
 
   const onKeyDown = React.useCallback(
@@ -864,7 +1257,7 @@ function StepperTrigger(props: ButtonProps) {
         } else if (focusIntent === "prev" || focusIntent === "next") {
           if (focusIntent === "prev") candidateRefs.reverse();
           const currentIndex = candidateRefs.findIndex(
-            (ref) => ref.current === event.currentTarget,
+            (ref) => ref.current === event.currentTarget
           );
           candidateRefs = loop
             ? wrapArray(candidateRefs, currentIndex + 1)
@@ -875,15 +1268,15 @@ function StepperTrigger(props: ButtonProps) {
           const nextRef = candidateRefs[0];
           const nextElement = nextRef?.current;
           const nextItem = items.find(
-            (item) => item.ref.current === nextElement,
+            (item) => item.ref.current === nextElement
           );
 
           if (nextItem && nextItem.value !== itemValue) {
             const currentStepIndex = Array.from(steps.keys()).indexOf(
-              value || "",
+              value || ""
             );
             const targetStepIndex = Array.from(steps.keys()).indexOf(
-              nextItem.value,
+              nextItem.value
             );
             const direction: NavigationDirection =
               targetStepIndex > currentStepIndex ? "next" : "prev";
@@ -891,7 +1284,7 @@ function StepperTrigger(props: ButtonProps) {
             if (direction === "next") {
               const isValid = await store.setStateWithValidation(
                 nextItem.value,
-                direction,
+                direction
               );
               if (!isValid) return;
             } else {
@@ -919,7 +1312,7 @@ function StepperTrigger(props: ButtonProps) {
       itemValue,
       value,
       steps,
-    ],
+    ]
   );
 
   const onMouseDown = React.useCallback(
@@ -935,8 +1328,45 @@ function StepperTrigger(props: ButtonProps) {
         focusContext.onItemFocus(triggerId);
       }
     },
-    [focusContext, triggerId, isDisabled, triggerProps.onMouseDown],
+    [focusContext, triggerId, isDisabled, triggerProps.onMouseDown]
   );
+
+  // Determine flex direction based on labelPosition
+  const getFlexDirection = () => {
+    if (
+      orientation === "horizontal" &&
+      (labelPosition === "top" || labelPosition === "bottom")
+    ) {
+      // For horizontal with top/bottom labels, trigger only contains text
+      // Indicator and separator will be siblings at item level
+      return labelPosition === "top" ? "flex-col-reverse" : "flex-col";
+    }
+
+    if (labelPosition === "top") return "flex-col-reverse";
+    if (labelPosition === "bottom") return "flex-col";
+    if (labelPosition === "left") return "flex-row-reverse";
+    return "flex-row"; // default is right
+  };
+
+  const shouldWrapIndicator =
+    orientation === "horizontal" &&
+    (labelPosition === "top" || labelPosition === "bottom");
+
+  // Filter out Indicator from children when shouldWrapIndicator is true
+  const processedChildren = React.useMemo(() => {
+    if (!shouldWrapIndicator) return triggerProps.children;
+
+    const childArray = React.Children.toArray(triggerProps.children);
+    return childArray.filter((child) => {
+      if (React.isValidElement(child)) {
+        const slot = (child.props as { "data-slot"?: string })["data-slot"];
+        return !(
+          slot === "stepper-indicator" || child.type === StepperIndicator
+        );
+      }
+      return true;
+    });
+  }, [shouldWrapIndicator, triggerProps.children]);
 
   const TriggerPrimitive = asChild ? Slot : "button";
 
@@ -954,6 +1384,7 @@ function StepperTrigger(props: ButtonProps) {
       data-disabled={isDisabled ? "" : undefined}
       data-state={dataState}
       data-slot="stepper-trigger"
+      data-wrap-indicator={shouldWrapIndicator ? "" : undefined}
       disabled={isDisabled}
       tabIndex={isTabStop ? 0 : -1}
       {...triggerProps}
@@ -961,22 +1392,37 @@ function StepperTrigger(props: ButtonProps) {
       className={cn(
         "inline-flex items-center justify-center gap-3 rounded-md text-left outline-none transition-all focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
         "not-has-data-[slot=description]:rounded-full not-has-data-[slot=title]:rounded-full",
-        className,
+        shouldWrapIndicator ? "" : getFlexDirection(),
+        className
       )}
       onClick={onClick}
       onFocus={onFocus}
       onKeyDown={onKeyDown}
       onMouseDown={onMouseDown}
-    />
+    >
+      {processedChildren}
+    </TriggerPrimitive>
   );
 }
 
 interface StepperIndicatorProps extends Omit<DivProps, "children"> {
   children?: React.ReactNode | ((dataState: DataState) => React.ReactNode);
+  color?: StepperColor;
+  customColor?: string;
+  variant?: StepperVariant;
 }
 
 function StepperIndicator(props: StepperIndicatorProps) {
-  const { className, children, asChild, ref, ...indicatorProps } = props;
+  const {
+    className,
+    children,
+    asChild,
+    ref,
+    color: colorProp,
+    customColor: customColorProp,
+    variant: variantProp,
+    ...indicatorProps
+  } = props;
   const context = useStepperContext(INDICATOR_NAME);
   const itemContext = useStepperItemContext(INDICATOR_NAME);
   const value = useStore((state) => state.value);
@@ -988,35 +1434,51 @@ function StepperIndicator(props: StepperIndicatorProps) {
 
   const dataState = getDataState(value, itemValue, stepState, steps);
 
+  const color = colorProp ?? context.color;
+  const customColor = customColorProp ?? context.customColor;
+  const variant = variantProp ?? context.variant ?? "normal";
+
+  const colorClass = getIndicatorColorClass(color, customColor, dataState);
+  const customStyle = getCustomColorStyle(customColor, dataState, true);
+
   const IndicatorPrimitive = asChild ? Slot : "div";
+
+  const isDot = variant === "dot";
 
   return (
     <IndicatorPrimitive
       data-state={dataState}
+      data-variant={variant}
       data-slot="stepper-indicator"
       dir={context.dir}
       {...indicatorProps}
       ref={ref}
+      style={{ ...indicatorProps.style, ...customStyle }}
       className={cn(
-        "flex size-7 shrink-0 items-center justify-center rounded-full border-2 border-muted bg-background font-medium text-muted-foreground text-sm transition-colors data-[state=active]:border-primary data-[state=completed]:border-primary data-[state=active]:bg-primary data-[state=completed]:bg-primary data-[state=active]:text-primary-foreground data-[state=completed]:text-primary-foreground",
-        className,
+        "flex shrink-0 items-center justify-center rounded-full border-2 font-medium text-sm transition-colors",
+        isDot ? "size-7 data-[variant=dot]:size-2" : "size-7",
+        colorClass,
+        className
       )}
     >
-      {typeof children === "function" ? (
-        children(dataState)
-      ) : children ? (
-        children
-      ) : dataState === "completed" ? (
-        <Check className="size-4" />
-      ) : (
-        stepPosition
-      )}
+      {!isDot &&
+        (typeof children === "function" ? (
+          children(dataState)
+        ) : children ? (
+          children
+        ) : dataState === "completed" ? (
+          <Check className="size-4" />
+        ) : (
+          stepPosition
+        ))}
     </IndicatorPrimitive>
   );
 }
 
 interface StepperSeparatorProps extends DivProps {
   forceMount?: boolean;
+  color?: StepperColor;
+  customColor?: string;
 }
 
 function StepperSeparator(props: StepperSeparatorProps) {
@@ -1025,6 +1487,8 @@ function StepperSeparator(props: StepperSeparatorProps) {
     asChild,
     forceMount = false,
     ref,
+    color: colorProp,
+    customColor: customColorProp,
     ...separatorProps
   } = props;
 
@@ -1032,6 +1496,7 @@ function StepperSeparator(props: StepperSeparatorProps) {
   const itemContext = useStepperItemContext(SEPARATOR_NAME);
   const value = useStore((state) => state.value);
   const orientation = context.orientation;
+  const labelPosition = context.labelPosition ?? "right";
 
   const steps = useStore((state) => state.steps);
   const stepIndex = Array.from(steps.keys()).indexOf(itemContext.value);
@@ -1047,10 +1512,42 @@ function StepperSeparator(props: StepperSeparatorProps) {
     itemContext.value,
     itemContext.stepState,
     steps,
-    "separator",
+    "separator"
   );
 
+  const color = colorProp ?? context.color;
+  const customColor = customColorProp ?? context.customColor;
+
+  const colorClass = getSeparatorColorClass(color, customColor, dataState);
+  const customStyle = getCustomColorStyle(customColor, dataState, false);
+
   const SeparatorPrimitive = asChild ? Slot : "div";
+
+  // Determine separator positioning based on orientation and labelPosition
+  const getSeparatorClasses = () => {
+    if (orientation === "horizontal") {
+      // Horizontal stepper
+      if (labelPosition === "top" || labelPosition === "bottom") {
+        // When labels are above/below, separator is at item level alongside indicator
+        // It should be a horizontal line that takes remaining space
+        return "h-px flex-1";
+      }
+      // Default: labels left/right - normal flex behavior
+      return "h-px flex-1";
+    } else {
+      // Vertical stepper
+      if (labelPosition === "top" || labelPosition === "bottom") {
+        // When labels are above/below in vertical mode, separator connects vertically
+        return "w-px absolute left-1/2 -translate-x-1/2 top-full h-full -z-10";
+      } else if (labelPosition === "left") {
+        // Label on left, separator on the right side
+        return "w-px absolute right-0 top-full h-full -z-10 translate-x-1/2";
+      } else {
+        // Label on right (default), separator on the left side
+        return "w-px absolute left-0 top-full h-full -z-10 -translate-x-1/2";
+      }
+    }
+  };
 
   return (
     <SeparatorPrimitive
@@ -1063,10 +1560,12 @@ function StepperSeparator(props: StepperSeparatorProps) {
       dir={context.dir}
       {...separatorProps}
       ref={ref}
+      style={{ ...separatorProps.style, ...customStyle }}
       className={cn(
-        "bg-border transition-colors data-[state=active]:bg-primary data-[state=completed]:bg-primary",
-        orientation === "horizontal" ? "h-px flex-1" : "h-10 w-px",
-        className,
+        "transition-colors",
+        getSeparatorClasses(),
+        colorClass,
+        className
       )}
     />
   );
@@ -1185,7 +1684,7 @@ function StepperPrev(props: ButtonProps) {
         store.setState("value", prevStepValue);
       }
     },
-    [prevProps.onClick, isDisabled, currentIndex, stepKeys, store],
+    [prevProps.onClick, isDisabled, currentIndex, stepKeys, store]
   );
 
   const PrevPrimitive = asChild ? Slot : "button";
@@ -1224,7 +1723,7 @@ function StepperNext(props: ButtonProps) {
         await store.setStateWithValidation(nextStepValue, "next");
       }
     },
-    [nextProps.onClick, isDisabled, currentIndex, stepKeys, store],
+    [nextProps.onClick, isDisabled, currentIndex, stepKeys, store]
   );
 
   const NextPrimitive = asChild ? Slot : "button";
