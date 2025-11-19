@@ -450,6 +450,7 @@
     "stories.category.time": "Time Picker",
     "stories.category.scroll": "Scroll Behavior",
     "stories.category.layout": "Layout",
+    "stories.category.state": "State",
     "stories.category.advanced": "Advanced",
 
     "stories.cropper.argTypes.aspectRatio.description": "Aspect ratio of the crop area (width/height)",
@@ -485,6 +486,23 @@
     "stories.marquee.argTypes.autoFill.description": "Automatically fill the marquee with items",
     "stories.marquee.argTypes.pauseOnHover.description": "Pause animation on hover",
     "stories.marquee.argTypes.pauseOnKeyboard.description": "Pause animation on keyboard interaction",
-    "stories.marquee.argTypes.reverse.description": "Reverse the direction of animation"
+    "stories.marquee.argTypes.reverse.description": "Reverse the direction of animation",
+
+    "stories.stepper.argTypes.orientation.description": "Orientation of the stepper",
+    "stories.stepper.argTypes.activationMode.description": "Controls how steps are activated during keyboard navigation.\n\n\"automatic\": Arrow keys immediately activate the focused step (selection follows focus)\n\"manual\": Arrow keys only move focus, Enter/Space keys activate the focused step",
+    "stories.stepper.argTypes.disabled.description": "Disable the entire stepper",
+    "stories.stepper.argTypes.loop.description": "Allow looping through steps",
+
+    "stories.stepper.argTypes.value.description": "The controlled value of the stepper",
+    "stories.stepper.argTypes.defaultValue.description": "The default value of the stepper",
+    "stories.stepper.argTypes.onValueChange.description": "Callback when the value changes",
+    "stories.stepper.argTypes.onValueComplete.description": "Callback when a step is completed",
+    "stories.stepper.argTypes.onValueAdd.description": "Callback when a step is added",
+    "stories.stepper.argTypes.onValueRemove.description": "Callback when a step is removed",
+    "stories.stepper.argTypes.onValidate.description": "Validation callback before changing steps",
+    "stories.stepper.argTypes.dir.description": "The text direction",
+    "stories.stepper.argTypes.nonInteractive.description": "Disable interaction with the stepper",
+    "stories.stepper.argTypes.steps.description": "Array of step objects with title, description, and content",
+    "stories.stepper.argTypes.children.description": "Custom JSX content for rendering steps and content"
   }
 }

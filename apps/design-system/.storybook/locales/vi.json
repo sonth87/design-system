@@ -450,6 +450,7 @@
     "stories.category.time": "Bộ chọn Thời gian",
     "stories.category.scroll": "Hành vi Cuộn",
     "stories.category.layout": "Bố cục",
+    "stories.category.state": "Trạng thái",
     "stories.category.advanced": "Nâng cao",
 
     "stories.cropper.argTypes.aspectRatio.description": "Tỷ lệ khung hình của vùng cắt (chiều rộng/chiều cao)",
@@ -485,6 +486,23 @@
     "stories.marquee.argTypes.autoFill.description": "Tự động điền marquee với các mục",
     "stories.marquee.argTypes.pauseOnHover.description": "Tạm dừng hoạt hình khi di chuột",
     "stories.marquee.argTypes.pauseOnKeyboard.description": "Tạm dừng hoạt hình khi tương tác bàn phím",
-    "stories.marquee.argTypes.reverse.description": "Đảo ngược hướng hoạt hình"
+    "stories.marquee.argTypes.reverse.description": "Đảo ngược hướng hoạt hình",
+
+    "stories.stepper.argTypes.orientation.description": "Hướng của stepper",
+    "stories.stepper.argTypes.activationMode.description": "Kiểm soát cách các bước được kích hoạt trong điều hướng bàn phím.\n\n\"automatic\": Phím mũi tên ngay lập tức kích hoạt bước được tập trung (lựa chọn theo sau tiêu điểm)\n\"manual\": Phím mũi tên chỉ di chuyển tiêu điểm, phím Enter/Space kích hoạt bước được tập trung",
+    "stories.stepper.argTypes.disabled.description": "Vô hiệu hóa toàn bộ stepper",
+    "stories.stepper.argTypes.loop.description": "Cho phép lặp qua các bước",
+
+    "stories.stepper.argTypes.value.description": "Giá trị được kiểm soát của stepper",
+    "stories.stepper.argTypes.defaultValue.description": "Giá trị mặc định của stepper",
+    "stories.stepper.argTypes.onValueChange.description": "Callback khi giá trị thay đổi",
+    "stories.stepper.argTypes.onValueComplete.description": "Callback khi một bước được hoàn thành",
+    "stories.stepper.argTypes.onValueAdd.description": "Callback khi một bước được thêm",
+    "stories.stepper.argTypes.onValueRemove.description": "Callback khi một bước được xóa",
+    "stories.stepper.argTypes.onValidate.description": "Callback xác thực trước khi thay đổi bước",
+    "stories.stepper.argTypes.dir.description": "Hướng văn bản",
+    "stories.stepper.argTypes.nonInteractive.description": "Vô hiệu hóa tương tác với stepper",
+    "stories.stepper.argTypes.steps.description": "Mảng các đối tượng bước với tiêu đề, mô tả và nội dung",
+    "stories.stepper.argTypes.children.description": "Nội dung JSX tùy chỉnh để render các bước và nội dung"
   }
 }
