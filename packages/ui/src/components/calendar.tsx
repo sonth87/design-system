@@ -11,9 +11,21 @@ import { DayButton, DayPicker, getDefaultClassNames } from "react-day-picker";
 import { cn } from "@dsui/ui/lib/utils";
 import { Button, buttonVariants } from "@dsui/ui/components/button";
 
+type CalendarColor =
+  | "primary"
+  | "secondary"
+  | "accent"
+  | "destructive"
+  | "muted"
+  | "success"
+  | "error"
+  | "warning"
+  | "foreground";
+
 type CalendarProps = React.ComponentProps<typeof DayPicker> & {
   buttonVariant?: React.ComponentProps<typeof Button>["variant"];
   variant?: "default" | "rounded";
+  color?: CalendarColor;
 };
 function Calendar({
   className,
@@ -22,11 +34,13 @@ function Calendar({
   captionLayout = "label",
   buttonVariant = "ghost",
   variant = "default",
+  color = "primary",
   formatters,
   components,
   ...props
 }: CalendarProps) {
   const defaultClassNames = getDefaultClassNames();
+  const colorClasses = getColorClasses(color);
 
   return (
     <DayPicker
@@ -111,7 +125,7 @@ function Calendar({
         ),
         range_start: cn(
           variant === "rounded"
-            ? "bg-primary/20 dark:bg-primary/10 rounded-l-full"
+            ? `${colorClasses.rangeBg} rounded-l-full`
             : "rounded-l-md bg-accent",
           defaultClassNames.range_start,
         ),
@@ -121,13 +135,13 @@ function Calendar({
         ),
         range_end: cn(
           variant === "rounded"
-            ? "bg-primary/20 dark:bg-primary/10 rounded-r-full"
+            ? `${colorClasses.rangeBg} rounded-r-full`
             : "rounded-r-md bg-accent",
           defaultClassNames.range_end,
         ),
         today: cn(
           variant === "rounded"
-            ? "rounded-full bg-accent data-[selected=true]:rounded-l-none data-[selected=true]:bg-primary/20 dark:data-[selected=true]:bg-primary/10 [&_button[data-range-middle=true]]:bg-transparent"
+            ? `rounded-full bg-accent data-[selected=true]:rounded-l-none data-[selected=true]:${colorClasses.rangeBg} [&_button[data-range-middle=true]]:bg-transparent`
             : "bg-accent text-accent-foreground rounded-md data-[selected=true]:rounded-none",
           defaultClassNames.today,
         ),
@@ -174,7 +188,7 @@ function Calendar({
           );
         },
         DayButton: (props) => (
-          <CalendarDayButton {...props} variant={variant} />
+          <CalendarDayButton {...props} variant={variant} color={color} />
         ),
         WeekNumber: ({ children, ...props }) => {
           return (
@@ -197,15 +211,81 @@ type CalendarDayButtonProps = Omit<
   "color"
 > & {
   variant?: "default" | "rounded";
+  color?: CalendarColor;
 };
+
+// Color variants for calendar day buttons
+const getColorClasses = (color: CalendarColor = "foreground") => {
+  const colorMap = {
+    primary: {
+      selected: "bg-primary text-primary-foreground",
+      selectedHover: "hover:bg-primary/90",
+      rangeBg: "bg-primary/20 dark:bg-primary/10",
+      focusRing: "ring-primary/20 dark:ring-primary/40",
+    },
+    secondary: {
+      selected: "bg-secondary text-secondary-foreground",
+      selectedHover: "hover:bg-secondary/90",
+      rangeBg: "bg-secondary/20 dark:bg-secondary/10",
+      focusRing: "ring-secondary/20 dark:ring-secondary/40",
+    },
+    accent: {
+      selected: "bg-accent text-accent-foreground",
+      selectedHover: "hover:bg-accent/90",
+      rangeBg: "bg-accent/20 dark:bg-accent/10",
+      focusRing: "ring-accent/20 dark:ring-accent/40",
+    },
+    destructive: {
+      selected: "bg-destructive text-destructive-foreground",
+      selectedHover: "hover:bg-destructive/90",
+      rangeBg: "bg-destructive/20 dark:bg-destructive/10",
+      focusRing: "ring-destructive/20 dark:ring-destructive/40",
+    },
+    muted: {
+      selected: "bg-muted text-muted-foreground",
+      selectedHover: "hover:bg-muted/90",
+      rangeBg: "bg-muted/30 dark:bg-muted/20",
+      focusRing: "ring-muted/20 dark:ring-muted/40",
+    },
+    success: {
+      selected: "bg-success text-success-foreground",
+      selectedHover: "hover:bg-success/90",
+      rangeBg: "bg-success/20 dark:bg-success/10",
+      focusRing: "ring-success/20 dark:ring-success/40",
+    },
+    error: {
+      selected: "bg-error text-error-foreground",
+      selectedHover: "hover:bg-error/90",
+      rangeBg: "bg-error/20 dark:bg-error/10",
+      focusRing: "ring-error/20 dark:ring-error/40",
+    },
+    warning: {
+      selected: "bg-warning text-warning-foreground",
+      selectedHover: "hover:bg-warning/90",
+      rangeBg: "bg-warning/20 dark:bg-warning/10",
+      focusRing: "ring-warning/20 dark:ring-warning/40",
+    },
+    foreground: {
+      selected: "bg-foreground text-background",
+      selectedHover: "hover:bg-foreground/90",
+      rangeBg: "bg-foreground/10 dark:bg-foreground/5",
+      focusRing: "ring-foreground/20 dark:ring-foreground/40",
+    },
+  };
+
+  return colorMap[color];
+};
+
 function CalendarDayButton({
   className,
   day,
   modifiers,
   variant = "default",
+  color = "foreground",
   ...props
 }: CalendarDayButtonProps) {
   const defaultClassNames = getDefaultClassNames();
+  const colorClasses = getColorClasses(color);
 
   const ref = React.useRef<HTMLButtonElement>(null);
   React.useEffect(() => {
@@ -228,9 +308,49 @@ function CalendarDayButton({
       data-range-end={modifiers.range_end}
       data-range-middle={modifiers.range_middle}
       className={cn(
-        "data-[selected-single=true]:bg-primary data-[selected-single=true]:text-primary-foreground data-[range-middle=true]:bg-accent data-[range-middle=true]:text-accent-foreground data-[range-start=true]:bg-primary data-[range-start=true]:text-primary-foreground data-[range-end=true]:bg-primary data-[range-end=true]:text-primary-foreground group-data-[focused=true]/day:border-ring group-data-[focused=true]/day:ring-ring/50 dark:hover:text-accent-foreground flex aspect-square size-auto w-full min-w-(--cell-size) flex-col gap-1 leading-none font-normal group-data-[focused=true]/day:relative group-data-[focused=true]/day:z-10 group-data-[focused=true]/day:ring-[3px] data-[range-end=true]:rounded-md data-[range-end=true]:rounded-r-md data-[range-middle=true]:rounded-none data-[range-start=true]:rounded-md data-[range-start=true]:rounded-l-md [&>span]:text-xs [&>span]:opacity-70 hover:bg-accent hover:text-accent-foreground",
-        variant === "rounded" &&
-          "data-[selected-single=true]:rounded-full data-[range-end=true]:rounded-full data-[range-start=true]:rounded-full data-[range-start=true]:bg-primary data-[range-start=true]:text-primary-foreground data-[range-start=true]:dark:bg-primary data-[range-start=true]:group-data-[focused=true]/day:ring-primary/20 data-[range-start=true]:dark:group-data-[focused=true]/day:ring-primary/40 data-[range-end=true]:bg-primary data-[range-end=true]:text-primary-foreground data-[range-end=true]:dark:bg-primary data-[range-end=true]:group-data-[focused=true]/day:ring-primary/20 data-[range-end=true]:dark:group-data-[focused=true]/day:ring-primary/40 data-[range-middle=true]:rounded-none data-[range-middle=true]:bg-primary/20 data-[range-middle=true]:dark:bg-primary/10 hover:rounded-full",
+        "flex aspect-square size-auto w-full min-w-(--cell-size) flex-col gap-1 leading-none font-normal",
+        "group-data-[focused=true]/day:relative group-data-[focused=true]/day:z-10 group-data-[focused=true]/day:ring-[3px]",
+        "group-data-[focused=true]/day:border-ring group-data-[focused=true]/day:ring-ring/50",
+        "[&>span]:text-xs [&>span]:opacity-70",
+        // Hover effect chỉ khi chưa selected
+        !modifiers.selected &&
+          !modifiers.range_start &&
+          !modifiers.range_end &&
+          !modifiers.range_middle &&
+          "hover:bg-accent hover:text-accent-foreground dark:hover:text-accent-foreground",
+        // Selected single day - chỉ apply color khi selected
+        modifiers.selected &&
+          !modifiers.range_start &&
+          !modifiers.range_end &&
+          !modifiers.range_middle &&
+          colorClasses.selected,
+        // Range start/end - chỉ apply color khi là range start/end
+        modifiers.range_start && colorClasses.selected,
+        modifiers.range_end && colorClasses.selected,
+        // Range middle - apply rangeBg nhưng giữ text color mặc định
+        modifiers.range_middle &&
+          `${colorClasses.rangeBg} text-accent-foreground`,
+        variant === "default" && [
+          "data-[range-end=true]:rounded-md data-[range-end=true]:rounded-r-md",
+          "data-[range-middle=true]:rounded-none",
+          "data-[range-start=true]:rounded-md data-[range-start=true]:rounded-l-md",
+        ],
+        variant === "rounded" && [
+          "data-[selected-single=true]:rounded-full",
+          "data-[range-end=true]:rounded-full",
+          "data-[range-start=true]:rounded-full",
+          modifiers.range_start &&
+            `group-data-[focused=true]/day:${colorClasses.focusRing}`,
+          modifiers.range_end &&
+            `group-data-[focused=true]/day:${colorClasses.focusRing}`,
+          modifiers.range_middle && "rounded-none",
+          // Chỉ hover:rounded-full khi chưa selected
+          !modifiers.selected &&
+            !modifiers.range_start &&
+            !modifiers.range_end &&
+            !modifiers.range_middle &&
+            "hover:rounded-full",
+        ],
         defaultClassNames.day,
         className,
       )}
@@ -244,4 +364,5 @@ export {
   CalendarDayButton,
   type CalendarProps,
   type CalendarDayButtonProps,
+  type CalendarColor,
 };

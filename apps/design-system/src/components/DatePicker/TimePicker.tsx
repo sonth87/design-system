@@ -30,6 +30,7 @@ import { Clock } from "lucide-react";
 import { TimeColumnwheel } from "../../components/WheelColumn";
 import { TimeGridView } from "../../components/TimeGridView";
 import { format as dfFormat, parse, isValid } from "date-fns";
+import type { CalendarColor } from "../Calendar/Calendar";
 
 export type TimePickerMode = "wheel" | "select" | "compact";
 
@@ -77,6 +78,7 @@ export type TimePickerProps = Omit<
   standalone?: boolean; // When true (default), TimePicker shows as a drawer/popover with trigger. When false, it's used as an integrated component (e.g., inside DatePicker)
   desktopMode?: "popover" | "drawer"; // Desktop display mode for standalone: 'popover' or 'drawer'
   mobileMode?: "popover" | "drawer"; // Mobile display mode for standalone: 'popover' or 'drawer'
+  color?: CalendarColor; // Color variant for selected time (defaults to "primary")
 };
 
 const generateIntervalArray = (max: number, interval: number = 1): number[] => {
@@ -151,6 +153,7 @@ export function TimePicker({
   standalone = true,
   desktopMode = "popover",
   mobileMode = "drawer",
+  color = "primary",
   ...props
 }: TimePickerProps) {
   // Determine input and output formats (like DatePicker)
@@ -478,6 +481,7 @@ export function TimePicker({
           isTimeDisabled={isTimeDisabled}
           onTimeSelect={handleTimeSelect}
           ref={gridRef}
+          color={color}
         />
       );
     }
@@ -497,6 +501,7 @@ export function TimePicker({
             timeLabel={hourLabel}
             isItemDisabled={(item) => isTimeDisabled(item, minutes, seconds)}
             disabled={disabled}
+            color={color}
           />,
         );
       } else if (mode === "select") {
@@ -529,6 +534,7 @@ export function TimePicker({
             itemClassName={showHours ? "border-l" : undefined}
             isItemDisabled={(item) => isTimeDisabled(hours, item, seconds)}
             disabled={disabled}
+            color={color}
           />,
         );
       } else if (mode === "select") {
@@ -561,6 +567,7 @@ export function TimePicker({
             itemClassName={showMinutes || showHours ? "border-l" : undefined}
             isItemDisabled={(item) => isTimeDisabled(hours, minutes, item)}
             disabled={disabled}
+            color={color}
           />,
         );
       } else if (mode === "select") {

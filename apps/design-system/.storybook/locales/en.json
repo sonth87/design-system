@@ -373,6 +373,7 @@
     "stories.calendar.argTypes.mode.description": "Selection mode for the calendar",
     "stories.calendar.argTypes.language.description": "Language for month/day names",
     "stories.calendar.argTypes.variant.description": "Calendar style variant: 'default' for square selection, 'rounded' for pill-shaped range selection",
+    "stories.calendar.argTypes.color.description": "Color theme for selected dates",
     "stories.calendar.argTypes.captionLayout.description": "Layout of the month/year navigation",
     "stories.calendar.argTypes.showOutsideDays.description": "Show days from previous/next months",
     "stories.calendar.argTypes.disabled.description": "Disable the entire calendar",

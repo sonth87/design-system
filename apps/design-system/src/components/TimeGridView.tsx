@@ -2,8 +2,52 @@ import * as React from "react";
 import { memo, useMemo } from "react";
 import { cn } from "@dsui/ui/index";
 import Button from "./Button/Button";
+import type { CalendarColor } from "./Calendar/Calendar";
 
 const pad = (num: number): string => String(num).padStart(2, "0");
+
+// Color variants for time grid items
+const getColorClasses = (color: CalendarColor = "primary") => {
+  const colorMap = {
+    primary: {
+      bg: "bg-primary",
+      text: "text-primary-foreground",
+    },
+    secondary: {
+      bg: "bg-secondary",
+      text: "text-secondary-foreground",
+    },
+    accent: {
+      bg: "bg-accent",
+      text: "text-accent-foreground",
+    },
+    destructive: {
+      bg: "bg-destructive",
+      text: "text-destructive-foreground",
+    },
+    muted: {
+      bg: "bg-muted",
+      text: "text-muted-foreground",
+    },
+    success: {
+      bg: "bg-success",
+      text: "text-success-foreground",
+    },
+    error: {
+      bg: "bg-error",
+      text: "text-error-foreground",
+    },
+    warning: {
+      bg: "bg-warning",
+      text: "text-warning-foreground",
+    },
+    foreground: {
+      bg: "bg-foreground",
+      text: "text-background",
+    },
+  };
+  return colorMap[color];
+};
 
 type TimeGridViewProps = {
   HOURS: number[];
@@ -13,6 +57,7 @@ type TimeGridViewProps = {
   disabled: boolean;
   isTimeDisabled: (h: number, m: number, s: number) => boolean;
   onTimeSelect: (h: number, m: number) => void;
+  color?: CalendarColor;
 };
 
 export const TimeGridView = memo(
@@ -26,6 +71,7 @@ export const TimeGridView = memo(
         disabled,
         isTimeDisabled,
         onTimeSelect,
+        color = "primary",
       },
       ref,
     ) => {
@@ -67,6 +113,7 @@ export const TimeGridView = memo(
             {timeOptions.map(({ h, m, display }) => {
               const itemDisabled = isTimeDisabled(h, m, 0);
               const isSelected = display === currentValue;
+              const colorClasses = getColorClasses(color);
 
               return (
                 <Button
@@ -79,7 +126,7 @@ export const TimeGridView = memo(
                   size="sm"
                   className={cn(
                     isSelected
-                      ? "bg-primary text-primary-foreground font-semibold"
+                      ? `${colorClasses.bg} ${colorClasses.text} font-semibold`
                       : "text-foreground",
                   )}
                 >

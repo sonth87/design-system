@@ -373,6 +373,7 @@
     "stories.calendar.argTypes.mode.description": "Chế độ chọn cho lịch",
     "stories.calendar.argTypes.language.description": "Ngôn ngữ cho tên tháng/ngày",
     "stories.calendar.argTypes.variant.description": "Kiểu hiển thị lịch: 'default' cho chọn ngày vuông, 'rounded' cho chọn khoảng ngày hình viên thuốc",
+    "stories.calendar.argTypes.color.description": "Màu chủ đề của các ngày được chọn",
     "stories.calendar.argTypes.captionLayout.description": "Bố cục của điều hướng tháng/năm",
     "stories.calendar.argTypes.showOutsideDays.description": "Hiển thị ngày từ tháng trước/sau",
     "stories.calendar.argTypes.disabled.description": "Vô hiệu hóa toàn bộ lịch",

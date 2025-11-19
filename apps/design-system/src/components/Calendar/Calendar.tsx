@@ -3,6 +3,7 @@ import {
   type CalendarDayButtonProps as SCalendarDayButtonProps,
   Calendar as SCalendar,
   type CalendarProps as SCalendarProps,
+  type CalendarColor,
 } from "@dsui/ui/components/calendar";
 import { cn } from "@dsui/ui/index";
 import { vi, enUS } from "date-fns/locale";
@@ -15,6 +16,7 @@ export type DateRange = {
 export type CalendarProps = SCalendarProps & {
   language?: "vi" | "en";
   variant?: "default" | "rounded";
+  color?: CalendarColor;
 };
 
 export function Calendar({
@@ -25,6 +27,7 @@ export function Calendar({
   buttonVariant,
   locale,
   variant = "default",
+  color = "primary",
   ...props
 }: CalendarProps) {
   const _locale = locale ? locale : language === "en" ? enUS : vi;
@@ -36,6 +39,7 @@ export function Calendar({
       buttonVariant={buttonVariant}
       captionLayout={captionLayout}
       variant={variant}
+      color={color}
       formatters={{
         formatMonthDropdown: (date: Date) =>
           date.toLocaleString(_locale.code, { month: "short" }),
@@ -51,3 +55,4 @@ export function Calendar({
 
 export const CalendarDayButton = SCalendarDayButton;
 export type CalendarDayButtonProps = SCalendarDayButtonProps;
+export type { CalendarColor };

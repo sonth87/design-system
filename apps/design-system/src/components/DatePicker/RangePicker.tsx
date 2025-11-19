@@ -3,6 +3,7 @@ import {
   CalendarDayButton as SCalendarDayButton,
   type CalendarDayButtonProps as SCalendarDayButtonProps,
   Calendar,
+  type CalendarColor,
 } from "@dsui/ui/components/calendar";
 import {
   Popover,
@@ -110,6 +111,7 @@ export type RangePickerProps = Omit<
   timeConfig?: [TimeConfig, TimeConfig];
   numberOfMonths?: number;
   variant?: "default" | "rounded";
+  color?: CalendarColor;
 };
 
 export function RangePicker({
@@ -137,6 +139,7 @@ export function RangePicker({
   hideDate = false,
   numberOfMonths = 1,
   variant = "default",
+  color = "primary",
   ...props
 }: RangePickerProps) {
   const inputId = React.useId();
@@ -387,6 +390,7 @@ export function RangePicker({
           onMonthChange={setMonth}
           numberOfMonths={isMobile ? 1 : numberOfMonths || 1}
           variant={variant}
+          color={color}
           onSelect={(selectedRange) => {
             // Preserve time from TimePicker values if showTime is enabled
             let preservedRange = selectedRange;

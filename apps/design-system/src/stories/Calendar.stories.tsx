@@ -46,11 +46,31 @@ const meta: Meta<typeof Calendar> = {
         category: i18n.t("stories.category.appearance"),
       },
     },
+    color: {
+      control: { type: "select" },
+      options: [
+        "primary",
+        "secondary",
+        "accent",
+        "destructive",
+        "muted",
+        "success",
+        "error",
+        "warning",
+        "foreground",
+      ],
+      description: i18n.t("stories.calendar.argTypes.color.description"),
+      table: {
+        type: { summary: "string" },
+        defaultValue: { summary: "primary" },
+        category: i18n.t("stories.category.appearance"),
+      },
+    },
     captionLayout: {
       control: { type: "select" },
       options: ["label", "dropdown", "dropdown-months", "dropdown-years"],
       description: i18n.t(
-        "stories.calendar.argTypes.captionLayout.description"
+        "stories.calendar.argTypes.captionLayout.description",
       ),
       table: {
         category: i18n.t("stories.category.ui"),
@@ -59,7 +79,7 @@ const meta: Meta<typeof Calendar> = {
     showOutsideDays: {
       control: { type: "boolean" },
       description: i18n.t(
-        "stories.calendar.argTypes.showOutsideDays.description"
+        "stories.calendar.argTypes.showOutsideDays.description",
       ),
       table: {
         category: i18n.t("stories.category.calendar"),
@@ -75,7 +95,7 @@ const meta: Meta<typeof Calendar> = {
     numberOfMonths: {
       control: { type: "number" },
       description: i18n.t(
-        "stories.calendar.argTypes.numberOfMonths.description"
+        "stories.calendar.argTypes.numberOfMonths.description",
       ),
       table: {
         category: i18n.t("stories.category.layout"),
@@ -91,7 +111,7 @@ const meta: Meta<typeof Calendar> = {
     onMonthChange: {
       action: "month changed",
       description: i18n.t(
-        "stories.calendar.argTypes.onMonthChange.description"
+        "stories.calendar.argTypes.onMonthChange.description",
       ),
       table: {
         category: i18n.t("stories.category.events"),
@@ -128,7 +148,7 @@ const meta: Meta<typeof Calendar> = {
     showWeekNumber: {
       control: { type: "boolean" },
       description: i18n.t(
-        "stories.calendar.argTypes.showWeekNumber.description"
+        "stories.calendar.argTypes.showWeekNumber.description",
       ),
       table: {
         category: i18n.t("stories.category.calendar"),
@@ -152,6 +172,7 @@ const meta: Meta<typeof Calendar> = {
   args: {
     language: "vi",
     variant: "default",
+    color: "foreground",
     captionLayout: "dropdown",
     showOutsideDays: true,
   },

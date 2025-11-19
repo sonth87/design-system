@@ -87,6 +87,26 @@ const meta: Meta<typeof TimePicker> = {
         category: i18n.t("stories.category.ui"),
       },
     },
+    color: {
+      control: { type: "select" },
+      options: [
+        "primary",
+        "secondary",
+        "accent",
+        "destructive",
+        "muted",
+        "success",
+        "error",
+        "warning",
+        "foreground",
+      ],
+      description: i18n.t("stories.calendar.argTypes.color.description"),
+      table: {
+        type: { summary: "string" },
+        defaultValue: { summary: "primary" },
+        category: i18n.t("stories.category.appearance"),
+      },
+    },
 
     // Time Units Visibility
     showHours: {

@@ -1,8 +1,25 @@
 import * as React from "react";
 import { memo, useCallback, useEffect, useRef, useState } from "react";
 import { cn } from "@dsui/ui/index";
+import type { CalendarColor } from "./Calendar/Calendar";
 
 const pad = (num: number): string => String(num).padStart(2, "0");
+
+// Color variants for time picker items
+const getColorClass = (color: CalendarColor = "primary"): string => {
+  const colorMap = {
+    primary: "text-primary",
+    secondary: "text-secondary",
+    accent: "text-accent",
+    destructive: "text-destructive",
+    muted: "text-muted-foreground",
+    success: "text-success",
+    error: "text-error",
+    warning: "text-warning",
+    foreground: "text-foreground",
+  };
+  return colorMap[color];
+};
 
 type TimeColumnwheelProps = {
   items: number[];
@@ -12,6 +29,7 @@ type TimeColumnwheelProps = {
   itemClassName?: string;
   isItemDisabled: (item: number) => boolean;
   disabled: boolean;
+  color?: CalendarColor;
 };
 
 export const TimeColumnwheel = memo(
@@ -25,6 +43,7 @@ export const TimeColumnwheel = memo(
         itemClassName,
         isItemDisabled,
         disabled,
+        color = "primary",
       },
       ref,
     ) => {
@@ -188,7 +207,7 @@ export const TimeColumnwheel = memo(
                       "cursor-pointer text-lg font-medium select-none",
                       "disabled:opacity-30 disabled:cursor-not-allowed disabled:line-through",
                       isSelected
-                        ? "text-primary font-bold"
+                        ? `${getColorClass(color)} font-bold`
                         : "text-muted-foreground",
                     )}
                     style={itemStyle}

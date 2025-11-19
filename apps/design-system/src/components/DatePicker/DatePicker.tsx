@@ -4,6 +4,7 @@ import {
   type CalendarDayButtonProps as SCalendarDayButtonProps,
   Calendar,
   type CalendarProps,
+  type CalendarColor,
 } from "@dsui/ui/components/calendar";
 import {
   Popover,
@@ -115,6 +116,7 @@ export type DatePickerProps = Omit<
   hideDate?: boolean;
   numberOfMonths?: number;
   variant?: "default" | "rounded";
+  color?: CalendarColor;
 
   // TimePicker configuration options
   timePickerMode?: TimePickerMode; // Display mode: 'wheel' (default), 'select', 'compact'
@@ -151,6 +153,7 @@ export function DatePicker({
   hideDate = false,
   numberOfMonths = 1,
   variant = "default",
+  color = "primary",
   // TimePicker props
   timePickerMode = "wheel",
   hourInterval = 1,
@@ -303,6 +306,7 @@ export function DatePicker({
           onMonthChange={setMonth}
           numberOfMonths={isMobile ? 1 : numberOfMonths || 1}
           variant={variant}
+          color={color}
           onSelect={(selectedDate) => {
             // Preserve time from current date when selecting new date
             let newDate = selectedDate;
@@ -358,6 +362,7 @@ export function DatePicker({
             nowButtonLabel={nowButtonLabel}
             timeLabel={timePickerLabel}
             standalone={false}
+            color={color}
           />
         </div>
       )}
