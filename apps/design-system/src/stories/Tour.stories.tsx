@@ -228,7 +228,7 @@ Handle tour lifecycle events:
     showSpotlightRing: {
       control: { type: "boolean" },
       description: i18n.t(
-        "stories.tour.argTypes.showSpotlightRing.description",
+        "stories.tour.argTypes.showSpotlightRing.description"
       ),
       table: {
         category: i18n.t("stories.category.appearance"),
@@ -237,7 +237,7 @@ Handle tour lifecycle events:
     spotlightClassName: {
       control: { type: "text" },
       description: i18n.t(
-        "stories.tour.argTypes.spotlightClassName.description",
+        "stories.tour.argTypes.spotlightClassName.description"
       ),
       table: {
         category: i18n.t("stories.category.appearance"),
@@ -246,7 +246,7 @@ Handle tour lifecycle events:
     spotlightRingClassName: {
       control: { type: "text" },
       description: i18n.t(
-        "stories.tour.argTypes.spotlightRingClassName.description",
+        "stories.tour.argTypes.spotlightRingClassName.description"
       ),
       table: {
         category: i18n.t("stories.category.appearance"),
@@ -511,77 +511,6 @@ export const WithCustomContent = () => {
   );
 };
 
-export const ControlledTour = () => {
-  const [open, setOpen] = React.useState(false);
-  const [step, setStep] = React.useState(0);
-
-  return (
-    <div className="space-y-4">
-      <div className="flex gap-2">
-        <Button onClick={() => setOpen(true)}>Start Tour</Button>
-        <Button
-          variant="outline"
-          onClick={() => setStep((prev) => Math.max(0, prev - 1))}
-          disabled={!open || step === 0}
-        >
-          Previous
-        </Button>
-        <Button
-          variant="outline"
-          onClick={() => setStep((prev) => prev + 1)}
-          disabled={!open}
-        >
-          Next
-        </Button>
-        <span className="flex items-center text-sm text-muted-foreground">
-          Step: {step + 1}
-        </span>
-      </div>
-
-      <div className="grid grid-cols-4 gap-4">
-        {[1, 2, 3, 4].map((num) => (
-          <div
-            key={num}
-            id={`controlled-${num}`}
-            className="p-6 border rounded-lg bg-card text-card-foreground"
-          >
-            <h3 className="font-semibold">Step {num}</h3>
-          </div>
-        ))}
-      </div>
-
-      <Tour
-        open={open}
-        onOpenChange={setOpen}
-        value={step}
-        onValueChange={setStep}
-        steps={[
-          {
-            target: "#controlled-1",
-            title: "Step 1",
-            description: "First step of the controlled tour",
-          },
-          {
-            target: "#controlled-2",
-            title: "Step 2",
-            description: "Second step of the controlled tour",
-          },
-          {
-            target: "#controlled-3",
-            title: "Step 3",
-            description: "Third step of the controlled tour",
-          },
-          {
-            target: "#controlled-4",
-            title: "Step 4",
-            description: "Final step of the controlled tour",
-          },
-        ]}
-      />
-    </div>
-  );
-};
-
 export function TourControlled() {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState(0);
@@ -629,6 +558,9 @@ export function TourControlled() {
           >
             Next
           </Button>
+          <span className="flex items-center text-sm text-muted-foreground">
+            Step: {value + 1}
+          </span>
         </div>
       </div>
       <div className="flex w-full flex-col gap-6">
