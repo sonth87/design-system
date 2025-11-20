@@ -234,23 +234,8 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
       const tabRect = activeTabElement.getBoundingClientRect();
 
       // Calculate relative position within the list
-      let left = tabRect.left - listRect.left;
-      let top = tabRect.top - listRect.top;
-
-      // For fade mode, account for scroll position
-      if (overflowMode === "fade" && scrollAreaRef.current) {
-        const scrollAreaViewport = scrollAreaRef.current.querySelector(
-          "[data-radix-scroll-area-viewport]",
-        ) as HTMLElement;
-
-        if (scrollAreaViewport) {
-          if (isVertical) {
-            top += scrollAreaViewport.scrollTop;
-          } else {
-            left += scrollAreaViewport.scrollLeft;
-          }
-        }
-      }
+      const left = tabRect.left - listRect.left;
+      const top = tabRect.top - listRect.top;
 
       setIndicatorStyle({
         left: left,
@@ -262,7 +247,7 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
       // Auto-scroll to active tab in fade mode
       if (overflowMode === "fade" && scrollAreaRef.current) {
         const scrollAreaViewport = scrollAreaRef.current.querySelector(
-          "[data-radix-scroll-area-viewport]",
+          "[data-radix-scroll-area-viewport]"
         ) as HTMLElement;
 
         if (scrollAreaViewport) {
@@ -301,7 +286,7 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
               // Ensure we don't scroll beyond bounds and leave space for fade
               const clampedScroll = Math.max(
                 fadeWidth / 2,
-                Math.min(targetScrollTop, maxScroll - fadeWidth / 2),
+                Math.min(targetScrollTop, maxScroll - fadeWidth / 2)
               );
 
               scrollAreaViewport.scrollTo({
@@ -341,7 +326,7 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
               // Ensure we don't scroll beyond bounds and leave space for fade
               const clampedScroll = Math.max(
                 fadeWidth / 2,
-                Math.min(targetScrollLeft, maxScroll - fadeWidth / 2),
+                Math.min(targetScrollLeft, maxScroll - fadeWidth / 2)
               );
 
               scrollAreaViewport.scrollTo({
@@ -360,7 +345,7 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
     if (overflowMode !== "fade" || !scrollAreaRef.current) return;
 
     const scrollAreaViewport = scrollAreaRef.current.querySelector(
-      "[data-radix-scroll-area-viewport]",
+      "[data-radix-scroll-area-viewport]"
     ) as HTMLElement;
 
     if (!scrollAreaViewport) return;
@@ -383,34 +368,6 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
         setShowStartFade(scrollLeft > threshold);
         setShowEndFade(scrollLeft < scrollWidth - clientWidth - threshold);
       }
-
-      // Update indicator position when scrolling
-      const activeIndex = items.findIndex(
-        (tab) => tab.key === currentActiveKey,
-      );
-      const activeTabElement = tabRefs.current[activeIndex];
-      const listElement = tabsListRef.current;
-
-      if (activeTabElement && listElement) {
-        const listRect = listElement.getBoundingClientRect();
-        const tabRect = activeTabElement.getBoundingClientRect();
-
-        let left = tabRect.left - listRect.left;
-        let top = tabRect.top - listRect.top;
-
-        if (isVertical) {
-          top += scrollAreaViewport.scrollTop;
-        } else {
-          left += scrollAreaViewport.scrollLeft;
-        }
-
-        setIndicatorStyle({
-          left: left,
-          width: tabRect.width,
-          top: top,
-          height: tabRect.height,
-        });
-      }
     };
 
     // Initial check
@@ -427,7 +384,7 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
       scrollAreaViewport.removeEventListener("scroll", handleScroll);
       resizeObserver.disconnect();
     };
-  }, [overflowMode, isVertical, isOverflowing, items, currentActiveKey]);
+  }, [overflowMode, isVertical, isOverflowing]);
 
   const handleValueChange = (key: string) => {
     if (activeKey === undefined) {
@@ -533,7 +490,7 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
                 variant === "pills"
               ) && triggerColorClass,
               item.className,
-              tabTriggerClassName,
+              tabTriggerClassName
             )}
           >
             {item.icon && (
@@ -562,7 +519,7 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
             "max-w-full": overflowMode === "fade", // Limit width for fade mode
             // For overflow modes, allow natural width expansion
             "w-auto": overflowMode === "dropdown" || overflowMode === "fade",
-          },
+          }
         )}
       >
         {renderTabTriggers(visibleTabs)}
@@ -714,7 +671,7 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
                   "h-9 px-3 shrink-0",
                   {
                     "bg-accent text-accent-foreground": dropdownOpen,
-                  },
+                  }
                 )}
                 aria-label="More tabs"
               >
@@ -739,7 +696,7 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
                       {
                         "bg-accent text-accent-foreground":
                           item.key === currentActiveKey,
-                      },
+                      }
                     )}
                   >
                     {item.icon && (
@@ -826,7 +783,7 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
                   "h-9 px-3 shrink-0",
                   {
                     "bg-accent text-accent-foreground": dropdownOpen,
-                  },
+                  }
                 )}
                 aria-label="More tabs"
               >
@@ -834,7 +791,11 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
               </button>
             }
             content={
-              <div className={cn("flex flex-col gap-1 p-1 min-w-[150px]")}>
+              // <div className={cn("flex flex-col gap-1 min-w-[150px]")}>
+              <ScrollArea
+                className="min-w-[150px] max-h-[256px] [&_[data-radix-scroll-area-viewport]]:max-h-[256px]"
+                snapType="y"
+              >
                 {items.map((item) => (
                   <button
                     key={item.key}
@@ -844,14 +805,15 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
                     }}
                     disabled={item.disabled}
                     className={cn(
-                      "flex items-center gap-2 rounded-sm px-2 py-1.5 text-sm",
+                      "snap-start",
+                      "w-full flex items-center gap-2 rounded-sm px-2 py-1.5 text-sm",
                       "hover:bg-accent hover:text-accent-foreground",
                       "disabled:pointer-events-none disabled:opacity-50",
                       "text-left",
                       {
                         "bg-accent text-accent-foreground":
                           item.key === currentActiveKey,
-                      },
+                      }
                     )}
                   >
                     {item.icon && (
@@ -862,7 +824,8 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
                     {item.label}
                   </button>
                 ))}
-              </div>
+              </ScrollArea>
+              // </div>
             }
             side={isVertical ? "right" : "bottom"}
             align="end"
