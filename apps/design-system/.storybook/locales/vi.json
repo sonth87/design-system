@@ -13,6 +13,7 @@
     "common.button.edit": "Sửa",
     "common.button.close": "Đóng",
     "common.button.open": "Mở",
+    "common.button.finish": "Hoàn thành",
     "form.label.name": "Tên",
     "form.label.email": "Email",
     "form.label.password": "Mật khẩu",
@@ -523,6 +524,9 @@
     "stories.pagination.argTypes.nextText.description": "Văn bản cho nút Sau. Đặt thành false để ẩn văn bản, true cho mặc định 'Sau', hoặc chuỗi tùy chỉnh",
     "stories.pagination.argTypes.jumpOnEllipsis.description": "Bật tính năng nhảy-trên-dấu-chấm - di chuột qua dấu chấm hiển thị các nút Trước/Sau theo hướng",
     "stories.pagination.argTypes.animation.description": "Cấu hình hoạt hình cho các nút phân trang",
-    "stories.pagination.argTypes.className.description": "Các lớp CSS bổ sung để áp dụng cho container phân trang"
+    "stories.pagination.argTypes.className.description": "Các lớp CSS bổ sung để áp dụng cho container phân trang",
+    "stories.tour.argTypes.buttonConfig.description": "Đối tượng cấu hình để tùy chỉnh nhãn nút trong footer tour. Hỗ trợ các thuộc tính 'skip', 'prev', 'next' và 'finish' với giá trị chuỗi",
+    "stories.tour.argTypes.spotlightClassName.description": "Các lớp CSS bổ sung để áp dụng cho lớp phủ spotlight",
+    "stories.tour.argTypes.spotlightRingClassName.description": "Các lớp CSS bổ sung để áp dụng cho viền vòng spotlight"
   }
 }

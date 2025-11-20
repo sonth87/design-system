@@ -12,6 +12,7 @@
     "common.button.edit": "Edit",
     "common.button.close": "Close",
     "common.button.open": "Open",
+    "common.button.finish": "Finish",
     "form.label.name": "Name",
     "form.label.email": "Email",
     "form.label.password": "Password",
@@ -523,6 +524,9 @@
     "stories.pagination.argTypes.nextText.description": "Text for the Next button. Set to false to hide text, true for default 'Next', or custom string",
     "stories.pagination.argTypes.jumpOnEllipsis.description": "Enable jump-on-ellipsis feature - hovering over ellipsis shows directional Previous/Next buttons",
     "stories.pagination.argTypes.animation.description": "Animation configuration for pagination buttons",
-    "stories.pagination.argTypes.className.description": "Additional CSS classes to apply to the pagination container"
+    "stories.pagination.argTypes.className.description": "Additional CSS classes to apply to the pagination container",
+    "stories.tour.argTypes.buttonConfig.description": "Configuration object for customizing button labels in the tour footer. Supports 'skip', 'prev', 'next', and 'finish' properties with string values",
+    "stories.tour.argTypes.spotlightClassName.description": "Additional CSS classes to apply to the spotlight overlay",
+    "stories.tour.argTypes.spotlightRingClassName.description": "Additional CSS classes to apply to the spotlight ring border"
   }
 }

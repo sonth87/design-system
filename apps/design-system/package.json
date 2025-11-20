@@ -372,6 +372,16 @@
         "default": "./dist/cjs/components/Tooltip/Tooltip.cjs"
       }
     },
+    "./tour": {
+      "import": {
+        "types": "./dist/types/components/Tour/Tour.d.ts",
+        "default": "./dist/esm/components/Tour/Tour.js"
+      },
+      "require": {
+        "types": "./dist/types/components/Tour/Tour.d.ts",
+        "default": "./dist/cjs/components/Tour/Tour.cjs"
+      }
+    },
     "./wheelcolumn": {
       "import": {
         "types": "./dist/types/components/WheelColumn/WheelColumn.d.ts",
@@ -448,6 +458,7 @@
     "@types/react-dom": "^19.1.9",
     "@vitejs/plugin-react": "^5.0.4",
     "@hookform/resolvers": "^5.2.2",
+    "@floating-ui/react-dom": "^2.1.6",
     "eslint": "^9.36.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.22",
@@ -575,6 +586,9 @@
       ],
       "tooltip": [
         "./dist/types/components/Tooltip/Tooltip.d.ts"
+      ],
+      "tour": [
+        "./dist/types/components/Tour/Tour.d.ts"
       ],
       "wheelcolumn": [
         "./dist/types/components/WheelColumn/WheelColumn.d.ts"

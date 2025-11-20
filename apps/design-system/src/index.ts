@@ -92,6 +92,9 @@ export * from "./components/Toggle";
 // Tooltip
 export * from "./components/Tooltip";
 
+// Tour
+export * from "./components/Tour";
+
 // QR Code
 export * from "./components/QrCode";
 
