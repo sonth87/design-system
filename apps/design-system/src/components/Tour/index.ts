@@ -32,7 +32,12 @@ import {
   //
   type TourProps,
 } from "./Tour";
-import { TourWrapper, type TourWrapperProps, type TourStep as TourStepType, type ButtonConfig } from "./TourWrapper";
+import {
+  TourWrapper,
+  type TourWrapperProps,
+  type TourStep as TourStepType,
+  type ButtonConfig,
+} from "./TourWrapper";
 
 const Tour = Object.assign(TourWrapper, {
   Root,
@@ -68,4 +73,9 @@ const Tour = Object.assign(TourWrapper, {
 });
 
 export { Tour };
-export type { TourProps, TourWrapperProps, TourStepType as TourStep, ButtonConfig };
+export type {
+  TourProps,
+  TourWrapperProps,
+  TourStepType as TourStep,
+  ButtonConfig,
+};

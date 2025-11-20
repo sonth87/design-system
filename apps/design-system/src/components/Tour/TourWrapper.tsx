@@ -81,7 +81,9 @@ function TourWrapper({
         {showSpotlight && (
           <>
             <Spotlight className={spotlightClassName} />
-            {showSpotlightRing && <SpotlightRing className={spotlightRingClassName} />}
+            {showSpotlightRing && (
+              <SpotlightRing className={spotlightRingClassName} />
+            )}
           </>
         )}
 
@@ -119,22 +121,21 @@ function TourWrapper({
                 <Footer>
                   <div className="flex items-center gap-2">
                     {!step.hideStepCounter && <StepCounter />}
-                    {!step.hideSkip && index === 0 && (
-                      buttonConfig?.skip ? (
+                    {!step.hideSkip &&
+                      index === 0 &&
+                      (buttonConfig?.skip ? (
                         <Skip>{buttonConfig.skip}</Skip>
                       ) : (
                         <Skip />
-                      )
-                    )}
+                      ))}
                   </div>
                   <div className="flex items-center gap-2">
-                    {index > 0 && (
-                      buttonConfig?.prev ? (
+                    {index > 0 &&
+                      (buttonConfig?.prev ? (
                         <Prev>{buttonConfig.prev}</Prev>
                       ) : (
                         <Prev />
-                      )
-                    )}
+                      ))}
                     {buttonConfig?.next ? (
                       index === steps.length - 1 && buttonConfig?.finish ? (
                         <Next>{buttonConfig.finish}</Next>
