@@ -350,41 +350,80 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
 
     if (!scrollAreaViewport) return;
 
+    let rafId: number | null = null;
+
     const handleScroll = () => {
-      const threshold = 5; // Small threshold to account for floating point precision
-
-      if (isVertical) {
-        const scrollTop = scrollAreaViewport.scrollTop;
-        const scrollHeight = scrollAreaViewport.scrollHeight;
-        const clientHeight = scrollAreaViewport.clientHeight;
-
-        setShowStartFade(scrollTop > threshold);
-        setShowEndFade(scrollTop < scrollHeight - clientHeight - threshold);
-      } else {
-        const scrollLeft = scrollAreaViewport.scrollLeft;
-        const scrollWidth = scrollAreaViewport.scrollWidth;
-        const clientWidth = scrollAreaViewport.clientWidth;
-
-        setShowStartFade(scrollLeft > threshold);
-        setShowEndFade(scrollLeft < scrollWidth - clientWidth - threshold);
+      // Cancel previous frame if still pending
+      if (rafId !== null) {
+        cancelAnimationFrame(rafId);
       }
+
+      // Use requestAnimationFrame for smooth updates
+      rafId = requestAnimationFrame(() => {
+        const threshold = 5; // Small threshold to account for floating point precision
+
+        if (isVertical) {
+          const scrollTop = scrollAreaViewport.scrollTop;
+          const scrollHeight = scrollAreaViewport.scrollHeight;
+          const clientHeight = scrollAreaViewport.clientHeight;
+
+          setShowStartFade(scrollTop > threshold);
+          setShowEndFade(scrollTop < scrollHeight - clientHeight - threshold);
+        } else {
+          const scrollLeft = scrollAreaViewport.scrollLeft;
+          const scrollWidth = scrollAreaViewport.scrollWidth;
+          const clientWidth = scrollAreaViewport.clientWidth;
+
+          setShowStartFade(scrollLeft > threshold);
+          setShowEndFade(scrollLeft < scrollWidth - clientWidth - threshold);
+        }
+
+        // Update indicator position smoothly during scroll
+        const activeIndex = items.findIndex(
+          (tab) => tab.key === currentActiveKey
+        );
+        const activeTabElement = tabRefs.current[activeIndex];
+        const listElement = tabsListRef.current;
+
+        if (activeTabElement && listElement) {
+          const listRect = listElement.getBoundingClientRect();
+          const tabRect = activeTabElement.getBoundingClientRect();
+
+          const left = tabRect.left - listRect.left;
+          const top = tabRect.top - listRect.top;
+
+          setIndicatorStyle({
+            left: left,
+            width: tabRect.width,
+            top: top,
+            height: tabRect.height,
+          });
+        }
+
+        rafId = null;
+      });
     };
 
     // Initial check
     handleScroll();
 
     // Add scroll listener
-    scrollAreaViewport.addEventListener("scroll", handleScroll);
+    scrollAreaViewport.addEventListener("scroll", handleScroll, {
+      passive: true,
+    });
 
     // Recheck on resize
     const resizeObserver = new ResizeObserver(handleScroll);
     resizeObserver.observe(scrollAreaViewport);
 
     return () => {
+      if (rafId !== null) {
+        cancelAnimationFrame(rafId);
+      }
       scrollAreaViewport.removeEventListener("scroll", handleScroll);
       resizeObserver.disconnect();
     };
-  }, [overflowMode, isVertical, isOverflowing]);
+  }, [overflowMode, isVertical, isOverflowing, items, currentActiveKey]);
 
   const handleValueChange = (key: string) => {
     if (activeKey === undefined) {
