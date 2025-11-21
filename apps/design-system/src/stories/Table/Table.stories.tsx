@@ -158,7 +158,7 @@ function generateFakeProjects(count: number): Project[] {
   return projects;
 }
 
-const data: Project[] = generateFakeProjects(5);
+const data: Project[] = generateFakeProjects(100);
 
 const columns: ColumnDef<Project>[] = [
   {
@@ -275,11 +275,13 @@ export const Default = () => {
   const { table } = useDataTable({
     data: data,
     columns,
-    pageCount: 1,
-    initialState: {
-      sorting: [{ id: "title", desc: true }],
-      columnPinning: { right: ["actions"] },
-    },
+    // pageCount: Math.ceil(data.length / 10),
+    // manualPagination: false,
+    // initialState: {
+    //   // sorting: [{ id: "title", desc: true }],
+    //   // columnPinning: { right: ["actions"] },
+    //   pagination: { pageIndex: 0, pageSize: 10 },
+    // },
     getRowId: (row) => row.id,
   });
 
@@ -314,7 +316,6 @@ const WithNuqsStory = () => {
   const { table } = useDataTable({
     data: filteredData,
     columns,
-    pageCount: 1,
     enableNuqs: true, // Enable nuqs
   });
 
