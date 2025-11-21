@@ -1,1 +1,5 @@
-export { default, default as Separator } from "./Separator";
+export {
+  default,
+  default as Separator,
+  type SeparatorProps,
+} from "./Separator";
