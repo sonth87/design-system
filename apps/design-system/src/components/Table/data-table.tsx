@@ -3,6 +3,7 @@ import type * as React from "react";
 
 import { DataTablePagination } from "./data-table-pagination";
 import {
+  cn,
   Table,
   TableBody,
   TableCell,
@@ -11,7 +12,6 @@ import {
   TableRow,
 } from "@dsui/ui";
 import { getCommonPinningStyles } from "@/utils/data-table";
-import { cn } from "@dsui/ui";
 
 interface DataTableProps<TData> extends React.ComponentProps<"div"> {
   table: TanstackTable<TData>;

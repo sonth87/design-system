@@ -32,7 +32,7 @@
     /* Paths */
     "paths": {
       "@/*": ["src/*"],
-      "@dsui/ui": ["../../packages/ui/src/index.ts"],
+      "@dsui/ui": ["../../packages/ui/src/index.tsx"],
       "@dsui/ui/*": ["../../packages/ui/src/*"]
     }
   },

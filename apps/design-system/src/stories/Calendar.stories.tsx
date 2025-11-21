@@ -70,7 +70,7 @@ const meta: Meta<typeof Calendar> = {
       control: { type: "select" },
       options: ["label", "dropdown", "dropdown-months", "dropdown-years"],
       description: i18n.t(
-        "stories.calendar.argTypes.captionLayout.description",
+        "stories.calendar.argTypes.captionLayout.description"
       ),
       table: {
         category: i18n.t("stories.category.ui"),
@@ -79,7 +79,7 @@ const meta: Meta<typeof Calendar> = {
     showOutsideDays: {
       control: { type: "boolean" },
       description: i18n.t(
-        "stories.calendar.argTypes.showOutsideDays.description",
+        "stories.calendar.argTypes.showOutsideDays.description"
       ),
       table: {
         category: i18n.t("stories.category.calendar"),
@@ -95,7 +95,7 @@ const meta: Meta<typeof Calendar> = {
     numberOfMonths: {
       control: { type: "number" },
       description: i18n.t(
-        "stories.calendar.argTypes.numberOfMonths.description",
+        "stories.calendar.argTypes.numberOfMonths.description"
       ),
       table: {
         category: i18n.t("stories.category.layout"),
@@ -111,7 +111,7 @@ const meta: Meta<typeof Calendar> = {
     onMonthChange: {
       action: "month changed",
       description: i18n.t(
-        "stories.calendar.argTypes.onMonthChange.description",
+        "stories.calendar.argTypes.onMonthChange.description"
       ),
       table: {
         category: i18n.t("stories.category.events"),
@@ -148,7 +148,7 @@ const meta: Meta<typeof Calendar> = {
     showWeekNumber: {
       control: { type: "boolean" },
       description: i18n.t(
-        "stories.calendar.argTypes.showWeekNumber.description",
+        "stories.calendar.argTypes.showWeekNumber.description"
       ),
       table: {
         category: i18n.t("stories.category.calendar"),
@@ -549,7 +549,7 @@ export const CustomDaysAndFormatters: Story = {
             },
           }}
           components={{
-            DayButton: ({ children, modifiers, day, ...props }) => {
+            DayButton: ({ children, modifiers, day, color, ...props }) => {
               const isWeekend =
                 day.date.getDay() === 0 || day.date.getDay() === 6;
               return (

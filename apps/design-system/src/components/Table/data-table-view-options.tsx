@@ -11,13 +11,12 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-  PopoverContent,
 } from "@dsui/ui";
 import { Popover } from "../Popover";
 import { cn } from "@dsui/ui";
 
 interface DataTableViewOptionsProps<TData>
-  extends React.ComponentProps<typeof PopoverContent> {
+  extends React.ComponentProps<typeof Popover.Content> {
   table: Table<TData>;
 }
 
@@ -50,7 +49,7 @@ export function DataTableViewOptions<TData>({
           View
         </Button>
       </Popover.Trigger>
-      <PopoverContent className="w-44 p-0" {...props}>
+      <Popover.Content className="w-44 p-0" {...props}>
         <Command>
           <CommandInput placeholder="Search columns..." />
           <CommandList>
@@ -77,7 +76,7 @@ export function DataTableViewOptions<TData>({
             </CommandGroup>
           </CommandList>
         </Command>
-      </PopoverContent>
+      </Popover.Content>
     </Popover>
   );
 }

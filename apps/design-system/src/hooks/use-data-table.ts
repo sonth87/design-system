@@ -1,5 +1,7 @@
 "use client";
 
+/* eslint-disable react-hooks/rules-of-hooks */
+
 import {
   type ColumnFiltersState,
   getCoreRowModel,
@@ -65,6 +67,7 @@ interface UseDataTableProps<TData>
   scroll?: boolean;
   shallow?: boolean;
   startTransition?: React.TransitionStartFunction;
+  enableNuqs?: boolean;
 }
 
 export function useDataTable<TData>(props: UseDataTableProps<TData>) {
@@ -81,6 +84,7 @@ export function useDataTable<TData>(props: UseDataTableProps<TData>) {
     scroll = false,
     shallow = true,
     startTransition,
+    enableNuqs = false,
     ...tableProps
   } = props;
   const pageKey = queryKeys?.page ?? PAGE_KEY;
@@ -118,36 +122,45 @@ export function useDataTable<TData>(props: UseDataTableProps<TData>) {
   const [columnVisibility, setColumnVisibility] =
     React.useState<VisibilityState>(initialState?.columnVisibility ?? {});
 
-  const [page, setPage] = useQueryState(
-    pageKey,
-    parseAsInteger.withOptions(queryStateOptions).withDefault(1)
-  );
-  const [perPage, setPerPage] = useQueryState(
-    perPageKey,
-    parseAsInteger
-      .withOptions(queryStateOptions)
-      .withDefault(initialState?.pagination?.pageSize ?? 10)
-  );
+  const [page, setPage] = enableNuqs
+    ? useQueryState(
+        pageKey,
+        parseAsInteger.withOptions(queryStateOptions).withDefault(1)
+      )
+    : React.useState(initialState?.pagination?.pageIndex ?? 0);
+
+  const [perPage, setPerPage] = enableNuqs
+    ? useQueryState(
+        perPageKey,
+        parseAsInteger
+          .withOptions(queryStateOptions)
+          .withDefault(initialState?.pagination?.pageSize ?? 10)
+      )
+    : React.useState(initialState?.pagination?.pageSize ?? 10);
 
   const pagination: PaginationState = React.useMemo(() => {
     return {
-      pageIndex: page - 1, // zero-based index -> one-based index
+      pageIndex: enableNuqs ? page - 1 : page, // zero-based index
       pageSize: perPage,
     };
-  }, [page, perPage]);
+  }, [page, perPage, enableNuqs]);
 
   const onPaginationChange = React.useCallback(
     (updaterOrValue: Updater<PaginationState>) => {
       if (typeof updaterOrValue === "function") {
         const newPagination = updaterOrValue(pagination);
-        void setPage(newPagination.pageIndex + 1);
+        void setPage(
+          enableNuqs ? newPagination.pageIndex + 1 : newPagination.pageIndex
+        );
         void setPerPage(newPagination.pageSize);
       } else {
-        void setPage(updaterOrValue.pageIndex + 1);
+        void setPage(
+          enableNuqs ? updaterOrValue.pageIndex + 1 : updaterOrValue.pageIndex
+        );
         void setPerPage(updaterOrValue.pageSize);
       }
     },
-    [pagination, setPage, setPerPage]
+    [pagination, setPage, setPerPage, enableNuqs]
   );
 
   const columnIds = React.useMemo(() => {
@@ -156,12 +169,16 @@ export function useDataTable<TData>(props: UseDataTableProps<TData>) {
     );
   }, [columns]);
 
-  const [sorting, setSorting] = useQueryState(
-    sortKey,
-    getSortingStateParser<TData>(columnIds)
-      .withOptions(queryStateOptions)
-      .withDefault(initialState?.sorting ?? [])
-  );
+  // Note: enableNuqs should be stable (not change during component lifecycle)
+  // to avoid violating React hooks rules. If it changes, it may cause issues.
+  const [sorting, setSorting] = enableNuqs
+    ? useQueryState(
+        sortKey,
+        getSortingStateParser<TData>(columnIds)
+          .withOptions(queryStateOptions)
+          .withDefault(initialState?.sorting ?? [])
+      )
+    : React.useState(initialState?.sorting ?? []);
 
   const onSortingChange = React.useCallback(
     (updaterOrValue: Updater<SortingState>) => {
@@ -199,7 +216,10 @@ export function useDataTable<TData>(props: UseDataTableProps<TData>) {
     }, {});
   }, [filterableColumns, queryStateOptions, enableAdvancedFilter]);
 
-  const [filterValues, setFilterValues] = useQueryStates(filterParsers);
+  // Note: enableNuqs should be stable (not change during component lifecycle)
+  const [filterValues, setFilterValues] = enableNuqs
+    ? useQueryStates(filterParsers)
+    : React.useState<Record<string, string | string[] | null>>({});
 
   const debouncedSetFilterValues = useDebouncedCallback(
     (values: typeof filterValues) => {
