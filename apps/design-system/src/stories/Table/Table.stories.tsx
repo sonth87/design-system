@@ -14,10 +14,9 @@ import type {
   CellContext,
   Column,
   ColumnDef,
-  HeaderContext,
 } from "@tanstack/react-table";
-import Checkbox from "@/components/Checkbox";
 import { DataTableColumnHeader } from "@/components/Table/data-table-column-header";
+import { createSelectColumn } from "@/components/Table/select-column";
 import {
   CheckCircle,
   CheckCircle2,
@@ -161,29 +160,7 @@ function generateFakeProjects(count: number): Project[] {
 const data: Project[] = generateFakeProjects(100);
 
 const columns: ColumnDef<Project>[] = [
-  {
-    id: "select",
-    header: ({ table }: HeaderContext<Project, unknown>) => (
-      <Checkbox
-        checked={
-          table.getIsAllPageRowsSelected() ||
-          (table.getIsSomePageRowsSelected() && "indeterminate")
-        }
-        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-        aria-label="Select all"
-      />
-    ),
-    cell: ({ row }: CellContext<Project, unknown>) => (
-      <Checkbox
-        checked={row.getIsSelected()}
-        onCheckedChange={(value) => row.toggleSelected(!!value)}
-        aria-label="Select row"
-      />
-    ),
-    size: 32,
-    enableSorting: false,
-    enableHiding: false,
-  },
+  createSelectColumn<Project>(),
   {
     id: "title",
     accessorKey: "title",
