@@ -34,7 +34,13 @@ function PaginationContent({
 }
 
 function PaginationItem({ ...props }: React.ComponentProps<"li">) {
-  return <li data-slot="pagination-item" {...props} />;
+  return (
+    <li
+      data-slot="pagination-item"
+      {...props}
+      className={cn("flex items-center cursor-pointer", props?.className)}
+    />
+  );
 }
 
 type PaginationLinkProps = {
@@ -85,7 +91,7 @@ function PaginationPrevious({
     <PaginationLink
       aria-label="Go to previous page"
       size={size}
-      className={cn("gap-1 px-2.5 justify-center", className)}
+      className={cn("gap-1 justify-center items-center", className)}
       {...props}
     >
       {!hideIcon && <ChevronLeftIcon />}
@@ -112,7 +118,7 @@ function PaginationNext({
     <PaginationLink
       aria-label="Go to next page"
       size={size}
-      className={cn("gap-1 px-2.5 justify-center", className)}
+      className={cn("gap-1 justify-center items-center", className)}
       {...props}
     >
       {showText && text && <span>{text}</span>}
@@ -121,20 +127,12 @@ function PaginationNext({
   );
 }
 
-function PaginationEllipsis({
-  className,
-  ...props
-}: React.ComponentProps<"span">) {
+function PaginationEllipsis({ ...props }: PaginationLinkProps) {
   return (
-    <span
-      aria-hidden
-      data-slot="pagination-ellipsis"
-      className={cn("flex size-9 items-center justify-center", className)}
-      {...props}
-    >
-      <MoreHorizontalIcon className="size-4" />
+    <PaginationLink {...props}>
+      <MoreHorizontalIcon />
       <span className="sr-only">More pages</span>
-    </span>
+    </PaginationLink>
   );
 }
 

@@ -184,6 +184,8 @@ function Combobox({
                   className={cn(
                     option?.disabled &&
                       "opacity-50 cursor-not-allowed grayscale",
+                    value === option.value &&
+                      "bg-primary/10 dark:bg-primary/20",
                   )}
                 >
                   {tagRender ? (

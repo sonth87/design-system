@@ -123,6 +123,14 @@ export * from "./components/Cropper";
 export * from "./components/Interactive";
 
 // ============================================
+// UTILS & HOOKS
+// ============================================
+
+export { cn } from "@dsui/ui";
+export { useDebouncedCallback } from "@/hooks/use-debounced-callback";
+export { useCallbackRef } from "@/hooks/use-callback-ref";
+
+// ============================================
 // CSS IMPORTS
 // ============================================
 // Users can import CSS files separately:

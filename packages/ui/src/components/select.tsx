@@ -419,6 +419,7 @@ export function MultiSelectItem({
       }
       className={cn(
         props?.disabled && "opacity-50 cursor-not-allowed grayscale",
+        isSelected && "bg-primary/10 dark:bg-primary/20",
       )}
     >
       {!tagRender && icon && (

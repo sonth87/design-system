@@ -549,7 +549,7 @@ export const CustomDaysAndFormatters: Story = {
             },
           }}
           components={{
-            DayButton: ({ children, modifiers, day, ...props }) => {
+            DayButton: ({ children, modifiers, day, color, ...props }) => {
               const isWeekend =
                 day.date.getDay() === 0 || day.date.getDay() === 6;
               return (

@@ -43,7 +43,26 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         variantType: variant,
         ...rest,
       });
-    }, [animation, rest, color, size, variant]);
+    }, [animation, rest, size, variant]);
+
+    // Disable asChild when loading to avoid React.Children.only error
+    const shouldUseAsChild =
+      (buttonAnimation?.children ? true : rest.asChild) && !rest?.isLoading;
+
+    const buttonContent = rest?.isLoading ? (
+      <>
+        <LoaderCircle className="animate-spin" />
+        {
+          (buttonAnimation?.children ??
+            rest.children ??
+            null) as SButtonProps["children"]
+        }
+      </>
+    ) : (
+      ((buttonAnimation?.children ??
+        rest.children ??
+        null) as SButtonProps["children"])
+    );
 
     return (
       <SButton
@@ -54,20 +73,13 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           rest?.className,
           buttonAnimation?.className,
         )}
-        asChild={buttonAnimation?.children ? true : rest.asChild}
+        asChild={shouldUseAsChild}
         style={{ ...(rest.style || {}), ...(buttonAnimation?.style || {}) }}
         variant={buttonAnimation?.variant ?? variant}
         color={color}
         size={size}
       >
-        <>
-          {rest?.isLoading && <LoaderCircle className="animate-spin" />}
-          {
-            (buttonAnimation?.children ??
-              rest.children ??
-              null) as SButtonProps["children"]
-          }
-        </>
+        {buttonContent}
       </SButton>
     );
   },

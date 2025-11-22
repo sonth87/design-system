@@ -2,17 +2,17 @@
 
 import * as React from "react";
 import {
-  Root,
-  List,
-  Item,
-  Trigger,
-  Indicator,
-  Separator,
-  Title,
-  Description,
-  Content,
+  StepperContent,
+  StepperDescription,
+  StepperIndicator,
+  StepperItem,
+  StepperList,
+  StepperRoot,
+  StepperSeparator,
+  StepperTitle,
+  StepperTrigger,
+  type StepperProps,
 } from "./Stepper";
-import type { StepperProps } from "./Stepper";
 import { cn } from "@dsui/ui/index";
 
 type StepperColor =
@@ -79,7 +79,7 @@ function StepperWrapper({
   };
 
   return (
-    <Root
+    <StepperRoot
       {...props}
       color={color}
       customColor={customColor}
@@ -87,22 +87,22 @@ function StepperWrapper({
       labelPosition={labelPosition}
     >
       {steps && steps.length > 0 && (
-        <List>
+        <StepperList>
           {steps.map((step, index) => (
-            <Item
+            <StepperItem
               key={step.value}
               value={step.value}
               completed={step.completed}
               disabled={step.disabled}
             >
-              <Trigger
+              <StepperTrigger
                 className={cn({
                   "not-last:pb-6":
                     index < steps.length - 1 &&
                     props.orientation === "vertical",
                 })}
               >
-                <Indicator />
+                <StepperIndicator />
                 <div
                   className={cn("flex flex-col gap-1", {
                     "text-center":
@@ -111,32 +111,32 @@ function StepperWrapper({
                     "text-right": labelPosition === "left",
                   })}
                 >
-                  <Title>{step.title}</Title>
+                  <StepperTitle>{step.title}</StepperTitle>
                   {step.description && (
-                    <Description>{step.description}</Description>
+                    <StepperDescription>{step.description}</StepperDescription>
                   )}
                 </div>
-              </Trigger>
+              </StepperTrigger>
               {index < steps.length - 1 && (
-                <Separator
+                <StepperSeparator
                   className={getSeparatorClasses(index, steps.length)}
                 />
               )}
-            </Item>
+            </StepperItem>
           ))}
-        </List>
+        </StepperList>
       )}
       {hasStepContent
         ? steps?.map(
             (step) =>
               step.content && (
-                <Content key={step.value} value={step.value}>
+                <StepperContent key={step.value} value={step.value}>
                   {step.content}
-                </Content>
+                </StepperContent>
               ),
           )
         : children}
-    </Root>
+    </StepperRoot>
   );
 }
 
