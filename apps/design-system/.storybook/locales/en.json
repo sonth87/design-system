@@ -472,6 +472,17 @@
     "stories.qrcode.argTypes.foregroundColor.description": "Foreground color of the QR code",
     "stories.qrcode.argTypes.onError.description": "Callback function called when QR code generation fails",
     "stories.qrcode.argTypes.onGenerated.description": "Callback function called when QR code is successfully generated",
-    "stories.qrcode.argTypes.asChild.description": "Render as a child component instead of div"
+    "stories.qrcode.argTypes.asChild.description": "Render as a child component instead of div",
+
+    "stories.upload.argTypes.variant.description": "The visual style variant of the upload area",
+    "stories.upload.argTypes.size.description": "The size of the upload area",
+    "stories.upload.argTypes.accept.description": "Accepted file types (MIME types or file extensions)",
+    "stories.upload.argTypes.multiple.description": "Allow multiple file selection",
+    "stories.upload.argTypes.disabled.description": "Disable the upload functionality",
+    "stories.upload.argTypes.maxCount.description": "Maximum number of files allowed",
+    "stories.upload.argTypes.maxSize.description": "Maximum file size in bytes",
+    "stories.upload.argTypes.listType.description": "Type of file list display: text (simple list), picture (thumbnail + info), picture-card (grid)",
+    "stories.upload.argTypes.showUploadList.description": "Show the uploaded file list",
+    "stories.upload.argTypes.directory.description": "Enable directory (folder) upload"
   }
 }

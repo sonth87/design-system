@@ -472,6 +472,17 @@
     "stories.qrcode.argTypes.foregroundColor.description": "Màu nền trước của mã QR",
     "stories.qrcode.argTypes.onError.description": "Hàm callback được gọi khi tạo mã QR thất bại",
     "stories.qrcode.argTypes.onGenerated.description": "Hàm callback được gọi khi mã QR được tạo thành công",
-    "stories.qrcode.argTypes.asChild.description": "Render như một thành phần con thay vì div"
+    "stories.qrcode.argTypes.asChild.description": "Render như một thành phần con thay vì div",
+
+    "stories.upload.argTypes.variant.description": "Kiểu giao diện của khu vực tải lên",
+    "stories.upload.argTypes.size.description": "Kích thước của khu vực tải lên",
+    "stories.upload.argTypes.accept.description": "Các loại file được chấp nhận (MIME types hoặc phần mở rộng)",
+    "stories.upload.argTypes.multiple.description": "Cho phép chọn nhiều file",
+    "stories.upload.argTypes.disabled.description": "Vô hiệu hóa chức năng tải lên",
+    "stories.upload.argTypes.maxCount.description": "Số lượng file tối đa cho phép",
+    "stories.upload.argTypes.maxSize.description": "Kích thước file tối đa tính bằng byte",
+    "stories.upload.argTypes.listType.description": "Kiểu hiển thị danh sách file: text (danh sách đơn giản), picture (thumbnail + thông tin), picture-card (lưới)",
+    "stories.upload.argTypes.showUploadList.description": "Hiển thị danh sách file đã tải lên",
+    "stories.upload.argTypes.directory.description": "Cho phép tải lên thư mục (folder)"
   }
 }
