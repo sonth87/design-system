@@ -91,7 +91,7 @@ export function DataTableDateFilter<TData>({
         column.setFilterValue(date.getTime());
       }
     },
-    [column, multiple]
+    [column, multiple],
   );
 
   const onReset = React.useCallback(
@@ -99,7 +99,7 @@ export function DataTableDateFilter<TData>({
       event.stopPropagation();
       column.setFilterValue(undefined);
     },
-    [column]
+    [column],
   );
 
   const hasValue = React.useMemo(() => {

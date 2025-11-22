@@ -1,11 +1,10 @@
-import type { CellContext, ColumnDef, HeaderContext } from "@tanstack/react-table";
+import type {
+  CellContext,
+  ColumnDef,
+  HeaderContext,
+} from "@tanstack/react-table";
 import Checkbox from "@/components/Checkbox";
 
-/**
- * Creates a select column definition for use in DataTable
- * Usage: Add this column to your columns array and the table will automatically
- * render checkboxes for row selection with select all/indeterminate support
- */
 export function createSelectColumn<TData>(): ColumnDef<TData> {
   return {
     id: "select",
@@ -37,8 +36,4 @@ export function createSelectColumn<TData>(): ColumnDef<TData> {
   };
 }
 
-/**
- * Alternative: ColumnDef object can be used directly
- * This is the pre-defined select column definition
- */
 export const selectColumn = createSelectColumn();

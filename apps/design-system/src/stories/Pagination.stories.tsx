@@ -47,7 +47,7 @@ A flexible pagination component that provides navigation through multiple pages 
     currentPage: {
       control: { type: "number" },
       description: i18n.t(
-        "stories.pagination.argTypes.currentPage.description"
+        "stories.pagination.argTypes.currentPage.description",
       ),
       table: {
         category: "Data",
@@ -56,7 +56,7 @@ A flexible pagination component that provides navigation through multiple pages 
     },
     onPageChange: {
       description: i18n.t(
-        "stories.pagination.argTypes.onPageChange.description"
+        "stories.pagination.argTypes.onPageChange.description",
       ),
       table: {
         category: "Events",
@@ -66,7 +66,7 @@ A flexible pagination component that provides navigation through multiple pages 
     showPreviousNext: {
       control: { type: "boolean" },
       description: i18n.t(
-        "stories.pagination.argTypes.showPreviousNext.description"
+        "stories.pagination.argTypes.showPreviousNext.description",
       ),
       table: {
         category: "Behavior",
@@ -130,7 +130,7 @@ A flexible pagination component that provides navigation through multiple pages 
     previousText: {
       control: { type: "text" },
       description: i18n.t(
-        "stories.pagination.argTypes.previousText.description"
+        "stories.pagination.argTypes.previousText.description",
       ),
       table: {
         category: "Content",
@@ -148,7 +148,7 @@ A flexible pagination component that provides navigation through multiple pages 
     jumpOnEllipsis: {
       control: { type: "boolean" },
       description: i18n.t(
-        "stories.pagination.argTypes.jumpOnEllipsis.description"
+        "stories.pagination.argTypes.jumpOnEllipsis.description",
       ),
       table: {
         category: "Behavior",

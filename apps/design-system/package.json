@@ -132,6 +132,16 @@
         "default": "./dist/cjs/components/Dialog/Dialog.cjs"
       }
     },
+    "./dropdownmenu": {
+      "import": {
+        "types": "./dist/types/components/DropdownMenu/DropdownMenu.d.ts",
+        "default": "./dist/esm/components/DropdownMenu/DropdownMenu.js"
+      },
+      "require": {
+        "types": "./dist/types/components/DropdownMenu/DropdownMenu.d.ts",
+        "default": "./dist/cjs/components/DropdownMenu/DropdownMenu.cjs"
+      }
+    },
     "./floatlabel": {
       "import": {
         "types": "./dist/types/components/FloatLabel/FloatLabel.d.ts",
@@ -517,6 +527,9 @@
       ],
       "dialog": [
         "./dist/types/components/Dialog/Dialog.d.ts"
+      ],
+      "dropdownmenu": [
+        "./dist/types/components/DropdownMenu/DropdownMenu.d.ts"
       ],
       "floatlabel": [
         "./dist/types/components/FloatLabel/FloatLabel.d.ts"

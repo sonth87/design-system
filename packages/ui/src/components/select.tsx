@@ -54,7 +54,7 @@ const multiSelectTriggerVariants = cva(
       size: "normal",
       state: "default",
     },
-  }
+  },
 );
 
 type MultiSelectContextType = {
@@ -80,7 +80,7 @@ export function MultiSelect({
 }) {
   const [open, setOpen] = useState(false);
   const [internalValues, setInternalValues] = useState(
-    new Set<string>(values ?? defaultValues)
+    new Set<string>(values ?? defaultValues),
   );
   const selectedValues = values ? new Set(values) : internalValues;
   const [items, setItems] = useState<Map<string, ReactNode>>(new Map());
@@ -170,7 +170,7 @@ export function MultiSelectTrigger({
                 "size-4": size === "sm" || size === "xs",
                 "size-5": size === "lg" || size === "xl",
               },
-              dropdownClassName
+              dropdownClassName,
             )}
           />
         )}
@@ -182,7 +182,7 @@ export function MultiSelectTrigger({
                 "size-4": size === "sm" || size === "xs",
                 "size-5": size === "lg" || size === "xl",
               },
-              dropdownClassName
+              dropdownClassName,
             )}
           />
         )}
@@ -217,7 +217,7 @@ export function MultiSelectValue({
     const containerElement = valueRef.current;
     const overflowElement = overflowRef.current;
     const items = containerElement.querySelectorAll<HTMLElement>(
-      "[data-selected-item]"
+      "[data-selected-item]",
     );
 
     if (overflowElement != null) overflowElement.style.display = "none";
@@ -247,7 +247,7 @@ export function MultiSelectValue({
         valueRef.current = null;
       };
     },
-    [checkOverflow]
+    [checkOverflow],
   );
 
   if (selectedValues.size === 0 && placeholder) {
@@ -265,7 +265,7 @@ export function MultiSelectValue({
       className={cn(
         "flex w-fit gap-1.5 overflow-hidden",
         shouldWrap && "h-full flex-wrap",
-        className
+        className,
       )}
     >
       {[...selectedValues]
@@ -293,7 +293,7 @@ export function MultiSelectValue({
                     "group flex items-center gap-1 whitespace-nowrap hover:scale-105 transition-transform",
                     {
                       "cursor-pointer": clickToRemove,
-                    }
+                    },
                   ),
                   "data-selected-item": true,
                 }
@@ -310,7 +310,7 @@ export function MultiSelectValue({
                 {clickToRemove && (
                   <XIcon className="size-2 text-muted-foreground group-hover:text-destructive" />
                 )}
-              </>
+              </>,
             );
           }
 
@@ -419,7 +419,7 @@ export function MultiSelectItem({
       }
       className={cn(
         props?.disabled && "opacity-50 cursor-not-allowed grayscale",
-        isSelected && "bg-primary/10 dark:bg-primary/20"
+        isSelected && "bg-primary/10 dark:bg-primary/20",
       )}
     >
       {!tagRender && icon && (
@@ -429,7 +429,7 @@ export function MultiSelectItem({
       <CheckIcon
         className={cn(
           "mr-2 ml-auto size-4",
-          isSelected ? "opacity-100" : "opacity-0"
+          isSelected ? "opacity-100" : "opacity-0",
         )}
       />
     </CommandItem>
@@ -437,13 +437,13 @@ export function MultiSelectItem({
 }
 
 export function MultiSelectGroup(
-  props: ComponentPropsWithoutRef<typeof CommandGroup>
+  props: ComponentPropsWithoutRef<typeof CommandGroup>,
 ) {
   return <CommandGroup {...props} />;
 }
 
 export function MultiSelectSeparator(
-  props: ComponentPropsWithoutRef<typeof CommandSeparator>
+  props: ComponentPropsWithoutRef<typeof CommandSeparator>,
 ) {
   return <CommandSeparator {...props} />;
 }
@@ -452,7 +452,7 @@ function useMultiSelectContext() {
   const context = useContext(MultiSelectContext);
   if (context == null) {
     throw new Error(
-      "useMultiSelectContext must be used within a MultiSelectContext"
+      "useMultiSelectContext must be used within a MultiSelectContext",
     );
   }
   return context;

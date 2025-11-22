@@ -133,7 +133,7 @@ function StepperWrapper({
                 <StepperContent key={step.value} value={step.value}>
                   {step.content}
                 </StepperContent>
-              )
+              ),
           )
         : children}
     </StepperRoot>
