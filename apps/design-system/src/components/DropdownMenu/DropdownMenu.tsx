@@ -312,7 +312,7 @@ const DropdownMenu = React.forwardRef<HTMLDivElement, DropdownMenuProps>(
         )}
       </SDropdownMenu>
     );
-  }
+  },
 );
 
 DropdownMenu.displayName = "DropdownMenu";

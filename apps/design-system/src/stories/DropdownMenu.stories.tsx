@@ -42,7 +42,7 @@ const meta: Meta<typeof DropdownMenu> = {
     defaultOpen: {
       control: "boolean",
       description: i18n.t(
-        "stories.dropdownmenu.argTypes.defaultOpen.description"
+        "stories.dropdownmenu.argTypes.defaultOpen.description",
       ),
       table: {
         type: { summary: "boolean" },
@@ -52,7 +52,7 @@ const meta: Meta<typeof DropdownMenu> = {
     },
     onOpenChange: {
       description: i18n.t(
-        "stories.dropdownmenu.argTypes.onOpenChange.description"
+        "stories.dropdownmenu.argTypes.onOpenChange.description",
       ),
       table: {
         type: { summary: "(open: boolean) => void" },
@@ -112,7 +112,7 @@ const meta: Meta<typeof DropdownMenu> = {
     sideOffset: {
       control: "number",
       description: i18n.t(
-        "stories.dropdownmenu.argTypes.sideOffset.description"
+        "stories.dropdownmenu.argTypes.sideOffset.description",
       ),
       table: {
         type: { summary: "number" },
@@ -123,7 +123,7 @@ const meta: Meta<typeof DropdownMenu> = {
     alignOffset: {
       control: "number",
       description: i18n.t(
-        "stories.dropdownmenu.argTypes.alignOffset.description"
+        "stories.dropdownmenu.argTypes.alignOffset.description",
       ),
       table: {
         type: { summary: "number" },
@@ -143,7 +143,7 @@ const meta: Meta<typeof DropdownMenu> = {
     className: {
       control: "text",
       description: i18n.t(
-        "stories.dropdownmenu.argTypes.className.description"
+        "stories.dropdownmenu.argTypes.className.description",
       ),
       table: {
         type: { summary: "string" },
@@ -153,7 +153,7 @@ const meta: Meta<typeof DropdownMenu> = {
     contentClassName: {
       control: "text",
       description: i18n.t(
-        "stories.dropdownmenu.argTypes.contentClassName.description"
+        "stories.dropdownmenu.argTypes.contentClassName.description",
       ),
       table: {
         type: { summary: "string" },
@@ -163,7 +163,7 @@ const meta: Meta<typeof DropdownMenu> = {
     triggerClassName: {
       control: "text",
       description: i18n.t(
-        "stories.dropdownmenu.argTypes.triggerClassName.description"
+        "stories.dropdownmenu.argTypes.triggerClassName.description",
       ),
       table: {
         type: { summary: "string" },
@@ -553,7 +553,7 @@ export const CustomStyled: Story = {
 // Using items prop (simplified API)
 export const WithItemsProp: Story = {
   render: () => {
-    const menuItems = [
+    const menuItems: DropdownMenuItem[] = [
       {
         key: "profile",
         label: "Profile",
@@ -622,7 +622,7 @@ export const WithInteractiveItems: Story = {
       const [notifications, setNotifications] = useState(true);
       const [theme, setTheme] = useState("light");
 
-      const menuItems = [
+      const menuItems: DropdownMenuItem[] = [
         {
           key: "notifications",
           label: "Show notifications",
@@ -734,7 +734,7 @@ export const WithSubmenusItems: Story = {
 // With disabled items using items prop
 export const WithDisabledItems: Story = {
   render: () => {
-    const menuItems = [
+    const menuItems: DropdownMenuItem[] = [
       {
         key: "enabled-item",
         label: "Enabled Item",

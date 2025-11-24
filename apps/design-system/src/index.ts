@@ -107,6 +107,12 @@ export * from "./components/Stepper";
 // Pagination
 export * from "./components/Pagination";
 
+// DataTable
+export * from "./components/Table";
+
+// DropdownMenu
+export * from "./components/DropdownMenu";
+
 // ============================================
 // STANDALONE COMPONENTS
 // ============================================
