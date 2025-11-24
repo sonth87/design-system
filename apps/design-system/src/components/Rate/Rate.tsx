@@ -61,7 +61,6 @@ const Rate = React.forwardRef<HTMLDivElement, RateProps>(
   ) => {
     const [internalValue, setInternalValue] = useState(defaultValue);
     const [hoverValue, setHoverValue] = useState<number | null>(null);
-    const [focused, setFocused] = useState(false);
     const containerRef = useRef<HTMLDivElement>(null);
 
     // Use controlled or uncontrolled value
@@ -144,13 +143,11 @@ const Rate = React.forwardRef<HTMLDivElement, RateProps>(
 
     // Handle focus
     const handleFocus = () => {
-      setFocused(true);
       onFocus?.();
     };
 
     // Handle blur
     const handleBlur = () => {
-      setFocused(false);
       onBlur?.();
     };
 

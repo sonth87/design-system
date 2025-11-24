@@ -92,6 +92,9 @@ export * from "./components/Toggle";
 // Tooltip
 export * from "./components/Tooltip";
 
+// Upload
+export * from "./components/Upload";
+
 // Tour
 export * from "./components/Tour";
 

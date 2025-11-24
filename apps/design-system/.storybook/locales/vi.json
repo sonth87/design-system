@@ -558,6 +558,17 @@
     "stories.pagination.argTypes.className.description": "Các lớp CSS bổ sung để áp dụng cho container phân trang",
     "stories.tour.argTypes.buttonConfig.description": "Đối tượng cấu hình để tùy chỉnh nhãn nút trong footer tour. Hỗ trợ các thuộc tính 'skip', 'prev', 'next' và 'finish' với giá trị chuỗi",
     "stories.tour.argTypes.spotlightClassName.description": "Các lớp CSS bổ sung để áp dụng cho lớp phủ spotlight",
-    "stories.tour.argTypes.spotlightRingClassName.description": "Các lớp CSS bổ sung để áp dụng cho viền vòng spotlight"
+    "stories.tour.argTypes.spotlightRingClassName.description": "Các lớp CSS bổ sung để áp dụng cho viền vòng spotlight",
+
+    "stories.upload.argTypes.variant.description": "Kiểu giao diện của khu vực tải lên",
+    "stories.upload.argTypes.size.description": "Kích thước của khu vực tải lên",
+    "stories.upload.argTypes.accept.description": "Các loại file được chấp nhận (MIME types hoặc phần mở rộng)",
+    "stories.upload.argTypes.multiple.description": "Cho phép chọn nhiều file",
+    "stories.upload.argTypes.disabled.description": "Vô hiệu hóa chức năng tải lên",
+    "stories.upload.argTypes.maxCount.description": "Số lượng file tối đa cho phép",
+    "stories.upload.argTypes.maxSize.description": "Kích thước file tối đa tính bằng byte",
+    "stories.upload.argTypes.listType.description": "Kiểu hiển thị danh sách file: text (danh sách đơn giản), picture (thumbnail + thông tin), picture-card (lưới)",
+    "stories.upload.argTypes.showUploadList.description": "Hiển thị danh sách file đã tải lên",
+    "stories.upload.argTypes.directory.description": "Cho phép tải lên thư mục (folder)"
   }
 }
