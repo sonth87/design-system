@@ -116,6 +116,15 @@ export * from "./components/Table";
 // DropdownMenu
 export * from "./components/DropdownMenu";
 
+// Rating
+export * from "./components/Rate";
+
+// TreeView
+export * from "./components/TreeSelect";
+
+// Upload
+export * from "./components/Upload";
+
 // ============================================
 // STANDALONE COMPONENTS
 // ============================================

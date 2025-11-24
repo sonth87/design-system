@@ -232,6 +232,16 @@
         "default": "./dist/cjs/components/Radio/Radio.cjs"
       }
     },
+    "./rate": {
+      "import": {
+        "types": "./dist/types/components/Rate/Rate.d.ts",
+        "default": "./dist/esm/components/Rate/Rate.js"
+      },
+      "require": {
+        "types": "./dist/types/components/Rate/Rate.d.ts",
+        "default": "./dist/cjs/components/Rate/Rate.cjs"
+      }
+    },
     "./scrollarea": {
       "import": {
         "types": "./dist/types/components/ScrollArea/ScrollArea.d.ts",
@@ -390,6 +400,26 @@
       "require": {
         "types": "./dist/types/components/Tour/Tour.d.ts",
         "default": "./dist/cjs/components/Tour/Tour.cjs"
+      }
+    },
+    "./treeselect": {
+      "import": {
+        "types": "./dist/types/components/TreeSelect/TreeSelect.d.ts",
+        "default": "./dist/esm/components/TreeSelect/TreeSelect.js"
+      },
+      "require": {
+        "types": "./dist/types/components/TreeSelect/TreeSelect.d.ts",
+        "default": "./dist/cjs/components/TreeSelect/TreeSelect.cjs"
+      }
+    },
+    "./upload": {
+      "import": {
+        "types": "./dist/types/components/Upload/Upload.d.ts",
+        "default": "./dist/esm/components/Upload/Upload.js"
+      },
+      "require": {
+        "types": "./dist/types/components/Upload/Upload.d.ts",
+        "default": "./dist/cjs/components/Upload/Upload.cjs"
       }
     },
     "./wheelcolumn": {
@@ -560,6 +590,9 @@
       "radio": [
         "./dist/types/components/Radio/Radio.d.ts"
       ],
+      "rate": [
+        "./dist/types/components/Rate/Rate.d.ts"
+      ],
       "scrollarea": [
         "./dist/types/components/ScrollArea/ScrollArea.d.ts"
       ],
@@ -607,6 +640,12 @@
       ],
       "tour": [
         "./dist/types/components/Tour/Tour.d.ts"
+      ],
+      "treeselect": [
+        "./dist/types/components/TreeSelect/TreeSelect.d.ts"
+      ],
+      "upload": [
+        "./dist/types/components/Upload/Upload.d.ts"
       ],
       "wheelcolumn": [
         "./dist/types/components/WheelColumn/WheelColumn.d.ts"
