@@ -20,6 +20,8 @@ import {
   Circle,
 } from "lucide-react";
 import i18n from "../../.storybook/i18n";
+import { fn } from "storybook/test";
+import type { DropdownMenuItem } from "@/components/DropdownMenu/DropdownMenu";
 
 const meta: Meta<typeof DropdownMenu> = {
   title: "Overlays/DropdownMenu",
@@ -193,7 +195,7 @@ type Story = StoryObj<DropdownMenuProps>;
 // Basic dropdown menu
 export const Default: Story = {
   render: () => {
-    const menuItems = [
+    const menuItems: DropdownMenuItem[] = [
       {
         key: "enabled-item",
         label: "Enabled Item",
@@ -209,18 +211,18 @@ export const Default: Story = {
       },
       {
         key: "separator1",
-        type: "separator" as const,
+        type: "separator",
       },
       {
         key: "group1",
-        type: "group" as const,
+        type: "group",
         label: "Actions",
         children: [
           {
             key: "copy",
             label: "Copy",
             icon: <Copy className="h-4 w-4" />,
-            onClick: () => console.log("Copy clicked"),
+            onClick: fn(),
           },
           {
             key: "edit-disabled",
@@ -233,19 +235,19 @@ export const Default: Story = {
       },
       {
         key: "separator2",
-        type: "separator" as const,
+        type: "separator",
       },
       {
         key: "checkbox-disabled",
         label: "Disabled Checkbox",
-        type: "checkbox" as const,
+        type: "checkbox",
         checked: false,
         disabled: true,
       },
       {
         key: "radio-disabled",
         label: "Disabled Radio",
-        type: "radio" as const,
+        type: "radio",
         group: "test",
         disabled: true,
       },
@@ -551,7 +553,7 @@ export const CustomStyled: Story = {
 // Using items prop (simplified API)
 export const WithItemsProp: Story = {
   render: () => {
-    const menuItems = [
+    const menuItems: DropdownMenuItem[] = [
       {
         key: "profile",
         label: "Profile",
@@ -566,11 +568,11 @@ export const WithItemsProp: Story = {
       },
       {
         key: "separator1",
-        type: "separator" as const,
+        type: "separator",
       },
       {
         key: "group1",
-        type: "group" as const,
+        type: "group",
         label: "Actions",
         children: [
           {
@@ -589,7 +591,7 @@ export const WithItemsProp: Story = {
       },
       {
         key: "separator2",
-        type: "separator" as const,
+        type: "separator",
       },
       {
         key: "delete",
@@ -620,23 +622,23 @@ export const WithInteractiveItems: Story = {
       const [notifications, setNotifications] = useState(true);
       const [theme, setTheme] = useState("light");
 
-      const menuItems = [
+      const menuItems: DropdownMenuItem[] = [
         {
           key: "notifications",
           label: "Show notifications",
-          type: "checkbox" as const,
+          type: "checkbox",
           checked: notifications,
           onClick: () => setNotifications(!notifications),
         },
         {
           key: "theme-group",
-          type: "group" as const,
+          type: "group",
           label: "Theme",
           children: [
             {
               key: "light",
               label: "Light",
-              type: "radio" as const,
+              type: "radio",
               group: "theme",
               checked: theme === "light",
               onClick: () => setTheme("light"),
@@ -644,7 +646,7 @@ export const WithInteractiveItems: Story = {
             {
               key: "dark",
               label: "Dark",
-              type: "radio" as const,
+              type: "radio",
               group: "theme",
               checked: theme === "dark",
               onClick: () => setTheme("dark"),
@@ -652,7 +654,7 @@ export const WithInteractiveItems: Story = {
             {
               key: "system",
               label: "System",
-              type: "radio" as const,
+              type: "radio",
               group: "theme",
               checked: theme === "system",
               onClick: () => setTheme("system"),
@@ -732,7 +734,7 @@ export const WithSubmenusItems: Story = {
 // With disabled items using items prop
 export const WithDisabledItems: Story = {
   render: () => {
-    const menuItems = [
+    const menuItems: DropdownMenuItem[] = [
       {
         key: "enabled-item",
         label: "Enabled Item",
@@ -748,11 +750,11 @@ export const WithDisabledItems: Story = {
       },
       {
         key: "separator1",
-        type: "separator" as const,
+        type: "separator",
       },
       {
         key: "group1",
-        type: "group" as const,
+        type: "group",
         label: "Actions",
         children: [
           {
@@ -772,19 +774,19 @@ export const WithDisabledItems: Story = {
       },
       {
         key: "separator2",
-        type: "separator" as const,
+        type: "separator",
       },
       {
         key: "checkbox-disabled",
         label: "Disabled Checkbox",
-        type: "checkbox" as const,
+        type: "checkbox",
         checked: false,
         disabled: true,
       },
       {
         key: "radio-disabled",
         label: "Disabled Radio",
-        type: "radio" as const,
+        type: "radio",
         group: "test",
         disabled: true,
       },
@@ -818,33 +820,36 @@ export const WithDisabledItems: Story = {
 // Context menu example
 export const ContextMenu: Story = {
   render: () => (
-    <div className="w-full h-64 border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center bg-gray-50">
-      <p className="text-gray-500">Right-click anywhere in this area</p>
-      <DropdownMenu
-        contextMenu={true}
-        items={[
-          {
-            key: "view",
-            label: "View",
-            icon: <Info className="h-4 w-4" />,
-            onClick: () => console.log("View clicked"),
-          },
-          {
-            key: "edit",
-            label: "Edit",
-            icon: <Edit className="h-4 w-4" />,
-            onClick: () => console.log("Edit clicked"),
-          },
-          { key: "separator", type: "separator" as const },
-          {
-            key: "delete",
-            label: "Delete",
-            icon: <Trash2 className="h-4 w-4" />,
-            variant: "destructive" as const,
-            onClick: () => console.log("Delete clicked"),
-          },
-        ]}
-      />
-    </div>
+    <DropdownMenu
+      contextMenu={true}
+      trigger={
+        <div className="size-64 border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center">
+          <p className="text-gray-500">Right-click anywhere in this area</p>
+        </div>
+      }
+      triggerClassName="hover:bg-red-100"
+      items={[
+        {
+          key: "view",
+          label: "View",
+          icon: <Info className="h-4 w-4" />,
+          onClick: () => console.log("View clicked"),
+        },
+        {
+          key: "edit",
+          label: "Edit",
+          icon: <Edit className="h-4 w-4" />,
+          onClick: () => console.log("Edit clicked"),
+        },
+        { key: "separator", type: "separator" as const },
+        {
+          key: "delete",
+          label: "Delete",
+          icon: <Trash2 className="h-4 w-4" />,
+          variant: "destructive" as const,
+          onClick: () => console.log("Delete clicked"),
+        },
+      ]}
+    />
   ),
 };

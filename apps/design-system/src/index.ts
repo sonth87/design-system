@@ -110,6 +110,21 @@ export * from "./components/Stepper";
 // Pagination
 export * from "./components/Pagination";
 
+// DataTable
+export * from "./components/Table";
+
+// DropdownMenu
+export * from "./components/DropdownMenu";
+
+// Rating
+export * from "./components/Rate";
+
+// TreeView
+export * from "./components/TreeSelect";
+
+// Upload
+export * from "./components/Upload";
+
 // ============================================
 // STANDALONE COMPONENTS
 // ============================================
