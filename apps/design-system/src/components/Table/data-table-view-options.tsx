@@ -36,8 +36,8 @@ export function DataTableViewOptions<TData>({
   );
 
   return (
-    <Popover>
-      <Popover.Trigger asChild>
+    <Popover
+      trigger={
         <Button
           aria-label="Toggle columns"
           role="combobox"
@@ -48,8 +48,8 @@ export function DataTableViewOptions<TData>({
           <Settings2 className="text-muted-foreground" />
           View
         </Button>
-      </Popover.Trigger>
-      <Popover.Content className="w-44 p-0" {...props}>
+      }
+      content={
         <Command>
           <CommandInput placeholder="Search columns..." />
           <CommandList>
@@ -76,7 +76,9 @@ export function DataTableViewOptions<TData>({
             </CommandGroup>
           </CommandList>
         </Command>
-      </Popover.Content>
-    </Popover>
+      }
+      contentClassName="w-44 p-0"
+      {...props}
+    />
   );
 }

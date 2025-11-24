@@ -32,6 +32,9 @@ export * from "./components/Checkbox";
 // Collapsible
 export * from "./components/Collapsible";
 
+// Command
+export * from "./components/Command";
+
 // DatePicker
 export * from "./components/DatePicker";
 
@@ -124,6 +127,9 @@ export * from "./components/TreeSelect";
 
 // Upload
 export * from "./components/Upload";
+
+// Command
+export * from "./components/Command";
 
 // ============================================
 // STANDALONE COMPONENTS

@@ -57,7 +57,7 @@ const Rate = React.forwardRef<HTMLDivElement, RateProps>(
       onBlur,
       onKeyDown,
     },
-    ref
+    ref,
   ) => {
     const [internalValue, setInternalValue] = useState(defaultValue);
     const [hoverValue, setHoverValue] = useState<number | null>(null);
@@ -210,7 +210,7 @@ const Rate = React.forwardRef<HTMLDivElement, RateProps>(
           "inline-flex items-center gap-1",
           disabled && "opacity-50 cursor-not-allowed",
           !disabled && "cursor-pointer",
-          className
+          className,
         )}
         style={style}
         onMouseLeave={handleMouseLeave}
@@ -304,7 +304,7 @@ const Rate = React.forwardRef<HTMLDivElement, RateProps>(
         })}
       </div>
     );
-  }
+  },
 );
 
 Rate.displayName = "Rate";

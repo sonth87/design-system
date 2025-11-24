@@ -102,6 +102,16 @@
         "default": "./dist/cjs/components/Collapsible/Collapsible.cjs"
       }
     },
+    "./command": {
+      "import": {
+        "types": "./dist/types/components/Command/Command.d.ts",
+        "default": "./dist/esm/components/Command/Command.js"
+      },
+      "require": {
+        "types": "./dist/types/components/Command/Command.d.ts",
+        "default": "./dist/cjs/components/Command/Command.cjs"
+      }
+    },
     "./cropper": {
       "import": {
         "types": "./dist/types/components/Cropper/Cropper.d.ts",
@@ -550,6 +560,9 @@
       ],
       "collapsible": [
         "./dist/types/components/Collapsible/Collapsible.d.ts"
+      ],
+      "command": [
+        "./dist/types/components/Command/Command.d.ts"
       ],
       "cropper": [
         "./dist/types/components/Cropper/Cropper.d.ts"

@@ -63,7 +63,7 @@ const uploadVariants = cva(
       size: "medium",
       status: "idle",
     },
-  }
+  },
 );
 
 // File status type
@@ -214,7 +214,7 @@ const UploadBase = React.forwardRef<HTMLDivElement, UploadProps>(
       directory = false,
       ...props
     },
-    ref
+    ref,
   ) => {
     const inputRef = useRef<HTMLInputElement>(null);
     const [internalFileList, setInternalFileList] =
@@ -271,7 +271,7 @@ const UploadBase = React.forwardRef<HTMLDivElement, UploadProps>(
           onChange({ file: dummyFile, fileList: newList });
         }
       },
-      [setFileList, onChange]
+      [setFileList, onChange],
     );
 
     // Upload file
@@ -306,9 +306,9 @@ const UploadBase = React.forwardRef<HTMLDivElement, UploadProps>(
               updateFileList(
                 (prev) =>
                   prev.map((f) =>
-                    f.uid === uploadFileObj.uid ? updatedFile : f
+                    f.uid === uploadFileObj.uid ? updatedFile : f,
                   ),
-                updatedFile
+                updatedFile,
               );
             },
             onSuccess: (response) => {
@@ -321,9 +321,9 @@ const UploadBase = React.forwardRef<HTMLDivElement, UploadProps>(
               updateFileList(
                 (prev) =>
                   prev.map((f) =>
-                    f.uid === uploadFileObj.uid ? successFile : f
+                    f.uid === uploadFileObj.uid ? successFile : f,
                   ),
-                successFile
+                successFile,
               );
             },
             onError: (error) => {
@@ -335,9 +335,9 @@ const UploadBase = React.forwardRef<HTMLDivElement, UploadProps>(
               updateFileList(
                 (prev) =>
                   prev.map((f) =>
-                    f.uid === uploadFileObj.uid ? errorFile : f
+                    f.uid === uploadFileObj.uid ? errorFile : f,
                   ),
-                errorFile
+                errorFile,
               );
             },
           });
@@ -356,9 +356,9 @@ const UploadBase = React.forwardRef<HTMLDivElement, UploadProps>(
               updateFileList(
                 (prev) =>
                   prev.map((f) =>
-                    f.uid === uploadFileObj.uid ? updatedFile : f
+                    f.uid === uploadFileObj.uid ? updatedFile : f,
                   ),
-                updatedFile
+                updatedFile,
               );
             }
           });
@@ -376,9 +376,9 @@ const UploadBase = React.forwardRef<HTMLDivElement, UploadProps>(
               updateFileList(
                 (prev) =>
                   prev.map((f) =>
-                    f.uid === uploadFileObj.uid ? successFile : f
+                    f.uid === uploadFileObj.uid ? successFile : f,
                   ),
-                successFile
+                successFile,
               );
             } else {
               const errorFile = {
@@ -389,9 +389,9 @@ const UploadBase = React.forwardRef<HTMLDivElement, UploadProps>(
               updateFileList(
                 (prev) =>
                   prev.map((f) =>
-                    f.uid === uploadFileObj.uid ? errorFile : f
+                    f.uid === uploadFileObj.uid ? errorFile : f,
                   ),
-                errorFile
+                errorFile,
               );
             }
           });
@@ -405,7 +405,7 @@ const UploadBase = React.forwardRef<HTMLDivElement, UploadProps>(
             updateFileList(
               (prev) =>
                 prev.map((f) => (f.uid === uploadFileObj.uid ? errorFile : f)),
-              errorFile
+              errorFile,
             );
           });
 
@@ -434,14 +434,14 @@ const UploadBase = React.forwardRef<HTMLDivElement, UploadProps>(
             updateFileList(
               (prev) =>
                 prev.map((f) =>
-                  f.uid === uploadFileObj.uid ? successFile : f
+                  f.uid === uploadFileObj.uid ? successFile : f,
                 ),
-              successFile
+              successFile,
             );
           }, 100);
         }
       },
-      [action, customRequest, updateFileList, headers, withCredentials]
+      [action, customRequest, updateFileList, headers, withCredentials],
     );
 
     // Handle file selection
@@ -455,7 +455,7 @@ const UploadBase = React.forwardRef<HTMLDivElement, UploadProps>(
       console.log("Current fileList length:", fileList.length);
       console.log(
         "File names:",
-        files.map((f) => f.name)
+        files.map((f) => f.name),
       );
 
       if (files.length === 0) return;
@@ -463,7 +463,7 @@ const UploadBase = React.forwardRef<HTMLDivElement, UploadProps>(
       // Check multiple - if multiple is false and there's already a file, reject (except for directory upload)
       if (!directory && !multiple && fileList.length > 0) {
         toast.error(
-          "You can only upload one file. Please remove the existing file first."
+          "You can only upload one file. Please remove the existing file first.",
         );
         return;
       }
@@ -484,10 +484,10 @@ const UploadBase = React.forwardRef<HTMLDivElement, UploadProps>(
         // Check max size
         if (maxSize && file.size > maxSize) {
           console.log(
-            `❌ REJECTED: File size ${file.size} exceeds maxSize ${maxSize}`
+            `❌ REJECTED: File size ${file.size} exceeds maxSize ${maxSize}`,
           );
           toast.error(
-            `${file.name} exceeds maximum size of ${formatFileSize(maxSize)}`
+            `${file.name} exceeds maximum size of ${formatFileSize(maxSize)}`,
           );
           continue;
         }
@@ -509,7 +509,7 @@ const UploadBase = React.forwardRef<HTMLDivElement, UploadProps>(
       }
 
       console.log(
-        `\n📊 Summary: ${uploadedCount} / ${files.length} files will be uploaded`
+        `\n📊 Summary: ${uploadedCount} / ${files.length} files will be uploaded`,
       );
 
       // Create upload file objects for all valid files at once
@@ -547,9 +547,9 @@ const UploadBase = React.forwardRef<HTMLDivElement, UploadProps>(
               updateFileList(
                 (prev) =>
                   prev.map((f) =>
-                    f.uid === uploadFileObj.uid ? updatedFile : f
+                    f.uid === uploadFileObj.uid ? updatedFile : f,
                   ),
-                updatedFile
+                updatedFile,
               );
             },
             onSuccess: (response) => {
@@ -562,9 +562,9 @@ const UploadBase = React.forwardRef<HTMLDivElement, UploadProps>(
               updateFileList(
                 (prev) =>
                   prev.map((f) =>
-                    f.uid === uploadFileObj.uid ? successFile : f
+                    f.uid === uploadFileObj.uid ? successFile : f,
                   ),
-                successFile
+                successFile,
               );
             },
             onError: (error) => {
@@ -576,9 +576,9 @@ const UploadBase = React.forwardRef<HTMLDivElement, UploadProps>(
               updateFileList(
                 (prev) =>
                   prev.map((f) =>
-                    f.uid === uploadFileObj.uid ? errorFile : f
+                    f.uid === uploadFileObj.uid ? errorFile : f,
                   ),
-                errorFile
+                errorFile,
               );
             },
           });
@@ -597,9 +597,9 @@ const UploadBase = React.forwardRef<HTMLDivElement, UploadProps>(
               updateFileList(
                 (prev) =>
                   prev.map((f) =>
-                    f.uid === uploadFileObj.uid ? updatedFile : f
+                    f.uid === uploadFileObj.uid ? updatedFile : f,
                   ),
-                updatedFile
+                updatedFile,
               );
             }
           });
@@ -617,9 +617,9 @@ const UploadBase = React.forwardRef<HTMLDivElement, UploadProps>(
               updateFileList(
                 (prev) =>
                   prev.map((f) =>
-                    f.uid === uploadFileObj.uid ? successFile : f
+                    f.uid === uploadFileObj.uid ? successFile : f,
                   ),
-                successFile
+                successFile,
               );
             } else {
               const errorFile = {
@@ -630,9 +630,9 @@ const UploadBase = React.forwardRef<HTMLDivElement, UploadProps>(
               updateFileList(
                 (prev) =>
                   prev.map((f) =>
-                    f.uid === uploadFileObj.uid ? errorFile : f
+                    f.uid === uploadFileObj.uid ? errorFile : f,
                   ),
-                errorFile
+                errorFile,
               );
             }
           });
@@ -646,7 +646,7 @@ const UploadBase = React.forwardRef<HTMLDivElement, UploadProps>(
             updateFileList(
               (prev) =>
                 prev.map((f) => (f.uid === uploadFileObj.uid ? errorFile : f)),
-              errorFile
+              errorFile,
             );
           });
 
@@ -666,7 +666,7 @@ const UploadBase = React.forwardRef<HTMLDivElement, UploadProps>(
         } else {
           // No action or customRequest, just mark as done (mock upload)
           console.log(
-            `⏱️ Mock upload starting for ${file.name} (delay: ${100 + index * 50}ms)`
+            `⏱️ Mock upload starting for ${file.name} (delay: ${100 + index * 50}ms)`,
           );
           setTimeout(
             () => {
@@ -679,14 +679,14 @@ const UploadBase = React.forwardRef<HTMLDivElement, UploadProps>(
               updateFileList((prev) => {
                 console.log(
                   `📝 Updating status for ${file.name}, current list:`,
-                  prev.length
+                  prev.length,
                 );
                 return prev.map((f) =>
-                  f.uid === uploadFileObj.uid ? successFile : f
+                  f.uid === uploadFileObj.uid ? successFile : f,
                 );
               }, successFile);
             },
-            100 + index * 50
+            100 + index * 50,
           ); // Stagger completion times
         }
       });
@@ -744,7 +744,7 @@ const UploadBase = React.forwardRef<HTMLDivElement, UploadProps>(
       // Check multiple - if multiple is false and there's already a file, reject
       if (!multiple && fileList.length > 0) {
         toast.error(
-          "You can only upload one file. Please remove the existing file first."
+          "You can only upload one file. Please remove the existing file first.",
         );
         return;
       }
@@ -771,7 +771,7 @@ const UploadBase = React.forwardRef<HTMLDivElement, UploadProps>(
         // Check max size
         if (maxSize && file.size > maxSize) {
           toast.error(
-            `${file.name} exceeds maximum size of ${formatFileSize(maxSize)}`
+            `${file.name} exceeds maximum size of ${formatFileSize(maxSize)}`,
           );
           continue;
         }
@@ -893,7 +893,7 @@ const UploadBase = React.forwardRef<HTMLDivElement, UploadProps>(
                   : size,
               }),
               ["dropzone", "primaryDropzone", "secondaryDropzone"].includes(
-                variant as any
+                variant as any,
               ) && "min-h-[180px] min-w-[300px]",
               !showBorder && "border-0",
               !iconOnly &&
@@ -904,7 +904,7 @@ const UploadBase = React.forwardRef<HTMLDivElement, UploadProps>(
               (variant === "avatar" || variant === "avatarCircle") &&
                 fileList.length > 0 &&
                 fileList[0].url &&
-                "opacity-100!"
+                "opacity-100!",
             )}
             onDragOver={handleDragOver}
             onDragLeave={handleDragLeave}
@@ -936,7 +936,7 @@ const UploadBase = React.forwardRef<HTMLDivElement, UploadProps>(
                       className={cn(
                         "w-full h-full object-cover",
                         variant === "avatarCircle" && "rounded-full",
-                        variant === "avatar" && "rounded-lg"
+                        variant === "avatar" && "rounded-lg",
                       )}
                     />
                     {/* Delete button overlay */}
@@ -944,7 +944,7 @@ const UploadBase = React.forwardRef<HTMLDivElement, UploadProps>(
                       className={cn(
                         "absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center",
                         variant === "avatarCircle" && "rounded-full",
-                        variant === "avatar" && "rounded-lg"
+                        variant === "avatar" && "rounded-lg",
                       )}
                       onClick={(e) => {
                         e.stopPropagation();
@@ -963,8 +963,8 @@ const UploadBase = React.forwardRef<HTMLDivElement, UploadProps>(
                 className={cn(
                   "flex items-center justify-center gap-2",
                   ["secondaryDropzone", "dropzone", "primaryDropzone"].includes(
-                    variant as any
-                  ) && "flex-col"
+                    variant as any,
+                  ) && "flex-col",
                 )}
               >
                 {uploadIcon ? (
@@ -984,7 +984,7 @@ const UploadBase = React.forwardRef<HTMLDivElement, UploadProps>(
                         "primaryDropzone",
                         "secondaryDropzone",
                         "primaryOutline",
-                      ].includes(variant as any) && "text-primary"
+                      ].includes(variant as any) && "text-primary",
                     )}
                   >
                     {uploadIcon}
@@ -1008,7 +1008,7 @@ const UploadBase = React.forwardRef<HTMLDivElement, UploadProps>(
                             "secondaryDropzone",
                             "primaryDropzone",
                             "primaryOutline",
-                          ].includes(variant as any) && "text-primary"
+                          ].includes(variant as any) && "text-primary",
                         )}
                       />
                     ) : (
@@ -1028,7 +1028,7 @@ const UploadBase = React.forwardRef<HTMLDivElement, UploadProps>(
                             "primaryDropzone",
                             "secondaryDropzone",
                             "primaryOutline",
-                          ].includes(variant as any) && "text-primary"
+                          ].includes(variant as any) && "text-primary",
                         )}
                       />
                     )}
@@ -1063,7 +1063,7 @@ const UploadBase = React.forwardRef<HTMLDivElement, UploadProps>(
                 (effectiveListType === "picture-card" ||
                   effectiveListType === "picture-circle") &&
                   "grid gap-2",
-                effectiveListType === "picture" && "space-y-2"
+                effectiveListType === "picture" && "space-y-2",
               )}
               style={{
                 gridTemplateColumns:
@@ -1113,7 +1113,7 @@ const UploadBase = React.forwardRef<HTMLDivElement, UploadProps>(
         </Dialog>
       </>
     );
-  }
+  },
 );
 
 UploadBase.displayName = "Upload";
@@ -1265,7 +1265,7 @@ const FileItem: React.FC<FileItemProps> = ({
         className={cn(
           "relative aspect-square rounded-full border bg-muted/50 overflow-hidden group",
           file.status === "done" && "border-2 border-green-500",
-          file.status === "error" && "border-2 border-red-500"
+          file.status === "error" && "border-2 border-red-500",
         )}
         style={{
           width: "100px",

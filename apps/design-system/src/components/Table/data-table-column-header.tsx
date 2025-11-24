@@ -21,7 +21,7 @@ import {
 interface DataTableColumnHeaderProps<TData, TValue>
   extends React.ComponentProps<typeof DropdownMenuTrigger> {
   column: Column<TData, TValue>;
-  label: string;
+  label?: string;
 }
 
 export function DataTableColumnHeader<TData, TValue>({
@@ -30,8 +30,14 @@ export function DataTableColumnHeader<TData, TValue>({
   className,
   ...props
 }: DataTableColumnHeaderProps<TData, TValue>) {
+  const displayLabel =
+    label ||
+    (typeof column.columnDef.header === "string"
+      ? column.columnDef.header
+      : null);
+
   if (!column.getCanSort() && !column.getCanHide()) {
-    return <div className={cn(className)}>{label}</div>;
+    return <div className={cn(className)}>{displayLabel}</div>;
   }
 
   return (
@@ -43,7 +49,7 @@ export function DataTableColumnHeader<TData, TValue>({
         )}
         {...props}
       >
-        {label}
+        {displayLabel}
         {column.getCanSort() &&
           (column.getIsSorted() === "desc" ? (
             <ChevronDown />

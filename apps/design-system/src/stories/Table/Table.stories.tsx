@@ -10,8 +10,7 @@ import {
   DropdownMenuTrigger,
 } from "@dsui/ui/index";
 import React from "react";
-import type { CellContext, Column, ColumnDef } from "@tanstack/react-table";
-import { DataTableColumnHeader } from "@/components/Table/data-table-column-header";
+import type { CellContext, ColumnDef } from "@tanstack/react-table";
 import { createSelectColumn } from "@/components/Table/select-column";
 import {
   CheckCircle,
@@ -25,6 +24,7 @@ import Badge from "@/components/Badge";
 import { parseAsArrayOf, parseAsString, useQueryState } from "nuqs";
 import { NuqsAdapter } from "nuqs/adapters/react";
 import { useDataTable } from "@/hooks/use-data-table";
+import i18n from "../../../.storybook/i18n";
 
 const meta: Meta<typeof DataTable> = {
   title: "Data Display/DataTable",
@@ -160,9 +160,7 @@ const columns: ColumnDef<Project>[] = [
   {
     id: "title",
     accessorKey: "title",
-    header: ({ column }: { column: Column<Project, unknown> }) => (
-      <DataTableColumnHeader column={column} label="Title" />
-    ),
+    header: "Title",
     cell: ({ cell }: CellContext<Project, unknown>) => (
       <div>{cell.getValue<Project["title"]>()}</div>
     ),
@@ -177,9 +175,7 @@ const columns: ColumnDef<Project>[] = [
   {
     id: "status",
     accessorKey: "status",
-    header: ({ column }: { column: Column<Project, unknown> }) => (
-      <DataTableColumnHeader column={column} label="Status" />
-    ),
+    header: "Status",
     cell: ({ cell }: CellContext<Project, unknown>) => {
       const status = cell.getValue<Project["status"]>();
       const Icon = status === "active" ? CheckCircle2 : XCircle;
@@ -208,9 +204,7 @@ const columns: ColumnDef<Project>[] = [
   {
     id: "budget",
     accessorKey: "budget",
-    header: ({ column }: { column: Column<Project, unknown> }) => (
-      <DataTableColumnHeader column={column} label="Budget" />
-    ),
+    header: "Budget",
     cell: ({ cell }: CellContext<Project, unknown>) => {
       const budget = cell.getValue<Project["budget"]>();
 
@@ -261,7 +255,7 @@ export const Default = () => {
   return (
     <div className="data-table-container">
       <DataTableToolbar table={table} />
-      <DataTable table={table} />
+      <DataTable table={table} pagination={{ showRowSelectionCount: true }} />
     </div>
   );
 };
