@@ -51,8 +51,22 @@ const Popover = React.forwardRef<HTMLDivElement, PopoverProps>((props, ref) => {
     triggerClassName,
   } = props;
 
-  // If children is provided, use it as trigger
-  const triggerElement = trigger || children;
+  // If children are provided (compound pattern), render them directly
+  if (children) {
+    return (
+      <SPopover
+        open={open}
+        defaultOpen={defaultOpen}
+        onOpenChange={onOpenChange}
+        modal={modal}
+      >
+        {children}
+      </SPopover>
+    );
+  }
+
+  // Fallback to props-based pattern
+  const triggerElement = trigger;
 
   return (
     <SPopover

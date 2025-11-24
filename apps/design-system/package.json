@@ -132,6 +132,16 @@
         "default": "./dist/cjs/components/Dialog/Dialog.cjs"
       }
     },
+    "./dropdownmenu": {
+      "import": {
+        "types": "./dist/types/components/DropdownMenu/DropdownMenu.d.ts",
+        "default": "./dist/esm/components/DropdownMenu/DropdownMenu.js"
+      },
+      "require": {
+        "types": "./dist/types/components/DropdownMenu/DropdownMenu.d.ts",
+        "default": "./dist/cjs/components/DropdownMenu/DropdownMenu.cjs"
+      }
+    },
     "./floatlabel": {
       "import": {
         "types": "./dist/types/components/FloatLabel/FloatLabel.d.ts",
@@ -434,6 +444,7 @@
     "@radix-ui/react-slider": "^1.3.6",
     "@storybook/addon-mdx-gfm": "^8.6.14",
     "@types/qrcode": "^1.5.6",
+    "@tanstack/react-table": "^8.21.3",
     "class-variance-authority": "^0.7.1",
     "date-fns": "^4.1.0",
     "lucide-react": "^0.546.0",
@@ -441,6 +452,7 @@
     "qrcode": "^1.5.4",
     "react-day-picker": "^9.11.1",
     "react-device-detect": "^2.2.3",
+    "nuqs": "^2.8.0",
     "sonner": "^2.0.7",
     "tailwindcss": "^4.1.14",
     "tailwindcss-animate": "^1.0.7",
@@ -515,6 +527,9 @@
       ],
       "dialog": [
         "./dist/types/components/Dialog/Dialog.d.ts"
+      ],
+      "dropdownmenu": [
+        "./dist/types/components/DropdownMenu/DropdownMenu.d.ts"
       ],
       "floatlabel": [
         "./dist/types/components/FloatLabel/FloatLabel.d.ts"

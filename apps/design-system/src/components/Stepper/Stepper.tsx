@@ -1740,19 +1740,7 @@ function StepperNext(props: ButtonProps) {
 }
 
 export {
-  StepperRoot as Root,
-  StepperList as List,
-  StepperItem as Item,
-  StepperTrigger as Trigger,
-  StepperIndicator as Indicator,
-  StepperSeparator as Separator,
-  StepperTitle as Title,
-  StepperDescription as Description,
-  StepperContent as Content,
-  StepperPrev as Prev,
-  StepperNext as Next,
-  //
-  StepperRoot as Stepper,
+  StepperRoot,
   StepperList,
   StepperItem,
   StepperTrigger,

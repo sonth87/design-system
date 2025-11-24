@@ -1,16 +1,5 @@
 import {
-  Root,
-  List,
-  Item,
-  Trigger,
-  Indicator,
-  Separator,
-  Title,
-  Description,
-  Content,
-  Prev,
-  Next,
-  //
+  StepperRoot,
   StepperList,
   StepperItem,
   StepperTrigger,
@@ -29,28 +18,17 @@ import {
 import { StepperWrapper } from "./StepperWrapper";
 
 const Stepper = Object.assign(StepperWrapper, {
-  Root,
-  List,
-  Item,
-  Trigger,
-  Indicator,
-  Separator,
-  Title,
-  Description,
-  Content,
-  Prev,
-  Next,
-  //
-  StepperList,
-  StepperItem,
-  StepperTrigger,
-  StepperIndicator,
-  StepperSeparator,
-  StepperTitle,
-  StepperDescription,
-  StepperContent,
-  StepperPrev,
-  StepperNext,
+  Root: StepperRoot,
+  List: StepperList,
+  Item: StepperItem,
+  Trigger: StepperTrigger,
+  Indicator: StepperIndicator,
+  Separator: StepperSeparator,
+  Title: StepperTitle,
+  Description: StepperDescription,
+  Content: StepperContent,
+  Prev: StepperPrev,
+  Next: StepperNext,
 });
 
 export { Stepper, useStepper };

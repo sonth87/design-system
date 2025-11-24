@@ -15,7 +15,7 @@ const meta: Meta<typeof Pagination> = {
     docs: {
       description: {
         component: `
-A flexible pagination component that provides navigation through multiple pages of content. The Pagination component supports customizable text, colors, sizes, and advanced features like jump-on-ellipsis functionality.
+A flexible pagination component that provides navigation through multiple pages of content. The Pagination component supports customizable text, colors, sizes, and advanced features like jump-on-ellipsis functionality with hover or popover modes.
 
 ## Usage Patterns
 
@@ -27,6 +27,8 @@ A flexible pagination component that provides navigation through multiple pages 
   onPageChange={(page) => setCurrentPage(page)}
   maxPages={5}
 />
+\`\`\`
+
 \`\`\`
         `,
       },
@@ -152,6 +154,17 @@ A flexible pagination component that provides navigation through multiple pages 
         category: "Behavior",
         type: { summary: "boolean" },
         defaultValue: { summary: "false" },
+      },
+    },
+    jumpType: {
+      control: { type: "select" },
+      options: ["jump", "select"],
+      description:
+        "Type of jump interaction for ellipsis. 'jump' shows buttons on hover, 'select' shows a searchable list on click.",
+      table: {
+        category: "Behavior",
+        type: { summary: "string" },
+        defaultValue: { summary: '"hover"' },
       },
     },
     animation: {
@@ -376,6 +389,43 @@ export const WithJumpOnEllipsis: Story = {
               jumpOnEllipsis={true}
               previousText="« Jump Back 3"
               nextText="Jump Forward 3 »"
+            />
+          </div>
+        </div>
+      );
+    };
+
+    return <PaginationWithState />;
+  },
+};
+
+export const WithSelectJump: Story = {
+  render: () => {
+    const PaginationWithState = () => {
+      const [currentPage, setCurrentPage] = React.useState(10);
+
+      return (
+        <div className="space-y-4">
+          <div>
+            <h3 className="text-sm font-medium mb-2">
+              Popover Jump on Ellipsis (click ... to open searchable page list)
+            </h3>
+            <p className="text-xs text-muted-foreground mb-2">
+              Current page: {currentPage}. Click on the ellipsis (...) to open a
+              popover with a searchable list of all pages. You can search by
+              typing page numbers or scroll through the list.
+            </p>
+            <Pagination
+              total={50}
+              currentPage={currentPage}
+              onPageChange={(page) => {
+                console.log("Page changed to:", page);
+                setCurrentPage(page);
+              }}
+              size="normal"
+              maxPages={5}
+              jumpOnEllipsis={true}
+              jumpType="select"
             />
           </div>
         </div>

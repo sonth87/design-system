@@ -1,0 +1,299 @@
+import React, { useState } from "react";
+import {
+  DropdownMenu as SDropdownMenu,
+  DropdownMenuTrigger as SDropdownMenuTrigger,
+  DropdownMenuContent as SDropdownMenuContent,
+  DropdownMenuPortal as SDropdownMenuPortal,
+  DropdownMenuItem as SDropdownMenuItem,
+  DropdownMenuCheckboxItem as SDropdownMenuCheckboxItem,
+  DropdownMenuRadioItem as SDropdownMenuRadioItem,
+  DropdownMenuRadioGroup as SDropdownMenuRadioGroup,
+  DropdownMenuLabel as SDropdownMenuLabel,
+  DropdownMenuSeparator as SDropdownMenuSeparator,
+  DropdownMenuGroup as SDropdownMenuGroup,
+  DropdownMenuSub as SDropdownMenuSub,
+  DropdownMenuSubTrigger as SDropdownMenuSubTrigger,
+  DropdownMenuSubContent as SDropdownMenuSubContent,
+} from "@dsui/ui/components/dropdown-menu";
+import { cn } from "@dsui/ui/lib/utils";
+
+export type DropdownMenuSide = "top" | "right" | "bottom" | "left";
+export type DropdownMenuAlign = "start" | "center" | "end";
+
+export type DropdownMenuItemType =
+  | "item"
+  | "checkbox"
+  | "radio"
+  | "separator"
+  | "group";
+
+export interface DropdownMenuItem {
+  key: string;
+  label?: string;
+  icon?: React.ReactNode;
+  children?: DropdownMenuItem[];
+  type?: DropdownMenuItemType;
+  checked?: boolean;
+  disabled?: boolean;
+  variant?: "default" | "destructive";
+  group?: string; // for radio groups
+  onClick?: () => void;
+}
+
+export interface DropdownMenuProps {
+  // Core props
+  open?: boolean;
+  defaultOpen?: boolean;
+  onOpenChange?: (open: boolean) => void;
+  modal?: boolean;
+
+  // Content
+  children?: React.ReactNode;
+  trigger?: React.ReactNode;
+  content?: React.ReactNode;
+  items?: DropdownMenuItem[];
+
+  // Layout
+  side?: DropdownMenuSide;
+  align?: DropdownMenuAlign;
+  sideOffset?: number;
+  alignOffset?: number;
+
+  // Portal
+  portal?: boolean;
+
+  // Context menu
+  contextMenu?: boolean;
+
+  // Styling
+  className?: string;
+  contentClassName?: string;
+  triggerClassName?: string;
+}
+
+const DropdownMenu = React.forwardRef<HTMLDivElement, DropdownMenuProps>(
+  (props, ref) => {
+    const {
+      open,
+      defaultOpen,
+      onOpenChange,
+      modal = false,
+      children,
+      trigger,
+      content,
+      items,
+      side = "bottom",
+      align = "start",
+      sideOffset,
+      alignOffset,
+      portal = true,
+      contextMenu = false,
+      className,
+      contentClassName,
+      triggerClassName,
+    } = props;
+
+    // Context menu state
+    const [contextMenuOpen, setContextMenuOpen] = useState(false);
+    const [contextMenuPosition, setContextMenuPosition] = useState({
+      x: 0,
+      y: 0,
+    });
+
+    // Handle context menu trigger
+    const handleContextMenu = (e: React.MouseEvent) => {
+      if (contextMenu) {
+        e.preventDefault();
+        setContextMenuPosition({ x: e.clientX, y: e.clientY });
+        setContextMenuOpen(true);
+      }
+    };
+
+    // If children are provided (compound pattern), render them directly
+    if (children) {
+      return (
+        <SDropdownMenu
+          open={open}
+          defaultOpen={defaultOpen}
+          onOpenChange={onOpenChange}
+          modal={modal}
+        >
+          {children}
+        </SDropdownMenu>
+      );
+    }
+
+    // Render items if provided
+    const renderItems = (menuItems: DropdownMenuItem[]): React.ReactNode => {
+      return menuItems.map((item) => {
+        if (item.type === "separator") {
+          return <SDropdownMenuSeparator key={item.key} />;
+        }
+
+        if (item.type === "group" && item.children) {
+          return (
+            <SDropdownMenuGroup key={item.key}>
+              {item.label && (
+                <SDropdownMenuLabel>{item.label}</SDropdownMenuLabel>
+              )}
+              {renderItems(item.children)}
+            </SDropdownMenuGroup>
+          );
+        }
+
+        if (item.children && item.children.length > 0) {
+          // Submenu
+          return (
+            <SDropdownMenuSub key={item.key}>
+              <SDropdownMenuSubTrigger
+                disabled={item.disabled}
+                className={item.disabled ? "opacity-50 cursor-not-allowed" : ""}
+              >
+                {item.icon && <span className="mr-2">{item.icon}</span>}
+                {item.label}
+              </SDropdownMenuSubTrigger>
+              <SDropdownMenuSubContent>
+                {renderItems(item.children)}
+              </SDropdownMenuSubContent>
+            </SDropdownMenuSub>
+          );
+        }
+
+        if (item.type === "checkbox") {
+          return (
+            <SDropdownMenuCheckboxItem
+              key={item.key}
+              checked={item.checked}
+              disabled={item.disabled}
+              onCheckedChange={(checked: boolean) => {
+                if (checked && item.onClick) {
+                  item.onClick();
+                }
+              }}
+            >
+              {item.icon && <span className="mr-2">{item.icon}</span>}
+              {item.label}
+            </SDropdownMenuCheckboxItem>
+          );
+        }
+
+        if (item.type === "radio") {
+          return (
+            <SDropdownMenuRadioGroup value={item.group}>
+              <SDropdownMenuRadioItem
+                key={item.key}
+                value={item.key}
+                disabled={item.disabled}
+                onClick={item.onClick}
+              >
+                {item.icon && <span className="mr-2">{item.icon}</span>}
+                {item.label}
+              </SDropdownMenuRadioItem>
+            </SDropdownMenuRadioGroup>
+          );
+        }
+
+        // Regular item
+        return (
+          <SDropdownMenuItem
+            key={item.key}
+            disabled={item.disabled}
+            variant={item.variant}
+            onClick={item.onClick}
+          >
+            {item.icon && <span className="mr-2">{item.icon}</span>}
+            {item.label}
+          </SDropdownMenuItem>
+        );
+      });
+    };
+
+    // If context menu is enabled, render differently
+    if (contextMenu) {
+      return (
+        <>
+          {/* Invisible trigger area for context menu */}
+          <div
+            className="fixed inset-0 z-0"
+            onContextMenu={handleContextMenu}
+          />
+          <SDropdownMenu
+            open={contextMenuOpen}
+            onOpenChange={setContextMenuOpen}
+            modal={modal}
+          >
+            <SDropdownMenuTrigger asChild>
+              <div
+                className="fixed"
+                style={{
+                  left: contextMenuPosition.x,
+                  top: contextMenuPosition.y,
+                  width: 1,
+                  height: 1,
+                }}
+              />
+            </SDropdownMenuTrigger>
+            <SDropdownMenuPortal>
+              <SDropdownMenuContent
+                ref={ref}
+                className={cn(className, contentClassName)}
+                style={{
+                  position: "fixed",
+                  left: contextMenuPosition.x,
+                  top: contextMenuPosition.y,
+                }}
+              >
+                {content}
+                {items && renderItems(items)}
+              </SDropdownMenuContent>
+            </SDropdownMenuPortal>
+          </SDropdownMenu>
+        </>
+      );
+    }
+
+    // Fallback to props-based pattern
+    const triggerElement = trigger ? (
+      <div onContextMenu={handleContextMenu} className={cn(triggerClassName)}>
+        {trigger}
+      </div>
+    ) : null;
+
+    const contentElement =
+      content || items ? (
+        <SDropdownMenuContent
+          ref={ref}
+          side={side}
+          align={align}
+          sideOffset={sideOffset}
+          alignOffset={alignOffset}
+          className={cn(className, contentClassName)}
+        >
+          {content}
+          {items && renderItems(items)}
+        </SDropdownMenuContent>
+      ) : null;
+
+    return (
+      <SDropdownMenu
+        open={open}
+        defaultOpen={defaultOpen}
+        onOpenChange={onOpenChange}
+        modal={modal}
+      >
+        {triggerElement && (
+          <SDropdownMenuTrigger asChild>{triggerElement}</SDropdownMenuTrigger>
+        )}
+        {portal ? (
+          <SDropdownMenuPortal>{contentElement}</SDropdownMenuPortal>
+        ) : (
+          contentElement
+        )}
+      </SDropdownMenu>
+    );
+  },
+);
+
+DropdownMenu.displayName = "DropdownMenu";
+
+export default DropdownMenu;

@@ -1,5 +1,4 @@
 import React, { useMemo } from "react";
-import { Slider as SSlider } from "@dsui/ui/components/slider";
 import * as SliderPrimitive from "@radix-ui/react-slider";
 import { cn } from "@dsui/ui/lib/utils";
 import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
@@ -13,7 +12,7 @@ type SliderColor = BasicColor | "muted" | "accent";
 type SliderSize = "sm" | "md" | "lg";
 type LabelPosition = "top" | "bottom" | "left" | "right";
 
-export type SliderProps = React.ComponentProps<typeof SSlider> & {
+export type SliderProps = React.ComponentProps<typeof SliderPrimitive.Root> & {
   color?: SliderColor;
   size?: SliderSize;
   showLabel?: LabelDisplay;

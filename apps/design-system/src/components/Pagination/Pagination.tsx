@@ -11,50 +11,37 @@ import {
 import { cn } from "@dsui/ui/lib/utils";
 import type { ButtonAnimation } from "@/types/variables";
 import { animationEffect } from "@/utils/animations";
-import { ChevronsLeft, ChevronsRight } from "lucide-react";
+import { ChevronsLeft, ChevronsRight, MoreHorizontalIcon } from "lucide-react";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@dsui/ui/components/popover";
+import {
+  Command,
+  CommandInput,
+  CommandList,
+  CommandItem,
+} from "@dsui/ui/components/command";
+import type Button from "../Button";
 
 type PaginationItemType =
   | number
   | "..."
   | { page: number; isActive?: boolean; disabled?: boolean };
 
-interface PaginationWrapperProps
-  extends React.ComponentProps<typeof SPagination> {
+type PaginationWrapperProps = React.ComponentProps<typeof SPagination> & {
   animation?: ButtonAnimation;
   total?: number;
   currentPage?: number;
   onPageChange?: (page: number) => void;
   showPreviousNext?: boolean;
-  color?:
-    | "primary"
-    | "secondary"
-    | "accent"
-    | "destructive"
-    | "muted"
-    | "success"
-    | "error"
-    | "warning";
-  size?:
-    | "xs"
-    | "sm"
-    | "normal"
-    | "lg"
-    | "xl"
-    | "icon"
-    | "icon-xs"
-    | "icon-sm"
-    | "icon-lg"
-    | "icon-xl"
-    | "circle-icon"
-    | "circle-icon-xs"
-    | "circle-icon-sm"
-    | "circle-icon-lg"
-    | "circle-icon-xl";
   maxPages?: number; // số pages hiển thị
   previousText?: string | boolean;
   nextText?: string | boolean;
   jumpOnEllipsis?: boolean; // khi hover vào ellipsis thì hiện thành nút next/previous
-}
+  jumpType?: "jump" | "select"; // jump type for ellipsis interaction
+} & Pick<React.ComponentProps<typeof Button>, "size" | "color">;
 
 type AnimResult = {
   className?: string;
@@ -112,6 +99,9 @@ const PaginationEllipsisWithJump = ({
   size,
   previousText,
   nextText,
+  jumpType = "jump",
+  total,
+  onPageChange,
 }: {
   position: "before" | "after";
   onJumpPrevious?: () => void;
@@ -120,56 +110,79 @@ const PaginationEllipsisWithJump = ({
   size?: PaginationWrapperProps["size"];
   previousText?: React.ReactNode;
   nextText?: React.ReactNode;
+  jumpType?: "jump" | "select";
+  total?: number;
+  onPageChange?: (page: number) => void;
 }) => {
-  const [isHovered, setIsHovered] = React.useState(false);
+  const [popoverOpen, setPopoverOpen] = React.useState(false);
 
-  if (!isHovered) {
+  if (jumpType === "select") {
     return (
-      <PaginationItem>
-        <div
-          className="flex size-9 items-center justify-center cursor-pointer"
-          onMouseEnter={() => setIsHovered(true)}
-        >
-          <PaginationEllipsis />
-        </div>
-      </PaginationItem>
+      <Popover open={popoverOpen} onOpenChange={setPopoverOpen}>
+        <PopoverTrigger asChild>
+          <PaginationItem>
+            <PaginationEllipsis size={size} color={color} />
+          </PaginationItem>
+        </PopoverTrigger>
+        <PopoverContent className="w-40 p-0">
+          <Command>
+            <CommandInput placeholder="Search pages..." />
+            <CommandList>
+              {total &&
+                Array.from({ length: total }, (_, i) => i + 1).map((page) => (
+                  <CommandItem
+                    key={page}
+                    onSelect={() => {
+                      onPageChange?.(page);
+                      setPopoverOpen(false);
+                    }}
+                  >
+                    Page {page}
+                  </CommandItem>
+                ))}
+            </CommandList>
+          </Command>
+        </PopoverContent>
+      </Popover>
     );
   }
 
   return (
-    <PaginationItem>
-      <div
-        className="flex items-center"
-        onMouseLeave={() => setIsHovered(false)}
-      >
-        {position === "before" ? (
-          <PaginationPrevious
-            href="#"
-            onClick={(e) => {
-              e.preventDefault();
-              onJumpPrevious?.();
-            }}
-            color={color}
-            size={size}
-            hideIcon
-          >
+    <PaginationItem className="group">
+      {position === "before" ? (
+        <PaginationPrevious
+          href="#"
+          onClick={(e) => {
+            e.preventDefault();
+            onJumpPrevious?.();
+          }}
+          color={color}
+          size={size}
+          hideIcon
+          className="peer"
+        >
+          <span className="hidden group-hover:block leading-none">
             {previousText}
-          </PaginationPrevious>
-        ) : (
-          <PaginationNext
-            href="#"
-            onClick={(e) => {
-              e.preventDefault();
-              onJumpNext?.();
-            }}
-            color={color}
-            size={size}
-            hideIcon
-          >
+          </span>
+          <MoreHorizontalIcon className="group-hover:hidden cursor-pointer" />
+        </PaginationPrevious>
+      ) : (
+        <PaginationNext
+          href="#"
+          onClick={(e) => {
+            e.preventDefault();
+            onJumpNext?.();
+          }}
+          color={color}
+          size={size}
+          hideIcon
+        >
+          <span className="hidden group-hover:block leading-none">
             {nextText}
-          </PaginationNext>
-        )}
-      </div>
+          </span>
+          <MoreHorizontalIcon className="group-hover:hidden cursor-pointer" />
+        </PaginationNext>
+      )}
     </PaginationItem>
   );
 };
@@ -189,6 +202,7 @@ const Pagination = React.forwardRef<HTMLElement, PaginationWrapperProps>(
       previousText,
       nextText,
       jumpOnEllipsis = false,
+      jumpType = "jump",
       children,
       ...props
     },
@@ -271,12 +285,15 @@ const Pagination = React.forwardRef<HTMLElement, PaginationWrapperProps>(
                     size={size}
                     previousText={<ChevronsLeft />}
                     nextText={<ChevronsRight />}
+                    jumpType={jumpType}
+                    total={total}
+                    onPageChange={onPageChange}
                   />
                 );
               }
               return (
                 <PaginationItem key={`ellipsis-${index}`}>
-                  <PaginationEllipsis />
+                  <PaginationEllipsis size={size} color={color} />
                 </PaginationItem>
               );
             }
