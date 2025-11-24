@@ -8,7 +8,7 @@ import { useState } from "react";
 import i18n from "../../.storybook/i18n";
 
 const meta: Meta<typeof TreeView> = {
-  title: "Components/TreeSelect",
+  title: "Form Components/TreeSelect",
   component: TreeView,
   parameters: {
     layout: "centered",
