@@ -254,7 +254,7 @@ export const Default = () => {
 
   return (
     <div className="data-table-container">
-      <DataTableToolbar table={table} />
+      <DataTableToolbar table={table} showColumnVisibilityToggle />
       <DataTable table={table} pagination={{ showRowSelectionCount: true }} />
     </div>
   );
@@ -264,7 +264,7 @@ const WithNuqsStory = () => {
   const [title] = useQueryState("title", parseAsString.withDefault(""));
   const [status] = useQueryState(
     "status",
-    parseAsArrayOf(parseAsString).withDefault([]),
+    parseAsArrayOf(parseAsString).withDefault([])
   );
 
   // Ideally we would filter the data server-side, but for the sake of this example, we'll filter the data client-side

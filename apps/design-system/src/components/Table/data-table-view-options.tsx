@@ -4,14 +4,7 @@ import type { Table } from "@tanstack/react-table";
 import { Check, Settings2 } from "lucide-react";
 import * as React from "react";
 import { Button } from "../Button";
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-} from "@dsui/ui";
+import Command, { type CommandItemType } from "../Command/Command";
 import { Popover } from "../Popover";
 import { cn } from "@dsui/ui";
 
@@ -30,10 +23,34 @@ export function DataTableViewOptions<TData>({
         .getAllColumns()
         .filter(
           (column) =>
-            typeof column.accessorFn !== "undefined" && column.getCanHide(),
+            typeof column.accessorFn !== "undefined" && column.getCanHide()
         ),
-    [table],
+    [table]
   );
+
+  const items: CommandItemType[] = [
+    {
+      type: "group",
+      heading: "",
+      items: columns.map((column) => ({
+        type: "item" as const,
+        onClick: () => column.toggleVisibility(!column.getIsVisible()),
+        children: (
+          <>
+            <span className="truncate">
+              {column.columnDef.meta?.label ?? column.id}
+            </span>
+            <Check
+              className={cn(
+                "ml-auto size-4 shrink-0",
+                column.getIsVisible() ? "opacity-100" : "opacity-0"
+              )}
+            />
+          </>
+        ),
+      })),
+    },
+  ];
 
   return (
     <Popover
@@ -43,40 +60,13 @@ export function DataTableViewOptions<TData>({
           role="combobox"
           variant="outline"
           size="sm"
-          className="ml-auto hidden h-8 font-normal lg:flex"
+          className="ml-auto h-8 font-normal lg:flex"
         >
           <Settings2 className="text-muted-foreground" />
           View
         </Button>
       }
-      content={
-        <Command>
-          <CommandInput placeholder="Search columns..." />
-          <CommandList>
-            <CommandEmpty>No columns found.</CommandEmpty>
-            <CommandGroup>
-              {columns.map((column) => (
-                <CommandItem
-                  key={column.id}
-                  onSelect={() =>
-                    column.toggleVisibility(!column.getIsVisible())
-                  }
-                >
-                  <span className="truncate">
-                    {column.columnDef.meta?.label ?? column.id}
-                  </span>
-                  <Check
-                    className={cn(
-                      "ml-auto size-4 shrink-0",
-                      column.getIsVisible() ? "opacity-100" : "opacity-0",
-                    )}
-                  />
-                </CommandItem>
-              ))}
-            </CommandGroup>
-          </CommandList>
-        </Command>
-      }
+      content={<Command items={items} search="Search columns..." />}
       contentClassName="w-44 p-0"
       {...props}
     />

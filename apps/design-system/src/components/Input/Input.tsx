@@ -53,7 +53,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       placeholder = " ",
       ...props
     },
-    ref,
+    ref
   ) => {
     // Character count state
     const [charCount, setCharCount] = React.useState(() => {
@@ -102,7 +102,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           }
         }
       },
-      [mask, maskOptions],
+      [mask, maskOptions]
     );
 
     // Expose ref to parent
@@ -229,204 +229,210 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     /* End Spinner Button Handlers */
 
     return (
-      <div
-        className={cn("flex flex-col gap-1.5 relative flex-auto", {
-          "floating-label relative": isFloatLabel,
-        })}
-      >
-        {!isFloatLabel && label && (
-          <label
-            htmlFor={inputId}
-            className="flex gap-2 text-sm font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-          >
-            {label}
-            {infoTooltip && (
-              <Tooltip content={infoTooltip}>
-                <Info className="size-3.5 min-w-3.5" />
-              </Tooltip>
-            )}
-          </label>
-        )}
-
-        <div className="relative">
-          {/* Prefix Icon */}
-          {prefixIcon && (
-            <div
-              className={cn(
-                "absolute top-1/2 -translate-y-1/2 text-muted-foreground leading-0",
-                iconPosition.left,
-              )}
-            >
-              {React.isValidElement(prefixIcon)
-                ? React.cloneElement(prefixIcon, {
-                    className: cn(
-                      iconSizeClass,
-                      (prefixIcon.props as any)?.className,
-                    ),
-                  } as Partial<unknown>)
-                : prefixIcon}
-            </div>
-          )}
-
-          <SInput
-            ref={combinedRef}
-            id={inputId}
-            className={cn(
-              "peer",
-              {
-                "pt-5 pb-1": isFloatLabel && size !== "lg",
-                "[&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none [-moz-appearance:textfield] pr-8":
-                  type === "number",
-                // "[-webkit-text-fill-color:var(--foreground)]": mask,
-              },
-              prefixIcon && padding.prefix,
-              mask && "placeholder:text-slate-400 placeholder:opacity-100",
-              getRightPadding(),
-              className,
-            )}
-            state={state}
-            size={
-              isFloatLabel
-                ? size === "xl" || size === "lg"
-                  ? size
-                  : "xl"
-                : size
-            }
-            type={
-              type === "password" ? (showPassword ? "text" : "password") : type
-            }
-            placeholder={placeholder}
-            maxLength={maxLength}
-            onChange={handleInput}
-            {...props}
-          />
-          {isFloatLabel && (
-            <FloatingLabel
+      <div className={className}>
+        <div
+          className={cn("flex flex-col gap-1.5 relative flex-auto", {
+            "floating-label relative": isFloatLabel,
+          })}
+        >
+          {!isFloatLabel && label && (
+            <label
               htmlFor={inputId}
-              size={size}
-              infoTooltip={infoTooltip}
+              className="flex gap-2 text-sm font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
             >
               {label}
-            </FloatingLabel>
+              {infoTooltip && (
+                <Tooltip content={infoTooltip}>
+                  <Info className="size-3.5 min-w-3.5" />
+                </Tooltip>
+              )}
+            </label>
           )}
 
-          {/* Spinner Buttons */}
-          {type === "number" && (
-            <div className="absolute right-1 top-0 h-full flex flex-col gap-0.5">
-              <button
-                type="button"
-                onClick={handleIncrement}
-                disabled={props.disabled}
+          <div className="relative">
+            {/* Prefix Icon */}
+            {prefixIcon && (
+              <div
                 className={cn(
-                  "h-1/2 w-6 flex items-center justify-center rounded cursor-pointer hover:scale-150 transition-transform",
-                  "disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent",
+                  "absolute top-1/2 -translate-y-1/2 text-muted-foreground leading-0",
+                  iconPosition.left
                 )}
-                tabIndex={-1}
               >
-                <ChevronUp className="size-3" />
-              </button>
-              <button
-                type="button"
-                onClick={handleDecrement}
-                disabled={props.disabled}
-                className={cn(
-                  "h-1/2 w-6 flex items-center justify-center rounded cursor-pointer hover:scale-150 transition-transform",
-                  "disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent",
-                )}
-                tabIndex={-1}
-              >
-                <ChevronDown className="size-3" />
-              </button>
-            </div>
-          )}
+                {React.isValidElement(prefixIcon)
+                  ? React.cloneElement(prefixIcon, {
+                      className: cn(
+                        iconSizeClass,
+                        (prefixIcon.props as any)?.className
+                      ),
+                    } as Partial<unknown>)
+                  : prefixIcon}
+              </div>
+            )}
 
-          {/* Clear Button */}
-          {clearable &&
-            (charCount > 0 || props?.value) &&
-            !props.disabled &&
-            type !== "number" && (
+            <SInput
+              ref={combinedRef}
+              id={inputId}
+              className={cn(
+                "peer",
+                {
+                  "pt-5 pb-1": isFloatLabel && size !== "lg",
+                  "[&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none [-moz-appearance:textfield] pr-8":
+                    type === "number",
+                  // "[-webkit-text-fill-color:var(--foreground)]": mask,
+                },
+                prefixIcon && padding.prefix,
+                mask && "placeholder:text-slate-400 placeholder:opacity-100",
+                getRightPadding()
+                // className,
+              )}
+              state={state}
+              size={
+                isFloatLabel
+                  ? size === "xl" || size === "lg"
+                    ? size
+                    : "xl"
+                  : size
+              }
+              type={
+                type === "password"
+                  ? showPassword
+                    ? "text"
+                    : "password"
+                  : type
+              }
+              placeholder={placeholder}
+              maxLength={maxLength}
+              onChange={handleInput}
+              {...props}
+            />
+            {isFloatLabel && (
+              <FloatingLabel
+                htmlFor={inputId}
+                size={size}
+                infoTooltip={infoTooltip}
+              >
+                {label}
+              </FloatingLabel>
+            )}
+
+            {/* Spinner Buttons */}
+            {type === "number" && (
+              <div className="absolute right-1 top-0 h-full flex flex-col gap-0.5">
+                <button
+                  type="button"
+                  onClick={handleIncrement}
+                  disabled={props.disabled}
+                  className={cn(
+                    "h-1/2 w-6 flex items-center justify-center rounded cursor-pointer hover:scale-150 transition-transform",
+                    "disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent"
+                  )}
+                  tabIndex={-1}
+                >
+                  <ChevronUp className="size-3" />
+                </button>
+                <button
+                  type="button"
+                  onClick={handleDecrement}
+                  disabled={props.disabled}
+                  className={cn(
+                    "h-1/2 w-6 flex items-center justify-center rounded cursor-pointer hover:scale-150 transition-transform",
+                    "disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent"
+                  )}
+                  tabIndex={-1}
+                >
+                  <ChevronDown className="size-3" />
+                </button>
+              </div>
+            )}
+
+            {/* Clear Button */}
+            {clearable &&
+              (charCount > 0 || props?.value) &&
+              !props.disabled &&
+              type !== "number" && (
+                <button
+                  type="button"
+                  tabIndex={-1}
+                  className={cn(
+                    "absolute top-1/2 -translate-y-1/2 p-1 rounded hover:bg-accent transition-colors cursor-pointer",
+                    type === "password"
+                      ? suffixIcon
+                        ? "right-14"
+                        : "right-10"
+                      : suffixIcon
+                        ? "right-10"
+                        : "right-2"
+                  )}
+                  onClick={handleClear}
+                  disabled={props.disabled}
+                >
+                  <X className="size-4" />
+                </button>
+              )}
+
+            {/* Show/Hide Password Button */}
+            {type === "password" && (
               <button
                 type="button"
                 tabIndex={-1}
                 className={cn(
-                  "absolute top-1/2 -translate-y-1/2 p-1 rounded hover:bg-accent transition-colors cursor-pointer",
-                  type === "password"
-                    ? suffixIcon
-                      ? "right-14"
-                      : "right-10"
-                    : suffixIcon
-                      ? "right-10"
-                      : "right-2",
+                  "absolute top-1/2 -translate-y-1/2 p-1 rounded hover:bg-accent transition-colors",
+                  suffixIcon ? "right-10" : "right-2"
                 )}
-                onClick={handleClear}
+                onClick={() => setShowPassword((prev) => !prev)}
                 disabled={props.disabled}
               >
-                <X className="size-4" />
+                {showPassword ? (
+                  <EyeOff className="size-4" />
+                ) : (
+                  <Eye className="size-4" />
+                )}
               </button>
             )}
 
-          {/* Show/Hide Password Button */}
-          {type === "password" && (
-            <button
-              type="button"
-              tabIndex={-1}
-              className={cn(
-                "absolute top-1/2 -translate-y-1/2 p-1 rounded hover:bg-accent transition-colors",
-                suffixIcon ? "right-10" : "right-2",
-              )}
-              onClick={() => setShowPassword((prev) => !prev)}
-              disabled={props.disabled}
-            >
-              {showPassword ? (
-                <EyeOff className="size-4" />
-              ) : (
-                <Eye className="size-4" />
-              )}
-            </button>
-          )}
+            {/* Suffix Icon */}
+            {suffixIcon && (
+              <div
+                className={cn(
+                  "absolute top-1/2 -translate-y-1/2 text-muted-foreground leading-0",
+                  iconPosition.right
+                )}
+              >
+                {React.isValidElement(suffixIcon)
+                  ? React.cloneElement(suffixIcon, {
+                      className: cn(
+                        iconSizeClass,
+                        (suffixIcon.props as any)?.className
+                      ),
+                    } as Partial<unknown>)
+                  : suffixIcon}
+              </div>
+            )}
+          </div>
 
-          {/* Suffix Icon */}
-          {suffixIcon && (
-            <div
-              className={cn(
-                "absolute top-1/2 -translate-y-1/2 text-muted-foreground leading-0",
-                iconPosition.right,
+          {(helperText || (showCharCount && typeof maxLength === "number")) && (
+            <div className="flex items-center justify-between text-xs gap-2">
+              {helperText && (
+                <p
+                  className={cn(
+                    "text-xs",
+                    state ? helperTextStyles?.[state] : ""
+                  )}
+                >
+                  {helperText}
+                </p>
               )}
-            >
-              {React.isValidElement(suffixIcon)
-                ? React.cloneElement(suffixIcon, {
-                    className: cn(
-                      iconSizeClass,
-                      (suffixIcon.props as any)?.className,
-                    ),
-                  } as Partial<unknown>)
-                : suffixIcon}
+              {showCharCount && typeof maxLength === "number" && (
+                <span className="ml-auto text-muted-foreground">
+                  {charCount} / {maxLength}
+                </span>
+              )}
             </div>
           )}
         </div>
-
-        {(helperText || (showCharCount && typeof maxLength === "number")) && (
-          <div className="flex items-center justify-between text-xs gap-2">
-            {helperText && (
-              <p
-                className={cn(
-                  "text-xs",
-                  state ? helperTextStyles?.[state] : "",
-                )}
-              >
-                {helperText}
-              </p>
-            )}
-            {showCharCount && typeof maxLength === "number" && (
-              <span className="ml-auto text-muted-foreground">
-                {charCount} / {maxLength}
-              </span>
-            )}
-          </div>
-        )}
       </div>
     );
-  },
+  }
 );
 
 Input.displayName = "Input";

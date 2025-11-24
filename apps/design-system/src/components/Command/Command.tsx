@@ -14,10 +14,12 @@ import { cn } from "@dsui/ui/lib/utils";
 
 export interface CommandItem {
   readonly type: "item";
-  label: string;
+  label?: string;
   icon?: React.ComponentType<{ className?: string }>;
   shortcut?: string;
   disabled?: boolean;
+  onClick?: () => void;
+  children?: React.ReactNode;
 }
 
 export interface CommandGroup {
@@ -69,11 +71,21 @@ const Command = React.forwardRef<HTMLDivElement, CommandProps>((props, ref) => {
       switch (item.type) {
         case "item":
           return (
-            <CommandItem key={index} disabled={item.disabled}>
-              {item.icon && <item.icon className="mr-2 h-4 w-4" />}
-              <span>{item.label}</span>
-              {item.shortcut && (
-                <CommandShortcut>{item.shortcut}</CommandShortcut>
+            <CommandItem
+              key={index}
+              disabled={item.disabled}
+              onSelect={item.onClick}
+            >
+              {item.children ? (
+                item.children
+              ) : (
+                <>
+                  {item.icon && <item.icon className="mr-2 h-4 w-4" />}
+                  <span>{item.label}</span>
+                  {item.shortcut && (
+                    <CommandShortcut>{item.shortcut}</CommandShortcut>
+                  )}
+                </>
               )}
             </CommandItem>
           );
@@ -81,11 +93,23 @@ const Command = React.forwardRef<HTMLDivElement, CommandProps>((props, ref) => {
           return (
             <CommandGroup key={index} heading={item.heading}>
               {item.items.map((subItem, subIndex) => (
-                <CommandItem key={subIndex} disabled={subItem.disabled}>
-                  {subItem.icon && <subItem.icon className="mr-2 h-4 w-4" />}
-                  <span>{subItem.label}</span>
-                  {subItem.shortcut && (
-                    <CommandShortcut>{subItem.shortcut}</CommandShortcut>
+                <CommandItem
+                  key={subIndex}
+                  disabled={subItem.disabled}
+                  onSelect={subItem.onClick}
+                >
+                  {subItem.children ? (
+                    subItem.children
+                  ) : (
+                    <>
+                      {subItem.icon && (
+                        <subItem.icon className="mr-2 h-4 w-4" />
+                      )}
+                      <span>{subItem.label}</span>
+                      {subItem.shortcut && (
+                        <CommandShortcut>{subItem.shortcut}</CommandShortcut>
+                      )}
+                    </>
                   )}
                 </CommandItem>
               ))}
@@ -104,7 +128,7 @@ const Command = React.forwardRef<HTMLDivElement, CommandProps>((props, ref) => {
       ref={ref}
       className={cn(
         "bg-popover text-popover-foreground flex h-full w-full flex-col overflow-hidden rounded-md",
-        className,
+        className
       )}
       {...rest}
     >

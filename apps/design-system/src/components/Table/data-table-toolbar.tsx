@@ -14,19 +14,23 @@ import { cn } from "@dsui/ui";
 
 interface DataTableToolbarProps<TData> extends React.ComponentProps<"div"> {
   table: Table<TData>;
+  showColumnFilters?: boolean;
+  showColumnVisibilityToggle?: boolean;
 }
 
 export function DataTableToolbar<TData>({
   table,
   children,
   className,
+  showColumnFilters = false,
+  showColumnVisibilityToggle = false,
   ...props
 }: DataTableToolbarProps<TData>) {
   const isFiltered = table.getState().columnFilters.length > 0;
 
   const columns = React.useMemo(
     () => table.getAllColumns().filter((column) => column.getCanFilter()),
-    [table],
+    [table]
   );
 
   const onReset = React.useCallback(() => {
@@ -39,11 +43,11 @@ export function DataTableToolbar<TData>({
       aria-orientation="horizontal"
       className={cn(
         "flex w-full items-start justify-between gap-2 p-1",
-        className,
+        className
       )}
       {...props}
     >
-      <div className="flex flex-1 flex-wrap items-center gap-2">
+      <div className="flex flex-1 flex-wrap items-center justify-start gap-2">
         {columns.map((column) => (
           <DataTableToolbarFilter key={column.id} column={column} />
         ))}
@@ -62,7 +66,9 @@ export function DataTableToolbar<TData>({
       </div>
       <div className="flex items-center gap-2">
         {children}
-        <DataTableViewOptions table={table} align="end" />
+        {showColumnVisibilityToggle && (
+          <DataTableViewOptions table={table} align="end" />
+        )}
       </div>
     </div>
   );
@@ -88,6 +94,7 @@ function DataTableToolbarFilter<TData>({
               value={(column.getFilterValue() as string) ?? ""}
               onChange={(event) => column.setFilterValue(event.target.value)}
               className="h-8 w-40 lg:w-56"
+              size="sm"
             />
           );
 
@@ -101,6 +108,7 @@ function DataTableToolbarFilter<TData>({
                 value={(column.getFilterValue() as string) ?? ""}
                 onChange={(event) => column.setFilterValue(event.target.value)}
                 className={cn("h-8 w-[120px]", columnMeta.unit && "pr-8")}
+                size="sm"
               />
               {columnMeta.unit && (
                 <span className="absolute top-0 right-0 bottom-0 flex items-center rounded-r-md bg-accent px-2 text-muted-foreground text-sm">

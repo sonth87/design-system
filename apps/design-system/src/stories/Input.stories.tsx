@@ -468,8 +468,8 @@ export const FileUpload = () => (
 
 export const FloatLabel = () => (
   <div className="flex flex-col gap-4 w-80">
-    <Input label="Email Address" type="email" isFloatLabel />
-    <Input label="Full Name" type="text" isFloatLabel defaultValue="John Doe" />
+    <Input label="Email Address" type="email" isFloatLabel size="lg" />
+    <Input label="Full Name" type="text" isFloatLabel defaultValue="John Doe" size="lg" />
     <Input
       label="Phone Number"
       type="tel"
