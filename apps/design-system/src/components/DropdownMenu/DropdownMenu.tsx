@@ -20,25 +20,48 @@ import { cn } from "@dsui/ui/lib/utils";
 export type DropdownMenuSide = "top" | "right" | "bottom" | "left";
 export type DropdownMenuAlign = "start" | "center" | "end";
 
-export type DropdownMenuItemType =
-  | "item"
-  | "checkbox"
-  | "radio"
-  | "separator"
-  | "group";
-
-export interface DropdownMenuItem {
-  key: string;
-  label?: string;
-  icon?: React.ReactNode;
-  children?: DropdownMenuItem[];
-  type?: DropdownMenuItemType;
-  checked?: boolean;
-  disabled?: boolean;
-  variant?: "default" | "destructive";
-  group?: string; // for radio groups
-  onClick?: () => void;
-}
+export type DropdownMenuItem =
+  | {
+      key: string;
+      label?: string;
+      icon?: React.ReactNode;
+      children?: DropdownMenuItem[];
+      type?: "item";
+      checked?: boolean;
+      disabled?: boolean;
+      variant?: "default" | "destructive";
+      onClick?: () => void;
+    }
+  | {
+      key: string;
+      type: "checkbox";
+      label?: string;
+      icon?: React.ReactNode;
+      checked?: boolean;
+      disabled?: boolean;
+      onClick?: () => void;
+    }
+  | {
+      key: string;
+      type: "radio";
+      label?: string;
+      icon?: React.ReactNode;
+      group: string;
+      checked?: boolean;
+      disabled?: boolean;
+      onClick?: () => void;
+    }
+  | {
+      key: string;
+      type: "separator";
+    }
+  | {
+      key: string;
+      type: "group";
+      label?: string;
+      children: DropdownMenuItem[];
+      disabled?: boolean;
+    };
 
 export interface DropdownMenuProps {
   // Core props
@@ -126,85 +149,83 @@ const DropdownMenu = React.forwardRef<HTMLDivElement, DropdownMenuProps>(
     // Render items if provided
     const renderItems = (menuItems: DropdownMenuItem[]): React.ReactNode => {
       return menuItems.map((item) => {
-        if (item.type === "separator") {
-          return <SDropdownMenuSeparator key={item.key} />;
-        }
-
-        if (item.type === "group" && item.children) {
-          return (
-            <SDropdownMenuGroup key={item.key}>
-              {item.label && (
-                <SDropdownMenuLabel>{item.label}</SDropdownMenuLabel>
-              )}
-              {renderItems(item.children)}
-            </SDropdownMenuGroup>
-          );
-        }
-
-        if (item.children && item.children.length > 0) {
-          // Submenu
-          return (
-            <SDropdownMenuSub key={item.key}>
-              <SDropdownMenuSubTrigger
-                disabled={item.disabled}
-                className={item.disabled ? "opacity-50 cursor-not-allowed" : ""}
-              >
-                {item.icon && <span className="mr-2">{item.icon}</span>}
-                {item.label}
-              </SDropdownMenuSubTrigger>
-              <SDropdownMenuSubContent>
+        switch (item.type) {
+          case "separator":
+            return <SDropdownMenuSeparator key={item.key} />;
+          case "group":
+            return (
+              <SDropdownMenuGroup key={item.key}>
+                {item.label && (
+                  <SDropdownMenuLabel>{item.label}</SDropdownMenuLabel>
+                )}
                 {renderItems(item.children)}
-              </SDropdownMenuSubContent>
-            </SDropdownMenuSub>
-          );
-        }
-
-        if (item.type === "checkbox") {
-          return (
-            <SDropdownMenuCheckboxItem
-              key={item.key}
-              checked={item.checked}
-              disabled={item.disabled}
-              onCheckedChange={(checked: boolean) => {
-                if (checked && item.onClick) {
-                  item.onClick();
-                }
-              }}
-            >
-              {item.icon && <span className="mr-2">{item.icon}</span>}
-              {item.label}
-            </SDropdownMenuCheckboxItem>
-          );
-        }
-
-        if (item.type === "radio") {
-          return (
-            <SDropdownMenuRadioGroup value={item.group}>
-              <SDropdownMenuRadioItem
+              </SDropdownMenuGroup>
+            );
+          case "checkbox":
+            return (
+              <SDropdownMenuCheckboxItem
                 key={item.key}
-                value={item.key}
+                checked={item.checked}
                 disabled={item.disabled}
-                onClick={item.onClick}
+                onCheckedChange={(checked: boolean) => {
+                  if (checked && item.onClick) {
+                    item.onClick();
+                  }
+                }}
               >
                 {item.icon && <span className="mr-2">{item.icon}</span>}
                 {item.label}
-              </SDropdownMenuRadioItem>
-            </SDropdownMenuRadioGroup>
-          );
+              </SDropdownMenuCheckboxItem>
+            );
+          case "radio":
+            return (
+              <SDropdownMenuRadioGroup key={item.key} value={item.group}>
+                <SDropdownMenuRadioItem
+                  value={item.key}
+                  disabled={item.disabled}
+                  onClick={item.onClick}
+                >
+                  {item.icon && <span className="mr-2">{item.icon}</span>}
+                  {item.label}
+                </SDropdownMenuRadioItem>
+              </SDropdownMenuRadioGroup>
+            );
+          default: {
+            // item or undefined type
+            if (item.children && item.children.length > 0) {
+              // Submenu
+              return (
+                <SDropdownMenuSub key={item.key}>
+                  <SDropdownMenuSubTrigger
+                    disabled={item.disabled}
+                    className={
+                      item.disabled ? "opacity-50 cursor-not-allowed" : ""
+                    }
+                  >
+                    {item.icon && <span className="mr-2">{item.icon}</span>}
+                    {item.label}
+                  </SDropdownMenuSubTrigger>
+                  <SDropdownMenuSubContent>
+                    {renderItems(item.children)}
+                  </SDropdownMenuSubContent>
+                </SDropdownMenuSub>
+              );
+            } else {
+              // Regular item
+              return (
+                <SDropdownMenuItem
+                  key={item.key}
+                  disabled={item.disabled}
+                  variant={item.variant}
+                  onClick={item.onClick}
+                >
+                  {item.icon && <span className="mr-2">{item.icon}</span>}
+                  {item.label}
+                </SDropdownMenuItem>
+              );
+            }
+          }
         }
-
-        // Regular item
-        return (
-          <SDropdownMenuItem
-            key={item.key}
-            disabled={item.disabled}
-            variant={item.variant}
-            onClick={item.onClick}
-          >
-            {item.icon && <span className="mr-2">{item.icon}</span>}
-            {item.label}
-          </SDropdownMenuItem>
-        );
       });
     };
 
@@ -212,11 +233,13 @@ const DropdownMenu = React.forwardRef<HTMLDivElement, DropdownMenuProps>(
     if (contextMenu) {
       return (
         <>
-          {/* Invisible trigger area for context menu */}
+          {/* Trigger area for context menu */}
           <div
-            className="fixed inset-0 z-0"
             onContextMenu={handleContextMenu}
-          />
+            className={cn(triggerClassName)}
+          >
+            {trigger}
+          </div>
           <SDropdownMenu
             open={contextMenuOpen}
             onOpenChange={setContextMenuOpen}
@@ -237,11 +260,9 @@ const DropdownMenu = React.forwardRef<HTMLDivElement, DropdownMenuProps>(
               <SDropdownMenuContent
                 ref={ref}
                 className={cn(className, contentClassName)}
-                style={{
-                  position: "fixed",
-                  left: contextMenuPosition.x,
-                  top: contextMenuPosition.y,
-                }}
+                side="bottom"
+                align="start"
+                sideOffset={4}
               >
                 {content}
                 {items && renderItems(items)}
@@ -291,7 +312,7 @@ const DropdownMenu = React.forwardRef<HTMLDivElement, DropdownMenuProps>(
         )}
       </SDropdownMenu>
     );
-  },
+  }
 );
 
 DropdownMenu.displayName = "DropdownMenu";
