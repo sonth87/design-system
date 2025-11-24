@@ -277,6 +277,19 @@
     "stories.tooltip.argTypes.className.description": "Lớp CSS tùy chỉnh cho nội dung",
     "stories.tooltip.argTypes.children.description": "Phần tử kích hoạt",
 
+    "stories.treeselect.argTypes.data.description": "Cấu trúc dữ liệu cây với các mục và con",
+    "stories.treeselect.argTypes.initialSelectedItemId.description": "ID của mục được chọn ban đầu",
+    "stories.treeselect.argTypes.onSelectChange.description": "Hàm callback khi thay đổi lựa chọn mục",
+    "stories.treeselect.argTypes.expandAll.description": "Mở rộng tất cả các nút cây theo mặc định",
+    "stories.treeselect.argTypes.defaultNodeIcon.description": "Icon mặc định cho các nút có con (thư mục)",
+    "stories.treeselect.argTypes.defaultLeafIcon.description": "Icon mặc định cho các nút lá (tệp tin)",
+    "stories.treeselect.argTypes.multiSelect.description": "Bật chế độ chọn nhiều với checkbox",
+    "stories.treeselect.argTypes.selectedIds.description": "Mảng các ID mục đã chọn (chế độ controlled)",
+    "stories.treeselect.argTypes.onMultiSelectChange.description": "Hàm callback khi thay đổi lựa chọn nhiều",
+    "stories.treeselect.argTypes.showIcon.description": "Hiển thị icon cho các nút cây (thư mục)",
+    "stories.treeselect.argTypes.showLeafIcon.description": "Hiển thị icon cho các nút lá (tệp tin)",
+    "stories.treeselect.argTypes.treeLine.description": "Hiển thị đường kẻ nối giữa các nút",
+
     "stories.toast.argTypes.position.description": "Vị trí của container toast trên màn hình",
     "stories.toast.argTypes.richColors.description": "Bật màu sắc phong phú cho các loại toast khác nhau",
     "stories.toast.argTypes.expand.description": "Cho phép toast mở rộng khi nội dung dài",
@@ -479,6 +492,8 @@
     "stories.breadcrumb.argTypes.className.description": "Các lớp CSS bổ sung",
 
     "stories.category.basic": "Cơ bản",
+    "stories.category.data": "Dữ liệu",
+    "stories.category.state": "Trạng thái",
     "stories.category.appearance": "Hiển thị",
     "stories.category.behavior": "Hành vi",
     "stories.category.content": "Nội dung",
@@ -543,6 +558,17 @@
     "stories.pagination.argTypes.className.description": "Các lớp CSS bổ sung để áp dụng cho container phân trang",
     "stories.tour.argTypes.buttonConfig.description": "Đối tượng cấu hình để tùy chỉnh nhãn nút trong footer tour. Hỗ trợ các thuộc tính 'skip', 'prev', 'next' và 'finish' với giá trị chuỗi",
     "stories.tour.argTypes.spotlightClassName.description": "Các lớp CSS bổ sung để áp dụng cho lớp phủ spotlight",
-    "stories.tour.argTypes.spotlightRingClassName.description": "Các lớp CSS bổ sung để áp dụng cho viền vòng spotlight"
+    "stories.tour.argTypes.spotlightRingClassName.description": "Các lớp CSS bổ sung để áp dụng cho viền vòng spotlight",
+
+    "stories.upload.argTypes.variant.description": "Kiểu giao diện của khu vực tải lên",
+    "stories.upload.argTypes.size.description": "Kích thước của khu vực tải lên",
+    "stories.upload.argTypes.accept.description": "Các loại file được chấp nhận (MIME types hoặc phần mở rộng)",
+    "stories.upload.argTypes.multiple.description": "Cho phép chọn nhiều file",
+    "stories.upload.argTypes.disabled.description": "Vô hiệu hóa chức năng tải lên",
+    "stories.upload.argTypes.maxCount.description": "Số lượng file tối đa cho phép",
+    "stories.upload.argTypes.maxSize.description": "Kích thước file tối đa tính bằng byte",
+    "stories.upload.argTypes.listType.description": "Kiểu hiển thị danh sách file: text (danh sách đơn giản), picture (thumbnail + thông tin), picture-card (lưới)",
+    "stories.upload.argTypes.showUploadList.description": "Hiển thị danh sách file đã tải lên",
+    "stories.upload.argTypes.directory.description": "Cho phép tải lên thư mục (folder)"
   }
 }
