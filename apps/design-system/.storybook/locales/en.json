@@ -277,6 +277,19 @@
     "stories.tooltip.argTypes.className.description": "Custom CSS class for content",
     "stories.tooltip.argTypes.children.description": "Trigger element",
 
+    "stories.treeselect.argTypes.data.description": "Tree data structure with items and children",
+    "stories.treeselect.argTypes.initialSelectedItemId.description": "Initial selected item ID",
+    "stories.treeselect.argTypes.onSelectChange.description": "Callback function when item selection changes",
+    "stories.treeselect.argTypes.expandAll.description": "Expand all tree nodes by default",
+    "stories.treeselect.argTypes.defaultNodeIcon.description": "Default icon for nodes with children (folders)",
+    "stories.treeselect.argTypes.defaultLeafIcon.description": "Default icon for leaf nodes (files)",
+    "stories.treeselect.argTypes.multiSelect.description": "Enable multi-select mode with checkboxes",
+    "stories.treeselect.argTypes.selectedIds.description": "Array of selected item IDs (controlled mode)",
+    "stories.treeselect.argTypes.onMultiSelectChange.description": "Callback function when multi-select changes",
+    "stories.treeselect.argTypes.showIcon.description": "Show icons for tree nodes (folders)",
+    "stories.treeselect.argTypes.showLeafIcon.description": "Show icons for leaf nodes (files)",
+    "stories.treeselect.argTypes.treeLine.description": "Show tree lines connecting nodes",
+
     "stories.toast.argTypes.position.description": "Position of the toast container on the screen",
     "stories.toast.argTypes.richColors.description": "Enable rich colors for different toast types",
     "stories.toast.argTypes.expand.description": "Allow toasts to expand when content is long",
@@ -479,6 +492,8 @@
     "stories.breadcrumb.argTypes.className.description": "Additional CSS classes",
 
     "stories.category.basic": "Basic",
+    "stories.category.data": "Data",
+    "stories.category.state": "State",
     "stories.category.appearance": "Appearance",
     "stories.category.behavior": "Behavior",
     "stories.category.content": "Content",
@@ -543,6 +558,17 @@
     "stories.pagination.argTypes.className.description": "Additional CSS classes to apply to the pagination container",
     "stories.tour.argTypes.buttonConfig.description": "Configuration object for customizing button labels in the tour footer. Supports 'skip', 'prev', 'next', and 'finish' properties with string values",
     "stories.tour.argTypes.spotlightClassName.description": "Additional CSS classes to apply to the spotlight overlay",
-    "stories.tour.argTypes.spotlightRingClassName.description": "Additional CSS classes to apply to the spotlight ring border"
+    "stories.tour.argTypes.spotlightRingClassName.description": "Additional CSS classes to apply to the spotlight ring border",
+
+    "stories.upload.argTypes.variant.description": "The visual style variant of the upload area",
+    "stories.upload.argTypes.size.description": "The size of the upload area",
+    "stories.upload.argTypes.accept.description": "Accepted file types (MIME types or file extensions)",
+    "stories.upload.argTypes.multiple.description": "Allow multiple file selection",
+    "stories.upload.argTypes.disabled.description": "Disable the upload functionality",
+    "stories.upload.argTypes.maxCount.description": "Maximum number of files allowed",
+    "stories.upload.argTypes.maxSize.description": "Maximum file size in bytes",
+    "stories.upload.argTypes.listType.description": "Type of file list display: text (simple list), picture (thumbnail + info), picture-card (grid)",
+    "stories.upload.argTypes.showUploadList.description": "Show the uploaded file list",
+    "stories.upload.argTypes.directory.description": "Enable directory (folder) upload"
   }
 }
