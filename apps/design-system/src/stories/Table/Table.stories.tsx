@@ -3,12 +3,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { DataTable } from "@/components/Table/data-table";
 import { DataTableToolbar } from "@/components/Table/data-table-toolbar";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@dsui/ui/index";
+import { DropdownMenu } from "@/components/DropdownMenu";
 import React from "react";
 import type { CellContext, ColumnDef } from "@tanstack/react-table";
 import { createSelectColumn } from "@/components/Table/select-column";
@@ -220,18 +215,24 @@ const columns: ColumnDef<Project>[] = [
     id: "actions",
     cell: function Cell() {
       return (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
+        <DropdownMenu
+          trigger={
             <button className="inline-flex items-center justify-center rounded-md p-2 hover:bg-accent hover:text-accent-foreground">
               <MoreHorizontal className="h-4 w-4" />
               <span className="sr-only">Open menu</span>
             </button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuItem>Edit</DropdownMenuItem>
-            <DropdownMenuItem variant="destructive">Delete</DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+          }
+          items={[
+            { key: "edit", label: "Edit", onClick: () => {} },
+            {
+              key: "delete",
+              label: "Delete",
+              variant: "destructive",
+              onClick: () => {},
+            },
+          ]}
+          align="end"
+        />
       );
     },
     size: 32,
@@ -250,6 +251,7 @@ export const Default = () => {
     //   pagination: { pageIndex: 0, pageSize: 10 },
     // },
     getRowId: (row) => row.id,
+    // enableNuqs: true, // enabled if you are using NuqsAdapter
   });
 
   return (

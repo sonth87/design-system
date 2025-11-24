@@ -47,23 +47,27 @@ export function DataTableToolbar<TData>({
       )}
       {...props}
     >
-      <div className="flex flex-1 flex-wrap items-center justify-start gap-2">
-        {columns.map((column) => (
-          <DataTableToolbarFilter key={column.id} column={column} />
-        ))}
-        {isFiltered && (
-          <Button
-            aria-label="Reset filters"
-            variant="outline"
-            size="sm"
-            className="border-dashed"
-            onClick={onReset}
-          >
-            <X />
-            Reset
-          </Button>
-        )}
-      </div>
+      {showColumnFilters ? (
+        <div className="flex flex-1 flex-wrap items-center justify-start gap-2">
+          {columns.map((column) => (
+            <DataTableToolbarFilter key={column.id} column={column} />
+          ))}
+          {isFiltered && (
+            <Button
+              aria-label="Reset filters"
+              variant="outline"
+              size="sm"
+              className="border-dashed"
+              onClick={onReset}
+            >
+              <X />
+              Reset
+            </Button>
+          )}
+        </div>
+      ) : (
+        <div />
+      )}
       <div className="flex items-center gap-2">
         {children}
         {showColumnVisibilityToggle && (
