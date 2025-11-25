@@ -18,6 +18,7 @@ export interface CommandItem {
   icon?: React.ComponentType<{ className?: string }>;
   shortcut?: string;
   disabled?: boolean;
+  className?: string;
   onClick?: () => void;
   children?: React.ReactNode;
 }
@@ -25,6 +26,7 @@ export interface CommandItem {
 export interface CommandGroup {
   readonly type: "group";
   heading: string;
+  className?: string;
   items: CommandItem[];
 }
 
@@ -74,6 +76,7 @@ const Command = React.forwardRef<HTMLDivElement, CommandProps>((props, ref) => {
             <CommandItem
               key={index}
               disabled={item.disabled}
+              className={item.className}
               onSelect={item.onClick}
             >
               {item.children ? (
@@ -91,11 +94,16 @@ const Command = React.forwardRef<HTMLDivElement, CommandProps>((props, ref) => {
           );
         case "group":
           return (
-            <CommandGroup key={index} heading={item.heading}>
+            <CommandGroup
+              key={index}
+              heading={item.heading}
+              className={item.className}
+            >
               {item.items.map((subItem, subIndex) => (
                 <CommandItem
                   key={subIndex}
                   disabled={subItem.disabled}
+                  className={subItem.className}
                   onSelect={subItem.onClick}
                 >
                   {subItem.children ? (

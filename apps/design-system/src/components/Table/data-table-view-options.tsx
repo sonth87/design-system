@@ -9,7 +9,7 @@ import { Popover } from "../Popover";
 import { cn } from "@dsui/ui";
 
 interface DataTableViewOptionsProps<TData>
-  extends React.ComponentProps<typeof Popover.Content> {
+  extends React.ComponentProps<typeof Popover> {
   table: Table<TData>;
 }
 
@@ -38,7 +38,10 @@ export function DataTableViewOptions<TData>({
         children: (
           <>
             <span className="truncate">
-              {column.columnDef.meta?.label ?? column.id}
+              {column.columnDef.meta?.label ??
+                (typeof column.columnDef.header === "string"
+                  ? column.columnDef.header
+                  : column.id)}
             </span>
             <Check
               className={cn(

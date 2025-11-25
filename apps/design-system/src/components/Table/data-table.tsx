@@ -20,6 +20,10 @@ interface DataTableProps<TData> extends React.ComponentProps<"div"> {
   pagination?:
     | boolean
     | Omit<React.ComponentProps<typeof DataTablePagination<TData>>, "table">;
+  sticky?: boolean | { offsetHeader?: number; offsetScroll?: number };
+  bordered?: boolean;
+  loading?: boolean;
+  footer?: (currentPageData: TData[]) => React.ReactNode;
 }
 
 export function DataTable<TData>({
@@ -28,15 +32,26 @@ export function DataTable<TData>({
   children,
   className,
   pagination = true,
+  sticky,
+  bordered,
+  loading,
+  footer,
   ...props
 }: DataTableProps<TData>) {
   return (
     <div
-      className={cn("flex w-full flex-col gap-2.5 overflow-auto", className)}
+      className={cn("flex w-full flex-col gap-2.5 relative", className)}
       {...props}
     >
       {children}
-      <div className="overflow-hidden rounded-md border">
+      {loading && (
+        <div className="absolute inset-0 bg-background/50 flex items-center justify-center z-20">
+          Loading...
+        </div>
+      )}
+      <div
+        className={cn("overflow-auto rounded-md border", loading && "blur-sm")}
+      >
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
@@ -54,7 +69,7 @@ export function DataTable<TData>({
                       typeof header.column.columnDef.header === "function" ? (
                         flexRender(
                           header.column.columnDef.header,
-                          header.getContext(),
+                          header.getContext()
                         )
                       ) : (
                         <DataTableColumnHeader column={header.column} />
@@ -81,7 +96,7 @@ export function DataTable<TData>({
                     >
                       {flexRender(
                         cell.column.columnDef.cell,
-                        cell.getContext(),
+                        cell.getContext()
                       )}
                     </TableCell>
                   ))}
@@ -98,6 +113,15 @@ export function DataTable<TData>({
               </TableRow>
             )}
           </TableBody>
+          {footer && (
+            <tfoot>
+              <TableRow>
+                <TableCell colSpan={table.getAllColumns().length}>
+                  {footer(table.getRowModel().rows.map((row) => row.original))}
+                </TableCell>
+              </TableRow>
+            </tfoot>
+          )}
         </Table>
       </div>
       <div className="flex flex-col gap-2.5">

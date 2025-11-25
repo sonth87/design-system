@@ -4,9 +4,9 @@ import type { Column, Table } from "@tanstack/react-table";
 import { X } from "lucide-react";
 import * as React from "react";
 
-import { DataTableDateFilter } from "./data-table-date-filter";
-import { DataTableFacetedFilter } from "./data-table-faceted-filter";
-import { DataTableSliderFilter } from "./data-table-slider-filter";
+import { DataTableDateFilter } from "./TableFilter/data-table-date-filter";
+import { DataTableFacetedFilter } from "./TableFilter/data-table-faceted-filter";
+import { DataTableSliderFilter } from "./TableFilter/data-table-slider-filter";
 import { DataTableViewOptions } from "./data-table-view-options";
 import { Button } from "../Button";
 import { Input } from "../Input";
