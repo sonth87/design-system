@@ -8,6 +8,7 @@ import "./storystyle.css";
 
 const preview: Preview = {
   parameters: {
+    actions: { argTypesRegex: "^on.*" },
     options: {
       storySort: {
         order: [

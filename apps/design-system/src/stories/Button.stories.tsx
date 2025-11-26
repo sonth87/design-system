@@ -3,6 +3,7 @@ import type { Meta } from "@storybook/react";
 import Button, { type ButtonProps } from "../components/Button/Button";
 import { ArrowLeft, ArrowRight, BottleWine, ShoppingBag } from "lucide-react";
 import i18n from "../../.storybook/i18n";
+import { fn } from "storybook/test";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta: Meta<ButtonProps> = {

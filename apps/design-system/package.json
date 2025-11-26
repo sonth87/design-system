@@ -232,6 +232,16 @@
         "default": "./dist/cjs/components/Radio/Radio.cjs"
       }
     },
+    "./rate": {
+      "import": {
+        "types": "./dist/types/components/Rate/Rate.d.ts",
+        "default": "./dist/esm/components/Rate/Rate.js"
+      },
+      "require": {
+        "types": "./dist/types/components/Rate/Rate.d.ts",
+        "default": "./dist/cjs/components/Rate/Rate.cjs"
+      }
+    },
     "./scrollarea": {
       "import": {
         "types": "./dist/types/components/ScrollArea/ScrollArea.d.ts",
@@ -392,6 +402,26 @@
         "default": "./dist/cjs/components/Tour/Tour.cjs"
       }
     },
+    "./treeselect": {
+      "import": {
+        "types": "./dist/types/components/TreeSelect/TreeSelect.d.ts",
+        "default": "./dist/esm/components/TreeSelect/TreeSelect.js"
+      },
+      "require": {
+        "types": "./dist/types/components/TreeSelect/TreeSelect.d.ts",
+        "default": "./dist/cjs/components/TreeSelect/TreeSelect.cjs"
+      }
+    },
+    "./upload": {
+      "import": {
+        "types": "./dist/types/components/Upload/Upload.d.ts",
+        "default": "./dist/esm/components/Upload/Upload.js"
+      },
+      "require": {
+        "types": "./dist/types/components/Upload/Upload.d.ts",
+        "default": "./dist/cjs/components/Upload/Upload.cjs"
+      }
+    },
     "./wheelcolumn": {
       "import": {
         "types": "./dist/types/components/WheelColumn/WheelColumn.d.ts",
@@ -465,10 +495,12 @@
     "@eslint/js": "^9.36.0",
     "@floating-ui/react-dom": "^2.1.6",
     "@hookform/resolvers": "^5.2.2",
+    "@storybook/addon-a11y": "^10.0.8",
+    "@storybook/addon-actions": "^9.0.8",
     "@storybook/addon-docs": "^9.1.10",
     "@storybook/react": "^9.1.12",
     "@storybook/react-vite": "^9.1.10",
-    "@storybook/test": "^8.6.14",
+    "@storybook/test": "9.0.0-alpha.2",
     "@tailwindcss/vite": "^4.1.14",
     "@types/node": "^24.6.0",
     "@types/react": "^19.1.16",
@@ -560,6 +592,9 @@
       "radio": [
         "./dist/types/components/Radio/Radio.d.ts"
       ],
+      "rate": [
+        "./dist/types/components/Rate/Rate.d.ts"
+      ],
       "scrollarea": [
         "./dist/types/components/ScrollArea/ScrollArea.d.ts"
       ],
@@ -607,6 +642,12 @@
       ],
       "tour": [
         "./dist/types/components/Tour/Tour.d.ts"
+      ],
+      "treeselect": [
+        "./dist/types/components/TreeSelect/TreeSelect.d.ts"
+      ],
+      "upload": [
+        "./dist/types/components/Upload/Upload.d.ts"
       ],
       "wheelcolumn": [
         "./dist/types/components/WheelColumn/WheelColumn.d.ts"

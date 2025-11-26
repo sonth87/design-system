@@ -37,4 +37,4 @@ const DropdownMenu = Object.assign(DropdownMenuWrapper, {
 });
 
 export { DropdownMenu };
-export type { DropdownMenuProps };
+export type { DropdownMenuProps, DropdownMenuItem };
