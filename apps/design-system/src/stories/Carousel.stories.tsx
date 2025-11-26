@@ -413,13 +413,7 @@ export const EffectCards: Story = {
 export const MultipleSlides: Story = {
   render: () => (
     <div className="w-[800px]">
-      <Carousel
-        navigation
-        pagination
-        slidesPerView={3}
-        spaceBetween={20}
-        loop
-      >
+      <Carousel navigation pagination slidesPerView={3} spaceBetween={20} loop>
         {images.map((src, index) => (
           <CarouselSlide key={index}>
             <img
@@ -654,3 +648,36 @@ export const ProductSlider: Story = {
   ),
 };
 
+export const WithImageViewer: Story = {
+  args: {
+    navigation: true,
+    pagination: true,
+    loop: true,
+    autoplay: false,
+    effect: "slide",
+    direction: "horizontal",
+    speed: 300,
+    spaceBetween: 10,
+    slidesPerView: 1,
+    enableImageViewer: true,
+    allowTouchMove: false, // Disable drag to test click
+  },
+  render: (args) => (
+    <div className="w-[600px]">
+      <p className="mb-4 text-sm text-muted-foreground text-center">
+        Click vào ảnh để xem ảnh với ImageViewer
+      </p>
+      <Carousel {...args}>
+        {images.map((src, index) => (
+          <CarouselSlide key={index}>
+            <img
+              src={src}
+              alt={`Slide ${index + 1}`}
+              className="w-full h-[400px] object-cover rounded-lg"
+            />
+          </CarouselSlide>
+        ))}
+      </Carousel>
+    </div>
+  ),
+};

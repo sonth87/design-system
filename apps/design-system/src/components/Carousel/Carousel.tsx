@@ -15,6 +15,8 @@ import {
   ChevronDown,
 } from "lucide-react";
 import { cn } from "@dsui/ui/lib/utils";
+import { ImageViewer } from "../ImageViewer";
+import type { ImageInfo } from "../ImageViewer";
 
 // ============================================================================
 // Types
@@ -109,6 +111,8 @@ export interface CarouselProps {
   containerClassName?: string;
   wrapperClassName?: string;
   slideClassName?: string;
+  // Image Viewer
+  enableImageViewer?: boolean;
   // Callbacks
   onSlideChange?: (swiper: { activeIndex: number; realIndex: number }) => void;
   onReachBeginning?: () => void;
@@ -156,6 +160,7 @@ export const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>(
       containerClassName,
       wrapperClassName,
       slideClassName,
+      enableImageViewer = false,
       onSlideChange,
       onReachBeginning,
       onReachEnd,
@@ -196,6 +201,8 @@ export const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>(
     const [windowWidth, setWindowWidth] = useState(
       typeof window !== "undefined" ? window.innerWidth : 1024
     );
+    const [viewerVisible, setViewerVisible] = useState(false);
+    const [viewerIndex, setViewerIndex] = useState(0);
 
     // Handle window resize for breakpoints
     useEffect(() => {
@@ -250,12 +257,93 @@ export const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>(
       currentX: 0,
       currentY: 0,
     });
+    const hasDraggedRef = useRef(false);
 
     // Get slides
     const slides = Children.toArray(children).filter(
       (child) => isValidElement(child) && child.type === CarouselSlide
     );
     const totalSlides = slides.length;
+
+    // Helper function to find image in children
+    const findImageInChildren = useCallback(
+      (
+        children: React.ReactNode
+      ): React.ReactElement<
+        React.ImgHTMLAttributes<HTMLImageElement>
+      > | null => {
+        let result: React.ReactElement<
+          React.ImgHTMLAttributes<HTMLImageElement>
+        > | null = null;
+
+        React.Children.forEach(children, (child) => {
+          if (result) return;
+
+          if (isValidElement(child)) {
+            if (child.type === "img") {
+              result = child as React.ReactElement<
+                React.ImgHTMLAttributes<HTMLImageElement>
+              >;
+            } else if (
+              child.props &&
+              typeof child.props === "object" &&
+              "children" in child.props
+            ) {
+              result = findImageInChildren(
+                child.props.children as React.ReactNode
+              );
+            }
+          }
+        });
+
+        return result;
+      },
+      []
+    );
+
+    // Extract images for ImageViewer
+    const imageInfos = useMemo((): ImageInfo[] => {
+      if (!enableImageViewer) return [];
+
+      return slides.map((slide) => {
+        const slideElement = slide as React.ReactElement<CarouselSlideProps>;
+        const imgElement = findImageInChildren(slideElement.props.children);
+
+        if (imgElement) {
+          return {
+            src: imgElement.props.src || "",
+            alt: imgElement.props.alt || "",
+          };
+        }
+
+        return { src: "", alt: "" };
+      });
+    }, [slides, enableImageViewer, findImageInChildren]);
+
+    // Handle slide click for image viewer
+    const handleSlideClick = useCallback(
+      (index: number) => {
+        console.log("Slide clicked:", {
+          index,
+          enableImageViewer,
+          hasSrc: !!imageInfos[index]?.src,
+          hasDragged: hasDraggedRef.current,
+          imageInfos,
+        });
+
+        // Only open viewer if not dragged
+        if (
+          enableImageViewer &&
+          imageInfos[index]?.src &&
+          !hasDraggedRef.current
+        ) {
+          console.log("Opening viewer at index:", index);
+          setViewerIndex(index);
+          setViewerVisible(true);
+        }
+      },
+      [enableImageViewer, imageInfos]
+    );
 
     // Calculate visible slides
     const visibleSlides =
@@ -428,6 +516,7 @@ export const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>(
         dragStateRef.current.startY = e.clientY;
         dragStateRef.current.currentX = e.clientX;
         dragStateRef.current.currentY = e.clientY;
+        hasDraggedRef.current = false;
         setIsDragging(true);
 
         if (autoplayOptions.disableOnInteraction) {
@@ -450,6 +539,14 @@ export const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>(
         e.preventDefault();
         dragStateRef.current.currentX = e.clientX;
         dragStateRef.current.currentY = e.clientY;
+
+        // Mark as dragged if moved more than 5px
+        const diffX = Math.abs(e.clientX - dragStateRef.current.startX);
+        const diffY = Math.abs(e.clientY - dragStateRef.current.startY);
+        if (diffX > 5 || diffY > 5) {
+          hasDraggedRef.current = true;
+        }
+
         setIsDragging(true);
       },
       [allowTouchMove]
@@ -465,16 +562,10 @@ export const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>(
       const diffX = dragStateRef.current.currentX - startX;
       const diffY = dragStateRef.current.currentY - startY;
       const diff = direction === "horizontal" ? diffX : diffY;
-      // Reset immediately
-      setIsDragging(false);
-      dragStateRef.current.startX = 0;
-      dragStateRef.current.startY = 0;
-      dragStateRef.current.currentX = 0;
-      dragStateRef.current.currentY = 0;
 
       // Determine slide action with lower threshold
       const threshold = 0;
-      if (Math.abs(diff) > threshold) {
+      if (Math.abs(diff) > threshold && hasDraggedRef.current) {
         if (diff > 0) {
           // Swipe right/down = previous slide
           slidePrev();
@@ -486,6 +577,16 @@ export const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>(
         // Snap back to current
         slideTo(activeIndex);
       }
+
+      // Reset after a small delay to allow onClick to check the flag
+      setTimeout(() => {
+        setIsDragging(false);
+        dragStateRef.current.startX = 0;
+        dragStateRef.current.startY = 0;
+        dragStateRef.current.currentX = 0;
+        dragStateRef.current.currentY = 0;
+        hasDraggedRef.current = false;
+      }, 50);
     }, [direction, slidePrev, slideNext, slideTo, activeIndex]);
 
     // Keyboard navigation
@@ -620,9 +721,7 @@ export const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>(
                   {activeIndex + 1}
                 </span>
                 {" / "}
-                <span className="carousel-pagination-total">
-                  {totalSlides}
-                </span>
+                <span className="carousel-pagination-total">{totalSlides}</span>
               </>
             )}
           </div>
@@ -656,9 +755,7 @@ export const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>(
             )}
           >
             {paginationOptions.renderProgressbar ? (
-              paginationOptions.renderProgressbar(
-                "carousel-progressbar-fill"
-              )
+              paginationOptions.renderProgressbar("carousel-progressbar-fill")
             ) : (
               <div
                 className="carousel-progressbar-fill h-full bg-primary transition-all duration-300"
@@ -777,164 +874,205 @@ export const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>(
     };
 
     return (
-      <div
-        ref={ref}
-        className={cn("carousel-container", containerClassName, className)}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >
+      <>
         <div
-          ref={containerRef}
-          className={cn(
-            "carousel relative overflow-hidden",
-            (effect === "fade" ||
-              effect === "cube" ||
-              effect === "flip" ||
-              effect === "cards") &&
-              "aspect-4/3",
-            effect === "coverflow" && "aspect-4/2 rounded-xl",
-            direction === "vertical" && effect === "slide" && "h-full",
-            grabCursor && allowTouchMove && !isDragging && "cursor-grab",
-            isDragging && "cursor-grabbing"
-          )}
+          ref={ref}
+          className={cn("carousel-container", containerClassName, className)}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
         >
-          {/* Wrapper */}
           <div
-            ref={wrapperRef}
+            ref={containerRef}
             className={cn(
-              "carousel-wrapper select-none",
-              effect === "slide" && "flex",
-              direction === "vertical" &&
-                effect === "slide" &&
-                "flex-col h-full",
-              effect !== "slide" && "relative",
-              wrapperClassName
+              "carousel relative overflow-hidden",
+              (effect === "fade" ||
+                effect === "cube" ||
+                effect === "flip" ||
+                effect === "cards") &&
+                "aspect-4/3",
+              effect === "coverflow" && "aspect-4/2 rounded-xl",
+              direction === "vertical" && effect === "slide" && "h-full",
+              grabCursor && allowTouchMove && !isDragging && "cursor-grab",
+              isDragging && "cursor-grabbing"
             )}
-            style={{
-              transform:
-                effect === "slide"
-                  ? direction === "horizontal"
-                    ? `translateX(${translate}px)`
-                    : `translateY(${translate}px)`
-                  : undefined,
-              transition: isDragging ? "none" : `transform ${speed}ms ease`,
-              gap: effect === "slide" ? `${actualSpaceBetween}px` : undefined,
-              perspective:
-                effect !== "slide" && effect !== "fade" ? "1200px" : undefined,
-              touchAction: allowTouchMove ? "none" : "auto",
-              height:
-                direction === "vertical" && effect === "slide"
-                  ? "100%"
-                  : undefined,
-            }}
-            onPointerDown={handlePointerDown}
-            onPointerMove={handlePointerMove}
-            onPointerUp={handlePointerUp}
-            onPointerCancel={handlePointerUp}
           >
-            {slides.map((slide, index) => {
-              const isActive = index === activeIndex;
-              const slideElement =
-                slide as React.ReactElement<CarouselSlideProps>;
+            {/* Wrapper */}
+            <div
+              ref={wrapperRef}
+              className={cn(
+                "carousel-wrapper select-none",
+                effect === "slide" && "flex",
+                direction === "vertical" &&
+                  effect === "slide" &&
+                  "flex-col h-full",
+                effect !== "slide" && "relative",
+                wrapperClassName
+              )}
+              style={{
+                transform:
+                  effect === "slide"
+                    ? direction === "horizontal"
+                      ? `translateX(${translate}px)`
+                      : `translateY(${translate}px)`
+                    : undefined,
+                transition: isDragging ? "none" : `transform ${speed}ms ease`,
+                gap: effect === "slide" ? `${actualSpaceBetween}px` : undefined,
+                perspective:
+                  effect !== "slide" && effect !== "fade"
+                    ? "1200px"
+                    : undefined,
+                touchAction: allowTouchMove ? "none" : "auto",
+                height:
+                  direction === "vertical" && effect === "slide"
+                    ? "100%"
+                    : undefined,
+              }}
+              onPointerDown={handlePointerDown}
+              onPointerMove={handlePointerMove}
+              onPointerUp={handlePointerUp}
+              onPointerCancel={handlePointerUp}
+            >
+              {slides.map((slide, index) => {
+                const isActive = index === activeIndex;
+                const slideElement =
+                  slide as React.ReactElement<CarouselSlideProps>;
 
-              return cloneElement(slideElement, {
-                key: index,
-                className: cn(
-                  "carousel-slide",
-                  slideClassName,
-                  slideElement.props.className,
-                  effect !== "slide" && "absolute inset-0",
-                  effect === "fade" && "transition-opacity duration-300",
-                  effect !== "slide" &&
-                    effect !== "fade" &&
-                    "transition-all duration-500"
-                ),
-                style: {
-                  flex:
-                    effect === "slide"
-                      ? direction === "vertical"
-                        ? `0 0 100%`
-                        : `0 0 calc(${100 / visibleSlides}% - ${(actualSpaceBetween * (visibleSlides - 1)) / visibleSlides}px)`
-                      : undefined,
-                  minWidth:
-                    effect === "slide" && direction === "horizontal"
-                      ? 0
-                      : undefined,
-                  minHeight:
-                    effect === "slide" && direction === "vertical"
-                      ? 0
-                      : undefined,
-                  height:
-                    direction === "vertical" && effect === "slide"
-                      ? "100%"
-                      : undefined,
-                  userSelect: "none",
-                  // @ts-expect-error - WebkitUserDrag is not in CSSProperties but is valid CSS
-                  WebkitUserDrag: "none",
-                  ...(effect !== "slide" ? getSlideTransform(index) : {}),
-                  ...slideElement.props.style,
-                } as React.CSSProperties,
-                onDragStart: (e: React.DragEvent) => e.preventDefault(),
-                "data-active": isActive,
-                "data-index": index,
-              } as Partial<CarouselSlideProps>);
-            })}
+                return cloneElement(slideElement, {
+                  key: index,
+                  className: cn(
+                    "carousel-slide",
+                    slideClassName,
+                    slideElement.props.className,
+                    effect !== "slide" && "absolute inset-0",
+                    effect === "fade" && "transition-opacity duration-300",
+                    effect !== "slide" &&
+                      effect !== "fade" &&
+                      "transition-all duration-500",
+                    enableImageViewer &&
+                      imageInfos[index]?.src &&
+                      "cursor-pointer"
+                  ),
+                  style: {
+                    flex:
+                      effect === "slide"
+                        ? direction === "vertical"
+                          ? `0 0 100%`
+                          : `0 0 calc(${100 / visibleSlides}% - ${(actualSpaceBetween * (visibleSlides - 1)) / visibleSlides}px)`
+                        : undefined,
+                    minWidth:
+                      effect === "slide" && direction === "horizontal"
+                        ? 0
+                        : undefined,
+                    minHeight:
+                      effect === "slide" && direction === "vertical"
+                        ? 0
+                        : undefined,
+                    height:
+                      direction === "vertical" && effect === "slide"
+                        ? "100%"
+                        : undefined,
+                    userSelect: "none",
+                    // @ts-expect-error - WebkitUserDrag is not in CSSProperties but is valid CSS
+                    WebkitUserDrag: "none",
+                    ...(effect !== "slide" ? getSlideTransform(index) : {}),
+                    ...slideElement.props.style,
+                  } as React.CSSProperties,
+                  onClick: (e: React.MouseEvent) => {
+                    e.stopPropagation();
+                    handleSlideClick(index);
+                  },
+                  onDragStart: (e: React.DragEvent) => e.preventDefault(),
+                  "data-active": isActive,
+                  "data-index": index,
+                } as Partial<CarouselSlideProps>);
+              })}
+            </div>
+
+            {/* Pagination - Inside only (overlay on slider) */}
+            {paginationOptions.enabled &&
+              paginationOptions.position !== "outside" &&
+              renderPagination()}
+
+            {/* Navigation - Inside (overlay on slider) */}
+            {navigationOptions.enabled &&
+              navigationOptions.position === "inside" && (
+                <>
+                  <button
+                    onClick={slidePrev}
+                    disabled={!loop && !rewind && isBeginning}
+                    className={cn(
+                      "absolute z-10 w-10 h-10 rounded-full bg-background/80 backdrop-blur shadow-lg flex items-center justify-center transition-all hover:bg-background disabled:opacity-30 disabled:cursor-not-allowed",
+                      direction === "horizontal"
+                        ? "left-4 top-1/2 -translate-y-1/2"
+                        : "top-4 left-1/2 -translate-x-1/2"
+                    )}
+                    aria-label="Previous slide"
+                  >
+                    {navigationOptions.prevEl ||
+                      (direction === "horizontal" ? (
+                        <ChevronLeft className="w-5 h-5" />
+                      ) : (
+                        <ChevronUp className="w-5 h-5" />
+                      ))}
+                  </button>
+                  <button
+                    onClick={slideNext}
+                    disabled={!loop && !rewind && isEnd}
+                    className={cn(
+                      "absolute z-10 w-10 h-10 rounded-full bg-background/80 backdrop-blur shadow-lg flex items-center justify-center transition-all hover:bg-background disabled:opacity-30 disabled:cursor-not-allowed",
+                      direction === "horizontal"
+                        ? "right-4 top-1/2 -translate-y-1/2"
+                        : "bottom-4 left-1/2 -translate-x-1/2"
+                    )}
+                    aria-label="Next slide"
+                  >
+                    {navigationOptions.nextEl ||
+                      (direction === "horizontal" ? (
+                        <ChevronRight className="w-5 h-5" />
+                      ) : (
+                        <ChevronDown className="w-5 h-5" />
+                      ))}
+                  </button>
+                </>
+              )}
           </div>
 
-          {/* Pagination - Inside only (overlay on slider) */}
+          {/* Pagination - Outside (below slider) */}
           {paginationOptions.enabled &&
-            paginationOptions.position !== "outside" &&
+            paginationOptions.position === "outside" &&
             renderPagination()}
-
-          {/* Navigation - Inside (overlay on slider) */}
-          {navigationOptions.enabled &&
-            navigationOptions.position === "inside" && (
-              <>
-                <button
-                  onClick={slidePrev}
-                  disabled={!loop && !rewind && isBeginning}
-                  className={cn(
-                    "absolute z-10 w-10 h-10 rounded-full bg-background/80 backdrop-blur shadow-lg flex items-center justify-center transition-all hover:bg-background disabled:opacity-30 disabled:cursor-not-allowed",
-                    direction === "horizontal"
-                      ? "left-4 top-1/2 -translate-y-1/2"
-                      : "top-4 left-1/2 -translate-x-1/2"
-                  )}
-                  aria-label="Previous slide"
-                >
-                  {navigationOptions.prevEl ||
-                    (direction === "horizontal" ? (
-                      <ChevronLeft className="w-5 h-5" />
-                    ) : (
-                      <ChevronUp className="w-5 h-5" />
-                    ))}
-                </button>
-                <button
-                  onClick={slideNext}
-                  disabled={!loop && !rewind && isEnd}
-                  className={cn(
-                    "absolute z-10 w-10 h-10 rounded-full bg-background/80 backdrop-blur shadow-lg flex items-center justify-center transition-all hover:bg-background disabled:opacity-30 disabled:cursor-not-allowed",
-                    direction === "horizontal"
-                      ? "right-4 top-1/2 -translate-y-1/2"
-                      : "bottom-4 left-1/2 -translate-x-1/2"
-                  )}
-                  aria-label="Next slide"
-                >
-                  {navigationOptions.nextEl ||
-                    (direction === "horizontal" ? (
-                      <ChevronRight className="w-5 h-5" />
-                    ) : (
-                      <ChevronDown className="w-5 h-5" />
-                    ))}
-                </button>
-              </>
-            )}
         </div>
 
-        {/* Pagination - Outside (below slider) */}
-        {paginationOptions.enabled &&
-          paginationOptions.position === "outside" &&
-          renderPagination()}
-      </div>
+        {/* Image Viewer */}
+        {enableImageViewer && imageInfos.length > 0 && (
+          <ImageViewer
+            images={imageInfos}
+            visible={viewerVisible}
+            onClose={() => {
+              console.log("Closing viewer");
+              setViewerVisible(false);
+            }}
+            activeIndex={viewerIndex}
+            onIndexChange={setViewerIndex}
+          />
+        )}
+        {/* {enableImageViewer && (
+          <div
+            style={{
+              position: "fixed",
+              top: 10,
+              right: 10,
+              background: "white",
+              padding: "10px",
+              zIndex: 9999,
+              fontSize: "12px",
+            }}
+          >
+            Debug: visible={String(viewerVisible)}, images={imageInfos.length},
+            index={viewerIndex}
+          </div>
+        )} */}
+      </>
     );
   }
 );
@@ -959,4 +1097,3 @@ export const CarouselSlide = React.forwardRef<
 CarouselSlide.displayName = "CarouselSlide";
 
 export default Carousel;
-
