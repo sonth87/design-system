@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { ImageSlider, ImageSliderSlide } from "../components/ImageSlider";
+import { Carousel, CarouselSlide } from "../components/Carousel";
 
-const meta: Meta<typeof ImageSlider> = {
-  title: "Components/ImageSlider",
-  component: ImageSlider,
+const meta: Meta<typeof Carousel> = {
+  title: "Components/Carousel",
+  component: Carousel,
   parameters: {
     layout: "centered",
   },
@@ -86,17 +86,17 @@ export const Default: Story = {
   },
   render: (args) => (
     <div className="w-[600px]">
-      <ImageSlider {...args}>
+      <Carousel {...args}>
         {images.map((src, index) => (
-          <ImageSliderSlide key={index}>
+          <CarouselSlide key={index}>
             <img
               src={src}
               alt={`Slide ${index + 1}`}
               className="w-full h-[400px] object-cover rounded-lg"
             />
-          </ImageSliderSlide>
+          </CarouselSlide>
         ))}
-      </ImageSlider>
+      </Carousel>
     </div>
   ),
 };
@@ -104,17 +104,17 @@ export const Default: Story = {
 export const WithNavigation: Story = {
   render: () => (
     <div className="w-[600px]">
-      <ImageSlider navigation pagination>
+      <Carousel navigation pagination>
         {images.map((src, index) => (
-          <ImageSliderSlide key={index}>
+          <CarouselSlide key={index}>
             <img
               src={src}
               alt={`Slide ${index + 1}`}
               className="w-full h-[400px] object-cover rounded-lg"
             />
-          </ImageSliderSlide>
+          </CarouselSlide>
         ))}
-      </ImageSlider>
+      </Carousel>
     </div>
   ),
 };
@@ -122,7 +122,7 @@ export const WithNavigation: Story = {
 export const WithPagination: Story = {
   render: () => (
     <div className="w-[600px]">
-      <ImageSlider
+      <Carousel
         navigation
         pagination={{
           enabled: true,
@@ -132,15 +132,15 @@ export const WithPagination: Story = {
         }}
       >
         {images.map((src, index) => (
-          <ImageSliderSlide key={index}>
+          <CarouselSlide key={index}>
             <img
               src={src}
               alt={`Slide ${index + 1}`}
               className="w-full h-[400px] object-cover rounded-lg"
             />
-          </ImageSliderSlide>
+          </CarouselSlide>
         ))}
-      </ImageSlider>
+      </Carousel>
     </div>
   ),
 };
@@ -148,7 +148,7 @@ export const WithPagination: Story = {
 export const PaginationOutside: Story = {
   render: () => (
     <div className="w-[600px]">
-      <ImageSlider
+      <Carousel
         navigation
         pagination={{
           enabled: true,
@@ -158,15 +158,15 @@ export const PaginationOutside: Story = {
         }}
       >
         {images.map((src, index) => (
-          <ImageSliderSlide key={index}>
+          <CarouselSlide key={index}>
             <img
               src={src}
               alt={`Slide ${index + 1}`}
               className="w-full h-[400px] object-cover rounded-lg"
             />
-          </ImageSliderSlide>
+          </CarouselSlide>
         ))}
-      </ImageSlider>
+      </Carousel>
     </div>
   ),
 };
@@ -174,7 +174,7 @@ export const PaginationOutside: Story = {
 export const NavigationOutside: Story = {
   render: () => (
     <div className="w-[700px]">
-      <ImageSlider
+      <Carousel
         navigation={{
           enabled: true,
           position: "outside",
@@ -182,15 +182,15 @@ export const NavigationOutside: Story = {
         pagination
       >
         {images.map((src, index) => (
-          <ImageSliderSlide key={index}>
+          <CarouselSlide key={index}>
             <img
               src={src}
               alt={`Slide ${index + 1}`}
               className="w-full h-[400px] object-cover rounded-lg"
             />
-          </ImageSliderSlide>
+          </CarouselSlide>
         ))}
-      </ImageSlider>
+      </Carousel>
     </div>
   ),
 };
@@ -198,7 +198,7 @@ export const NavigationOutside: Story = {
 export const PaginationFraction: Story = {
   render: () => (
     <div className="w-[600px]">
-      <ImageSlider
+      <Carousel
         navigation
         pagination={{
           enabled: true,
@@ -206,15 +206,15 @@ export const PaginationFraction: Story = {
         }}
       >
         {images.map((src, index) => (
-          <ImageSliderSlide key={index}>
+          <CarouselSlide key={index}>
             <img
               src={src}
               alt={`Slide ${index + 1}`}
               className="w-full h-[400px] object-cover rounded-lg"
             />
-          </ImageSliderSlide>
+          </CarouselSlide>
         ))}
-      </ImageSlider>
+      </Carousel>
     </div>
   ),
 };
@@ -222,7 +222,7 @@ export const PaginationFraction: Story = {
 export const PaginationProgressbar: Story = {
   render: () => (
     <div className="w-[600px]">
-      <ImageSlider
+      <Carousel
         navigation
         pagination={{
           enabled: true,
@@ -231,15 +231,15 @@ export const PaginationProgressbar: Story = {
         }}
       >
         {images.map((src, index) => (
-          <ImageSliderSlide key={index}>
+          <CarouselSlide key={index}>
             <img
               src={src}
               alt={`Slide ${index + 1}`}
               className="w-full h-[400px] object-cover rounded-lg"
             />
-          </ImageSliderSlide>
+          </CarouselSlide>
         ))}
-      </ImageSlider>
+      </Carousel>
     </div>
   ),
 };
@@ -247,7 +247,7 @@ export const PaginationProgressbar: Story = {
 export const PaginationScrollbar: Story = {
   render: () => (
     <div className="w-[600px]">
-      <ImageSlider
+      <Carousel
         navigation
         pagination={{
           enabled: true,
@@ -256,15 +256,15 @@ export const PaginationScrollbar: Story = {
         }}
       >
         {images.map((src, index) => (
-          <ImageSliderSlide key={index}>
+          <CarouselSlide key={index}>
             <img
               src={src}
               alt={`Slide ${index + 1}`}
               className="w-full h-[400px] object-cover rounded-lg"
             />
-          </ImageSliderSlide>
+          </CarouselSlide>
         ))}
-      </ImageSlider>
+      </Carousel>
     </div>
   ),
 };
@@ -272,7 +272,7 @@ export const PaginationScrollbar: Story = {
 export const WithAutoplay: Story = {
   render: () => (
     <div className="w-[600px]">
-      <ImageSlider
+      <Carousel
         navigation
         pagination
         autoplay={{
@@ -282,15 +282,15 @@ export const WithAutoplay: Story = {
         }}
       >
         {images.map((src, index) => (
-          <ImageSliderSlide key={index}>
+          <CarouselSlide key={index}>
             <img
               src={src}
               alt={`Slide ${index + 1}`}
               className="w-full h-[400px] object-cover rounded-lg"
             />
-          </ImageSliderSlide>
+          </CarouselSlide>
         ))}
-      </ImageSlider>
+      </Carousel>
     </div>
   ),
 };
@@ -298,17 +298,17 @@ export const WithAutoplay: Story = {
 export const Loop: Story = {
   render: () => (
     <div className="w-[600px]">
-      <ImageSlider navigation pagination loop>
+      <Carousel navigation pagination loop>
         {images.map((src, index) => (
-          <ImageSliderSlide key={index}>
+          <CarouselSlide key={index}>
             <img
               src={src}
               alt={`Slide ${index + 1}`}
               className="w-full h-[400px] object-cover rounded-lg"
             />
-          </ImageSliderSlide>
+          </CarouselSlide>
         ))}
-      </ImageSlider>
+      </Carousel>
     </div>
   ),
 };
@@ -316,17 +316,17 @@ export const Loop: Story = {
 export const EffectFade: Story = {
   render: () => (
     <div className="w-[600px]">
-      <ImageSlider navigation pagination effect="fade" speed={600}>
+      <Carousel navigation pagination effect="fade" speed={600}>
         {images.map((src, index) => (
-          <ImageSliderSlide key={index}>
+          <CarouselSlide key={index}>
             <img
               src={src}
               alt={`Slide ${index + 1}`}
               className="w-full h-[400px] object-cover rounded-lg"
             />
-          </ImageSliderSlide>
+          </CarouselSlide>
         ))}
-      </ImageSlider>
+      </Carousel>
     </div>
   ),
 };
@@ -334,17 +334,17 @@ export const EffectFade: Story = {
 export const EffectCube: Story = {
   render: () => (
     <div className="w-[600px]">
-      <ImageSlider navigation pagination effect="cube" speed={800}>
+      <Carousel navigation pagination effect="cube" speed={800}>
         {images.map((src, index) => (
-          <ImageSliderSlide key={index}>
+          <CarouselSlide key={index}>
             <img
               src={src}
               alt={`Slide ${index + 1}`}
               className="w-full h-[400px] object-cover rounded-lg"
             />
-          </ImageSliderSlide>
+          </CarouselSlide>
         ))}
-      </ImageSlider>
+      </Carousel>
     </div>
   ),
 };
@@ -352,7 +352,7 @@ export const EffectCube: Story = {
 export const EffectCoverflow: Story = {
   render: () => (
     <div className="w-[800px]">
-      <ImageSlider
+      <Carousel
         navigation
         pagination
         effect="coverflow"
@@ -361,15 +361,15 @@ export const EffectCoverflow: Story = {
         slidesPerView={3}
       >
         {images.map((src, index) => (
-          <ImageSliderSlide key={index}>
+          <CarouselSlide key={index}>
             <img
               src={src}
               alt={`Slide ${index + 1}`}
               className="w-full h-[400px] object-cover rounded-lg"
             />
-          </ImageSliderSlide>
+          </CarouselSlide>
         ))}
-      </ImageSlider>
+      </Carousel>
     </div>
   ),
 };
@@ -377,17 +377,17 @@ export const EffectCoverflow: Story = {
 export const EffectFlip: Story = {
   render: () => (
     <div className="w-[600px]">
-      <ImageSlider navigation pagination effect="flip" speed={800}>
+      <Carousel navigation pagination effect="flip" speed={800}>
         {images.map((src, index) => (
-          <ImageSliderSlide key={index}>
+          <CarouselSlide key={index}>
             <img
               src={src}
               alt={`Slide ${index + 1}`}
               className="w-full h-[400px] object-cover rounded-lg"
             />
-          </ImageSliderSlide>
+          </CarouselSlide>
         ))}
-      </ImageSlider>
+      </Carousel>
     </div>
   ),
 };
@@ -395,17 +395,17 @@ export const EffectFlip: Story = {
 export const EffectCards: Story = {
   render: () => (
     <div className="w-[600px]">
-      <ImageSlider navigation pagination effect="cards" speed={500}>
+      <Carousel navigation pagination effect="cards" speed={500}>
         {images.map((src, index) => (
-          <ImageSliderSlide key={index}>
+          <CarouselSlide key={index}>
             <img
               src={src}
               alt={`Slide ${index + 1}`}
               className="w-full h-[400px] object-cover rounded-lg"
             />
-          </ImageSliderSlide>
+          </CarouselSlide>
         ))}
-      </ImageSlider>
+      </Carousel>
     </div>
   ),
 };
@@ -413,7 +413,7 @@ export const EffectCards: Story = {
 export const MultipleSlides: Story = {
   render: () => (
     <div className="w-[800px]">
-      <ImageSlider
+      <Carousel
         navigation
         pagination
         slidesPerView={3}
@@ -421,15 +421,15 @@ export const MultipleSlides: Story = {
         loop
       >
         {images.map((src, index) => (
-          <ImageSliderSlide key={index}>
+          <CarouselSlide key={index}>
             <img
               src={src}
               alt={`Slide ${index + 1}`}
               className="w-full h-[300px] object-cover rounded-lg"
             />
-          </ImageSliderSlide>
+          </CarouselSlide>
         ))}
-      </ImageSlider>
+      </Carousel>
     </div>
   ),
 };
@@ -437,7 +437,7 @@ export const MultipleSlides: Story = {
 export const CenteredSlides: Story = {
   render: () => (
     <div className="w-[800px]">
-      <ImageSlider
+      <Carousel
         navigation
         pagination
         slidesPerView={2.5}
@@ -446,15 +446,15 @@ export const CenteredSlides: Story = {
         loop
       >
         {images.map((src, index) => (
-          <ImageSliderSlide key={index}>
+          <CarouselSlide key={index}>
             <img
               src={src}
               alt={`Slide ${index + 1}`}
               className="w-full h-[350px] object-cover rounded-lg"
             />
-          </ImageSliderSlide>
+          </CarouselSlide>
         ))}
-      </ImageSlider>
+      </Carousel>
     </div>
   ),
 };
@@ -462,7 +462,7 @@ export const CenteredSlides: Story = {
 export const Vertical: Story = {
   render: () => (
     <div className="h-[500px]">
-      <ImageSlider
+      <Carousel
         navigation
         pagination
         direction="vertical"
@@ -470,15 +470,15 @@ export const Vertical: Story = {
         className="h-full w-full"
       >
         {images.slice(0, 10).map((src, index) => (
-          <ImageSliderSlide key={index}>
+          <CarouselSlide key={index}>
             <img
               src={src}
               alt={`Slide ${index + 1}`}
               className="w-full h-full object-cover rounded-xl"
             />
-          </ImageSliderSlide>
+          </CarouselSlide>
         ))}
-      </ImageSlider>
+      </Carousel>
     </div>
   ),
 };
@@ -489,17 +489,17 @@ export const KeyboardNavigation: Story = {
       <div className="mb-4 text-sm text-muted-foreground text-center">
         Sử dụng phím mũi tên ← → để điều hướng
       </div>
-      <ImageSlider navigation pagination keyboard>
+      <Carousel navigation pagination keyboard>
         {images.map((src, index) => (
-          <ImageSliderSlide key={index}>
+          <CarouselSlide key={index}>
             <img
               src={src}
               alt={`Slide ${index + 1}`}
               className="w-full h-[400px] object-cover rounded-lg"
             />
-          </ImageSliderSlide>
+          </CarouselSlide>
         ))}
-      </ImageSlider>
+      </Carousel>
     </div>
   ),
 };
@@ -510,17 +510,17 @@ export const MousewheelNavigation: Story = {
       <div className="mb-4 text-sm text-muted-foreground text-center">
         Cuộn chuột để chuyển slide
       </div>
-      <ImageSlider navigation pagination mousewheel>
+      <Carousel navigation pagination mousewheel>
         {images.map((src, index) => (
-          <ImageSliderSlide key={index}>
+          <CarouselSlide key={index}>
             <img
               src={src}
               alt={`Slide ${index + 1}`}
               className="w-full h-[400px] object-cover rounded-lg"
             />
-          </ImageSliderSlide>
+          </CarouselSlide>
         ))}
-      </ImageSlider>
+      </Carousel>
     </div>
   ),
 };
@@ -528,7 +528,7 @@ export const MousewheelNavigation: Story = {
 export const WithContent: Story = {
   render: () => (
     <div className="w-[700px]">
-      <ImageSlider
+      <Carousel
         navigation
         pagination
         autoplay={{
@@ -537,7 +537,7 @@ export const WithContent: Story = {
         }}
       >
         {images.map((src, index) => (
-          <ImageSliderSlide key={index}>
+          <CarouselSlide key={index}>
             <div className="relative w-full h-[450px]">
               <img
                 src={src}
@@ -555,9 +555,9 @@ export const WithContent: Story = {
                 </p>
               </div>
             </div>
-          </ImageSliderSlide>
+          </CarouselSlide>
         ))}
-      </ImageSlider>
+      </Carousel>
     </div>
   ),
 };
@@ -565,7 +565,7 @@ export const WithContent: Story = {
 export const Gallery: Story = {
   render: () => (
     <div className="w-[900px]">
-      <ImageSlider
+      <Carousel
         navigation
         pagination={{
           enabled: true,
@@ -578,7 +578,7 @@ export const Gallery: Story = {
         }}
       >
         {images.map((src, index) => (
-          <ImageSliderSlide key={index}>
+          <CarouselSlide key={index}>
             <div className="relative w-full h-[500px] bg-muted rounded-lg overflow-hidden">
               <img
                 src={src}
@@ -586,9 +586,9 @@ export const Gallery: Story = {
                 className="w-full h-full object-contain"
               />
             </div>
-          </ImageSliderSlide>
+          </CarouselSlide>
         ))}
-      </ImageSlider>
+      </Carousel>
     </div>
   ),
 };
@@ -596,7 +596,7 @@ export const Gallery: Story = {
 export const ProductSlider: Story = {
   render: () => (
     <div className="w-[800px]">
-      <ImageSlider
+      <Carousel
         navigation
         pagination={{
           enabled: true,
@@ -625,7 +625,7 @@ export const ProductSlider: Story = {
         }}
       >
         {[...images, ...images].map((src, index) => (
-          <ImageSliderSlide key={index}>
+          <CarouselSlide key={index}>
             <div className="bg-muted rounded-lg p-4">
               <img
                 src={src}
@@ -647,9 +647,10 @@ export const ProductSlider: Story = {
                 </button>
               </div>
             </div>
-          </ImageSliderSlide>
+          </CarouselSlide>
         ))}
-      </ImageSlider>
+      </Carousel>
     </div>
   ),
 };
+

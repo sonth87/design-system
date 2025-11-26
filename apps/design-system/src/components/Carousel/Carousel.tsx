@@ -76,7 +76,7 @@ export interface PaginationOptions {
   renderCustom?: (current: number, total: number) => React.ReactNode;
 }
 
-export interface ImageSliderProps {
+export interface CarouselProps {
   children: React.ReactNode;
   // Core
   initialSlide?: number;
@@ -118,19 +118,19 @@ export interface ImageSliderProps {
 }
 
 // ============================================================================
-// ImageSlider Slide Component Types
+// Carousel Slide Component Types
 // ============================================================================
 
-export interface ImageSliderSlideProps
+export interface CarouselSlideProps
   extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
 }
 
 // ============================================================================
-// ImageSlider Component
+// Carousel Component
 // ============================================================================
 
-export const ImageSlider = React.forwardRef<HTMLDivElement, ImageSliderProps>(
+export const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>(
   (
     {
       children,
@@ -253,7 +253,7 @@ export const ImageSlider = React.forwardRef<HTMLDivElement, ImageSliderProps>(
 
     // Get slides
     const slides = Children.toArray(children).filter(
-      (child) => isValidElement(child) && child.type === ImageSliderSlide
+      (child) => isValidElement(child) && child.type === CarouselSlide
     );
     const totalSlides = slides.length;
 
@@ -572,8 +572,8 @@ export const ImageSlider = React.forwardRef<HTMLDivElement, ImageSliderProps>(
                   {paginationOptions.renderBullet(
                     bulletIndex,
                     cn(
-                      "image-slider-pagination-bullet",
-                      isActive && "image-slider-pagination-bullet-active"
+                      "carousel-pagination-bullet",
+                      isActive && "carousel-pagination-bullet-active"
                     )
                   )}
                 </React.Fragment>
@@ -611,16 +611,16 @@ export const ImageSlider = React.forwardRef<HTMLDivElement, ImageSliderProps>(
           >
             {paginationOptions.renderFraction ? (
               paginationOptions.renderFraction(
-                "image-slider-pagination-current",
-                "image-slider-pagination-total"
+                "carousel-pagination-current",
+                "carousel-pagination-total"
               )
             ) : (
               <>
-                <span className="image-slider-pagination-current font-semibold text-foreground">
+                <span className="carousel-pagination-current font-semibold text-foreground">
                   {activeIndex + 1}
                 </span>
                 {" / "}
-                <span className="image-slider-pagination-total">
+                <span className="carousel-pagination-total">
                   {totalSlides}
                 </span>
               </>
@@ -657,11 +657,11 @@ export const ImageSlider = React.forwardRef<HTMLDivElement, ImageSliderProps>(
           >
             {paginationOptions.renderProgressbar ? (
               paginationOptions.renderProgressbar(
-                "image-slider-progressbar-fill"
+                "carousel-progressbar-fill"
               )
             ) : (
               <div
-                className="image-slider-progressbar-fill h-full bg-primary transition-all duration-300"
+                className="carousel-progressbar-fill h-full bg-primary transition-all duration-300"
                 style={{ width: `${progress}%` }}
               />
             )}
@@ -722,10 +722,10 @@ export const ImageSlider = React.forwardRef<HTMLDivElement, ImageSliderProps>(
             )}
           >
             {paginationOptions.renderScrollbar ? (
-              paginationOptions.renderScrollbar("image-slider-scrollbar-drag")
+              paginationOptions.renderScrollbar("carousel-scrollbar-drag")
             ) : (
               <div
-                className="image-slider-scrollbar-drag h-full bg-primary rounded-full transition-all duration-300 absolute left-0"
+                className="carousel-scrollbar-drag h-full bg-primary rounded-full transition-all duration-300 absolute left-0"
                 style={{
                   width: `${dragWidth}%`,
                   left: `${scrollPosition}%`,
@@ -779,14 +779,14 @@ export const ImageSlider = React.forwardRef<HTMLDivElement, ImageSliderProps>(
     return (
       <div
         ref={ref}
-        className={cn("image-slider-container", containerClassName, className)}
+        className={cn("carousel-container", containerClassName, className)}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
         <div
           ref={containerRef}
           className={cn(
-            "image-slider relative overflow-hidden",
+            "carousel relative overflow-hidden",
             (effect === "fade" ||
               effect === "cube" ||
               effect === "flip" ||
@@ -802,7 +802,7 @@ export const ImageSlider = React.forwardRef<HTMLDivElement, ImageSliderProps>(
           <div
             ref={wrapperRef}
             className={cn(
-              "image-slider-wrapper select-none",
+              "carousel-wrapper select-none",
               effect === "slide" && "flex",
               direction === "vertical" &&
                 effect === "slide" &&
@@ -835,12 +835,12 @@ export const ImageSlider = React.forwardRef<HTMLDivElement, ImageSliderProps>(
             {slides.map((slide, index) => {
               const isActive = index === activeIndex;
               const slideElement =
-                slide as React.ReactElement<ImageSliderSlideProps>;
+                slide as React.ReactElement<CarouselSlideProps>;
 
               return cloneElement(slideElement, {
                 key: index,
                 className: cn(
-                  "image-slider-slide",
+                  "carousel-slide",
                   slideClassName,
                   slideElement.props.className,
                   effect !== "slide" && "absolute inset-0",
@@ -877,7 +877,7 @@ export const ImageSlider = React.forwardRef<HTMLDivElement, ImageSliderProps>(
                 onDragStart: (e: React.DragEvent) => e.preventDefault(),
                 "data-active": isActive,
                 "data-index": index,
-              } as Partial<ImageSliderSlideProps>);
+              } as Partial<CarouselSlideProps>);
             })}
           </div>
 
@@ -939,15 +939,15 @@ export const ImageSlider = React.forwardRef<HTMLDivElement, ImageSliderProps>(
   }
 );
 
-ImageSlider.displayName = "ImageSlider";
+Carousel.displayName = "Carousel";
 
 // ============================================================================
-// ImageSlider Slide Component
+// Carousel Slide Component
 // ============================================================================
 
-export const ImageSliderSlide = React.forwardRef<
+export const CarouselSlide = React.forwardRef<
   HTMLDivElement,
-  ImageSliderSlideProps
+  CarouselSlideProps
 >(({ children, className, style, ...props }, ref) => {
   return (
     <div ref={ref} className={className} style={style} {...props}>
@@ -956,6 +956,7 @@ export const ImageSliderSlide = React.forwardRef<
   );
 });
 
-ImageSliderSlide.displayName = "ImageSliderSlide";
+CarouselSlide.displayName = "CarouselSlide";
 
-export default ImageSlider;
+export default Carousel;
+

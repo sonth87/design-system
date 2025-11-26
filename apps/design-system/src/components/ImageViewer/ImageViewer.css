@@ -1,0 +1,301 @@
+/* Ant Design Image Viewer Styles */
+
+/* Override react-viewer default styles to match Ant Design */
+.image-viewer-antd-style {
+  /* Container */
+  .react-viewer-canvas {
+    background-color: #0000004d !important;
+    backdrop-filter: blur(5px) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    user-select: none !important;
+    -webkit-user-drag: none !important;
+  }
+
+  /* Smooth fade-in animation */
+  .react-viewer-canvas.react-viewer-transition {
+    animation: fadeIn 0.3s ease-in-out !important;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* Close button */
+  .react-viewer-close {
+    top: 24px !important;
+    right: 24px !important;
+    width: 48px !important;
+    height: 48px !important;
+    background: rgba(0, 0, 0, 0.5) !important;
+    border-radius: 50% !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    opacity: 0.85 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .react-viewer-close:hover {
+    background: rgba(0, 0, 0, 0.7) !important;
+    transform: scale(1.1) !important;
+    opacity: 1 !important;
+  }
+
+  /* Close icon styling */
+  .react-viewer-close > i {
+    font-size: 10px !important;
+    color: white !important;
+    line-height: 1 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: static !important;
+  }
+
+  /* Toolbar - bottom center */
+  .react-viewer-toolbar {
+    position: fixed !important;
+    bottom: 20px !important;
+    left: 50% !important;
+    transform: translate(-50%, 50%) !important;
+    background: rgba(0, 0, 0, 0.8) !important;
+    backdrop-filter: blur(10px) !important;
+    border-radius: 8px !important;
+    padding: 8px 16px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+    z-index: 1001 !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+
+  .react-viewer-toolbar li {
+    width: 40px !important;
+    height: 40px !important;
+    margin: 0 4px !important;
+    border-radius: 4px !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .react-viewer-toolbar li:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+  }
+
+  .react-viewer-toolbar li[data-key="disabled"] {
+    opacity: 0.3 !important;
+    cursor: not-allowed !important;
+  }
+
+  /* Navigation arrows */
+  .react-viewer-btn {
+    background: none !important;
+    backdrop-filter: none !important;
+    border-radius: 100% !important;
+    width: 24px !important;
+    height: 24px !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    opacity: 0.85 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .react-viewer-btn:hover {
+    background: rgba(0, 0, 0, 0.2) !important;
+    opacity: 1 !important;
+  }
+
+  .react-viewer-btn-prev {
+    left: 16px !important;
+  }
+
+  .react-viewer-btn-next {
+    right: 16px !important;
+  }
+
+  /* Image counter - top center */
+  .react-viewer-navbar {
+    margin-bottom: 30px !important;
+    background: none !important;
+    /* top: 16px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    background: rgba(0, 0, 0, 0.5) !important;
+    backdrop-filter: blur(10px) !important;
+    border-radius: 8px !important;
+    padding: 8px 16px !important;
+    color: white !important;
+    font-size: 14px !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important; */
+  }
+
+  /* Image transition */
+  .react-viewer-image {
+    transition:
+      transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      opacity 0.3s ease !important;
+    z-index: 1000 !important;
+    user-select: none !important;
+    -webkit-user-drag: none !important;
+    cursor: default !important;
+  }
+
+  .react-viewer-image img {
+    user-select: none !important;
+    -webkit-user-drag: none !important;
+    pointer-events: none !important;
+  }
+
+  /* Image fade-in */
+  .react-viewer-image-transition {
+    animation: imageZoomIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+
+  @keyframes imageZoomIn {
+    from {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /* Loading spinner */
+  .react-viewer-loading {
+    border: 2px solid rgba(255, 255, 255, 0.3) !important;
+    border-top-color: white !important;
+  }
+
+  /* Mask/Backdrop */
+  .react-viewer-mask {
+    background-color: #0000004d !important;
+    backdrop-filter: blur(0px) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+
+  /* Footer - image details */
+  .react-viewer-footer {
+    /* background: rgba(0, 0, 0, 0.8) !important; */
+    /* backdrop-filter: blur(10px) !important; */
+    color: rgba(255, 255, 255, 0.85) !important;
+    padding: 16px 32px !important;
+    font-size: 16px !important;
+  }
+
+  .react-viewer-footer > p {
+    display: none !important;
+  }
+
+  .react-viewer-attribute {
+    display: none !important;
+  }
+
+  p.react-viewer-attribute {
+    display: none !important;
+  }
+
+  .react-viewer-attributes {
+    display: none !important;
+  }
+
+  /* Thumbnails */
+  .react-viewer-list {
+    position: fixed !important;
+    bottom: 50px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    z-index: 999 !important;
+    display: flex !important;
+    gap: 8px !important;
+    max-width: 90vw !important;
+    overflow-x: auto !important;
+    transition: opacity 0.3s ease !important;
+    height: 60px !important;
+    text-align: center !important;
+    margin-left: 0px !important;
+  }
+
+  .react-viewer-list > li {
+    display: inline-block !important;
+    width: auto !important;
+    height: auto !important;
+  }
+
+  .react-viewer-list-item {
+    border: 2px solid transparent !important;
+    border-radius: 4px !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    width: 60px !important;
+    height: 60px !important;
+    margin: 0 4px !important;
+    cursor: pointer !important;
+  }
+
+  .react-viewer-list-item:hover {
+    border-color: rgba(255, 255, 255, 0.3) !important;
+  }
+
+  .react-viewer-list-item-active {
+    border-color: white !important;
+  }
+}
+
+/* Dark theme adjustments */
+@media (prefers-color-scheme: dark) {
+  .image-viewer-antd-style {
+    .react-viewer-canvas {
+      backdrop-filter: blur(20px);
+    }
+  }
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .image-viewer-antd-style {
+    .react-viewer-close {
+      top: 12px !important;
+      right: 12px !important;
+      width: 40px !important;
+      height: 40px !important;
+    }
+
+    .react-viewer-close > i {
+      position: static;
+    }
+
+    .react-viewer-toolbar {
+      bottom: 16px !important;
+      padding: 6px 12px !important;
+    }
+
+    .react-viewer-toolbar li {
+      width: 36px !important;
+      height: 36px !important;
+      margin: 0 2px !important;
+    }
+
+    .react-viewer-btn {
+      width: 40px !important;
+      height: 40px !important;
+    }
+
+    .react-viewer-btn-prev {
+      left: 8px !important;
+    }
+
+    .react-viewer-btn-next {
+      right: 8px !important;
+    }
+  }
+}
