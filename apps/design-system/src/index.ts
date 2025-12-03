@@ -134,6 +134,9 @@ export * from "./components/Command";
 // Resizable
 export * from "./components/Resizable";
 
+// Accordion
+export * from "./components/Accordion";
+
 // ============================================
 // STANDALONE COMPONENTS
 // ============================================

@@ -587,6 +587,19 @@
     "stories.resizable.argTypes.handleClassName.description": "Các lớp CSS bổ sung cho các tay nắm thay đổi kích thước",
     "stories.resizable.argTypes.keyboardResizeBy.description": "Phần trăm thay đổi kích thước khi sử dụng bàn phím (mặc định: 10)",
     "stories.resizable.argTypes.handleVariant.description": "Kiểu tay nắm: 'default' hiển thị icon grip, 'line' làm sáng đường viền khi di chuột qua",
-    "stories.resizable.argTypes.handleIcon.description": "Icon tùy chỉnh cho tay nắm (chỉ hoạt động với variant default)"
+    "stories.resizable.argTypes.handleIcon.description": "Icon tùy chỉnh cho tay nắm (chỉ hoạt động với variant default)",
+
+    "stories.accordion.argTypes.type.description": "Kiểu accordion: 'single' chỉ cho phép một mục mở tại một thời điểm, 'multiple' cho phép nhiều mục mở đồng thời",
+    "stories.accordion.argTypes.collapsible.description": "Khi type là 'single', cho phép đóng tất cả các mục. Nếu false, luôn phải có một mục mở",
+    "stories.accordion.argTypes.defaultValue.description": "Giá trị mục mở rộng mặc định cho chế độ không kiểm soát. String cho kiểu single, array cho kiểu multiple",
+    "stories.accordion.argTypes.value.description": "Giá trị mục mở rộng được kiểm soát. String cho kiểu single, array cho kiểu multiple",
+    "stories.accordion.argTypes.disabled.description": "Vô hiệu hóa tất cả các mục accordion",
+    "stories.accordion.argTypes.variant.description": "Kiểu hiển thị: 'default' (container có viền), 'bordered' (viền dày hơn), 'separated' (các card riêng lẻ), 'ghost' (kiểu tối giản)",
+    "stories.accordion.argTypes.items.description": "Mảng các mục accordion khi sử dụng chế độ wrapper. Mỗi mục có value, trigger, content, và các thuộc tính tùy chọn disabled, className",
+    "stories.accordion.argTypes.className.description": "Các lớp CSS bổ sung cho container accordion",
+    "stories.accordion.argTypes.itemClassName.description": "Các lớp CSS bổ sung áp dụng cho mỗi mục accordion",
+    "stories.accordion.argTypes.triggerClassName.description": "Các lớp CSS bổ sung áp dụng cho mỗi trigger accordion",
+    "stories.accordion.argTypes.contentClassName.description": "Các lớp CSS bổ sung áp dụng cho mỗi nội dung accordion",
+    "stories.accordion.argTypes.onValueChange.description": "Hàm callback được gọi khi các mục mở rộng thay đổi. Nhận string cho kiểu single, array cho kiểu multiple"
   }
 }

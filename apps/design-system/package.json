@@ -32,6 +32,16 @@
       }
     },
     "./package.json": "./package.json",
+    "./accordion": {
+      "import": {
+        "types": "./dist/types/components/Accordion/Accordion.d.ts",
+        "default": "./dist/esm/components/Accordion/Accordion.js"
+      },
+      "require": {
+        "types": "./dist/types/components/Accordion/Accordion.d.ts",
+        "default": "./dist/cjs/components/Accordion/Accordion.cjs"
+      }
+    },
     "./avatar": {
       "import": {
         "types": "./dist/types/components/Avatar/Avatar.d.ts",
@@ -549,6 +559,9 @@
     "*": {
       "*": [
         "./dist/types/index.d.ts"
+      ],
+      "accordion": [
+        "./dist/types/components/Accordion/Accordion.d.ts"
       ],
       "avatar": [
         "./dist/types/components/Avatar/Avatar.d.ts"

@@ -589,6 +589,19 @@
     "stories.resizable.argTypes.handleClassName.description": "Additional CSS classes for resize handles",
     "stories.resizable.argTypes.keyboardResizeBy.description": "Percentage to resize by when using keyboard (default: 10)",
     "stories.resizable.argTypes.handleVariant.description": "Handle variant: 'default' shows grip icon, 'line' highlights the border on hover",
-    "stories.resizable.argTypes.handleIcon.description": "Custom icon for the handle (only works with default variant)"
+    "stories.resizable.argTypes.handleIcon.description": "Custom icon for the handle (only works with default variant)",
+
+    "stories.accordion.argTypes.type.description": "Accordion type: 'single' allows only one item to be open at a time, 'multiple' allows multiple items to be open simultaneously",
+    "stories.accordion.argTypes.collapsible.description": "When type is 'single', allows closing all items. If false, one item must always be open",
+    "stories.accordion.argTypes.defaultValue.description": "Default expanded item value(s) for uncontrolled usage. String for single type, array for multiple type",
+    "stories.accordion.argTypes.value.description": "Controlled expanded item value(s). String for single type, array for multiple type",
+    "stories.accordion.argTypes.disabled.description": "Disable all accordion items",
+    "stories.accordion.argTypes.variant.description": "Visual style variant: 'default' (bordered container), 'bordered' (thicker border), 'separated' (individual cards), 'ghost' (minimal styling)",
+    "stories.accordion.argTypes.items.description": "Array of accordion items when using wrapper mode. Each item has value, trigger, content, and optional disabled, className properties",
+    "stories.accordion.argTypes.className.description": "Additional CSS classes for the accordion container",
+    "stories.accordion.argTypes.itemClassName.description": "Additional CSS classes applied to each accordion item",
+    "stories.accordion.argTypes.triggerClassName.description": "Additional CSS classes applied to each accordion trigger",
+    "stories.accordion.argTypes.contentClassName.description": "Additional CSS classes applied to each accordion content",
+    "stories.accordion.argTypes.onValueChange.description": "Callback function called when expanded items change. Receives string for single type, array for multiple type"
   }
 }

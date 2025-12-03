@@ -342,7 +342,7 @@ export const RightSide: Story = {
                         <span>{item}</span>
                       </SidebarMenuButton>
                     </SidebarMenuItem>
-                  )
+                  ),
                 )}
               </SidebarMenu>
             </SidebarGroupContent>
