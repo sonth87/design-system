@@ -13,6 +13,7 @@ type AccordionStoryProps = {
   value?: string | string[];
   disabled?: boolean;
   variant?: "default" | "bordered" | "separated" | "ghost";
+  color?: "primary" | "secondary" | "success" | "warning" | "error" | "glass";
   items?: Array<{
     value: string;
     trigger: React.ReactNode;
@@ -83,6 +84,23 @@ const meta: Meta<AccordionStoryProps> = {
       description: i18n.t("stories.accordion.argTypes.variant.description"),
       table: {
         defaultValue: { summary: "default" },
+        category: i18n.t("stories.category.appearance"),
+      },
+    },
+    color: {
+      control: "select",
+      options: [
+        "",
+        "primary",
+        "secondary",
+        "success",
+        "warning",
+        "error",
+        "glass",
+      ],
+      description: i18n.t("stories.accordion.argTypes.color.description"),
+      table: {
+        defaultValue: { summary: "undefined" },
         category: i18n.t("stories.category.appearance"),
       },
     },
@@ -515,6 +533,82 @@ export const FAQ: Story = {
   args: {
     type: "single",
   },
+  parameters: {
+    controls: { disable: true },
+  },
+};
+
+// Colors story
+const ColorsComponent = () => {
+  return (
+    <div className="w-[400px] space-y-6">
+      <div>
+        <h3 className="text-sm font-medium mb-2">Primary</h3>
+        <Accordion
+          type="single"
+          collapsible
+          variant="default"
+          color="primary"
+          items={defaultItems}
+        />
+      </div>
+      <div>
+        <h3 className="text-sm font-medium mb-2">Secondary</h3>
+        <Accordion
+          type="single"
+          collapsible
+          variant="default"
+          color="secondary"
+          items={defaultItems}
+        />
+      </div>
+      <div>
+        <h3 className="text-sm font-medium mb-2">Success</h3>
+        <Accordion
+          type="single"
+          collapsible
+          variant="default"
+          color="success"
+          items={defaultItems}
+        />
+      </div>
+      <div>
+        <h3 className="text-sm font-medium mb-2">Warning</h3>
+        <Accordion
+          type="single"
+          collapsible
+          variant="default"
+          color="warning"
+          items={defaultItems}
+        />
+      </div>
+      <div>
+        <h3 className="text-sm font-medium mb-2">Error</h3>
+        <Accordion
+          type="single"
+          collapsible
+          variant="default"
+          color="error"
+          items={defaultItems}
+        />
+      </div>
+      <div>
+        <h3 className="text-sm font-medium mb-2">Glass</h3>
+        <Accordion
+          type="single"
+          collapsible
+          variant="default"
+          color="glass"
+          items={defaultItems}
+        />
+      </div>
+    </div>
+  );
+};
+
+export const Colors: Story = {
+  render: ColorsComponent,
+  args: {},
   parameters: {
     controls: { disable: true },
   },

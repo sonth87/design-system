@@ -6,6 +6,7 @@ import {
   AccordionContent,
 } from "@dsui/ui/components/accordion";
 import { cn } from "@dsui/ui/lib/utils";
+import { type BasicColor } from "@/types/variables";
 
 export type AccordionItemConfig = {
   value: string;
@@ -20,6 +21,7 @@ export type AccordionItemConfig = {
 type AccordionBaseProps = {
   items?: AccordionItemConfig[];
   variant?: "default" | "bordered" | "separated" | "ghost";
+  color?: BasicColor;
   itemClassName?: string;
   triggerClassName?: string;
   contentClassName?: string;
@@ -47,6 +49,39 @@ type AccordionMultipleProps = AccordionBaseProps & {
 };
 
 export type AccordionProps = AccordionSingleProps | AccordionMultipleProps;
+
+const colorVariants = {
+  primary: {
+    trigger:
+      "data-[state=open]:bg-primary/10 data-[state=open]:text-primary data-[state=open]:rounded-b-none data-[state=open]:border-primary/20",
+    content: "bg-primary/10 rounded-b-md",
+  },
+  secondary: {
+    trigger:
+      "data-[state=open]:bg-secondary/10 data-[state=open]:text-secondary data-[state=open]:rounded-b-none data-[state=open]:border-secondary/20",
+    content: "bg-secondary/10 rounded-b-md",
+  },
+  success: {
+    trigger:
+      "data-[state=open]:bg-success/10 data-[state=open]:text-success data-[state=open]:rounded-b-none data-[state=open]:border-success/20",
+    content: "bg-success/10 rounded-b-md",
+  },
+  warning: {
+    trigger:
+      "data-[state=open]:bg-warning/10 data-[state=open]:text-warning data-[state=open]:rounded-b-none data-[state=open]:border-warning/20",
+    content: "bg-warning/10 rounded-b-md",
+  },
+  error: {
+    trigger:
+      "data-[state=open]:bg-error/10 data-[state=open]:text-error data-[state=open]:rounded-b-none data-[state=open]:border-error/20",
+    content: "bg-error/10 rounded-b-md",
+  },
+  glass: {
+    trigger:
+      "data-[state=open]:bg-glass/10 data-[state=open]:text-glass data-[state=open]:rounded-b-none data-[state=open]:border-glass/20",
+    content: "bg-glass/10 rounded-b-md",
+  },
+};
 
 const variantStyles = {
   default: {
@@ -80,6 +115,7 @@ const Accordion = React.forwardRef<HTMLDivElement, AccordionProps>(
     const {
       items,
       variant = "default",
+      color,
       className,
       itemClassName,
       triggerClassName,
@@ -90,6 +126,8 @@ const Accordion = React.forwardRef<HTMLDivElement, AccordionProps>(
     } = props;
 
     const styles = variantStyles[variant];
+    const triggerColorClass = color ? colorVariants[color].trigger : "";
+    const contentColorClass = color ? colorVariants[color].content : "";
 
     // If children are provided, use them directly (primitive usage)
     if (children && !items) {
@@ -145,8 +183,9 @@ const Accordion = React.forwardRef<HTMLDivElement, AccordionProps>(
               <AccordionTrigger
                 className={cn(
                   styles.trigger,
+                  triggerColorClass,
                   triggerClassName,
-                  item.triggerClassName
+                  item.triggerClassName,
                 )}
               >
                 {item.trigger}
@@ -154,8 +193,9 @@ const Accordion = React.forwardRef<HTMLDivElement, AccordionProps>(
               <AccordionContent
                 className={cn(
                   styles.content,
+                  contentColorClass,
                   contentClassName,
-                  item.contentClassName
+                  item.contentClassName,
                 )}
               >
                 {item.content}
@@ -186,8 +226,9 @@ const Accordion = React.forwardRef<HTMLDivElement, AccordionProps>(
             <AccordionTrigger
               className={cn(
                 styles.trigger,
+                triggerColorClass,
                 triggerClassName,
-                item.triggerClassName
+                item.triggerClassName,
               )}
             >
               {item.trigger}
@@ -195,8 +236,9 @@ const Accordion = React.forwardRef<HTMLDivElement, AccordionProps>(
             <AccordionContent
               className={cn(
                 styles.content,
+                contentColorClass,
                 contentClassName,
-                item.contentClassName
+                item.contentClassName,
               )}
             >
               {item.content}
@@ -205,7 +247,7 @@ const Accordion = React.forwardRef<HTMLDivElement, AccordionProps>(
         ))}
       </SAccordion>
     );
-  }
+  },
 );
 
 Accordion.displayName = "Accordion";

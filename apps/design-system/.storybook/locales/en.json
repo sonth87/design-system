@@ -597,6 +597,7 @@
     "stories.accordion.argTypes.value.description": "Controlled expanded item value(s). String for single type, array for multiple type",
     "stories.accordion.argTypes.disabled.description": "Disable all accordion items",
     "stories.accordion.argTypes.variant.description": "Visual style variant: 'default' (bordered container), 'bordered' (thicker border), 'separated' (individual cards), 'ghost' (minimal styling)",
+    "stories.accordion.argTypes.color.description": "Color theme for active accordion items: 'primary', 'secondary', 'success', 'warning', 'error', 'glass'",
     "stories.accordion.argTypes.items.description": "Array of accordion items when using wrapper mode. Each item has value, trigger, content, and optional disabled, className properties",
     "stories.accordion.argTypes.className.description": "Additional CSS classes for the accordion container",
     "stories.accordion.argTypes.itemClassName.description": "Additional CSS classes applied to each accordion item",

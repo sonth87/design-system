@@ -595,6 +595,7 @@
     "stories.accordion.argTypes.value.description": "Giá trị mục mở rộng được kiểm soát. String cho kiểu single, array cho kiểu multiple",
     "stories.accordion.argTypes.disabled.description": "Vô hiệu hóa tất cả các mục accordion",
     "stories.accordion.argTypes.variant.description": "Kiểu hiển thị: 'default' (container có viền), 'bordered' (viền dày hơn), 'separated' (các card riêng lẻ), 'ghost' (kiểu tối giản)",
+    "stories.accordion.argTypes.color.description": "Màu sắc chủ đề cho các mục accordion đang hoạt động: 'primary', 'secondary', 'success', 'warning', 'error', 'glass'",
     "stories.accordion.argTypes.items.description": "Mảng các mục accordion khi sử dụng chế độ wrapper. Mỗi mục có value, trigger, content, và các thuộc tính tùy chọn disabled, className",
     "stories.accordion.argTypes.className.description": "Các lớp CSS bổ sung cho container accordion",
     "stories.accordion.argTypes.itemClassName.description": "Các lớp CSS bổ sung áp dụng cho mỗi mục accordion",
