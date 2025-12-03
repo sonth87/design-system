@@ -252,6 +252,16 @@
         "default": "./dist/cjs/components/Rate/Rate.cjs"
       }
     },
+    "./resizable": {
+      "import": {
+        "types": "./dist/types/components/Resizable/Resizable.d.ts",
+        "default": "./dist/esm/components/Resizable/Resizable.js"
+      },
+      "require": {
+        "types": "./dist/types/components/Resizable/Resizable.d.ts",
+        "default": "./dist/cjs/components/Resizable/Resizable.cjs"
+      }
+    },
     "./scrollarea": {
       "import": {
         "types": "./dist/types/components/ScrollArea/ScrollArea.d.ts",
@@ -605,6 +615,9 @@
       ],
       "rate": [
         "./dist/types/components/Rate/Rate.d.ts"
+      ],
+      "resizable": [
+        "./dist/types/components/Resizable/Resizable.d.ts"
       ],
       "scrollarea": [
         "./dist/types/components/ScrollArea/ScrollArea.d.ts"

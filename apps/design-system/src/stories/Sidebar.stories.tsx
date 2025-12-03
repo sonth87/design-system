@@ -72,9 +72,9 @@ type Story = StoryObj<SidebarProps>;
 
 // Default sidebar
 export const Default: Story = {
-  render: () => (
+  render: (args) => (
     <SidebarProvider>
-      <Sidebar>
+      <Sidebar {...args}>
         <SidebarHeader>
           <div className="px-2 py-2">
             <h2 className="text-lg font-semibold">My App</h2>

@@ -221,6 +221,7 @@ function Sidebar({
           "relative w-(--sidebar-width) bg-transparent transition-[width] duration-200 ease-linear",
           "group-data-[collapsible=offcanvas]:w-0",
           "group-data-[side=right]:rotate-180",
+          "group-data-[side=right]:hidden",
           variant === "floating" || variant === "inset"
             ? "group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)+(--spacing(4)))]"
             : "group-data-[collapsible=icon]:w-(--sidebar-width-icon)"
@@ -311,6 +312,12 @@ function SidebarInset({ className, ...props }: React.ComponentProps<"main">) {
       className={cn(
         "bg-background relative flex w-full flex-1 flex-col",
         "md:peer-data-[variant=inset]:m-2 md:peer-data-[variant=inset]:ml-0 md:peer-data-[variant=inset]:rounded-xl md:peer-data-[variant=inset]:shadow-sm md:peer-data-[variant=inset]:peer-data-[state=collapsed]:ml-2",
+        "md:peer-data-[variant=sidebar]:peer-data-[side=left]:ml-(--sidebar-width) md:peer-data-[variant=sidebar]:peer-data-[side=right]:mr-(--sidebar-width)",
+        "md:peer-data-[variant=sidebar]:peer-data-[side=left]:peer-data-[state=collapsed]:peer-data-[collapsible=icon]:ml-(--sidebar-width-icon) md:peer-data-[variant=sidebar]:peer-data-[side=right]:peer-data-[state=collapsed]:peer-data-[collapsible=icon]:mr-(--sidebar-width-icon)",
+        "md:peer-data-[variant=sidebar]:peer-data-[state=collapsed]:peer-data-[collapsible=offcanvas]:ml-0 md:peer-data-[variant=sidebar]:peer-data-[state=collapsed]:peer-data-[collapsible=offcanvas]:mr-0",
+        "md:peer-data-[variant=inset]:peer-data-[side=left]:ml-(--sidebar-width) md:peer-data-[variant=inset]:peer-data-[side=right]:mr-(--sidebar-width)",
+        "md:peer-data-[variant=inset]:peer-data-[side=left]:peer-data-[state=collapsed]:peer-data-[collapsible=icon]:ml-(--sidebar-width-icon) md:peer-data-[variant=inset]:peer-data-[side=right]:peer-data-[state=collapsed]:peer-data-[collapsible=icon]:mr-(--sidebar-width-icon)",
+        "md:peer-data-[variant=inset]:peer-data-[state=collapsed]:peer-data-[collapsible=offcanvas]:ml-0 md:peer-data-[variant=inset]:peer-data-[state=collapsed]:peer-data-[collapsible=offcanvas]:mr-0",
         className
       )}
       {...props}
