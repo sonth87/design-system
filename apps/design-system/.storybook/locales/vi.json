@@ -199,6 +199,12 @@
     "stories.3dcard.argTypes.rotateX.description": "Góc xoay trục X tính bằng độ",
     "stories.3dcard.argTypes.rotateY.description": "Góc xoay trục Y tính bằng độ",
     "stories.3dcard.argTypes.rotateZ.description": "Góc xoay trục Z tính bằng độ",
+    "stories.3dcard.argTypes.perspective.description": "Giá trị perspective tính bằng pixel cho hiệu ứng 3D (min: 500, max: 2000)",
+    "stories.3dcard.argTypes.rotationPreset.description": "Preset cho độ nhạy xoay: low, medium, high",
+    "stories.3dcard.argTypes.containerClassName.description": "Các lớp CSS bổ sung cho container",
+    "stories.3dcard.argTypes.className.description": "Các lớp CSS bổ sung",
+    "stories.3dcard.argTypes.children.description": "Nội dung để render bên trong component",
+    "stories.3dcard.argTypes.as.description": "Phần tử HTML hoặc React component để render",
 
     "stories.3dmarquee.argTypes.images.description": "Mảng các URL hình ảnh hiển thị trong marquee",
     "stories.3dmarquee.argTypes.className.description": "Các lớp CSS bổ sung để tạo kiểu",
@@ -569,6 +575,18 @@
     "stories.upload.argTypes.maxSize.description": "Kích thước file tối đa tính bằng byte",
     "stories.upload.argTypes.listType.description": "Kiểu hiển thị danh sách file: text (danh sách đơn giản), picture (thumbnail + thông tin), picture-card (lưới)",
     "stories.upload.argTypes.showUploadList.description": "Hiển thị danh sách file đã tải lên",
-    "stories.upload.argTypes.directory.description": "Cho phép tải lên thư mục (folder)"
+    "stories.upload.argTypes.directory.description": "Cho phép tải lên thư mục (folder)",
+
+    "stories.resizable.argTypes.direction.description": "Hướng của các panel có thể thay đổi kích thước (ngang hoặc dọc)",
+    "stories.resizable.argTypes.panels.description": "Mảng cấu hình cho các panel khi sử dụng chế độ wrapper. Mỗi panel có thể có defaultSize, minSize, maxSize, cài đặt collapsible",
+    "stories.resizable.argTypes.withHandle.description": "Hiển thị tay nắm với icon grip để kéo dễ dàng hơn",
+    "stories.resizable.argTypes.autoSaveId.description": "ID để tự động lưu layout vào localStorage. Layout sẽ được khôi phục khi tải lại trang",
+    "stories.resizable.argTypes.onLayout.description": "Hàm callback được gọi khi kích thước panel thay đổi",
+    "stories.resizable.argTypes.className.description": "Các lớp CSS bổ sung cho container nhóm panel",
+    "stories.resizable.argTypes.panelClassName.description": "Các lớp CSS bổ sung áp dụng cho mỗi panel",
+    "stories.resizable.argTypes.handleClassName.description": "Các lớp CSS bổ sung cho các tay nắm thay đổi kích thước",
+    "stories.resizable.argTypes.keyboardResizeBy.description": "Phần trăm thay đổi kích thước khi sử dụng bàn phím (mặc định: 10)",
+    "stories.resizable.argTypes.handleVariant.description": "Kiểu tay nắm: 'default' hiển thị icon grip, 'line' làm sáng đường viền khi di chuột qua",
+    "stories.resizable.argTypes.handleIcon.description": "Icon tùy chỉnh cho tay nắm (chỉ hoạt động với variant default)"
   }
 }

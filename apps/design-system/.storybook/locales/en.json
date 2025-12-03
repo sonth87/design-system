@@ -198,6 +198,14 @@
     "stories.3dcard.argTypes.rotateX.description": "X-axis rotation in degrees",
     "stories.3dcard.argTypes.rotateY.description": "Y-axis rotation in degrees",
     "stories.3dcard.argTypes.rotateZ.description": "Z-axis rotation in degrees",
+    "stories.3dcard.argTypes.perspective.description": "Perspective value in pixels for 3D effect (min: 500, max: 2000)",
+    "stories.3dcard.argTypes.rotationPreset.description": "Preset for rotation sensitivity: low, medium, high",
+    "stories.3dcard.argTypes.containerClassName.description": "Additional CSS classes for the container",
+    "stories.3dcard.argTypes.className.description": "Additional CSS classes",
+    "stories.3dcard.argTypes.children.description": "Content to render inside the component",
+    "stories.3dcard.argTypes.as.description": "HTML element or React component to render as",
+    "stories.3dcard.argTypes.perspective.description": "Perspective value in pixels for 3D effect",
+    "stories.3dcard.argTypes.rotationPreset.description": "Preset for rotation sensitivity: low, medium, high",
 
     "stories.3dmarquee.argTypes.images.description": "Array of image URLs to display in the marquee",
     "stories.3dmarquee.argTypes.className.description": "Additional CSS classes for styling",
@@ -569,6 +577,18 @@
     "stories.upload.argTypes.maxSize.description": "Maximum file size in bytes",
     "stories.upload.argTypes.listType.description": "Type of file list display: text (simple list), picture (thumbnail + info), picture-card (grid)",
     "stories.upload.argTypes.showUploadList.description": "Show the uploaded file list",
-    "stories.upload.argTypes.directory.description": "Enable directory (folder) upload"
+    "stories.upload.argTypes.directory.description": "Enable directory (folder) upload",
+
+    "stories.resizable.argTypes.direction.description": "Direction of the resizable panels (horizontal or vertical)",
+    "stories.resizable.argTypes.panels.description": "Configuration array for panels when using wrapper mode. Each panel can have defaultSize, minSize, maxSize, collapsible settings",
+    "stories.resizable.argTypes.withHandle.description": "Show handle with grip icon for easier dragging",
+    "stories.resizable.argTypes.autoSaveId.description": "ID to auto-save layout to localStorage. Layout will be restored on page reload",
+    "stories.resizable.argTypes.onLayout.description": "Callback function called when panel sizes change",
+    "stories.resizable.argTypes.className.description": "Additional CSS classes for the panel group container",
+    "stories.resizable.argTypes.panelClassName.description": "Additional CSS classes applied to each panel",
+    "stories.resizable.argTypes.handleClassName.description": "Additional CSS classes for resize handles",
+    "stories.resizable.argTypes.keyboardResizeBy.description": "Percentage to resize by when using keyboard (default: 10)",
+    "stories.resizable.argTypes.handleVariant.description": "Handle variant: 'default' shows grip icon, 'line' highlights the border on hover",
+    "stories.resizable.argTypes.handleIcon.description": "Custom icon for the handle (only works with default variant)"
   }
 }

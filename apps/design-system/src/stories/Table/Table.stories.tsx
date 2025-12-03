@@ -171,7 +171,7 @@ function generateFakeProjects(count: number): Project[] {
       priority: priorities[Math.floor(Math.random() * priorities.length)],
       assignee: assignees[Math.floor(Math.random() * assignees.length)],
       startDate: new Date(
-        Date.now() - Math.random() * 365 * 24 * 60 * 60 * 1000
+        Date.now() - Math.random() * 365 * 24 * 60 * 60 * 1000,
       )
         .toISOString()
         .split("T")[0],
@@ -182,14 +182,14 @@ function generateFakeProjects(count: number): Project[] {
       category: categories[Math.floor(Math.random() * categories.length)],
       tags: Array.from(
         { length: Math.floor(Math.random() * 3) + 1 },
-        () => `tag${Math.floor(Math.random() * 10)}`
+        () => `tag${Math.floor(Math.random() * 10)}`,
       ),
       description: `Description for Project ${titles[i % titles.length]} ${Math.floor(i / titles.length) + 1}`,
       createdAt: new Date(
-        Date.now() - Math.random() * 365 * 24 * 60 * 60 * 1000
+        Date.now() - Math.random() * 365 * 24 * 60 * 60 * 1000,
       ).toISOString(),
       updatedAt: new Date(
-        Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000
+        Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000,
       ).toISOString(),
     });
   }
@@ -225,9 +225,20 @@ const columns: ColumnDef<Project>[] = [
         </Badge>
       );
     },
+    filterFn: (row, id, filterValue) => {
+      if (
+        !filterValue ||
+        !Array.isArray(filterValue) ||
+        filterValue.length === 0
+      ) {
+        return true;
+      }
+      const cellValue = row.getValue(id);
+      return filterValue.includes(cellValue);
+    },
     meta: {
       label: "Status",
-      variant: "multiSelect",
+      variant: "select",
       options: [
         { label: "Active", value: "active", icon: CheckCircle },
         { label: "Inactive", value: "inactive", icon: XCircle },
@@ -262,9 +273,20 @@ const columns: ColumnDef<Project>[] = [
         </Badge>
       );
     },
+    filterFn: (row, id, filterValue) => {
+      if (
+        !filterValue ||
+        !Array.isArray(filterValue) ||
+        filterValue.length === 0
+      ) {
+        return true;
+      }
+      const cellValue = row.getValue(id);
+      return filterValue.includes(cellValue);
+    },
     meta: {
       label: "Priority",
-      variant: "select",
+      variant: "multiSelect",
       options: [
         { label: "Low", value: "low" },
         { label: "Medium", value: "medium" },
@@ -280,9 +302,20 @@ const columns: ColumnDef<Project>[] = [
     cell: ({ cell }: CellContext<Project, unknown>) => (
       <div>{cell.getValue<Project["assignee"]>()}</div>
     ),
+    filterFn: (row, id, filterValue) => {
+      if (
+        !filterValue ||
+        !Array.isArray(filterValue) ||
+        filterValue.length === 0
+      ) {
+        return true;
+      }
+      const cellValue = row.getValue(id);
+      return filterValue.includes(cellValue);
+    },
     meta: {
       label: "Assignee",
-      variant: "select",
+      variant: "multiSelect",
       options: [
         { label: "Alice", value: "Alice" },
         { label: "Bob", value: "Bob" },
@@ -300,6 +333,10 @@ const columns: ColumnDef<Project>[] = [
     cell: ({ cell }: CellContext<Project, unknown>) => (
       <div>{cell.getValue<Project["startDate"]>()}</div>
     ),
+    meta: {
+      label: "Start Date",
+      variant: "date",
+    },
   },
   {
     id: "endDate",
@@ -325,6 +362,17 @@ const columns: ColumnDef<Project>[] = [
     cell: ({ cell }: CellContext<Project, unknown>) => (
       <div>{cell.getValue<Project["category"]>()}</div>
     ),
+    filterFn: (row, id, filterValue) => {
+      if (
+        !filterValue ||
+        !Array.isArray(filterValue) ||
+        filterValue.length === 0
+      ) {
+        return true;
+      }
+      const cellValue = row.getValue(id);
+      return filterValue.includes(cellValue);
+    },
     meta: {
       label: "Category",
       variant: "select",
@@ -346,8 +394,8 @@ const columns: ColumnDef<Project>[] = [
       const tags = cell.getValue<Project["tags"]>();
       return (
         <div className="flex gap-1">
-          {tags.map((tag) => (
-            <Badge key={tag} variant="outline" size="sm">
+          {tags.map((tag, idx) => (
+            <Badge key={idx} variant="outline" size="sm">
               {tag}
             </Badge>
           ))}
@@ -437,9 +485,10 @@ export const Default = () => {
       pagination: { pageIndex: 0, pageSize: 10 },
     },
     getRowId: (row) => row.id,
+    // getFilteredRowModel: undefined, // disable client-side filtering
     // enableNuqs: true, // enabled if you are using NuqsAdapter
   });
-
+  console.log(table.getRowModel());
   return (
     <div className="data-table-container">
       <DataTableToolbar
@@ -459,7 +508,7 @@ const WithNuqsStory = () => {
   const [title] = useQueryState("title", parseAsString.withDefault(""));
   const [status] = useQueryState(
     "status",
-    parseAsArrayOf(parseAsString).withDefault([])
+    parseAsArrayOf(parseAsString).withDefault([]),
   );
 
   // Ideally we would filter the data server-side, but for the sake of this example, we'll filter the data client-side

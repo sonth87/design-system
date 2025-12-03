@@ -69,7 +69,7 @@ export function DataTable<TData>({
                       typeof header.column.columnDef.header === "function" ? (
                         flexRender(
                           header.column.columnDef.header,
-                          header.getContext()
+                          header.getContext(),
                         )
                       ) : (
                         <DataTableColumnHeader column={header.column} />
@@ -96,7 +96,7 @@ export function DataTable<TData>({
                     >
                       {flexRender(
                         cell.column.columnDef.cell,
-                        cell.getContext()
+                        cell.getContext(),
                       )}
                     </TableCell>
                   ))}

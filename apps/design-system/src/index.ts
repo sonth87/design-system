@@ -131,6 +131,9 @@ export * from "./components/Upload";
 // Command
 export * from "./components/Command";
 
+// Resizable
+export * from "./components/Resizable";
+
 // ============================================
 // STANDALONE COMPONENTS
 // ============================================

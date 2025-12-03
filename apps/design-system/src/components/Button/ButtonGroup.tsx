@@ -39,7 +39,8 @@ const ButtonGroup = React.forwardRef<HTMLDivElement, ButtonGroupProps>(
       if (React.isValidElement(child) && child.type === Button) {
         const childProps = child.props as ButtonProps;
         return React.cloneElement(child as React.ReactElement<ButtonProps>, {
-          variant: childProps.variant ?? variant,
+          variant:
+            animation === "glass" ? "ghost" : (childProps.variant ?? variant),
           color: childProps.color ?? color,
           size: childProps.size ?? size,
           animation: childProps.animation ?? animation,

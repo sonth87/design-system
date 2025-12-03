@@ -205,7 +205,7 @@ const DropdownMenu = React.forwardRef<HTMLDivElement, DropdownMenuProps>(
                     disabled={item.disabled}
                     className={cn(
                       item.disabled ? "opacity-50 cursor-not-allowed" : "",
-                      item.className
+                      item.className,
                     )}
                   >
                     {item.icon && <span className="mr-2">{item.icon}</span>}

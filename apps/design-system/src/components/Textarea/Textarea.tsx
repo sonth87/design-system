@@ -38,7 +38,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
       placeholder = " ",
       ...props
     },
-    ref
+    ref,
   ) => {
     // Character count state
     const [charCount, setCharCount] = React.useState(() => {
@@ -109,7 +109,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
                   "pt-6 pb-1": isFloatLabel && size !== "lg" && size !== "xl",
                   "text-lg": (size === "xl" || size === "lg") && !isFloatLabel,
                 },
-                clearable && charCount > 0 && "pr-10"
+                clearable && charCount > 0 && "pr-10",
                 // className
               )}
               placeholder={placeholder}
@@ -142,7 +142,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
                 type="button"
                 tabIndex={-1}
                 className={cn(
-                  "absolute top-2 right-2 p-1 rounded hover:bg-accent transition-colors"
+                  "absolute top-2 right-2 p-1 rounded hover:bg-accent transition-colors",
                 )}
                 onClick={handleClear}
                 disabled={props.disabled}
@@ -158,7 +158,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
                 <p
                   className={cn(
                     "text-xs",
-                    state ? helperTextStyles?.[state] : ""
+                    state ? helperTextStyles?.[state] : "",
                   )}
                 >
                   {helperText}
@@ -174,7 +174,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
         </div>
       </div>
     );
-  }
+  },
 );
 
 Textarea.displayName = "Textarea";

@@ -6,7 +6,7 @@ import type {
 import Checkbox from "@/components/Checkbox";
 
 function createSelectColumn<TData>(
-  props?: Partial<ColumnDef<TData>>
+  props?: Partial<ColumnDef<TData>>,
 ): ColumnDef<TData> {
   return {
     id: "select",

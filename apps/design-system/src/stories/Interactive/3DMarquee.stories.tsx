@@ -6,7 +6,7 @@ const meta: Meta<typeof ThreeDMarquee> = {
   title: "Interactive/3DMarquee",
   component: ThreeDMarquee,
   parameters: {
-    layout: "fullscreen",
+    layout: "padded",
   },
   tags: ["autodocs"],
   argTypes: {
@@ -99,7 +99,7 @@ export const Default: Story = {
     rotateZ: -45,
   },
   render: (args) => (
-    <div className="w-[600px] h-[200px] overflow-hidden rounded-2xl mx-auto">
+    <div className="h-[300px] overflow-hidden rounded-2xl mx-auto">
       <ThreeDMarquee {...args} />
     </div>
   ),

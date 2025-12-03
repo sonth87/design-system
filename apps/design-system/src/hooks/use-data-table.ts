@@ -109,11 +109,11 @@ export function useDataTable<TData>(props: UseDataTableProps<TData>) {
       debounceMs,
       clearOnDefault,
       startTransition,
-    ]
+    ],
   );
 
   const [rowSelection, setRowSelection] = React.useState<RowSelectionState>(
-    initialState?.rowSelection ?? {}
+    initialState?.rowSelection ?? {},
   );
   const [columnVisibility, setColumnVisibility] =
     React.useState<VisibilityState>(initialState?.columnVisibility ?? {});
@@ -121,7 +121,7 @@ export function useDataTable<TData>(props: UseDataTableProps<TData>) {
   const [page, setPage] = enableNuqs
     ? useQueryState(
         pageKey,
-        parseAsInteger.withOptions(queryStateOptions).withDefault(1)
+        parseAsInteger.withOptions(queryStateOptions).withDefault(1),
       )
     : React.useState(initialState?.pagination?.pageIndex ?? 0);
 
@@ -130,7 +130,7 @@ export function useDataTable<TData>(props: UseDataTableProps<TData>) {
         perPageKey,
         parseAsInteger
           .withOptions(queryStateOptions)
-          .withDefault(initialState?.pagination?.pageSize ?? 10)
+          .withDefault(initialState?.pagination?.pageSize ?? 10),
       )
     : React.useState(initialState?.pagination?.pageSize ?? 10);
 
@@ -146,22 +146,22 @@ export function useDataTable<TData>(props: UseDataTableProps<TData>) {
       if (typeof updaterOrValue === "function") {
         const newPagination = updaterOrValue(pagination);
         void setPage(
-          enableNuqs ? newPagination.pageIndex + 1 : newPagination.pageIndex
+          enableNuqs ? newPagination.pageIndex + 1 : newPagination.pageIndex,
         );
         void setPerPage(newPagination.pageSize);
       } else {
         void setPage(
-          enableNuqs ? updaterOrValue.pageIndex + 1 : updaterOrValue.pageIndex
+          enableNuqs ? updaterOrValue.pageIndex + 1 : updaterOrValue.pageIndex,
         );
         void setPerPage(updaterOrValue.pageSize);
       }
     },
-    [pagination, setPage, setPerPage, enableNuqs]
+    [pagination, setPage, setPerPage, enableNuqs],
   );
 
   const columnIds = React.useMemo(() => {
     return new Set(
-      columns.map((column) => column.id).filter(Boolean) as string[]
+      columns.map((column) => column.id).filter(Boolean) as string[],
     );
   }, [columns]);
 
@@ -172,7 +172,7 @@ export function useDataTable<TData>(props: UseDataTableProps<TData>) {
         sortKey,
         getSortingStateParser<TData>(columnIds)
           .withOptions(queryStateOptions)
-          .withDefault(initialState?.sorting ?? [])
+          .withDefault(initialState?.sorting ?? []),
       )
     : React.useState(initialState?.sorting ?? []);
 
@@ -185,7 +185,7 @@ export function useDataTable<TData>(props: UseDataTableProps<TData>) {
         setSorting(updaterOrValue as ExtendedColumnSort<TData>[]);
       }
     },
-    [sorting, setSorting]
+    [sorting, setSorting],
   );
 
   const filterableColumns = React.useMemo(() => {
@@ -200,10 +200,10 @@ export function useDataTable<TData>(props: UseDataTableProps<TData>) {
     return filterableColumns.reduce<
       Record<string, SingleParser<string> | SingleParser<string[]>>
     >((acc, column) => {
-      if (column.meta?.options) {
+      if (column.meta?.variant === "multiSelect") {
         acc[column.id ?? ""] = parseAsArrayOf(
           parseAsString,
-          ARRAY_SEPARATOR
+          ARRAY_SEPARATOR,
         ).withOptions(queryStateOptions);
       } else {
         acc[column.id ?? ""] = parseAsString.withOptions(queryStateOptions);
@@ -222,7 +222,7 @@ export function useDataTable<TData>(props: UseDataTableProps<TData>) {
       void setPage(1);
       void setFilterValues(values);
     },
-    debounceMs
+    debounceMs,
   );
 
   const initialColumnFilters: ColumnFiltersState = React.useMemo(() => {
@@ -232,7 +232,7 @@ export function useDataTable<TData>(props: UseDataTableProps<TData>) {
       (filters, [key, value]) => {
         if (value !== null) {
           const column = filterableColumns.find((col) => col.id === key);
-          const isMultiSelect = column?.meta?.options;
+          const isMultiSelect = column?.meta?.variant === "multiSelect";
 
           const processedValue = Array.isArray(value)
             ? value
@@ -240,7 +240,9 @@ export function useDataTable<TData>(props: UseDataTableProps<TData>) {
                 typeof value === "string" &&
                 /[^a-zA-Z0-9]/.test(value)
               ? value.split(/[^a-zA-Z0-9]+/).filter(Boolean)
-              : [value];
+              : isMultiSelect
+                ? [value]
+                : value;
 
           filters.push({
             id: key,
@@ -249,7 +251,7 @@ export function useDataTable<TData>(props: UseDataTableProps<TData>) {
         }
         return filters;
       },
-      []
+      [],
     );
   }, [filterValues, enableAdvancedFilter, filterableColumns]);
 
@@ -269,9 +271,14 @@ export function useDataTable<TData>(props: UseDataTableProps<TData>) {
         const filterUpdates = next.reduce<
           Record<string, string | string[] | null>
         >((acc, filter) => {
-          if (filterableColumns.find((column) => column.id === filter.id)) {
-            acc[filter.id] = filter.value as string | string[];
+          const column = filterableColumns.find((col) => col.id === filter.id);
+          if (column) {
+            const isMultiSelect = column.meta?.variant === "multiSelect";
+            acc[filter.id] = isMultiSelect
+              ? (filter.value as string[])
+              : (filter.value as string);
           }
+          console.log("filterParsers", column, acc);
           return acc;
         }, {});
 
@@ -292,12 +299,10 @@ export function useDataTable<TData>(props: UseDataTableProps<TData>) {
       filterableColumns,
       enableAdvancedFilter,
       enableNuqs,
-    ]
+    ],
   );
 
   const table = useReactTable({
-    ...tableProps,
-    columns,
     initialState,
     pageCount,
     state: {
@@ -337,6 +342,8 @@ export function useDataTable<TData>(props: UseDataTableProps<TData>) {
         joinOperator: joinOperatorKey,
       },
     },
+    ...tableProps,
+    columns,
   });
 
   return { table, shallow, debounceMs, throttleMs };

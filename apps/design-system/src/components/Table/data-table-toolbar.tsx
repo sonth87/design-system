@@ -1,15 +1,12 @@
 "use client";
 
 import type { Column, Table } from "@tanstack/react-table";
-import { X } from "lucide-react";
+import { PlusCircle, X, XCircle } from "lucide-react";
 import * as React from "react";
 
-import { DataTableDateFilter } from "./TableFilter/data-table-date-filter";
-import { DataTableFacetedFilter } from "./TableFilter/data-table-faceted-filter";
-import { DataTableSliderFilter } from "./TableFilter/data-table-slider-filter";
+import { DataTableFilterPopover } from "./TableFilter/data-table-filter-popover";
 import { DataTableViewOptions } from "./data-table-view-options";
 import { Button } from "../Button";
-import { Input } from "../Input";
 import { cn } from "@dsui/ui";
 
 interface DataTableToolbarProps<TData> extends React.ComponentProps<"div"> {
@@ -30,7 +27,7 @@ export function DataTableToolbar<TData>({
 
   const columns = React.useMemo(
     () => table.getAllColumns().filter((column) => column.getCanFilter()),
-    [table]
+    [table],
   );
 
   const onReset = React.useCallback(() => {
@@ -43,7 +40,7 @@ export function DataTableToolbar<TData>({
       aria-orientation="horizontal"
       className={cn(
         "flex w-full items-start justify-between gap-2 p-1",
-        className
+        className,
       )}
       {...props}
     >
@@ -84,78 +81,26 @@ interface DataTableToolbarFilterProps<TData> {
 function DataTableToolbarFilter<TData>({
   column,
 }: DataTableToolbarFilterProps<TData>) {
-  {
-    const columnMeta = column.columnDef.meta;
+  const columnMeta = column.columnDef.meta;
 
-    const onFilterRender = React.useCallback(() => {
-      if (!columnMeta?.variant) return null;
+  if (!columnMeta?.variant) return null;
 
-      switch (columnMeta.variant) {
-        case "text":
-          return (
-            <Input
-              placeholder={columnMeta.placeholder ?? columnMeta.label}
-              value={(column.getFilterValue() as string) ?? ""}
-              onChange={(event) => column.setFilterValue(event.target.value)}
-              className="h-8 w-40 lg:w-56"
-              size="sm"
-            />
-          );
+  const hasFilterValue = column.getFilterValue() != null;
+  const icon = hasFilterValue ? <XCircle /> : <PlusCircle />;
 
-        case "number":
-          return (
-            <div className="relative">
-              <Input
-                type="number"
-                inputMode="numeric"
-                placeholder={columnMeta.placeholder ?? columnMeta.label}
-                value={(column.getFilterValue() as string) ?? ""}
-                onChange={(event) => column.setFilterValue(event.target.value)}
-                className={cn("h-8 w-[120px]", columnMeta.unit && "pr-8")}
-                size="sm"
-              />
-              {columnMeta.unit && (
-                <span className="absolute top-0 right-0 bottom-0 flex items-center rounded-r-md bg-accent px-2 text-muted-foreground text-sm">
-                  {columnMeta.unit}
-                </span>
-              )}
-            </div>
-          );
+  const getTriggerLabel = () => {
+    return columnMeta.label ?? column.id;
+  };
 
-        case "range":
-          return (
-            <DataTableSliderFilter
-              column={column}
-              title={columnMeta.label ?? column.id}
-            />
-          );
-
-        case "date":
-        case "dateRange":
-          return (
-            <DataTableDateFilter
-              column={column}
-              title={columnMeta.label ?? column.id}
-              multiple={columnMeta.variant === "dateRange"}
-            />
-          );
-
-        case "select":
-        case "multiSelect":
-          return (
-            <DataTableFacetedFilter
-              column={column}
-              title={columnMeta.label ?? column.id}
-              options={columnMeta.options ?? []}
-              multiple={columnMeta.variant === "multiSelect"}
-            />
-          );
-
-        default:
-          return null;
+  return (
+    <DataTableFilterPopover
+      column={column}
+      trigger={
+        <Button variant="outline" size="sm" className="border-dashed">
+          {icon}
+          {getTriggerLabel()}
+        </Button>
       }
-    }, [column, columnMeta]);
-
-    return onFilterRender();
-  }
+    />
+  );
 }
