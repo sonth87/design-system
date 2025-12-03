@@ -140,6 +140,8 @@ function SidebarProvider({
           }
           className={cn(
             "group/sidebar-wrapper has-data-[variant=inset]:bg-sidebar flex min-h-svh w-full",
+            "has-data-[variant=tilt]:[perspective:1000px] has-data-[variant=tilt]:bg-black/20",
+            "has-data-[variant=depth]:[perspective:1000px] has-data-[variant=depth]:bg-black/20",
             className
           )}
           {...props}
@@ -160,7 +162,7 @@ function Sidebar({
   ...props
 }: React.ComponentProps<"div"> & {
   side?: "left" | "right";
-  variant?: "sidebar" | "floating" | "inset";
+  variant?: "sidebar" | "floating" | "inset" | "tilt" | "depth";
   collapsible?: "offcanvas" | "icon" | "none";
 }) {
   const { isMobile, state, openMobile, setOpenMobile } = useSidebar();
@@ -312,12 +314,24 @@ function SidebarInset({ className, ...props }: React.ComponentProps<"main">) {
       className={cn(
         "bg-background relative flex w-full flex-1 flex-col",
         "md:peer-data-[variant=inset]:m-2 md:peer-data-[variant=inset]:ml-0 md:peer-data-[variant=inset]:rounded-xl md:peer-data-[variant=inset]:shadow-sm md:peer-data-[variant=inset]:peer-data-[state=collapsed]:ml-2",
-        "md:peer-data-[variant=sidebar]:peer-data-[side=left]:ml-(--sidebar-width) md:peer-data-[variant=sidebar]:peer-data-[side=right]:mr-(--sidebar-width)",
         "md:peer-data-[variant=sidebar]:peer-data-[side=left]:peer-data-[state=collapsed]:peer-data-[collapsible=icon]:ml-(--sidebar-width-icon) md:peer-data-[variant=sidebar]:peer-data-[side=right]:peer-data-[state=collapsed]:peer-data-[collapsible=icon]:mr-(--sidebar-width-icon)",
         "md:peer-data-[variant=sidebar]:peer-data-[state=collapsed]:peer-data-[collapsible=offcanvas]:ml-0 md:peer-data-[variant=sidebar]:peer-data-[state=collapsed]:peer-data-[collapsible=offcanvas]:mr-0",
-        "md:peer-data-[variant=inset]:peer-data-[side=left]:ml-(--sidebar-width) md:peer-data-[variant=inset]:peer-data-[side=right]:mr-(--sidebar-width)",
+        "md:peer-data-[variant=sidebar]:peer-data-[side=right]:mr-(--sidebar-width)",
         "md:peer-data-[variant=inset]:peer-data-[side=left]:peer-data-[state=collapsed]:peer-data-[collapsible=icon]:ml-(--sidebar-width-icon) md:peer-data-[variant=inset]:peer-data-[side=right]:peer-data-[state=collapsed]:peer-data-[collapsible=icon]:mr-(--sidebar-width-icon)",
         "md:peer-data-[variant=inset]:peer-data-[state=collapsed]:peer-data-[collapsible=offcanvas]:ml-0 md:peer-data-[variant=inset]:peer-data-[state=collapsed]:peer-data-[collapsible=offcanvas]:mr-0",
+        "md:peer-data-[variant=inset]:peer-data-[side=right]:mr-(--sidebar-width)",
+        "md:peer-data-[variant=tilt]:peer-data-[state=collapsed]:peer-data-[collapsible=offcanvas]:ml-0 md:peer-data-[variant=tilt]:peer-data-[state=collapsed]:peer-data-[collapsible=offcanvas]:mr-0",
+        "md:peer-data-[variant=tilt]:peer-data-[side=right]:mr-(--sidebar-width)",
+        "md:peer-data-[variant=tilt]:transition-transform md:peer-data-[variant=tilt]:duration-200 md:peer-data-[variant=tilt]:ease-linear",
+        "md:peer-data-[variant=tilt]:peer-data-[side=left]:origin-right md:peer-data-[variant=tilt]:peer-data-[side=left]:peer-data-[state=expanded]:[transform:rotate3d(0,1,0,-25deg)]",
+        "md:peer-data-[variant=tilt]:peer-data-[side=right]:origin-left md:peer-data-[variant=tilt]:peer-data-[side=right]:peer-data-[state=expanded]:[transform:rotate3d(0,1,0,25deg)]",
+        "md:peer-data-[variant=tilt]:peer-data-[state=expanded]:blur-[2px]",
+        "md:peer-data-[variant=depth]:peer-data-[state=collapsed]:peer-data-[collapsible=offcanvas]:ml-0 md:peer-data-[variant=depth]:peer-data-[state=collapsed]:peer-data-[collapsible=offcanvas]:mr-0",
+        "md:peer-data-[variant=depth]:peer-data-[side=right]:mr-(--sidebar-width)",
+        "md:peer-data-[variant=depth]:transition-transform md:peer-data-[variant=depth]:duration-200 md:peer-data-[variant=depth]:ease-linear",
+        "md:peer-data-[variant=depth]:peer-data-[state=expanded]:[transform:scale(0.95)_translateZ(-50px)]",
+        "md:peer-data-[variant=depth]:peer-data-[state=expanded]:backdrop-blur-[1px]",
+        "md:peer-data-[variant=depth]:peer-data-[state=expanded]:blur-[2px]",
         className
       )}
       {...props}

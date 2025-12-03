@@ -48,7 +48,7 @@ const meta: Meta<typeof Sidebar> = {
     },
     variant: {
       control: "select",
-      options: ["sidebar", "floating", "inset"],
+      options: ["sidebar", "floating", "inset", "tilt", "depth"],
       description: i18n.t("stories.sidebar.argTypes.variant.description"),
       table: {
         defaultValue: { summary: "sidebar" },
@@ -342,7 +342,7 @@ export const RightSide: Story = {
                         <span>{item}</span>
                       </SidebarMenuButton>
                     </SidebarMenuItem>
-                  ),
+                  )
                 )}
               </SidebarMenu>
             </SidebarGroupContent>
