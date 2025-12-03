@@ -308,9 +308,26 @@ function SidebarRail({ className, ...props }: React.ComponentProps<"button">) {
 }
 
 function SidebarInset({ className, ...props }: React.ComponentProps<"main">) {
+  const { setOpen, state } = useSidebar();
+  const mainRef = React.useRef<HTMLElement>(null);
+
+  const handleClick = React.useCallback(() => {
+    if (mainRef.current) {
+      const sidebar = mainRef.current.parentElement?.querySelector(
+        '[data-slot="sidebar"]'
+      );
+      const variant = sidebar?.getAttribute("data-variant");
+      if ((variant === "tilt" || variant === "depth") && state === "expanded") {
+        setOpen(false);
+      }
+    }
+  }, [setOpen, state]);
+
   return (
     <main
+      ref={mainRef}
       data-slot="sidebar-inset"
+      onClick={handleClick}
       className={cn(
         "bg-background relative flex w-full flex-1 flex-col",
         "md:peer-data-[variant=inset]:m-2 md:peer-data-[variant=inset]:ml-0 md:peer-data-[variant=inset]:rounded-xl md:peer-data-[variant=inset]:shadow-sm md:peer-data-[variant=inset]:peer-data-[state=collapsed]:ml-2",
