@@ -603,6 +603,17 @@
     "stories.accordion.argTypes.itemClassName.description": "Additional CSS classes applied to each accordion item",
     "stories.accordion.argTypes.triggerClassName.description": "Additional CSS classes applied to each accordion trigger",
     "stories.accordion.argTypes.contentClassName.description": "Additional CSS classes applied to each accordion content",
-    "stories.accordion.argTypes.onValueChange.description": "Callback function called when expanded items change. Receives string for single type, array for multiple type"
+    "stories.accordion.argTypes.onValueChange.description": "Callback function called when expanded items change. Receives string for single type, array for multiple type",
+
+    "stories.masonry.argTypes.columnCount.description": "Number of columns in the masonry grid. If not provided, columns are calculated based on columnWidth",
+    "stories.masonry.argTypes.columnWidth.description": "Target width for each column in pixels. Used when columnCount is not specified",
+    "stories.masonry.argTypes.gap.description": "Gap between items. Can be a number (same for both axes) or object { column: number, row: number }",
+    "stories.masonry.argTypes.maxColumnCount.description": "Maximum number of columns allowed, regardless of container width",
+    "stories.masonry.argTypes.overscan.description": "Number of viewport heights to render above/below the visible area for smoother scrolling",
+    "stories.masonry.argTypes.linear.description": "When true, items are placed sequentially left to right. When false (default), items fill the shortest column first",
+    "stories.masonry.argTypes.virtualize.description": "Enable/disable virtualization. When true (default), only items in viewport are rendered for better performance. Set to false for SEO, printing, or small lists",
+    "stories.masonry.argTypes.items.description": "Array of items to render in data-driven mode. Each item should have an 'id' property for optimal key generation",
+    "stories.masonry.argTypes.renderItem.description": "Render function for each item in data-driven mode. Receives (item, index) and should return a React node",
+    "stories.masonry.argTypes.fallback.description": "React node to display while the masonry grid is initializing (before first measurement)"
   }
 }

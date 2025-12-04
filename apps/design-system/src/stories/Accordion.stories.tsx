@@ -1,8 +1,17 @@
 "use client";
 
 import type { Meta, StoryObj } from "@storybook/react";
-import Accordion from "../components/Accordion/Accordion";
-import { Info, Settings, User, CreditCard, Bell } from "lucide-react";
+import Accordion, { type AccordionItemConfig } from "../components/Accordion";
+import {
+  Info,
+  Settings,
+  User,
+  CreditCard,
+  Bell,
+  PackageIcon,
+  RefreshCwIcon,
+  HeadsetIcon,
+} from "lucide-react";
 import i18n from "../../.storybook/i18n";
 
 // Use a simplified type for stories to avoid discriminated union issues
@@ -538,7 +547,7 @@ const ColorsComponent = (args: AccordionStoryProps) => {
         <Accordion
           type="single"
           collapsible
-          variant="default"
+          variant="ghost"
           color="secondary"
           items={defaultItems}
           defaultValue="item-1"
@@ -549,7 +558,7 @@ const ColorsComponent = (args: AccordionStoryProps) => {
         <Accordion
           type="single"
           collapsible
-          variant="default"
+          variant="separated"
           items={defaultItems}
           defaultValue="item-1"
           triggerClassName="data-[state=open]:bg-purple-500/10 data-[state=open]:text-purple-500 rounded-b-none"
@@ -566,4 +575,77 @@ export const Colors: Story = {
   parameters: {
     controls: { disable: true },
   },
+};
+
+export const Playground = () => {
+  const trigger = (item: any) => {
+    return (
+      <span className="flex items-center gap-4">
+        <item.icon className="size-4 shrink-0" />
+        <span>{item.title}</span>
+      </span>
+    );
+  };
+
+  const content = (item: any) => {
+    return (
+      <div className="space-y-4">
+        <p className="text-muted-foreground">{item.content}</p>
+        <img src={item.media} alt={item.title} className="w-full rounded-md" />
+      </div>
+    );
+  };
+
+  const items: AccordionItemConfig[] = [
+    {
+      value: "item-1",
+      trigger: trigger({
+        icon: PackageIcon,
+        title: "How do I track my order?",
+      }),
+      content: content({
+        content:
+          "You'll receive tracking information via email once your order ships.",
+        media:
+          "https://cdn.shadcnstudio.com/ss-assets/components/accordion/image-1.jpg?width=520&format=auto",
+      }),
+    },
+    {
+      value: "item-2",
+      trigger: trigger({
+        icon: RefreshCwIcon,
+        title: "What is your return policy?",
+      }),
+      content: content({
+        content: "We offer a 30-day return policy for most items.",
+        media:
+          "https://cdn.shadcnstudio.com/ss-assets/components/accordion/image-2.jpg?width=520&format=auto",
+        title: "What is your return policy?",
+      }),
+    },
+    {
+      value: "item-3",
+      trigger: trigger({
+        icon: HeadsetIcon,
+        title: "How can I contact customer support?",
+      }),
+      content: content({
+        content:
+          "You can reach us via live chat, email at support@example.com, or by phone at 1-800-123-4567.",
+        media:
+          "https://cdn.shadcnstudio.com/ss-assets/components/accordion/image-3.jpg?width=520&format=auto",
+        title: "How can I contact customer support?",
+      }),
+    },
+  ];
+
+  return (
+    <Accordion
+      type="single"
+      collapsible
+      className="w-full"
+      defaultValue="item-1"
+      items={items}
+    />
+  );
 };

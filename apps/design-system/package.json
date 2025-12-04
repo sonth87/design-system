@@ -212,6 +212,16 @@
         "default": "./dist/cjs/components/Marquee/Marquee.cjs"
       }
     },
+    "./masonry": {
+      "import": {
+        "types": "./dist/types/components/Masonry/Masonry.d.ts",
+        "default": "./dist/esm/components/Masonry/Masonry.js"
+      },
+      "require": {
+        "types": "./dist/types/components/Masonry/Masonry.d.ts",
+        "default": "./dist/cjs/components/Masonry/Masonry.cjs"
+      }
+    },
     "./pagination": {
       "import": {
         "types": "./dist/types/components/Pagination/Pagination.d.ts",
@@ -613,6 +623,9 @@
       ],
       "marquee": [
         "./dist/types/components/Marquee/Marquee.d.ts"
+      ],
+      "masonry": [
+        "./dist/types/components/Masonry/Masonry.d.ts"
       ],
       "pagination": [
         "./dist/types/components/Pagination/Pagination.d.ts"

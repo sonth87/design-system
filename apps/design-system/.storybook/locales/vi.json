@@ -601,6 +601,17 @@
     "stories.accordion.argTypes.itemClassName.description": "Các lớp CSS bổ sung áp dụng cho mỗi mục accordion",
     "stories.accordion.argTypes.triggerClassName.description": "Các lớp CSS bổ sung áp dụng cho mỗi trigger accordion",
     "stories.accordion.argTypes.contentClassName.description": "Các lớp CSS bổ sung áp dụng cho mỗi nội dung accordion",
-    "stories.accordion.argTypes.onValueChange.description": "Hàm callback được gọi khi các mục mở rộng thay đổi. Nhận string cho kiểu single, array cho kiểu multiple"
+    "stories.accordion.argTypes.onValueChange.description": "Hàm callback được gọi khi các mục mở rộng thay đổi. Nhận string cho kiểu single, array cho kiểu multiple",
+
+    "stories.masonry.argTypes.columnCount.description": "Số cột trong lưới masonry. Nếu không cung cấp, số cột sẽ được tính dựa trên columnWidth",
+    "stories.masonry.argTypes.columnWidth.description": "Chiều rộng mục tiêu cho mỗi cột tính bằng pixel. Được sử dụng khi columnCount không được chỉ định",
+    "stories.masonry.argTypes.gap.description": "Khoảng cách giữa các mục. Có thể là số (giống nhau cho cả hai trục) hoặc object { column: number, row: number }",
+    "stories.masonry.argTypes.maxColumnCount.description": "Số cột tối đa được phép, bất kể chiều rộng container",
+    "stories.masonry.argTypes.overscan.description": "Số chiều cao viewport để render phía trên/dưới vùng hiển thị để cuộn mượt hơn",
+    "stories.masonry.argTypes.linear.description": "Khi true, các mục được đặt tuần tự từ trái sang phải. Khi false (mặc định), các mục lấp đầy cột ngắn nhất trước",
+    "stories.masonry.argTypes.virtualize.description": "Bật/tắt ảo hóa. Khi true (mặc định), chỉ các mục trong viewport được render để tăng hiệu suất. Đặt false cho SEO, in ấn, hoặc danh sách nhỏ",
+    "stories.masonry.argTypes.items.description": "Mảng các mục để render trong chế độ data-driven. Mỗi mục nên có thuộc tính 'id' để tạo key tối ưu",
+    "stories.masonry.argTypes.renderItem.description": "Hàm render cho mỗi mục trong chế độ data-driven. Nhận (item, index) và trả về một React node",
+    "stories.masonry.argTypes.fallback.description": "React node hiển thị trong khi lưới masonry đang khởi tạo (trước lần đo đầu tiên)"
   }
 }
