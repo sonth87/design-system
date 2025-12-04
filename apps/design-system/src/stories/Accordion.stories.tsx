@@ -206,7 +206,7 @@ export const Default: Story = {
 };
 
 // Variants story
-const VariantsComponent = () => {
+const VariantsComponent = (args: AccordionStoryProps) => {
   return (
     <div className="w-[400px] space-y-6">
       <div>
@@ -260,7 +260,7 @@ export const Variants: Story = {
 };
 
 // Multiple selection story
-const MultipleComponent = () => {
+const MultipleComponent = (args: AccordionStoryProps) => {
   return (
     <div className="w-[400px]">
       <Accordion
@@ -283,7 +283,7 @@ export const Multiple: Story = {
 };
 
 // Primitive usage story
-const PrimitiveComponent = () => {
+export const Primitive = () => {
   return (
     <div className="w-[400px]">
       <Accordion type="single" collapsible>
@@ -346,18 +346,8 @@ const PrimitiveComponent = () => {
   );
 };
 
-export const Primitive: Story = {
-  render: PrimitiveComponent,
-  args: {
-    type: "single",
-  },
-  parameters: {
-    controls: { disable: true },
-  },
-};
-
 // Custom content story
-const CustomContentComponent = () => {
+export const CustomContent = () => {
   const customItems = [
     {
       value: "settings",
@@ -414,18 +404,8 @@ const CustomContentComponent = () => {
   );
 };
 
-export const CustomContent: Story = {
-  render: CustomContentComponent,
-  args: {
-    type: "single",
-  },
-  parameters: {
-    controls: { disable: true },
-  },
-};
-
 // Disabled items story
-const DisabledItemsComponent = () => {
+const DisabledItemsComponent = (args: AccordionStoryProps) => {
   const itemsWithDisabled = [
     {
       value: "item-1",
@@ -463,7 +443,7 @@ export const DisabledItems: Story = {
 };
 
 // Default open story
-const DefaultOpenComponent = () => {
+const DefaultOpenComponent = (args: AccordionStoryProps) => {
   return (
     <div className="w-[400px]">
       <Accordion
@@ -487,7 +467,7 @@ export const DefaultOpen: Story = {
 };
 
 // FAQ example
-const FAQComponent = () => {
+const FAQComponent = (args: AccordionStoryProps) => {
   const faqItems = [
     {
       value: "faq-1",
@@ -539,7 +519,7 @@ export const FAQ: Story = {
 };
 
 // Colors story
-const ColorsComponent = () => {
+const ColorsComponent = (args: AccordionStoryProps) => {
   return (
     <div className="w-[400px] space-y-6">
       <div>
@@ -550,6 +530,7 @@ const ColorsComponent = () => {
           variant="default"
           color="primary"
           items={defaultItems}
+          defaultValue="item-1"
         />
       </div>
       <div>
@@ -560,46 +541,19 @@ const ColorsComponent = () => {
           variant="default"
           color="secondary"
           items={defaultItems}
+          defaultValue="item-1"
         />
       </div>
       <div>
-        <h3 className="text-sm font-medium mb-2">Success</h3>
+        <h3 className="text-sm font-medium mb-2">Custom color</h3>
         <Accordion
           type="single"
           collapsible
           variant="default"
-          color="success"
           items={defaultItems}
-        />
-      </div>
-      <div>
-        <h3 className="text-sm font-medium mb-2">Warning</h3>
-        <Accordion
-          type="single"
-          collapsible
-          variant="default"
-          color="warning"
-          items={defaultItems}
-        />
-      </div>
-      <div>
-        <h3 className="text-sm font-medium mb-2">Error</h3>
-        <Accordion
-          type="single"
-          collapsible
-          variant="default"
-          color="error"
-          items={defaultItems}
-        />
-      </div>
-      <div>
-        <h3 className="text-sm font-medium mb-2">Glass</h3>
-        <Accordion
-          type="single"
-          collapsible
-          variant="default"
-          color="glass"
-          items={defaultItems}
+          defaultValue="item-1"
+          triggerClassName="data-[state=open]:bg-purple-500/10 data-[state=open]:text-purple-500 rounded-b-none"
+          contentClassName="bg-purple-500/10 rounded-b-md"
         />
       </div>
     </div>

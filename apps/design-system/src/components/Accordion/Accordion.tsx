@@ -11,7 +11,7 @@ import { type BasicColor } from "@/types/variables";
 export type AccordionItemConfig = {
   value: string;
   trigger: React.ReactNode;
-  content: React.ReactNode;
+  content?: React.ReactNode;
   disabled?: boolean;
   className?: string;
   triggerClassName?: string;
@@ -241,7 +241,7 @@ const Accordion = React.forwardRef<HTMLDivElement, AccordionProps>(
                 item.contentClassName,
               )}
             >
-              {item.content}
+              {item?.content}
             </AccordionContent>
           </AccordionItem>
         ))}
