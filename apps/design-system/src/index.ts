@@ -119,6 +119,9 @@ export * from "./components/Table";
 // DropdownMenu
 export * from "./components/DropdownMenu";
 
+// ContextMenu
+export * from "./components/ContextMenu";
+
 // Rating
 export * from "./components/Rate";
 

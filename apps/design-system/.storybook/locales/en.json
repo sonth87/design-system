@@ -614,6 +614,16 @@
     "stories.masonry.argTypes.virtualize.description": "Enable/disable virtualization. When true (default), only items in viewport are rendered for better performance. Set to false for SEO, printing, or small lists",
     "stories.masonry.argTypes.items.description": "Array of items to render in data-driven mode. Each item should have an 'id' property for optimal key generation",
     "stories.masonry.argTypes.renderItem.description": "Render function for each item in data-driven mode. Receives (item, index) and should return a React node",
-    "stories.masonry.argTypes.fallback.description": "React node to display while the masonry grid is initializing (before first measurement)"
+    "stories.masonry.argTypes.fallback.description": "React node to display while the masonry grid is initializing (before first measurement)",
+
+    "stories.contextmenu.argTypes.onOpenChange.description": "Callback function called when the open state changes",
+    "stories.contextmenu.argTypes.modal.description": "Whether the context menu should be modal (trap focus and prevent interaction with outside content)",
+    "stories.contextmenu.argTypes.trigger.description": "React element to use as the trigger area for the context menu (right-click area)",
+    "stories.contextmenu.argTypes.children.description": "Children for compound pattern usage. Use ContextMenu.Trigger and ContextMenu.Content as children",
+    "stories.contextmenu.argTypes.content.description": "Content to display inside the context menu",
+    "stories.contextmenu.argTypes.items.description": "Array of menu items for simplified API. Supports item, checkbox, radio, separator, group, and label types",
+    "stories.contextmenu.argTypes.className.description": "Additional CSS classes for the context menu wrapper",
+    "stories.contextmenu.argTypes.contentClassName.description": "Additional CSS classes for the context menu content",
+    "stories.contextmenu.argTypes.triggerClassName.description": "Additional CSS classes for the trigger wrapper"
   }
 }

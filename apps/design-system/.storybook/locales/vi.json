@@ -612,6 +612,16 @@
     "stories.masonry.argTypes.virtualize.description": "Bật/tắt ảo hóa. Khi true (mặc định), chỉ các mục trong viewport được render để tăng hiệu suất. Đặt false cho SEO, in ấn, hoặc danh sách nhỏ",
     "stories.masonry.argTypes.items.description": "Mảng các mục để render trong chế độ data-driven. Mỗi mục nên có thuộc tính 'id' để tạo key tối ưu",
     "stories.masonry.argTypes.renderItem.description": "Hàm render cho mỗi mục trong chế độ data-driven. Nhận (item, index) và trả về một React node",
-    "stories.masonry.argTypes.fallback.description": "React node hiển thị trong khi lưới masonry đang khởi tạo (trước lần đo đầu tiên)"
+    "stories.masonry.argTypes.fallback.description": "React node hiển thị trong khi lưới masonry đang khởi tạo (trước lần đo đầu tiên)",
+
+    "stories.contextmenu.argTypes.onOpenChange.description": "Hàm callback được gọi khi trạng thái mở thay đổi",
+    "stories.contextmenu.argTypes.modal.description": "Context menu có nên là modal hay không (khóa focus và ngăn tương tác với nội dung bên ngoài)",
+    "stories.contextmenu.argTypes.trigger.description": "Phần tử React sử dụng làm vùng trigger cho context menu (vùng nhấp chuột phải)",
+    "stories.contextmenu.argTypes.children.description": "Children cho cách sử dụng compound pattern. Sử dụng ContextMenu.Trigger và ContextMenu.Content làm children",
+    "stories.contextmenu.argTypes.content.description": "Nội dung hiển thị bên trong context menu",
+    "stories.contextmenu.argTypes.items.description": "Mảng các mục menu cho API đơn giản. Hỗ trợ các kiểu item, checkbox, radio, separator, group và label",
+    "stories.contextmenu.argTypes.className.description": "Các lớp CSS bổ sung cho wrapper context menu",
+    "stories.contextmenu.argTypes.contentClassName.description": "Các lớp CSS bổ sung cho nội dung context menu",
+    "stories.contextmenu.argTypes.triggerClassName.description": "Các lớp CSS bổ sung cho wrapper trigger"
   }
 }
