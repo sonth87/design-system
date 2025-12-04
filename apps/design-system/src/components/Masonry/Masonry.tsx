@@ -58,7 +58,7 @@ function addInterval(treeNode: TreeNode, high: number, index: number): boolean {
 
 function removeInterval(
   treeNode: TreeNode,
-  index: number,
+  index: number
 ): NodeOperation | undefined {
   let node: ListNode | null = treeNode.list;
   if (node.index === index) {
@@ -289,7 +289,7 @@ interface IntervalTree {
   search(
     low: number,
     high: number,
-    onCallback: (index: number, low: number) => void,
+    onCallback: (index: number, low: number) => void
   ): void;
   size: number;
 }
@@ -433,7 +433,7 @@ interface Cache<K = CacheKey, V = unknown> {
 
 function onDeepMemo<T extends unknown[], U>(
   constructors: CacheConstructor[],
-  fn: (...args: T) => U,
+  fn: (...args: T) => U
 ): (...args: T) => U {
   if (!constructors.length || !constructors[0]) {
     throw new Error("At least one constructor is required");
@@ -495,7 +495,7 @@ function onDeepMemo<T extends unknown[], U>(
         if (!base) {
           if (!constructors[1]) {
             throw new Error(
-              "Second constructor is required for non-single depth cache",
+              "Second constructor is required for non-single depth cache"
             );
           }
           map = createCache(constructors[1]);
@@ -552,7 +552,7 @@ interface Positioner {
   range: (
     low: number,
     high: number,
-    onItemRender: (index: number, left: number, top: number) => void,
+    onItemRender: (index: number, left: number, top: number) => void
   ) => void;
   size: () => number;
   estimateHeight: (itemCount: number, defaultItemHeight: number) => number;
@@ -587,7 +587,7 @@ function usePositioner(
     maxColumnCount,
     linear = false,
   }: UsePositionerOptions,
-  deps: React.DependencyList = [],
+  deps: React.DependencyList = []
 ): Positioner {
   const initPositioner = React.useCallback((): Positioner => {
     function binarySearch(a: number[], y: number): number {
@@ -609,11 +609,11 @@ function usePositioner(
       columnCount ||
       Math.min(
         Math.floor((width + columnGap) / (columnWidth + columnGap)),
-        maxColumnCount || Number.POSITIVE_INFINITY,
+        maxColumnCount || Number.POSITIVE_INFINITY
       ) ||
       1;
     const computedColumnWidth = Math.floor(
-      (width - columnGap * (computedColumnCount - 1)) / computedColumnCount,
+      (width - columnGap * (computedColumnCount - 1)) / computedColumnCount
     );
 
     const intervalTree = createIntervalTree();
@@ -716,7 +716,7 @@ function usePositioner(
               ? currentIndex
               : Math.min(
                   currentIndex,
-                  columns[item.columnIndex] ?? currentIndex,
+                  columns[item.columnIndex] ?? currentIndex
                 );
         }
 
@@ -873,7 +873,7 @@ function useDebouncedWindowSize(options: DebouncedWindowSizeOptions) {
         setSize(value);
       }, delayMs);
     },
-    [delayMs],
+    [delayMs]
   );
 
   React.useEffect(() => {
@@ -909,7 +909,7 @@ type OnRafScheduleReturn<T extends unknown[]> = {
 };
 
 function onRafSchedule<T extends unknown[]>(
-  callback: (...args: T) => void,
+  callback: (...args: T) => void
 ): OnRafScheduleReturn<T> {
   let lastArgs: T = [] as unknown as T;
   let frameId: number | null = null;
@@ -1002,12 +1002,12 @@ function useResizeObserver(positioner: Positioner) {
         };
 
         return observer;
-      },
+      }
     );
   }, []);
 
   const resizeObserver = createResizeObserver(positioner, () =>
-    setLayoutVersion((prev) => prev + 1),
+    setLayoutVersion((prev) => prev + 1)
   );
 
   React.useEffect(() => () => resizeObserver.disconnect(), [resizeObserver]);
@@ -1026,12 +1026,12 @@ function useScroller({
     typeof globalThis.window === "undefined"
       ? 0
       : (globalThis.window.scrollY ?? document.documentElement.scrollTop ?? 0),
-    { fps, leading: true },
+    { fps, leading: true }
   );
 
   const onScroll = React.useCallback(() => {
     setScrollY(
-      globalThis.window.scrollY ?? document.documentElement.scrollTop ?? 0,
+      globalThis.window.scrollY ?? document.documentElement.scrollTop ?? 0
     );
   }, [setScrollY]);
 
@@ -1068,7 +1068,7 @@ function useScroller({
         if (didUnsubscribe) return;
         setIsScrolling(false);
       },
-      40 + 1000 / fps,
+      40 + 1000 / fps
     );
     hasMountedRef.current = 1;
     return () => {
@@ -1085,7 +1085,7 @@ function useThrottle<State>(
   options: {
     fps?: number;
     leading?: boolean;
-  } = {},
+  } = {}
 ): [State, React.Dispatch<React.SetStateAction<State>>] {
   const { fps = 30, leading = false } = options;
   const [state, setState] = React.useState(initialState);
@@ -1095,7 +1095,7 @@ function useThrottle<State>(
   const ms = 1000 / fps;
   const prevCountRef = React.useRef(0);
   const trailingTimeout = React.useRef<ReturnType<typeof setTimeout> | null>(
-    null,
+    null
   );
 
   const clearTrailing = React.useCallback(() => {
@@ -1140,7 +1140,7 @@ function useThrottle<State>(
         prevCountRef.current = 0;
       }, ms);
     },
-    [leading, ms, clearTrailing],
+    [leading, ms, clearTrailing]
   );
 
   return [state, throttledSetState];
@@ -1173,6 +1173,9 @@ interface MasonryContextValue {
   isScrolling?: boolean;
   fallback?: React.ReactNode;
   virtualize: boolean;
+  lazyLoad: boolean;
+  loadedIndices: Set<number>;
+  updateLoadedIndices: (indices: number[]) => void;
 }
 
 const MasonryContext = React.createContext<MasonryContextValue | null>(null);
@@ -1206,6 +1209,12 @@ interface MasonryRootProps extends DivProps {
    * Set to false to render all items (useful for SEO, printing, or small lists).
    */
   virtualize?: boolean;
+  /**
+   * Enable lazy loading when virtualization is disabled.
+   * When true, items are loaded progressively as user scrolls and remain in DOM.
+   * Ignored when virtualize=true. Default: false
+   */
+  lazyLoad?: boolean;
 }
 
 function MasonryRoot(props: MasonryRootProps) {
@@ -1222,6 +1231,7 @@ function MasonryRoot(props: MasonryRootProps) {
     fallback,
     linear = false,
     virtualize = true,
+    lazyLoad = false,
     asChild,
     children,
     style,
@@ -1287,6 +1297,15 @@ function MasonryRoot(props: MasonryRootProps) {
 
   const itemMap = React.useRef(new WeakMap<ItemElement, number>()).current;
 
+  // Track loaded indices for lazy loading mode
+  const loadedIndicesRef = React.useRef<Set<number>>(new Set());
+  const [loadedIndices, setLoadedIndices] = React.useState<Set<number>>(
+    () => new Set()
+  );
+
+  // Effective lazyLoad: only applies when virtualize is false
+  const effectiveLazyLoad = !virtualize && lazyLoad;
+
   const onItemRegister = React.useCallback(
     (index: number) => (node: ItemElement | null) => {
       if (!node) return;
@@ -1299,8 +1318,22 @@ function MasonryRoot(props: MasonryRootProps) {
         positioner.set(index, node.offsetHeight);
       }
     },
-    [itemMap, positioner, resizeObserver],
+    [itemMap, positioner, resizeObserver]
   );
+
+  // Update loaded indices when in lazy load mode
+  const updateLoadedIndices = React.useCallback((indices: number[]) => {
+    let hasNew = false;
+    indices.forEach((index) => {
+      if (!loadedIndicesRef.current.has(index)) {
+        loadedIndicesRef.current.add(index);
+        hasNew = true;
+      }
+    });
+    if (hasNew) {
+      setLoadedIndices(new Set(loadedIndicesRef.current));
+    }
+  }, []);
 
   const contextValue = React.useMemo<MasonryContextValue>(
     () => ({
@@ -1315,6 +1348,9 @@ function MasonryRoot(props: MasonryRootProps) {
       fallback,
       isScrolling,
       virtualize,
+      lazyLoad: effectiveLazyLoad,
+      loadedIndices,
+      updateLoadedIndices,
     }),
     [
       positioner,
@@ -1327,7 +1363,10 @@ function MasonryRoot(props: MasonryRootProps) {
       fallback,
       isScrolling,
       virtualize,
-    ],
+      effectiveLazyLoad,
+      loadedIndices,
+      updateLoadedIndices,
+    ]
   );
 
   const RootPrimitive = asChild ? Slot : "div";
@@ -1372,7 +1411,7 @@ function MasonryViewport(props: DivProps) {
   const validChildren = React.Children.toArray(children).filter(
     (child): child is React.ReactElement<MasonryItemPropsWithRef> =>
       React.isValidElement(child) &&
-      (child.type === MasonryItem || child.type === Item),
+      (child.type === MasonryItem || child.type === Item)
   );
   const itemCount = validChildren.length;
 
@@ -1397,7 +1436,7 @@ function MasonryViewport(props: DivProps) {
       visibility: "visible",
       width: context.columnWidth,
     }),
-    [context.columnWidth],
+    [context.columnWidth]
   );
 
   // Style with scroll optimizations for virtualized mode
@@ -1410,7 +1449,7 @@ function MasonryViewport(props: DivProps) {
       transform: context.isScrolling ? "translateZ(0)" : undefined,
       willChange: context.isScrolling ? "transform" : undefined,
     }),
-    [context.columnWidth, context.isScrolling],
+    [context.columnWidth, context.isScrolling]
   );
 
   // Use stable style when not virtualized to prevent re-renders
@@ -1426,19 +1465,122 @@ function MasonryViewport(props: DivProps) {
       width: context.columnWidth,
       zIndex: -1000,
     }),
-    [context.columnWidth],
+    [context.columnWidth]
   );
 
-  // Non-virtualized mode: render all items
+  // Track indices to load for lazy load mode
+  const indicesToLoadRef = React.useRef<number[]>([]);
+
+  // Non-virtualized mode
   if (!context.virtualize) {
-    // Ensure all items are measured first
-    if (measuredCount < itemCount && mounted) {
-      for (let index = measuredCount; index < itemCount; index++) {
+    if (context.lazyLoad) {
+      // Lazy load mode: render items in viewport + previously loaded items
+      // First, ensure items in viewport range are measured
+      if (measuredCount < itemCount && mounted) {
+        // Calculate how many items to measure based on viewport
+        const batchSize = Math.min(
+          itemCount - measuredCount,
+          Math.ceil(
+            ((context.scrollTop + overscanPixels - shortestColumnSize) /
+              context.itemHeight) *
+              context.positioner.columnCount
+          ) +
+            context.positioner.columnCount * 2 // Extra buffer for initial load
+        );
+
+        for (
+          let index = measuredCount;
+          index < Math.max(measuredCount + batchSize, measuredCount + 1);
+          index++
+        ) {
+          if (index >= itemCount) break;
+          const child = validChildren[index];
+          if (!child) continue;
+
+          const itemStyle = {
+            ...hiddenItemStyle,
+            ...child.props.style,
+          };
+
+          positionedChildren.push(
+            React.cloneElement(child, {
+              key: child.key ?? index,
+              ref: context.onItemRegister(index),
+              style: itemStyle,
+            })
+          );
+        }
+      }
+
+      // Collect indices of items in current viewport range
+      const newIndicesToLoad: number[] = [];
+
+      // Render items that are in viewport OR have been previously loaded
+      context.positioner.all().forEach((item, index) => {
         const child = validChildren[index];
-        if (!child) continue;
+        if (!child || !item) return;
+
+        const itemBottom = item.top + (item.height ?? context.itemHeight);
+        const isInViewport = itemBottom >= rangeStart && item.top <= rangeEnd;
+        const wasLoaded = context.loadedIndices.has(index);
+
+        if (isInViewport && !wasLoaded) {
+          newIndicesToLoad.push(index);
+        }
+
+        // Render if in viewport or was previously loaded
+        if (isInViewport || wasLoaded) {
+          const itemStyle = {
+            ...visibleItemStyle,
+            top: item.top,
+            left: item.left,
+            ...child.props.style,
+          };
+
+          positionedChildren.push(
+            React.cloneElement(child, {
+              key: child.key ?? index,
+              ref: context.onItemRegister(index),
+              style: itemStyle,
+            })
+          );
+        }
+      });
+
+      // Store indices to load for effect
+      indicesToLoadRef.current = newIndicesToLoad;
+    } else {
+      // Original non-virtualized mode: render all items
+      // Ensure all items are measured first
+      if (measuredCount < itemCount && mounted) {
+        for (let index = measuredCount; index < itemCount; index++) {
+          const child = validChildren[index];
+          if (!child) continue;
+
+          const itemStyle = {
+            ...hiddenItemStyle,
+            ...child.props.style,
+          };
+
+          positionedChildren.push(
+            React.cloneElement(child, {
+              key: child.key ?? index,
+              ref: context.onItemRegister(index),
+              style: itemStyle,
+            })
+          );
+        }
+      }
+
+      // Render all measured items
+      context.positioner.all().forEach((item, index) => {
+        const child = validChildren[index];
+        if (!child || !item) return;
 
         const itemStyle = {
-          ...hiddenItemStyle,
+          ...visibleItemStyle,
+          top: item.top,
+          left: item.left,
           ...child.props.style,
         };
 
@@ -1447,31 +1589,10 @@ function MasonryViewport(props: DivProps) {
             key: child.key ?? index,
             ref: context.onItemRegister(index),
             style: itemStyle,
-          }),
+          })
         );
-      }
+      });
     }
-
-    // Render all measured items
-    context.positioner.all().forEach((item, index) => {
-      const child = validChildren[index];
-      if (!child || !item) return;
-
-      const itemStyle = {
-        ...visibleItemStyle,
-        top: item.top,
-        left: item.left,
-        ...child.props.style,
-      };
-
-      positionedChildren.push(
-        React.cloneElement(child, {
-          key: child.key ?? index,
-          ref: context.onItemRegister(index),
-          style: itemStyle,
-        }),
-      );
-    });
   } else {
     // Virtualized mode: only render items in viewport
     context.positioner.range(rangeStart, rangeEnd, (index, left, top) => {
@@ -1490,7 +1611,7 @@ function MasonryViewport(props: DivProps) {
           key: child.key ?? index,
           ref: context.onItemRegister(index),
           style: itemStyle,
-        }),
+        })
       );
 
       if (stopIndex === undefined) {
@@ -1508,8 +1629,8 @@ function MasonryViewport(props: DivProps) {
         Math.ceil(
           ((context.scrollTop + overscanPixels - shortestColumnSize) /
             context.itemHeight) *
-            context.positioner.columnCount,
-        ),
+            context.positioner.columnCount
+        )
       );
 
       for (
@@ -1530,7 +1651,7 @@ function MasonryViewport(props: DivProps) {
             key: child.key ?? index,
             ref: context.onItemRegister(index),
             style: itemStyle,
-          }),
+          })
         );
       }
     }
@@ -1557,17 +1678,30 @@ function MasonryViewport(props: DivProps) {
     };
   }, [needsLayout]);
 
+  // Update loaded indices for lazy load mode
+  const {
+    lazyLoad,
+    updateLoadedIndices,
+    scrollTop: contextScrollTop,
+  } = context;
+  React.useEffect(() => {
+    if (lazyLoad && indicesToLoadRef.current.length > 0) {
+      updateLoadedIndices(indicesToLoadRef.current);
+      indicesToLoadRef.current = [];
+    }
+  }, [lazyLoad, updateLoadedIndices, contextScrollTop]);
+
   const estimatedHeight = React.useMemo(() => {
     const measuredHeight = context.positioner.estimateHeight(
       measuredCount,
-      context.itemHeight,
+      context.itemHeight
     );
     if (measuredCount === itemCount) {
       return measuredHeight;
     }
     const remainingItems = itemCount - measuredCount;
     const estimatedRemainingHeight = Math.ceil(
-      (remainingItems / context.positioner.columnCount) * context.itemHeight,
+      (remainingItems / context.positioner.columnCount) * context.itemHeight
     );
     return measuredHeight + estimatedRemainingHeight;
   }, [context.positioner, context.itemHeight, measuredCount, itemCount]);
@@ -1582,7 +1716,7 @@ function MasonryViewport(props: DivProps) {
       maxHeight: Math.ceil(estimatedHeight),
       ...style,
     }),
-    [estimatedHeight, style],
+    [estimatedHeight, style]
   );
 
   // Container style with scroll optimizations for virtualized mode
@@ -1597,7 +1731,7 @@ function MasonryViewport(props: DivProps) {
       pointerEvents: context.isScrolling ? ("none" as const) : undefined,
       ...style,
     }),
-    [context.isScrolling, estimatedHeight, style],
+    [context.isScrolling, estimatedHeight, style]
   );
 
   const containerStyle = context.virtualize

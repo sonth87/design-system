@@ -10,39 +10,37 @@ const meta: Meta<typeof Masonry> = {
     docs: {
       description: {
         component: `
-A high-performance masonry grid component with **virtualization** support.
+A high-performance masonry grid component with **virtualization** and **lazy loading** support.
 
 ## Key Features
 
 - **Virtualization**: Only renders items in viewport (configurable via \`virtualize\` prop)
+- **Lazy Loading**: Progressive loading with items staying in DOM (via \`lazyLoad\` prop)
 - **ResizeObserver**: Auto-adjusts layout when item sizes change (e.g., after image load)
 - **Scroll Throttling**: Optimized scroll handling at 12 FPS for smooth performance
 - **Interval Tree**: O(log n) lookup for visible items using Red-Black Tree
 
+## Rendering Modes
+
+| Mode | \`virtualize\` | \`lazyLoad\` | DOM Behavior | Use Case |
+|------|-------------|-----------|--------------|----------|
+| **Virtualization** | \`true\` | ignored | Items removed when out of viewport | Large lists (1000+ items) |
+| **Lazy Load** | \`false\` | \`true\` | Items stay in DOM after loading | SEO + Ctrl+F + Medium lists |
+| **Full Render** | \`false\` | \`false\` | All items rendered immediately | Small lists, printing |
+
 ## Usage Patterns
 
-### 1. Data-driven mode (recommended)
+### 1. Default (Virtualization)
 \`\`\`tsx
-<Masonry
-  items={items}
-  renderItem={(item) => <ItemCard item={item} />}
-  columnCount={3}
-  gap={12}
-/>
+<Masonry items={items} renderItem={(item) => <ItemCard item={item} />} />
 \`\`\`
 
-### 2. Declarative mode
+### 2. Lazy Load (SEO-friendly, Ctrl+F works)
 \`\`\`tsx
-<Masonry columnCount={3} gap={12}>
-  {items.map((item) => (
-    <Masonry.Item key={item.id}>
-      <ItemCard item={item} />
-    </Masonry.Item>
-  ))}
-</Masonry>
+<Masonry virtualize={false} lazyLoad={true} items={items} renderItem={...} />
 \`\`\`
 
-### 3. Disable virtualization (for SEO/printing)
+### 3. Full Render (for printing/export)
 \`\`\`tsx
 <Masonry virtualize={false} items={items} renderItem={...} />
 \`\`\`
@@ -79,6 +77,11 @@ A high-performance masonry grid component with **virtualization** support.
     virtualize: {
       control: "boolean",
       description: "stories.masonry.argTypes.virtualize.description",
+    },
+    lazyLoad: {
+      control: "boolean",
+      description:
+        "Enable lazy loading when virtualization is disabled. Items are loaded progressively as user scrolls and remain in DOM. Ignored when virtualize=true.",
     },
     items: {
       description: "stories.masonry.argTypes.items.description",
@@ -326,7 +329,7 @@ export const NoVirtualization: Story = {
   render: () => (
     <div className="p-4">
       <div className="mb-4 rounded bg-yellow-100 p-3 text-sm text-yellow-800">
-        <strong>15 items</strong> - All items are rendered in DOM regardless of
+        <strong>50 items</strong> - All items are rendered in DOM regardless of
         scroll position.
       </div>
       <Masonry<ImageItem>
@@ -334,6 +337,43 @@ export const NoVirtualization: Story = {
         gap={12}
         virtualize={false}
         items={generateItems(50)}
+        renderItem={(item) => <ItemCard item={item} />}
+      />
+    </div>
+  ),
+};
+
+/**
+ * **Lazy Load mode** - Progressive loading without virtualization.
+ *
+ * Use `virtualize={false}` + `lazyLoad={true}` when you need:
+ * - Items to stay in DOM after being scrolled (for Ctrl+F, printing)
+ * - Progressive loading instead of loading all at once
+ * - Better initial performance than full render
+ * - SEO-friendly content that accumulates as user scrolls
+ *
+ * **Behavior:**
+ * - Items are loaded as user scrolls into viewport
+ * - Once loaded, items remain in DOM (unlike virtualization)
+ * - DOM grows progressively but doesn't shrink
+ *
+ * ```tsx
+ * <Masonry virtualize={false} lazyLoad={true} items={items} renderItem={...} />
+ * ```
+ */
+export const LazyLoad: Story = {
+  render: () => (
+    <div className="p-4">
+      <div className="mb-4 rounded bg-blue-100 p-3 text-sm text-blue-800">
+        <strong>100 items with Lazy Load</strong> - Items load progressively as
+        you scroll and remain in DOM. Try Ctrl+F to search after scrolling!
+      </div>
+      <Masonry<ImageItem>
+        columnCount={3}
+        gap={12}
+        virtualize={false}
+        lazyLoad={true}
+        items={generateItems(100)}
         renderItem={(item) => <ItemCard item={item} />}
       />
     </div>
