@@ -3,7 +3,7 @@ import { Masonry } from "../components/Masonry";
 import { Skeleton } from "../components/Skeleton";
 
 const meta: Meta<typeof Masonry> = {
-  title: "Components/Masonry",
+  title: "Layout/Masonry",
   component: Masonry,
   parameters: {
     layout: "fullscreen",
