@@ -624,6 +624,23 @@
     "stories.contextmenu.argTypes.items.description": "Array of menu items for simplified API. Supports item, checkbox, radio, separator, group, and label types",
     "stories.contextmenu.argTypes.className.description": "Additional CSS classes for the context menu wrapper",
     "stories.contextmenu.argTypes.contentClassName.description": "Additional CSS classes for the context menu content",
-    "stories.contextmenu.argTypes.triggerClassName.description": "Additional CSS classes for the trigger wrapper"
+    "stories.contextmenu.argTypes.triggerClassName.description": "Additional CSS classes for the trigger wrapper",
+
+    "stories.usecallbackref.title": "useCallbackRef Demo",
+    "stories.usecallbackref.subtitle": "Compare the difference between callback with and without useCallbackRef",
+    "stories.usecallbackref.parentComponent": "Parent Component",
+    "stories.usecallbackref.renders": "Renders:",
+    "stories.usecallbackref.count": "Count:",
+    "stories.usecallbackref.parentDescription": "Every time count changes, parent re-renders and recreates unstableCallback",
+    "stories.usecallbackref.withCallbackRef": "With useCallbackRef",
+    "stories.usecallbackref.clickWithCallbackRef": "Click Me (With useCallbackRef)",
+    "stories.usecallbackref.withDescription": "✅ This component uses useCallbackRef, not re-rendered when parent changes count",
+    "stories.usecallbackref.withoutCallbackRef": "Without useCallbackRef",
+    "stories.usecallbackref.clickWithoutCallbackRef": "Click Me (Without useCallbackRef)",
+    "stories.usecallbackref.withoutDescription": "❌ This component receives regular callback, re-rendered every time parent changes count",
+    "stories.usecallbackref.explanationTitle": "💡 Explanation:",
+    "stories.usecallbackref.explanation1": "useCallbackRef: Creates a stable ref that doesn't change across renders → Child component doesn't re-render",
+    "stories.usecallbackref.explanation2": "Regular callback: Recreated on every parent render → Child component re-renders even with React.memo",
+    "stories.usecallbackref.explanation3": "Click the buttons and observe the render count on each component"
   }
 }

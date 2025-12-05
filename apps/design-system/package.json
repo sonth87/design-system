@@ -122,6 +122,16 @@
         "default": "./dist/cjs/components/Command/Command.cjs"
       }
     },
+    "./contextmenu": {
+      "import": {
+        "types": "./dist/types/components/ContextMenu/ContextMenu.d.ts",
+        "default": "./dist/esm/components/ContextMenu/ContextMenu.js"
+      },
+      "require": {
+        "types": "./dist/types/components/ContextMenu/ContextMenu.d.ts",
+        "default": "./dist/cjs/components/ContextMenu/ContextMenu.cjs"
+      }
+    },
     "./cropper": {
       "import": {
         "types": "./dist/types/components/Cropper/Cropper.d.ts",
@@ -200,6 +210,16 @@
       "require": {
         "types": "./dist/types/components/InputOTP/InputOTP.d.ts",
         "default": "./dist/cjs/components/InputOTP/InputOTP.cjs"
+      }
+    },
+    "./label": {
+      "import": {
+        "types": "./dist/types/components/Label/Label.d.ts",
+        "default": "./dist/esm/components/Label/Label.js"
+      },
+      "require": {
+        "types": "./dist/types/components/Label/Label.d.ts",
+        "default": "./dist/cjs/components/Label/Label.cjs"
       }
     },
     "./marquee": {
@@ -597,6 +617,9 @@
       "command": [
         "./dist/types/components/Command/Command.d.ts"
       ],
+      "contextmenu": [
+        "./dist/types/components/ContextMenu/ContextMenu.d.ts"
+      ],
       "cropper": [
         "./dist/types/components/Cropper/Cropper.d.ts"
       ],
@@ -620,6 +643,9 @@
       ],
       "inputotp": [
         "./dist/types/components/InputOTP/InputOTP.d.ts"
+      ],
+      "label": [
+        "./dist/types/components/Label/Label.d.ts"
       ],
       "marquee": [
         "./dist/types/components/Marquee/Marquee.d.ts"

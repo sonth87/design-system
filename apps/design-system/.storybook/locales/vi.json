@@ -622,6 +622,23 @@
     "stories.contextmenu.argTypes.items.description": "Mảng các mục menu cho API đơn giản. Hỗ trợ các kiểu item, checkbox, radio, separator, group và label",
     "stories.contextmenu.argTypes.className.description": "Các lớp CSS bổ sung cho wrapper context menu",
     "stories.contextmenu.argTypes.contentClassName.description": "Các lớp CSS bổ sung cho nội dung context menu",
-    "stories.contextmenu.argTypes.triggerClassName.description": "Các lớp CSS bổ sung cho wrapper trigger"
+    "stories.contextmenu.argTypes.triggerClassName.description": "Các lớp CSS bổ sung cho wrapper trigger",
+
+    "stories.usecallbackref.title": "useCallbackRef Demo",
+    "stories.usecallbackref.subtitle": "So sánh sự khác biệt giữa callback có và không có useCallbackRef",
+    "stories.usecallbackref.parentComponent": "Parent Component",
+    "stories.usecallbackref.renders": "Renders:",
+    "stories.usecallbackref.count": "Count:",
+    "stories.usecallbackref.parentDescription": "Mỗi khi count thay đổi, parent re-render và tạo lại unstableCallback",
+    "stories.usecallbackref.withCallbackRef": "With useCallbackRef",
+    "stories.usecallbackref.clickWithCallbackRef": "Click Me (With useCallbackRef)",
+    "stories.usecallbackref.withDescription": "✅ Component này sử dụng useCallbackRef, không bị re-render khi parent thay đổi count",
+    "stories.usecallbackref.withoutCallbackRef": "Without useCallbackRef",
+    "stories.usecallbackref.clickWithoutCallbackRef": "Click Me (Without useCallbackRef)",
+    "stories.usecallbackref.withoutDescription": "❌ Component này nhận callback thông thường, bị re-render mỗi khi parent thay đổi count",
+    "stories.usecallbackref.explanationTitle": "💡 Giải thích:",
+    "stories.usecallbackref.explanation1": "useCallbackRef: Tạo một ref ổn định, không đổi qua các lần render → Component con không re-render",
+    "stories.usecallbackref.explanation2": "Callback thông thường: Được tạo lại mỗi lần parent render → Component con bị re-render dù đã dùng React.memo",
+    "stories.usecallbackref.explanation3": "Click vào các button và quan sát số lần render ở mỗi component"
   }
 }

@@ -184,9 +184,12 @@ const meta: Meta<typeof Dialog> = {
 export default meta;
 type Story = StoryObj<DialogProps>;
 
-// Default dialog with trigger button
+/**
+ * Default dialog with trigger button.
+ *
+ */
 export const Default: Story = {
-  render: function RenderDefault(args) {
+  render: (args) => {
     const [open, setOpen] = useState(false);
     return (
       <Dialog
@@ -212,9 +215,42 @@ export const Default: Story = {
       </Dialog>
     );
   },
+  parameters: {
+    docs: {
+      source: {
+        code: `
+const [open, setOpen] = useState(false);
+return (
+  <Dialog
+    {...args}
+    open={open}
+    onOpenChange={setOpen}
+    trigger={<Button>Open Dialog</Button>}
+    title="Dialog Title"
+    description="This is a default dialog with a simple message."
+    footer={
+      <div className="flex gap-2 justify-end w-full">
+        <Button variant="outline" onClick={() => setOpen(false)}>
+          Cancel
+        </Button>
+        <Button onClick={() => setOpen(false)}>Save Changes</Button>
+      </div>
+    }
+  >
+    <p className="text-sm text-muted-foreground">
+      You can place any content here. The dialog will automatically handle
+      the layout and styling.
+    </p>
+  </Dialog>
+);
+        `,
+      },
+    },
+  },
 };
+
 export const Standalone: Story = {
-  render: function RenderDefault(args) {
+  render: (args) => {
     const [open, setOpen] = useState(false);
     return (
       <div>
