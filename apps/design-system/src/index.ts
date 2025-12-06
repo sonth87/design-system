@@ -140,6 +140,12 @@ export * from "./components/Resizable";
 // Accordion
 export * from "./components/Accordion";
 
+// Image Viewer
+export * from "./components/ImageViewer";
+
+// Carousel
+export * from "./components/Carousel";
+
 // ============================================
 // STANDALONE COMPONENTS
 // ============================================
