@@ -3,7 +3,7 @@ import { useState } from "react";
 import { ImageViewer } from "../components/ImageViewer";
 
 const meta = {
-  title: "Components/ImageViewer",
+  title: "Media/ImageViewer",
   component: ImageViewer,
   parameters: {
     layout: "centered",

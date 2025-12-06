@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Carousel, CarouselSlide } from "../components/Carousel";
 
 const meta: Meta<typeof Carousel> = {
-  title: "Components/Carousel",
+  title: "Media/Carousel",
   component: Carousel,
   parameters: {
     layout: "centered",
