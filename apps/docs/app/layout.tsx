@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 // import "@dsui/design-system/theme.css";
-import "@dsui/design-system/index.css";
+// import "@dsui/design-system/index.css";
 // import "@dsui/design-system/animation.css";
 import "./globals.css";
 

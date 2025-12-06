@@ -1,9 +1,8 @@
 "use client";
 
 import { AdminLayout } from "@/components/admin-layout";
-import Button from "@dsui/design-system/button";
-import Input from "@dsui/design-system/input";
 import {
+  Button,
   Badge,
   Avatar,
   Label,
@@ -13,6 +12,7 @@ import {
   Slider,
   Calendar,
   Skeleton,
+  Input,
   InputOTP,
   Radio,
   Select,
@@ -69,20 +69,28 @@ export default function ComponentsPage() {
             <div className="space-y-2">
               <Label>Radio Group</Label>
               <div className="space-y-2">
-                <div className="flex items-center space-x-2">
-                  <Radio name="radio" value="option1" id="r1" defaultChecked />
-                  <Label htmlFor="r1">Option 1</Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Radio name="radio" value="option2" id="r2" />
-                  <Label htmlFor="r2">Option 2</Label>
-                </div>
+                <Radio
+                  color="primary"
+                  options={[
+                    { label: "Option 1", value: "option1" },
+                    {
+                      label: "Option disabled",
+                      value: "option2",
+                      disabled: true,
+                    },
+                    { label: "Option 3", value: "option3" },
+                  ]}
+                />
               </div>
             </div>
 
             <div className="flex items-center space-x-2">
-              <Checkbox id="checkbox" />
-              <Label htmlFor="checkbox">Accept terms</Label>
+              <Checkbox
+                id="checkbox"
+                variant="default"
+                color="primary"
+                label="Accept terms"
+              />
             </div>
 
             <div className="flex items-center space-x-2">
