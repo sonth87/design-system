@@ -5,7 +5,7 @@ import {
 } from "../components/TreeSelect/TreeSelect";
 import { File, Folder, FolderOpen } from "lucide-react";
 import { useState } from "react";
-import i18n from "../../.storybook/i18n";
+import i18n from "../../.storybook/i18n";   
 
 const meta: Meta<typeof TreeView> = {
   title: "Form Components/TreeSelect",
