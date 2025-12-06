@@ -48,7 +48,7 @@ const meta: Meta<typeof Sidebar> = {
     },
     variant: {
       control: "select",
-      options: ["sidebar", "floating", "inset"],
+      options: ["sidebar", "floating", "inset", "tilt", "depth"],
       description: i18n.t("stories.sidebar.argTypes.variant.description"),
       table: {
         defaultValue: { summary: "sidebar" },
@@ -72,9 +72,9 @@ type Story = StoryObj<SidebarProps>;
 
 // Default sidebar
 export const Default: Story = {
-  render: () => (
+  render: (args) => (
     <SidebarProvider>
-      <Sidebar>
+      <Sidebar {...args}>
         <SidebarHeader>
           <div className="px-2 py-2">
             <h2 className="text-lg font-semibold">My App</h2>
@@ -141,7 +141,7 @@ export const Default: Story = {
               <div key={i} className="aspect-video rounded-xl bg-muted/50" />
             ))}
           </div>
-          <div className="min-h-screen flex-1 rounded-xl bg-muted/50 p-4">
+          <div className="flex-1 rounded-xl bg-muted/50 p-4">
             <p className="text-muted-foreground">Main content area</p>
           </div>
         </div>
@@ -393,7 +393,7 @@ export const IconCollapsible: Story = {
           <h1 className="text-lg font-semibold">Icon Collapsible</h1>
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4">
-          <div className="min-h-screen flex-1 rounded-xl bg-muted/50 p-4">
+          <div className="flex-1 rounded-xl bg-muted/50 p-4">
             <p className="text-muted-foreground">
               Click the trigger to collapse to icon-only mode
             </p>
@@ -483,7 +483,7 @@ export const MultipleGroups: Story = {
           <h1 className="text-lg font-semibold">Multiple Groups</h1>
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4">
-          <div className="min-h-screen flex-1 rounded-xl bg-muted/50 p-4">
+          <div className="flex-1 rounded-xl bg-muted/50 p-4">
             <p className="text-muted-foreground">
               Sidebar with multiple grouped sections
             </p>
@@ -501,17 +501,6 @@ export const Controlled: Story = {
 
     return (
       <div className="space-y-4">
-        <div className="flex gap-2 p-4 border-b">
-          <Button onClick={() => setOpen(true)} variant="outline" size="sm">
-            Open Sidebar
-          </Button>
-          <Button onClick={() => setOpen(false)} variant="outline" size="sm">
-            Close Sidebar
-          </Button>
-          <span className="ml-4 text-sm text-muted-foreground">
-            State: {open ? "Open" : "Closed"}
-          </span>
-        </div>
         <SidebarProvider open={open} onOpenChange={setOpen}>
           <Sidebar>
             <SidebarHeader>
@@ -545,7 +534,26 @@ export const Controlled: Story = {
               <h1 className="text-lg font-semibold">Controlled Sidebar</h1>
             </header>
             <div className="flex flex-1 flex-col gap-4 p-4">
-              <div className="min-h-[50vh] flex-1 rounded-xl bg-muted/50 p-4">
+              <div className="flex gap-2 p-4 border-b">
+                <Button
+                  onClick={() => setOpen(true)}
+                  variant="outline"
+                  size="sm"
+                >
+                  Open Sidebar
+                </Button>
+                <Button
+                  onClick={() => setOpen(false)}
+                  variant="outline"
+                  size="sm"
+                >
+                  Close Sidebar
+                </Button>
+                <span className="ml-4 text-sm text-muted-foreground">
+                  State: {open ? "Open" : "Closed"}
+                </span>
+              </div>
+              <div className="flex-1 rounded-xl bg-muted/50 p-4">
                 <p className="text-muted-foreground">
                   Use the buttons above to control the sidebar state
                 </p>

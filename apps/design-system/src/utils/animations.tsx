@@ -48,6 +48,10 @@ export const animationClass = (
       return {
         className: cn("animate-shake", className),
       };
+    case "gradient-outline":
+      return {
+        className: cn("gradient-outline", className),
+      };
     default:
       return { className };
   }
@@ -170,6 +174,10 @@ export const animationEffect = <T, S = undefined>({
           "before:animate-slide-loading",
           className,
         ),
+      };
+    case "gradient-outline":
+      return {
+        className: cn("gradient-outline", className),
       };
     case "draw":
       return {

@@ -5,10 +5,10 @@ import type { Column } from "@tanstack/react-table";
 import { CalendarIcon, XCircle } from "lucide-react";
 import * as React from "react";
 import type { DateRange } from "react-day-picker";
-import Separator from "../Separator";
-import { Popover } from "../Popover";
-import Button from "../Button";
-import { Calendar } from "../Calendar";
+import Separator from "../../Separator";
+import { Popover } from "../../Popover";
+import Button from "../../Button";
+import { Calendar } from "../../Calendar";
 
 type DateSelection = Date[] | DateRange;
 
@@ -167,54 +167,51 @@ export function DataTableDateFilter<TData>({
     );
   }, [selectedDates, multiple, formatDateRange, title]);
 
+  const PopContent = (
+    <div className="w-auto p-0">
+      {multiple ? (
+        <Calendar
+          autoFocus
+          captionLayout="dropdown"
+          mode="range"
+          selected={
+            getIsDateRange(selectedDates)
+              ? selectedDates
+              : { from: undefined, to: undefined }
+          }
+          onSelect={onSelect}
+        />
+      ) : (
+        <Calendar
+          captionLayout="dropdown"
+          mode="single"
+          selected={
+            !getIsDateRange(selectedDates) ? selectedDates[0] : undefined
+          }
+          onSelect={onSelect}
+        />
+      )}
+    </div>
+  );
+
   return (
-    <Popover>
-      <Popover.Trigger asChild>
-        <Button
-          variant="outline"
-          size="sm"
-          className="border-dashed font-normal"
-        >
-          {hasValue ? (
-            <div
-              role="button"
-              aria-label={`Clear ${title} filter`}
-              tabIndex={0}
-              onClick={onReset}
-              className="rounded-sm opacity-70 transition-opacity hover:opacity-100 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
-            >
-              <XCircle />
-            </div>
-          ) : (
-            <CalendarIcon />
-          )}
-          {label}
-        </Button>
-      </Popover.Trigger>
-      <Popover.Content className="w-auto p-0" align="start">
-        {multiple ? (
-          <Calendar
-            autoFocus
-            captionLayout="dropdown"
-            mode="range"
-            selected={
-              getIsDateRange(selectedDates)
-                ? selectedDates
-                : { from: undefined, to: undefined }
-            }
-            onSelect={onSelect}
-          />
+    <Popover content={PopContent}>
+      <Button variant="outline" size="sm" className="border-dashed font-normal">
+        {hasValue ? (
+          <div
+            role="button"
+            aria-label={`Clear ${title} filter`}
+            tabIndex={0}
+            onClick={onReset}
+            className="rounded-sm opacity-70 transition-opacity hover:opacity-100 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+          >
+            <XCircle />
+          </div>
         ) : (
-          <Calendar
-            captionLayout="dropdown"
-            mode="single"
-            selected={
-              !getIsDateRange(selectedDates) ? selectedDates[0] : undefined
-            }
-            onSelect={onSelect}
-          />
+          <CalendarIcon />
         )}
-      </Popover.Content>
+        {label}
+      </Button>
     </Popover>
   );
 }

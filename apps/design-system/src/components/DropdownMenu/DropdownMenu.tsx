@@ -31,6 +31,7 @@ export type DropdownMenuItem =
       disabled?: boolean;
       variant?: "default" | "destructive";
       onClick?: () => void;
+      className?: string;
     }
   | {
       key: string;
@@ -40,6 +41,7 @@ export type DropdownMenuItem =
       checked?: boolean;
       disabled?: boolean;
       onClick?: () => void;
+      className?: string;
     }
   | {
       key: string;
@@ -50,6 +52,7 @@ export type DropdownMenuItem =
       checked?: boolean;
       disabled?: boolean;
       onClick?: () => void;
+      className?: string;
     }
   | {
       key: string;
@@ -167,6 +170,7 @@ const DropdownMenu = React.forwardRef<HTMLDivElement, DropdownMenuProps>(
                 key={item.key}
                 checked={item.checked}
                 disabled={item.disabled}
+                className={item.className}
                 onCheckedChange={(checked: boolean) => {
                   if (checked && item.onClick) {
                     item.onClick();
@@ -184,6 +188,7 @@ const DropdownMenu = React.forwardRef<HTMLDivElement, DropdownMenuProps>(
                   value={item.key}
                   disabled={item.disabled}
                   onClick={item.onClick}
+                  className={item.className}
                 >
                   {item.icon && <span className="mr-2">{item.icon}</span>}
                   {item.label}
@@ -198,9 +203,10 @@ const DropdownMenu = React.forwardRef<HTMLDivElement, DropdownMenuProps>(
                 <SDropdownMenuSub key={item.key}>
                   <SDropdownMenuSubTrigger
                     disabled={item.disabled}
-                    className={
-                      item.disabled ? "opacity-50 cursor-not-allowed" : ""
-                    }
+                    className={cn(
+                      item.disabled ? "opacity-50 cursor-not-allowed" : "",
+                      item.className,
+                    )}
                   >
                     {item.icon && <span className="mr-2">{item.icon}</span>}
                     {item.label}
@@ -218,6 +224,7 @@ const DropdownMenu = React.forwardRef<HTMLDivElement, DropdownMenuProps>(
                   disabled={item.disabled}
                   variant={item.variant}
                   onClick={item.onClick}
+                  className={item.className}
                 >
                   {item.icon && <span className="mr-2">{item.icon}</span>}
                   {item.label}

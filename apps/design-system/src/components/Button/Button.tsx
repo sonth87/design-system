@@ -26,7 +26,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     const {
       variant = "solid",
       size = "normal",
-      color,
+      color = "muted",
       animation,
       ...rest
     } = props;

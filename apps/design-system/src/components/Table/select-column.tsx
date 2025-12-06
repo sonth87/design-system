@@ -5,7 +5,9 @@ import type {
 } from "@tanstack/react-table";
 import Checkbox from "@/components/Checkbox";
 
-export function createSelectColumn<TData>(): ColumnDef<TData> {
+function createSelectColumn<TData>(
+  props?: Partial<ColumnDef<TData>>,
+): ColumnDef<TData> {
   return {
     id: "select",
     header: ({ table }: HeaderContext<TData, unknown>) => (
@@ -29,11 +31,12 @@ export function createSelectColumn<TData>(): ColumnDef<TData> {
         />
       </div>
     ),
-    size: 50,
+    size: 36,
     enableSorting: false,
     enableHiding: false,
     enableColumnFilter: false,
+    ...props,
   };
 }
 
-export const selectColumn = createSelectColumn();
+export const selectColumn = createSelectColumn;

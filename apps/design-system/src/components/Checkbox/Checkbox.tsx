@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Checkbox as SCheckbox } from "@dsui/ui/components/checkbox";
 import { cn } from "@dsui/ui/index";
 import { Tooltip } from "../Tooltip/Tooltip";
+import { Label } from "../Label";
 import { Info } from "lucide-react";
 import { AnimatePresence } from "motion/react";
 import { ConfettiPiece } from "@/utils/css";
@@ -31,10 +32,12 @@ const Checkbox = React.forwardRef<HTMLButtonElement, CheckboxProps>(
       labelAlignment = "center",
       icon,
       animation,
+      id,
       ...rest
     } = props;
     const [showConfetti, setShowConfetti] = useState(false);
-    const inputId = React.useId();
+    const generatedId = React.useId();
+    const inputId = id || generatedId;
 
     // State
     const helperTextStyles = {
@@ -107,14 +110,14 @@ const Checkbox = React.forwardRef<HTMLButtonElement, CheckboxProps>(
 
           {(labelPosition === "bottom" || labelPosition === "right") &&
             label && (
-              <label htmlFor={inputId} className={labelClass}>
+              <Label htmlFor={inputId} className={labelClass}>
                 {label}
                 {infoTooltip && (
                   <Tooltip content={infoTooltip}>
                     <Info className="size-3.5 min-w-3.5" />
                   </Tooltip>
                 )}
-              </label>
+              </Label>
             )}
         </div>
 

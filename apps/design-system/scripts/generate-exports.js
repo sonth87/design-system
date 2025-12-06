@@ -15,35 +15,47 @@ const __dirname = path.dirname(__filename);
 const packageJsonPath = path.resolve(__dirname, "../package.json");
 const srcPath = path.resolve(__dirname, "../src");
 
-function getComponentDirectories() {
-  const componentsPath = path.join(srcPath, "components");
-  const items = fs.readdirSync(componentsPath, { withFileTypes: true });
+function getModulesFromDir(dirName) {
+  const dirPath = path.join(srcPath, dirName);
+  if (!fs.existsSync(dirPath)) return [];
 
-  const components = [];
+  const items = fs.readdirSync(dirPath, { withFileTypes: true });
+  const modules = [];
 
   items.forEach((item) => {
     if (item.isDirectory()) {
-      // Check if component file exists
-      const componentFile = path.join(
-        componentsPath,
-        item.name,
-        `${item.name}.tsx`
-      );
-      if (fs.existsSync(componentFile)) {
-        components.push(item.name);
+      // Check if index file exists
+      const indexFile = path.join(dirPath, item.name, `index.ts`);
+      const indexTsxFile = path.join(dirPath, item.name, `index.tsx`);
+      if (fs.existsSync(indexFile) || fs.existsSync(indexTsxFile)) {
+        modules.push(item.name);
       }
-    } else if (item.isFile() && item.name.endsWith(".tsx")) {
-      // Standalone component files
-      const fileName = item.name.replace(".tsx", "");
-      components.push(fileName);
+    } else if (item.isFile() && (item.name.endsWith('.ts') || item.name.endsWith('.tsx'))) {
+      // Standalone module files
+      const fileName = item.name.replace(/\.tsx?$/, '');
+      modules.push(fileName);
     }
   });
 
-  return components;
+  return modules;
+}
+
+function getComponentDirectories() {
+  return getModulesFromDir("components");
+}
+
+function getLibModules() {
+  return getModulesFromDir("lib");
+}
+
+function getHooksModules() {
+  return getModulesFromDir("hooks");
 }
 
 function generateExports() {
   const components = getComponentDirectories();
+  const libModules = getLibModules();
+  const hooksModules = getHooksModules();
 
   const exports = {
     // Main entry
@@ -78,6 +90,40 @@ function generateExports() {
     };
   });
 
+  // Add each lib module
+  libModules.forEach((module) => {
+    const moduleLower = module.toLowerCase();
+    const modulePath = `lib/${module}/index`;
+
+    exports[`./${moduleLower}`] = {
+      import: {
+        types: `./dist/types/${modulePath}.d.ts`,
+        default: `./dist/esm/${modulePath}.js`,
+      },
+      require: {
+        types: `./dist/types/${modulePath}.d.ts`,
+        default: `./dist/cjs/${modulePath}.cjs`,
+      },
+    };
+  });
+
+  // Add each hooks module
+  hooksModules.forEach((module) => {
+    const moduleLower = module.toLowerCase();
+    const modulePath = `hooks/${module}`;
+
+    exports[`./${moduleLower}`] = {
+      import: {
+        types: `./dist/types/${modulePath}.d.ts`,
+        default: `./dist/esm/${modulePath}.js`,
+      },
+      require: {
+        types: `./dist/types/${modulePath}.d.ts`,
+        default: `./dist/cjs/${modulePath}.cjs`,
+      },
+    };
+  });
+
   // Add CSS exports
   const cssExports = [
     { name: "theme.css", path: "styles/theme" },
@@ -100,6 +146,8 @@ function generateExports() {
 
 function generateTypesVersions() {
   const components = getComponentDirectories();
+  const libModules = getLibModules();
+  const hooksModules = getHooksModules();
 
   const typesVersions = {
     "*": {
@@ -112,6 +160,20 @@ function generateTypesVersions() {
     const componentPath = `components/${component}/${component}`;
 
     typesVersions["*"][componentLower] = [`./dist/types/${componentPath}.d.ts`];
+  });
+
+  libModules.forEach((module) => {
+    const moduleLower = module.toLowerCase();
+    const modulePath = `lib/${module}/index`;
+
+    typesVersions["*"][moduleLower] = [`./dist/types/${modulePath}.d.ts`];
+  });
+
+  hooksModules.forEach((module) => {
+    const moduleLower = module.toLowerCase();
+    const modulePath = `hooks/${module}`;
+
+    typesVersions["*"][moduleLower] = [`./dist/types/${modulePath}.d.ts`];
   });
 
   return typesVersions;

@@ -78,98 +78,100 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
     };
 
     return (
-      <div
-        className={cn("flex flex-col gap-1.5 relative", {
-          "floating-label": isFloatLabel,
-        })}
-      >
-        {!isFloatLabel && label && (
-          <label
-            htmlFor={textareaId}
-            className="flex gap-2 text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-          >
-            {label}
-            {infoTooltip && (
-              <Tooltip content={infoTooltip}>
-                <Info className="size-3.5 min-w-3.5" />
-              </Tooltip>
-            )}
-          </label>
-        )}
-
-        <div className="relative">
-          <STextarea
-            ref={innerRef}
-            id={textareaId}
-            className={cn(
-              "peer resize-y",
-              {
-                "pt-6 pb-2": isFloatLabel && (size === "lg" || size === "xl"),
-                "pt-6 pb-1": isFloatLabel && size !== "lg" && size !== "xl",
-                "text-lg": (size === "xl" || size === "lg") && !isFloatLabel,
-              },
-              clearable && charCount > 0 && "pr-10",
-              className,
-            )}
-            placeholder={placeholder}
-            maxLength={maxLength}
-            onChange={handleInput}
-            state={state}
-            size={
-              isFloatLabel
-                ? size === "xl" || size === "lg"
-                  ? size
-                  : "xl"
-                : size
-            }
-            {...props}
-          />
-          {isFloatLabel && (
-            <FloatingLabel
+      <div className={className}>
+        <div
+          className={cn("flex flex-col gap-1.5 relative", {
+            "floating-label": isFloatLabel,
+          })}
+        >
+          {!isFloatLabel && label && (
+            <label
               htmlFor={textareaId}
-              size={size}
-              infoTooltip={infoTooltip}
-              className="peer-placeholder-shown:items-start"
+              className="flex gap-2 text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
             >
               {label}
-            </FloatingLabel>
-          )}
-
-          {/* Clear Button */}
-          {clearable && charCount > 0 && (
-            <button
-              type="button"
-              tabIndex={-1}
-              className={cn(
-                "absolute top-2 right-2 p-1 rounded hover:bg-accent transition-colors",
+              {infoTooltip && (
+                <Tooltip content={infoTooltip}>
+                  <Info className="size-3.5 min-w-3.5" />
+                </Tooltip>
               )}
-              onClick={handleClear}
-              disabled={props.disabled}
-            >
-              <X className="size-4" />
-            </button>
+            </label>
           )}
-        </div>
 
-        {(helperText || (showCharCount && typeof maxLength === "number")) && (
-          <div className="flex items-center justify-between text-xs gap-2">
-            {helperText && (
-              <p
-                className={cn(
-                  "text-xs",
-                  state ? helperTextStyles?.[state] : "",
-                )}
+          <div className="relative">
+            <STextarea
+              ref={innerRef}
+              id={textareaId}
+              className={cn(
+                "peer resize-y",
+                {
+                  "pt-6 pb-2": isFloatLabel && (size === "lg" || size === "xl"),
+                  "pt-6 pb-1": isFloatLabel && size !== "lg" && size !== "xl",
+                  "text-lg": (size === "xl" || size === "lg") && !isFloatLabel,
+                },
+                clearable && charCount > 0 && "pr-10",
+                // className
+              )}
+              placeholder={placeholder}
+              maxLength={maxLength}
+              onChange={handleInput}
+              state={state}
+              size={
+                isFloatLabel
+                  ? size === "xl" || size === "lg"
+                    ? size
+                    : "xl"
+                  : size
+              }
+              {...props}
+            />
+            {isFloatLabel && (
+              <FloatingLabel
+                htmlFor={textareaId}
+                size={size}
+                infoTooltip={infoTooltip}
+                className="peer-placeholder-shown:items-start"
               >
-                {helperText}
-              </p>
+                {label}
+              </FloatingLabel>
             )}
-            {showCharCount && typeof maxLength === "number" && (
-              <span className="ml-auto text-muted-foreground">
-                {charCount} / {maxLength}
-              </span>
+
+            {/* Clear Button */}
+            {clearable && charCount > 0 && (
+              <button
+                type="button"
+                tabIndex={-1}
+                className={cn(
+                  "absolute top-2 right-2 p-1 rounded hover:bg-accent transition-colors",
+                )}
+                onClick={handleClear}
+                disabled={props.disabled}
+              >
+                <X className="size-4" />
+              </button>
             )}
           </div>
-        )}
+
+          {(helperText || (showCharCount && typeof maxLength === "number")) && (
+            <div className="flex items-center justify-between text-xs gap-2">
+              {helperText && (
+                <p
+                  className={cn(
+                    "text-xs",
+                    state ? helperTextStyles?.[state] : "",
+                  )}
+                >
+                  {helperText}
+                </p>
+              )}
+              {showCharCount && typeof maxLength === "number" && (
+                <span className="ml-auto text-muted-foreground">
+                  {charCount} / {maxLength}
+                </span>
+              )}
+            </div>
+          )}
+        </div>
       </div>
     );
   },

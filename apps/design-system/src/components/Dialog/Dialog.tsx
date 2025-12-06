@@ -10,8 +10,6 @@ import {
 } from "@dsui/ui/components/dialog";
 import {
   AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
   AlertDialogContent,
   AlertDialogDescription,
   AlertDialogFooter,
@@ -24,6 +22,7 @@ import { cn } from "@dsui/ui/lib/utils";
 import type { BasicAnimation } from "@/types/variables";
 import { animationClass } from "@/utils/animations";
 import { AlertTriangle, Info, CheckCircle2, AlertCircle } from "lucide-react";
+import Button, { type ButtonProps } from "../Button/Button";
 
 export type DialogVariant = "dialog" | "confirm" | "alert" | "info" | "warning";
 export type DialogSize =
@@ -45,6 +44,11 @@ export type DialogPosition =
   | "top-right"
   | "bottom-left"
   | "bottom-right";
+
+export interface DialogButtonConfig extends Omit<ButtonProps, "children"> {
+  text?: React.ReactNode;
+  onClick?: () => void;
+}
 
 export interface DialogProps {
   // Core props
@@ -84,11 +88,12 @@ export interface DialogProps {
   footerClassName?: string;
   overlayClassName?: string;
 
+  // Alert/Confirm buttons
+  confirmButton?: DialogButtonConfig;
+  cancelButton?: DialogButtonConfig;
+
   // Alert/Confirm specific
-  confirmText?: string;
-  cancelText?: string;
-  onConfirm?: () => void;
-  onCancel?: () => void;
+  showIcon?: boolean;
 }
 
 const variantIcons = {
@@ -174,10 +179,9 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
     descriptionClassName,
     footerClassName,
     // overlayClassName, // Not used in current implementation
-    confirmText = "Confirm",
-    cancelText = "Cancel",
-    onConfirm,
-    onCancel,
+    confirmButton,
+    cancelButton,
+    showIcon = true,
   } = props;
 
   const animationResult = useMemo(() => {
@@ -206,7 +210,7 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
     footerClassName,
   );
 
-  const icon = variantIcons[variant];
+  const icon = showIcon ? variantIcons[variant] : null;
 
   const headerComponents = useMemo(() => {
     return title || icon || description ? (
@@ -241,35 +245,51 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
   ]);
 
   const footerComponents = useMemo(() => {
-    return footer || onConfirm || onCancel ? (
+    // Merge configs with defaults
+    const mergedConfirmButton: DialogButtonConfig = {
+      variant: "solid",
+      color: "primary",
+      ...confirmButton,
+      text: confirmButton?.text ?? "Confirm",
+    };
+
+    const mergedCancelButton: DialogButtonConfig = {
+      variant: "outline",
+      ...cancelButton,
+      text: cancelButton?.text ?? "Cancel",
+    };
+
+    return footer || confirmButton || cancelButton ? (
       <AlertDialogFooter
         className={cn("py-4", { "border-t": stickyFooter }, footerClasses)}
       >
         {footer || (
           <>
-            {onCancel && (
-              <AlertDialogCancel onClick={onCancel}>
-                {cancelText}
-              </AlertDialogCancel>
+            {cancelButton && (
+              <Button
+                {...mergedCancelButton}
+                onClick={() => {
+                  mergedCancelButton.onClick?.();
+                }}
+              >
+                {mergedCancelButton.text}
+              </Button>
             )}
-            {onConfirm && (
-              <AlertDialogAction onClick={onConfirm}>
-                {confirmText}
-              </AlertDialogAction>
+            {confirmButton && (
+              <Button
+                {...mergedConfirmButton}
+                onClick={() => {
+                  mergedConfirmButton.onClick?.();
+                }}
+              >
+                {mergedConfirmButton.text}
+              </Button>
             )}
           </>
         )}
       </AlertDialogFooter>
     ) : null;
-  }, [
-    footer,
-    onConfirm,
-    onCancel,
-    footerClasses,
-    confirmText,
-    cancelText,
-    stickyFooter,
-  ]);
+  }, [footer, footerClasses, confirmButton, cancelButton, stickyFooter]);
 
   // For alert-style dialogs (confirm, alert, info, warning)
   if (variant !== "dialog") {

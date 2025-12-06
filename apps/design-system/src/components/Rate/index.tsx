@@ -1,2 +1,2 @@
-export { default } from "./Rate";
+export { default, default as Rate } from "./Rate";
 export type { RateProps } from "./Rate";

@@ -12,10 +12,18 @@ import {
   TableRow,
 } from "@dsui/ui";
 import { getCommonPinningStyles } from "@/utils/data-table";
+import { DataTableColumnHeader } from "./data-table-column-header";
 
 interface DataTableProps<TData> extends React.ComponentProps<"div"> {
   table: TanstackTable<TData>;
   actionBar?: React.ReactNode;
+  pagination?:
+    | boolean
+    | Omit<React.ComponentProps<typeof DataTablePagination<TData>>, "table">;
+  sticky?: boolean | { offsetHeader?: number; offsetScroll?: number };
+  bordered?: boolean;
+  loading?: boolean;
+  footer?: (currentPageData: TData[]) => React.ReactNode;
 }
 
 export function DataTable<TData>({
@@ -23,15 +31,27 @@ export function DataTable<TData>({
   actionBar,
   children,
   className,
+  pagination = true,
+  sticky,
+  bordered,
+  loading,
+  footer,
   ...props
 }: DataTableProps<TData>) {
   return (
     <div
-      className={cn("flex w-full flex-col gap-2.5 overflow-auto", className)}
+      className={cn("flex w-full flex-col gap-2.5 relative", className)}
       {...props}
     >
       {children}
-      <div className="overflow-hidden rounded-md border">
+      {loading && (
+        <div className="absolute inset-0 bg-background/50 flex items-center justify-center z-20">
+          Loading...
+        </div>
+      )}
+      <div
+        className={cn("overflow-auto rounded-md border", loading && "blur-sm")}
+      >
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
@@ -44,12 +64,17 @@ export function DataTable<TData>({
                       ...getCommonPinningStyles({ column: header.column }),
                     }}
                   >
-                    {header.isPlaceholder
-                      ? null
-                      : flexRender(
+                    {header.isPlaceholder ? null : header.column.columnDef
+                        .header ? (
+                      typeof header.column.columnDef.header === "function" ? (
+                        flexRender(
                           header.column.columnDef.header,
                           header.getContext(),
-                        )}
+                        )
+                      ) : (
+                        <DataTableColumnHeader column={header.column} />
+                      )
+                    ) : null}
                   </TableHead>
                 ))}
               </TableRow>
@@ -88,10 +113,24 @@ export function DataTable<TData>({
               </TableRow>
             )}
           </TableBody>
+          {footer && (
+            <tfoot>
+              <TableRow>
+                <TableCell colSpan={table.getAllColumns().length}>
+                  {footer(table.getRowModel().rows.map((row) => row.original))}
+                </TableCell>
+              </TableRow>
+            </tfoot>
+          )}
         </Table>
       </div>
       <div className="flex flex-col gap-2.5">
-        <DataTablePagination table={table} />
+        {pagination && (
+          <DataTablePagination
+            table={table}
+            {...(pagination === true ? {} : pagination)}
+          />
+        )}
         {actionBar &&
           table.getFilteredSelectedRowModel().rows.length > 0 &&
           actionBar}

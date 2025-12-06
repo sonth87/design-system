@@ -44,13 +44,12 @@ const ARRAY_SEPARATOR = ",";
 const DEBOUNCE_MS = 300;
 const THROTTLE_MS = 50;
 
-interface UseDataTableProps<TData>
-  extends Omit<
-    TableOptions<TData>,
-    // | "state"
-    // | "pageCount"
-    "getCoreRowModel"
-  > {
+interface UseDataTableProps<TData> extends Omit<
+  TableOptions<TData>,
+  // | "state"
+  // | "pageCount"
+  "getCoreRowModel"
+> {
   initialState?: Omit<Partial<TableState>, "sorting"> & {
     sorting?: ExtendedColumnSort<TData>[];
   };
@@ -200,7 +199,7 @@ export function useDataTable<TData>(props: UseDataTableProps<TData>) {
     return filterableColumns.reduce<
       Record<string, SingleParser<string> | SingleParser<string[]>>
     >((acc, column) => {
-      if (column.meta?.options) {
+      if (column.meta?.variant === "multiSelect") {
         acc[column.id ?? ""] = parseAsArrayOf(
           parseAsString,
           ARRAY_SEPARATOR,
@@ -231,11 +230,18 @@ export function useDataTable<TData>(props: UseDataTableProps<TData>) {
     return Object.entries(filterValues).reduce<ColumnFiltersState>(
       (filters, [key, value]) => {
         if (value !== null) {
+          const column = filterableColumns.find((col) => col.id === key);
+          const isMultiSelect = column?.meta?.variant === "multiSelect";
+
           const processedValue = Array.isArray(value)
             ? value
-            : typeof value === "string" && /[^a-zA-Z0-9]/.test(value)
+            : isMultiSelect &&
+                typeof value === "string" &&
+                /[^a-zA-Z0-9]/.test(value)
               ? value.split(/[^a-zA-Z0-9]+/).filter(Boolean)
-              : [value];
+              : isMultiSelect
+                ? [value]
+                : value;
 
           filters.push({
             id: key,
@@ -246,7 +252,7 @@ export function useDataTable<TData>(props: UseDataTableProps<TData>) {
       },
       [],
     );
-  }, [filterValues, enableAdvancedFilter]);
+  }, [filterValues, enableAdvancedFilter, filterableColumns]);
 
   const [columnFilters, setColumnFilters] =
     React.useState<ColumnFiltersState>(initialColumnFilters);
@@ -264,9 +270,14 @@ export function useDataTable<TData>(props: UseDataTableProps<TData>) {
         const filterUpdates = next.reduce<
           Record<string, string | string[] | null>
         >((acc, filter) => {
-          if (filterableColumns.find((column) => column.id === filter.id)) {
-            acc[filter.id] = filter.value as string | string[];
+          const column = filterableColumns.find((col) => col.id === filter.id);
+          if (column) {
+            const isMultiSelect = column.meta?.variant === "multiSelect";
+            acc[filter.id] = isMultiSelect
+              ? (filter.value as string[])
+              : (filter.value as string);
           }
+          console.log("filterParsers", column, acc);
           return acc;
         }, {});
 
@@ -276,16 +287,21 @@ export function useDataTable<TData>(props: UseDataTableProps<TData>) {
           }
         }
 
-        debouncedSetFilterValues(filterUpdates);
+        if (enableNuqs) {
+          debouncedSetFilterValues(filterUpdates);
+        }
         return next;
       });
     },
-    [debouncedSetFilterValues, filterableColumns, enableAdvancedFilter],
+    [
+      debouncedSetFilterValues,
+      filterableColumns,
+      enableAdvancedFilter,
+      enableNuqs,
+    ],
   );
 
   const table = useReactTable({
-    ...tableProps,
-    columns,
     initialState,
     pageCount,
     state: {
@@ -297,7 +313,10 @@ export function useDataTable<TData>(props: UseDataTableProps<TData>) {
     },
     defaultColumn: {
       ...tableProps.defaultColumn,
-      enableColumnFilter: false,
+      enableColumnFilter: true,
+      enableSorting: false,
+      enableHiding: true,
+      enablePinning: true,
     },
     enableRowSelection: true,
     onRowSelectionChange: setRowSelection,
@@ -322,6 +341,8 @@ export function useDataTable<TData>(props: UseDataTableProps<TData>) {
         joinOperator: joinOperatorKey,
       },
     },
+    ...tableProps,
+    columns,
   });
 
   return { table, shallow, debounceMs, throttleMs };

@@ -285,19 +285,15 @@ export const GlassEffect = (args: ButtonGroupProps) => (
         "url('https://raw.githubusercontent.com/lucasromerodb/liquid-glass-effect-macos/refs/heads/main/assets/flowers.jpg')",
     }}
   >
-    <ButtonGroup {...args}>
-      <Button animation="glass" size="xl">
-        Button 1
-      </Button>
-      <Button animation="glass" size="xl">
-        Button 2
-      </Button>
+    <ButtonGroup {...args} animation="glass">
+      <Button size="xl">Button 1</Button>
+      <Button size="xl">Button 2</Button>
     </ButtonGroup>
-    <ButtonGroup {...args} orientation="vertical">
-      <Button animation="glass" size="circle-icon-xl">
+    <ButtonGroup {...args} animation="glass" orientation="vertical">
+      <Button size="circle-icon-xl">
         <BottleWine />
       </Button>
-      <Button animation="glass" size="circle-icon-xl">
+      <Button size="circle-icon-xl">
         <ShoppingBag />
       </Button>
     </ButtonGroup>

@@ -655,8 +655,7 @@ const marqueeEdgeVariants = cva("pointer-events-none absolute z-10", {
 });
 
 interface MarqueeEdgeProps
-  extends VariantProps<typeof marqueeEdgeVariants>,
-    DivProps {}
+  extends VariantProps<typeof marqueeEdgeVariants>, DivProps {}
 
 function MarqueeEdge(props: MarqueeEdgeProps) {
   const { side, size, className, asChild, ...edgeProps } = props;

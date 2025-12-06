@@ -150,21 +150,23 @@ const meta: Meta<typeof Dialog> = {
         category: i18n.t("stories.category.content"),
       },
     },
-    confirmText: {
-      control: "text",
-      description: i18n.t("stories.dialog.argTypes.confirmText.description"),
+    confirmButton: {
+      description:
+        "Configuration for the confirm button (variant, color, size, className, onClick, etc.)",
       table: {
-        defaultValue: { summary: "Confirm" },
+        type: { summary: "DialogButtonConfig" },
         category: i18n.t("stories.category.content"),
       },
+      control: false,
     },
-    cancelText: {
-      control: "text",
-      description: i18n.t("stories.dialog.argTypes.cancelText.description"),
+    cancelButton: {
+      description:
+        "Configuration for the cancel button (variant, color, size, className, onClick, etc.)",
       table: {
-        defaultValue: { summary: "Cancel" },
+        type: { summary: "DialogButtonConfig" },
         category: i18n.t("stories.category.content"),
       },
+      control: false,
     },
   },
   args: {
@@ -184,9 +186,12 @@ const meta: Meta<typeof Dialog> = {
 export default meta;
 type Story = StoryObj<DialogProps>;
 
-// Default dialog with trigger button
+/**
+ * Default dialog with trigger button.
+ *
+ */
 export const Default: Story = {
-  render: function RenderDefault(args) {
+  render: (args) => {
     const [open, setOpen] = useState(false);
     return (
       <Dialog
@@ -201,7 +206,9 @@ export const Default: Story = {
             <Button variant="outline" onClick={() => setOpen(false)}>
               Cancel
             </Button>
-            <Button onClick={() => setOpen(false)}>Save Changes</Button>
+            <Button onClick={() => setOpen(false)} color="primary">
+              Save Changes
+            </Button>
           </div>
         }
       >
@@ -212,9 +219,42 @@ export const Default: Story = {
       </Dialog>
     );
   },
+  parameters: {
+    docs: {
+      source: {
+        code: `
+const [open, setOpen] = useState(false);
+return (
+  <Dialog
+    {...args}
+    open={open}
+    onOpenChange={setOpen}
+    trigger={<Button>Open Dialog</Button>}
+    title="Dialog Title"
+    description="This is a default dialog with a simple message."
+    footer={
+      <div className="flex gap-2 justify-end w-full">
+        <Button variant="outline" onClick={() => setOpen(false)}>
+          Cancel
+        </Button>
+        <Button onClick={() => setOpen(false)} color="primary">Save Changes</Button>
+      </div>
+    }
+  >
+    <p className="text-sm text-muted-foreground">
+      You can place any content here. The dialog will automatically handle
+      the layout and styling.
+    </p>
+  </Dialog>
+);
+        `,
+      },
+    },
+  },
 };
+
 export const Standalone: Story = {
-  render: function RenderDefault(args) {
+  render: (args) => {
     const [open, setOpen] = useState(false);
     return (
       <div>
@@ -240,6 +280,116 @@ export const Standalone: Story = {
             the layout and styling.
           </p>
         </Dialog>
+      </div>
+    );
+  },
+};
+
+export const Alert: Story = {
+  render: function RenderAlert(args) {
+    const [openAlert, setOpenAlert] = useState(false);
+    const [openConfirm, setOpenConfirm] = useState(false);
+    const [openInfo, setOpenInfo] = useState(false);
+    const [openWarning, setOpenWarning] = useState(false);
+
+    return (
+      <div className="flex gap-2">
+        <Dialog
+          variant="confirm"
+          open={openConfirm}
+          onOpenChange={setOpenConfirm}
+          trigger={
+            <Button variant="solid" color="secondary">
+              Confirm
+            </Button>
+          }
+          title="Confirm Action"
+          description="Are you sure you want to proceed with this action?"
+          confirmButton={{
+            text: "Confirm",
+            variant: "solid",
+            color: "primary",
+            onClick: () => {
+              console.log("Confirmed");
+              setOpenConfirm(false);
+            },
+          }}
+          cancelButton={{
+            text: "Cancel",
+            variant: "outline",
+            onClick: () => {
+              console.log("Cancelled");
+              setOpenConfirm(false);
+            },
+          }}
+        />
+
+        <Dialog
+          {...args}
+          variant="alert"
+          open={openAlert}
+          onOpenChange={setOpenAlert}
+          trigger={
+            <Button variant="solid" color="destructive">
+              Alert
+            </Button>
+          }
+          title="Alert"
+          description="This is an important alert message that requires your attention."
+          confirmButton={{
+            text: "Acknowledge",
+            onClick: () => {
+              console.log("Alert acknowledged");
+              setOpenAlert(false);
+            },
+          }}
+        />
+
+        <Dialog
+          variant="info"
+          open={openInfo}
+          onOpenChange={setOpenInfo}
+          trigger={
+            <Button variant="solid" color="success">
+              Info without Icon
+            </Button>
+          }
+          title="Information"
+          description="Here's some useful information you should know."
+          confirmButton={{
+            text: "Got it",
+            onClick: () => {
+              console.log("Info acknowledged");
+              setOpenInfo(false);
+            },
+          }}
+          showIcon={false}
+        />
+
+        <Dialog
+          variant="warning"
+          open={openWarning}
+          onOpenChange={setOpenWarning}
+          trigger={
+            <Button variant="solid" color="warning">
+              Warning with Custom Icon
+            </Button>
+          }
+          title={<div>⚠️ Custom Warning Icon</div>}
+          description="Please be careful. This action may have consequences. Double check before proceeding."
+          confirmButton={{
+            text: "Understand",
+            onClick: () => {
+              console.log("Warning acknowledged");
+              setOpenWarning(false);
+            },
+          }}
+          cancelButton={{
+            text: "Cancel",
+            onClick: () => setOpenWarning(false),
+          }}
+          showIcon={false}
+        />
       </div>
     );
   },
@@ -281,19 +431,25 @@ export const Variants: Story = {
           open={openConfirm}
           onOpenChange={setOpenConfirm}
           trigger={
-            <Button variant="solid" color="primary">
+            <Button variant="solid" color="secondary">
               Confirm
             </Button>
           }
           title="Confirm Action"
           description="Are you sure you want to proceed with this action?"
-          onConfirm={() => {
-            console.log("Confirmed");
-            setOpenConfirm(false);
+          confirmButton={{
+            text: "Confirm",
+            onClick: () => {
+              console.log("Confirmed");
+              setOpenConfirm(false);
+            },
           }}
-          onCancel={() => {
-            console.log("Cancelled");
-            setOpenConfirm(false);
+          cancelButton={{
+            text: "Cancel",
+            onClick: () => {
+              console.log("Cancelled");
+              setOpenConfirm(false);
+            },
           }}
         />
 
@@ -308,11 +464,13 @@ export const Variants: Story = {
           }
           title="Alert"
           description="This is an important alert message that requires your attention."
-          onConfirm={() => {
-            console.log("Alert acknowledged");
-            setOpenAlert(false);
+          confirmButton={{
+            text: "Acknowledge",
+            onClick: () => {
+              console.log("Alert acknowledged");
+              setOpenAlert(false);
+            },
           }}
-          confirmText="Acknowledge"
         />
 
         <Dialog
@@ -320,17 +478,19 @@ export const Variants: Story = {
           open={openInfo}
           onOpenChange={setOpenInfo}
           trigger={
-            <Button variant="solid" color="primary">
+            <Button variant="solid" color="success">
               Info
             </Button>
           }
           title="Information"
           description="Here's some useful information you should know."
-          onConfirm={() => {
-            console.log("Info acknowledged");
-            setOpenInfo(false);
+          confirmButton={{
+            text: "Got it",
+            onClick: () => {
+              console.log("Info acknowledged");
+              setOpenInfo(false);
+            },
           }}
-          confirmText="Got it"
         />
 
         <Dialog
@@ -344,11 +504,17 @@ export const Variants: Story = {
           }
           title="Warning"
           description="Please be careful. This action may have consequences."
-          onConfirm={() => {
-            console.log("Warning acknowledged");
-            setOpenWarning(false);
+          confirmButton={{
+            text: "Understand",
+            onClick: () => {
+              console.log("Warning acknowledged");
+              setOpenWarning(false);
+            },
           }}
-          onCancel={() => setOpenWarning(false)}
+          cancelButton={{
+            text: "Cancel",
+            onClick: () => setOpenWarning(false),
+          }}
         />
       </div>
     );
@@ -774,10 +940,10 @@ export const CustomStyling: Story = {
         trigger={<Button>Custom Header</Button>}
         title="Custom Styled Header"
         description="This dialog has custom styling."
-        headerClassName="!bg-gradient-to-r !from-purple-500 !to-pink-500 !text-white"
+        headerClassName="!bg-gradient-to-r !from-purple-500 !to-pink-500 !text-white rounded-t-md"
         titleClassName="text-xl font-bold"
         descriptionClassName="text-white/90"
-        contentClassName="!border-2 !border-purple-500 overflow-hidden"
+        contentClassName="!border-2 !border-purple-500 overflow-hidden rounded-b-md"
       >
         <div>
           <p className="text-sm">
@@ -816,7 +982,7 @@ export const CustomStyling: Story = {
         trigger={<Button>Gradient Background</Button>}
         title="Fully Customized"
         description="Every part of this dialog is customized."
-        className="to-card bg-gradient-to-b from-sky-100 to-40% [background-size:100%_101%] sm:max-w-sm dark:from-sky-900"
+        className="to-card bg-linear-to-b from-sky-100 to-40% bg-size-[100%_101%] sm:max-w-sm dark:from-sky-900"
         footer={
           <div className="flex gap-2 justify-end w-full">
             <Button

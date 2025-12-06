@@ -32,6 +32,9 @@ export * from "./components/Checkbox";
 // Collapsible
 export * from "./components/Collapsible";
 
+// Command
+export * from "./components/Command";
+
 // DatePicker
 export * from "./components/DatePicker";
 
@@ -46,6 +49,9 @@ export * from "./components/Input";
 
 // InputOTP
 export * from "./components/InputOTP";
+
+// Label
+export * from "./components/Label";
 
 // Popover
 export * from "./components/Popover";
@@ -101,9 +107,6 @@ export * from "./components/Tour";
 // QR Code
 export * from "./components/QrCode";
 
-// Marquee
-export * from "./components/Marquee";
-
 // Stepper
 export * from "./components/Stepper";
 
@@ -111,10 +114,13 @@ export * from "./components/Stepper";
 export * from "./components/Pagination";
 
 // DataTable
-export * from "./components/Table";
+export { DataTable as Table } from "./components/Table";
 
 // DropdownMenu
 export * from "./components/DropdownMenu";
+
+// ContextMenu
+export * from "./components/ContextMenu";
 
 // Rating
 export * from "./components/Rate";
@@ -124,6 +130,15 @@ export * from "./components/TreeSelect";
 
 // Upload
 export * from "./components/Upload";
+
+// Command
+export * from "./components/Command";
+
+// Resizable
+export * from "./components/Resizable";
+
+// Accordion
+export * from "./components/Accordion";
 
 // ============================================
 // STANDALONE COMPONENTS
@@ -139,14 +154,32 @@ export { TimeColumnwheel as WheelColumn } from "./components/WheelColumn";
 
 export * from "./components/Cropper";
 export * from "./components/Interactive";
+export * from "./components/Marquee";
+export * from "./components/Masonry";
+
+// ============================================
+// TEXT ANIMATIONS COMPONENTS
+// ============================================
+
+export * from "./lib/TextAnimation";
 
 // ============================================
 // UTILS & HOOKS
 // ============================================
 
 export { cn } from "@dsui/ui";
-export { useDebouncedCallback } from "@/hooks/use-debounced-callback";
 export { useCallbackRef } from "@/hooks/use-callback-ref";
+export { useDebouncedCallback } from "@/hooks/use-debounced-callback";
+export { useDebounceValue } from "@/hooks/use-debounced-value";
+export { useIntersectionObserver } from "@/hooks/use-intersection-observer";
+export { useScript } from "@/hooks/use-script";
+export { useScrollLock } from "@/hooks/use-scroll-lock";
+export { useOnClickOutside } from "@/hooks/use-on-click-outside";
+export { useEventListener } from "@/hooks/use-event-listener";
+export {
+  useMediaQuery,
+  type UseMediaQueryOptions,
+} from "@/hooks/use-media-query";
 
 // ============================================
 // CSS IMPORTS

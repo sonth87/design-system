@@ -103,19 +103,19 @@ const Radio = React.forwardRef<HTMLDivElement, RadioProps>((props, ref) => {
         variant={variant}
         className={cn(className)}
       >
-        {options
-          ? options.map((option) => (
-              <RadioItem
-                key={option.value}
-                value={option.value}
-                label={option.label}
-                disabled={disabled || option.disabled}
-                variant={variant}
-                size={size}
-                color={color}
-              />
-            ))
-          : children}
+        {options &&
+          options.map((option) => (
+            <RadioItem
+              key={option.value}
+              value={option.value}
+              label={option.label}
+              disabled={disabled || option.disabled}
+              variant={variant}
+              size={size}
+              color={color}
+            />
+          ))}
+        {children}
       </SRadioGroup>
 
       {helperText && (

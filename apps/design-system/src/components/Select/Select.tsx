@@ -127,155 +127,157 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
     }, [options]);
 
     return (
-      <div
-        ref={ref}
-        className={cn("flex flex-col gap-1.5 relative", {
-          "floating-label relative": isFloatLabel,
-        })}
-      >
-        {!isFloatLabel && label && (
-          <label
-            htmlFor={selectId}
-            className="flex gap-2 text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-          >
-            {label}
-            {infoTooltip && (
-              <Tooltip content={infoTooltip}>
-                <Info className="size-3.5 min-w-3.5" />
-              </Tooltip>
-            )}
-          </label>
-        )}
-
-        <div className="relative">
-          {!multiple ? (
-            // Single Mode
-            <>
-              <Combobox
-                value={value ?? internalValue}
-                options={options}
-                placeHolder={placeholder}
-                emptyText={
-                  typeof search === "object"
-                    ? search.emptyMessage
-                    : "No results found"
-                }
-                onChange={handleSingleValueChange}
-                clearable={clearable}
-                disabled={disabled}
-                id={selectId}
-                className={cn(
-                  "peer w-full justify-start",
-                  {
-                    "pt-5 pb-1": isFloatLabel && size !== "lg",
-                  },
-                  className,
-                )}
-                size={currentSize}
-                state={state}
-                dropdownClassName={cn("opacity-40", {
-                  "translate-y-[-8px]": isFloatLabel && size !== "lg",
-                })}
-                searchable={!!search}
-                tagRender={tagRender}
-              />
-              {isFloatLabel && (
-                <FloatingLabel
-                  htmlFor={selectId}
-                  size={size}
-                  infoTooltip={infoTooltip}
-                  shouldFloat={!!(value ?? internalValue)}
-                  className="pointer-events-none"
-                >
-                  {label}
-                </FloatingLabel>
-              )}
-            </>
-          ) : (
-            // Multi Mode
-            <BaseMultiSelect
-              values={values}
-              defaultValues={
-                typeof defaultValues === "string"
-                  ? [defaultValues]
-                  : defaultValues
-              }
-              onValuesChange={onValuesChange}
+      <div className={className}>
+        <div
+          ref={ref}
+          className={cn("flex flex-col gap-1.5 relative", {
+            "floating-label relative": isFloatLabel,
+          })}
+        >
+          {!isFloatLabel && label && (
+            <label
+              htmlFor={selectId}
+              className="flex gap-2 text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
             >
-              <BaseMultiSelectTrigger
-                id={selectId}
-                disabled={disabled}
-                className={cn(
-                  "peer w-full",
-                  {
-                    "pt-5 pb-1": isFloatLabel && size !== "lg",
-                  },
-                  className,
-                )}
-                size={currentSize}
-                state={state}
-              >
-                <BaseMultiSelectValue
-                  placeholder={placeholder}
-                  clickToRemove={clickToRemove && clearable}
-                  overflowBehavior={overflowBehavior}
-                />
-              </BaseMultiSelectTrigger>
-
-              {isFloatLabel && (
-                <FloatingLabel
-                  htmlFor={selectId}
-                  size={size}
-                  infoTooltip={infoTooltip}
-                >
-                  {label}
-                </FloatingLabel>
+              {label}
+              {infoTooltip && (
+                <Tooltip content={infoTooltip}>
+                  <Info className="size-3.5 min-w-3.5" />
+                </Tooltip>
               )}
+            </label>
+          )}
 
-              <BaseMultiSelectContent search={search}>
-                {[...groupedOptions.entries()].map(([group, items]) => {
-                  if (group) {
-                    return (
-                      <React.Fragment key={group}>
-                        <BaseMultiSelectGroup heading={group}>
-                          {items.map((option) => (
-                            <BaseMultiSelectItem
-                              key={option.value}
-                              value={option.value}
-                              disabled={option?.disabled}
-                              icon={option?.icon}
-                              tagRender={!!tagRender}
-                            >
-                              {tagRender ? tagRender(option) : option.label}
-                            </BaseMultiSelectItem>
-                          ))}
-                        </BaseMultiSelectGroup>
-                        <BaseMultiSelectSeparator />
-                      </React.Fragment>
-                    );
+          <div className="relative">
+            {!multiple ? (
+              // Single Mode
+              <>
+                <Combobox
+                  value={value ?? internalValue}
+                  options={options}
+                  placeHolder={placeholder}
+                  emptyText={
+                    typeof search === "object"
+                      ? search.emptyMessage
+                      : "No results found"
                   }
-                  return items.map((option) => (
-                    <BaseMultiSelectItem
-                      key={option.value}
-                      value={option.value}
-                      disabled={option?.disabled}
-                      icon={option?.icon}
-                      tagRender={!!tagRender}
-                    >
-                      {tagRender ? tagRender(option) : option.label}
-                    </BaseMultiSelectItem>
-                  ));
-                })}
-              </BaseMultiSelectContent>
-            </BaseMultiSelect>
+                  onChange={handleSingleValueChange}
+                  clearable={clearable}
+                  disabled={disabled}
+                  id={selectId}
+                  className={cn(
+                    "peer w-full justify-start",
+                    {
+                      "pt-5 pb-1": isFloatLabel && size !== "lg",
+                    },
+                    // className,
+                  )}
+                  size={currentSize}
+                  state={state}
+                  dropdownClassName={cn("opacity-40", {
+                    "translate-y-[-8px]": isFloatLabel && size !== "lg",
+                  })}
+                  searchable={!!search}
+                  tagRender={tagRender}
+                />
+                {isFloatLabel && (
+                  <FloatingLabel
+                    htmlFor={selectId}
+                    size={size}
+                    infoTooltip={infoTooltip}
+                    shouldFloat={!!(value ?? internalValue)}
+                    className="pointer-events-none"
+                  >
+                    {label}
+                  </FloatingLabel>
+                )}
+              </>
+            ) : (
+              // Multi Mode
+              <BaseMultiSelect
+                values={values}
+                defaultValues={
+                  typeof defaultValues === "string"
+                    ? [defaultValues]
+                    : defaultValues
+                }
+                onValuesChange={onValuesChange}
+              >
+                <BaseMultiSelectTrigger
+                  id={selectId}
+                  disabled={disabled}
+                  className={cn(
+                    "peer w-full",
+                    {
+                      "pt-5 pb-1": isFloatLabel && size !== "lg",
+                    },
+                    className,
+                  )}
+                  size={currentSize}
+                  state={state}
+                >
+                  <BaseMultiSelectValue
+                    placeholder={placeholder}
+                    clickToRemove={clickToRemove && clearable}
+                    overflowBehavior={overflowBehavior}
+                  />
+                </BaseMultiSelectTrigger>
+
+                {isFloatLabel && (
+                  <FloatingLabel
+                    htmlFor={selectId}
+                    size={size}
+                    infoTooltip={infoTooltip}
+                  >
+                    {label}
+                  </FloatingLabel>
+                )}
+
+                <BaseMultiSelectContent search={search}>
+                  {[...groupedOptions.entries()].map(([group, items]) => {
+                    if (group) {
+                      return (
+                        <React.Fragment key={group}>
+                          <BaseMultiSelectGroup heading={group}>
+                            {items.map((option) => (
+                              <BaseMultiSelectItem
+                                key={option.value}
+                                value={option.value}
+                                disabled={option?.disabled}
+                                icon={option?.icon}
+                                tagRender={!!tagRender}
+                              >
+                                {tagRender ? tagRender(option) : option.label}
+                              </BaseMultiSelectItem>
+                            ))}
+                          </BaseMultiSelectGroup>
+                          <BaseMultiSelectSeparator />
+                        </React.Fragment>
+                      );
+                    }
+                    return items.map((option) => (
+                      <BaseMultiSelectItem
+                        key={option.value}
+                        value={option.value}
+                        disabled={option?.disabled}
+                        icon={option?.icon}
+                        tagRender={!!tagRender}
+                      >
+                        {tagRender ? tagRender(option) : option.label}
+                      </BaseMultiSelectItem>
+                    ));
+                  })}
+                </BaseMultiSelectContent>
+              </BaseMultiSelect>
+            )}
+          </div>
+
+          {helperText && (
+            <p className={cn("text-xs", state ? helperTextStyles[state] : "")}>
+              {helperText}
+            </p>
           )}
         </div>
-
-        {helperText && (
-          <p className={cn("text-xs", state ? helperTextStyles[state] : "")}>
-            {helperText}
-          </p>
-        )}
       </div>
     );
   },

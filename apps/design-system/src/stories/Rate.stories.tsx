@@ -485,7 +485,7 @@ export const ProductReview: Story = {
         <button
           onClick={() => {
             alert(
-              `Cảm ơn bạn đã đánh giá!\nTrung bình: ${average.toFixed(1)} sao`
+              `Cảm ơn bạn đã đánh giá!\nTrung bình: ${average.toFixed(1)} sao`,
             );
           }}
           disabled={average === 0}

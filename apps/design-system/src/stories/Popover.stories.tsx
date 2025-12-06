@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
-import Popover, { type PopoverProps } from "../components/Popover/Popover";
+import { Popover, type PopoverProps } from "../components/Popover";
 import Button from "../components/Button/Button";
 import Input from "../components/Input/Input";
 import { Settings, User, Info } from "lucide-react";

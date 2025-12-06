@@ -725,21 +725,20 @@ function TourRoot(props: TourRootProps) {
   );
 }
 
-interface TourRootImplProps
-  extends Omit<
-    TourRootProps,
-    | "open"
-    | "defaultOpen"
-    | "onOpenChange"
-    | "value"
-    | "defaultValue"
-    | "onValueChange"
-    | "onComplete"
-    | "onSkip"
-    | "autoScroll"
-    | "scrollBehavior"
-    | "scrollOffset"
-  > {}
+interface TourRootImplProps extends Omit<
+  TourRootProps,
+  | "open"
+  | "defaultOpen"
+  | "onOpenChange"
+  | "value"
+  | "defaultValue"
+  | "onValueChange"
+  | "onComplete"
+  | "onSkip"
+  | "autoScroll"
+  | "scrollBehavior"
+  | "scrollOffset"
+> {}
 
 function TourRootImpl(props: TourRootImplProps) {
   const {

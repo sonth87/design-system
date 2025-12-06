@@ -31,7 +31,7 @@ const meta: Meta<CheckboxProps> = {
       control: "select",
       options: ["top", "left", "right", "bottom"],
       description: i18n.t(
-        "stories.checkbox.argTypes.labelPosition.description",
+        "stories.checkbox.argTypes.labelPosition.description"
       ),
       table: {
         defaultValue: { summary: "top" },
@@ -42,7 +42,7 @@ const meta: Meta<CheckboxProps> = {
       control: "select",
       options: ["start", "center", "end"],
       description: i18n.t(
-        "stories.checkbox.argTypes.labelAlignment.description",
+        "stories.checkbox.argTypes.labelAlignment.description"
       ),
       table: {
         defaultValue: { summary: "start" },
@@ -170,6 +170,18 @@ export const Sizes = (args: CheckboxProps) => {
       <Checkbox {...args} size="sm" checked />
       <Checkbox {...args} size="default" checked />
       <Checkbox {...args} size="lg" checked />
+    </div>
+  );
+};
+
+export const WithLabel = (args: CheckboxProps) => {
+  return (
+    <div className="flex flex-col gap-4">
+      <Checkbox {...args} label="Checkbox Label" />
+      <Checkbox
+        {...args}
+        label="This is a longer checkbox label to demonstrate text wrapping."
+      />
     </div>
   );
 };

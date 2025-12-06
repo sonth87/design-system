@@ -74,6 +74,7 @@ const meta: Meta<typeof Badge> = {
         "glow",
         "liquid",
         "loading",
+        "gradient-outline",
         "draw",
       ],
       description: i18n.t("stories.badge.argTypes.animation.description"),
