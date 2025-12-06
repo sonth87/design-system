@@ -107,9 +107,6 @@ export * from "./components/Tour";
 // QR Code
 export * from "./components/QrCode";
 
-// Marquee
-export * from "./components/Marquee";
-
 // Stepper
 export * from "./components/Stepper";
 
@@ -157,6 +154,14 @@ export { TimeColumnwheel as WheelColumn } from "./components/WheelColumn";
 
 export * from "./components/Cropper";
 export * from "./components/Interactive";
+export * from "./components/Marquee";
+export * from "./components/Masonry";
+
+// ============================================
+// TEXT ANIMATIONS COMPONENTS
+// ============================================
+
+export * from "./lib/TextAnimation";
 
 // ============================================
 // UTILS & HOOKS

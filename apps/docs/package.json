@@ -13,9 +13,9 @@
   "dependencies": {
     "@dsui/design-system": "file:../design-system",
     "lucide-react": "^0.553.0",
-    "next": "^15.5.0",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
+    "next": "^15",
+    "react": "^19",
+    "react-dom": "^19",
     "tailwindcss": "^4.1.14",
     "tailwindcss-animate": "^1.0.7"
   },

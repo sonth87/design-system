@@ -5,6 +5,15 @@ import { FlipWords, type FlipWordsProps } from "./FlipWords";
 import { GradientText, type GradientTextProps } from "./GradientText";
 import { RollingText, type RollingTextProps } from "./RollingText";
 import { ShimmeringText, type ShimmeringTextProps } from "./ShimmeringText";
+import { SplittingText } from "./SplittingText";
+import {
+  TextGenerateEffect,
+  type TextGenerateEffectProps,
+} from "./TextGenerateEffect";
+import { TextHoverEffect } from "./TextHoverEffect";
+import TextPressure from "./TextPressureEffect";
+import TypingText from "./TypingText";
+import { WritingText, type WritingTextProps } from "./WritingText";
 
 export {
   BlurText,
@@ -14,6 +23,12 @@ export {
   GradientText,
   RollingText,
   ShimmeringText,
+  SplittingText,
+  TextGenerateEffect,
+  TextHoverEffect,
+  TextPressure,
+  TypingText,
+  WritingText,
 };
 export type {
   RotatingTextProps,
@@ -21,4 +36,6 @@ export type {
   GradientTextProps,
   RollingTextProps,
   ShimmeringTextProps,
+  TextGenerateEffectProps,
+  WritingTextProps,
 };

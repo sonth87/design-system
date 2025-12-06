@@ -440,10 +440,10 @@
     "stories.dialog.argTypes.stickyFooter.description": "Keep footer outside scroll area (footer won't scroll)",
     "stories.dialog.argTypes.title.description": "Dialog title",
     "stories.dialog.argTypes.description.description": "Dialog description",
-    "stories.dialog.argTypes.confirmText.description": "Text for confirm button (alert variants)",
-    "stories.dialog.argTypes.cancelText.description": "Text for cancel button (alert variants)",
+    "stories.dialog.argTypes.confirmButton.description": "Configuration for the confirm button (variant, color, size, className, onClick, etc.)",
+    "stories.dialog.argTypes.cancelButton.description": "Configuration for the cancel button (variant, color, size, className, onClick, etc.)",
 
-    "stories.sheet.argTypes.side.description": "The side from which the sheet slides in",
+    "stories.sheet.argTypes.side.description": "Side the sheet slides in from",
     "stories.sheet.argTypes.size.description": "The size of the sheet",
     "stories.sheet.argTypes.animation.description": "Animation effect for the sheet",
     "stories.sheet.argTypes.open.description": "Controlled open state",

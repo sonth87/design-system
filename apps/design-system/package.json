@@ -212,6 +212,16 @@
         "default": "./dist/cjs/components/InputOTP/InputOTP.cjs"
       }
     },
+    "./interactive": {
+      "import": {
+        "types": "./dist/types/components/Interactive/Interactive.d.ts",
+        "default": "./dist/esm/components/Interactive/Interactive.js"
+      },
+      "require": {
+        "types": "./dist/types/components/Interactive/Interactive.d.ts",
+        "default": "./dist/cjs/components/Interactive/Interactive.cjs"
+      }
+    },
     "./label": {
       "import": {
         "types": "./dist/types/components/Label/Label.d.ts",
@@ -392,6 +402,16 @@
         "default": "./dist/cjs/components/Switch/Switch.cjs"
       }
     },
+    "./table": {
+      "import": {
+        "types": "./dist/types/components/Table/Table.d.ts",
+        "default": "./dist/esm/components/Table/Table.js"
+      },
+      "require": {
+        "types": "./dist/types/components/Table/Table.d.ts",
+        "default": "./dist/cjs/components/Table/Table.cjs"
+      }
+    },
     "./tabs": {
       "import": {
         "types": "./dist/types/components/Tabs/Tabs.d.ts",
@@ -492,6 +512,146 @@
         "default": "./dist/cjs/components/WheelColumn/WheelColumn.cjs"
       }
     },
+    "./textanimation": {
+      "import": {
+        "types": "./dist/types/lib/TextAnimation/index.d.ts",
+        "default": "./dist/esm/lib/TextAnimation/index.js"
+      },
+      "require": {
+        "types": "./dist/types/lib/TextAnimation/index.d.ts",
+        "default": "./dist/cjs/lib/TextAnimation/index.cjs"
+      }
+    },
+    "./index": {
+      "import": {
+        "types": "./dist/types/hooks/index.d.ts",
+        "default": "./dist/esm/hooks/index.js"
+      },
+      "require": {
+        "types": "./dist/types/hooks/index.d.ts",
+        "default": "./dist/cjs/hooks/index.cjs"
+      }
+    },
+    "./use-callback-ref": {
+      "import": {
+        "types": "./dist/types/hooks/use-callback-ref.d.ts",
+        "default": "./dist/esm/hooks/use-callback-ref.js"
+      },
+      "require": {
+        "types": "./dist/types/hooks/use-callback-ref.d.ts",
+        "default": "./dist/cjs/hooks/use-callback-ref.cjs"
+      }
+    },
+    "./use-data-table": {
+      "import": {
+        "types": "./dist/types/hooks/use-data-table.d.ts",
+        "default": "./dist/esm/hooks/use-data-table.js"
+      },
+      "require": {
+        "types": "./dist/types/hooks/use-data-table.d.ts",
+        "default": "./dist/cjs/hooks/use-data-table.cjs"
+      }
+    },
+    "./use-debounced-callback": {
+      "import": {
+        "types": "./dist/types/hooks/use-debounced-callback.d.ts",
+        "default": "./dist/esm/hooks/use-debounced-callback.js"
+      },
+      "require": {
+        "types": "./dist/types/hooks/use-debounced-callback.d.ts",
+        "default": "./dist/cjs/hooks/use-debounced-callback.cjs"
+      }
+    },
+    "./use-debounced-value": {
+      "import": {
+        "types": "./dist/types/hooks/use-debounced-value.d.ts",
+        "default": "./dist/esm/hooks/use-debounced-value.js"
+      },
+      "require": {
+        "types": "./dist/types/hooks/use-debounced-value.d.ts",
+        "default": "./dist/cjs/hooks/use-debounced-value.cjs"
+      }
+    },
+    "./use-event-listener": {
+      "import": {
+        "types": "./dist/types/hooks/use-event-listener.d.ts",
+        "default": "./dist/esm/hooks/use-event-listener.js"
+      },
+      "require": {
+        "types": "./dist/types/hooks/use-event-listener.d.ts",
+        "default": "./dist/cjs/hooks/use-event-listener.cjs"
+      }
+    },
+    "./use-intersection-observer": {
+      "import": {
+        "types": "./dist/types/hooks/use-intersection-observer.d.ts",
+        "default": "./dist/esm/hooks/use-intersection-observer.js"
+      },
+      "require": {
+        "types": "./dist/types/hooks/use-intersection-observer.d.ts",
+        "default": "./dist/cjs/hooks/use-intersection-observer.cjs"
+      }
+    },
+    "./use-isomorphic-layout-effect": {
+      "import": {
+        "types": "./dist/types/hooks/use-isomorphic-layout-effect.d.ts",
+        "default": "./dist/esm/hooks/use-isomorphic-layout-effect.js"
+      },
+      "require": {
+        "types": "./dist/types/hooks/use-isomorphic-layout-effect.d.ts",
+        "default": "./dist/cjs/hooks/use-isomorphic-layout-effect.cjs"
+      }
+    },
+    "./use-media-query": {
+      "import": {
+        "types": "./dist/types/hooks/use-media-query.d.ts",
+        "default": "./dist/esm/hooks/use-media-query.js"
+      },
+      "require": {
+        "types": "./dist/types/hooks/use-media-query.d.ts",
+        "default": "./dist/cjs/hooks/use-media-query.cjs"
+      }
+    },
+    "./use-mouse-position": {
+      "import": {
+        "types": "./dist/types/hooks/use-mouse-position.d.ts",
+        "default": "./dist/esm/hooks/use-mouse-position.js"
+      },
+      "require": {
+        "types": "./dist/types/hooks/use-mouse-position.d.ts",
+        "default": "./dist/cjs/hooks/use-mouse-position.cjs"
+      }
+    },
+    "./use-on-click-outside": {
+      "import": {
+        "types": "./dist/types/hooks/use-on-click-outside.d.ts",
+        "default": "./dist/esm/hooks/use-on-click-outside.js"
+      },
+      "require": {
+        "types": "./dist/types/hooks/use-on-click-outside.d.ts",
+        "default": "./dist/cjs/hooks/use-on-click-outside.cjs"
+      }
+    },
+    "./use-script": {
+      "import": {
+        "types": "./dist/types/hooks/use-script.d.ts",
+        "default": "./dist/esm/hooks/use-script.js"
+      },
+      "require": {
+        "types": "./dist/types/hooks/use-script.d.ts",
+        "default": "./dist/cjs/hooks/use-script.cjs"
+      }
+    },
+    "./use-scroll-lock": {
+      "import": {
+        "types": "./dist/types/hooks/use-scroll-lock.d.ts",
+        "default": "./dist/esm/hooks/use-scroll-lock.js"
+      },
+      "require": {
+        "types": "./dist/types/hooks/use-scroll-lock.d.ts",
+        "default": "./dist/cjs/hooks/use-scroll-lock.cjs"
+      }
+    },
     "./theme.css": {
       "import": "./dist/esm/styles/theme.css",
       "require": "./dist/cjs/styles/theme.css"
@@ -539,6 +699,7 @@
     "date-fns": "^4.1.0",
     "lucide-react": "^0.546.0",
     "motion": "^12.23.24",
+    "gsap": "^3.13.0",
     "nuqs": "^2.8.0",
     "qrcode": "^1.5.4",
     "react-day-picker": "^9.11.1",
@@ -644,6 +805,9 @@
       "inputotp": [
         "./dist/types/components/InputOTP/InputOTP.d.ts"
       ],
+      "interactive": [
+        "./dist/types/components/Interactive/Interactive.d.ts"
+      ],
       "label": [
         "./dist/types/components/Label/Label.d.ts"
       ],
@@ -698,6 +862,9 @@
       "switch": [
         "./dist/types/components/Switch/Switch.d.ts"
       ],
+      "table": [
+        "./dist/types/components/Table/Table.d.ts"
+      ],
       "tabs": [
         "./dist/types/components/Tabs/Tabs.d.ts"
       ],
@@ -727,6 +894,48 @@
       ],
       "wheelcolumn": [
         "./dist/types/components/WheelColumn/WheelColumn.d.ts"
+      ],
+      "textanimation": [
+        "./dist/types/lib/TextAnimation/index.d.ts"
+      ],
+      "index": [
+        "./dist/types/hooks/index.d.ts"
+      ],
+      "use-callback-ref": [
+        "./dist/types/hooks/use-callback-ref.d.ts"
+      ],
+      "use-data-table": [
+        "./dist/types/hooks/use-data-table.d.ts"
+      ],
+      "use-debounced-callback": [
+        "./dist/types/hooks/use-debounced-callback.d.ts"
+      ],
+      "use-debounced-value": [
+        "./dist/types/hooks/use-debounced-value.d.ts"
+      ],
+      "use-event-listener": [
+        "./dist/types/hooks/use-event-listener.d.ts"
+      ],
+      "use-intersection-observer": [
+        "./dist/types/hooks/use-intersection-observer.d.ts"
+      ],
+      "use-isomorphic-layout-effect": [
+        "./dist/types/hooks/use-isomorphic-layout-effect.d.ts"
+      ],
+      "use-media-query": [
+        "./dist/types/hooks/use-media-query.d.ts"
+      ],
+      "use-mouse-position": [
+        "./dist/types/hooks/use-mouse-position.d.ts"
+      ],
+      "use-on-click-outside": [
+        "./dist/types/hooks/use-on-click-outside.d.ts"
+      ],
+      "use-script": [
+        "./dist/types/hooks/use-script.d.ts"
+      ],
+      "use-scroll-lock": [
+        "./dist/types/hooks/use-scroll-lock.d.ts"
       ]
     }
   }

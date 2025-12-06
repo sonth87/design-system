@@ -42,6 +42,14 @@ export default defineConfig({
         "tailwindcss",
         "tailwindcss-animate",
         "use-mask-input",
+        // Additional externals
+        "qrcode",
+        "gsap",
+        /@floating-ui\/.*/,
+        "@tanstack/react-table",
+        "nuqs",
+        "react-hook-form",
+        "zod",
       ],
 
       output: [

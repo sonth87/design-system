@@ -97,7 +97,7 @@ const meta: Meta<typeof Dialog> = {
     showCloseButton: {
       control: "boolean",
       description: i18n.t(
-        "stories.dialog.argTypes.showCloseButton.description"
+        "stories.dialog.argTypes.showCloseButton.description",
       ),
       table: {
         defaultValue: { summary: "true" },
@@ -150,21 +150,23 @@ const meta: Meta<typeof Dialog> = {
         category: i18n.t("stories.category.content"),
       },
     },
-    confirmText: {
-      control: "text",
-      description: i18n.t("stories.dialog.argTypes.confirmText.description"),
+    confirmButton: {
+      description:
+        "Configuration for the confirm button (variant, color, size, className, onClick, etc.)",
       table: {
-        defaultValue: { summary: "Confirm" },
+        type: { summary: "DialogButtonConfig" },
         category: i18n.t("stories.category.content"),
       },
+      control: false,
     },
-    cancelText: {
-      control: "text",
-      description: i18n.t("stories.dialog.argTypes.cancelText.description"),
+    cancelButton: {
+      description:
+        "Configuration for the cancel button (variant, color, size, className, onClick, etc.)",
       table: {
-        defaultValue: { summary: "Cancel" },
+        type: { summary: "DialogButtonConfig" },
         category: i18n.t("stories.category.content"),
       },
+      control: false,
     },
   },
   args: {
@@ -303,14 +305,22 @@ export const Alert: Story = {
           }
           title="Confirm Action"
           description="Are you sure you want to proceed with this action?"
-          onConfirm={() => {
-            console.log("Confirmed");
-            setOpenConfirm(false);
+          confirmButton={{
+            text: "Confirm",
+            variant: "solid",
+            color: "primary",
+            onClick: () => {
+              console.log("Confirmed");
+              setOpenConfirm(false);
+            },
           }}
-          cancelText="Cancel"
-          onCancel={() => {
-            console.log("Cancelled");
-            setOpenConfirm(false);
+          cancelButton={{
+            text: "Cancel",
+            variant: "outline",
+            onClick: () => {
+              console.log("Cancelled");
+              setOpenConfirm(false);
+            },
           }}
         />
 
@@ -326,11 +336,13 @@ export const Alert: Story = {
           }
           title="Alert"
           description="This is an important alert message that requires your attention."
-          onConfirm={() => {
-            console.log("Alert acknowledged");
-            setOpenAlert(false);
+          confirmButton={{
+            text: "Acknowledge",
+            onClick: () => {
+              console.log("Alert acknowledged");
+              setOpenAlert(false);
+            },
           }}
-          confirmText="Acknowledge"
         />
 
         <Dialog
@@ -344,11 +356,13 @@ export const Alert: Story = {
           }
           title="Information"
           description="Here's some useful information you should know."
-          onConfirm={() => {
-            console.log("Info acknowledged");
-            setOpenInfo(false);
+          confirmButton={{
+            text: "Got it",
+            onClick: () => {
+              console.log("Info acknowledged");
+              setOpenInfo(false);
+            },
           }}
-          confirmText="Got it"
           showIcon={false}
         />
 
@@ -363,11 +377,17 @@ export const Alert: Story = {
           }
           title={<div>⚠️ Custom Warning Icon</div>}
           description="Please be careful. This action may have consequences. Double check before proceeding."
-          onConfirm={() => {
-            console.log("Warning acknowledged");
-            setOpenWarning(false);
+          confirmButton={{
+            text: "Understand",
+            onClick: () => {
+              console.log("Warning acknowledged");
+              setOpenWarning(false);
+            },
           }}
-          onCancel={() => setOpenWarning(false)}
+          cancelButton={{
+            text: "Cancel",
+            onClick: () => setOpenWarning(false),
+          }}
           showIcon={false}
         />
       </div>
@@ -417,14 +437,19 @@ export const Variants: Story = {
           }
           title="Confirm Action"
           description="Are you sure you want to proceed with this action?"
-          onConfirm={() => {
-            console.log("Confirmed");
-            setOpenConfirm(false);
+          confirmButton={{
+            text: "Confirm",
+            onClick: () => {
+              console.log("Confirmed");
+              setOpenConfirm(false);
+            },
           }}
-          cancelText="Cancel"
-          onCancel={() => {
-            console.log("Cancelled");
-            setOpenConfirm(false);
+          cancelButton={{
+            text: "Cancel",
+            onClick: () => {
+              console.log("Cancelled");
+              setOpenConfirm(false);
+            },
           }}
         />
 
@@ -439,11 +464,13 @@ export const Variants: Story = {
           }
           title="Alert"
           description="This is an important alert message that requires your attention."
-          onConfirm={() => {
-            console.log("Alert acknowledged");
-            setOpenAlert(false);
+          confirmButton={{
+            text: "Acknowledge",
+            onClick: () => {
+              console.log("Alert acknowledged");
+              setOpenAlert(false);
+            },
           }}
-          confirmText="Acknowledge"
         />
 
         <Dialog
@@ -457,11 +484,13 @@ export const Variants: Story = {
           }
           title="Information"
           description="Here's some useful information you should know."
-          onConfirm={() => {
-            console.log("Info acknowledged");
-            setOpenInfo(false);
+          confirmButton={{
+            text: "Got it",
+            onClick: () => {
+              console.log("Info acknowledged");
+              setOpenInfo(false);
+            },
           }}
-          confirmText="Got it"
         />
 
         <Dialog
@@ -475,11 +504,17 @@ export const Variants: Story = {
           }
           title="Warning"
           description="Please be careful. This action may have consequences."
-          onConfirm={() => {
-            console.log("Warning acknowledged");
-            setOpenWarning(false);
+          confirmButton={{
+            text: "Understand",
+            onClick: () => {
+              console.log("Warning acknowledged");
+              setOpenWarning(false);
+            },
           }}
-          onCancel={() => setOpenWarning(false)}
+          cancelButton={{
+            text: "Cancel",
+            onClick: () => setOpenWarning(false),
+          }}
         />
       </div>
     );

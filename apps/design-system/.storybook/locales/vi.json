@@ -438,8 +438,8 @@
     "stories.dialog.argTypes.stickyFooter.description": "Giữ footer ngoài vùng cuộn (footer sẽ không cuộn)",
     "stories.dialog.argTypes.title.description": "Tiêu đề dialog",
     "stories.dialog.argTypes.description.description": "Mô tả dialog",
-    "stories.dialog.argTypes.confirmText.description": "Văn bản cho nút xác nhận (các biến thể alert)",
-    "stories.dialog.argTypes.cancelText.description": "Văn bản cho nút hủy (các biến thể alert)",
+    "stories.dialog.argTypes.confirmButton.description": "Cấu hình nút xác nhận (variant, color, size, className, onClick, v.v.)",
+    "stories.dialog.argTypes.cancelButton.description": "Cấu hình nút hủy (variant, color, size, className, onClick, v.v.)",
 
     "stories.sheet.argTypes.side.description": "Phía mà sheet trượt vào",
     "stories.sheet.argTypes.size.description": "Kích thước của sheet",
