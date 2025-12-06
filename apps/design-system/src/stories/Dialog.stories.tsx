@@ -97,7 +97,7 @@ const meta: Meta<typeof Dialog> = {
     showCloseButton: {
       control: "boolean",
       description: i18n.t(
-        "stories.dialog.argTypes.showCloseButton.description",
+        "stories.dialog.argTypes.showCloseButton.description"
       ),
       table: {
         defaultValue: { summary: "true" },
@@ -204,7 +204,9 @@ export const Default: Story = {
             <Button variant="outline" onClick={() => setOpen(false)}>
               Cancel
             </Button>
-            <Button onClick={() => setOpen(false)}>Save Changes</Button>
+            <Button onClick={() => setOpen(false)} color="primary">
+              Save Changes
+            </Button>
           </div>
         }
       >
@@ -233,7 +235,7 @@ return (
         <Button variant="outline" onClick={() => setOpen(false)}>
           Cancel
         </Button>
-        <Button onClick={() => setOpen(false)}>Save Changes</Button>
+        <Button onClick={() => setOpen(false)} color="primary">Save Changes</Button>
       </div>
     }
   >
@@ -281,6 +283,98 @@ export const Standalone: Story = {
   },
 };
 
+export const Alert: Story = {
+  render: function RenderAlert(args) {
+    const [openAlert, setOpenAlert] = useState(false);
+    const [openConfirm, setOpenConfirm] = useState(false);
+    const [openInfo, setOpenInfo] = useState(false);
+    const [openWarning, setOpenWarning] = useState(false);
+
+    return (
+      <div className="flex gap-2">
+        <Dialog
+          variant="confirm"
+          open={openConfirm}
+          onOpenChange={setOpenConfirm}
+          trigger={
+            <Button variant="solid" color="secondary">
+              Confirm
+            </Button>
+          }
+          title="Confirm Action"
+          description="Are you sure you want to proceed with this action?"
+          onConfirm={() => {
+            console.log("Confirmed");
+            setOpenConfirm(false);
+          }}
+          cancelText="Cancel"
+          onCancel={() => {
+            console.log("Cancelled");
+            setOpenConfirm(false);
+          }}
+        />
+
+        <Dialog
+          {...args}
+          variant="alert"
+          open={openAlert}
+          onOpenChange={setOpenAlert}
+          trigger={
+            <Button variant="solid" color="destructive">
+              Alert
+            </Button>
+          }
+          title="Alert"
+          description="This is an important alert message that requires your attention."
+          onConfirm={() => {
+            console.log("Alert acknowledged");
+            setOpenAlert(false);
+          }}
+          confirmText="Acknowledge"
+        />
+
+        <Dialog
+          variant="info"
+          open={openInfo}
+          onOpenChange={setOpenInfo}
+          trigger={
+            <Button variant="solid" color="success">
+              Info without Icon
+            </Button>
+          }
+          title="Information"
+          description="Here's some useful information you should know."
+          onConfirm={() => {
+            console.log("Info acknowledged");
+            setOpenInfo(false);
+          }}
+          confirmText="Got it"
+          showIcon={false}
+        />
+
+        <Dialog
+          variant="warning"
+          open={openWarning}
+          onOpenChange={setOpenWarning}
+          trigger={
+            <Button variant="solid" color="warning">
+              Warning with Custom Icon
+            </Button>
+          }
+          title={<div>⚠️ Custom Warning Icon</div>}
+          description="Please be careful. This action may have consequences. Double check before proceeding."
+          onConfirm={() => {
+            console.log("Warning acknowledged");
+            setOpenWarning(false);
+          }}
+          onCancel={() => setOpenWarning(false)}
+          showIcon={false}
+        />
+      </div>
+    );
+  },
+};
+
 // Different variants
 export const Variants: Story = {
   render: function RenderVariants() {
@@ -317,7 +411,7 @@ export const Variants: Story = {
           open={openConfirm}
           onOpenChange={setOpenConfirm}
           trigger={
-            <Button variant="solid" color="primary">
+            <Button variant="solid" color="secondary">
               Confirm
             </Button>
           }
@@ -327,6 +421,7 @@ export const Variants: Story = {
             console.log("Confirmed");
             setOpenConfirm(false);
           }}
+          cancelText="Cancel"
           onCancel={() => {
             console.log("Cancelled");
             setOpenConfirm(false);
@@ -356,7 +451,7 @@ export const Variants: Story = {
           open={openInfo}
           onOpenChange={setOpenInfo}
           trigger={
-            <Button variant="solid" color="primary">
+            <Button variant="solid" color="success">
               Info
             </Button>
           }
@@ -810,10 +905,10 @@ export const CustomStyling: Story = {
         trigger={<Button>Custom Header</Button>}
         title="Custom Styled Header"
         description="This dialog has custom styling."
-        headerClassName="!bg-gradient-to-r !from-purple-500 !to-pink-500 !text-white"
+        headerClassName="!bg-gradient-to-r !from-purple-500 !to-pink-500 !text-white rounded-t-md"
         titleClassName="text-xl font-bold"
         descriptionClassName="text-white/90"
-        contentClassName="!border-2 !border-purple-500 overflow-hidden"
+        contentClassName="!border-2 !border-purple-500 overflow-hidden rounded-b-md"
       >
         <div>
           <p className="text-sm">
@@ -852,7 +947,7 @@ export const CustomStyling: Story = {
         trigger={<Button>Gradient Background</Button>}
         title="Fully Customized"
         description="Every part of this dialog is customized."
-        className="to-card bg-gradient-to-b from-sky-100 to-40% [background-size:100%_101%] sm:max-w-sm dark:from-sky-900"
+        className="to-card bg-linear-to-b from-sky-100 to-40% bg-size-[100%_101%] sm:max-w-sm dark:from-sky-900"
         footer={
           <div className="flex gap-2 justify-end w-full">
             <Button
