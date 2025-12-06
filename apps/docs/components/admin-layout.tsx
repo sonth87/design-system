@@ -14,6 +14,9 @@ import {
   AlertCircle,
   UserPlus,
   MessageSquare,
+  Palette,
+  Library,
+  Webhook,
 } from "lucide-react";
 import Button from "@dsui/design-system/button";
 import { Avatar } from "@dsui/design-system/avatar";
@@ -42,6 +45,9 @@ interface AdminLayoutProps {
 
 const menuItems = [
   { icon: Home, label: "Dashboard", href: "/", badge: null },
+  { icon: Palette, label: "Components", href: "/components", badge: null },
+  { icon: Library, label: "Libraries", href: "/lib", badge: null },
+  { icon: Webhook, label: "Hooks", href: "/hooks", badge: null },
   { icon: Users, label: "Users", href: "/users", badge: "12" },
   { icon: BarChart3, label: "Analytics", href: "/analytics", badge: null },
   { icon: FileText, label: "Reports", href: "/reports", badge: "3" },
