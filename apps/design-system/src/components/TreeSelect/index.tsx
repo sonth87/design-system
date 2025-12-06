@@ -1,1 +1,5 @@
-export { TreeView, TreeView as default, type TreeDataItem } from "./TreeSelect";
+export {
+  TreeView as TreeSelect,
+  TreeView as default,
+  type TreeDataItem,
+} from "./TreeSelect";

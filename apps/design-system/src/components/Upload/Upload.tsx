@@ -86,7 +86,8 @@ export interface UploadFile {
 
 // Upload props interface
 export interface UploadProps
-  extends Omit<React.HTMLAttributes<HTMLDivElement>, "onChange" | "size">,
+  extends
+    Omit<React.HTMLAttributes<HTMLDivElement>, "onChange" | "size">,
     VariantProps<typeof uploadVariants> {
   // Core props
   accept?: string;
@@ -1119,10 +1120,9 @@ const UploadBase = React.forwardRef<HTMLDivElement, UploadProps>(
 UploadBase.displayName = "Upload";
 
 // Add static property for LIST_IGNORE
-interface UploadComponent
-  extends React.ForwardRefExoticComponent<
-    UploadProps & React.RefAttributes<HTMLDivElement>
-  > {
+interface UploadComponent extends React.ForwardRefExoticComponent<
+  UploadProps & React.RefAttributes<HTMLDivElement>
+> {
   LIST_IGNORE: string;
 }
 

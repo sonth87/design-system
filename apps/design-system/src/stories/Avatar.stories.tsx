@@ -62,6 +62,7 @@ const meta: Meta<AvatarProps> = {
         "skewed",
         "shake",
         "flip",
+        "gradient-outline",
       ],
       table: {
         category: i18n.t("stories.category.appearance"),

@@ -10,8 +10,6 @@ import {
 } from "@dsui/ui/components/dialog";
 import {
   AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
   AlertDialogContent,
   AlertDialogDescription,
   AlertDialogFooter,
@@ -24,7 +22,6 @@ import { cn } from "@dsui/ui/lib/utils";
 import type { BasicAnimation } from "@/types/variables";
 import { animationClass } from "@/utils/animations";
 import { AlertTriangle, Info, CheckCircle2, AlertCircle } from "lucide-react";
-import { buttonVariants } from "@dsui/ui/index";
 import Button, { type ButtonProps } from "../Button/Button";
 
 export type DialogVariant = "dialog" | "confirm" | "alert" | "info" | "warning";

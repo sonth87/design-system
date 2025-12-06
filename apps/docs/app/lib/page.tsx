@@ -1,9 +1,14 @@
 "use client";
 
 import { AdminLayout } from "@/components/admin-layout";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@dsui/design-system/card";
-import { Button } from "@dsui/design-system/button";
-import { TypingText, BlurText, CircularText, FlipWords, GradientText, RollingText, RotatingText, ShimmeringText, SplittingText, TextGenerateEffect, TextHoverEffect, WritingText } from "@dsui/design-system/textanimation";
+import {
+  TypingText,
+  BlurText,
+  FlipWords,
+  GradientText,
+  ShimmeringText,
+  TextGenerateEffect,
+} from "@dsui/design-system";
 
 export default function LibPage() {
   return (
@@ -16,14 +21,14 @@ export default function LibPage() {
           </p>
         </div>
 
-        <Card>
-          <CardHeader>
-            <CardTitle>Text Animation Library</CardTitle>
-            <CardDescription>
+        <div className="bg-card border rounded-lg shadow-sm">
+          <div className="p-6 border-b">
+            <h2 className="text-2xl font-semibold">Text Animation Library</h2>
+            <p className="text-muted-foreground mt-2">
               Animated text components for enhanced user experience
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-6">
+            </p>
+          </div>
+          <div className="p-6 space-y-6">
             <div className="space-y-4">
               <div>
                 <h3 className="text-lg font-semibold mb-2">Typing Text</h3>
@@ -77,7 +82,9 @@ export default function LibPage() {
               </div>
 
               <div>
-                <h3 className="text-lg font-semibold mb-2">Text Generate Effect</h3>
+                <h3 className="text-lg font-semibold mb-2">
+                  Text Generate Effect
+                </h3>
                 <div className="bg-muted p-4 rounded-lg">
                   <TextGenerateEffect
                     words="Generated text effect"
@@ -87,82 +94,87 @@ export default function LibPage() {
               </div>
 
               <div>
-                <h3 className="text-lg font-semibold mb-2">Available Components</h3>
+                <h3 className="text-lg font-semibold mb-2">
+                  Available Components
+                </h3>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                   <div className="p-4 border rounded-lg">
                     <h4 className="font-medium">BlurText</h4>
-                    <p className="text-sm text-muted-foreground">Blur animation effect</p>
+                    <p className="text-sm text-muted-foreground">
+                      Blur animation effect
+                    </p>
                   </div>
                   <div className="p-4 border rounded-lg">
                     <h4 className="font-medium">CircularText</h4>
-                    <p className="text-sm text-muted-foreground">Circular text animation</p>
+                    <p className="text-sm text-muted-foreground">
+                      Circular text animation
+                    </p>
                   </div>
                   <div className="p-4 border rounded-lg">
                     <h4 className="font-medium">FlipWords</h4>
-                    <p className="text-sm text-muted-foreground">Word flipping animation</p>
+                    <p className="text-sm text-muted-foreground">
+                      Word flipping animation
+                    </p>
                   </div>
                   <div className="p-4 border rounded-lg">
                     <h4 className="font-medium">GradientText</h4>
-                    <p className="text-sm text-muted-foreground">Gradient color animation</p>
+                    <p className="text-sm text-muted-foreground">
+                      Gradient color animation
+                    </p>
                   </div>
                   <div className="p-4 border rounded-lg">
                     <h4 className="font-medium">RollingText</h4>
-                    <p className="text-sm text-muted-foreground">Rolling text effect</p>
+                    <p className="text-sm text-muted-foreground">
+                      Rolling text effect
+                    </p>
                   </div>
                   <div className="p-4 border rounded-lg">
                     <h4 className="font-medium">RotatingText</h4>
-                    <p className="text-sm text-muted-foreground">Rotation animation</p>
+                    <p className="text-sm text-muted-foreground">
+                      Rotation animation
+                    </p>
                   </div>
                   <div className="p-4 border rounded-lg">
                     <h4 className="font-medium">ShimmeringText</h4>
-                    <p className="text-sm text-muted-foreground">Shimmer effect</p>
+                    <p className="text-sm text-muted-foreground">
+                      Shimmer effect
+                    </p>
                   </div>
                   <div className="p-4 border rounded-lg">
                     <h4 className="font-medium">SplittingText</h4>
-                    <p className="text-sm text-muted-foreground">Text splitting animation</p>
+                    <p className="text-sm text-muted-foreground">
+                      Text splitting animation
+                    </p>
                   </div>
                   <div className="p-4 border rounded-lg">
                     <h4 className="font-medium">TextGenerateEffect</h4>
-                    <p className="text-sm text-muted-foreground">Text generation effect</p>
+                    <p className="text-sm text-muted-foreground">
+                      Text generation effect
+                    </p>
                   </div>
                   <div className="p-4 border rounded-lg">
                     <h4 className="font-medium">TextHoverEffect</h4>
-                    <p className="text-sm text-muted-foreground">Hover interaction effect</p>
+                    <p className="text-sm text-muted-foreground">
+                      Hover interaction effect
+                    </p>
                   </div>
                   <div className="p-4 border rounded-lg">
                     <h4 className="font-medium">TypingText</h4>
-                    <p className="text-sm text-muted-foreground">Typing animation</p>
+                    <p className="text-sm text-muted-foreground">
+                      Typing animation
+                    </p>
                   </div>
                   <div className="p-4 border rounded-lg">
                     <h4 className="font-medium">WritingText</h4>
-                    <p className="text-sm text-muted-foreground">Writing animation</p>
+                    <p className="text-sm text-muted-foreground">
+                      Writing animation
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
-          </CardContent>
-        </Card>
-                  <div className="p-4 border rounded-lg">
-                    <h4 className="font-medium">FlipWords</h4>
-                    <p className="text-sm text-muted-foreground">Word flipping animation</p>
-                  </div>
-                  <div className="p-4 border rounded-lg">
-                    <h4 className="font-medium">GradientText</h4>
-                    <p className="text-sm text-muted-foreground">Gradient text effects</p>
-                  </div>
-                  <div className="p-4 border rounded-lg">
-                    <h4 className="font-medium">ShimmeringText</h4>
-                    <p className="text-sm text-muted-foreground">Shimmer animation</p>
-                  </div>
-                  <div className="p-4 border rounded-lg">
-                    <h4 className="font-medium">SplittingText</h4>
-                    <p className="text-sm text-muted-foreground">Text splitting effects</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       </div>
     </AdminLayout>
   );

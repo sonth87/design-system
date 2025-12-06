@@ -8,8 +8,9 @@ import Command, { type CommandItemType } from "../Command/Command";
 import { Popover } from "../Popover";
 import { cn } from "@dsui/ui";
 
-interface DataTableViewOptionsProps<TData>
-  extends React.ComponentProps<typeof Popover> {
+interface DataTableViewOptionsProps<TData> extends React.ComponentProps<
+  typeof Popover
+> {
   table: Table<TData>;
 }
 
