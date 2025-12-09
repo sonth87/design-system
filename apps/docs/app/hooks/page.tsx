@@ -1,26 +1,25 @@
 "use client";
 
 import { AdminLayout } from "@/components/admin-layout";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@dsui/design-system/card";
-import { Button } from "@dsui/design-system/button";
-import { Input } from "@dsui/design-system/input";
-import { Label } from "@dsui/design-system/label";
-import { useState, useEffect } from "react";
+import Button from "@dsui/design-system/button";
+import Input from "@dsui/design-system/input";
+import { useState } from "react";
 import { useDebouncedCallback } from "@dsui/design-system/use-debounced-callback";
-import { useDebouncedValue } from "@dsui/design-system/use-debounced-value";
+import { useDebounceValue } from "@dsui/design-system/use-debounced-value";
 import { useMediaQuery } from "@dsui/design-system/use-media-query";
 import { useOnClickOutside } from "@dsui/design-system/use-on-click-outside";
 import { useRef } from "react";
+import { Label } from "@dsui/design-system";
 
 export default function HooksPage() {
   const [inputValue, setInputValue] = useState("");
-  const [debouncedValue] = useDebouncedValue(inputValue, 500);
+  const [debouncedValue] = useDebounceValue(inputValue, 500);
   const [count, setCount] = useState(0);
   const isDesktop = useMediaQuery("(min-width: 768px)");
   const ref = useRef<HTMLDivElement>(null);
 
   const debouncedIncrement = useDebouncedCallback(() => {
-    setCount(c => c + 1);
+    setCount((c) => c + 1);
   }, 1000);
 
   useOnClickOutside(ref, () => {
@@ -38,86 +37,94 @@ export default function HooksPage() {
         </div>
 
         <div className="grid gap-6">
-          <Card>
-            <CardHeader>
-              <CardTitle>useDebouncedValue</CardTitle>
-              <CardDescription>
+          <div className="bg-card border rounded-lg shadow-sm">
+            <div className="p-6 border-b">
+              <h2 className="text-2xl font-semibold">useDebouncedValue</h2>
+              <p className="text-muted-foreground mt-2">
                 Debounces a value to prevent excessive updates
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
+              </p>
+            </div>
+            <div className="p-6 space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="debounce-input">Type something:</Label>
+                <Label htmlFor="debounce-input" className="text-sm font-medium">
+                  Type something:
+                </Label>
                 <Input
                   id="debounce-input"
                   value={inputValue}
-                  onChange={(e) => setInputValue(e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                    setInputValue(e.target.value)
+                  }
                   placeholder="Type to see debounced value..."
                 />
               </div>
               <div className="space-y-2">
-                <p><strong>Input:</strong> {inputValue}</p>
-                <p><strong>Debounced (500ms):</strong> {debouncedValue}</p>
+                <p>
+                  <strong>Input:</strong> {inputValue}
+                </p>
+                <p>
+                  <strong>Debounced (500ms):</strong> {debouncedValue}
+                </p>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
 
-          <Card>
-            <CardHeader>
-              <CardTitle>useDebouncedCallback</CardTitle>
-              <CardDescription>
+          <div className="bg-card border rounded-lg shadow-sm">
+            <div className="p-6 border-b">
+              <h2 className="text-2xl font-semibold">useDebouncedCallback</h2>
+              <p className="text-muted-foreground mt-2">
                 Debounces a callback function
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
+              </p>
+            </div>
+            <div className="p-6 space-y-4">
               <div className="space-y-2">
                 <p>Count: {count}</p>
                 <Button onClick={debouncedIncrement}>
                   Increment (debounced 1s)
                 </Button>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
 
-          <Card>
-            <CardHeader>
-              <CardTitle>useMediaQuery</CardTitle>
-              <CardDescription>
+          <div className="bg-card border rounded-lg shadow-sm">
+            <div className="p-6 border-b">
+              <h2 className="text-2xl font-semibold">useMediaQuery</h2>
+              <p className="text-muted-foreground mt-2">
                 Responsive hook for media queries
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
+              </p>
+            </div>
+            <div className="p-6">
               <p>
                 <strong>Is Desktop (≥768px)?</strong> {isDesktop ? "Yes" : "No"}
               </p>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
 
-          <Card>
-            <CardHeader>
-              <CardTitle>useOnClickOutside</CardTitle>
-              <CardDescription>
+          <div className="bg-card border rounded-lg shadow-sm">
+            <div className="p-6 border-b">
+              <h2 className="text-2xl font-semibold">useOnClickOutside</h2>
+              <p className="text-muted-foreground mt-2">
                 Detects clicks outside of a referenced element
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
+              </p>
+            </div>
+            <div className="p-6">
               <div
                 ref={ref}
                 className="p-4 border-2 border-dashed border-muted-foreground rounded-lg"
               >
                 <p>Click inside this box - check console for outside clicks</p>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
 
-          <Card>
-            <CardHeader>
-              <CardTitle>Available Hooks</CardTitle>
-              <CardDescription>
+          <div className="bg-card border rounded-lg shadow-sm">
+            <div className="p-6 border-b">
+              <h2 className="text-2xl font-semibold">Available Hooks</h2>
+              <p className="text-muted-foreground mt-2">
                 Complete list of custom hooks in our design system
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
+              </p>
+            </div>
+            <div className="p-6">
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                 <div className="p-3 border rounded">
                   <code className="text-sm">useCallbackRef</code>
@@ -156,8 +163,8 @@ export default function HooksPage() {
                   <code className="text-sm">useScrollLock</code>
                 </div>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
         </div>
       </div>
     </AdminLayout>

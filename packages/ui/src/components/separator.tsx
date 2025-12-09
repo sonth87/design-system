@@ -16,8 +16,9 @@ const colorVariants = {
   warning: "bg-warning",
 };
 
-interface SeparatorProps
-  extends React.ComponentProps<typeof SeparatorPrimitive.Root> {
+interface SeparatorProps extends React.ComponentProps<
+  typeof SeparatorPrimitive.Root
+> {
   textPosition?: "start" | "center" | "end";
   children?: React.ReactNode;
   color?: keyof typeof colorVariants;

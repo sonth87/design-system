@@ -9,6 +9,7 @@ export type ButtonAnimation =
   | "liquid"
   | "link-underline"
   | "loading"
+  | "gradient-outline"
   | "draw";
 
 export type BadgeAnimation =
@@ -20,6 +21,7 @@ export type BadgeAnimation =
   | "glass"
   | "liquid"
   | "loading"
+  | "gradient-outline"
   | "draw";
 
 export type SwitchAnimation =
@@ -29,6 +31,7 @@ export type SwitchAnimation =
   | "glow"
   | "glass"
   | "loading"
+  | "gradient-outline"
   | "shake";
 
 export type BasicAnimation =
@@ -43,6 +46,7 @@ export type BasicAnimation =
   | "shake"
   | "flip"
   | "glow"
+  | "gradient-outline"
   | "spec";
 
 export type BasicColor =

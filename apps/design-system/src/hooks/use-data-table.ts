@@ -44,13 +44,12 @@ const ARRAY_SEPARATOR = ",";
 const DEBOUNCE_MS = 300;
 const THROTTLE_MS = 50;
 
-interface UseDataTableProps<TData>
-  extends Omit<
-    TableOptions<TData>,
-    // | "state"
-    // | "pageCount"
-    "getCoreRowModel"
-  > {
+interface UseDataTableProps<TData> extends Omit<
+  TableOptions<TData>,
+  // | "state"
+  // | "pageCount"
+  "getCoreRowModel"
+> {
   initialState?: Omit<Partial<TableState>, "sorting"> & {
     sorting?: ExtendedColumnSort<TData>[];
   };

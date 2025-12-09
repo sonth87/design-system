@@ -5,8 +5,9 @@ import {
 } from "@dsui/ui/components/scroll-area";
 import { cn } from "@dsui/ui/lib/utils";
 
-export interface ScrollAreaProps
-  extends React.ComponentProps<typeof SScrollArea> {
+export interface ScrollAreaProps extends React.ComponentProps<
+  typeof SScrollArea
+> {
   /**
    * Type of scroll snap behavior
    * @default undefined

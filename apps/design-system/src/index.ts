@@ -114,7 +114,7 @@ export * from "./components/Stepper";
 export * from "./components/Pagination";
 
 // DataTable
-export * from "./components/Table";
+export { DataTable as Table } from "./components/Table";
 
 // DropdownMenu
 export * from "./components/DropdownMenu";

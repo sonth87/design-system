@@ -95,7 +95,7 @@ export function Avatar({
   return (
     <DsAvatar
       className={cn(
-        "relative flex shrink-0 overflow-hidden transition-all duration-300",
+        "relative flex shrink-0 transition-all duration-300",
         avatarSize,
         avatarVariant,
         avatarAnimation?.className,
@@ -104,8 +104,10 @@ export function Avatar({
       )}
       {...props}
     >
-      {src && <AvatarImage src={src} alt={alt} />}
-      <AvatarFallback className={cn(avatarColor, className)}>
+      {src && <AvatarImage src={src} alt={alt} className="rounded-[inherit]" />}
+      <AvatarFallback
+        className={cn("rounded-[inherit]", avatarColor, className)}
+      >
         {fallback}
       </AvatarFallback>
     </DsAvatar>

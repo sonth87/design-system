@@ -19,7 +19,7 @@ const QRCode = Object.assign(Root, {
   Download,
 });
 
-export { QRCode };
+export { QRCode, QRCode as QrCode };
 
 // Export hook và type
 export { useQRCode };
