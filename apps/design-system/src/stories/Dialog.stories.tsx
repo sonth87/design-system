@@ -78,6 +78,13 @@ const meta: Meta<typeof Dialog> = {
         category: i18n.t("stories.category.behavior"),
       },
     },
+    onOpenChange: {
+      description: i18n.t("stories.dialog.argTypes.onOpenChange.description"),
+      table: {
+        category: i18n.t("stories.category.behavior"),
+      },
+      control: false,
+    },
     closeOnEsc: {
       control: "boolean",
       description: i18n.t("stories.dialog.argTypes.closeOnEsc.description"),
@@ -97,7 +104,7 @@ const meta: Meta<typeof Dialog> = {
     showCloseButton: {
       control: "boolean",
       description: i18n.t(
-        "stories.dialog.argTypes.showCloseButton.description",
+        "stories.dialog.argTypes.showCloseButton.description"
       ),
       table: {
         defaultValue: { summary: "true" },
@@ -150,9 +157,29 @@ const meta: Meta<typeof Dialog> = {
         category: i18n.t("stories.category.content"),
       },
     },
+    children: {
+      description: i18n.t("stories.dialog.argTypes.children.description"),
+      table: {
+        category: i18n.t("stories.category.content"),
+      },
+      control: false,
+    },
+    trigger: {
+      description: i18n.t("stories.dialog.argTypes.trigger.description"),
+      table: {
+        category: i18n.t("stories.category.content"),
+      },
+      control: false,
+    },
+    footer: {
+      description: i18n.t("stories.dialog.argTypes.footer.description"),
+      table: {
+        category: i18n.t("stories.category.content"),
+      },
+      control: false,
+    },
     confirmButton: {
-      description:
-        "Configuration for the confirm button (variant, color, size, className, onClick, etc.)",
+      description: i18n.t("stories.dialog.argTypes.confirmButton.description"),
       table: {
         type: { summary: "DialogButtonConfig" },
         category: i18n.t("stories.category.content"),
@@ -160,13 +187,96 @@ const meta: Meta<typeof Dialog> = {
       control: false,
     },
     cancelButton: {
-      description:
-        "Configuration for the cancel button (variant, color, size, className, onClick, etc.)",
+      description: i18n.t("stories.dialog.argTypes.cancelButton.description"),
       table: {
         type: { summary: "DialogButtonConfig" },
         category: i18n.t("stories.category.content"),
       },
       control: false,
+    },
+    showIcon: {
+      control: "boolean",
+      description: i18n.t("stories.dialog.argTypes.showIcon.description"),
+      table: {
+        defaultValue: { summary: "true" },
+        category: i18n.t("stories.category.ui"),
+      },
+    },
+    className: {
+      control: "text",
+      description: i18n.t("stories.dialog.argTypes.className.description"),
+      table: {
+        category: i18n.t("stories.category.styling"),
+      },
+    },
+    contentClassName: {
+      control: "text",
+      description: i18n.t(
+        "stories.dialog.argTypes.contentClassName.description"
+      ),
+      table: {
+        category: i18n.t("stories.category.styling"),
+      },
+    },
+    headerClassName: {
+      control: "text",
+      description: i18n.t(
+        "stories.dialog.argTypes.headerClassName.description"
+      ),
+      table: {
+        category: i18n.t("stories.category.styling"),
+      },
+    },
+    titleClassName: {
+      control: "text",
+      description: i18n.t("stories.dialog.argTypes.titleClassName.description"),
+      table: {
+        category: i18n.t("stories.category.styling"),
+      },
+    },
+    descriptionClassName: {
+      control: "text",
+      description: i18n.t(
+        "stories.dialog.argTypes.descriptionClassName.description"
+      ),
+      table: {
+        category: i18n.t("stories.category.styling"),
+      },
+    },
+    footerClassName: {
+      control: "text",
+      description: i18n.t(
+        "stories.dialog.argTypes.footerClassName.description"
+      ),
+      table: {
+        category: i18n.t("stories.category.styling"),
+      },
+    },
+    overlayClassName: {
+      control: "text",
+      description: i18n.t(
+        "stories.dialog.argTypes.overlayClassName.description"
+      ),
+      table: {
+        category: i18n.t("stories.category.styling"),
+      },
+    },
+    backdropFilter: {
+      control: "number",
+      description: i18n.t("stories.dialog.argTypes.backdropFilter.description"),
+      table: {
+        defaultValue: { summary: "undefined" },
+        category: i18n.t("stories.category.ui"),
+      },
+    },
+    overlay: {
+      control: "select",
+      options: ["dark", "light"],
+      description: i18n.t("stories.dialog.argTypes.overlay.description"),
+      table: {
+        defaultValue: { summary: "dark" },
+        category: i18n.t("stories.category.ui"),
+      },
     },
   },
   args: {

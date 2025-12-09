@@ -30,15 +30,27 @@ function AlertDialogPortal({
 
 function AlertDialogOverlay({
   className,
+  backdropFilter,
+  overlay = "dark",
   ...props
-}: React.ComponentProps<typeof AlertDialogPrimitive.Overlay>) {
+}: React.ComponentProps<typeof AlertDialogPrimitive.Overlay> & {
+  backdropFilter?: number;
+  overlay?: "dark" | "light";
+}) {
+  const overlayClass = overlay === "dark" ? "bg-black/50" : "bg-white/50";
   return (
     <AlertDialogPrimitive.Overlay
       data-slot="alert-dialog-overlay"
       className={cn(
-        "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/50",
-        className,
+        "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50",
+        overlayClass,
+        className
       )}
+      style={
+        backdropFilter
+          ? { backdropFilter: `blur(${backdropFilter}px)` }
+          : undefined
+      }
       {...props}
     />
   );
@@ -47,13 +59,17 @@ function AlertDialogOverlay({
 function AlertDialogContent({
   className,
   noDefaultAnimation,
+  backdropFilter,
+  overlay,
   ...props
 }: React.ComponentProps<typeof AlertDialogPrimitive.Content> & {
   noDefaultAnimation?: boolean;
+  backdropFilter?: number;
+  overlay?: "dark" | "light";
 }) {
   return (
     <AlertDialogPortal>
-      <AlertDialogOverlay />
+      <AlertDialogOverlay backdropFilter={backdropFilter} overlay={overlay} />
       <AlertDialogPrimitive.Content
         data-slot="alert-dialog-content"
         className={cn(
@@ -61,7 +77,7 @@ function AlertDialogContent({
           {
             "data-[state=open]:animate-in": !noDefaultAnimation,
           },
-          className,
+          className
         )}
         {...props}
       />
@@ -91,7 +107,7 @@ function AlertDialogFooter({
       data-slot="alert-dialog-footer"
       className={cn(
         "flex flex-col-reverse gap-2 sm:flex-row sm:justify-end",
-        className,
+        className
       )}
       {...props}
     />
