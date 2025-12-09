@@ -92,6 +92,16 @@
         "default": "./dist/cjs/components/Calendar/Calendar.cjs"
       }
     },
+    "./carousel": {
+      "import": {
+        "types": "./dist/types/components/Carousel/Carousel.d.ts",
+        "default": "./dist/esm/components/Carousel/Carousel.js"
+      },
+      "require": {
+        "types": "./dist/types/components/Carousel/Carousel.d.ts",
+        "default": "./dist/cjs/components/Carousel/Carousel.cjs"
+      }
+    },
     "./checkbox": {
       "import": {
         "types": "./dist/types/components/Checkbox/Checkbox.d.ts",
@@ -190,6 +200,16 @@
       "require": {
         "types": "./dist/types/components/Glass/Glass.d.ts",
         "default": "./dist/cjs/components/Glass/Glass.cjs"
+      }
+    },
+    "./imageviewer": {
+      "import": {
+        "types": "./dist/types/components/ImageViewer/ImageViewer.d.ts",
+        "default": "./dist/esm/components/ImageViewer/ImageViewer.js"
+      },
+      "require": {
+        "types": "./dist/types/components/ImageViewer/ImageViewer.d.ts",
+        "default": "./dist/cjs/components/ImageViewer/ImageViewer.cjs"
       }
     },
     "./input": {
@@ -703,10 +723,12 @@
     "qrcode": "^1.5.4",
     "react-day-picker": "^9.11.1",
     "react-device-detect": "^2.2.3",
+    "react-viewer": "^3.2.2",
     "sonner": "^2.0.7",
     "tailwindcss": "^4.1.14",
     "tailwindcss-animate": "^1.0.7",
-    "use-mask-input": "^3.5.2"
+    "use-mask-input": "^3.5.2",
+    "viewerjs": "^1.11.7"
   },
   "devDependencies": {
     "@dsui/ui": "workspace:*",
@@ -766,6 +788,9 @@
       "calendar": [
         "./dist/types/components/Calendar/Calendar.d.ts"
       ],
+      "carousel": [
+        "./dist/types/components/Carousel/Carousel.d.ts"
+      ],
       "checkbox": [
         "./dist/types/components/Checkbox/Checkbox.d.ts"
       ],
@@ -795,6 +820,9 @@
       ],
       "glass": [
         "./dist/types/components/Glass/Glass.d.ts"
+      ],
+      "imageviewer": [
+        "./dist/types/components/ImageViewer/ImageViewer.d.ts"
       ],
       "input": [
         "./dist/types/components/Input/Input.d.ts"
