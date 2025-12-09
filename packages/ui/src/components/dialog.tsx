@@ -32,15 +32,27 @@ function DialogClose({
 
 function DialogOverlay({
   className,
+  backdropFilter,
+  overlay = "dark",
   ...props
-}: React.ComponentProps<typeof DialogPrimitive.Overlay>) {
+}: React.ComponentProps<typeof DialogPrimitive.Overlay> & {
+  backdropFilter?: number;
+  overlay?: "dark" | "light";
+}) {
+  const overlayClass = overlay === "dark" ? "bg-black/50" : "bg-white/50";
   return (
     <DialogPrimitive.Overlay
       data-slot="dialog-overlay"
       className={cn(
-        "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/50",
-        className,
+        "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50",
+        overlayClass,
+        className
       )}
+      style={
+        backdropFilter
+          ? { backdropFilter: `blur(${backdropFilter}px)` }
+          : undefined
+      }
       {...props}
     />
   );
@@ -51,14 +63,18 @@ function DialogContent({
   children,
   showCloseButton = true,
   noDefaultAnimation,
+  backdropFilter,
+  overlay,
   ...props
 }: React.ComponentProps<typeof DialogPrimitive.Content> & {
   showCloseButton?: boolean;
   noDefaultAnimation?: boolean;
+  backdropFilter?: number;
+  overlay?: "dark" | "light";
 }) {
   return (
     <DialogPortal data-slot="dialog-portal">
-      <DialogOverlay />
+      <DialogOverlay backdropFilter={backdropFilter} overlay={overlay} />
       <DialogPrimitive.Content
         data-slot="dialog-content"
         className={cn(
@@ -66,7 +82,7 @@ function DialogContent({
           {
             "data-[state=open]:animate-in": !noDefaultAnimation,
           },
-          className,
+          className
         )}
         {...props}
       >
@@ -101,7 +117,7 @@ function DialogFooter({ className, ...props }: React.ComponentProps<"div">) {
       data-slot="dialog-footer"
       className={cn(
         "flex flex-col-reverse gap-2 sm:flex-row sm:justify-end",
-        className,
+        className
       )}
       {...props}
     />
