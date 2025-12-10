@@ -113,7 +113,7 @@ const SIZE_CONFIG: Record<
 // Helper to get arrow direction based on orientation and position
 const getArrowDirection = (
   orientation: "horizontal" | "vertical",
-  position: LabelPosition,
+  position: LabelPosition
 ): "top" | "bottom" | "left" | "right" => {
   if (orientation === "horizontal") {
     if (position === "bottom") return "bottom";
@@ -131,7 +131,7 @@ const getArrowDirection = (
 // Helper to get arrow color class
 const getArrowColorClass = (
   color: SliderColor,
-  direction: "top" | "bottom" | "left" | "right",
+  direction: "top" | "bottom" | "left" | "right"
 ): string => {
   // Generate full border class (e.g., "border-t-primary")
   const prefix =
@@ -159,7 +159,7 @@ const getArrowColorClass = (
 // Helper to get label position classes
 const getLabelPositionClasses = (
   orientation: "horizontal" | "vertical",
-  position: LabelPosition,
+  position: LabelPosition
 ): { badge: string; arrow: string } => {
   const positions: Record<string, { badge: string; arrow: string }> = {
     "horizontal-top": {
@@ -210,7 +210,7 @@ const getLabelPositionClasses = (
 // Helper to get spec label position classes
 const getSpecLabelPositionClass = (
   orientation: "horizontal" | "vertical",
-  position: LabelPosition,
+  position: LabelPosition
 ): string => {
   const positions: Record<string, string> = {
     "horizontal-top":
@@ -256,7 +256,7 @@ const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
       max = 100,
       ...props
     },
-    ref,
+    ref
   ) => {
     const _values = React.useMemo(
       () =>
@@ -265,46 +265,77 @@ const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
           : Array.isArray(defaultValue)
             ? defaultValue
             : [min, max],
-      [value, defaultValue, min, max],
+      [value, defaultValue, min, max]
     );
 
-    // Validate values
+    // State for hover detection
+    const [isHovered, setIsHovered] = React.useState(false);
     React.useEffect(() => {
       if (value !== undefined && !Array.isArray(value)) {
         console.error(
-          "[Slider] value prop must be an array of numbers, e.g., [50] or [25, 75]",
+          "[Slider] value prop must be an array of numbers, e.g., [50] or [25, 75]"
         );
       }
       if (defaultValue !== undefined && !Array.isArray(defaultValue)) {
         console.error(
-          "[Slider] defaultValue prop must be an array of numbers, e.g., [50] or [25, 75]",
+          "[Slider] defaultValue prop must be an array of numbers, e.g., [50] or [25, 75]"
         );
       }
     }, [value, defaultValue]);
 
     const orientation = props.orientation || "horizontal";
 
-    // For spec animation
-    const springConfig = { stiffness: 100, damping: 5 };
-    const x = useMotionValue(0);
-    const rotate = useSpring(
-      useTransform(x, [-100, 100], [-45, 45]),
-      springConfig,
-    );
-    const translateX = useSpring(
-      useTransform(x, [-100, 100], [-50, 50]),
-      springConfig,
-    );
+    // For spec animation - track thumb position and velocity
+    const thumbPosition = useMotionValue(0);
+    const thumbVelocity = useMotionValue(0);
+    const prevThumbPosition = React.useRef(0);
 
-    const handleMouseMove = React.useCallback(
-      (event: React.MouseEvent) => {
-        if (labelAnimation === "spec") {
-          const halfWidth = (event.target as HTMLElement).offsetWidth / 2;
-          x.set(event.nativeEvent.offsetX - halfWidth);
-        }
-      },
-      [labelAnimation, x],
-    );
+    // Spring physics for label following effect - more dramatic
+    const springConfig = { stiffness: 150, damping: 15, mass: 1 };
+    const labelOffset = useSpring(0, springConfig);
+    const labelRotate = useSpring(0, springConfig);
+
+    // Track value changes to calculate velocity
+    React.useEffect(() => {
+      if (labelAnimation === "spec" && _values.length > 0) {
+        const currentPos = _values[0];
+        const velocity = currentPos - prevThumbPosition.current;
+
+        // Cap velocity to prevent large jumps (e.g., on click or initial load)
+        const maxVelocity = 5; // Maximum velocity threshold
+        const cappedVelocity = Math.max(
+          -maxVelocity,
+          Math.min(maxVelocity, velocity)
+        );
+
+        // Update velocity and position
+        thumbVelocity.set(cappedVelocity);
+        thumbPosition.set(currentPos);
+
+        // Calculate offset and rotation based on capped velocity
+        // Negative velocity (moving left) -> positive offset (label lags behind to the right)
+        const offsetAmount = -cappedVelocity * 12;
+        const rotateAmount = -cappedVelocity * 20;
+
+        labelOffset.set(offsetAmount);
+        labelRotate.set(rotateAmount);
+
+        // Reset to center when stopped
+        setTimeout(() => {
+          labelOffset.set(0);
+          labelRotate.set(0);
+        }, 100);
+
+        prevThumbPosition.current = currentPos;
+      }
+    }, [
+      _values,
+      labelAnimation,
+      thumbVelocity,
+      thumbPosition,
+      labelOffset,
+      labelRotate,
+    ]);
 
     // Memoized computed values
     const sliderColorClass = useMemo(() => {
@@ -353,12 +384,12 @@ const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
 
     const labelPositionClass = useMemo(
       () => getLabelPositionClasses(orientation, labelPosition),
-      [labelPosition, orientation],
+      [labelPosition, orientation]
     );
 
     const labelPositionClassSpec = useMemo(
       () => getSpecLabelPositionClass(orientation, labelPosition),
-      [labelPosition, orientation],
+      [labelPosition, orientation]
     );
 
     // Render label based on animation type
@@ -372,7 +403,7 @@ const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
                 labelPositionClassSpec,
                 labelColor && labelColor,
                 labelTextColor && labelTextColor,
-                !labelColor && !labelTextColor && labelColorClass,
+                !labelColor && !labelTextColor && labelColorClass
               )}
               data-orientation={orientation}
               initial={
@@ -380,14 +411,18 @@ const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
                   ? { opacity: 1, y: -5, scale: 1 }
                   : { opacity: 0, y: 20, scale: 0 }
               }
-              whileHover={
-                showLabel === "hover" || showLabel === "always"
+              animate={
+                (isHovered && showLabel === "hover") || showLabel === "always"
                   ? {
                       opacity: 1,
                       y: -5,
                       scale: 1,
                     }
-                  : undefined
+                  : {
+                      opacity: 0,
+                      y: 20,
+                      scale: 0,
+                    }
               }
               transition={{
                 type: "tween",
@@ -395,14 +430,27 @@ const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
                 ease: "easeOut",
               }}
               style={{
-                translateX: translateX,
-                rotate: rotate,
+                x: labelOffset,
+                rotate: labelRotate,
                 whiteSpace: "nowrap",
               }}
             >
               <div className="relative z-1">
-                {labelFormatter(_values[index])}
+                <NumberFlow
+                  value={_values[index]}
+                  format={{ notation: "standard" }}
+                  isolate
+                />
               </div>
+              {labelArrow && (
+                <div
+                  className={cn(
+                    "arrow absolute border-transparent",
+                    labelPositionClass.arrow,
+                    arrowColorClass
+                  )}
+                />
+              )}
             </motion.div>
           );
         }
@@ -432,13 +480,14 @@ const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
               !labelColor &&
                 !labelTextColor &&
                 color === "glass" &&
-                "bg-white/15 text-foreground backdrop-blur-sm shadow-lg [&>div.arrow]:border-t-white/15",
+                "bg-white/15 text-foreground backdrop-blur-sm shadow-lg [&>div.arrow]:border-t-white/15"
             )}
           >
             {labelAnimation === "number-flow" ? (
               <NumberFlow
                 value={_values[index]}
                 format={{ notation: "standard" }}
+                isolate
               />
             ) : (
               <span>{labelFormatter(_values[index])}</span>
@@ -448,7 +497,7 @@ const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
                 className={cn(
                   "arrow absolute border-transparent",
                   labelPositionClass.arrow,
-                  arrowColorClass,
+                  arrowColorClass
                 )}
               />
             )}
@@ -463,8 +512,8 @@ const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
         labelColorClass,
         orientation,
         showLabel,
-        translateX,
-        rotate,
+        labelOffset,
+        labelRotate,
         labelFormatter,
         _values,
         color,
@@ -472,7 +521,8 @@ const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
         labelVisibilityClass,
         labelArrow,
         arrowColorClass,
-      ],
+        isHovered,
+      ]
     );
 
     // Render without label - use custom slider with color
@@ -487,7 +537,7 @@ const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
           max={max}
           className={cn(
             "relative flex w-full touch-none items-center select-none data-disabled:opacity-50 data-[orientation=vertical]:h-full data-[orientation=vertical]:min-h-44 data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col",
-            className,
+            className
           )}
           {...props}
         >
@@ -495,14 +545,14 @@ const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
             data-slot="slider-track"
             className={cn(
               "bg-muted relative grow overflow-hidden rounded-full data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full",
-              sliderSizeClass.track,
+              sliderSizeClass.track
             )}
           >
             <SliderPrimitive.Range
               data-slot="slider-range"
               className={cn(
                 "absolute data-[orientation=horizontal]:h-full data-[orientation=vertical]:w-full",
-                sliderColorClass.range,
+                sliderColorClass.range
               )}
             />
           </SliderPrimitive.Track>
@@ -513,7 +563,7 @@ const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
               className={cn(
                 "block shrink-0 rounded-full border bg-white shadow-sm transition-[color,box-shadow] hover:ring-4 focus-visible:ring-4 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50 ring-ring/50",
                 sliderColorClass.thumb,
-                sliderSizeClass.thumb,
+                sliderSizeClass.thumb
               )}
             />
           ))}
@@ -532,7 +582,7 @@ const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
         max={max}
         className={cn(
           "relative flex w-full touch-none items-center select-none data-disabled:opacity-50 data-[orientation=vertical]:h-full data-[orientation=vertical]:min-h-44 data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col",
-          className,
+          className
         )}
         {...props}
       >
@@ -540,14 +590,14 @@ const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
           data-slot="slider-track"
           className={cn(
             "bg-muted relative grow overflow-hidden rounded-full data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full",
-            sliderSizeClass.track,
+            sliderSizeClass.track
           )}
         >
           <SliderPrimitive.Range
             data-slot="slider-range"
             className={cn(
               "absolute data-[orientation=horizontal]:h-full data-[orientation=vertical]:w-full",
-              sliderColorClass.range,
+              sliderColorClass.range
             )}
           />
         </SliderPrimitive.Track>
@@ -558,18 +608,17 @@ const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
             className={cn(
               "group block shrink-0 rounded-full border bg-white shadow-sm transition-[color,box-shadow] hover:ring-4 focus-visible:ring-4 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50 ring-ring/50",
               sliderColorClass.thumb,
-              sliderSizeClass.thumb,
+              sliderSizeClass.thumb
             )}
-            onMouseMove={
-              labelAnimation === "spec" ? handleMouseMove : undefined
-            }
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
           >
             {renderLabel(index)}
           </SliderPrimitive.Thumb>
         ))}
       </SliderPrimitive.Root>
     );
-  },
+  }
 );
 
 Slider.displayName = "Slider";
