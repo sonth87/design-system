@@ -5,12 +5,7 @@ export type ToggleProps = React.ComponentProps<typeof SToggle>;
 
 const Toggle = React.forwardRef<HTMLButtonElement, ToggleProps>(
   (props, ref) => {
-    const {
-      variant = "default",
-      size = "default",
-      color = "primary",
-      ...rest
-    } = props;
+    const { variant = "default", size = "default", color, ...rest } = props;
 
     return (
       <SToggle
@@ -21,7 +16,7 @@ const Toggle = React.forwardRef<HTMLButtonElement, ToggleProps>(
         color={color}
       />
     );
-  },
+  }
 );
 
 Toggle.displayName = "Toggle";

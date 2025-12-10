@@ -54,6 +54,24 @@ const meta: Meta<typeof Rate> = {
         category: "Appearance",
       },
     },
+    color: {
+      control: "select",
+      options: [
+        "primary",
+        "secondary",
+        "accent",
+        "destructive",
+        "muted",
+        "success",
+        "error",
+        "warning",
+      ],
+      description: "Color theme for filled stars",
+      table: {
+        category: "Appearance",
+        defaultValue: { summary: "warning" },
+      },
+    },
     disabled: {
       control: "boolean",
       description: "If read only, unable to interact",
@@ -204,6 +222,49 @@ export const Sizes: Story = {
         <div>
           <p className="text-sm text-muted-foreground mb-2">Large</p>
           <Rate defaultValue={3} size="large" />
+        </div>
+      </div>
+    );
+  },
+};
+
+// ============================================================================
+// COLORS
+// ============================================================================
+
+export const Colors: Story = {
+  render: function ColorsRate() {
+    return (
+      <div className="space-y-6">
+        <div>
+          <p className="text-sm text-muted-foreground mb-2">Primary</p>
+          <Rate defaultValue={3} color="primary" />
+        </div>
+        <div>
+          <p className="text-sm text-muted-foreground mb-2">Secondary</p>
+          <Rate defaultValue={3} color="secondary" />
+        </div>
+        <div>
+          <p className="text-sm text-muted-foreground mb-2">Accent</p>
+          <Rate defaultValue={3} color="accent" />
+        </div>
+        <div>
+          <p className="text-sm text-muted-foreground mb-2">Destructive</p>
+          <Rate defaultValue={3} color="destructive" />
+        </div>
+        <div>
+          <p className="text-sm text-muted-foreground mb-2">Success</p>
+          <Rate defaultValue={3} color="success" />
+        </div>
+        <div>
+          <p className="text-sm text-muted-foreground mb-2">Error</p>
+          <Rate defaultValue={3} color="error" />
+        </div>
+        <div>
+          <p className="text-sm text-muted-foreground mb-2">
+            Warning (default)
+          </p>
+          <Rate defaultValue={3} color="warning" />
         </div>
       </div>
     );
@@ -485,7 +546,7 @@ export const ProductReview: Story = {
         <button
           onClick={() => {
             alert(
-              `Cảm ơn bạn đã đánh giá!\nTrung bình: ${average.toFixed(1)} sao`,
+              `Cảm ơn bạn đã đánh giá!\nTrung bình: ${average.toFixed(1)} sao`
             );
           }}
           disabled={average === 0}

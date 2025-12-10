@@ -15,6 +15,15 @@ export interface RateProps {
 
   // Appearance
   size?: "small" | "middle" | "large";
+  color?:
+    | "primary"
+    | "secondary"
+    | "accent"
+    | "destructive"
+    | "muted"
+    | "success"
+    | "error"
+    | "warning";
   character?: React.ReactNode | ((rateProps: RateProps) => React.ReactNode);
   className?: string;
   style?: React.CSSProperties;
@@ -44,6 +53,7 @@ const Rate = React.forwardRef<HTMLDivElement, RateProps>(
       allowHalf = false,
       allowClear = true,
       size = "middle",
+      color = "warning",
       character,
       className,
       style,
@@ -57,7 +67,7 @@ const Rate = React.forwardRef<HTMLDivElement, RateProps>(
       onBlur,
       onKeyDown,
     },
-    ref,
+    ref
   ) => {
     const [internalValue, setInternalValue] = useState(defaultValue);
     const [hoverValue, setHoverValue] = useState<number | null>(null);
@@ -72,6 +82,18 @@ const Rate = React.forwardRef<HTMLDivElement, RateProps>(
       small: 20,
       middle: 24,
       large: 32,
+    };
+
+    // Color mapping for filled stars
+    const colorMap = {
+      primary: "text-primary [&_svg]:fill-primary",
+      secondary: "text-secondary [&_svg]:fill-secondary",
+      accent: "text-accent [&_svg]:fill-accent",
+      destructive: "text-destructive [&_svg]:fill-destructive",
+      muted: "text-muted-foreground [&_svg]:fill-muted-foreground",
+      success: "text-success [&_svg]:fill-success",
+      error: "text-error [&_svg]:fill-error",
+      warning: "text-yellow-400 [&_svg]:fill-yellow-400",
     };
 
     // Handle star click
@@ -210,7 +232,7 @@ const Rate = React.forwardRef<HTMLDivElement, RateProps>(
           "inline-flex items-center gap-1",
           disabled && "opacity-50 cursor-not-allowed",
           !disabled && "cursor-pointer",
-          className,
+          className
         )}
         style={style}
         onMouseLeave={handleMouseLeave}
@@ -248,7 +270,12 @@ const Rate = React.forwardRef<HTMLDivElement, RateProps>(
 
                 {/* Filled star overlay */}
                 {fillPercentage > 0 && (
-                  <div className="absolute inset-0 text-yellow-400 pointer-events-none">
+                  <div
+                    className={cn(
+                      "absolute inset-0 pointer-events-none",
+                      colorMap[color]
+                    )}
+                  >
                     {showHalfStar ? (
                       renderCharacter(true)
                     ) : (
@@ -304,7 +331,7 @@ const Rate = React.forwardRef<HTMLDivElement, RateProps>(
         })}
       </div>
     );
-  },
+  }
 );
 
 Rate.displayName = "Rate";

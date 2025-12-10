@@ -92,7 +92,7 @@ const meta: Meta<typeof Toggle> = {
   args: {
     children: "Toggle",
     variant: "default",
-    color: "primary",
+    color: "muted",
     size: "default",
   },
 };
@@ -177,13 +177,13 @@ export const Sizes = (args: ToggleProps) => {
 };
 
 export const Colors = (args: ToggleProps) => {
-  const [pressed1, setPressed1] = useState(false);
-  const [pressed2, setPressed2] = useState(false);
-  const [pressed3, setPressed3] = useState(false);
-  const [pressed4, setPressed4] = useState(false);
-  const [pressed5, setPressed5] = useState(false);
-  const [pressed6, setPressed6] = useState(false);
-  const [pressed7, setPressed7] = useState(false);
+  const [pressed1, setPressed1] = useState(true);
+  const [pressed2, setPressed2] = useState(true);
+  const [pressed3, setPressed3] = useState(true);
+  const [pressed4, setPressed4] = useState(true);
+  const [pressed5, setPressed5] = useState(true);
+  const [pressed6, setPressed6] = useState(true);
+  const [pressed7, setPressed7] = useState(true);
   return (
     <div className="flex flex-row gap-4">
       <Toggle
