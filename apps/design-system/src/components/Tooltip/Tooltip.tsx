@@ -75,12 +75,12 @@ export const Tooltip = React.memo(function Tooltip({
   // rotate the tooltip
   const rotate = useSpring(
     useTransform(x, [-100, 100], [-45, 45]),
-    springConfig,
+    springConfig
   );
   // translate the tooltip
   const translateX = useSpring(
     useTransform(x, [-100, 100], [-50, 50]),
-    springConfig,
+    springConfig
   );
 
   const handleMouseMove = useCallback(
@@ -88,7 +88,7 @@ export const Tooltip = React.memo(function Tooltip({
       const halfWidth = (event.target as HTMLElement).offsetWidth / 2;
       x.set(event.nativeEvent.offsetX - halfWidth);
     },
-    [x],
+    [x]
   );
 
   const ChildComp = React.memo(() => {
@@ -132,7 +132,7 @@ export const Tooltip = React.memo(function Tooltip({
           }}
           className={cn(
             "absolute -top-2 left-1/2 z-50 flex -translate-x-1/2 -translate-y-full flex-col items-center justify-center rounded-md px-4 py-2 text-xs shadow-xl",
-            tooltipColor,
+            tooltipColor
           )}
         >
           <div className="relative z-1">{content}</div>

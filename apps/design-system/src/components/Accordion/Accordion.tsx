@@ -185,7 +185,7 @@ const Accordion = React.forwardRef<HTMLDivElement, AccordionProps>(
                   styles.trigger,
                   triggerColorClass,
                   triggerClassName,
-                  item.triggerClassName,
+                  item.triggerClassName
                 )}
               >
                 {item.trigger}
@@ -195,7 +195,7 @@ const Accordion = React.forwardRef<HTMLDivElement, AccordionProps>(
                   styles.content,
                   contentColorClass,
                   contentClassName,
-                  item.contentClassName,
+                  item.contentClassName
                 )}
               >
                 {item.content}
@@ -228,7 +228,7 @@ const Accordion = React.forwardRef<HTMLDivElement, AccordionProps>(
                 styles.trigger,
                 triggerColorClass,
                 triggerClassName,
-                item.triggerClassName,
+                item.triggerClassName
               )}
             >
               {item.trigger}
@@ -238,7 +238,7 @@ const Accordion = React.forwardRef<HTMLDivElement, AccordionProps>(
                 styles.content,
                 contentColorClass,
                 contentClassName,
-                item.contentClassName,
+                item.contentClassName
               )}
             >
               {item?.content}
@@ -247,7 +247,7 @@ const Accordion = React.forwardRef<HTMLDivElement, AccordionProps>(
         ))}
       </SAccordion>
     );
-  },
+  }
 );
 
 Accordion.displayName = "Accordion";

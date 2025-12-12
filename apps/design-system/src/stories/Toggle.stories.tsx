@@ -75,7 +75,7 @@ const meta: Meta<typeof Toggle> = {
     onPressedChange: {
       action: "pressed changed",
       description: i18n.t(
-        "stories.toggle.argTypes.onPressedChange.description",
+        "stories.toggle.argTypes.onPressedChange.description"
       ),
       table: {
         category: i18n.t("stories.category.events"),

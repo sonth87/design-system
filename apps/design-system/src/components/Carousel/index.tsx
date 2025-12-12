@@ -10,4 +10,3 @@ export type {
   PaginationOptions,
 } from "./Carousel";
 export { default } from "./Carousel";
-

@@ -11,7 +11,7 @@
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
-    "@dsui/design-system": "file:../design-system",
+    "@sth87/shadcn-design-system": "^0.0.1",
     "lucide-react": "^0.553.0",
     "next": "^15",
     "react": "^19",

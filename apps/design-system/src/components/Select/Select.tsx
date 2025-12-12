@@ -71,13 +71,13 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
       overflowBehavior = "wrap-when-open",
       disabled,
     },
-    ref,
+    ref
   ) => {
     const selectId = React.useId();
 
     // For single select, use controlled value or internal state
     const [internalValue, setInternalValue] = React.useState(
-      value ?? defaultValue ?? "",
+      value ?? defaultValue ?? ""
     );
 
     React.useEffect(() => {
@@ -95,7 +95,7 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
         }
         onValueChange?.(val);
       },
-      [onValueChange, value],
+      [onValueChange, value]
     );
 
     // Helper text styles
@@ -169,7 +169,7 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
                     "peer w-full justify-start",
                     {
                       "pt-5 pb-1": isFloatLabel && size !== "lg",
-                    },
+                    }
                     // className,
                   )}
                   size={currentSize}
@@ -211,7 +211,7 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
                     {
                       "pt-5 pb-1": isFloatLabel && size !== "lg",
                     },
-                    className,
+                    className
                   )}
                   size={currentSize}
                   state={state}
@@ -280,7 +280,7 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
         </div>
       </div>
     );
-  },
+  }
 );
 
 Select.displayName = "Select";

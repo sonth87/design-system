@@ -26,7 +26,7 @@ import {
   Glass,
   Marquee,
   FloatingLabel,
-} from "@dsui/design-system";
+} from "@sth87/shadcn-design-system";
 import { AlertCircle, CheckCircle, Home, Inbox, Settings } from "lucide-react";
 
 export default function ComponentsPage() {

@@ -84,7 +84,7 @@ const meta: Meta<typeof Marquee> = {
     pauseOnKeyboard: {
       control: { type: "boolean" },
       description: i18n.t(
-        "stories.marquee.argTypes.pauseOnKeyboard.description",
+        "stories.marquee.argTypes.pauseOnKeyboard.description"
       ),
       table: {
         category: i18n.t("stories.category.behavior"),

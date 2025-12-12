@@ -2,15 +2,15 @@
 
 import { AdminLayout } from "@/components/admin-layout";
 import { Search, Plus, MoreVertical, Mail, Phone } from "lucide-react";
-import Button from "@dsui/design-system/button";
-import Badge from "@dsui/design-system/badge";
-import { Avatar } from "@dsui/design-system/avatar";
-import Input from "@dsui/design-system/input";
-import Checkbox from "@dsui/design-system/checkbox";
-import Select from "@dsui/design-system/select";
-import Dialog from "@dsui/design-system/dialog";
+import Button from "@sth87/shadcn-design-system/button";
+import Badge from "@sth87/shadcn-design-system/badge";
+import { Avatar } from "@sth87/shadcn-design-system/avatar";
+import Input from "@sth87/shadcn-design-system/input";
+import Checkbox from "@sth87/shadcn-design-system/checkbox";
+import Select from "@sth87/shadcn-design-system/select";
+import Dialog from "@sth87/shadcn-design-system/dialog";
 import { useState } from "react";
-import { DatePicker } from "@dsui/design-system";
+import { DatePicker } from "@sth87/shadcn-design-system";
 
 const users = [
   {

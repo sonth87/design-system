@@ -228,7 +228,7 @@ Handle tour lifecycle events:
     showSpotlightRing: {
       control: { type: "boolean" },
       description: i18n.t(
-        "stories.tour.argTypes.showSpotlightRing.description",
+        "stories.tour.argTypes.showSpotlightRing.description"
       ),
       table: {
         category: i18n.t("stories.category.appearance"),
@@ -237,7 +237,7 @@ Handle tour lifecycle events:
     spotlightClassName: {
       control: { type: "text" },
       description: i18n.t(
-        "stories.tour.argTypes.spotlightClassName.description",
+        "stories.tour.argTypes.spotlightClassName.description"
       ),
       table: {
         category: i18n.t("stories.category.appearance"),
@@ -246,7 +246,7 @@ Handle tour lifecycle events:
     spotlightRingClassName: {
       control: { type: "text" },
       description: i18n.t(
-        "stories.tour.argTypes.spotlightRingClassName.description",
+        "stories.tour.argTypes.spotlightRingClassName.description"
       ),
       table: {
         category: i18n.t("stories.category.appearance"),

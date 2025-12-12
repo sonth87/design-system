@@ -21,7 +21,7 @@ function MarqueeWrapper({
 
   if (hasItems && hasChildren) {
     console.warn(
-      "Marquee: Both 'items' and 'children' are provided. 'items' will be used.",
+      "Marquee: Both 'items' and 'children' are provided. 'items' will be used."
     );
   }
 

@@ -15,10 +15,8 @@ import {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type MasonryItemData = any;
 
-interface MasonryProps<T = MasonryItemData> extends Omit<
-  MasonryRootProps,
-  "children"
-> {
+interface MasonryProps<T = MasonryItemData>
+  extends Omit<MasonryRootProps, "children"> {
   /**
    * Array of items to render in the masonry grid (data-driven mode)
    * If provided, `renderItem` should also be provided

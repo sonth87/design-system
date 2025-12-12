@@ -71,7 +71,7 @@ const generateCompoundVariants = () => {
           className: colorVariants[color][variant],
         });
       });
-    },
+    }
   );
 
   return variants;
@@ -108,7 +108,7 @@ const toggleVariants = cva(
       size: "default",
       color: "muted",
     },
-  },
+  }
 );
 
 function Toggle({

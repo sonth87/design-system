@@ -87,7 +87,7 @@ const meta: Meta<typeof Textarea> = {
     showCharCount: {
       control: "boolean",
       description: i18n.t(
-        "stories.textarea.argTypes.showCharCount.description",
+        "stories.textarea.argTypes.showCharCount.description"
       ),
       table: {
         defaultValue: { summary: "false" },

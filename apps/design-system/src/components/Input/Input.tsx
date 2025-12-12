@@ -9,7 +9,13 @@ import { Eye, EyeOff, ChevronDown, ChevronUp, Info, X } from "lucide-react";
 import { withMask, type Options } from "use-mask-input";
 import { Tooltip } from "../Tooltip/Tooltip";
 
-export type InputProps = SInputProps & {
+// Re-export base input props to avoid external dependency issues
+export type BaseInputProps = Omit<React.ComponentProps<"input">, "size"> & {
+  size?: "normal" | "sm" | "xs" | "lg" | "xl";
+  state?: "default" | "success" | "error" | "warning";
+};
+
+export type InputProps = BaseInputProps & {
   label?: string;
   helperText?: React.ReactNode;
   isFloatLabel?: boolean;
@@ -53,7 +59,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       placeholder = " ",
       ...props
     },
-    ref,
+    ref
   ) => {
     // Character count state
     const [charCount, setCharCount] = React.useState(() => {
@@ -102,7 +108,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           }
         }
       },
-      [mask, maskOptions],
+      [mask, maskOptions]
     );
 
     // Expose ref to parent
@@ -255,14 +261,14 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
               <div
                 className={cn(
                   "absolute top-1/2 -translate-y-1/2 text-muted-foreground leading-0",
-                  iconPosition.left,
+                  iconPosition.left
                 )}
               >
                 {React.isValidElement(prefixIcon)
                   ? React.cloneElement(prefixIcon, {
                       className: cn(
                         iconSizeClass,
-                        (prefixIcon.props as any)?.className,
+                        (prefixIcon.props as any)?.className
                       ),
                     } as Partial<unknown>)
                   : prefixIcon}
@@ -282,7 +288,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                 },
                 prefixIcon && padding.prefix,
                 mask && "placeholder:text-slate-400 placeholder:opacity-100",
-                getRightPadding(),
+                getRightPadding()
                 // className,
               )}
               state={state}
@@ -324,7 +330,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                   disabled={props.disabled}
                   className={cn(
                     "h-1/2 w-6 flex items-center justify-center rounded cursor-pointer hover:scale-150 transition-transform",
-                    "disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent",
+                    "disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent"
                   )}
                   tabIndex={-1}
                 >
@@ -336,7 +342,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                   disabled={props.disabled}
                   className={cn(
                     "h-1/2 w-6 flex items-center justify-center rounded cursor-pointer hover:scale-150 transition-transform",
-                    "disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent",
+                    "disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent"
                   )}
                   tabIndex={-1}
                 >
@@ -361,7 +367,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                         : "right-10"
                       : suffixIcon
                         ? "right-10"
-                        : "right-2",
+                        : "right-2"
                   )}
                   onClick={handleClear}
                   disabled={props.disabled}
@@ -377,7 +383,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                 tabIndex={-1}
                 className={cn(
                   "absolute top-1/2 -translate-y-1/2 p-1 rounded hover:bg-accent transition-colors",
-                  suffixIcon ? "right-10" : "right-2",
+                  suffixIcon ? "right-10" : "right-2"
                 )}
                 onClick={() => setShowPassword((prev) => !prev)}
                 disabled={props.disabled}
@@ -395,14 +401,14 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
               <div
                 className={cn(
                   "absolute top-1/2 -translate-y-1/2 text-muted-foreground leading-0",
-                  iconPosition.right,
+                  iconPosition.right
                 )}
               >
                 {React.isValidElement(suffixIcon)
                   ? React.cloneElement(suffixIcon, {
                       className: cn(
                         iconSizeClass,
-                        (suffixIcon.props as any)?.className,
+                        (suffixIcon.props as any)?.className
                       ),
                     } as Partial<unknown>)
                   : suffixIcon}
@@ -416,7 +422,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                 <p
                   className={cn(
                     "text-xs",
-                    state ? helperTextStyles?.[state] : "",
+                    state ? helperTextStyles?.[state] : ""
                   )}
                 >
                   {helperText}
@@ -432,7 +438,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         </div>
       </div>
     );
-  },
+  }
 );
 
 Input.displayName = "Input";

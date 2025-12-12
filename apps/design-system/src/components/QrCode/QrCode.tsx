@@ -72,7 +72,7 @@ function useStore<T>(selector: (state: StoreState) => T): T {
 
   const getSnapshot = React.useCallback(
     () => selector(store.getState()),
-    [store, selector],
+    [store, selector]
   );
 
   return React.useSyncExternalStore(store.subscribe, getSnapshot, getSnapshot);
@@ -176,7 +176,7 @@ function QRCodeRoot(props: QRCodeRootProps) {
       },
       width: size,
     }),
-    [level, margin, foregroundColor, backgroundColor, size, quality],
+    [level, margin, foregroundColor, backgroundColor, size, quality]
   );
 
   const generationKey = React.useMemo(() => {
@@ -252,7 +252,7 @@ function QRCodeRoot(props: QRCodeRootProps) {
         onError?.(parsedError);
       }
     },
-    [value, canvasOpts, store, onError, onGenerated],
+    [value, canvasOpts, store, onError, onGenerated]
   );
 
   const contextValue = React.useMemo<QRCodeContextValue>(
@@ -265,7 +265,7 @@ function QRCodeRoot(props: QRCodeRootProps) {
       foregroundColor,
       canvasRef,
     }),
-    [value, size, backgroundColor, foregroundColor, level, margin],
+    [value, size, backgroundColor, foregroundColor, level, margin]
   );
 
   React.useLayoutEffect(() => {
@@ -325,7 +325,7 @@ function QRCodeCanvas(props: QRCodeCanvasProps) {
       className={cn(
         "relative max-h-(--qr-code-size) max-w-(--qr-code-size)",
         !generationKey && "invisible",
-        className,
+        className
       )}
     />
   );
@@ -351,7 +351,7 @@ function QRCodeSvg(props: QRCodeSvgProps) {
       {...svgProps}
       className={cn(
         "relative max-h-(--qr-code-size) max-w-(--qr-code-size)",
-        className,
+        className
       )}
       style={{ width: context.size, height: context.size, ...style }}
       dangerouslySetInnerHTML={{ __html: svgString }}
@@ -383,7 +383,7 @@ function QRCodeImage(props: QRCodeImageProps) {
       height={context.size}
       className={cn(
         "relative max-h-(--qr-code-size) max-w-(--qr-code-size)",
-        className,
+        className
       )}
     />
   );
@@ -434,7 +434,7 @@ function QRCodeDownload(props: QRCodeDownloadProps) {
         URL.revokeObjectURL(link.href);
       }
     },
-    [dataUrl, svgString, filename, format, buttonProps.onClick],
+    [dataUrl, svgString, filename, format, buttonProps.onClick]
   );
 
   const ButtonPrimitive = asChild ? Slot : "button";
@@ -467,7 +467,7 @@ function QRCodeOverlay(props: QRCodeOverlayProps) {
       {...overlayProps}
       className={cn(
         "-translate-x-1/2 -translate-y-1/2 absolute top-1/2 left-1/2 flex items-center justify-center rounded-sm bg-background",
-        className,
+        className
       )}
     />
   );
@@ -497,7 +497,7 @@ function QRCodeSkeleton(props: QRCodeSkeletonProps) {
       {...skeletonProps}
       className={cn(
         "absolute max-h-(--qr-code-size) max-w-(--qr-code-size) animate-pulse bg-accent",
-        className,
+        className
       )}
       style={{
         width: context.size,

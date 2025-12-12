@@ -22,7 +22,7 @@ function FlipWords({
   const localRef = React.useRef<HTMLSpanElement>(null);
   React.useImperativeHandle(
     ref as any,
-    () => localRef.current as HTMLSpanElement,
+    () => localRef.current as HTMLSpanElement
   );
   const [currentWord, setCurrentWord] = React.useState(words[0]);
   const [isAnimating, setIsAnimating] = React.useState<boolean>(false);
@@ -73,7 +73,7 @@ function FlipWords({
           }}
           className={cn(
             "inline-block relative text-left px-2 will-change-transform will-change-opacity will-change-filter",
-            className,
+            className
           )}
           key={currentWord}
         >

@@ -17,7 +17,7 @@ type BlurTextProps = {
 };
 const buildKeyframes = (
   from: Record<string, string | number>,
-  steps: Array<Record<string, string | number>>,
+  steps: Array<Record<string, string | number>>
 ): Record<string, Array<string | number>> => {
   const keys = new Set<string>([
     ...Object.keys(from),
@@ -55,7 +55,7 @@ const BlurText: React.FC<BlurTextProps> = ({
           observer.unobserve(ref.current as Element);
         }
       },
-      { threshold, rootMargin },
+      { threshold, rootMargin }
     );
     observer.observe(ref.current);
     return () => observer.disconnect();
@@ -65,7 +65,7 @@ const BlurText: React.FC<BlurTextProps> = ({
       direction === "top"
         ? { filter: "blur(10px)", opacity: 0, y: -50 }
         : { filter: "blur(10px)", opacity: 0, y: 50 },
-    [direction],
+    [direction]
   );
   const defaultTo = useMemo(
     () => [
@@ -76,14 +76,14 @@ const BlurText: React.FC<BlurTextProps> = ({
       },
       { filter: "blur(0px)", opacity: 1, y: 0 },
     ],
-    [direction],
+    [direction]
   );
   const fromSnapshot = animationFrom ?? defaultFrom;
   const toSnapshots = animationTo ?? defaultTo;
   const stepCount = toSnapshots.length + 1;
   const totalDuration = stepDuration * (stepCount - 1);
   const times = Array.from({ length: stepCount }, (_, i) =>
-    stepCount === 1 ? 0 : i / (stepCount - 1),
+    stepCount === 1 ? 0 : i / (stepCount - 1)
   );
   return (
     <p ref={ref} className={`blur-text ${className} flex flex-wrap`}>

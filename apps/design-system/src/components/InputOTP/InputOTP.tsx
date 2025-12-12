@@ -49,7 +49,7 @@ const InputOTP = React.forwardRef<
       childClassName,
       ...rest
     },
-    ref,
+    ref
   ) => {
     const id = useId();
 
@@ -85,7 +85,7 @@ const InputOTP = React.forwardRef<
                 "gap-2 *:data-[slot=input-otp-slot]:rounded-md *:data-[slot=input-otp-slot]:border":
                   variant === "outlined" && gapSize > 0,
               },
-              className,
+              className
             )}
             style={gapSize > 0 ? { gap: `${gapSize}px` } : undefined}
           >
@@ -108,7 +108,7 @@ const InputOTP = React.forwardRef<
         )}
       </div>
     );
-  },
+  }
 );
 
 export default InputOTP;

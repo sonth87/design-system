@@ -33,7 +33,7 @@ const ButtonGroup = React.forwardRef<HTMLDivElement, ButtonGroupProps>(
       children,
       ...props
     },
-    ref,
+    ref
   ) => {
     const childrenWithProps = React.Children.map(children, (child) => {
       if (React.isValidElement(child) && child.type === Button) {
@@ -61,7 +61,7 @@ const ButtonGroup = React.forwardRef<HTMLDivElement, ButtonGroupProps>(
         {childrenWithProps}
       </SButtonGroup>
     );
-  },
+  }
 );
 
 ButtonGroup.displayName = "ButtonGroup";

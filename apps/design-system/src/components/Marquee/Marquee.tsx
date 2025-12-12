@@ -73,7 +73,7 @@ function createResizeObserverStore() {
   function getSnapshot(
     rootElement: RootElement | null,
     contentElement: ContentElement | null,
-    orientation: Orientation,
+    orientation: Orientation
   ): ElementDimensions | null {
     if (!rootElement || !contentElement) return null;
 
@@ -114,7 +114,7 @@ function createResizeObserverStore() {
 
   function observe(
     rootElement: RootElement | null,
-    contentElement: Element | null,
+    contentElement: Element | null
   ) {
     if (!isSupported || !rootElement || !contentElement) return;
 
@@ -174,7 +174,7 @@ function createResizeObserverStore() {
 
   function unobserve(
     rootElement: RootElement | null,
-    contentElement: Element | null,
+    contentElement: Element | null
   ) {
     if (!observer || !rootElement || !contentElement) return;
 
@@ -211,11 +211,11 @@ const resizeObserverStore = createResizeObserverStore();
 function useResizeObserverStore(
   rootRef: React.RefObject<RootElement | null>,
   contentRef: React.RefObject<ContentElement | null>,
-  orientation: Orientation,
+  orientation: Orientation
 ) {
   const onSubscribe = React.useCallback(
     (callback: () => void) => resizeObserverStore.subscribe(callback),
-    [],
+    []
   );
 
   const getSnapshot = React.useCallback(
@@ -223,9 +223,9 @@ function useResizeObserverStore(
       resizeObserverStore.getSnapshot(
         rootRef.current,
         contentRef.current,
-        orientation,
+        orientation
       ),
-    [rootRef, contentRef, orientation],
+    [rootRef, contentRef, orientation]
   );
 
   return React.useSyncExternalStore(onSubscribe, getSnapshot, getSnapshot);
@@ -317,7 +317,7 @@ function MarqueeRoot(props: MarqueeRootProps) {
         setPaused((prev) => !prev);
       }
     },
-    [pauseOnKeyboard],
+    [pauseOnKeyboard]
   );
 
   const dimensions = useResizeObserverStore(rootRef, contentRef, orientation);
@@ -354,7 +354,7 @@ function MarqueeRoot(props: MarqueeRootProps) {
           : loopCount.toString(),
       ...styleProp,
     }),
-    [duration, gap, delay, loopCount, styleProp],
+    [duration, gap, delay, loopCount, styleProp]
   );
 
   const contextValue = React.useMemo<MarqueeContextValue>(
@@ -383,7 +383,7 @@ function MarqueeRoot(props: MarqueeRootProps) {
       pauseOnHover,
       pauseOnKeyboard,
       reverse,
-    ],
+    ]
   );
 
   const MarqueePrimitive = asChild ? Slot : "div";
@@ -408,7 +408,7 @@ function MarqueeRoot(props: MarqueeRootProps) {
             pauseOnHover && "group",
             pauseOnKeyboard &&
               "rounded-md focus-visible:border-ring focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50",
-            className,
+            className
           )}
           style={style}
           onKeyDown={pauseOnKeyboard ? onKeyDown : undefined}
@@ -459,7 +459,7 @@ const marqueeContentVariants = cva(
       pauseOnHover: false,
       reverse: false,
     },
-  },
+  }
 );
 
 function MarqueeContent(props: DivProps) {
@@ -481,20 +481,20 @@ function MarqueeContent(props: DivProps) {
   const dimensions = useResizeObserverStore(
     context.rootRef,
     context.contentRef,
-    context.orientation,
+    context.orientation
   );
 
   React.useEffect(() => {
     if (context.rootRef.current && context.contentRef.current) {
       resizeObserverStore.observe(
         context.rootRef.current,
-        context.contentRef.current,
+        context.contentRef.current
       );
 
       return () => {
         resizeObserverStore.unobserve(
           context.rootRef.current,
-          context.contentRef.current,
+          context.contentRef.current
         );
       };
     }
@@ -515,7 +515,7 @@ function MarqueeContent(props: DivProps) {
         <React.Fragment key={i}>{children}</React.Fragment>
       ));
     },
-    [children],
+    [children]
   );
 
   const style = React.useMemo(
@@ -526,7 +526,7 @@ function MarqueeContent(props: DivProps) {
       animationIterationCount: "var(--marquee-loop-count)",
       animationDirection: context.reverse ? "reverse" : "normal",
     }),
-    [styleProp, context.reverse],
+    [styleProp, context.reverse]
   );
 
   const ContentPrimitive = asChild ? Slot : "div";
@@ -551,14 +551,14 @@ function MarqueeContent(props: DivProps) {
             ? "mb-(--marquee-gap)"
             : isRtl
               ? "ml-(--marquee-gap)"
-              : "mr-(--marquee-gap)",
+              : "mr-(--marquee-gap)"
         )}
       >
         <div
           ref={composedRef}
           className={cn(
             "flex shrink-0 gap-(--marquee-gap)",
-            isVertical && "flex-col",
+            isVertical && "flex-col"
           )}
         >
           {children}
@@ -578,7 +578,7 @@ function MarqueeContent(props: DivProps) {
             reverse: context.reverse,
             className,
           }),
-          isVertical && "flex-col",
+          isVertical && "flex-col"
         )}
       >
         {onMultipliedChildrenRender(multiplier)}
@@ -655,7 +655,8 @@ const marqueeEdgeVariants = cva("pointer-events-none absolute z-10", {
 });
 
 interface MarqueeEdgeProps
-  extends VariantProps<typeof marqueeEdgeVariants>, DivProps {}
+  extends VariantProps<typeof marqueeEdgeVariants>,
+    DivProps {}
 
 function MarqueeEdge(props: MarqueeEdgeProps) {
   const { side, size, className, asChild, ...edgeProps } = props;

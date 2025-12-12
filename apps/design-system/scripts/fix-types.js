@@ -2,12 +2,14 @@
 
 /**
  * Script to fix the types folder structure
- * Moves types from dist/types/apps/design-system/src/* to dist/types/*
+ * 1. Moves types from dist/types/apps/design-system/src/* to dist/types/*
+ * 2. Replaces imports from internal @dsui/ui package with inline types
  */
 
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { glob } from "glob";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -44,13 +46,88 @@ if (fs.existsSync(wrongPath)) {
     console.log("✓ Removed apps folder");
   }
 
-  // Clean up the packages folder (we don't need packages types in the output)
-  if (fs.existsSync(packagesPath)) {
-    fs.rmSync(packagesPath, { recursive: true, force: true });
-    console.log("✓ Removed packages folder");
-  }
-
   console.log("✅ Types folder structure fixed!");
 } else {
   console.log("✅ Types folder structure is already correct");
 }
+
+// Keep packages folder - we need it for bundled @dsui/ui types
+console.log("✓ Keeping packages folder for bundled types");
+
+// Fix imports from @dsui/ui to use relative paths to bundled code
+console.log("\n🔧 Fixing @dsui/ui imports...");
+
+// Find all .d.ts files
+const dtsFiles = glob.sync("**/*.d.ts", {
+  cwd: distTypesPath,
+  absolute: true,
+});
+
+let filesFixed = 0;
+
+dtsFiles.forEach((file) => {
+  let content = fs.readFileSync(file, "utf-8");
+  let modified = false;
+
+  // Calculate relative path depth from current file to dist/types root
+  const fileDepth =
+    file.replace(distTypesPath, "").split("/").filter(Boolean).length - 1;
+  const relativePrefix = fileDepth > 0 ? "../".repeat(fileDepth) : "./";
+
+  // Replace imports from @dsui/ui to relative paths pointing to bundled packages/ui
+  // Pattern 1: from "@dsui/ui/components/something"
+  const componentImportRegex = /from ["']@dsui\/ui\/components\/([^"']+)["']/g;
+  if (componentImportRegex.test(content)) {
+    content = content.replace(
+      /from ["']@dsui\/ui\/components\/([^"']+)["']/g,
+      `from "${relativePrefix}packages/ui/src/components/$1"`
+    );
+    modified = true;
+  }
+
+  // Pattern 2: from "@dsui/ui/lib/utils"
+  if (content.includes("@dsui/ui/lib/utils")) {
+    content = content.replace(
+      /from ["']@dsui\/ui\/lib\/utils["']/g,
+      `from "${relativePrefix}packages/ui/src/lib/utils"`
+    );
+    modified = true;
+  }
+
+  // Pattern 3: from "@dsui/ui/index" or from "@dsui/ui"
+  if (
+    content.includes("@dsui/ui/index") ||
+    content.includes('from "@dsui/ui"')
+  ) {
+    content = content.replace(
+      /from ["']@dsui\/ui(?:\/index)?["']/g,
+      `from "${relativePrefix}packages/ui/src/index"`
+    );
+    modified = true;
+  }
+
+  // Pattern 4: from "@dsui/ui/hooks/something"
+  if (content.includes("@dsui/ui/hooks/")) {
+    content = content.replace(
+      /from ["']@dsui\/ui\/hooks\/([^"']+)["']/g,
+      `from "${relativePrefix}packages/ui/src/hooks/$1"`
+    );
+    modified = true;
+  }
+
+  // Pattern 5: from "@dsui/ui/constants/something"
+  if (content.includes("@dsui/ui/constants/")) {
+    content = content.replace(
+      /from ["']@dsui\/ui\/constants\/([^"']+)["']/g,
+      `from "${relativePrefix}packages/ui/src/constants/$1"`
+    );
+    modified = true;
+  }
+
+  if (modified) {
+    fs.writeFileSync(file, content, "utf-8");
+    filesFixed++;
+  }
+});
+
+console.log(`✅ Fixed ${filesFixed} type definition files\n`);

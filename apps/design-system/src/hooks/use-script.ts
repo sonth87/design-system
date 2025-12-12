@@ -12,7 +12,7 @@ const cachedScriptStatuses = new Map<string, UseScriptStatus | undefined>();
 
 function getScriptNode(src: string) {
   const node: HTMLScriptElement | null = document.querySelector(
-    `script[src="${src}"]`,
+    `script[src="${src}"]`
   );
   const status = node?.getAttribute("data-status") as
     | UseScriptStatus
@@ -25,7 +25,7 @@ function getScriptNode(src: string) {
 
 export function useScript(
   src: string | null,
-  options?: UseScriptOptions,
+  options?: UseScriptOptions
 ): UseScriptStatus {
   const [status, setStatus] = useState<UseScriptStatus>(() => {
     if (!src || options?.shouldPreventLoad) {

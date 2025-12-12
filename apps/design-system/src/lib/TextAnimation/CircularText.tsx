@@ -18,7 +18,7 @@ interface CircularTextProps {
 const getRotationTransition = (
   duration: number,
   from: number,
-  loop: boolean = true,
+  loop: boolean = true
 ) => ({
   from,
   to: from + 360,

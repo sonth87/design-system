@@ -66,7 +66,7 @@ const meta: Meta<AccordionStoryProps> = {
     defaultValue: {
       control: "text",
       description: i18n.t(
-        "stories.accordion.argTypes.defaultValue.description",
+        "stories.accordion.argTypes.defaultValue.description"
       ),
       table: {
         category: i18n.t("stories.category.behavior"),
@@ -130,7 +130,7 @@ const meta: Meta<AccordionStoryProps> = {
     itemClassName: {
       control: "text",
       description: i18n.t(
-        "stories.accordion.argTypes.itemClassName.description",
+        "stories.accordion.argTypes.itemClassName.description"
       ),
       table: {
         category: i18n.t("stories.category.advanced"),
@@ -139,7 +139,7 @@ const meta: Meta<AccordionStoryProps> = {
     triggerClassName: {
       control: "text",
       description: i18n.t(
-        "stories.accordion.argTypes.triggerClassName.description",
+        "stories.accordion.argTypes.triggerClassName.description"
       ),
       table: {
         category: i18n.t("stories.category.advanced"),
@@ -148,7 +148,7 @@ const meta: Meta<AccordionStoryProps> = {
     contentClassName: {
       control: "text",
       description: i18n.t(
-        "stories.accordion.argTypes.contentClassName.description",
+        "stories.accordion.argTypes.contentClassName.description"
       ),
       table: {
         category: i18n.t("stories.category.advanced"),
@@ -157,7 +157,7 @@ const meta: Meta<AccordionStoryProps> = {
     onValueChange: {
       action: "value changed",
       description: i18n.t(
-        "stories.accordion.argTypes.onValueChange.description",
+        "stories.accordion.argTypes.onValueChange.description"
       ),
       table: {
         category: i18n.t("stories.category.events"),

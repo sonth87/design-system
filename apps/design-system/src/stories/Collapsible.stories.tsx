@@ -45,7 +45,7 @@ const meta: Meta<typeof Collapsible> = {
       control: "select",
       options: ["left", "right"],
       description: i18n.t(
-        "stories.collapsible.argTypes.iconPosition.description",
+        "stories.collapsible.argTypes.iconPosition.description"
       ),
       table: {
         defaultValue: { summary: "right" },
@@ -55,7 +55,7 @@ const meta: Meta<typeof Collapsible> = {
     iconRotation: {
       control: "boolean",
       description: i18n.t(
-        "stories.collapsible.argTypes.iconRotation.description",
+        "stories.collapsible.argTypes.iconRotation.description"
       ),
       table: {
         defaultValue: { summary: "true" },
@@ -81,7 +81,7 @@ const meta: Meta<typeof Collapsible> = {
     defaultOpen: {
       control: "boolean",
       description: i18n.t(
-        "stories.collapsible.argTypes.defaultOpen.description",
+        "stories.collapsible.argTypes.defaultOpen.description"
       ),
       table: {
         defaultValue: { summary: "false" },
@@ -106,7 +106,7 @@ const meta: Meta<typeof Collapsible> = {
     onOpenChange: {
       action: "open changed",
       description: i18n.t(
-        "stories.collapsible.argTypes.onOpenChange.description",
+        "stories.collapsible.argTypes.onOpenChange.description"
       ),
       table: {
         category: i18n.t("stories.category.events"),
@@ -338,7 +338,7 @@ const CustomImplementationComponent = () => {
           <ChevronRight
             className={cn(
               "size-4 transition-transform duration-300",
-              isOpen && "rotate-90",
+              isOpen && "rotate-90"
             )}
           />
         </CollapsibleTrigger>

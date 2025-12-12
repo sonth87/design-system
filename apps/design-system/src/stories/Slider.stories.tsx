@@ -171,7 +171,7 @@ const meta: Meta<SliderProps> = {
     labelArrowColor: {
       control: "text",
       description: i18n.t(
-        "stories.slider.argTypes.labelArrowColor.description",
+        "stories.slider.argTypes.labelArrowColor.description"
       ),
       table: {
         category: i18n.t("stories.category.advanced"),
@@ -194,7 +194,7 @@ const meta: Meta<SliderProps> = {
     thumbBorderColor: {
       control: "text",
       description: i18n.t(
-        "stories.slider.argTypes.thumbBorderColor.description",
+        "stories.slider.argTypes.thumbBorderColor.description"
       ),
       table: {
         category: i18n.t("stories.category.advanced"),
@@ -221,7 +221,7 @@ type Story = StoryObj<SliderProps>;
 export const Default: Story = {
   render: function DefaultSlider(args) {
     const [value, setValue] = React.useState(
-      args.value || args.defaultValue || [50],
+      args.value || args.defaultValue || [50]
     );
 
     return (

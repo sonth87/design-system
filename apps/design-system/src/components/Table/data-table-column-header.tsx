@@ -64,7 +64,7 @@ export function DataTableColumnHeader<TData, TValue>({
             variant="ghost"
             className={cn(
               "hover:bg-accent rounded p-1",
-              column.getFilterValue() ? "text-primary" : "",
+              column.getFilterValue() ? "text-primary" : ""
             )}
           >
             <Filter className="size-4" />

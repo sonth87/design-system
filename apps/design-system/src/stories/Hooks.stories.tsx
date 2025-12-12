@@ -160,7 +160,7 @@ export const IntersectionObserver: Story = {
           ref={targetRef}
           className={cn(
             "flex flex-col items-center justify-center mt-[50vh] text-white p-4",
-            isIntersecting ? "bg-green-500/50" : "bg-red-500/50",
+            isIntersecting ? "bg-green-500/50" : "bg-red-500/50"
           )}
         >
           {isIntersecting ? "Intersecting!" : "Not intersecting"}
@@ -171,7 +171,7 @@ export const IntersectionObserver: Story = {
             <pre
               className={cn(
                 "text-xs font-mono whitespace-pre-wrap",
-                isIntersecting ? "text-green-600" : "text-red-600",
+                isIntersecting ? "text-green-600" : "text-red-600"
               )}
             >
               {`Viewport (Browser Window)
@@ -251,7 +251,7 @@ export const UseScript: Story = {
       {
         removeOnUnmount: false,
         id: "confetti-script",
-      },
+      }
     );
 
     const triggerConfetti = () => {
@@ -270,7 +270,7 @@ export const UseScript: Story = {
     };
 
     const getStatusVariant = (
-      status: string,
+      status: string
     ): "muted" | "secondary" | "destructive" => {
       switch (status) {
         case "ready":
@@ -411,7 +411,7 @@ const ChildWithStableCallback = React.memo(
         <p className="text-xs text-muted-foreground">{description}</p>
       </div>
     );
-  },
+  }
 );
 ChildWithStableCallback.displayName = "ChildWithStableCallback";
 
@@ -446,7 +446,7 @@ const ChildWithUnstableCallback = React.memo(
         <p className="text-xs text-muted-foreground">{description}</p>
       </div>
     );
-  },
+  }
 );
 ChildWithUnstableCallback.displayName = "ChildWithUnstableCallback";
 
@@ -559,7 +559,7 @@ export const UseCallbackRef: Story = {
               onClick={unstableCallback}
               label={i18n.t("stories.usecallbackref.withoutCallbackRef")}
               buttonText={i18n.t(
-                "stories.usecallbackref.clickWithoutCallbackRef",
+                "stories.usecallbackref.clickWithoutCallbackRef"
               )}
               description={i18n.t("stories.usecallbackref.withoutDescription")}
               rendersLabel={i18n.t("stories.usecallbackref.renders")}
@@ -999,7 +999,7 @@ export const MediaQuery: Story = {
     const MediaQueryDemo = () => {
       const isSmall = useMediaQuery("(max-width: 768px)");
       const isMedium = useMediaQuery(
-        "(min-width: 769px) and (max-width: 1024px)",
+        "(min-width: 769px) and (max-width: 1024px)"
       );
       const isLarge = useMediaQuery("(min-width: 1025px)");
       const isDarkMode = useMediaQuery("(prefers-color-scheme: dark)");

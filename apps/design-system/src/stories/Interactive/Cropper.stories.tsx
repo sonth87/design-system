@@ -111,7 +111,7 @@ const meta: Meta<CropperProps> = {
     preventScrollZoom: {
       control: "boolean",
       description: i18n.t(
-        "stories.cropper.argTypes.preventScrollZoom.description",
+        "stories.cropper.argTypes.preventScrollZoom.description"
       ),
       table: {
         defaultValue: { summary: "false" },
@@ -190,7 +190,7 @@ export const ControlledState = () => {
         console.error("Crop failed:", e);
       }
     },
-    [rotation, shape],
+    [rotation, shape]
   );
 
   const onCropAreaChange = React.useCallback(
@@ -201,11 +201,11 @@ export const ControlledState = () => {
         y: number;
         width: number;
         height: number;
-      },
+      }
     ) => {
       await updateCroppedImage(croppedAreaPixels);
     },
-    [updateCroppedImage],
+    [updateCroppedImage]
   );
 
   const onCropReset = React.useCallback(() => {
@@ -609,7 +609,7 @@ export const CropperWithBlobOutput = () => {
       console.log("Blob size:", croppedImage.size, "bytes");
       console.log("Blob type:", croppedImage.type);
       alert(
-        `Blob ready for upload!\nSize: ${croppedImage.size} bytes\nType: ${croppedImage.type}`,
+        `Blob ready for upload!\nSize: ${croppedImage.size} bytes\nType: ${croppedImage.type}`
       );
 
       // Here you would typically use fetch to upload:

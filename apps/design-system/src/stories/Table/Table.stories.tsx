@@ -171,7 +171,7 @@ function generateFakeProjects(count: number): Project[] {
       priority: priorities[Math.floor(Math.random() * priorities.length)],
       assignee: assignees[Math.floor(Math.random() * assignees.length)],
       startDate: new Date(
-        Date.now() - Math.random() * 365 * 24 * 60 * 60 * 1000,
+        Date.now() - Math.random() * 365 * 24 * 60 * 60 * 1000
       )
         .toISOString()
         .split("T")[0],
@@ -182,14 +182,14 @@ function generateFakeProjects(count: number): Project[] {
       category: categories[Math.floor(Math.random() * categories.length)],
       tags: Array.from(
         { length: Math.floor(Math.random() * 3) + 1 },
-        () => `tag${Math.floor(Math.random() * 10)}`,
+        () => `tag${Math.floor(Math.random() * 10)}`
       ),
       description: `Description for Project ${titles[i % titles.length]} ${Math.floor(i / titles.length) + 1}`,
       createdAt: new Date(
-        Date.now() - Math.random() * 365 * 24 * 60 * 60 * 1000,
+        Date.now() - Math.random() * 365 * 24 * 60 * 60 * 1000
       ).toISOString(),
       updatedAt: new Date(
-        Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000,
+        Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000
       ).toISOString(),
     });
   }
@@ -508,7 +508,7 @@ const WithNuqsStory = () => {
   const [title] = useQueryState("title", parseAsString.withDefault(""));
   const [status] = useQueryState(
     "status",
-    parseAsArrayOf(parseAsString).withDefault([]),
+    parseAsArrayOf(parseAsString).withDefault([])
   );
 
   // Ideally we would filter the data server-side, but for the sake of this example, we'll filter the data client-side

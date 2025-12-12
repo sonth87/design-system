@@ -108,7 +108,7 @@ export const SplittingText: React.FC<SplittingTextProps> = ({
   const localRef = React.useRef<HTMLDivElement>(null);
   React.useImperativeHandle(
     ref as any,
-    () => localRef.current as HTMLDivElement,
+    () => localRef.current as HTMLDivElement
   );
 
   const inViewResult = useInView(localRef, {
@@ -146,7 +146,7 @@ export const SplittingText: React.FC<SplittingTextProps> = ({
               </motion.span>
               {type === "words" && " "}
             </React.Fragment>
-          ),
+          )
       )}
     </motion.span>
   );

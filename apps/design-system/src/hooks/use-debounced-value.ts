@@ -11,12 +11,12 @@ import { useDebouncedCallback } from "./use-debounced-callback";
  */
 export function useDebounceValue<T>(
   initialValue: T | (() => T),
-  delay: number,
+  delay: number
 ): [T, (value: T) => void] {
   const unwrappedInitialValue =
     initialValue instanceof Function ? initialValue() : initialValue;
   const [debouncedValue, setDebouncedValue] = useState<T>(
-    unwrappedInitialValue,
+    unwrappedInitialValue
   );
   const previousValueRef = useRef<T | undefined>(unwrappedInitialValue);
   const updateDebouncedValue = useDebouncedCallback(setDebouncedValue, delay);

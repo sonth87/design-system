@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@dsui/ui": ["../../packages/ui/src/index.tsx"],
+      "@dsui/ui/*": ["../../packages/ui/src/*"],
+      "@/*": ["src/*"]
+    }
+  }
+}

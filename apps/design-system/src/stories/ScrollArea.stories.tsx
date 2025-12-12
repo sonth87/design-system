@@ -25,7 +25,7 @@ const meta: Meta<typeof ScrollArea> = {
     viewportClassName: {
       control: "text",
       description: i18n.t(
-        "stories.scrollarea.argTypes.viewportClassName.description",
+        "stories.scrollarea.argTypes.viewportClassName.description"
       ),
       table: {
         type: { summary: "string" },

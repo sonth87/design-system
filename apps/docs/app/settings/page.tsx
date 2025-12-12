@@ -2,13 +2,13 @@
 
 import { AdminLayout } from "@/components/admin-layout";
 import { Save } from "lucide-react";
-import Button from "@dsui/design-system/button";
-import Input from "@dsui/design-system/input";
-import Textarea from "@dsui/design-system/textarea";
-import Switch from "@dsui/design-system/switch";
-import Separator from "@dsui/design-system/separator";
-import Tabs from "@dsui/design-system/tabs";
-import Select from "@dsui/design-system/select";
+import Button from "@sth87/shadcn-design-system/button";
+import Input from "@sth87/shadcn-design-system/input";
+import Textarea from "@sth87/shadcn-design-system/textarea";
+import Switch from "@sth87/shadcn-design-system/switch";
+import Separator from "@sth87/shadcn-design-system/separator";
+import Tabs from "@sth87/shadcn-design-system/tabs";
+import Select from "@sth87/shadcn-design-system/select";
 
 export default function SettingsPage() {
   return (

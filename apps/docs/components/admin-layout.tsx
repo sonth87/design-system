@@ -18,11 +18,11 @@ import {
   Library,
   Webhook,
 } from "lucide-react";
-import Button from "@dsui/design-system/button";
-import { Avatar } from "@dsui/design-system/avatar";
-import Input from "@dsui/design-system/input";
-import Badge from "@dsui/design-system/badge";
-import Popover from "@dsui/design-system/popover";
+import Button from "@sth87/shadcn-design-system/button";
+import { Avatar } from "@sth87/shadcn-design-system/avatar";
+import Input from "@sth87/shadcn-design-system/input";
+import Badge from "@sth87/shadcn-design-system/badge";
+import Popover from "@sth87/shadcn-design-system/popover";
 import {
   Sidebar,
   SidebarProvider,
@@ -37,7 +37,7 @@ import {
   SidebarFooter,
   SidebarTrigger,
   SidebarInset,
-} from "@dsui/design-system/sidebar";
+} from "@sth87/shadcn-design-system/sidebar";
 
 interface AdminLayoutProps {
   children: ReactNode;

@@ -29,10 +29,13 @@ export default defineConfig({
         "react-dom",
         "react/jsx-runtime",
         // External all dependencies from package.json
-        /@dsui\/ui/,
+        // NOTE: @dsui/ui is NOT externalized - it will be bundled into the package
+        // This ensures types are properly available without external dependencies
         /@radix-ui\/.*/,
         "@number-flow/react",
         "class-variance-authority",
+        "clsx",
+        "tailwind-merge",
         /^date-fns/, // Match date-fns and all its subpaths
         /^motion/, // Match motion, motion/react, motion/*, etc.
         "react-day-picker",
@@ -140,7 +143,7 @@ function getEntryPoints() {
   // This allows imports like: import Button from "@dsui/design-system/button"
   if (mode === "ADVANCED") {
     console.log(
-      "📦 Building in ADVANCED mode - creating individual component entries",
+      "📦 Building in ADVANCED mode - creating individual component entries"
     );
 
     // Get all component directories
@@ -153,7 +156,7 @@ function getEntryPoints() {
       const componentPath = path.resolve(
         __dirname,
         dir,
-        `${componentName}.tsx`,
+        `${componentName}.tsx`
       );
 
       // Check if component file exists
@@ -173,16 +176,16 @@ function getEntryPoints() {
       const fileName = path.basename(file, ".tsx");
       entries[`components/${fileName.toLowerCase()}`] = path.resolve(
         __dirname,
-        file,
+        file
       );
     });
 
     console.log(
-      `✅ Found ${Object.keys(entries).length - 1 - cssFiles.length} components`,
+      `✅ Found ${Object.keys(entries).length - 1 - cssFiles.length} components`
     );
   } else {
     console.log(
-      "📦 Building in SIMPLE mode - only src/index.ts (components exported there will be included)",
+      "📦 Building in SIMPLE mode - only src/index.ts (components exported there will be included)"
     );
   }
 

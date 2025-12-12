@@ -44,7 +44,7 @@ const inputOTPSlotVariants = cva(
       state: "default",
       variant: "outlined",
     },
-  },
+  }
 );
 
 type InputOTPProps = React.ComponentProps<typeof OTPInput> & {

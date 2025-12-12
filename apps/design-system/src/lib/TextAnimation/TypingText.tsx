@@ -61,7 +61,7 @@ const TypingText = ({
   const containerRef = useRef<HTMLElement>(null);
   const textArray = useMemo(
     () => (Array.isArray(text) ? text : [text]),
-    [text],
+    [text]
   );
 
   const getRandomSpeed = useCallback(() => {
@@ -85,7 +85,7 @@ const TypingText = ({
           }
         });
       },
-      { threshold: 0.1 },
+      { threshold: 0.1 }
     );
     observer.observe(containerRef.current);
     return () => observer.disconnect();
@@ -134,11 +134,11 @@ const TypingText = ({
           timeout = setTimeout(
             () => {
               setDisplayedText(
-                (prev) => prev + processedText[currentCharIndex],
+                (prev) => prev + processedText[currentCharIndex]
               );
               setCurrentCharIndex((prev) => prev + 1);
             },
-            variableSpeed ? getRandomSpeed() : typingSpeed,
+            variableSpeed ? getRandomSpeed() : typingSpeed
           );
         } else if (textArray.length > 1) {
           timeout = setTimeout(() => {
@@ -196,7 +196,7 @@ const TypingText = ({
       >
         {cursorCharacter === "|" ? "" : cursorCharacter}
       </span>
-    ),
+    )
   );
 };
 

@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  transpilePackages: ['@dsui/design-system'],
+  transpilePackages: ["@sth87/shadcn-design-system"],
 };
 
 export default nextConfig;

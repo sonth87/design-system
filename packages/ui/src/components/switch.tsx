@@ -81,14 +81,14 @@ const switchVariants = cva(
       Object.entries(styles).map(([, className]) => ({
         color: color as keyof typeof colorVariants,
         className: className,
-      })),
+      }))
     ),
     defaultVariants: {
       variant: "default",
       size: "normal",
       color: "primary",
     },
-  },
+  }
 );
 
 const thumbVariants = cva(
@@ -145,7 +145,7 @@ const thumbVariants = cva(
       size: "normal",
       color: "primary",
     },
-  },
+  }
 );
 
 type SwitchVariant = VariantProps<typeof switchVariants>;
@@ -154,7 +154,7 @@ function Switch(
   props: React.ComponentProps<typeof SwitchPrimitive.Root> &
     VariantProps<typeof switchVariants> & {
       thumbClassName?: string;
-    },
+    }
 ) {
   const { className, thumbClassName, variant, size, color, ...rest } = props;
 

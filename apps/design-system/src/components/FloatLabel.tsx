@@ -15,7 +15,7 @@ const FloatingLabel = React.forwardRef<
 >(
   (
     { className, infoTooltip, size = "xl", shouldFloat, children, ...props },
-    ref,
+    ref
   ) => {
     const lagerSize = size === "lg" || false;
 
@@ -64,7 +64,7 @@ const FloatingLabel = React.forwardRef<
               typeof shouldFloat === "boolean" && !shouldFloat && lagerSize,
           },
           "will-change-transform transition-all duration-300 ease-in-out",
-          className,
+          className
         )}
         ref={ref}
         {...props}
@@ -80,7 +80,7 @@ const FloatingLabel = React.forwardRef<
         )}
       </Label>
     );
-  },
+  }
 );
 
 FloatingLabel.displayName = "FloatingLabel";

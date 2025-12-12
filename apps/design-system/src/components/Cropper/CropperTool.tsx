@@ -27,7 +27,7 @@ export interface CropperToolProps extends Omit<CropperProps, "onCropComplete"> {
    */
   onCropAreaChange?: (
     croppedArea: CropperAreaData,
-    croppedAreaPixels: CropperAreaData,
+    croppedAreaPixels: CropperAreaData
   ) => void;
   /**
    * Options for the cropped image output
@@ -95,7 +95,7 @@ export const CropperTool = React.forwardRef<HTMLDivElement, CropperToolProps>(
     const handleCropAreaChange = React.useCallback(
       async (
         _croppedArea: CropperAreaData,
-        croppedAreaPixels: CropperAreaData,
+        croppedAreaPixels: CropperAreaData
       ) => {
         // Call the user's onCropAreaChange if provided
         onCropAreaChange?.(_croppedArea, croppedAreaPixels);
@@ -159,7 +159,7 @@ export const CropperTool = React.forwardRef<HTMLDivElement, CropperToolProps>(
           }
         }, 300); // 300ms debounce delay
       },
-      [src, rotation, shape, cropOptions, onCropComplete, onCropAreaChange],
+      [src, rotation, shape, cropOptions, onCropComplete, onCropAreaChange]
     );
 
     // Cleanup debounce timer on unmount
@@ -185,7 +185,7 @@ export const CropperTool = React.forwardRef<HTMLDivElement, CropperToolProps>(
         <CropperArea />
       </Cropper>
     );
-  },
+  }
 );
 
 CropperTool.displayName = "CropperTool";
@@ -280,12 +280,12 @@ export function useCropperTool(options: UseCropperToolOptions) {
   } = options;
 
   const [crop, setCrop] = React.useState<CropperPoint>(
-    initialCrop || { x: 0, y: 0 },
+    initialCrop || { x: 0, y: 0 }
   );
   const [zoom, setZoom] = React.useState(initialZoom);
   const [rotation, setRotation] = React.useState(initialRotation);
   const [croppedImage, setCroppedImage] = React.useState<string | Blob | null>(
-    null,
+    null
   );
 
   // Debounce timer ref
@@ -297,7 +297,7 @@ export function useCropperTool(options: UseCropperToolOptions) {
   const handleCropAreaChange = React.useCallback(
     async (
       _croppedArea: CropperAreaData,
-      croppedAreaPixels: CropperAreaData,
+      croppedAreaPixels: CropperAreaData
     ) => {
       // Check if crop area actually changed
       if (prevCropAreaRef.current) {
@@ -354,7 +354,7 @@ export function useCropperTool(options: UseCropperToolOptions) {
         }
       }, 300); // 300ms debounce delay
     },
-    [imageSrc, rotation, cropOptions, type],
+    [imageSrc, rotation, cropOptions, type]
   );
 
   // Cleanup debounce timer on unmount

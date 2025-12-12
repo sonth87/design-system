@@ -105,7 +105,7 @@ const meta: Meta<typeof Sheet> = {
     autoDrawerOnMobile: {
       control: "boolean",
       description: i18n.t(
-        "stories.sheet.argTypes.autoDrawerOnMobile.description",
+        "stories.sheet.argTypes.autoDrawerOnMobile.description"
       ),
       table: {
         defaultValue: { summary: "true" },
@@ -160,7 +160,7 @@ const meta: Meta<typeof Sheet> = {
     contentClassName: {
       control: "text",
       description: i18n.t(
-        "stories.sheet.argTypes.contentClassName.description",
+        "stories.sheet.argTypes.contentClassName.description"
       ),
       table: {
         category: i18n.t("stories.category.advanced"),
@@ -183,7 +183,7 @@ const meta: Meta<typeof Sheet> = {
     descriptionClassName: {
       control: "text",
       description: i18n.t(
-        "stories.sheet.argTypes.descriptionClassName.description",
+        "stories.sheet.argTypes.descriptionClassName.description"
       ),
       table: {
         category: i18n.t("stories.category.advanced"),
@@ -199,7 +199,7 @@ const meta: Meta<typeof Sheet> = {
     overlayClassName: {
       control: "text",
       description: i18n.t(
-        "stories.sheet.argTypes.overlayClassName.description",
+        "stories.sheet.argTypes.overlayClassName.description"
       ),
       table: {
         category: i18n.t("stories.category.advanced"),

@@ -25,7 +25,7 @@ const meta: Meta<typeof RangePicker> = {
     helperText: {
       control: { type: "text" },
       description: i18n.t(
-        "stories.rangepicker.argTypes.helperText.description",
+        "stories.rangepicker.argTypes.helperText.description"
       ),
       table: {
         category: i18n.t("stories.category.basic"),
@@ -34,7 +34,7 @@ const meta: Meta<typeof RangePicker> = {
     isFloatLabel: {
       control: { type: "boolean" },
       description: i18n.t(
-        "stories.rangepicker.argTypes.isFloatLabel.description",
+        "stories.rangepicker.argTypes.isFloatLabel.description"
       ),
       table: {
         defaultValue: { summary: "false" },
@@ -74,7 +74,7 @@ const meta: Meta<typeof RangePicker> = {
     placeholder: {
       control: { type: "text" },
       description: i18n.t(
-        "stories.rangepicker.argTypes.placeholder.description",
+        "stories.rangepicker.argTypes.placeholder.description"
       ),
       table: {
         category: i18n.t("stories.category.basic"),
@@ -108,7 +108,7 @@ const meta: Meta<typeof RangePicker> = {
     infoTooltip: {
       control: { type: "text" },
       description: i18n.t(
-        "stories.rangepicker.argTypes.infoTooltip.description",
+        "stories.rangepicker.argTypes.infoTooltip.description"
       ),
       table: {
         type: { summary: "ReactNode" },
@@ -126,7 +126,7 @@ const meta: Meta<typeof RangePicker> = {
     numberOfMonths: {
       control: { type: "number" },
       description: i18n.t(
-        "stories.rangepicker.argTypes.numberOfMonths.description",
+        "stories.rangepicker.argTypes.numberOfMonths.description"
       ),
       table: {
         type: { summary: "number" },
@@ -173,7 +173,7 @@ const meta: Meta<typeof RangePicker> = {
     closeOnSelect: {
       control: { type: "boolean" },
       description: i18n.t(
-        "stories.rangepicker.argTypes.closeOnSelect.description",
+        "stories.rangepicker.argTypes.closeOnSelect.description"
       ),
       table: {
         category: i18n.t("stories.category.behavior"),
@@ -183,7 +183,7 @@ const meta: Meta<typeof RangePicker> = {
       control: { type: "select" },
       options: ["popover", "drawer"],
       description: i18n.t(
-        "stories.rangepicker.argTypes.desktopMode.description",
+        "stories.rangepicker.argTypes.desktopMode.description"
       ),
       table: {
         category: i18n.t("stories.category.ui"),
@@ -193,7 +193,7 @@ const meta: Meta<typeof RangePicker> = {
       control: { type: "select" },
       options: ["popover", "drawer"],
       description: i18n.t(
-        "stories.rangepicker.argTypes.mobileMode.description",
+        "stories.rangepicker.argTypes.mobileMode.description"
       ),
       table: {
         category: i18n.t("stories.category.ui"),
@@ -217,7 +217,7 @@ const meta: Meta<typeof RangePicker> = {
       control: { type: "select" },
       options: ["HH:mm", "HH:mm:ss"],
       description: i18n.t(
-        "stories.rangepicker.argTypes.timeFormat.description",
+        "stories.rangepicker.argTypes.timeFormat.description"
       ),
       table: {
         category: i18n.t("stories.category.time"),
@@ -279,7 +279,7 @@ export const Default: Story = {
     const [range, setRange] = useState<DateRangeText | undefined>();
     const handleSelect = (
       _r: DateRange | undefined,
-      t: DateRangeText | undefined,
+      t: DateRangeText | undefined
     ) => setRange(t);
 
     return (
@@ -309,19 +309,19 @@ export const States: Story = {
 
     const handleSelectDefault = (
       _r: DateRange | undefined,
-      t: DateRangeText | undefined,
+      t: DateRangeText | undefined
     ) => setRangeDefault(t);
     const handleSelectSuccess = (
       _r: DateRange | undefined,
-      t: DateRangeText | undefined,
+      t: DateRangeText | undefined
     ) => setRangeSuccess(t);
     const handleSelectWarning = (
       _r: DateRange | undefined,
-      t: DateRangeText | undefined,
+      t: DateRangeText | undefined
     ) => setRangeWarning(t);
     const handleSelectError = (
       _r: DateRange | undefined,
-      t: DateRangeText | undefined,
+      t: DateRangeText | undefined
     ) => setRangeError(t);
 
     return (
@@ -378,23 +378,23 @@ export const Sizes: Story = {
 
     const handleSelectXs = (
       _r: DateRange | undefined,
-      t: DateRangeText | undefined,
+      t: DateRangeText | undefined
     ) => setRangeXs(t);
     const handleSelectSm = (
       _r: DateRange | undefined,
-      t: DateRangeText | undefined,
+      t: DateRangeText | undefined
     ) => setRangeSm(t);
     const handleSelectNormal = (
       _r: DateRange | undefined,
-      t: DateRangeText | undefined,
+      t: DateRangeText | undefined
     ) => setRangeNormal(t);
     const handleSelectLg = (
       _r: DateRange | undefined,
-      t: DateRangeText | undefined,
+      t: DateRangeText | undefined
     ) => setRangeLg(t);
     const handleSelectXl = (
       _r: DateRange | undefined,
-      t: DateRangeText | undefined,
+      t: DateRangeText | undefined
     ) => setRangeXl(t);
 
     return (
@@ -477,11 +477,11 @@ export const WithTime: Story = {
 
     const handleSelectHHmm = (
       _r: DateRange | undefined,
-      t: DateRangeText | undefined,
+      t: DateRangeText | undefined
     ) => setRangeHHmm(t);
     const handleSelectHHmmss = (
       _r: DateRange | undefined,
-      t: DateRangeText | undefined,
+      t: DateRangeText | undefined
     ) => setRangeHHmmss(t);
 
     return (
@@ -539,7 +539,7 @@ export const Clearable: Story = {
     const [range, setRange] = useState<DateRangeText | undefined>();
     const handleSelect = (
       _r: DateRange | undefined,
-      t: DateRangeText | undefined,
+      t: DateRangeText | undefined
     ) => setRange(t);
 
     return (
@@ -564,7 +564,7 @@ export const RoundedVariant: Story = {
     const [range, setRange] = useState<DateRangeText | undefined>();
     const handleSelect = (
       _r: DateRange | undefined,
-      t: DateRangeText | undefined,
+      t: DateRangeText | undefined
     ) => setRange(t);
 
     return (
@@ -594,7 +594,7 @@ export const RoundedVariantWithMultipleMonths: Story = {
     const [range, setRange] = useState<DateRangeText | undefined>();
     const handleSelect = (
       _r: DateRange | undefined,
-      t: DateRangeText | undefined,
+      t: DateRangeText | undefined
     ) => setRange(t);
 
     return (
@@ -625,7 +625,7 @@ export const RoundedVariantWithTime: Story = {
     const [range, setRange] = useState<DateRangeText | undefined>();
     const handleSelect = (
       _r: DateRange | undefined,
-      t: DateRangeText | undefined,
+      t: DateRangeText | undefined
     ) => setRange(t);
 
     return (
@@ -658,7 +658,7 @@ export const RoundedVariantFloatLabel: Story = {
     const [range, setRange] = useState<DateRangeText | undefined>();
     const handleSelect = (
       _r: DateRange | undefined,
-      t: DateRangeText | undefined,
+      t: DateRangeText | undefined
     ) => setRange(t);
 
     return (

@@ -1,0 +1,26 @@
+# Dependencies
+node_modules
+**/node_modules
+
+# Build outputs
+dist
+**/dist
+.next
+**/storybook-static
+build
+out
+
+# Turbo
+.turbo
+**/.turbo
+
+# Package files
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# Logs
+*.log
+
+# OS
+.DS_Store

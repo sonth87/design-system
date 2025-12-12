@@ -105,7 +105,7 @@ export function DataTableFilterPopover<TData>({
                           ]);
                         } else {
                           column.setFilterValue(
-                            currentValues.filter((v) => v !== option.value),
+                            currentValues.filter((v) => v !== option.value)
                           );
                         }
                       }}

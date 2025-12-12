@@ -127,7 +127,7 @@ const Checkbox = React.forwardRef<HTMLButtonElement, CheckboxProps>(
               <p
                 className={cn(
                   "text-xs",
-                  state ? helperTextStyles?.[state] : "",
+                  state ? helperTextStyles?.[state] : ""
                 )}
               >
                 {helperText}
@@ -137,7 +137,7 @@ const Checkbox = React.forwardRef<HTMLButtonElement, CheckboxProps>(
         )}
       </div>
     );
-  },
+  }
 );
 
 Checkbox.displayName = "Checkbox";

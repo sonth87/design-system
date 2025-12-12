@@ -52,7 +52,7 @@ type AnimResult = {
 const generatePages = (
   total: number,
   currentPage: number,
-  maxPages: number,
+  maxPages: number
 ): PaginationItemType[] => {
   if (total <= maxPages) {
     return Array.from({ length: total }, (_, i) => i + 1);
@@ -206,7 +206,7 @@ const Pagination = React.forwardRef<HTMLElement, PaginationWrapperProps>(
       children,
       ...props
     },
-    ref,
+    ref
   ) => {
     const paginationAnimation = React.useMemo<AnimResult | null>(() => {
       if (!animation) return null;
@@ -270,7 +270,7 @@ const Pagination = React.forwardRef<HTMLElement, PaginationWrapperProps>(
                 // Determine if this ellipsis is before or after the active page
                 const ellipsisIndex = index;
                 const activePageIndex = pages.findIndex(
-                  (page) => typeof page === "number" && page === currentPage,
+                  (page) => typeof page === "number" && page === currentPage
                 );
                 const position =
                   ellipsisIndex < activePageIndex ? "before" : "after";
@@ -350,7 +350,7 @@ const Pagination = React.forwardRef<HTMLElement, PaginationWrapperProps>(
         {paginationAnimation?.children ?? renderItems()}
       </SPagination>
     );
-  },
+  }
 );
 
 Pagination.displayName = "Pagination";

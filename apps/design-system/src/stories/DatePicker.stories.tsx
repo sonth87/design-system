@@ -32,7 +32,7 @@ const meta: Meta<typeof DatePicker> = {
     isFloatLabel: {
       control: { type: "boolean" },
       description: i18n.t(
-        "stories.datepicker.argTypes.isFloatLabel.description",
+        "stories.datepicker.argTypes.isFloatLabel.description"
       ),
       table: {
         defaultValue: { summary: "false" },
@@ -72,7 +72,7 @@ const meta: Meta<typeof DatePicker> = {
     placeholder: {
       control: { type: "text" },
       description: i18n.t(
-        "stories.datepicker.argTypes.placeholder.description",
+        "stories.datepicker.argTypes.placeholder.description"
       ),
       table: {
         category: i18n.t("stories.category.content"),
@@ -129,7 +129,7 @@ const meta: Meta<typeof DatePicker> = {
     infoTooltip: {
       control: { type: "text" },
       description: i18n.t(
-        "stories.datepicker.argTypes.infoTooltip.description",
+        "stories.datepicker.argTypes.infoTooltip.description"
       ),
       table: {
         type: { summary: "ReactNode" },
@@ -188,7 +188,7 @@ const meta: Meta<typeof DatePicker> = {
     closeOnSelect: {
       control: { type: "boolean" },
       description: i18n.t(
-        "stories.datepicker.argTypes.closeOnSelect.description",
+        "stories.datepicker.argTypes.closeOnSelect.description"
       ),
       table: {
         category: i18n.t("stories.category.calendar"),
@@ -198,7 +198,7 @@ const meta: Meta<typeof DatePicker> = {
       control: { type: "select" },
       options: ["popover", "drawer"],
       description: i18n.t(
-        "stories.datepicker.argTypes.desktopMode.description",
+        "stories.datepicker.argTypes.desktopMode.description"
       ),
       table: {
         category: i18n.t("stories.category.calendar"),
@@ -215,7 +215,7 @@ const meta: Meta<typeof DatePicker> = {
     showOutsideDays: {
       control: { type: "boolean" },
       description: i18n.t(
-        "stories.datepicker.argTypes.showOutsideDays.description",
+        "stories.datepicker.argTypes.showOutsideDays.description"
       ),
       table: {
         category: i18n.t("stories.category.calendar"),
@@ -224,7 +224,7 @@ const meta: Meta<typeof DatePicker> = {
     numberOfMonths: {
       control: { type: "number" },
       description: i18n.t(
-        "stories.datepicker.argTypes.numberOfMonths.description",
+        "stories.datepicker.argTypes.numberOfMonths.description"
       ),
       table: {
         type: { summary: "number" },
@@ -235,7 +235,7 @@ const meta: Meta<typeof DatePicker> = {
     calendarConfig: {
       control: { type: "object" },
       description: i18n.t(
-        "stories.datepicker.argTypes.calendarConfig.description",
+        "stories.datepicker.argTypes.calendarConfig.description"
       ),
       table: {
         category: i18n.t("stories.category.calendar"),
@@ -261,7 +261,7 @@ const meta: Meta<typeof DatePicker> = {
       control: { type: "select" },
       options: ["wheel", "select", "compact"],
       description: i18n.t(
-        "stories.datepicker.argTypes.timePickerMode.description",
+        "stories.datepicker.argTypes.timePickerMode.description"
       ),
       table: {
         category: i18n.t("stories.category.time"),
@@ -270,7 +270,7 @@ const meta: Meta<typeof DatePicker> = {
     hourInterval: {
       control: { type: "number" },
       description: i18n.t(
-        "stories.datepicker.argTypes.hourInterval.description",
+        "stories.datepicker.argTypes.hourInterval.description"
       ),
       table: {
         category: i18n.t("stories.category.time"),
@@ -279,7 +279,7 @@ const meta: Meta<typeof DatePicker> = {
     minuteInterval: {
       control: { type: "number" },
       description: i18n.t(
-        "stories.datepicker.argTypes.minuteInterval.description",
+        "stories.datepicker.argTypes.minuteInterval.description"
       ),
       table: {
         category: i18n.t("stories.category.time"),
@@ -288,7 +288,7 @@ const meta: Meta<typeof DatePicker> = {
     secondInterval: {
       control: { type: "number" },
       description: i18n.t(
-        "stories.datepicker.argTypes.secondInterval.description",
+        "stories.datepicker.argTypes.secondInterval.description"
       ),
       table: {
         category: i18n.t("stories.category.time"),
@@ -297,7 +297,7 @@ const meta: Meta<typeof DatePicker> = {
     disabledTimes: {
       control: { type: "object" },
       description: i18n.t(
-        "stories.datepicker.argTypes.disabledTimes.description",
+        "stories.datepicker.argTypes.disabledTimes.description"
       ),
       table: {
         category: i18n.t("stories.category.time"),
@@ -306,7 +306,7 @@ const meta: Meta<typeof DatePicker> = {
     disabledTimeRanges: {
       control: { type: "object" },
       description: i18n.t(
-        "stories.datepicker.argTypes.disabledTimeRanges.description",
+        "stories.datepicker.argTypes.disabledTimeRanges.description"
       ),
       table: {
         category: i18n.t("stories.category.time"),
@@ -315,7 +315,7 @@ const meta: Meta<typeof DatePicker> = {
     showNowButton: {
       control: { type: "boolean" },
       description: i18n.t(
-        "stories.datepicker.argTypes.showNowButton.description",
+        "stories.datepicker.argTypes.showNowButton.description"
       ),
       table: {
         category: i18n.t("stories.category.time"),
@@ -324,7 +324,7 @@ const meta: Meta<typeof DatePicker> = {
     nowButtonLabel: {
       control: { type: "text" },
       description: i18n.t(
-        "stories.datepicker.argTypes.nowButtonLabel.description",
+        "stories.datepicker.argTypes.nowButtonLabel.description"
       ),
       table: {
         category: i18n.t("stories.category.time"),
@@ -333,7 +333,7 @@ const meta: Meta<typeof DatePicker> = {
     timePickerLabel: {
       control: { type: "object" },
       description: i18n.t(
-        "stories.datepicker.argTypes.timePickerLabel.description",
+        "stories.datepicker.argTypes.timePickerLabel.description"
       ),
       table: {
         category: i18n.t("stories.category.time"),

@@ -30,7 +30,7 @@ const meta: Meta<typeof TimePicker> = {
     isFloatLabel: {
       control: { type: "boolean" },
       description: i18n.t(
-        "stories.timepicker.argTypes.isFloatLabel.description",
+        "stories.timepicker.argTypes.isFloatLabel.description"
       ),
       table: {
         category: i18n.t("stories.category.ui"),
@@ -73,7 +73,7 @@ const meta: Meta<typeof TimePicker> = {
       control: { type: "select" },
       options: [undefined, "popover", "drawer"],
       description: i18n.t(
-        "stories.timepicker.argTypes.desktopMode.description",
+        "stories.timepicker.argTypes.desktopMode.description"
       ),
       table: {
         category: i18n.t("stories.category.ui"),
@@ -119,7 +119,7 @@ const meta: Meta<typeof TimePicker> = {
     showMinutes: {
       control: { type: "boolean" },
       description: i18n.t(
-        "stories.timepicker.argTypes.showMinutes.description",
+        "stories.timepicker.argTypes.showMinutes.description"
       ),
       table: {
         category: i18n.t("stories.category.time"),
@@ -128,7 +128,7 @@ const meta: Meta<typeof TimePicker> = {
     showSeconds: {
       control: { type: "boolean" },
       description: i18n.t(
-        "stories.timepicker.argTypes.showSeconds.description",
+        "stories.timepicker.argTypes.showSeconds.description"
       ),
       table: {
         category: i18n.t("stories.category.time"),
@@ -146,7 +146,7 @@ const meta: Meta<typeof TimePicker> = {
     hourInterval: {
       control: { type: "number" },
       description: i18n.t(
-        "stories.timepicker.argTypes.hourInterval.description",
+        "stories.timepicker.argTypes.hourInterval.description"
       ),
       table: {
         category: i18n.t("stories.category.time"),
@@ -155,7 +155,7 @@ const meta: Meta<typeof TimePicker> = {
     minuteInterval: {
       control: { type: "number" },
       description: i18n.t(
-        "stories.timepicker.argTypes.minuteInterval.description",
+        "stories.timepicker.argTypes.minuteInterval.description"
       ),
       table: {
         category: i18n.t("stories.category.time"),
@@ -164,7 +164,7 @@ const meta: Meta<typeof TimePicker> = {
     secondInterval: {
       control: { type: "number" },
       description: i18n.t(
-        "stories.timepicker.argTypes.secondInterval.description",
+        "stories.timepicker.argTypes.secondInterval.description"
       ),
       table: {
         category: i18n.t("stories.category.time"),
@@ -175,7 +175,7 @@ const meta: Meta<typeof TimePicker> = {
     disabledTimes: {
       control: { type: "object" },
       description: i18n.t(
-        "stories.timepicker.argTypes.disabledTimes.description",
+        "stories.timepicker.argTypes.disabledTimes.description"
       ),
       table: {
         category: i18n.t("stories.category.behavior"),
@@ -184,7 +184,7 @@ const meta: Meta<typeof TimePicker> = {
     disabledTimeRanges: {
       control: { type: "object" },
       description: i18n.t(
-        "stories.timepicker.argTypes.disabledTimeRanges.description",
+        "stories.timepicker.argTypes.disabledTimeRanges.description"
       ),
       table: {
         category: i18n.t("stories.category.behavior"),
@@ -195,7 +195,7 @@ const meta: Meta<typeof TimePicker> = {
     showNowButton: {
       control: { type: "boolean" },
       description: i18n.t(
-        "stories.timepicker.argTypes.showNowButton.description",
+        "stories.timepicker.argTypes.showNowButton.description"
       ),
       table: {
         category: i18n.t("stories.category.ui"),
@@ -204,7 +204,7 @@ const meta: Meta<typeof TimePicker> = {
     nowButtonLabel: {
       control: { type: "text" },
       description: i18n.t(
-        "stories.timepicker.argTypes.nowButtonLabel.description",
+        "stories.timepicker.argTypes.nowButtonLabel.description"
       ),
       table: {
         category: i18n.t("stories.category.content"),

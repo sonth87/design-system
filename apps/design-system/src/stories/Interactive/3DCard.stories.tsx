@@ -18,7 +18,7 @@ const meta: Meta<typeof CardContainer | typeof CardBody | typeof CardItem> = {
     containerClassName: {
       control: "text",
       description: i18n.t(
-        "stories.3dcard.argTypes.containerClassName.description",
+        "stories.3dcard.argTypes.containerClassName.description"
       ),
       table: {
         category: "CardContainer",

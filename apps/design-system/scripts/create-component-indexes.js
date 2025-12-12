@@ -21,7 +21,9 @@ function createComponentIndex(componentDir) {
 
   // Check if component file exists
   if (!fs.existsSync(componentFile)) {
-    console.log(`⏭️  Skipping ${componentName} (no ${componentName}.tsx found)`);
+    console.log(
+      `⏭️  Skipping ${componentName} (no ${componentName}.tsx found)`
+    );
     return;
   }
 

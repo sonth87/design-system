@@ -60,7 +60,7 @@ const meta: Meta<ResizableProps> = {
     panelClassName: {
       control: "text",
       description: i18n.t(
-        "stories.resizable.argTypes.panelClassName.description",
+        "stories.resizable.argTypes.panelClassName.description"
       ),
       table: {
         category: i18n.t("stories.category.advanced"),
@@ -69,7 +69,7 @@ const meta: Meta<ResizableProps> = {
     handleClassName: {
       control: "text",
       description: i18n.t(
-        "stories.resizable.argTypes.handleClassName.description",
+        "stories.resizable.argTypes.handleClassName.description"
       ),
       table: {
         category: i18n.t("stories.category.advanced"),
@@ -78,7 +78,7 @@ const meta: Meta<ResizableProps> = {
     keyboardResizeBy: {
       control: "number",
       description: i18n.t(
-        "stories.resizable.argTypes.keyboardResizeBy.description",
+        "stories.resizable.argTypes.keyboardResizeBy.description"
       ),
       table: {
         defaultValue: { summary: "10" },
@@ -89,7 +89,7 @@ const meta: Meta<ResizableProps> = {
       control: "select",
       options: ["default", "line"],
       description: i18n.t(
-        "stories.resizable.argTypes.handleVariant.description",
+        "stories.resizable.argTypes.handleVariant.description"
       ),
       table: {
         defaultValue: { summary: "default" },

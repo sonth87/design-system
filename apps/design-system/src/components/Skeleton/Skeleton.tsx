@@ -7,7 +7,7 @@ export type SkeletonProps = React.ComponentProps<typeof SSkeleton>;
 const Skeleton = React.forwardRef<HTMLDivElement, SkeletonProps>(
   ({ className, ...props }, ref) => {
     return <SSkeleton ref={ref} className={cn(className)} {...props} />;
-  },
+  }
 );
 
 Skeleton.displayName = "Skeleton";

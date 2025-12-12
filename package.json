@@ -6,7 +6,7 @@
     "dev": "turbo run dev",
     "storybook": "turbo run storybook",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,css,md}\" --ignore-path .gitignore",
     "check-types": "turbo run check-types"
   },
   "pnpm": {

@@ -117,7 +117,7 @@ const meta: Meta<typeof Popover> = {
     contentClassName: {
       control: "text",
       description: i18n.t(
-        "stories.popover.argTypes.contentClassName.description",
+        "stories.popover.argTypes.contentClassName.description"
       ),
       table: {
         type: { summary: "string" },
@@ -127,7 +127,7 @@ const meta: Meta<typeof Popover> = {
     triggerClassName: {
       control: "text",
       description: i18n.t(
-        "stories.popover.argTypes.triggerClassName.description",
+        "stories.popover.argTypes.triggerClassName.description"
       ),
       table: {
         type: { summary: "string" },
@@ -299,7 +299,7 @@ export const MenuLike: Story = {
               >
                 {item}
               </button>
-            ),
+            )
           )}
         </div>
       }

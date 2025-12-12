@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import "@dsui/design-system/index.css";
+@import "@sth87/shadcn-design-system/index.css";
 
 :root {
   --background: #ffffff;
@@ -19,12 +19,12 @@
   --secondary-foreground: #fafafa;
   --destructive: #e7000b;
   --destructive-foreground: #e7000b;
-  --success: #39CC7E;
-  --success-foreground: #FFFFFF;
-  --error: #FF6262;
-  --error-foreground: #FFFFFF;
-  --warning: #FF9D57;
-  --warning-foreground: #FFFFFF;
+  --success: #39cc7e;
+  --success-foreground: #ffffff;
+  --error: #ff6262;
+  --error-foreground: #ffffff;
+  --warning: #ff9d57;
+  --warning-foreground: #ffffff;
   --border: #e5e5e5;
   --input: #e5e5e5;
   --ring: #a1a1a1;

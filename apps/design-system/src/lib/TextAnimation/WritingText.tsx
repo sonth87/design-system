@@ -30,7 +30,7 @@ function WritingText({
   const localRef = React.useRef<HTMLSpanElement>(null);
   React.useImperativeHandle(
     ref as any,
-    () => localRef.current as HTMLSpanElement,
+    () => localRef.current as HTMLSpanElement
   );
 
   const inViewResult = useInView(localRef, {

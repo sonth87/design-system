@@ -8,7 +8,7 @@ import {
   GradientText,
   ShimmeringText,
   TextGenerateEffect,
-} from "@dsui/design-system";
+} from "@sth87/shadcn-design-system";
 
 export default function LibPage() {
   return (

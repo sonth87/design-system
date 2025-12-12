@@ -44,7 +44,7 @@ const RadioItem = React.forwardRef<HTMLButtonElement, RadioItemProps>(
         )}
       </div>
     );
-  },
+  }
 );
 
 RadioItem.displayName = "RadioItem";

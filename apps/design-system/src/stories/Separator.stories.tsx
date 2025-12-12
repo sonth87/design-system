@@ -35,7 +35,7 @@ const meta: Meta<SeparatorProps> = {
       control: "select",
       options: ["start", "center", "end"],
       description: i18n.t(
-        "stories.separator.argTypes.textPosition.description",
+        "stories.separator.argTypes.textPosition.description"
       ),
       table: {
         defaultValue: { summary: "center" },

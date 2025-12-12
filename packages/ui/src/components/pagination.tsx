@@ -66,7 +66,7 @@ function PaginationLink({
           size,
           color,
         }),
-        className,
+        className
       )}
       {...props}
     />

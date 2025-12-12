@@ -5,7 +5,7 @@ import {
 } from "../components/TreeSelect/TreeSelect";
 import { File, Folder, FolderOpen } from "lucide-react";
 import { useState } from "react";
-import i18n from "../../.storybook/i18n";   
+import i18n from "../../.storybook/i18n";
 
 const meta: Meta<typeof TreeView> = {
   title: "Form Components/TreeSelect",
@@ -24,7 +24,7 @@ const meta: Meta<typeof TreeView> = {
     initialSelectedItemId: {
       control: "text",
       description: i18n.t(
-        "stories.treeselect.argTypes.initialSelectedItemId.description",
+        "stories.treeselect.argTypes.initialSelectedItemId.description"
       ),
       table: {
         category: i18n.t("stories.category.state"),
@@ -32,7 +32,7 @@ const meta: Meta<typeof TreeView> = {
     },
     onSelectChange: {
       description: i18n.t(
-        "stories.treeselect.argTypes.onSelectChange.description",
+        "stories.treeselect.argTypes.onSelectChange.description"
       ),
       table: {
         category: i18n.t("stories.category.events"),
@@ -48,7 +48,7 @@ const meta: Meta<typeof TreeView> = {
     },
     defaultNodeIcon: {
       description: i18n.t(
-        "stories.treeselect.argTypes.defaultNodeIcon.description",
+        "stories.treeselect.argTypes.defaultNodeIcon.description"
       ),
       table: {
         category: i18n.t("stories.category.appearance"),
@@ -56,7 +56,7 @@ const meta: Meta<typeof TreeView> = {
     },
     defaultLeafIcon: {
       description: i18n.t(
-        "stories.treeselect.argTypes.defaultLeafIcon.description",
+        "stories.treeselect.argTypes.defaultLeafIcon.description"
       ),
       table: {
         category: i18n.t("stories.category.appearance"),
@@ -65,7 +65,7 @@ const meta: Meta<typeof TreeView> = {
     multiSelect: {
       control: "boolean",
       description: i18n.t(
-        "stories.treeselect.argTypes.multiSelect.description",
+        "stories.treeselect.argTypes.multiSelect.description"
       ),
       table: {
         defaultValue: { summary: "false" },
@@ -74,7 +74,7 @@ const meta: Meta<typeof TreeView> = {
     },
     selectedIds: {
       description: i18n.t(
-        "stories.treeselect.argTypes.selectedIds.description",
+        "stories.treeselect.argTypes.selectedIds.description"
       ),
       table: {
         category: i18n.t("stories.category.state"),
@@ -82,7 +82,7 @@ const meta: Meta<typeof TreeView> = {
     },
     onMultiSelectChange: {
       description: i18n.t(
-        "stories.treeselect.argTypes.onMultiSelectChange.description",
+        "stories.treeselect.argTypes.onMultiSelectChange.description"
       ),
       table: {
         category: i18n.t("stories.category.events"),
@@ -99,7 +99,7 @@ const meta: Meta<typeof TreeView> = {
     showLeafIcon: {
       control: "boolean",
       description: i18n.t(
-        "stories.treeselect.argTypes.showLeafIcon.description",
+        "stories.treeselect.argTypes.showLeafIcon.description"
       ),
       table: {
         defaultValue: { summary: "true" },

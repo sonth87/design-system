@@ -30,9 +30,12 @@ function getModulesFromDir(dirName) {
       if (fs.existsSync(indexFile) || fs.existsSync(indexTsxFile)) {
         modules.push(item.name);
       }
-    } else if (item.isFile() && (item.name.endsWith('.ts') || item.name.endsWith('.tsx'))) {
+    } else if (
+      item.isFile() &&
+      (item.name.endsWith(".ts") || item.name.endsWith(".tsx"))
+    ) {
       // Standalone module files
-      const fileName = item.name.replace(/\.tsx?$/, '');
+      const fileName = item.name.replace(/\.tsx?$/, "");
       modules.push(fileName);
     }
   });
@@ -200,7 +203,10 @@ function updatePackageJson() {
   packageJson.sideEffects = ["**/*.css"];
 
   // Write back
-  fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2) + "\n");
+  fs.writeFileSync(
+    packageJsonPath,
+    JSON.stringify(packageJson, null, 2) + "\n"
+  );
 
   console.log("✅ package.json updated successfully!");
   console.log(`📦 Found ${Object.keys(packageJson.exports).length} exports`);

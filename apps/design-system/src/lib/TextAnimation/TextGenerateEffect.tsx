@@ -22,7 +22,7 @@ function TextGenerateEffect({
   const localRef = React.useRef<HTMLDivElement>(null);
   React.useImperativeHandle(
     ref as any,
-    () => localRef.current as HTMLDivElement,
+    () => localRef.current as HTMLDivElement
   );
 
   const [scope, animate] = useAnimate();
@@ -39,7 +39,7 @@ function TextGenerateEffect({
         {
           duration: duration,
           delay: stagger(staggerDelay),
-        },
+        }
       );
     }
   }, [animate, duration, filter, scope, staggerDelay]);

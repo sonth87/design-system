@@ -1,15 +1,15 @@
 "use client";
 
 import { AdminLayout } from "@/components/admin-layout";
-import Button from "@dsui/design-system/button";
-import Input from "@dsui/design-system/input";
+import Button from "@sth87/shadcn-design-system/button";
+import Input from "@sth87/shadcn-design-system/input";
 import { useState } from "react";
-import { useDebouncedCallback } from "@dsui/design-system/use-debounced-callback";
-import { useDebounceValue } from "@dsui/design-system/use-debounced-value";
-import { useMediaQuery } from "@dsui/design-system/use-media-query";
-import { useOnClickOutside } from "@dsui/design-system/use-on-click-outside";
+import { useDebouncedCallback } from "@sth87/shadcn-design-system/use-debounced-callback";
+import { useDebounceValue } from "@sth87/shadcn-design-system/use-debounced-value";
+import { useMediaQuery } from "@sth87/shadcn-design-system/use-media-query";
+import { useOnClickOutside } from "@sth87/shadcn-design-system/use-on-click-outside";
 import { useRef } from "react";
-import { Label } from "@dsui/design-system";
+import { Label } from "@sth87/shadcn-design-system";
 
 export default function HooksPage() {
   const [inputValue, setInputValue] = useState("");

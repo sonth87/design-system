@@ -71,7 +71,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         className={cn(
           "cursor-pointer group",
           rest?.className,
-          buttonAnimation?.className,
+          buttonAnimation?.className
         )}
         asChild={shouldUseAsChild}
         style={{ ...(rest.style || {}), ...(buttonAnimation?.style || {}) }}
@@ -82,7 +82,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {buttonContent}
       </SButton>
     );
-  },
+  }
 );
 
 Button.displayName = "Button";

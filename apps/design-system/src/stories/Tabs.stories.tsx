@@ -1661,7 +1661,7 @@ export const OverflowScroll: Story = {
             </p>
           </div>
         ),
-      }),
+      })
     );
 
     return (
@@ -1733,7 +1733,7 @@ export const OverflowDropdown: Story = {
             </p>
           </div>
         ),
-      }),
+      })
     );
 
     return (
@@ -1809,7 +1809,7 @@ export const OverflowFade: Story = {
             </p>
           </div>
         ),
-      }),
+      })
     );
 
     return (

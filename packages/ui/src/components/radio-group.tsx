@@ -78,7 +78,7 @@ const generateCompoundVariants = () => {
           className: colorVariants[color][variant],
         });
       });
-    },
+    }
   );
 
   return variants;
@@ -115,7 +115,7 @@ const radioGroupItemVariants = cva(
       size: "default",
       color: null,
     },
-  },
+  }
 );
 
 const radioGroupVariants = cva("grid gap-3", {
@@ -159,7 +159,7 @@ function RadioGroupItem({
     <RadioGroupPrimitive.Item
       data-slot="radio-group-item"
       className={cn(
-        radioGroupItemVariants({ variant, size, color, className }),
+        radioGroupItemVariants({ variant, size, color, className })
       )}
       {...props}
     >

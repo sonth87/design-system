@@ -14,7 +14,7 @@
 
 /* Custom spinner buttons container */
 .floating-label::after {
-  content: '';
+  content: "";
   position: absolute;
   right: 8px;
   top: 50%;

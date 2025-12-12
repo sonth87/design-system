@@ -121,7 +121,7 @@ const meta: Meta<ButtonGroupProps> = {
       control: "select",
       options: ["horizontal", "vertical"],
       description: i18n.t(
-        "stories.buttongroup.argTypes.orientation.description",
+        "stories.buttongroup.argTypes.orientation.description"
       ),
       table: {
         defaultValue: { summary: "horizontal" },

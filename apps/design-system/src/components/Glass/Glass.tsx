@@ -7,7 +7,7 @@ const glassVariants = cva(
   {
     variants: {},
     defaultVariants: {},
-  },
+  }
 );
 
 type GlassProps = {
@@ -20,7 +20,7 @@ const Glass: React.FC<GlassProps> = ({ className, children }) => {
     <div
       className={cn(
         "relative inline-flex overflow-hidden cursor-pointer shadow-[0_6px_6px_rgba(0,0,0,0.2),0_0_20px_rgba(0,0,0,0.1)] transition-all duration-400 ease-[cubic-bezier(0.175,0.885,0.32,2.2)] p-0 rounded-md",
-        className,
+        className
       )}
     >
       <div className="absolute z-0 inset-0 backdrop-blur-[2.5px] overflow-hidden isolate [filter:url(#glass-distortion)] rounded-[inherit]"></div>

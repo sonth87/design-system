@@ -9,10 +9,10 @@ import {
   ArrowUpRight,
   ArrowDownRight,
 } from "lucide-react";
-import Button from "@dsui/design-system/button";
-import Badge from "@dsui/design-system/badge";
-import { Avatar } from "@dsui/design-system/avatar";
-import Tabs from "@dsui/design-system/tabs";
+import Button from "@sth87/shadcn-design-system/button";
+import Badge from "@sth87/shadcn-design-system/badge";
+import { Avatar } from "@sth87/shadcn-design-system/avatar";
+import Tabs from "@sth87/shadcn-design-system/tabs";
 
 const stats = [
   {

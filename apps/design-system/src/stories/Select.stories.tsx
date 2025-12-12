@@ -113,7 +113,7 @@ const meta: Meta<typeof Select> = {
       control: "select",
       options: ["wrap", "wrap-when-open", "cutoff"],
       description: i18n.t(
-        "stories.select.argTypes.overflowBehavior.description",
+        "stories.select.argTypes.overflowBehavior.description"
       ),
       table: {
         defaultValue: { summary: "wrap-when-open" },

@@ -35,7 +35,7 @@ export const CardContainer = ({
   const perspectiveMax = 2000;
   const clampedPerspective = Math.max(
     perspectiveMin,
-    Math.min(perspectiveMax, perspective),
+    Math.min(perspectiveMax, perspective)
   );
 
   const rotationDivisors = { low: 50, medium: 25, high: 10 };
@@ -73,7 +73,7 @@ export const CardContainer = ({
           onMouseLeave={handleMouseLeave}
           className={cn(
             "flex items-center justify-center relative transition-all duration-200 ease-linear",
-            className,
+            className
           )}
           style={{
             transformStyle: "preserve-3d",
@@ -153,7 +153,7 @@ export const CardItem = ({
       className: cn("w-fit transition duration-200 ease-linear", className),
       ...rest,
     },
-    children,
+    children
   );
 };
 

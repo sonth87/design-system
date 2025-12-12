@@ -22,7 +22,7 @@ type OriginalStyle = {
 const IS_SERVER = typeof window === "undefined";
 
 export function useScrollLock(
-  options: UseScrollLockOptions = {},
+  options: UseScrollLockOptions = {}
 ): UseScrollLockReturn {
   const { autoLock = true, lockTarget, widthReflow = true } = options;
   const [isLocked, setIsLocked] = useState(false);

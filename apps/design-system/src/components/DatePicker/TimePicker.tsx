@@ -49,7 +49,7 @@ export type TimePickerProps = Omit<
   onChange?: (
     event?: React.ChangeEvent<HTMLInputElement>,
     value?: string,
-    date?: Date,
+    date?: Date
   ) => void;
   onSelect?: (date?: Date, value?: string) => void;
   showHours?: boolean;
@@ -94,7 +94,7 @@ const pad = (num: number): string => String(num).padStart(2, "0");
 // Format time Date to string using date-fns
 const formatTime = (
   date: Date | undefined,
-  format: string = "HH:mm",
+  format: string = "HH:mm"
 ): string => {
   if (!date || !isValid(date)) return "";
   return dfFormat(date, format);
@@ -103,7 +103,7 @@ const formatTime = (
 // Parse time string to Date using date-fns
 const parseTimeString = (
   timeStr: string,
-  format: string = "HH:mm",
+  format: string = "HH:mm"
 ): Date | undefined => {
   if (!timeStr) return undefined;
 
@@ -199,15 +199,15 @@ export function TimePicker({
   // Generate time arrays based on intervals
   const HOURS = useMemo(
     () => generateIntervalArray(24, hourInterval),
-    [hourInterval],
+    [hourInterval]
   );
   const MINUTES = useMemo(
     () => generateIntervalArray(60, minuteInterval),
-    [minuteInterval],
+    [minuteInterval]
   );
   const SECONDS = useMemo(
     () => generateIntervalArray(60, secondInterval),
-    [secondInterval],
+    [secondInterval]
   );
 
   // Helper function to check if a time is disabled
@@ -215,7 +215,7 @@ export function TimePicker({
     (
       h: number | undefined,
       m: number | undefined,
-      s: number | undefined = 0,
+      s: number | undefined = 0
     ): boolean => {
       const timeStr = `${pad(h ?? 0)}:${pad(m ?? 0)}${showSeconds ? `:${pad(s ?? 0)}` : ""}`;
 
@@ -240,7 +240,7 @@ export function TimePicker({
 
       return false;
     },
-    [disabledTimes, disabledTimeRanges, showSeconds],
+    [disabledTimes, disabledTimeRanges, showSeconds]
   );
 
   // Helper function to get time label based on type and timeLabel prop
@@ -267,7 +267,7 @@ export function TimePicker({
       if (type === "minutes") return timeLabel.minutes || "Minute";
       return timeLabel.seconds || "Second";
     },
-    [timeLabel],
+    [timeLabel]
   );
 
   // If timeLabel is a string, show it as a common label above all columns
@@ -285,21 +285,21 @@ export function TimePicker({
     (
       targetH: number,
       targetM: number,
-      targetS: number = 0,
+      targetS: number = 0
     ): { h: number; m: number; s: number } => {
       // Find nearest hour
       const nearestH = HOURS.reduce((prev, curr) =>
-        Math.abs(curr - targetH) < Math.abs(prev - targetH) ? curr : prev,
+        Math.abs(curr - targetH) < Math.abs(prev - targetH) ? curr : prev
       );
 
       // Find nearest minute
       const nearestM = MINUTES.reduce((prev, curr) =>
-        Math.abs(curr - targetM) < Math.abs(prev - targetM) ? curr : prev,
+        Math.abs(curr - targetM) < Math.abs(prev - targetM) ? curr : prev
       );
 
       // Find nearest second
       const nearestS = SECONDS.reduce((prev, curr) =>
-        Math.abs(curr - targetS) < Math.abs(prev - targetS) ? curr : prev,
+        Math.abs(curr - targetS) < Math.abs(prev - targetS) ? curr : prev
       );
 
       // If the nearest time is disabled, find the next available time
@@ -318,7 +318,7 @@ export function TimePicker({
 
       return { h: nearestH, m: nearestM, s: nearestS };
     },
-    [HOURS, MINUTES, SECONDS, isTimeDisabled],
+    [HOURS, MINUTES, SECONDS, isTimeDisabled]
   );
 
   const updateDateTime = useCallback(
@@ -328,7 +328,7 @@ export function TimePicker({
       const formattedValue = formatTime(newDate, outputFormat);
       onSelect?.(newDate, formattedValue);
     },
-    [outputFormat, onSelect],
+    [outputFormat, onSelect]
   );
 
   const handleHourChange = (h: number) => {
@@ -357,7 +357,7 @@ export function TimePicker({
     (ref: RefObject<HTMLDivElement | null>) => {
       if (ref.current) {
         const selected = ref.current.querySelector(
-          "[data-selected]",
+          "[data-selected]"
         ) as HTMLElement;
         if (selected) {
           const container = ref.current;
@@ -375,7 +375,7 @@ export function TimePicker({
         }
       }
     },
-    [],
+    []
   );
 
   const scrollHandler = useCallback(() => {
@@ -395,7 +395,7 @@ export function TimePicker({
     const { h, m, s } = findNearestValidTime(
       now.getHours(),
       now.getMinutes(),
-      now.getSeconds(),
+      now.getSeconds()
     );
     setHours(h);
     setMinutes(m);
@@ -452,7 +452,7 @@ export function TimePicker({
           />
         </div>
       </div>
-    ),
+    )
   );
 
   // Grid Mode - Combined time selection (HH:mm format only, vertical layout)
@@ -502,7 +502,7 @@ export function TimePicker({
             isItemDisabled={(item) => isTimeDisabled(item, minutes, seconds)}
             disabled={disabled}
             color={color}
-          />,
+          />
         );
       } else if (mode === "select") {
         columns.push(
@@ -513,7 +513,7 @@ export function TimePicker({
             onChange={handleHourChange}
             timeLabel={hourLabel}
             type="hours"
-          />,
+          />
         );
       }
     }
@@ -535,7 +535,7 @@ export function TimePicker({
             isItemDisabled={(item) => isTimeDisabled(hours, item, seconds)}
             disabled={disabled}
             color={color}
-          />,
+          />
         );
       } else if (mode === "select") {
         columns.push(
@@ -546,7 +546,7 @@ export function TimePicker({
             onChange={handleMinuteChange}
             timeLabel={minuteLabel}
             type="minutes"
-          />,
+          />
         );
       }
     }
@@ -568,7 +568,7 @@ export function TimePicker({
             isItemDisabled={(item) => isTimeDisabled(hours, minutes, item)}
             disabled={disabled}
             color={color}
-          />,
+          />
         );
       } else if (mode === "select") {
         columns.push(
@@ -579,7 +579,7 @@ export function TimePicker({
             onChange={handleSecondChange}
             timeLabel={secondLabel}
             type="seconds"
-          />,
+          />
         );
       }
     }
@@ -600,7 +600,7 @@ export function TimePicker({
             "flex rounded overflow-clip mb-auto",
             mode === "wheel"
               ? "items-end justify-center p-0 h-72"
-              : "items-start justify-center",
+              : "items-start justify-center"
           )}
         >
           {renderColumns()}
@@ -636,7 +636,7 @@ export function TimePicker({
           {
             "h-72": mode === "wheel",
             "w-xs": standalone && (isMobile || desktopMode === "drawer"),
-          },
+          }
         )}
       >
         {renderColumns()}
@@ -677,7 +677,7 @@ export function TimePicker({
       <PopoverContent
         className={cn(
           "w-auto overflow-hidden p-0",
-          "backdrop-blur bg-background/50",
+          "backdrop-blur bg-background/50"
         )}
       >
         {timePickerContent}
@@ -691,7 +691,7 @@ export function TimePicker({
       <DrawerContent
         className={cn(
           "w-auto overflow-hidden p-0",
-          "backdrop-blur bg-background",
+          "backdrop-blur bg-background"
         )}
       >
         <DrawerHeader className="sr-only">

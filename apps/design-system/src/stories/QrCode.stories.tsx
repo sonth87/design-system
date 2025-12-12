@@ -49,7 +49,7 @@ const meta: Meta<typeof QRCode> = {
     },
     backgroundColor: {
       description: i18n.t(
-        "stories.qrcode.argTypes.backgroundColor.description",
+        "stories.qrcode.argTypes.backgroundColor.description"
       ),
       control: "color",
       table: {
@@ -58,7 +58,7 @@ const meta: Meta<typeof QRCode> = {
     },
     foregroundColor: {
       description: i18n.t(
-        "stories.qrcode.argTypes.foregroundColor.description",
+        "stories.qrcode.argTypes.foregroundColor.description"
       ),
       control: "color",
       table: {

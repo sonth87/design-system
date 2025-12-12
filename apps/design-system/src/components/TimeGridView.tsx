@@ -73,7 +73,7 @@ export const TimeGridView = memo(
         onTimeSelect,
         color = "primary",
       },
-      ref,
+      ref
     ) => {
       // Generate all time combinations based on intervals (always HH:mm, never shows seconds)
       const timeOptions = useMemo(() => {
@@ -127,7 +127,7 @@ export const TimeGridView = memo(
                   className={cn(
                     isSelected
                       ? `${colorClasses.bg} ${colorClasses.text} font-semibold`
-                      : "text-foreground",
+                      : "text-foreground"
                   )}
                 >
                   {display}
@@ -137,8 +137,8 @@ export const TimeGridView = memo(
           </div>
         </div>
       );
-    },
-  ),
+    }
+  )
 );
 
 TimeGridView.displayName = "TimeGridView";

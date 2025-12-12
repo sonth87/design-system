@@ -11,7 +11,7 @@ type UseIntersectionObserverOptions = {
   freezeOnceVisible?: boolean;
   onChange?: (
     isIntersecting: boolean,
-    entry: IntersectionObserverEntry,
+    entry: IntersectionObserverEntry
   ) => void;
   initialIsIntersecting?: boolean;
 };
@@ -58,7 +58,7 @@ export function useIntersectionObserver({
           const isIntersecting =
             entry.isIntersecting &&
             thresholds.some(
-              (threshold) => entry.intersectionRatio >= threshold,
+              (threshold) => entry.intersectionRatio >= threshold
             );
           setState({ isIntersecting, entry });
           if (callbackRef.current) {
@@ -70,7 +70,7 @@ export function useIntersectionObserver({
           }
         });
       },
-      { threshold, root, rootMargin },
+      { threshold, root, rootMargin }
     );
     observer.observe(ref);
     return () => {

@@ -33,7 +33,7 @@ const meta: Meta<typeof ContextMenu> = {
   argTypes: {
     onOpenChange: {
       description: i18n.t(
-        "stories.contextmenu.argTypes.onOpenChange.description",
+        "stories.contextmenu.argTypes.onOpenChange.description"
       ),
       table: {
         type: { summary: "(open: boolean) => void" },
@@ -88,7 +88,7 @@ const meta: Meta<typeof ContextMenu> = {
     contentClassName: {
       control: "text",
       description: i18n.t(
-        "stories.contextmenu.argTypes.contentClassName.description",
+        "stories.contextmenu.argTypes.contentClassName.description"
       ),
       table: {
         type: { summary: "string" },
@@ -98,7 +98,7 @@ const meta: Meta<typeof ContextMenu> = {
     triggerClassName: {
       control: "text",
       description: i18n.t(
-        "stories.contextmenu.argTypes.triggerClassName.description",
+        "stories.contextmenu.argTypes.triggerClassName.description"
       ),
       table: {
         type: { summary: "string" },

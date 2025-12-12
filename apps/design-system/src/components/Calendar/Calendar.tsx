@@ -47,7 +47,7 @@ export function Calendar({
       }}
       className={cn(
         "mx-auto [--cell-size:clamp(0px,calc(100vw/7.5),40px)]",
-        className,
+        className
       )}
     />
   );
