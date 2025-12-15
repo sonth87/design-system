@@ -1,6 +1,6 @@
 {
   "name": "@sth87/shadcn-design-system",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "type": "module",
   "description": "A modern React design system base on Shadcn UI and Tailwind CSS.",
   "author": "Sonth87 <sonth87@gmail.com>",
@@ -32,6 +32,10 @@
       }
     },
     "./package.json": "./package.json",
+    "./index.css": {
+      "import": "./dist/esm/styles/index.css",
+      "require": "./dist/cjs/styles/index.css"
+    },
     "./accordion": {
       "import": {
         "types": "./dist/types/components/Accordion/Accordion.d.ts",
@@ -685,10 +689,6 @@
     "./theme.css": {
       "import": "./dist/esm/styles/theme.css",
       "require": "./dist/cjs/styles/theme.css"
-    },
-    "./index.css": {
-      "import": "./dist/esm/styles/index.css",
-      "require": "./dist/cjs/styles/index.css"
     },
     "./animation.css": {
       "import": "./dist/esm/styles/animation.css",

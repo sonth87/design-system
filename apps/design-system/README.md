@@ -1,23 +1,27 @@
-# @dsui/design-system
+# shadcn design-system
+
 
 A modern, fully-typed React design system built on top of **shadcn/ui** with enhanced features, TypeScript, TailwindCSS, and Radix UI primitives.
 
-[![npm version](https://img.shields.io/npm/v/@dsui/design-system.svg)](https://www.npmjs.com/package/@dsui/design-system)
+[![npm version](https://img.shields.io/npm/v/@sth87/shadcn-design-system.svg)](https://www.npmjs.com/package/@sth87/shadcn-design-system)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+## Storybook
+[https://design-system-sth-kappa.vercel.app/](https://design-system-sth-kappa.vercel.app/)
 
 ## 📦 Installation
 
-DSUI bundles all its dependencies for easy installation:
+SDS bundles all its dependencies for easy installation:
 
 ```bash
 # npm
-npm install dsui react react-dom
+npm install @sth87/shadcn-design-system
 
 # yarn
-yarn add dsui react react-dom
+yarn add @sth87/shadcn-design-system
 
 # pnpm
-pnpm add dsui react react-dom
+pnpm add @sth87/shadcn-design-system
 ```
 
 That's it! All other dependencies (motion, date-fns, lucide-react, tailwindcss, etc.) are automatically installed.
@@ -32,33 +36,15 @@ Import the design system CSS in your app entry point:
 
 ```tsx
 // main.tsx or App.tsx
-import "dsui/theme.css";
-import "dsui/index.css";
-import "dsui/animation.css";
+import "@sth87/shadcn-design-system/theme.css";
+import "@sth87/shadcn-design-system/index.css";
+import "@sth87/shadcn-design-system/animation.css";
 ```
 
-### 2. Configure TailwindCSS
-
-Add the design system to your `tailwind.config.js`:
-
-```js
-/** @type {import('tailwindcss').Config} */
-export default {
-  content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
-    "./node_modules/dsui/dist/**/*.{js,mjs}",
-  ],
-  theme: {
-    extend: {},
-  },
-  plugins: [require("tailwindcss-animate")],
-};
-```
-
-### 3. Use Components
+### 2. Use Components
 
 ```tsx
-import { Button, Dialog } from "@dsui/design-system";
+import { Button, Dialog } from "@sth87/shadcn-design-system";
 
 function App() {
   const [open, setOpen] = useState(false);
@@ -106,7 +92,7 @@ import {
   Select,
   Tabs,
   Toast,
-} from "@dsui/design-system";
+} from "@sth87/shadcn-design-system";
 ```
 
 ### Tree-shakeable Imports
@@ -114,10 +100,10 @@ import {
 Import individual components for optimal bundle size:
 
 ```tsx
-import { Button } from "@dsui/design-system/button";
-import { Dialog } from "@dsui/design-system/dialog";
-import { DatePicker } from "@dsui/design-system/datepicker";
-import { Input } from "@dsui/design-system/input";
+import { Button } from "@sth87/shadcn-design-system/button";
+import { Dialog } from "@sth87/shadcn-design-system/dialog";
+import { DatePicker } from "@sth87/shadcn-design-system/datepicker";
+import { Input } from "@sth87/shadcn-design-system/input";
 ```
 
 ## 🎨 Theme Configuration
@@ -216,7 +202,7 @@ document.documentElement.classList.toggle("dark");
 ### Button Component
 
 ```tsx
-import { Button } from "@dsui/design-system";
+import { Button } from "@sth87/shadcn-design-system";
 
 <Button variant="default" size="md">
   Default Button
@@ -236,7 +222,7 @@ import { Button } from "@dsui/design-system";
 The Dialog component is enhanced with additional features beyond shadcn/ui:
 
 ```tsx
-import { Dialog, Button } from "@dsui/design-system";
+import { Dialog, Button } from "@sth87/shadcn-design-system";
 import { useState } from "react";
 
 function MyComponent() {
@@ -358,7 +344,7 @@ function MyComponent() {
 Enhanced DatePicker with range and time selection:
 
 ```tsx
-import { DatePicker } from "@dsui/design-system";
+import { DatePicker } from "@sth87/shadcn-design-system";
 import { useState } from "react";
 
 function MyComponent() {
@@ -373,7 +359,7 @@ function MyComponent() {
 ### Toast Notifications
 
 ```tsx
-import { toast, Toaster } from "@dsui/design-system";
+import { toast, Toaster } from "@sth87/shadcn-design-system";
 
 function App() {
   return (
@@ -456,7 +442,7 @@ pnpm lint
 
 ## 📖 Documentation
 
-For detailed documentation and interactive examples, visit our [Storybook](https://your-storybook-url.com).
+For detailed documentation and interactive examples, visit our [Storybook](https://design-system-sth-kappa.vercel.app/).
 
 ## 🤝 Contributing
 
@@ -464,7 +450,7 @@ Contributions are welcome! Please read our [Contributing Guide](CONTRIBUTING.md)
 
 ## 📄 License
 
-MIT © [Your Name]
+MIT © Skyline
 
 ## 🙏 Credits
 

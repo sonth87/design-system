@@ -74,6 +74,8 @@ function generateExports() {
     },
     // Package.json
     "./package.json": "./package.json",
+    // Styles
+    "./index.css": "./dist/esm/styles/index.css",
   };
 
   // Add each component

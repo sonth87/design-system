@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-// import "@sth87/shadcn-design-system/theme.css";
-// import "@sth87/shadcn-design-system/index.css";
-// import "@sth87/shadcn-design-system/animation.css";
+import "@sth87/shadcn-design-system/theme.css";
+import "@sth87/shadcn-design-system/index.css";
+import "@sth87/shadcn-design-system/animation.css";
 import "./globals.css";
 
 const geistSans = localFont({
