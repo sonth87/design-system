@@ -1,6 +1,6 @@
 {
   "name": "@sth87/shadcn-design-system",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "type": "module",
   "description": "A modern React design system base on Shadcn UI and Tailwind CSS.",
   "author": "Sonth87 <sonth87@gmail.com>",
@@ -748,8 +748,10 @@
     "@eslint/js": "^9.36.0",
     "@floating-ui/react-dom": "^2.1.6",
     "@hookform/resolvers": "^5.2.2",
+    "@mdx-js/rollup": "^3.1.1",
     "@storybook/addon-a11y": "^10.1.4",
     "@storybook/addon-docs": "^10.1.4",
+    "@storybook/blocks": "^8.6.14",
     "@storybook/react": "^10.1.4",
     "@storybook/react-vite": "^10.1.4",
     "@tailwindcss/vite": "^4.1.14",
