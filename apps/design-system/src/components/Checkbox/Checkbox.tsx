@@ -6,15 +6,31 @@ import { Label } from "../Label";
 import { Info } from "lucide-react";
 import { AnimatePresence } from "motion/react";
 import { ConfettiPiece } from "@/utils/css";
+import type { CheckedState } from "@radix-ui/react-checkbox";
 
-export type CheckboxProps = React.ComponentProps<typeof SCheckbox> & {
+export type CheckboxProps = Omit<
+  React.ComponentPropsWithoutRef<typeof SCheckbox>,
+  "onCheckedChange" | "variant" | "size" | "color" | "icon"
+> & {
+  onCheckedChange?: (checked: CheckedState) => void;
+  variant?: "default" | "circle";
+  size?: "sm" | "default" | "lg";
+  color?:
+    | "primary"
+    | "secondary"
+    | "accent"
+    | "destructive"
+    | "muted"
+    | "success"
+    | "error"
+    | "warning";
+  icon?: React.ReactNode;
   label?: React.ReactNode;
   labelPosition?: "top" | "left" | "right" | "bottom";
   labelAlignment?: "start" | "center" | "end";
   infoTooltip?: React.ReactNode;
   helperText?: React.ReactNode;
   state?: "default" | "error" | "success" | "warning";
-  icon?: React.ReactNode;
   animation?: "confetti" | undefined;
 };
 
@@ -33,6 +49,7 @@ const Checkbox = React.forwardRef<HTMLButtonElement, CheckboxProps>(
       icon,
       animation,
       id,
+      onCheckedChange,
       ...rest
     } = props;
     const [showConfetti, setShowConfetti] = useState(false);
@@ -47,11 +64,12 @@ const Checkbox = React.forwardRef<HTMLButtonElement, CheckboxProps>(
       error: "text-error",
     };
 
-    const handleCheckedChange = (checked: boolean) => {
+    const handleCheckedChange = (checked: CheckedState) => {
       if (checked) {
         setShowConfetti(true);
         setTimeout(() => setShowConfetti(false), 800);
       }
+      onCheckedChange?.(checked);
     };
 
     const isVertical = labelPosition === "top" || labelPosition === "bottom";
@@ -91,10 +109,9 @@ const Checkbox = React.forwardRef<HTMLButtonElement, CheckboxProps>(
               size={size}
               color={color}
               icon={icon}
-              onCheckedChange={(checked) => {
-                if (animation) handleCheckedChange(!!checked);
-                rest?.onCheckedChange?.(checked);
-              }}
+              onCheckedChange={
+                animation ? handleCheckedChange : onCheckedChange
+              }
             />
 
             <AnimatePresence>

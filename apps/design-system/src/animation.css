@@ -9,19 +9,25 @@
   --animate-slide-in-from-top: slide-in-from-top 0.3s ease;
   --animate-slide-in-from-left: slide-in-from-left 0.3s ease;
   --animate-slide-in-from-right: slide-in-from-right 0.3s ease;
-  --animate-zoom-in: zoom-in 0.3s cubic-bezier(.68, -0.55, .27, 1.55);
-  --animate-zoom-out: zoom-out 0.3s cubic-bezier(.68, -0.55, .27, 1.55);
-  --animate-skewed-in: skewed 0.4s cubic-bezier(.68, -0.55, .27, 1.55);
-  --animate-shake: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
-  --animate-flip-in: flip-in 0.4s cubic-bezier(.68, -0.55, .27, 1.55);
+  --animate-zoom-in: zoom-in 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  --animate-zoom-out: zoom-out 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  --animate-skewed-in: skewed 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  --animate-shake: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  --animate-flip-in: flip-in 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
   --animate-glow: animate-glow 3s linear infinite;
-  --animate-scale: scale-in 0.3s cubic-bezier(.68, -0.55, .27, 1.55);
-  --animate-marquee-left: marquee-left var(--marquee-duration) linear var(--marquee-loop-count);
-  --animate-marquee-right: marquee-right var(--marquee-duration) linear var(--marquee-loop-count);
-  --animate-marquee-left-rtl: marquee-left-rtl var(--marquee-duration) linear var(--marquee-loop-count);
-  --animate-marquee-right-rtl: marquee-right-rtl var(--marquee-duration) linear var(--marquee-loop-count);
-  --animate-marquee-up: marquee-up var(--marquee-duration) linear var(--marquee-loop-count);
-  --animate-marquee-down: marquee-down var(--marquee-duration) linear var(--marquee-loop-count);
+  --animate-scale: scale-in 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  --animate-marquee-left: marquee-left var(--marquee-duration) linear
+    var(--marquee-loop-count);
+  --animate-marquee-right: marquee-right var(--marquee-duration) linear
+    var(--marquee-loop-count);
+  --animate-marquee-left-rtl: marquee-left-rtl var(--marquee-duration) linear
+    var(--marquee-loop-count);
+  --animate-marquee-right-rtl: marquee-right-rtl var(--marquee-duration) linear
+    var(--marquee-loop-count);
+  --animate-marquee-up: marquee-up var(--marquee-duration) linear
+    var(--marquee-loop-count);
+  --animate-marquee-down: marquee-down var(--marquee-duration) linear
+    var(--marquee-loop-count);
   --animate-flash: flash 1s ease-out both;
   --animate-pulse: pulse 1s ease-in-out both;
   --animate-rubber-band: rubberBand 1s ease-out both;
@@ -29,16 +35,26 @@
   --animate-tada: tada 1s ease-out both;
   --animate-wobble: wobble 1s ease-out both;
   --animate-jello: jello 1s ease-out both;
-  --animate-bounce-in: bounceIn calc(1s * 0.75) cubic-bezier(0.215, 0.61, 0.355, 1) both;
-  --animate-bounce-in-down: bounceInDown calc(1s * 0.75) cubic-bezier(0.215, 0.61, 0.355, 1) both;
-  --animate-bounce-in-left: bounceInLeft calc(1s * 0.75) cubic-bezier(0.215, 0.61, 0.355, 1) both;
-  --animate-bounce-in-right: bounceInRight calc(1s * 0.75) cubic-bezier(0.215, 0.61, 0.355, 1) both;
-  --animate-bounce-in-up: bounceInUp calc(1s * 0.75) cubic-bezier(0.215, 0.61, 0.355, 1) both;
-  --animate-bounce-out: bounceOut calc(1s * 0.75) cubic-bezier(0.215, 0.61, 0.355, 1) both;
-  --animate-bounce-out-down: bounceOutDown calc(1s * 0.75) cubic-bezier(0.215, 0.61, 0.355, 1) both;
-  --animate-bounce-out-left: bounceOutLeft calc(1s * 0.75) cubic-bezier(0.215, 0.61, 0.355, 1) both;
-  --animate-bounce-out-right: bounceOutRight calc(1s * 0.75) cubic-bezier(0.215, 0.61, 0.355, 1) both;
-  --animate-bounce-out-up: bounceOutUp calc(1s * 0.75) cubic-bezier(0.215, 0.61, 0.355, 1) both;
+  --animate-bounce-in: bounceIn calc(1s * 0.75)
+    cubic-bezier(0.215, 0.61, 0.355, 1) both;
+  --animate-bounce-in-down: bounceInDown calc(1s * 0.75)
+    cubic-bezier(0.215, 0.61, 0.355, 1) both;
+  --animate-bounce-in-left: bounceInLeft calc(1s * 0.75)
+    cubic-bezier(0.215, 0.61, 0.355, 1) both;
+  --animate-bounce-in-right: bounceInRight calc(1s * 0.75)
+    cubic-bezier(0.215, 0.61, 0.355, 1) both;
+  --animate-bounce-in-up: bounceInUp calc(1s * 0.75)
+    cubic-bezier(0.215, 0.61, 0.355, 1) both;
+  --animate-bounce-out: bounceOut calc(1s * 0.75)
+    cubic-bezier(0.215, 0.61, 0.355, 1) both;
+  --animate-bounce-out-down: bounceOutDown calc(1s * 0.75)
+    cubic-bezier(0.215, 0.61, 0.355, 1) both;
+  --animate-bounce-out-left: bounceOutLeft calc(1s * 0.75)
+    cubic-bezier(0.215, 0.61, 0.355, 1) both;
+  --animate-bounce-out-right: bounceOutRight calc(1s * 0.75)
+    cubic-bezier(0.215, 0.61, 0.355, 1) both;
+  --animate-bounce-out-up: bounceOutUp calc(1s * 0.75)
+    cubic-bezier(0.215, 0.61, 0.355, 1) both;
   --animate-flip: flip 1s ease-out both;
   --animate-flip-in-x: flipInX 1s ease-out both;
   --animate-flip-in-y: flipInY 1s ease-out both;
@@ -47,8 +63,10 @@
   --animate-flip-out-y: flipOutY calc(1s * 0.75) ease-out both;
   --animate-light-speed-in: lightSpeedInRight 1s ease-out both;
   --animate-light-speed-out: lightSpeedOutRight 1s ease-in both;
-  --animate-wiggle: wiggle 1.5s cubic-bezier(.36, .07, .19, .97) both;
-  --animate-gradient-outline: 10s linear 0s infinite normal none running gradient-pos, 60s linear 0s infinite normal none running gradient-trans;
+  --animate-wiggle: wiggle 1.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  --animate-gradient-outline:
+    10s linear 0s infinite normal none running gradient-pos,
+    60s linear 0s infinite normal none running gradient-trans;
 
   @keyframes heartbeat {
     0% {
@@ -228,7 +246,6 @@
   }
 
   @keyframes shake {
-
     10%,
     90% {
       transform: translate3d(-1px, 0, 0);
@@ -341,7 +358,6 @@
 }
 
 @keyframes flash {
-
   from,
   50%,
   to {
@@ -479,7 +495,6 @@
 }
 
 @keyframes jello {
-
   from,
   11.1%,
   to {
@@ -516,7 +531,6 @@
 }
 
 @keyframes bounceIn {
-
   from,
   20%,
   40%,
@@ -555,7 +569,6 @@
 }
 
 @keyframes bounceInDown {
-
   from,
   60%,
   75%,
@@ -588,7 +601,6 @@
 }
 
 @keyframes bounceInLeft {
-
   from,
   60%,
   75%,
@@ -621,7 +633,6 @@
 }
 
 @keyframes bounceInRight {
-
   from,
   60%,
   75%,
@@ -654,7 +665,6 @@
 }
 
 @keyframes bounceInUp {
-
   from,
   60%,
   75%,
@@ -763,27 +773,32 @@
 
 @keyframes flip {
   from {
-    transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 0) rotate3d(0, 1, 0, -360deg);
+    transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 0)
+      rotate3d(0, 1, 0, -360deg);
     animation-timing-function: ease-out;
   }
 
   40% {
-    transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -190deg);
+    transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 150px)
+      rotate3d(0, 1, 0, -190deg);
     animation-timing-function: ease-out;
   }
 
   50% {
-    transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -170deg);
+    transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 150px)
+      rotate3d(0, 1, 0, -170deg);
     animation-timing-function: ease-in;
   }
 
   80% {
-    transform: perspective(400px) scale3d(0.95, 0.95, 0.95) translate3d(0, 0, 0) rotate3d(0, 1, 0, 0deg);
+    transform: perspective(400px) scale3d(0.95, 0.95, 0.95) translate3d(0, 0, 0)
+      rotate3d(0, 1, 0, 0deg);
     animation-timing-function: ease-in;
   }
 
   to {
-    transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 0) rotate3d(0, 1, 0, 0deg);
+    transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 0)
+      rotate3d(0, 1, 0, 0deg);
     animation-timing-function: ease-in;
   }
 }
@@ -920,7 +935,6 @@
 }
 
 @keyframes wiggle {
-
   0%,
   7% {
     transform: rotateZ(0);
@@ -1012,16 +1026,18 @@
     width: 100%;
     transform: scale(0.75) translateZ(0);
     filter: blur(15px);
-    background: linear-gradient(to left,
-        #ff5770,
-        #e4428d,
-        #c42da8,
-        #9e16c3,
-        #6501de,
-        #9e16c3,
-        #c42da8,
-        #e4428d,
-        #ff5770);
+    background: linear-gradient(
+      to left,
+      #ff5770,
+      #e4428d,
+      #c42da8,
+      #9e16c3,
+      #6501de,
+      #9e16c3,
+      #c42da8,
+      #e4428d,
+      #ff5770
+    );
     background-size: 200% 200%;
     animation: var(--animate-glow);
   }
@@ -1162,7 +1178,21 @@
   height: calc(100% + 4px);
   opacity: 1;
   animation: var(--animate-gradient-outline);
-  background-image: linear-gradient(45deg, rgb(234, 0, 0), rgb(255, 157, 0), rgb(255, 208, 0), rgb(0, 172, 0), rgb(0, 166, 255), rgb(181, 0, 181), rgb(234, 0, 0), rgb(255, 157, 0), rgb(255, 208, 0), rgb(0, 172, 0), rgb(0, 166, 255), rgb(181, 0, 181));
+  background-image: linear-gradient(
+    45deg,
+    rgb(234, 0, 0),
+    rgb(255, 157, 0),
+    rgb(255, 208, 0),
+    rgb(0, 172, 0),
+    rgb(0, 166, 255),
+    rgb(181, 0, 181),
+    rgb(234, 0, 0),
+    rgb(255, 157, 0),
+    rgb(255, 208, 0),
+    rgb(0, 172, 0),
+    rgb(0, 166, 255),
+    rgb(181, 0, 181)
+  );
   background-size: 1000%;
   background-position-x: 100%;
   z-index: -1;

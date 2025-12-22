@@ -58,12 +58,12 @@ npm install react react-dom tailwindcss
 Import the CSS in your main application file (e.g., `main.tsx` or `App.tsx`):
 
 ```tsx
-import '@sth87/shadcn-design-system/index.css';
+import "@sth87/shadcn-design-system/index.css";
 ```
 
 ```tsx
 // animation
-import '@sth87/shadcn-design-system/animation.css';
+import "@sth87/shadcn-design-system/animation.css";
 ```
 
 ## 💻 Usage
@@ -71,7 +71,7 @@ import '@sth87/shadcn-design-system/animation.css';
 ### Basic Example
 
 ```tsx
-import { Button, Input } from '@sth87/shadcn-design-system';
+import { Button, Input } from "@sth87/shadcn-design-system";
 
 function App() {
   return (
@@ -89,17 +89,17 @@ function App() {
 ### Using Hooks
 
 ```tsx
-import { useDebounce } from '@sth87/shadcn-design-system';
-import { useState, useEffect } from 'react';
+import { useDebounce } from "@sth87/shadcn-design-system";
+import { useState, useEffect } from "react";
 
 function SearchComponent() {
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState("");
   const debouncedSearch = useDebounce(search, 500);
 
   useEffect(() => {
     // API call with debounced value
     if (debouncedSearch) {
-      console.log('Searching for:', debouncedSearch);
+      console.log("Searching for:", debouncedSearch);
     }
   }, [debouncedSearch]);
 
@@ -215,8 +215,8 @@ function SearchComponent() {
 All components support the `className` prop for custom styling with Tailwind CSS:
 
 ```tsx
-<Button 
-  variant="outline" 
+<Button
+  variant="outline"
   size="lg"
   className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600"
 >

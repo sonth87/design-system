@@ -7,7 +7,7 @@ import {
 } from "@dsui/ui/components/radio-group";
 import { cn } from "@dsui/ui/index";
 
-type RadioItemProps = RadioGroupItemProps & {
+export type RadioItemProps = RadioGroupItemProps & {
   label?: React.ReactNode;
   variant?: "option" | "button-group";
   size?: "default" | "sm" | "lg";
@@ -49,7 +49,7 @@ const RadioItem = React.forwardRef<HTMLButtonElement, RadioItemProps>(
 
 RadioItem.displayName = "RadioItem";
 
-type RadioProps = {
+export type RadioProps = {
   options?: Array<{
     label: React.ReactNode;
     value: string;
@@ -136,4 +136,4 @@ Radio.Group = SRadioGroup;
 Radio.Item = RadioItem;
 
 export default Radio;
-export { type RadioProps, type RadioGroupProps, type RadioGroupItemProps };
+export { type RadioGroupProps, type RadioGroupItemProps };

@@ -1,1 +1,5 @@
-export { default, default as ScrollArea } from "./ScrollArea";
+export {
+  default as ScrollArea,
+  type ScrollAreaProps,
+  type ScrollBarProps,
+} from "./ScrollArea";

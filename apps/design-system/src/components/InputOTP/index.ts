@@ -1,1 +1,1 @@
-export { default, default as InputOTP } from "./InputOTP";
+export { default as InputOTP, type InputOTPProps } from "./InputOTP";

@@ -132,7 +132,9 @@ console.log(`✅ Fixed ${filesFixed} type definition files`);
 // Remove packages folder after fixing all imports to prevent unwanted IDE auto-import suggestions
 // All types are properly exported through package.json exports
 if (fs.existsSync(packagesPath)) {
-  console.log("\n🔧 Removing packages folder to prevent IDE from suggesting internal paths...");
+  console.log(
+    "\n🔧 Removing packages folder to prevent IDE from suggesting internal paths..."
+  );
   fs.rmSync(packagesPath, { recursive: true, force: true });
   console.log("✓ Removed packages folder");
   console.log("✅ Internal types cleaned up!\n");

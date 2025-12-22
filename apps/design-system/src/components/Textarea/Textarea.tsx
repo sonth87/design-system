@@ -9,7 +9,13 @@ import { Tooltip } from "../Tooltip/Tooltip";
 import { FloatingLabel } from "@/components/FloatLabel";
 import { Label } from "../Label";
 
-export type TextareaProps = STextareaProps & {
+export type TextareaProps = Omit<
+  STextareaProps,
+  "onChange" | "size" | "state"
+> & {
+  onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  size?: "xs" | "sm" | "normal" | "lg" | "xl";
+  state?: "default" | "success" | "warning" | "error";
   label?: string;
   helperText?: React.ReactNode;
   isFloatLabel?: boolean;
@@ -18,8 +24,6 @@ export type TextareaProps = STextareaProps & {
   infoTooltip?: React.ReactNode;
   clearable?: boolean;
   onClear?: () => void;
-  size?: "xs" | "sm" | "normal" | "lg" | "xl";
-  state?: "default" | "success" | "warning" | "error";
 };
 
 const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
@@ -37,6 +41,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
       clearable,
       onClear,
       placeholder = " ",
+      onChange,
       ...props
     },
     ref
@@ -51,7 +56,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
 
     const handleInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
       setCharCount(e.target.value.length);
-      if (props.onChange) props.onChange(e);
+      onChange?.(e);
     };
 
     const textareaId = React.useId();

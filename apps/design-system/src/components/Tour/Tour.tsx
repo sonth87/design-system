@@ -16,7 +16,7 @@ import {
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import Button from "../Button";
+import { Button } from "../Button";
 
 const ROOT_NAME = "Tour";
 const PORTAL_NAME = "TourPortal";

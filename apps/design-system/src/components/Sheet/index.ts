@@ -1,1 +1,1 @@
-export { default, default as Sheet } from "./Sheet";
+export { default as Sheet, type SheetProps } from "./Sheet";

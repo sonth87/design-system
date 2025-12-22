@@ -9,9 +9,9 @@ import {
   type RefObject,
 } from "react";
 import { cn } from "@dsui/ui/index";
-import Button from "../Button/Button";
-import Select from "../Select/Select";
-import Input, { type InputProps } from "../Input/Input";
+import { Button } from "../Button";
+import { Select } from "../Select";
+import { Input, type InputProps } from "../Input";
 import {
   Popover,
   PopoverContent,

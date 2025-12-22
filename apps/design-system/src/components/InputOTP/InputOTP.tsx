@@ -14,7 +14,10 @@ import { Label } from "@dsui/ui/components/label";
 import type { VariantProps } from "class-variance-authority";
 import { cn } from "@dsui/ui/index";
 
-type InputOTPProps = Omit<SInputOTPProps, "size" | "render" | "maxLength"> & {
+export type InputOTPProps = Omit<
+  SInputOTPProps,
+  "size" | "render" | "maxLength"
+> & {
   label?: React.ReactNode;
   length?: number;
   inputType?: "digits" | "chars" | "digits-and-chars";

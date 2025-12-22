@@ -134,7 +134,9 @@ const meta: Meta<CheckboxProps> = {
     },
     onCheckedChange: {
       action: "checked changed",
-      description: i18n.t("stories.checkbox.argTypes.onCheckedChange.description"),
+      description: i18n.t(
+        "stories.checkbox.argTypes.onCheckedChange.description"
+      ),
       table: {
         category: i18n.t("stories.category.behavior"),
       },

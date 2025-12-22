@@ -20,8 +20,8 @@ import {
   DrawerTrigger,
 } from "@dsui/ui/components/drawer";
 import { cn } from "@dsui/ui/index";
-import Input, { type InputProps } from "../Input/Input";
-import Button from "../Button/Button";
+import { Input, type InputProps } from "../Input";
+import { Button } from "../Button";
 import {
   TimePicker,
   type TimePickerMode,

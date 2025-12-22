@@ -8,7 +8,7 @@ import {
 import { motion } from "motion/react";
 import { cn } from "@dsui/ui/lib/utils";
 import { ScrollArea, ScrollBar } from "../ScrollArea/ScrollArea";
-import Popover from "../Popover/Popover";
+import { Popover } from "../Popover";
 import { MoreHorizontal } from "lucide-react";
 import type {
   TabAlignment,

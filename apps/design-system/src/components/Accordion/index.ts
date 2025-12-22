@@ -1,4 +1,4 @@
-export { default, default as Accordion } from "./Accordion";
+export { default as Accordion } from "./Accordion";
 export {
   AccordionItem,
   AccordionTrigger,

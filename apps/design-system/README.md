@@ -1,12 +1,12 @@
 # shadcn design-system
 
-
 A modern, fully-typed React design system built on top of **shadcn/ui** with enhanced features, TypeScript, TailwindCSS, and Radix UI primitives.
 
 [![npm version](https://img.shields.io/npm/v/@sth87/shadcn-design-system.svg)](https://www.npmjs.com/package/@sth87/shadcn-design-system)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Storybook
+
 [https://design-system-sth-kappa.vercel.app/](https://design-system-sth-kappa.vercel.app/)
 
 ## 📦 Installation

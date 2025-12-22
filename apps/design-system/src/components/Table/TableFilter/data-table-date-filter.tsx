@@ -5,9 +5,9 @@ import type { Column } from "@tanstack/react-table";
 import { CalendarIcon, XCircle } from "lucide-react";
 import * as React from "react";
 import type { DateRange } from "react-day-picker";
-import Separator from "../../Separator";
+import { Separator } from "../../Separator";
 import { Popover } from "../../Popover";
-import Button from "../../Button";
+import { Button } from "../../Button";
 import { Calendar } from "../../Calendar";
 
 type DateSelection = Date[] | DateRange;

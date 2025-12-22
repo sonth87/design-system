@@ -149,7 +149,6 @@ export function AdminLayout({ children }: AdminLayoutProps) {
               src="https://api.dicebear.com/7.x/avataaars/svg?seed=admin"
               alt="Admin User"
               fallback="AD"
-              animation="none"
               color="default"
               className=""
             />
@@ -263,7 +262,6 @@ export function AdminLayout({ children }: AdminLayoutProps) {
                 src="https://api.dicebear.com/7.x/avataaars/svg?seed=admin"
                 alt="Admin User"
                 fallback="AD"
-                animation="none"
                 color="default"
                 className=""
               />

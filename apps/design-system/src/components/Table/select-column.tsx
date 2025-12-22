@@ -3,7 +3,7 @@ import type {
   ColumnDef,
   HeaderContext,
 } from "@tanstack/react-table";
-import Checkbox from "@/components/Checkbox";
+import { Checkbox } from "@/components/Checkbox";
 
 function createSelectColumn<TData>(
   props?: Partial<ColumnDef<TData>>

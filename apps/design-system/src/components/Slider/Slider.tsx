@@ -4,7 +4,7 @@ import { cn } from "@dsui/ui/lib/utils";
 import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
 import NumberFlow from "@number-flow/react";
 import type { BasicColor } from "@/types/variables";
-import Badge from "../Badge/Badge";
+import { Badge } from "../Badge";
 
 type LabelAnimation = "number-flow" | "spec" | "none";
 type LabelDisplay = false | "hover" | "always";
@@ -12,7 +12,10 @@ type SliderColor = BasicColor | "muted" | "accent";
 type SliderSize = "sm" | "md" | "lg";
 type LabelPosition = "top" | "bottom" | "left" | "right";
 
-export type SliderProps = React.ComponentProps<typeof SliderPrimitive.Root> & {
+export type SliderProps = Omit<
+  React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root>,
+  "color" | "defaultValue" | "value" | "min" | "max"
+> & {
   color?: SliderColor;
   size?: SliderSize;
   showLabel?: LabelDisplay;
@@ -20,11 +23,15 @@ export type SliderProps = React.ComponentProps<typeof SliderPrimitive.Root> & {
   labelAnimation?: LabelAnimation;
   labelFormatter?: (value: number) => string;
   labelPosition?: LabelPosition;
-  labelColor?: string; // Custom label background color (e.g., "bg-yellow-500")
-  labelTextColor?: string; // Custom label text color (e.g., "text-yellow-950")
-  labelArrowColor?: string; // Custom label arrow color (e.g., "border-t-yellow-500")
-  sliderColor?: string; // Custom slider track color (e.g., "bg-pink-500")
-  thumbBorderColor?: string; // Custom thumb border color (e.g., "border-pink-500/50")
+  labelColor?: string;
+  labelTextColor?: string;
+  labelArrowColor?: string;
+  sliderColor?: string;
+  thumbBorderColor?: string;
+  defaultValue?: number[];
+  value?: number[];
+  min?: number;
+  max?: number;
 };
 
 // Color mapping configuration

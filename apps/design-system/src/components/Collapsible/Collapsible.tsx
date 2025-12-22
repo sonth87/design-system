@@ -8,9 +8,12 @@ import { cn } from "@dsui/ui/lib/utils";
 import { ChevronDown } from "lucide-react";
 
 export type CollapsibleProps = Omit<
-  React.ComponentProps<typeof SCollapsible>,
-  "children" | "content"
+  React.ComponentPropsWithoutRef<typeof SCollapsible>,
+  "children" | "content" | "open" | "defaultOpen" | "onOpenChange"
 > & {
+  open?: boolean;
+  defaultOpen?: boolean;
+  onOpenChange?: (open: boolean) => void;
   trigger?: React.ReactNode;
   content?: React.ReactNode;
   showIcon?: boolean;

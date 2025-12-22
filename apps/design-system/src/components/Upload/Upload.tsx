@@ -22,7 +22,7 @@ import {
   CloudUploadIcon,
 } from "lucide-react";
 import { toast } from "../Toast/Toast";
-import Dialog from "../Dialog/Dialog";
+import { Dialog } from "../Dialog";
 
 // Variants for upload container
 const uploadVariants = cva(

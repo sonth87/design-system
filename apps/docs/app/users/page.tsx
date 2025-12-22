@@ -159,7 +159,6 @@ export default function UsersPage() {
                           src={user.avatar}
                           alt={user.name}
                           fallback={user.name.charAt(0)}
-                          animation="scale"
                           color="primary"
                         />
                         <div>

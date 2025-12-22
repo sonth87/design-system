@@ -14,7 +14,7 @@ import {
 import { getCommonPinningStyles } from "@/utils/data-table";
 import { DataTableColumnHeader } from "./data-table-column-header";
 
-interface DataTableProps<TData> extends React.ComponentProps<"div"> {
+export interface DataTableProps<TData> extends React.ComponentProps<"div"> {
   table: TanstackTable<TData>;
   actionBar?: React.ReactNode;
   pagination?:

@@ -23,7 +23,7 @@ import {
   CommandList,
   CommandItem,
 } from "@dsui/ui/components/command";
-import type Button from "../Button";
+import type { Button } from "../Button";
 
 type PaginationItemType =
   | number

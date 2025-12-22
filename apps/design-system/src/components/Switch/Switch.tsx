@@ -7,9 +7,24 @@ import {
 import { cn } from "@dsui/ui/lib/utils";
 import type { SwitchAnimation } from "@/types/variables";
 import { animationEffect } from "@/utils/animations";
-import Glass from "../Glass/Glass";
+import { Glass } from "../Glass";
 
-export type SwitchProps = React.ComponentProps<typeof SSwitch> & {
+export type SwitchProps = Omit<
+  React.ComponentPropsWithoutRef<typeof SSwitch>,
+  "onCheckedChange" | "variant" | "size" | "color"
+> & {
+  onCheckedChange?: (checked: boolean) => void;
+  variant?: "default" | "square1" | "square2" | "mini";
+  size?: "xs" | "sm" | "normal" | "lg" | "xl";
+  color?:
+    | "primary"
+    | "secondary"
+    | "accent"
+    | "destructive"
+    | "muted"
+    | "success"
+    | "error"
+    | "warning";
   animation?: SwitchAnimation;
   label?: React.ReactNode;
   labelPosition?: "left" | "right" | "top" | "bottom";

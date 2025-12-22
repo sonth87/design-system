@@ -4,7 +4,7 @@ import { Select } from "../Select";
 import { Pagination } from "../Pagination";
 import { cn } from "@dsui/ui/index";
 
-interface DataTablePaginationProps<TData> extends React.ComponentProps<"div"> {
+export interface DataTablePaginationProps<TData> extends React.ComponentProps<"div"> {
   table: Table<TData>;
   pageSizeOptions?: number[];
   showPagination?: boolean;

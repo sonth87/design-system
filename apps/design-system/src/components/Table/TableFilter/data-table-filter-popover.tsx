@@ -7,11 +7,11 @@ import * as React from "react";
 import { Popover } from "../../Popover";
 import { Input } from "../../Input";
 import { Checkbox } from "../../Checkbox";
-import Radio from "../../Radio";
+import { Radio } from "../../Radio";
 import { DataTableSliderFilter } from "./data-table-slider-filter";
 import { DataTableDateFilter } from "./data-table-date-filter";
-import Separator from "@/components/Separator";
-import Button from "@/components/Button";
+import { Separator } from "@/components/Separator";
+import { Button } from "@/components/Button";
 
 interface DataTableFilterPopoverProps<TData> {
   column: Column<TData>;

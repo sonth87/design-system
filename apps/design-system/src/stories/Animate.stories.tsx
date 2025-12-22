@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
 import { Bone, Copy, Check } from "lucide-react";
 
-
 const meta: Meta = {
   title: "Animation/Showcase",
   tags: ["autodocs"],

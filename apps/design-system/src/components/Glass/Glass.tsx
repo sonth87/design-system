@@ -10,7 +10,7 @@ const glassVariants = cva(
   }
 );
 
-type GlassProps = {
+export type GlassProps = {
   className?: string;
   children?: React.ReactNode;
 } & VariantProps<typeof glassVariants>;

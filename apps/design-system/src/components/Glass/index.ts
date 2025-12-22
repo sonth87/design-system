@@ -1,1 +1,1 @@
-export { default, default as Glass } from "./Glass";
+export { default as Glass, type GlassProps } from "./Glass";
