@@ -7,6 +7,7 @@
     "storybook": "turbo run storybook",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,css,md}\" --ignore-path .gitignore",
+    "release": "cd apps/design-system && npm run release",
     "check-types": "turbo run check-types"
   },
   "pnpm": {

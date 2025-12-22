@@ -130,7 +130,7 @@ export const animationEffect = <T, S = undefined>({
             <span
               className={cn(
                 rootClassName,
-                "!bg-none !bg-transparent",
+                "!bg-none !bg-transparent border-0",
                 className
               )}
             >

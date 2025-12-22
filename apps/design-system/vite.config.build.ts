@@ -35,6 +35,11 @@ export default defineConfig({
         "@number-flow/react",
         "class-variance-authority",
         "clsx",
+        "cmdk",
+        "input-otp",
+        "react-resizable-panels",
+        "vaul",
+        "tw-animate-css",
         "tailwind-merge",
         /^date-fns/, // Match date-fns and all its subpaths
         /^motion/, // Match motion, motion/react, motion/*, etc.
