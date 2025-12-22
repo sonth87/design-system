@@ -7,6 +7,7 @@ import { cn } from "@dsui/ui/lib/utils";
 import { Info, X } from "lucide-react";
 import { Tooltip } from "../Tooltip/Tooltip";
 import { FloatingLabel } from "@/components/FloatLabel";
+import { Label } from "../Label";
 
 export type TextareaProps = STextareaProps & {
   label?: string;
@@ -85,7 +86,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           })}
         >
           {!isFloatLabel && label && (
-            <label
+            <Label
               htmlFor={textareaId}
               className="flex gap-2 text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
             >
@@ -95,7 +96,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
                   <Info className="size-3.5 min-w-3.5" />
                 </Tooltip>
               )}
-            </label>
+            </Label>
           )}
 
           <div className="relative">

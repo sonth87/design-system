@@ -89,6 +89,7 @@
     "stories.checkbox.argTypes.icon.description": "Custom icon for checked/indeterminate state",
     "stories.checkbox.argTypes.className.description": "Additional CSS classes",
     "stories.checkbox.argTypes.animation.description": "Animation effect when checkbox is checked",
+    "stories.checkbox.argTypes.onCheckedChange.description": "Callback function called when the checkbox state changes. Receives (checked: boolean | 'indeterminate'). Example: (checked: boolean | 'indeterminate') => void",
 
     "stories.select.argTypes.label.description": "Label for the select",
     "stories.select.argTypes.placeholder.description": "Placeholder text",

@@ -132,7 +132,13 @@ const meta: Meta<CheckboxProps> = {
         category: i18n.t("stories.category.advanced"),
       },
     },
-    onCheckedChange: { action: "checked changed" },
+    onCheckedChange: {
+      action: "checked changed",
+      description: i18n.t("stories.checkbox.argTypes.onCheckedChange.description"),
+      table: {
+        category: i18n.t("stories.category.behavior"),
+      },
+    },
     animation: {
       control: "select",
       options: ["confetti", undefined],

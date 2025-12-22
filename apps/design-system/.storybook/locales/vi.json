@@ -90,6 +90,7 @@
     "stories.checkbox.argTypes.icon.description": "Icon tùy chỉnh cho trạng thái đã chọn/không xác định",
     "stories.checkbox.argTypes.className.description": "Các lớp CSS bổ sung",
     "stories.checkbox.argTypes.animation.description": "Hiệu ứng hoạt hình khi checkbox được chọn",
+    "stories.checkbox.argTypes.onCheckedChange.description": "Hàm callback được gọi khi trạng thái checkbox thay đổi. Nhận (checked: boolean | 'indeterminate'). Ví dụ: (checked: boolean | 'indeterminate') => void",
 
     "stories.select.argTypes.label.description": "Nhãn cho select",
     "stories.select.argTypes.placeholder.description": "Văn bản placeholder",

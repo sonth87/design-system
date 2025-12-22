@@ -8,6 +8,7 @@ import { FloatingLabel } from "@/components/FloatLabel";
 import { Eye, EyeOff, ChevronDown, ChevronUp, Info, X } from "lucide-react";
 import { withMask, type Options } from "use-mask-input";
 import { Tooltip } from "../Tooltip/Tooltip";
+import { Label } from "../Label";
 
 // Re-export base input props to avoid external dependency issues
 export type BaseInputProps = Omit<React.ComponentProps<"input">, "size"> & {
@@ -242,9 +243,9 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           })}
         >
           {!isFloatLabel && label && (
-            <label
+            <Label
               htmlFor={inputId}
-              className="flex gap-2 text-sm font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+              className="flex gap-2 text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
             >
               {label}
               {infoTooltip && (
@@ -252,7 +253,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                   <Info className="size-3.5 min-w-3.5" />
                 </Tooltip>
               )}
-            </label>
+            </Label>
           )}
 
           <div className="relative">
