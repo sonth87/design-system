@@ -1290,7 +1290,7 @@ function TourStep(props: TourStepProps) {
           ...floatingStyles,
           visibility: isHidden ? "hidden" : undefined,
           pointerEvents: isHidden ? "none" : undefined,
-        }}
+        } as React.CSSProperties}
       >
         {children}
         {!footer && (

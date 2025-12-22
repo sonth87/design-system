@@ -99,7 +99,7 @@ export function useDataTable<TData>(props: UseDataTableProps<TData>) {
       throttleMs,
       debounceMs,
       clearOnDefault,
-      startTransition,
+      startTransition: startTransition as any,
     }),
     [
       history,

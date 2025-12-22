@@ -35,7 +35,7 @@ function GradientText({
     >
       <motion.span
         className="m-0 text-transparent"
-        style={baseStyle}
+        style={baseStyle as any}
         animate={{ backgroundPosition: ["0% 0%", "200% 0%"] }}
         transition={transition}
       >
@@ -45,7 +45,7 @@ function GradientText({
       {neon && (
         <motion.span
           className="m-0 absolute top-0 left-0 text-transparent blur-sm mix-blend-plus-lighter"
-          style={baseStyle}
+          style={baseStyle as any}
           animate={{ backgroundPosition: ["0% 0%", "200% 0%"] }}
           transition={transition}
         >

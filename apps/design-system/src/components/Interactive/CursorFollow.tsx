@@ -94,7 +94,7 @@ function CursorProvider({
   const [isActive, setIsActive] = React.useState(false);
   const containerRef = React.useRef<HTMLDivElement>(null);
   const cursorRef = React.useRef<HTMLDivElement>(null);
-  React.useImperativeHandle(ref, () => containerRef.current as HTMLDivElement);
+  React.useImperativeHandle(ref as React.Ref<HTMLDivElement>, () => containerRef.current as HTMLDivElement);
 
   React.useEffect(() => {
     if (!containerRef.current) return;
@@ -167,7 +167,7 @@ function Cursor({
   ...props
 }: CursorProps) {
   const { cursorPos, isActive, containerRef, cursorRef } = useCursor();
-  React.useImperativeHandle(ref, () => cursorRef.current as HTMLDivElement);
+  React.useImperativeHandle(ref as React.Ref<HTMLDivElement>, () => cursorRef.current as HTMLDivElement);
 
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -217,7 +217,7 @@ function Cursor({
           ref={cursorRef}
           data-slot="cursor"
           className={cn(
-            "transform-[translate(-50%,-50%)] pointer-events-none z-[9999] absolute",
+            "transform-[translate(-50%,-50%)] pointer-events-none z-9999 absolute",
             className
           )}
           style={{ top: y, left: x, ...style }}
@@ -257,7 +257,7 @@ function CursorFollow({
   const { cursorPos, isActive, cursorRef } = useCursor();
   const cursorFollowRef = React.useRef<HTMLDivElement>(null);
   React.useImperativeHandle(
-    ref,
+    ref as React.Ref<HTMLDivElement>,
     () => cursorFollowRef.current as HTMLDivElement
   );
 
@@ -349,7 +349,7 @@ function CursorFollow({
           ref={cursorFollowRef}
           data-slot="cursor-follow"
           className={cn(
-            "transform-[translate(-50%,-50%)] pointer-events-none z-[9998] absolute",
+            "transform-[translate(-50%,-50%)] pointer-events-none z-9998 absolute",
             className
           )}
           style={{ top: springY, left: springX, ...style }}
@@ -390,7 +390,7 @@ type UseCursorFollowType = {
   className: string;
   style: React.CSSProperties;
   "data-cursor-container": true;
-  children: (originalChildren: React.ReactNode) => React.ReactElement;
+  children: (children: React.ReactNode) => React.ReactElement;
 };
 
 function useCursorFollow(
@@ -484,9 +484,9 @@ function useCursorFollow(
     className: cn("relative", className),
     style: { ...style },
     "data-cursor-container": true as const,
-    children: (originalChildren: React.ReactNode) => (
+    children: (children: React.ReactNode) => (
       <>
-        {originalChildren}
+        {children}
         {renderCursorElements()}
       </>
     ),

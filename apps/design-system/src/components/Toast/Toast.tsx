@@ -81,7 +81,7 @@ const toast = Object.assign(
     ) =>
       sonnerToast.custom(() => renderToastContent("secondary", message), opts),
   }
-);
+) as any;
 
 function Toaster({
   position = "top-right",
