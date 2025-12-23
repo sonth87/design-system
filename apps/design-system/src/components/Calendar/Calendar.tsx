@@ -54,5 +54,7 @@ export function Calendar({
 }
 
 export const CalendarDayButton = SCalendarDayButton;
-export type CalendarDayButtonProps = SCalendarDayButtonProps;
-export type { CalendarColor };
+export type {
+  CalendarDayButtonProps,
+  CalendarColor,
+} from "@dsui/ui/components/calendar";

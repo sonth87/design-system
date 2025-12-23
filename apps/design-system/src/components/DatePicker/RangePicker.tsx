@@ -753,6 +753,3 @@ export function RangePicker({
     </div>
   );
 }
-
-export const CalendarDayButton = SCalendarDayButton;
-export type CalendarDayButtonProps = SCalendarDayButtonProps;

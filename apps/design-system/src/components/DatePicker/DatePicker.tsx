@@ -449,6 +449,3 @@ export function DatePicker({
     />
   );
 }
-
-export const CalendarDayButton = SCalendarDayButton;
-export type CalendarDayButtonProps = SCalendarDayButtonProps;

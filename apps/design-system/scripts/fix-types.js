@@ -74,97 +74,79 @@ if (fs.existsSync(packagesPath)) {
 }
 
 // ====================================================================
-// STEP 3: Fix imports in component .d.ts files
-// Remove ALL @dsui/ui and packages/ui/src imports, inline known types
+// STEP 3: Fix relative paths to packages/ui/src
+// tsc-alias generates wrong relative paths, need to fix them
 // ====================================================================
-console.log("\n🔧 Fixing imports in component type files...");
+console.log("\n🔧 Fixing relative paths to packages/ui/src...");
 
-const dtsFiles = glob.sync("**/*.d.ts", {
+const allDtsFiles = glob.sync("**/*.d.ts", {
   cwd: distTypesPath,
   absolute: true,
 });
 
-let filesFixed = 0;
+let pathsFixed = 0;
 
-// Inline type definitions for common base types
-const inlineTypes = {
-  TextareaProps: 'Omit<React.ComponentProps<"textarea">, "size"> & { size?: "normal" | "sm" | "xs" | "lg" | "xl"; state?: "default" | "success" | "error" | "warning"; }',
-  InputProps: 'Omit<React.ComponentProps<"input">, "size"> & { size?: "normal" | "sm" | "xs" | "lg" | "xl"; state?: "default" | "success" | "error" | "warning"; }',
-  ButtonProps: 'React.ComponentProps<"button"> & { variant?: "default" | "destructive" | "outline" | "secondary" | "ghost" | "link"; size?: "default" | "sm" | "lg" | "icon"; asChild?: boolean; }',
-  BadgeProps: 'React.HTMLAttributes<HTMLDivElement> & { variant?: "default" | "secondary" | "destructive" | "outline"; }',
-};
-
-dtsFiles.forEach((file) => {
+allDtsFiles.forEach((file) => {
   let content = fs.readFileSync(file, "utf-8");
   const originalContent = content;
 
-  // Remove ALL import lines from @dsui/ui or packages/ui/src
-  // This handles both single and multi-named imports
+  // Fix wrong relative paths like ../../../../../packages/ui/src
+  // Should be ../../packages/ui/src (from dist/types/components/* to dist/types/packages/ui/src)
   content = content.replace(
-    /import\s*{[^}]+}\s*from\s*["'](?:@dsui\/ui[^"']*|[^"']*packages\/ui\/src[^"']*)["'];?\s*\n?/g,
-    ""
+    /from ["']\.\.\/\.\.\/\.\.\/\.\.\/\.\.\/packages\/ui\/src\//g,
+    'from "../../packages/ui/src/'
   );
-
-  // Also remove export lines from @dsui/ui or packages/ui/src
-  content = content.replace(
-    /export\s*{[^}]+}\s*from\s*["'](?:@dsui\/ui[^"']*|[^"']*packages\/ui\/src[^"']*)["'];?\s*\n?/g,
-    ""
-  );
-
-  // Handle re-exports like: export { TreeView, type TreeDataItem } from "@dsui/ui/index";
-  content = content.replace(
-    /export\s+type?\s*{[^}]+}\s*from\s*["'](?:@dsui\/ui[^"']*|[^"']*packages\/ui\/src[^"']*)["'];?\s*\n?/g,
-    ""
-  );
-
-  // Handle cn utility imports
-  content = content.replace(
-    /import\s*{\s*cn\s*}\s*from\s*["'](?:@dsui\/ui\/lib\/utils|[^"']*packages\/ui\/src\/lib\/utils)["'];?\s*\n?/g,
-    ""
-  );
-
-  // For files that had STextareaProps, SInputProps etc. replaced, add inline types
-  const needsInlineTypes = [];
   
-  // Check if STextareaProps is used but not defined
-  if (content.includes("STextareaProps") && !content.includes("type STextareaProps")) {
-    needsInlineTypes.push("type STextareaProps = " + inlineTypes.TextareaProps + ";");
-  }
-  if (content.includes("SInputProps") && !content.includes("type SInputProps")) {
-    needsInlineTypes.push("type SInputProps = " + inlineTypes.InputProps + ";");
-  }
-  if (content.includes("SButtonProps") && !content.includes("type SButtonProps")) {
-    needsInlineTypes.push("type SButtonProps = " + inlineTypes.ButtonProps + ";");
-  }
-  if (content.includes("SBadgeProps") && !content.includes("type SBadgeProps")) {
-    needsInlineTypes.push("type SBadgeProps = " + inlineTypes.BadgeProps + ";");
-  }
-
-  // Insert inline types after React import if needed
-  if (needsInlineTypes.length > 0) {
-    const reactImportMatch = content.match(/import\s+.*?from\s+["']react["'];?\s*\n?/);
-    if (reactImportMatch) {
-      const insertPos = reactImportMatch.index + reactImportMatch[0].length;
-      content = content.slice(0, insertPos) + needsInlineTypes.join("\n") + "\n" + content.slice(insertPos);
-    }
-  }
+  content = content.replace(
+    /from ["']\.\.\/\.\.\/\.\.\/\.\.\/\.\.\/\.\.\/packages\/ui\/src\//g,
+    'from "../../../packages/ui/src/'
+  );
 
   if (content !== originalContent) {
     fs.writeFileSync(file, content, "utf-8");
-    filesFixed++;
+    pathsFixed++;
   }
 });
 
-console.log("✅ Fixed " + filesFixed + " component type files");
+console.log("✅ Fixed relative paths in " + pathsFixed + " files");
 
 // ====================================================================
-// STEP 4: Remove entire packages folder
+// STEP 4: Remove packages/ui/src/index.d.ts to prevent duplicate exports
+// Keep other type files for proper type resolution
 // ====================================================================
-console.log("\n🔧 Removing packages folder...");
+console.log("\n🔧 Removing packages/ui/src/index.d.ts...");
 
-if (fs.existsSync(packagesPath)) {
-  fs.rmSync(packagesPath, { recursive: true, force: true });
-  console.log("✅ Removed packages folder (prevents duplicate export suggestions)");
+const packagesUiIndexPath = path.join(distTypesPath, "packages/ui/src/index.d.ts");
+const packagesUiIndexMapPath = path.join(distTypesPath, "packages/ui/src/index.d.ts.map");
+
+if (fs.existsSync(packagesUiIndexPath)) {
+  fs.unlinkSync(packagesUiIndexPath);
+  console.log("✅ Removed packages/ui/src/index.d.ts (prevents duplicate export suggestions)");
 }
+
+if (fs.existsSync(packagesUiIndexMapPath)) {
+  fs.unlinkSync(packagesUiIndexMapPath);
+  console.log("✅ Removed packages/ui/src/index.d.ts.map");
+}
+
+// Also remove other potential barrel exports that could cause duplicates
+const barrelExports = [
+  "packages/ui/src/components/index.d.ts",
+  "packages/ui/src/hooks/index.d.ts", 
+  "packages/ui/src/lib/index.d.ts",
+];
+
+barrelExports.forEach((barrelPath) => {
+  const fullPath = path.join(distTypesPath, barrelPath);
+  const mapPath = fullPath + ".map";
+  
+  if (fs.existsSync(fullPath)) {
+    fs.unlinkSync(fullPath);
+    console.log("✅ Removed " + barrelPath);
+  }
+  if (fs.existsSync(mapPath)) {
+    fs.unlinkSync(mapPath);
+  }
+});
 
 console.log("\n✅ All type fixes completed!");
