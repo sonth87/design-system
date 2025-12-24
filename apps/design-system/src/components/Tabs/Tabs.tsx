@@ -425,6 +425,31 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
     };
   }, [overflowMode, isVertical, isOverflowing, items, currentActiveKey]);
 
+  // Enable horizontal scrolling with mouse wheel for horizontal tabs in scroll/fade modes
+  React.useEffect(() => {
+    if (overflowMode !== "scroll" && overflowMode !== "fade") return;
+    if (isVertical) return; // Only for horizontal tabs
+
+    const scrollAreaViewport = scrollAreaRef.current?.querySelector(
+      "[data-radix-scroll-area-viewport]"
+    ) as HTMLElement;
+
+    if (!scrollAreaViewport) return;
+
+    const handleWheel = (e: WheelEvent) => {
+      if (e.deltaY !== 0) {
+        e.preventDefault();
+        scrollAreaViewport.scrollLeft += e.deltaY * 2;
+      }
+    };
+
+    scrollAreaViewport.addEventListener("wheel", handleWheel, { passive: false });
+
+    return () => {
+      scrollAreaViewport.removeEventListener("wheel", handleWheel);
+    };
+  }, [overflowMode, isVertical]);
+
   const handleValueChange = (key: string) => {
     if (activeKey === undefined) {
       setInternalActiveKey(key);
@@ -868,6 +893,7 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
             }
             side={isVertical ? "right" : "bottom"}
             align="end"
+            className="p-2"
           />
         </div>
       );
