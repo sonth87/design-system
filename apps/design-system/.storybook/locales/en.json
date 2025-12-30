@@ -56,6 +56,10 @@
     "stories.input.argTypes.prefixIcon.description": "Icon to display at the start of the input",
     "stories.input.argTypes.suffixIcon.description": "Icon to display at the end of the input",
     "stories.input.argTypes.className.description": "Additional CSS classes",
+    "stories.input.argTypes.onChange.description": "Called when the input value changes",
+    "stories.input.argTypes.onFocus.description": "Called when the input receives focus",
+    "stories.input.argTypes.onBlur.description": "Called when the input loses focus",
+    "stories.input.argTypes.onInput.description": "Called when the input value is being input",
 
     "stories.avatar.argTypes.size.description": "Avatar size",
     "stories.avatar.argTypes.variant.description": "Avatar shape variant",
@@ -108,6 +112,9 @@
     "stories.select.argTypes.tagRender.description": "Custom render function for selected tags",
     "stories.select.argTypes.onValuesChange.description": "Callback when selected values change",
     "stories.select.argTypes.className.description": "Additional CSS classes",
+    "stories.select.argTypes.onChange.description": "Called when the select value changes. Receives the new value (string for single, string[] for multi)",
+    "stories.select.argTypes.onFocus.description": "Called when the select receives focus",
+    "stories.select.argTypes.onBlur.description": "Called when the select loses focus",
 
     "stories.datepicker.argTypes.label.description": "Label text displayed above the input field",
     "stories.datepicker.argTypes.helperText.description": "Helper text displayed below the input field",

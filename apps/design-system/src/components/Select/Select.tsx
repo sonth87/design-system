@@ -20,7 +20,7 @@ import { Tooltip } from "../Tooltip/Tooltip";
 
 export type SelectOption = SSelectOption;
 
-export type SelectProps = ComboboxProps & {
+export type SelectProps = Omit<ComboboxProps, "ref"> & {
   label?: string;
   helperText?: React.ReactNode;
   state?: "default" | "success" | "warning" | "error";
@@ -43,6 +43,9 @@ export type SelectProps = ComboboxProps & {
   overflowBehavior?: "wrap" | "wrap-when-open" | "cutoff";
   className?: string;
   disabled?: boolean;
+  onChange?: (value: string | string[]) => void;
+  onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
+  onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
 };
 
 const Select = React.forwardRef<HTMLDivElement, SelectProps>(
@@ -70,6 +73,9 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
       clickToRemove = true,
       overflowBehavior = "wrap-when-open",
       disabled,
+      onChange,
+      onFocus,
+      onBlur,
     },
     ref
   ) => {
@@ -94,8 +100,18 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
           setInternalValue(val);
         }
         onValueChange?.(val);
+        onChange?.(val);
       },
-      [onValueChange, value]
+      [onValueChange, onChange, value]
+    );
+
+    // Handle multi select values change
+    const handleMultiValuesChange = React.useCallback(
+      (newValues: string[]) => {
+        onValuesChange?.(newValues);
+        onChange?.(newValues);
+      },
+      [onValuesChange, onChange]
     );
 
     // Helper text styles
@@ -179,6 +195,8 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
                   })}
                   searchable={!!search}
                   tagRender={tagRender}
+                  onFocus={onFocus}
+                  onBlur={onBlur}
                 />
                 {isFloatLabel && (
                   <FloatingLabel
@@ -201,7 +219,7 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
                     ? [defaultValues]
                     : defaultValues
                 }
-                onValuesChange={onValuesChange}
+                onValuesChange={handleMultiValuesChange}
               >
                 <BaseMultiSelectTrigger
                   id={selectId}
@@ -215,6 +233,8 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
                   )}
                   size={currentSize}
                   state={state}
+                  onFocus={onFocus}
+                  onBlur={onBlur}
                 >
                   <BaseMultiSelectValue
                     placeholder={placeholder}

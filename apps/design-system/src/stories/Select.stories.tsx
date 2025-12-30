@@ -148,6 +148,28 @@ const meta: Meta<typeof Select> = {
         category: i18n.t("stories.category.advanced"),
       },
     },
+    onChange: {
+      action: "changed",
+      description: i18n.t("stories.select.argTypes.onChange.description"),
+      table: {
+        type: { summary: "(value: string | string[]) => void" },
+        category: i18n.t("stories.category.events"),
+      },
+    },
+    onFocus: {
+      action: "focused",
+      description: i18n.t("stories.select.argTypes.onFocus.description"),
+      table: {
+        category: i18n.t("stories.category.events"),
+      },
+    },
+    onBlur: {
+      action: "blurred",
+      description: i18n.t("stories.select.argTypes.onBlur.description"),
+      table: {
+        category: i18n.t("stories.category.events"),
+      },
+    },
   },
   args: {
     label: "Select items",

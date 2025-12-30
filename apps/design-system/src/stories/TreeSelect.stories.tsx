@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import {
   TreeView,
   type TreeDataItem,
-} from "../components/TreeSelect/TreeSelect";
+} from "../components/TreeSelect";
 import { File, Folder, FolderOpen } from "lucide-react";
 import { useState } from "react";
 import i18n from "../../.storybook/i18n";

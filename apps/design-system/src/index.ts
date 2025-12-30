@@ -114,7 +114,7 @@ export * from "./components/Stepper";
 export * from "./components/Pagination";
 
 // DataTable
-export { DataTable as Table } from "./components/Table";
+export * from "./components/Table";
 
 // DropdownMenu
 export * from "./components/DropdownMenu";
@@ -186,6 +186,7 @@ export {
   useMediaQuery,
   type UseMediaQueryOptions,
 } from "@/hooks/use-media-query";
+export { useDataTable } from "@/hooks/use-data-table";
 
 // ============================================
 // CSS IMPORTS

@@ -152,6 +152,34 @@ const meta: Meta<InputProps> = {
         category: i18n.t("stories.category.advanced"),
       },
     },
+    onChange: {
+      action: "changed",
+      description: i18n.t("stories.input.argTypes.onChange.description"),
+      table: {
+        category: i18n.t("stories.category.events"),
+      },
+    },
+    onFocus: {
+      action: "focused",
+      description: i18n.t("stories.input.argTypes.onFocus.description"),
+      table: {
+        category: i18n.t("stories.category.events"),
+      },
+    },
+    onBlur: {
+      action: "blurred",
+      description: i18n.t("stories.input.argTypes.onBlur.description"),
+      table: {
+        category: i18n.t("stories.category.events"),
+      },
+    },
+    onInput: {
+      action: "input",
+      description: i18n.t("stories.input.argTypes.onInput.description"),
+      table: {
+        category: i18n.t("stories.category.events"),
+      },
+    },
   },
   // Use `fn` to spy on the onChange arg, which will appear in the actions panel once invoked
   args: {

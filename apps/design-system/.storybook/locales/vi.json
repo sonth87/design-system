@@ -57,6 +57,10 @@
     "stories.input.argTypes.prefixIcon.description": "Icon hiển thị ở đầu input",
     "stories.input.argTypes.suffixIcon.description": "Icon hiển thị ở cuối input",
     "stories.input.argTypes.className.description": "Các lớp CSS bổ sung",
+    "stories.input.argTypes.onChange.description": "Được gọi khi giá trị input thay đổi",
+    "stories.input.argTypes.onFocus.description": "Được gọi khi input nhận focus",
+    "stories.input.argTypes.onBlur.description": "Được gọi khi input mất focus",
+    "stories.input.argTypes.onInput.description": "Được gọi khi giá trị input đang được nhập",
 
     "stories.avatar.argTypes.size.description": "Kích thước avatar",
     "stories.avatar.argTypes.variant.description": "Kiểu hình dạng avatar",
@@ -109,6 +113,9 @@
     "stories.select.argTypes.tagRender.description": "Hàm render tùy chỉnh cho các tag đã chọn",
     "stories.select.argTypes.onValuesChange.description": "Callback khi các giá trị đã chọn thay đổi",
     "stories.select.argTypes.className.description": "Các lớp CSS bổ sung",
+    "stories.select.argTypes.onChange.description": "Được gọi khi giá trị select thay đổi. Nhận giá trị mới (string cho single, string[] cho multi)",
+    "stories.select.argTypes.onFocus.description": "Được gọi khi select nhận focus",
+    "stories.select.argTypes.onBlur.description": "Được gọi khi select mất focus",
 
     "stories.datepicker.argTypes.label.description": "Văn bản nhãn hiển thị phía trên trường input",
     "stories.datepicker.argTypes.helperText.description": "Văn bản trợ giúp hiển thị bên dưới trường input",
