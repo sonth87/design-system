@@ -5,6 +5,8 @@
 /* component style */
 @import "./components/Button/button.css";
 @import "./components/Input/input.css";
+@import "./components/ImageViewer/ImageViewer.css";
+@import "viewerjs/dist/viewer.css";
 
 /* animation */
 @import "./animation.css";

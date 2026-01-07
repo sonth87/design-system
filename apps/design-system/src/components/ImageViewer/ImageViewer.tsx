@@ -1,9 +1,14 @@
 import React, { useState, useCallback, useEffect } from "react";
-import Viewer from "react-viewer";
-import { cn } from "@dsui/ui/lib/utils";
 import { ZoomIn } from "lucide-react";
-import "viewerjs/dist/viewer.css";
-import "./ImageViewer.css";
+import { cn } from "@dsui/ui/index";
+
+// Dynamic import for react-viewer to avoid SSR issues
+let Viewer: any = null;
+if (typeof window !== "undefined") {
+  import("react-viewer").then((module) => {
+    Viewer = module.default;
+  });
+}
 
 // ============================================================================
 // Types
@@ -82,6 +87,16 @@ export const ImageViewer: React.FC<ImageViewerProps> = ({
   drag = false,
 }) => {
   const [currentIndex, setCurrentIndex] = useState(activeIndex);
+  const [ViewerComponent, setViewerComponent] = useState<any>(null);
+
+  // Load Viewer dynamically on client-side only
+  useEffect(() => {
+    if (typeof window !== "undefined" && !ViewerComponent) {
+      import("react-viewer").then((module) => {
+        setViewerComponent(() => module.default);
+      });
+    }
+  }, [ViewerComponent]);
 
   useEffect(() => {
     setCurrentIndex(activeIndex);
@@ -132,8 +147,13 @@ export const ImageViewer: React.FC<ImageViewerProps> = ({
     downloadUrl: img.downloadUrl || img.src,
   }));
 
+  // Don't render until Viewer is loaded
+  if (!ViewerComponent) {
+    return null;
+  }
+
   return (
-    <Viewer
+    <ViewerComponent
       visible={visible}
       onClose={handleClose}
       onMaskClick={handleClose}
@@ -157,9 +177,9 @@ export const ImageViewer: React.FC<ImageViewerProps> = ({
       noResetZoomAfterChange={noResetZoomAfterChange}
       showTotal={true}
       drag={drag}
-      customToolbar={(toolbars) => {
+      customToolbar={(toolbars: any) => {
         // Replace download button with a custom-rendered button to prevent viewer state change
-        return toolbars.map((toolbar) => {
+        return toolbars.map((toolbar: any) => {
           if (toolbar.key === "download") {
             return {
               ...toolbar,
