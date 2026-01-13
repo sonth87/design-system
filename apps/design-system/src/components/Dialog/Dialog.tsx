@@ -137,10 +137,10 @@ const sizeClasses: Record<DialogSize, string> = {
   md: "sm:max-w-md",
   lg: "sm:max-w-lg",
   xl: "sm:max-w-xl",
-  "2xl": "sm:max-w-2xl",
-  "3xl": "sm:max-w-3xl",
-  "4xl": "sm:max-w-4xl",
-  full: "sm:max-w-[95vw] h-[95vh]",
+  "2xl": "sm:max-w-2xl max-h-[90vh]",
+  "3xl": "sm:max-w-3xl max-h-[90vh]",
+  "4xl": "sm:max-w-4xl max-h-[90vh]",
+  full: "sm:max-w-[95vw] h-[98vh]",
 };
 
 const positionClasses: Record<DialogPosition, string> = {
@@ -201,7 +201,7 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
     positionClasses[position],
     variantColors[variant],
     animationResult.className,
-    fullscreen ? "h-[95vh]" : "max-h-[min(600px,80vh)]"
+    fullscreen ? "h-[98vh]" : "max-h-[90vh]"
   );
 
   const headerClasses = cn(
