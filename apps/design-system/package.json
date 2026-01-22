@@ -1,6 +1,6 @@
 {
   "name": "@sth87/shadcn-design-system",
-  "version": "0.0.27",
+  "version": "0.0.29",
   "type": "module",
   "description": "A modern React design system base on Shadcn UI and Tailwind CSS.",
   "author": "Sonth87 <sonth87@gmail.com>",

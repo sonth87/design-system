@@ -423,22 +423,22 @@ export const Primitive: Story = {
           </ContextMenu.Trigger>
           <ContextMenu.Content className="w-64">
             <ContextMenu.Item>
-              <User className="mr-2 h-4 w-4" />
+              <User className="h-4 w-4" />
               Profile
               <ContextMenu.Shortcut>⇧⌘P</ContextMenu.Shortcut>
             </ContextMenu.Item>
             <ContextMenu.Item>
-              <CreditCard className="mr-2 h-4 w-4" />
+              <CreditCard className="h-4 w-4" />
               Billing
               <ContextMenu.Shortcut>⌘B</ContextMenu.Shortcut>
             </ContextMenu.Item>
             <ContextMenu.Item>
-              <Settings className="mr-2 h-4 w-4" />
+              <Settings className="h-4 w-4" />
               Settings
               <ContextMenu.Shortcut>⌘,</ContextMenu.Shortcut>
             </ContextMenu.Item>
             <ContextMenu.Item>
-              <Keyboard className="mr-2 h-4 w-4" />
+              <Keyboard className="h-4 w-4" />
               Keyboard shortcuts
               <ContextMenu.Shortcut>⌘K</ContextMenu.Shortcut>
             </ContextMenu.Item>
@@ -446,14 +446,14 @@ export const Primitive: Story = {
             <ContextMenu.Group>
               <ContextMenu.Label>Team</ContextMenu.Label>
               <ContextMenu.Item>
-                <PlusCircle className="mr-2 h-4 w-4" />
+                <PlusCircle className="h-4 w-4" />
                 Invite users
               </ContextMenu.Item>
             </ContextMenu.Group>
             <ContextMenu.Separator />
             <ContextMenu.Sub>
               <ContextMenu.SubTrigger>
-                <Cloud className="mr-2 h-4 w-4" />
+                <Cloud className="h-4 w-4" />
                 Theme
               </ContextMenu.SubTrigger>
               <ContextMenu.SubContent>
@@ -472,16 +472,16 @@ export const Primitive: Story = {
             </ContextMenu.Sub>
             <ContextMenu.Separator />
             <ContextMenu.Item>
-              <Github className="mr-2 h-4 w-4" />
+              <Github className="h-4 w-4" />
               GitHub
             </ContextMenu.Item>
             <ContextMenu.Item>
-              <LifeBuoy className="mr-2 h-4 w-4" />
+              <LifeBuoy className="h-4 w-4" />
               Support
             </ContextMenu.Item>
             <ContextMenu.Separator />
             <ContextMenu.Item variant="destructive">
-              <LogOut className="mr-2 h-4 w-4" />
+              <LogOut className="h-4 w-4" />
               Log out
               <ContextMenu.Shortcut>⇧⌘Q</ContextMenu.Shortcut>
             </ContextMenu.Item>

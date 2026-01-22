@@ -150,7 +150,7 @@ const ContextMenu = React.forwardRef<HTMLDivElement, ContextMenuProps>(
                 className={item.className}
                 onCheckedChange={item.onCheckedChange}
               >
-                {item.icon && <span className="mr-2">{item.icon}</span>}
+                {item.icon}
                 {item.label}
                 {item.shortcut && (
                   <SContextMenuShortcut>{item.shortcut}</SContextMenuShortcut>
@@ -170,7 +170,7 @@ const ContextMenu = React.forwardRef<HTMLDivElement, ContextMenuProps>(
                   onClick={item.onClick}
                   className={item.className}
                 >
-                  {item.icon && <span className="mr-2">{item.icon}</span>}
+                  {item.icon}
                   {item.label}
                   {item.shortcut && (
                     <SContextMenuShortcut>{item.shortcut}</SContextMenuShortcut>
@@ -192,7 +192,7 @@ const ContextMenu = React.forwardRef<HTMLDivElement, ContextMenuProps>(
                       item.className
                     )}
                   >
-                    {item.icon && <span className="mr-2">{item.icon}</span>}
+                    {item.icon}
                     {item.label}
                   </SContextMenuSubTrigger>
                   <SContextMenuSubContent>
@@ -210,7 +210,7 @@ const ContextMenu = React.forwardRef<HTMLDivElement, ContextMenuProps>(
                   onClick={item.onClick}
                   className={item.className}
                 >
-                  {item.icon && <span className="mr-2">{item.icon}</span>}
+                  {item.icon}
                   {item.label}
                   {item.shortcut && (
                     <SContextMenuShortcut>{item.shortcut}</SContextMenuShortcut>
