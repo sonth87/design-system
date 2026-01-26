@@ -94,10 +94,29 @@ export const TimeColumnwheel = memo(
           });
 
           // Only trigger change if different from current value and not disabled
-          if (closestItem !== selectedValue && !isItemDisabled(closestItem)) {
-            onChangeCol(closestItem);
+          if (!isItemDisabled(closestItem)) {
+            // Always update if item is different, or snap to correct position
+            if (closestItem !== selectedValue) {
+              onChangeCol(closestItem);
+            } else {
+              // Re-trigger to ensure input reflects the snapped value
+              // This handles cases where user scrolled slightly but ended on same value
+              const itemIndex = items.indexOf(closestItem);
+              const targetScrollTop =
+                120 +
+                itemIndex * itemHeight -
+                containerHeight / 2 +
+                itemHeight / 2;
+
+              if (Math.abs(container.scrollTop - targetScrollTop) > 5) {
+                container.scrollTo({
+                  top: targetScrollTop,
+                  behavior: "smooth",
+                });
+              }
+            }
           }
-        }, 150); // 150ms debounce
+        }, 100); // 100ms debounce for faster response
       }, [items, selectedValue, onChangeCol, isItemDisabled, disabled]);
 
       // Set up scroll listener
@@ -113,6 +132,27 @@ export const TimeColumnwheel = memo(
           };
         }
       }, [handleScroll]);
+
+      // Scroll to selected value when it changes or on mount
+      useEffect(() => {
+        if (containerRef.current && selectedValue !== undefined) {
+          const itemIndex = items.indexOf(selectedValue);
+          if (itemIndex !== -1) {
+            const itemHeight = 40;
+            const containerHeight = containerRef.current.clientHeight;
+            const targetScrollTop =
+              120 +
+              itemIndex * itemHeight -
+              containerHeight / 2 +
+              itemHeight / 2;
+
+            containerRef.current.scrollTo({
+              top: targetScrollTop,
+              behavior: "smooth",
+            });
+          }
+        }
+      }, [selectedValue, items]);
 
       // Cleanup on unmount
       useEffect(() => {

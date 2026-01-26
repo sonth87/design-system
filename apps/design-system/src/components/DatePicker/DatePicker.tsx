@@ -130,6 +130,7 @@ export type DatePickerProps = Omit<
   timePickerLabel?:
     | boolean
     | { hours?: string; minutes?: string; seconds?: string };
+  openOnFocus?: boolean; // Auto open datepicker when input is focused (default: true)
 };
 
 export function DatePicker({
@@ -164,6 +165,7 @@ export function DatePicker({
   showNowButton = false,
   nowButtonLabel = "Now",
   timePickerLabel,
+  openOnFocus = true,
   ...props
 }: DatePickerProps) {
   let inputFormat: string;
@@ -185,12 +187,25 @@ export function DatePicker({
   }
   // If mask is false or undefined, maskToUse remains undefined
 
-  const initialDate = value ? parseDate(value, inputFormat) : undefined;
+  // Parse initial value with correct format
+  // - hideDate + showTime: time only (e.g., "HH:mm")
+  // - showTime: date + time (e.g., "dd/MM/yyyy HH:mm")
+  // - default: date only (e.g., "dd/MM/yyyy")
+  const fullFormat =
+    hideDate && showTime
+      ? timeFormat
+      : showTime
+        ? `${inputFormat} ${timeFormat}`
+        : inputFormat;
+
+  const initialDate = value ? parseDate(value, fullFormat) : undefined;
 
   const [open, setOpen] = React.useState(false);
   const [date, setDate] = React.useState<Date | undefined>(initialDate);
   const [month, setMonth] = React.useState<Date | undefined>(initialDate);
   const [inputValue, setInputValue] = React.useState(value || "");
+  const inputRef = React.useRef<HTMLInputElement>(null);
+  const isUserTyping = React.useRef(false);
 
   const _locale: Locale = calendarConfig?.locale
     ? (calendarConfig?.locale as Locale)
@@ -199,6 +214,22 @@ export function DatePicker({
       : vi;
 
   const mode = isMobile ? mobileMode : desktopMode;
+
+  // Sync inputValue when value prop changes from outside
+  React.useEffect(() => {
+    if (value !== inputValue && !isUserTyping.current) {
+      setInputValue(value || "");
+      const parsedDate = value ? parseDate(value, fullFormat) : undefined;
+      if (parsedDate) {
+        setDate(parsedDate);
+        setMonth(parsedDate);
+      } else if (!value) {
+        // Clear states if value is empty
+        setDate(undefined);
+        setMonth(undefined);
+      }
+    }
+  }, [value, inputValue, fullFormat]);
 
   // Helper to format date-time based on showTime and timeFormat
   const formatDateTimeValue = (d: Date | undefined): string => {
@@ -363,6 +394,7 @@ export function DatePicker({
             timeLabel={timePickerLabel}
             standalone={false}
             color={color}
+            isOpen={open}
           />
         </div>
       )}
@@ -414,10 +446,13 @@ export function DatePicker({
   return (
     <Input
       {...props}
+      ref={inputRef}
+      type="text"
       clearable
       value={inputValue}
       mask={maskToUse}
       onChange={(e) => {
+        isUserTyping.current = true;
         setInputValue(e.target.value);
         const date = parseDate(e.target.value, inputFormat);
         if (date) {
@@ -430,20 +465,37 @@ export function DatePicker({
           onChange?.(e, undefined, undefined);
         }
       }}
-      onBlur={() => {
-        const parsedDate = parseDate(inputValue, inputFormat);
-        if (!parsedDate) {
-          setInputValue("");
-          setDate(undefined);
-          setMonth(undefined);
-          onSelect?.(undefined, undefined);
+      onFocus={(e) => {
+        // Don't auto-open if mask is enabled - user wants to type directly
+        if (openOnFocus && !open && !maskToUse) {
+          setOpen(true);
         }
+        props.onFocus?.(e);
+      }}
+      onBlur={(e) => {
+        // Don't clear value when picker is open - user might be interacting with it
+        // The onBlur fires when focus moves to the picker
+        setTimeout(() => {
+          isUserTyping.current = false;
+          // Only validate and clear if picker is closed
+          if (!open) {
+            const parsedDate = parseDate(inputValue, inputFormat);
+            if (!parsedDate && inputValue) {
+              setInputValue("");
+              setDate(undefined);
+              setMonth(undefined);
+              onSelect?.(undefined, undefined);
+            }
+          }
+        }, 150);
+        props.onBlur?.(e);
       }}
       onKeyDown={(e) => {
         if (e.key === "ArrowDown") {
           e.preventDefault();
           setOpen(true);
         }
+        props.onKeyDown?.(e);
       }}
       suffixIcon={mode === "drawer" ? drawPicker : popPicker}
     />

@@ -79,6 +79,7 @@ export type TimePickerProps = Omit<
   desktopMode?: "popover" | "drawer"; // Desktop display mode for standalone: 'popover' or 'drawer'
   mobileMode?: "popover" | "drawer"; // Mobile display mode for standalone: 'popover' or 'drawer'
   color?: CalendarColor; // Color variant for selected time (defaults to "primary")
+  isOpen?: boolean; // External control for when picker is visible (used in non-standalone mode)
 };
 
 const generateIntervalArray = (max: number, interval: number = 1): number[] => {
@@ -154,6 +155,7 @@ export function TimePicker({
   desktopMode = "popover",
   mobileMode = "drawer",
   color = "primary",
+  isOpen,
   ...props
 }: TimePickerProps) {
   // Determine input and output formats (like DatePicker)
@@ -326,9 +328,10 @@ export function TimePicker({
       const newDate = new Date();
       newDate.setHours(h, m, s, 0);
       const formattedValue = formatTime(newDate, outputFormat);
+      onChange?.(undefined, formattedValue, newDate);
       onSelect?.(newDate, formattedValue);
     },
-    [outputFormat, onSelect]
+    [outputFormat, onChange, onSelect]
   );
 
   const handleHourChange = (h: number) => {
@@ -405,9 +408,27 @@ export function TimePicker({
   };
 
   useEffect(() => {
-    const timer = setTimeout(() => scrollHandler(), 100);
-    return () => clearTimeout(timer);
-  }, [standaloneOpen, mode, scrollHandler]);
+    // Trigger scroll when picker opens (standalone or integrated) or when values change
+    const shouldScroll = standalone ? standaloneOpen : isOpen;
+
+    // Also trigger scroll if we have values (for initial load and value changes)
+    const hasValues =
+      hours !== undefined || minutes !== undefined || seconds !== undefined;
+
+    if (shouldScroll || hasValues) {
+      const timer = setTimeout(() => scrollHandler(), 100);
+      return () => clearTimeout(timer);
+    }
+  }, [
+    standaloneOpen,
+    isOpen,
+    standalone,
+    mode,
+    scrollHandler,
+    hours,
+    minutes,
+    seconds,
+  ]);
 
   // Normal Mode - Dropdown/Input style
   const TimeColumnNormal = memo(

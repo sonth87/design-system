@@ -894,6 +894,8 @@ export const OnClickOutside: Story = {
     docs: {
       source: {
         code: `
+import { useOnClickOutside } from "...";
+
 const [clickedOutside, setClickedOutside] = useState(false);
 const ref = useRef<HTMLDivElement>(null);
 
