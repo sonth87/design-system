@@ -1,11 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import {
-  TreeView,
-  type TreeDataItem,
-} from "../components/TreeSelect";
+import { TreeView, type TreeDataItem } from "../components/TreeSelect";
 import { File, Folder, FolderOpen } from "lucide-react";
 import { useState } from "react";
 import i18n from "../../.storybook/i18n";
+import { cn } from "@/lib/utils";
 
 const meta: Meta<typeof TreeView> = {
   title: "Form Components/TreeSelect",
@@ -107,10 +105,40 @@ const meta: Meta<typeof TreeView> = {
       },
     },
     treeLine: {
-      control: "boolean",
+      control: { type: "select" },
+      options: [true, false, "full"],
       description: i18n.t("stories.treeselect.argTypes.treeLine.description"),
       table: {
         defaultValue: { summary: "false" },
+        category: i18n.t("stories.category.appearance"),
+      },
+    },
+    expandOnArrowClick: {
+      control: "boolean",
+      description: "Expand the node only when clicking the arrow icon",
+      table: {
+        defaultValue: { summary: "false" },
+        category: i18n.t("stories.category.behavior"),
+      },
+    },
+    indicatorVariant: {
+      control: "select",
+      options: ["arrow", "plus-minus"],
+      description: "The variant of the expansion indicator",
+      table: {
+        defaultValue: { summary: "arrow" },
+        category: i18n.t("stories.category.appearance"),
+      },
+    },
+    customExpandIcon: {
+      description: "Custom icon component for the expand indicator",
+      table: {
+        category: i18n.t("stories.category.appearance"),
+      },
+    },
+    customCollapseIcon: {
+      description: "Custom icon component for the collapse indicator",
+      table: {
         category: i18n.t("stories.category.appearance"),
       },
     },
@@ -390,10 +418,10 @@ export const LargeTree: Story = {
   },
 };
 
-export const WithTreeLines: Story = {
+export const WithFullTreeLines: Story = {
   args: {
     data: sampleData,
-    treeLine: true,
+    treeLine: "full",
     defaultNodeIcon: Folder,
     defaultLeafIcon: File,
     expandAll: true,
@@ -426,5 +454,284 @@ export const TreeLinesWithoutIcons: Story = {
     showIcon: false,
     showLeafIcon: false,
     expandAll: true,
+  },
+};
+
+/** ICONS */
+
+function ReactIcon({ className }: { className?: string }) {
+  return (
+    <div
+      className={cn(
+        "flex items-center justify-center rounded bg-[#61DAFB]/10 p-0.5",
+        className
+      )}
+    >
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="#61DAFB"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="h-full w-full"
+      >
+        <circle cx="12" cy="12" r="2" />
+        <path d="M12 21.5c4.7 0 8.5-1.8 8.5-4s-3.8-4-8.5-4-8.5 1.8-8.5 4 3.8 4 8.5 4z" />
+        <path d="M12 2.5c4.7 0 8.5 1.8 8.5 4s-3.8 4-8.5 4-8.5-1.8-8.5-4 3.8-4 8.5-4z" />
+        <path d="M2.5 12c0-4.7 1.8-8.5 4-8.5s4 3.8 4 8.5-1.8 8.5-4 8.5-4-3.8-4-8.5z" />
+        <path d="M14.5 12c0-4.7 1.8-8.5 4-8.5s4 3.8 4 8.5-1.8 8.5-4 8.5-4-3.8-4-8.5z" />
+      </svg>
+    </div>
+  );
+}
+ReactIcon.displayName = "ReactIcon";
+
+function JsIcon({ className }: { className?: string }) {
+  return (
+    <div
+      className={cn(
+        "flex items-center justify-center rounded bg-[#F7DF1E] text-[10px] font-bold text-black",
+        className
+      )}
+    >
+      JS
+    </div>
+  );
+}
+JsIcon.displayName = "JsIcon";
+
+function HtmlIcon({ className }: { className?: string }) {
+  return (
+    <div
+      className={cn(
+        "flex items-center justify-center rounded bg-[#E34F26] text-[10px] font-bold text-white",
+        className
+      )}
+    >
+      5
+    </div>
+  );
+}
+HtmlIcon.displayName = "HtmlIcon";
+
+function CssIcon({ className }: { className?: string }) {
+  return (
+    <div
+      className={cn(
+        "flex items-center justify-center rounded bg-[#1572B6] text-[10px] font-bold text-white",
+        className
+      )}
+    >
+      3
+    </div>
+  );
+}
+CssIcon.displayName = "CssIcon";
+
+function FolderIcon({ className }: { className?: string }) {
+  return (
+    <Folder className={cn("text-[#EBCB8B] fill-[#EBCB8B]/20", className)} />
+  );
+}
+FolderIcon.displayName = "FolderIcon";
+
+function FolderOpenIcon({ className }: { className?: string }) {
+  return (
+    <FolderOpen className={cn("text-[#EBCB8B] fill-[#EBCB8B]/20", className)} />
+  );
+}
+FolderOpenIcon.displayName = "FolderOpenIcon";
+
+function GenericFileIcon(props: React.ComponentProps<typeof File>) {
+  return <File {...props} />;
+}
+GenericFileIcon.displayName = "File";
+
+/** END ICONS */
+
+export const FileTreeExample: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<TreeView
+  expandAll
+  initialSelectedItemId="src-app-jsx"
+  data={[
+    {
+      id: "public",
+      name: "public",
+      icon: FolderIcon,
+      openIcon: FolderOpenIcon,
+      children: [
+        {
+          id: "public-index-html",
+          name: "index.html",
+          icon: HtmlIcon,
+        },
+        {
+          id: "public-favicon-ico",
+          name: "favicon.ico",
+          icon: File,
+        },
+      ],
+    },
+    {
+      id: "src",
+      name: "src",
+      icon: FolderIcon,
+      openIcon: FolderOpenIcon,
+      children: [
+        {
+          id: "src-components",
+          name: "components",
+          icon: FolderIcon,
+          openIcon: FolderOpenIcon,
+          children: [
+            {
+              id: "src-components-button-jsx",
+              name: "Button.jsx",
+              icon: ReactIcon,
+            },
+            {
+              id: "src-components-modal-js",
+              name: "Modal.js",
+              icon: JsIcon,
+            },
+          ],
+        },
+        {
+          id: "src-hooks",
+          name: "hooks",
+          icon: FolderIcon,
+          openIcon: FolderOpenIcon,
+          children: [
+            {
+              id: "src-hooks-usefetch-js",
+              name: "useFetch.js",
+              icon: JsIcon,
+            },
+          ],
+        },
+        {
+          id: "src-app-jsx",
+          name: "App.jsx",
+          icon: ReactIcon,
+        },
+        {
+          id: "src-index-js",
+          name: "index.js",
+          icon: JsIcon,
+        },
+        {
+          id: "src-styles-css",
+          name: "styles.css",
+          icon: CssIcon,
+        },
+      ],
+    },
+    {
+      id: "package-json",
+      name: "package.json",
+      icon: File,
+    },
+    {
+      id: "readme-md",
+      name: "README.md",
+      icon: File,
+    },
+  ]}
+/>`,
+      },
+    },
+  },
+  args: {
+    expandAll: true,
+    initialSelectedItemId: "src-app-jsx",
+    data: [
+      {
+        id: "public",
+        name: "public",
+        icon: FolderIcon,
+        openIcon: FolderOpenIcon,
+        children: [
+          {
+            id: "public-index-html",
+            name: "index.html",
+            icon: HtmlIcon,
+          },
+          {
+            id: "public-favicon-ico",
+            name: "favicon.ico",
+            icon: GenericFileIcon,
+          },
+        ],
+      },
+      {
+        id: "src",
+        name: "src",
+        icon: FolderIcon,
+        openIcon: FolderOpenIcon,
+        children: [
+          {
+            id: "src-components",
+            name: "components",
+            icon: FolderIcon,
+            openIcon: FolderOpenIcon,
+            children: [
+              {
+                id: "src-components-button-jsx",
+                name: "Button.jsx",
+                icon: ReactIcon,
+              },
+              {
+                id: "src-components-modal-js",
+                name: "Modal.js",
+                icon: JsIcon,
+              },
+            ],
+          },
+          {
+            id: "src-hooks",
+            name: "hooks",
+            icon: FolderIcon,
+            openIcon: FolderOpenIcon,
+            children: [
+              {
+                id: "src-hooks-usefetch-js",
+                name: "useFetch.js",
+                icon: JsIcon,
+              },
+            ],
+          },
+          {
+            id: "src-app-jsx",
+            name: "App.jsx",
+            icon: ReactIcon,
+          },
+          {
+            id: "src-index-js",
+            name: "index.js",
+            icon: JsIcon,
+          },
+          {
+            id: "src-styles-css",
+            name: "styles.css",
+            icon: CssIcon,
+          },
+        ],
+      },
+      {
+        id: "package-json",
+        name: "package.json",
+        icon: GenericFileIcon,
+      },
+      {
+        id: "readme-md",
+        name: "README.md",
+        icon: GenericFileIcon,
+      },
+    ],
   },
 };
