@@ -37,7 +37,7 @@ interface TreeDataItem {
   indeterminate?: boolean;
 }
 
-type TreeProps = React.HTMLAttributes<HTMLDivElement> & {
+interface TreeViewProps extends React.HTMLAttributes<HTMLDivElement> {
   data: TreeDataItem[] | TreeDataItem;
   initialSelectedItemId?: string;
   onSelectChange?: (item: TreeDataItem | undefined) => void;
@@ -54,9 +54,9 @@ type TreeProps = React.HTMLAttributes<HTMLDivElement> & {
   indicatorVariant?: "arrow" | "plus-minus";
   customExpandIcon?: React.ElementType;
   customCollapseIcon?: React.ElementType;
-};
+}
 
-const TreeView = React.forwardRef<HTMLDivElement, TreeProps>(
+const TreeView = React.forwardRef<HTMLDivElement, TreeViewProps>(
   (
     {
       data,
@@ -191,7 +191,7 @@ const TreeView = React.forwardRef<HTMLDivElement, TreeProps>(
 );
 TreeView.displayName = "TreeView";
 
-type TreeItemProps = TreeProps & {
+type TreeItemProps = TreeViewProps & {
   selectedItemId?: string;
   handleSelectChange: (item: TreeDataItem | undefined) => void;
   expandedItemIds: string[];
@@ -783,4 +783,4 @@ const IndicatorIcon = ({
   );
 };
 
-export { TreeView, type TreeDataItem };
+export { TreeView, type TreeDataItem, type TreeViewProps };

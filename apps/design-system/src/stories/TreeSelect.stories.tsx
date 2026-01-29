@@ -6,7 +6,7 @@ import i18n from "../../.storybook/i18n";
 import { cn } from "@/lib/utils";
 
 const meta: Meta<typeof TreeView> = {
-  title: "Form Components/TreeSelect",
+  title: "Form Components/TreeView",
   component: TreeView,
   parameters: {
     layout: "centered",
