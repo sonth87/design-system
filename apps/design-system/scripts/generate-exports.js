@@ -199,7 +199,7 @@ function updatePackageJson() {
   packageJson.types = "./dist/types/index.d.ts";
 
   // Update files to include
-  packageJson.files = ["dist", "README.md", "LICENSE"];
+  packageJson.files = ["dist", "README.md", "LICENSE", "AI_README.md"];
 
   // Update sideEffects (CSS files have side effects)
   packageJson.sideEffects = ["**/*.css"];
