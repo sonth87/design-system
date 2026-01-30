@@ -265,7 +265,7 @@ const meta: Meta<typeof Dialog> = {
       control: "number",
       description: i18n.t("stories.dialog.argTypes.backdropFilter.description"),
       table: {
-        defaultValue: { summary: "undefined" },
+        defaultValue: { summary: "2" },
         category: i18n.t("stories.category.ui"),
       },
     },

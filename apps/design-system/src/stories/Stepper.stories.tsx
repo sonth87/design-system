@@ -5,10 +5,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { toast } from "@/components/Toast";
-import Input from "@/components/Input";
-import Textarea from "@/components/Textarea";
+import { Input } from "@/components/Input";
+import { Textarea } from "@/components/Textarea";
 import i18n from "../../.storybook/i18n";
-import Button from "@/components/Button";
+import { Button } from "@/components/Button";
 
 const meta: Meta<typeof Stepper> = {
   title: "Navigation/Stepper",

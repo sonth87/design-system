@@ -13,11 +13,11 @@ import {
   useCropperTool,
   CropperTool,
 } from "../../components/Cropper";
-import Select from "@/components/Select";
-import Switch from "@/components/Switch";
-import Button from "@/components/Button";
+import { Select } from "@/components/Select";
+import { Switch } from "@/components/Switch";
+import { Button } from "@/components/Button";
 import { RotateCcwIcon, DownloadIcon } from "lucide-react";
-import Slider from "@/components/Slider";
+import { Slider } from "@/components/Slider";
 import i18n from "../../../.storybook/i18n";
 
 const meta: Meta<CropperProps> = {

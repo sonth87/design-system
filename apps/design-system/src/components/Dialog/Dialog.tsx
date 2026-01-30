@@ -186,7 +186,7 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
     confirmButton,
     cancelButton,
     showIcon = true,
-    backdropFilter = 0,
+    backdropFilter = 2,
     overlay = "dark",
   } = props;
 

@@ -1,7 +1,7 @@
 "use client";
 
 import type { Meta, StoryObj } from "@storybook/react";
-import Accordion, { type AccordionItemConfig } from "../components/Accordion";
+import { Accordion, type AccordionItemConfig } from "../components/Accordion";
 import {
   Info,
   Settings,

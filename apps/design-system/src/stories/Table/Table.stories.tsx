@@ -19,12 +19,12 @@ import {
   Trash2,
   XCircle,
 } from "lucide-react";
-import Badge from "@/components/Badge";
+import { Badge } from "@/components/Badge";
 import { parseAsArrayOf, parseAsString, useQueryState } from "nuqs";
 import { NuqsAdapter } from "nuqs/adapters/react";
 import { useDataTable } from "@/hooks/use-data-table";
 import i18n from "../../../.storybook/i18n";
-import Button from "@/components/Button";
+import { Button } from "@/components/Button";
 
 const meta: Meta<typeof DataTable> = {
   title: "Data Display/DataTable",

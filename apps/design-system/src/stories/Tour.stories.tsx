@@ -2,7 +2,7 @@ import type { Meta } from "@storybook/react";
 import { Tour } from "../components/Tour";
 import React from "react";
 import i18n from "../../.storybook/i18n";
-import Button from "@/components/Button";
+import { Button } from "@/components/Button";
 
 const meta: Meta<typeof Tour> = {
   title: "Navigation/Tour",
