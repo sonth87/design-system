@@ -1,4 +1,3 @@
-
 import * as ts from "typescript";
 import * as fs from "fs";
 import * as path from "path";
@@ -56,86 +55,140 @@ function generateComponentInfo(
     importPath: `@sth87/shadcn-design-system/${componentName.toLowerCase()}`,
     description: "",
     propsDefinition: "No explicit Props type definition found.",
-    example: ""
+    example: "",
   };
 
   if (!entryFile) return info;
 
   const sourceFile = program.getSourceFile(entryFile);
   if (!sourceFile) {
-      console.log(`  ❌ Source file not found: ${entryFile}`);
-      return info;
+    console.log(`  ❌ Source file not found: ${entryFile}`);
+    return info;
   }
 
   const moduleSymbol = checker.getSymbolAtLocation(sourceFile);
   if (!moduleSymbol) {
-      console.log(`  ❌ Module symbol not found for: ${entryFile}`);
-      // Fallback: iterate top-level statements
-      ts.forEachChild(sourceFile, (node) => {
-          if (ts.isTypeAliasDeclaration(node) || ts.isInterfaceDeclaration(node)) {
-              if (node.name.getText() === `${componentName}Props` || node.name.getText().endsWith("Props")) {
-                   // Clean up the text
-                   info.propsDefinition = node.getText().replace(/^export\s+/, "");
-                   console.log(`  ✅ Found Props via fallback scan: ${node.name.getText()}`);
-              }
-          }
-      });
+    console.log(`  ❌ Module symbol not found for: ${entryFile}`);
+    // Fallback: iterate top-level statements
+    ts.forEachChild(sourceFile, (node) => {
+      if (ts.isTypeAliasDeclaration(node) || ts.isInterfaceDeclaration(node)) {
+        if (
+          node.name.getText() === `${componentName}Props` ||
+          node.name.getText().endsWith("Props")
+        ) {
+          // Clean up the text
+          info.propsDefinition = node.getText().replace(/^export\s+/, "");
+          console.log(
+            `  ✅ Found Props via fallback scan: ${node.name.getText()}`
+          );
+        }
+      }
+    });
   } else {
-      const exports = checker.getExportsOfModule(moduleSymbol);
+    const exports = checker.getExportsOfModule(moduleSymbol);
 
-      // 1. Description
-      let componentSymbol = exports.find(s => s.name === componentName || s.name === "default");
-      if (componentSymbol) {
-           if (componentSymbol.flags & ts.SymbolFlags.Alias) {
-               componentSymbol = checker.getAliasedSymbol(componentSymbol);
-           }
-           const doc = ts.displayPartsToString(componentSymbol.getDocumentationComment(checker));
-           if (doc) info.description = doc;
+    // 1. Description
+    let componentSymbol = exports.find(
+      (s) => s.name === componentName || s.name === "default"
+    );
+    if (componentSymbol) {
+      if (componentSymbol.flags & ts.SymbolFlags.Alias) {
+        componentSymbol = checker.getAliasedSymbol(componentSymbol);
+      }
+      const doc = ts.displayPartsToString(
+        componentSymbol.getDocumentationComment(checker)
+      );
+      if (doc) info.description = doc;
+    }
+
+    // 2. Props
+    let propsSymbol = exports.find((s) => s.name === `${componentName}Props`);
+    if (!propsSymbol) {
+      propsSymbol = exports.find(
+        (s) => s.name.endsWith("Props") && s.name !== "VariantProps"
+      );
+    }
+
+    // Fallback: If component is function, get props from first parameter
+    if (!propsSymbol && componentSymbol) {
+      const decl = componentSymbol.declarations?.[0];
+      if (decl && ts.isFunctionDeclaration(decl)) {
+        const firstParam = decl.parameters[0];
+        if (firstParam && firstParam.type) {
+          const typeNode = firstParam.type;
+          if (ts.isTypeReferenceNode(typeNode)) {
+            const typeName = typeNode.typeName.getText();
+            // Try to find this type in exports or imports
+            // For now, simple text extraction
+            info.propsDefinition = `// Props type extracted from usage\ntype ${componentName}Props = ${typeName};`;
+
+            // Try to resolve the type to get its content (advanced)
+            const type = checker.getTypeAtLocation(typeNode);
+            if (type) {
+              const props = type.getProperties();
+              if (props.length > 0) {
+                const propLines = props.map((p) => {
+                  const propType = checker.getTypeOfSymbolAtLocation(
+                    p,
+                    p.valueDeclaration || p.declarations?.[0]!
+                  ); // Get type
+                  return `  ${p.name}: ${checker.typeToString(propType)};`;
+                });
+                info.propsDefinition = `type ${componentName}Props = {\n${propLines.join("\n")}\n};`;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    if (propsSymbol) {
+      if (propsSymbol.flags & ts.SymbolFlags.Alias) {
+        propsSymbol = checker.getAliasedSymbol(propsSymbol);
       }
 
-      // 2. Props
-      let propsSymbol = exports.find(s => s.name === `${componentName}Props`);
-      if (!propsSymbol) {
-          propsSymbol = exports.find(s => s.name.endsWith("Props") && s.name !== "VariantProps");
+      // Try to get the text from the declaration directly
+      const declaration = propsSymbol.declarations?.[0];
+      if (declaration) {
+        const rawText = declaration.getText();
+        // Clean up the text: remove 'export' keyword to make it a local definition in the context doc
+        info.propsDefinition = rawText.replace(/^export\s+/, "");
+      } else {
+        // Fallback to type string
+        const propsType = checker.getTypeOfSymbolAtLocation(
+          propsSymbol,
+          propsSymbol.valueDeclaration!
+        );
+        info.propsDefinition = `type ${propsSymbol.name} = ${checker.typeToString(propsType)}`;
       }
-
-      if (propsSymbol) {
-          if (propsSymbol.flags & ts.SymbolFlags.Alias) {
-               propsSymbol = checker.getAliasedSymbol(propsSymbol);
-           }
-
-           // Try to get the text from the declaration directly
-           const declaration = propsSymbol.declarations?.[0];
-           if (declaration) {
-               const rawText = declaration.getText();
-               // Clean up the text: remove 'export' keyword to make it a local definition in the context doc
-               info.propsDefinition = rawText.replace(/^export\s+/, "");
-           } else {
-               // Fallback to type string
-               const propsType = checker.getTypeOfSymbolAtLocation(propsSymbol, propsSymbol.valueDeclaration!);
-               info.propsDefinition = `type ${propsSymbol.name} = ${checker.typeToString(propsType)}`;
-           }
-      }
+    }
   }
 
   // 3. Example from Stories
   const storyFile = path.join(STORIES_DIR, `${componentName}.stories.tsx`);
   if (fs.existsSync(storyFile)) {
-      const storyContent = fs.readFileSync(storyFile, "utf-8");
+    const storyContent = fs.readFileSync(storyFile, "utf-8");
 
-      const defaultStoryRegex = /export const Default.*?\=\s*(\(.*?\)\s*=>\s*\(.*?\);)/s;
-      const match = storyContent.match(defaultStoryRegex);
+    // CSF 2: export const Default = ...
+    const csf2Regex =
+      /export const ([A-Za-z0-9_]+).*?\=\s*(\(.*?\)\s*=>\s*\(.*?\);)/s;
 
-      if (match && match[1]) {
-          let exampleCode = match[1];
-          info.example = `const Example = ${exampleCode}`;
-      } else {
-           const anyStoryRegex = /export const ([A-Za-z0-9_]+).*?\=\s*(\(.*?\)\s*=>\s*\(.*?\);)/s;
-           const matchAny = storyContent.match(anyStoryRegex);
-           if (matchAny && matchAny[2]) {
-                info.example = `// Example from ${matchAny[1]} Story\nconst Example = ${matchAny[2]}`;
-           }
-      }
+    // CSF 3: render: (args) => ...
+    const csf3Regex =
+      /render:\s*\(.*?\)\s*=>\s*({[\s\S]*?return\s*\([\s\S]*?\);?\s*})/s;
+    const csf3SimpleRegex = /render:\s*\(.*?\)\s*=>\s*(\([\s\S]*?\))/s;
+
+    const match2 = storyContent.match(csf2Regex);
+    const match3 = storyContent.match(csf3Regex);
+    const match3Simple = storyContent.match(csf3SimpleRegex);
+
+    if (match2 && match2[2]) {
+      info.example = `// Example from ${match2[1]}\nconst Example = ${match2[2]}`;
+    } else if (match3 && match3[1]) {
+      info.example = `// Example from Story 'render' function\nconst Example = (args) => ${match3[1]}`;
+    } else if (match3Simple && match3Simple[1]) {
+      info.example = `// Example from Story 'render' function\nconst Example = (args) => ${match3Simple[1]}`;
+    }
   }
 
   return info;
@@ -144,25 +197,29 @@ function generateComponentInfo(
 function generateDocs() {
   console.log("🚀 Starting AI Documentation Generation (AST Mode)...");
 
-  const configFile = ts.findConfigFile(PROJECT_ROOT, ts.sys.fileExists, "tsconfig.json");
+  const configFile = ts.findConfigFile(
+    PROJECT_ROOT,
+    ts.sys.fileExists,
+    "tsconfig.json"
+  );
   if (!configFile) {
-      console.error("❌ Could not find tsconfig.json");
-      process.exit(1);
+    console.error("❌ Could not find tsconfig.json");
+    process.exit(1);
   }
 
   const parsedConfig = ts.readConfigFile(configFile, ts.sys.readFile);
   const compilerOptions = ts.parseJsonConfigFileContent(
-      parsedConfig.config,
-      ts.sys,
-      path.dirname(configFile)
+    parsedConfig.config,
+    ts.sys,
+    path.dirname(configFile)
   ).options;
 
   const componentDirs = getComponentDirectories();
   const files: string[] = [];
 
-  componentDirs.forEach(dir => {
-      const entry = findComponentEntryFile(path.join(COMPONENTS_DIR, dir));
-      if (entry) files.push(entry);
+  componentDirs.forEach((dir) => {
+    const entry = findComponentEntryFile(path.join(COMPONENTS_DIR, dir));
+    if (entry) files.push(entry);
   });
 
   const program = ts.createProgram(files, compilerOptions);
@@ -182,24 +239,24 @@ This file is auto-generated to assist AI Agents in understanding the Component L
 
 `;
 
-  componentDirs.forEach(compName => {
-      console.log(`Processing ${compName}...`);
-      const info = generateComponentInfo(compName, checker, program);
+  componentDirs.forEach((compName) => {
+    console.log(`Processing ${compName}...`);
+    const info = generateComponentInfo(compName, checker, program);
 
-      mdContent += `### ${info.name}\n\n`;
-      if (info.description) {
-          mdContent += `${info.description}\n\n`;
-      }
+    mdContent += `### ${info.name}\n\n`;
+    if (info.description) {
+      mdContent += `${info.description}\n\n`;
+    }
 
-      mdContent += `**Import:** \`${info.importPath}\`\n\n`;
+    mdContent += `**Import:** \`${info.importPath}\`\n\n`;
 
-      mdContent += `**Props:**\n\`\`\`typescript\n${info.propsDefinition}\n\`\`\`\n\n`;
+    mdContent += `**Props:**\n\`\`\`typescript\n${info.propsDefinition}\n\`\`\`\n\n`;
 
-      if (info.example) {
-          mdContent += `**Example Usage:**\n\`\`\`tsx\n${info.example}\n\`\`\`\n\n`;
-      }
+    if (info.example) {
+      mdContent += `**Example Usage:**\n\`\`\`tsx\n${info.example}\n\`\`\`\n\n`;
+    }
 
-      mdContent += `---\n\n`;
+    mdContent += `---\n\n`;
   });
 
   fs.writeFileSync(OUTPUT_FILE, mdContent);
