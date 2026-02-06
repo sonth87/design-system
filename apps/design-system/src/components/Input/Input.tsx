@@ -1,4 +1,4 @@
-import React from "react";
+import React, { type ChangeEvent } from "react";
 import {
   Input as SInput,
   type InputProps as SInputProps,
@@ -218,6 +218,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         innerRef.current.value = String(newValue);
         const event = new Event("input", { bubbles: true });
         innerRef.current.dispatchEvent(event);
+        props.onChange?.(event as unknown as ChangeEvent<HTMLInputElement>);
       }
     };
 
@@ -231,6 +232,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         innerRef.current.value = String(newValue);
         const event = new Event("input", { bubbles: true });
         innerRef.current.dispatchEvent(event);
+        props.onChange?.(event as unknown as ChangeEvent<HTMLInputElement>);
       }
     };
     /* End Spinner Button Handlers */
