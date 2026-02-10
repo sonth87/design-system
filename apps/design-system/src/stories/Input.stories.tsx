@@ -32,6 +32,14 @@ const meta: Meta<InputProps> = {
         category: i18n.t("stories.category.content"),
       },
     },
+    required: {
+      control: "boolean",
+      description: "Whether the input field is required",
+      table: {
+        defaultValue: { summary: "false" },
+        category: i18n.t("stories.category.content"),
+      },
+    },
     size: {
       control: "select",
       options: ["normal", "sm", "xs", "lg", "xl"],

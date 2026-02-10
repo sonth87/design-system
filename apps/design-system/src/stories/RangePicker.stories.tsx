@@ -80,6 +80,14 @@ const meta: Meta<typeof RangePicker> = {
         category: i18n.t("stories.category.basic"),
       },
     },
+    required: {
+      control: { type: "boolean" },
+      description: "Whether the range picker field is required",
+      table: {
+        defaultValue: { summary: "false" },
+        category: i18n.t("stories.category.basic"),
+      },
+    },
     value: {
       control: { type: "object" },
       description: i18n.t("stories.rangepicker.argTypes.value.description"),

@@ -24,6 +24,7 @@ export type TextareaProps = Omit<
   infoTooltip?: React.ReactNode;
   clearable?: boolean;
   onClear?: () => void;
+  required?: boolean;
 };
 
 const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
@@ -42,6 +43,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
       onClear,
       placeholder = " ",
       onChange,
+      required,
       ...props
     },
     ref
@@ -95,7 +97,10 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
               htmlFor={textareaId}
               className="flex gap-2 text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
             >
-              {label}
+              <span>
+                {label}
+                {required && <span className="text-error ml-0.5">*</span>}
+              </span>
               {infoTooltip && (
                 <Tooltip content={infoTooltip}>
                   <Info className="size-3.5 min-w-3.5" />
@@ -129,6 +134,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
                     : "xl"
                   : size
               }
+              required={required}
               {...props}
             />
             {isFloatLabel && (
@@ -136,6 +142,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
                 htmlFor={textareaId}
                 size={size}
                 infoTooltip={infoTooltip}
+                required={required}
                 className="peer-placeholder-shown:items-start"
               >
                 {label}

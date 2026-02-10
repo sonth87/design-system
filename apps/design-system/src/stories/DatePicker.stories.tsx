@@ -78,6 +78,14 @@ const meta: Meta<typeof DatePicker> = {
         category: i18n.t("stories.category.content"),
       },
     },
+    required: {
+      control: { type: "boolean" },
+      description: "Whether the date picker field is required",
+      table: {
+        defaultValue: { summary: "false" },
+        category: i18n.t("stories.category.content"),
+      },
+    },
     variant: {
       control: { type: "select" },
       options: ["default", "rounded"],

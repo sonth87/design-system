@@ -36,6 +36,7 @@ export type InputProps = BaseInputProps & {
   onClear?: () => void;
   prefixIcon?: React.ReactNode;
   suffixIcon?: React.ReactNode;
+  required?: boolean;
 };
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
@@ -58,6 +59,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       prefixIcon,
       suffixIcon,
       placeholder = " ",
+      required,
       ...props
     },
     ref
@@ -249,7 +251,10 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
               htmlFor={inputId}
               className="flex gap-2 text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
             >
-              {label}
+              <span>
+                {label}
+                {required && <span className="text-error ml-0.5">*</span>}
+              </span>
               {infoTooltip && (
                 <Tooltip content={infoTooltip}>
                   <Info className="size-3.5 min-w-3.5" />
@@ -312,6 +317,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
               placeholder={placeholder}
               maxLength={maxLength}
               onChange={handleInput}
+              required={required}
               {...props}
             />
             {isFloatLabel && (
@@ -319,6 +325,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                 htmlFor={inputId}
                 size={size}
                 infoTooltip={infoTooltip}
+                required={required}
               >
                 {label}
               </FloatingLabel>
