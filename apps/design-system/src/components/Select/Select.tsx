@@ -46,6 +46,7 @@ export type SelectProps = Omit<ComboboxProps, "ref"> & {
   onChange?: (value: string | string[]) => void;
   onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
   onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
+  required?: boolean;
 };
 
 const Select = React.forwardRef<HTMLDivElement, SelectProps>(
@@ -76,6 +77,7 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
       onChange,
       onFocus,
       onBlur,
+      required,
     },
     ref
   ) => {
@@ -155,7 +157,10 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
               htmlFor={selectId}
               className="flex gap-2 text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
             >
-              {label}
+              <span>
+                {label}
+                {required && <span className="text-error ml-0.5">*</span>}
+              </span>
               {infoTooltip && (
                 <Tooltip content={infoTooltip}>
                   <Info className="size-3.5 min-w-3.5" />
@@ -203,6 +208,7 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
                     htmlFor={selectId}
                     size={size}
                     infoTooltip={infoTooltip}
+                    required={required}
                     shouldFloat={!!(value ?? internalValue)}
                     className="pointer-events-none"
                   >
@@ -248,6 +254,7 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
                     htmlFor={selectId}
                     size={size}
                     infoTooltip={infoTooltip}
+                    required={required}
                   >
                     {label}
                   </FloatingLabel>

@@ -11,10 +11,19 @@ const FloatingLabel = React.forwardRef<
     infoTooltip?: React.ReactNode;
     size?: string;
     shouldFloat?: boolean;
+    required?: boolean;
   }
 >(
   (
-    { className, infoTooltip, size = "xl", shouldFloat, children, ...props },
+    {
+      className,
+      infoTooltip,
+      size = "xl",
+      shouldFloat,
+      required,
+      children,
+      ...props
+    },
     ref
   ) => {
     const lagerSize = size === "lg" || false;
@@ -71,6 +80,7 @@ const FloatingLabel = React.forwardRef<
       >
         <span className="truncate whitespace-nowrap max-w-full pointer-events-none">
           {children}
+          {required && <span className="text-error ml-0.5">*</span>}
         </span>
 
         {infoTooltip && (

@@ -27,6 +27,14 @@ const meta: Meta<typeof TimePicker> = {
         category: i18n.t("stories.category.basic"),
       },
     },
+    required: {
+      control: { type: "boolean" },
+      description: "Whether the time picker field is required",
+      table: {
+        defaultValue: { summary: "false" },
+        category: i18n.t("stories.category.basic"),
+      },
+    },
     isFloatLabel: {
       control: { type: "boolean" },
       description: i18n.t(

@@ -27,6 +27,14 @@ const meta: Meta<typeof Select> = {
         category: i18n.t("stories.category.content"),
       },
     },
+    required: {
+      control: "boolean",
+      description: "Whether the select field is required",
+      table: {
+        defaultValue: { summary: "false" },
+        category: i18n.t("stories.category.content"),
+      },
+    },
     size: {
       control: "select",
       options: ["xs", "sm", "normal", "lg", "xl"],
