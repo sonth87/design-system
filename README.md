@@ -28,7 +28,7 @@ A modern, comprehensive React component library that extends [Shadcn UI](https:/
 Add this design system skill to your AI Agent so it can automatically recognize components, props, and usage patterns:
 
 ```bash
-npx skills add https://github.com/sonth87/design-system/tree/main/docs --skill shadcn-design-system
+npx skills add https://github.com/sonth87/design-system/tree/main/skills/shadcn-design-system --skill shadcn-design-system
 ```
 
 Once added, the AI Agent can:
