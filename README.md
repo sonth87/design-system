@@ -378,4 +378,4 @@ This project is built on top of:
 
 ---
 
-Built with ❤️ by [Sonth87](https://github.com/sonth87)
+[Sonth87](https://github.com/sonth87)
