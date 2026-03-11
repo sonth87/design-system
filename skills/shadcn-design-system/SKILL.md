@@ -1,6 +1,6 @@
 ---
-name: design-system
-description: "Index skill for @sth87/shadcn-design-system — a React + TypeScript component library built on Radix UI, Tailwind CSS v4, Framer Motion, and shadcn/ui primitives. Covers installation, setup, and links to detailed reference files for all components, tokens, utilities, hooks, and types."
+name: shadcn-design-system
+description: "Use this skill whenever the user is working with @sth87/shadcn-design-system, importing or using any of its components (Button, Dialog, DataTable, Sidebar, DatePicker, etc.), asking how to set up or configure the design system, customizing themes or tokens, using hooks like useDataTable, or building UI with this React + TypeScript component library. Also trigger when the user mentions shadcn-design-system, @sth87, or @dsui/design-system, even if they don't explicitly ask about a specific component."
 ---
 
 # Design System Skill — @sth87/shadcn-design-system
@@ -108,15 +108,17 @@ import { Toaster } from "@sth87/shadcn-design-system";
 
 ## 2. Reference Files
 
-| File | Contents |
-|---|---|
-| [references/theme-tokens.md](references/theme-tokens.md) | CSS design tokens, dark mode, theme switching, animation token table |
-| [references/components-a-l.md](references/components-a-l.md) | Accordion → Label — full props + examples for 25 components |
-| [references/components-m-z.md](references/components-m-z.md) | Marquee → Upload — full props + examples for 26 components |
-| [references/text-animation.md](references/text-animation.md) | 13 text animation components with usage examples |
-| [references/utils.md](references/utils.md) | `cn`, `animationClass`, `animationEffect`, `formatDate`, `dataTableConfig`, URL state parsers |
-| [references/hooks.md](references/hooks.md) | 12 hooks including `useDataTable`, `useDebounceValue`, `useIntersectionObserver` |
-| [references/types.md](references/types.md) | All TypeScript types: `BasicColor`, `BasicAnimation`, `UploadFile`, `FilterVariant`, etc. |
+Load the relevant reference file when you need full props, types, or detailed examples. The index tables in Section 3 link directly to the relevant anchors.
+
+| File | When to read | Contents |
+|---|---|---|
+| [references/theme-tokens.md](references/theme-tokens.md) | User asks about colors, dark mode, CSS variables, theming, or custom tokens | CSS design tokens, dark mode, theme switching, animation token table |
+| [references/components-a-l.md](references/components-a-l.md) | User uses any component from Accordion to Label | Accordion → Label — full props + examples for 25 components |
+| [references/components-m-z.md](references/components-m-z.md) | User uses any component from Marquee to Upload | Marquee → Upload — full props + examples for 26 components |
+| [references/text-animation.md](references/text-animation.md) | User asks about text effects or animation components | 13 text animation components with usage examples |
+| [references/utils.md](references/utils.md) | User calls `cn`, formatting helpers, or URL state utilities | `cn`, `animationClass`, `animationEffect`, `formatDate`, `dataTableConfig`, URL state parsers |
+| [references/hooks.md](references/hooks.md) | User uses any hook from this library | 12 hooks including `useDataTable`, `useDebounceValue`, `useIntersectionObserver` |
+| [references/types.md](references/types.md) | User needs TypeScript types or interfaces | All TypeScript types: `BasicColor`, `BasicAnimation`, `UploadFile`, `FilterVariant`, etc. |
 
 ---
 

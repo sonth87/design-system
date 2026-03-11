@@ -23,6 +23,23 @@ A modern, comprehensive React component library that extends [Shadcn UI](https:/
 - 📖 **[Storybook](https://design-system-sth-kappa.vercel.app)** - Interactive component documentation
 - 📦 **[NPM Package](https://www.npmjs.com/package/@sth87/shadcn-design-system)** - Latest package on npm
 
+## 🤖 AI Skills
+
+Add this design system skill to your AI Agent so it can automatically recognize components, props, and usage patterns:
+
+```bash
+npx skills add https://github.com/sonth87/design-system/tree/main/docs --skill shadcn-design-system
+```
+
+Once added, the AI Agent can:
+- Know exactly how to import and use each component
+- Generate code with correct props, types, and examples
+- Understand design tokens, hooks, and utilities in this design system
+
+> See full reference at [docs/SKILL.md](docs/SKILL.md)
+
+---
+
 ## 🚀 Installation
 
 ### Using npm
