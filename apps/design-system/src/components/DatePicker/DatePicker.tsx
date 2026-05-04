@@ -189,7 +189,7 @@ export function DatePicker({
 
   // Parse initial value with correct format
   // - hideDate + showTime: time only (e.g., "HH:mm")
-  // - showTime: date + time (e.g., "dd/MM/yyyy HH:mm")
+  // - showTime: date + time (e.g., "ds:dd/MM/yyyy ds:HH:mm")
   // - default: date only (e.g., "dd/MM/yyyy")
   const fullFormat =
     hideDate && showTime
@@ -309,9 +309,9 @@ export function DatePicker({
     >
       <CalendarIcon
         className={cn({
-          "ds:size-3": props.size === "xs" || props.size === "ds:sm",
+          "ds:size-3": props.size === "xs" || props.size === "sm",
           "ds:size-3.5": !props.size || props.size === "normal",
-          "ds:size-4": props.size === "ds:lg" || props.size === "ds:xl",
+          "ds:size-4": props.size === "lg" || props.size === "xl",
         })}
       />
       <span className="sr-only">Select date</span>
@@ -364,8 +364,7 @@ export function DatePicker({
               "[--cell-size:clamp(0px,calc(100vw/7.5),52px)] mb-8 bg-transparent":
                 (isMobile && !showTime) || desktopMode === "drawer",
               "[--cell-size:clamp(0px,calc(100vw/7.5),34px)]":
-                !isMobile && desktopMode !== "drawer",
-              "w-full": mode === "drawer" && showTime,
+                !isMobile && desktopMode !== "drawer", "ds:w-full": mode === "drawer" && showTime,
             },
             calendarClassName
           )}

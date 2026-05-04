@@ -121,10 +121,10 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
     // State
     const helperTextStyles = {
-      default: "text-muted-foreground",
-      success: "text-success",
-      warning: "text-warning",
-      error: "text-error",
+      default: "ds:text-muted-foreground",
+      success: "ds:text-success",
+      warning: "ds:text-warning",
+      error: "ds:text-error",
     };
 
     // Calculate current size
@@ -139,9 +139,9 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       const sizeMap = {
         xs: { prefix: "pl-8", suffix: "pr-8" },
         sm: { prefix: "pl-9", suffix: "pr-9" },
-        normal: { prefix: "pl-10", suffix: "pr-10" },
-        lg: { prefix: "pl-11", suffix: "pr-11" },
-        xl: { prefix: "pl-12", suffix: "pr-12" },
+        normal: { prefix: "ds:pl-10", suffix: "ds:pr-10" },
+        lg: { prefix: "ds:pl-11", suffix: "ds:pr-11" },
+        xl: { prefix: "ds:pl-12", suffix: "ds:pr-12" },
       };
 
       return sizeMap[currentSize as keyof typeof sizeMap] || sizeMap.normal;
@@ -152,11 +152,11 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     // Get icon size class based on current size
     const getIconSizeClass = () => {
       const sizeMap = {
-        xs: "size-3",
-        sm: "size-3.5",
-        normal: "size-4",
-        lg: "size-4",
-        xl: "size-4",
+        xs: "ds:size-3",
+        sm: "ds:size-3.5",
+        normal: "ds:size-4",
+        lg: "ds:size-4",
+        xl: "ds:size-4",
       };
       return sizeMap[currentSize as keyof typeof sizeMap] || "size-4";
     };
@@ -176,7 +176,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           clearable &&
           (charCount > 0 || props?.value)
           ? "pr-20" // password + clear + custom icon
-          : "pr-16"; // one built-in + custom icon
+          : "ds:pr-16"; // one built-in + custom icon
       }
 
       if (hasBuiltInSuffix) {
@@ -184,7 +184,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           clearable &&
           (charCount > 0 || props?.value)
           ? "pr-16" // password + clear
-          : "pr-10"; // single built-in icon
+          : "ds:pr-10"; // single built-in icon
       }
 
       if (suffixIcon) {
@@ -197,11 +197,11 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     // Icon position calculations
     const getIconPosition = () => {
       const sizeMap = {
-        xs: { left: "left-2.5", right: "right-2.5" },
-        sm: { left: "left-3", right: "right-3" },
-        normal: { left: "left-3", right: "right-3" },
-        lg: { left: "left-3.5", right: "right-3.5" },
-        xl: { left: "left-4", right: "right-4" },
+        xs: { left: "ds:left-2.5", right: "ds:right-2.5" },
+        sm: { left: "ds:left-3", right: "ds:right-3" },
+        normal: { left: "ds:left-3", right: "ds:right-3" },
+        lg: { left: "ds:left-3.5", right: "ds:right-3.5" },
+        xl: { left: "ds:left-4", right: "ds:right-4" },
       };
 
       return sizeMap[currentSize as keyof typeof sizeMap] || sizeMap.normal;
@@ -263,7 +263,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             </Label>
           )}
 
-          <div className="ds:relative">
+          <div className= "relative">
             {/* Prefix Icon */}
             {prefixIcon && (
               <div
@@ -289,13 +289,12 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
               className={cn(
                 "peer",
                 {
-                  "pt-5 pb-1": isFloatLabel && size !== "lg",
-                  "[&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none [-moz-appearance:textfield] pr-8":
+                  "pt-5 pb-1": isFloatLabel && size !== "lg", "[&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none ds:[-moz-appearance:textfield] ds:pr-8":
                     type === "number",
                   // "[-webkit-text-fill-color:var(--foreground)]": mask,
                 },
                 prefixIcon && padding.prefix,
-                mask && "placeholder:text-slate-400 placeholder:opacity-100",
+                mask && "ds:placeholder:text-slate-400 ds:placeholder:opacity-100",
                 getRightPadding()
                 // className,
               )}

@@ -1335,10 +1335,8 @@ function CropperRootImpl(props: CropperRootImplProps) {
 const cropperMediaVariants = cva("will-change-transform", {
   variants: {
     objectFit: {
-      contain: "absolute inset-0 m-auto max-h-full max-w-full",
-      cover: "h-auto w-full",
-      "horizontal-cover": "h-auto w-full",
-      "vertical-cover": "h-full w-auto",
+      contain: "ds:absolute ds:inset-0 ds:m-auto ds:max-h-full ds:max-w-full",
+      cover: "ds:h-auto ds:w-full", "horizontal-cover": "ds:h-auto ds:w-full", "vertical-cover": "ds:h-full ds:w-auto",
     },
   },
   defaultVariants: {
@@ -1389,12 +1387,10 @@ function useMediaComputation<T extends HTMLImageElement | HTMLVideoElement>({
             : {
                 width: contentRect.width,
                 height: contentRect.width / mediaAspect,
-              },
-        "horizontal-cover": () => ({
+              }, "horizontal-cover": () => ({
           width: contentRect.width,
           height: contentRect.width / mediaAspect,
-        }),
-        "vertical-cover": () => ({
+        }), "vertical-cover": () => ({
           width: contentRect.height * mediaAspect,
           height: contentRect.height,
         }),
@@ -1752,7 +1748,7 @@ const cropperAreaVariants = cva(
     variants: {
       shape: {
         rectangle: "",
-        circle: "rounded-full",
+        circle: "ds:rounded-full",
       },
       withGrid: {
         true: "before:absolute before:top-0 before:right-1/3 before:bottom-0 before:left-1/3 before:box-border before:border before:border-white/50 before:border-t-0 before:border-b-0 before:content-[''] after:absolute after:top-1/3 after:right-0 after:bottom-1/3 after:left-0 after:box-border after:border after:border-white/50 after:border-r-0 after:border-l-0 after:content-['']",

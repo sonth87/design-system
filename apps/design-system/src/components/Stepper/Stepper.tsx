@@ -37,122 +37,98 @@ const stepperColorClasses: Record<
 > = {
   primary: {
     indicator: {
-      active:
-        "border-primary bg-primary text-primary-foreground data-[variant=dot]:bg-primary/30 data-[variant=dot]:border-primary/0",
-      completed:
-        "border-primary bg-primary text-primary-foreground data-[variant=dot]:bg-primary/30 data-[variant=dot]:border-primary/0",
-      inactive:
-        "border-muted bg-background text-muted-foreground data-[variant=dot]:bg-muted/30 data-[variant=dot]:border-muted/0",
+      active: "ds:border-primary ds:bg-primary ds:text-primary-foreground ds:data-[variant=dot]:bg-primary/30 ds:data-[variant=dot]:border-primary/0",
+      completed: "ds:border-primary ds:bg-primary ds:text-primary-foreground ds:data-[variant=dot]:bg-primary/30 ds:data-[variant=dot]:border-primary/0",
+      inactive: "ds:border-muted ds:bg-background ds:text-muted-foreground ds:data-[variant=dot]:bg-muted/30 ds:data-[variant=dot]:border-muted/0",
     },
     separator: {
-      active: "bg-primary",
-      completed: "bg-primary",
-      inactive: "bg-border",
+      active: "ds:bg-primary",
+      completed: "ds:bg-primary",
+      inactive: "ds:bg-border",
     },
   },
   secondary: {
     indicator: {
-      active:
-        "border-secondary bg-secondary text-secondary-foreground data-[variant=dot]:bg-secondary/30 data-[variant=dot]:border-secondary/0",
-      completed:
-        "border-secondary bg-secondary text-secondary-foreground data-[variant=dot]:bg-secondary/30 data-[variant=dot]:border-secondary/0",
-      inactive:
-        "border-muted bg-background text-muted-foreground data-[variant=dot]:bg-muted/30 data-[variant=dot]:border-muted/0",
+      active: "ds:border-secondary ds:bg-secondary ds:text-secondary-foreground ds:data-[variant=dot]:bg-secondary/30 ds:data-[variant=dot]:border-secondary/0",
+      completed: "ds:border-secondary ds:bg-secondary ds:text-secondary-foreground ds:data-[variant=dot]:bg-secondary/30 ds:data-[variant=dot]:border-secondary/0",
+      inactive: "ds:border-muted ds:bg-background ds:text-muted-foreground ds:data-[variant=dot]:bg-muted/30 ds:data-[variant=dot]:border-muted/0",
     },
     separator: {
-      active: "bg-secondary",
-      completed: "bg-secondary",
-      inactive: "bg-border",
+      active: "ds:bg-secondary",
+      completed: "ds:bg-secondary",
+      inactive: "ds:bg-border",
     },
   },
   accent: {
     indicator: {
-      active:
-        "border-accent bg-accent text-accent-foreground data-[variant=dot]:bg-accent/30 data-[variant=dot]:border-accent/0",
-      completed:
-        "border-accent bg-accent text-accent-foreground data-[variant=dot]:bg-accent/30 data-[variant=dot]:border-accent/0",
-      inactive:
-        "border-muted bg-background text-muted-foreground data-[variant=dot]:bg-muted/30 data-[variant=dot]:border-muted/0",
+      active: "ds:border-accent ds:bg-accent ds:text-accent-foreground ds:data-[variant=dot]:bg-accent/30 ds:data-[variant=dot]:border-accent/0",
+      completed: "ds:border-accent ds:bg-accent ds:text-accent-foreground ds:data-[variant=dot]:bg-accent/30 ds:data-[variant=dot]:border-accent/0",
+      inactive: "ds:border-muted ds:bg-background ds:text-muted-foreground ds:data-[variant=dot]:bg-muted/30 ds:data-[variant=dot]:border-muted/0",
     },
     separator: {
-      active: "bg-accent",
-      completed: "bg-accent",
-      inactive: "bg-border",
+      active: "ds:bg-accent",
+      completed: "ds:bg-accent",
+      inactive: "ds:bg-border",
     },
   },
   destructive: {
     indicator: {
-      active:
-        "border-destructive bg-destructive text-destructive-foreground data-[variant=dot]:bg-destructive/30 data-[variant=dot]:border-destructive/0",
-      completed:
-        "border-destructive bg-destructive text-destructive-foreground data-[variant=dot]:bg-destructive/30 data-[variant=dot]:border-destructive/0",
-      inactive:
-        "border-muted bg-background text-muted-foreground data-[variant=dot]:bg-muted/30 data-[variant=dot]:border-muted/0",
+      active: "ds:border-destructive ds:bg-destructive ds:text-destructive-foreground ds:data-[variant=dot]:bg-destructive/30 ds:data-[variant=dot]:border-destructive/0",
+      completed: "ds:border-destructive ds:bg-destructive ds:text-destructive-foreground ds:data-[variant=dot]:bg-destructive/30 ds:data-[variant=dot]:border-destructive/0",
+      inactive: "ds:border-muted ds:bg-background ds:text-muted-foreground ds:data-[variant=dot]:bg-muted/30 ds:data-[variant=dot]:border-muted/0",
     },
     separator: {
-      active: "bg-destructive",
-      completed: "bg-destructive",
-      inactive: "bg-border",
+      active: "ds:bg-destructive",
+      completed: "ds:bg-destructive",
+      inactive: "ds:bg-border",
     },
   },
   muted: {
     indicator: {
-      active:
-        "border-muted bg-muted text-muted-foreground data-[variant=dot]:bg-muted/30 data-[variant=dot]:border-muted/0",
-      completed:
-        "border-muted bg-muted text-muted-foreground data-[variant=dot]:bg-muted/30 data-[variant=dot]:border-muted/0",
-      inactive:
-        "border-muted bg-background text-muted-foreground data-[variant=dot]:bg-muted/30 data-[variant=dot]:border-muted/0",
+      active: "ds:border-muted ds:bg-muted ds:text-muted-foreground ds:data-[variant=dot]:bg-muted/30 ds:data-[variant=dot]:border-muted/0",
+      completed: "ds:border-muted ds:bg-muted ds:text-muted-foreground ds:data-[variant=dot]:bg-muted/30 ds:data-[variant=dot]:border-muted/0",
+      inactive: "ds:border-muted ds:bg-background ds:text-muted-foreground ds:data-[variant=dot]:bg-muted/30 ds:data-[variant=dot]:border-muted/0",
     },
     separator: {
-      active: "bg-muted",
-      completed: "bg-muted",
-      inactive: "bg-border",
+      active: "ds:bg-muted",
+      completed: "ds:bg-muted",
+      inactive: "ds:bg-border",
     },
   },
   success: {
     indicator: {
-      active:
-        "border-success bg-success text-success-foreground data-[variant=dot]:bg-success/30 data-[variant=dot]:border-success/0",
-      completed:
-        "border-success bg-success text-success-foreground data-[variant=dot]:bg-success/30 data-[variant=dot]:border-success/0",
-      inactive:
-        "border-muted bg-background text-muted-foreground data-[variant=dot]:bg-muted/30 data-[variant=dot]:border-muted/0",
+      active: "ds:border-success ds:bg-success ds:text-success-foreground ds:data-[variant=dot]:bg-success/30 ds:data-[variant=dot]:border-success/0",
+      completed: "ds:border-success ds:bg-success ds:text-success-foreground ds:data-[variant=dot]:bg-success/30 ds:data-[variant=dot]:border-success/0",
+      inactive: "ds:border-muted ds:bg-background ds:text-muted-foreground ds:data-[variant=dot]:bg-muted/30 ds:data-[variant=dot]:border-muted/0",
     },
     separator: {
-      active: "bg-success",
-      completed: "bg-success",
-      inactive: "bg-border",
+      active: "ds:bg-success",
+      completed: "ds:bg-success",
+      inactive: "ds:bg-border",
     },
   },
   error: {
     indicator: {
-      active:
-        "border-error bg-error text-error-foreground data-[variant=dot]:bg-error/30 data-[variant=dot]:border-error/0",
-      completed:
-        "border-error bg-error text-error-foreground data-[variant=dot]:bg-error/30 data-[variant=dot]:border-error/0",
-      inactive:
-        "border-muted bg-background text-muted-foreground data-[variant=dot]:bg-muted/30 data-[variant=dot]:border-muted/0",
+      active: "ds:border-error ds:bg-error ds:text-error-foreground ds:data-[variant=dot]:bg-error/30 ds:data-[variant=dot]:border-error/0",
+      completed: "ds:border-error ds:bg-error ds:text-error-foreground ds:data-[variant=dot]:bg-error/30 ds:data-[variant=dot]:border-error/0",
+      inactive: "ds:border-muted ds:bg-background ds:text-muted-foreground ds:data-[variant=dot]:bg-muted/30 ds:data-[variant=dot]:border-muted/0",
     },
     separator: {
-      active: "bg-error",
-      completed: "bg-error",
-      inactive: "bg-border",
+      active: "ds:bg-error",
+      completed: "ds:bg-error",
+      inactive: "ds:bg-border",
     },
   },
   warning: {
     indicator: {
-      active:
-        "border-warning bg-warning text-warning-foreground data-[variant=dot]:bg-warning/30 data-[variant=dot]:border-warning/0",
-      completed:
-        "border-warning bg-warning text-warning-foreground data-[variant=dot]:bg-warning/30 data-[variant=dot]:border-warning/0",
-      inactive:
-        "border-muted bg-background text-muted-foreground data-[variant=dot]:bg-muted/30 data-[variant=dot]:border-muted/0",
+      active: "ds:border-warning ds:bg-warning ds:text-warning-foreground ds:data-[variant=dot]:bg-warning/30 ds:data-[variant=dot]:border-warning/0",
+      completed: "ds:border-warning ds:bg-warning ds:text-warning-foreground ds:data-[variant=dot]:bg-warning/30 ds:data-[variant=dot]:border-warning/0",
+      inactive: "ds:border-muted ds:bg-background ds:text-muted-foreground ds:data-[variant=dot]:bg-muted/30 ds:data-[variant=dot]:border-muted/0",
     },
     separator: {
-      active: "bg-warning",
-      completed: "bg-warning",
-      inactive: "bg-border",
+      active: "ds:bg-warning",
+      completed: "ds:bg-warning",
+      inactive: "ds:bg-border",
     },
   },
 };
@@ -632,7 +608,7 @@ function StepperRoot(props: StepperRootProps) {
           {...rootProps}
           className={cn(
             "ds:flex ds:gap-6",
-            orientation === "ds:horizontal" ? "ds:w-full ds:flex-col" : "ds:flex-row",
+            orientation === "horizontal" ? "ds:w-full ds:flex-col" : "ds:flex-row",
             className
           )}
         />
@@ -823,7 +799,7 @@ function StepperList(props: StepperListProps) {
         ref={composedRef}
         className={cn(
           "ds:flex ds:outline-none",
-          orientation === "ds:horizontal"
+          orientation === "horizontal"
             ? "ds:flex-row ds:items-center"
             : "ds:flex-col ds:items-start",
           className
@@ -1338,7 +1314,7 @@ function StepperTrigger(props: ButtonProps) {
     ) {
       // For horizontal with top/bottom labels, trigger only contains text
       // Indicator and separator will be siblings at item level
-      return labelPosition === "top" ? "flex-col-reverse" : "flex-col";
+      return labelPosition === "top" ? "flex-col-reverse" : "ds:flex-col";
     }
 
     if (labelPosition === "top") return "flex-col-reverse";
@@ -1388,8 +1364,7 @@ function StepperTrigger(props: ButtonProps) {
       tabIndex={isTabStop ? 0 : -1}
       {...triggerProps}
       ref={composedRef}
-      className={cn("ds:inline-flex ds:items-center ds:justify-center ds:gap-3 ds:rounded-md ds:text-left ds:outline-none ds:transition-all ds:focus-visible:border-ring focus-visible:ring-[3px] ds:focus-visible:ring-ring/50 ds:disabled:pointer-events-none ds:disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 ds:dark:aria-invalid:ring-destructive/40 [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
-        "not-has-data-[slot=description]:rounded-full not-has-data-[slot=title]:rounded-full",
+      className={cn("ds:inline-flex ds:items-center ds:justify-center ds:gap-3 ds:rounded-md ds:text-left ds:outline-none ds:transition-all ds:focus-visible:border-ring focus-visible:ring-[3px] ds:focus-visible:ring-ring/50 ds:disabled:pointer-events-none ds:disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 ds:dark:aria-invalid:ring-destructive/40 [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0", "ds:not-has-data-[slot=description]:rounded-full ds:not-has-data-[slot=title]:rounded-full",
         shouldWrapIndicator ? "" : getFlexDirection(),
         className
       )}

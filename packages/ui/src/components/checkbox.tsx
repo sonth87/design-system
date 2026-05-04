@@ -125,12 +125,12 @@ const checkboxVariants = cva(
     variants: {
       variant: {
         default: "",
-        circle: "border-2",
+        circle: "ds:border-2",
       },
       size: {
-        sm: "min-w-4 min-h-4 [&_svg]:min-w-3 [&_svg]:min-h-3",
-        default: "min-w-5 min-h-5 [&_svg]:min-w-4 [&_svg]:min-h-4",
-        lg: "min-w-6 min-h-6 [&_svg]:min-w-5 [&_svg]:min-h-5",
+        sm: "ds:min-w-4 ds:min-h-4 [&_svg]:min-w-3 [&_svg]:min-h-3",
+        default: "ds:min-w-5 ds:min-h-5 [&_svg]:min-w-4 [&_svg]:min-h-4",
+        lg: "ds:min-w-6 ds:min-h-6 [&_svg]:min-w-5 [&_svg]:min-h-5",
       },
       color: {
         primary: "",
@@ -165,9 +165,9 @@ function Checkbox({
   }) {
   const iconClass = color ? iconColorVariants[color].default : "";
   const iconSizeClass = {
-    sm: "min-w-5 min-h-5",
-    default: "min-w-6 min-h-6",
-    lg: "min-w-7 min-h-7",
+    sm: "ds:min-w-5 ds:min-h-5",
+    default: "ds:min-w-6 ds:min-h-6",
+    lg: "ds:min-w-7 ds:min-h-7",
   }[size || "default"];
 
   return (

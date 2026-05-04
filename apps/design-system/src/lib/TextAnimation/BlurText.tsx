@@ -105,8 +105,8 @@ const BlurText: React.FC<BlurTextProps> = ({
               index === elements.length - 1 ? onAnimationComplete : undefined
             }
             style={{
-              display: "inline-block",
-              willChange: "transform, filter, opacity",
+              display: "ds:inline-block",
+              willChange: "ds:transform, ds:filter, ds:opacity",
             }}
           >
             {segment === " " ? "\u00A0" : segment}

@@ -528,24 +528,17 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
                 // Apply text color for active state with sliding indicator
                 "data-[state=active]:text-primary-foreground":
                   (variant === "bordered" || variant === "pills") &&
-                  color === "primary",
-                "data-[state=active]:text-secondary-foreground":
+                  color === "primary", "ds:data-[state=active]:text-secondary-foreground":
                   (variant === "bordered" || variant === "pills") &&
-                  color === "secondary",
-                "data-[state=active]:text-muted-foreground":
+                  color === "secondary", "ds:data-[state=active]:text-muted-foreground":
                   (variant === "bordered" || variant === "pills") &&
-                  color === "muted",
-                "data-[state=active]:text-accent-foreground":
+                  color === "muted", "ds:data-[state=active]:text-accent-foreground":
                   (variant === "bordered" || variant === "pills") &&
-                  color === "accent",
-                "data-[state=active]:text-destructive-foreground":
+                  color === "accent", "ds:data-[state=active]:text-destructive-foreground":
                   (variant === "bordered" || variant === "pills") &&
-                  color === "destructive",
-                "data-[state=active]:text-white":
+                  color === "destructive", "ds:data-[state=active]:text-white":
                   (variant === "bordered" || variant === "pills") &&
-                  (color === "success" || color === "warning"),
-                "flex-1": fullWidth && !isVertical,
-                "w-full justify-start": isVertical,
+                  (color === "success" || color === "warning"), "ds:flex-1": fullWidth && !isVertical, "ds:w-full ds:justify-start": isVertical,
               },
               // For other variants, apply normal color classes
               !(
@@ -573,7 +566,7 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
         ref={tabsListRef}
         className={cn(
           positionClasses[tabPosition].list,
-          sizeClasses[size][isVertical ? "vertical" : "ds:horizontal"],
+          sizeClasses[size][isVertical ? "vertical" : "horizontal"],
           listVariantClass,
           listBorderClass,
           tabListClassName,
@@ -595,19 +588,11 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
             <motion.div
               className={cn("ds:absolute ds:rounded-full ds:z-10", {
                 // Horizontal positions (top/bottom)
-                "h-0.5 bottom-0": tabPosition === "top",
-                "h-0.5 top-0": tabPosition === "bottom",
+                "h-0.5 bottom-0": tabPosition === "top", "ds:h-0.5 ds:top-0": tabPosition === "bottom",
                 // Vertical positions (left/right)
-                "w-0.5 right-0": tabPosition === "left",
-                "w-0.5 left-0": tabPosition === "right",
+                "w-0.5 right-0": tabPosition === "left", "ds:w-0.5 ds:left-0": tabPosition === "right",
                 // Colors
-                "bg-primary": color === "primary",
-                "bg-secondary": color === "secondary",
-                "bg-muted-foreground": color === "muted",
-                "bg-accent": color === "accent",
-                "bg-destructive": color === "destructive",
-                "bg-success": color === "success",
-                "bg-warning": color === "warning",
+                "bg-primary": color === "primary", "ds:bg-secondary": color === "secondary", "ds:bg-muted-foreground": color === "muted", "ds:bg-accent": color === "accent", "ds:bg-destructive": color === "destructive", "ds:bg-success": color === "success", "ds:bg-warning": color === "warning",
               })}
               animate={
                 isVertical
@@ -637,43 +622,27 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
           !isActiveTabInOverflow && (
             <motion.div
               className={cn("ds:absolute ds:rounded-md pointer-events-none ds:z-0", {
-                "bg-background shadow-sm": variant === "solid",
-
-                "bg-primary":
+                "bg-background shadow-sm": variant === "solid", "ds:bg-primary":
                   (variant === "bordered" || variant === "pills") &&
-                  color === "primary",
-                "bg-secondary":
+                  color === "primary", "ds:bg-secondary":
                   (variant === "bordered" || variant === "pills") &&
-                  color === "secondary",
-                "bg-muted":
+                  color === "secondary", "ds:bg-muted":
                   (variant === "bordered" || variant === "pills") &&
-                  color === "muted",
-                "bg-accent":
+                  color === "muted", "ds:bg-accent":
                   (variant === "bordered" || variant === "pills") &&
-                  color === "accent",
-                "bg-destructive":
+                  color === "accent", "ds:bg-destructive":
                   (variant === "bordered" || variant === "pills") &&
-                  color === "destructive",
-                "bg-success":
+                  color === "destructive", "ds:bg-success":
                   (variant === "bordered" || variant === "pills") &&
-                  color === "success",
-                "bg-warning":
+                  color === "success", "ds:bg-warning":
                   (variant === "bordered" || variant === "pills") &&
-                  color === "warning",
-
-                "border rounded-full border-primary":
-                  variant === "pill-stroke" && color === "primary",
-                "border rounded-full border-secondary":
-                  variant === "pill-stroke" && color === "secondary",
-                "rounded-full border-muted":
-                  variant === "pill-stroke" && color === "muted",
-                "border rounded-full border-accent":
-                  variant === "pill-stroke" && color === "accent",
-                "border rounded-full border-destructive":
-                  variant === "pill-stroke" && color === "destructive",
-                "border rounded-full border-success":
-                  variant === "pill-stroke" && color === "success",
-                "border rounded-full border-warning":
+                  color === "warning", "ds:border ds:rounded-full ds:border-primary":
+                  variant === "pill-stroke" && color === "primary", "ds:border ds:rounded-full ds:border-secondary":
+                  variant === "pill-stroke" && color === "secondary", "ds:rounded-full ds:border-muted":
+                  variant === "pill-stroke" && color === "muted", "ds:border ds:rounded-full ds:border-accent":
+                  variant === "pill-stroke" && color === "accent", "ds:border ds:rounded-full ds:border-destructive":
+                  variant === "pill-stroke" && color === "destructive", "ds:border ds:rounded-full ds:border-success":
+                  variant === "pill-stroke" && color === "success", "ds:border ds:rounded-full ds:border-warning":
                   variant === "pill-stroke" && color === "warning",
               })}
               animate={{
@@ -699,8 +668,7 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
           ref={scrollAreaRef}
           className={cn({
             "ds:w-full": !isVertical,
-            "ds:pb-2": !isVertical && isOverflowing,
-            "max-h-[300px] *:data-radix-scroll-area-viewport:h-full *:data-radix-scroll-area-viewport:max-h-[inherit]":
+            "ds:pb-2": !isVertical && isOverflowing, "ds:max-h-[300px] ds:*:data-radix-scroll-area-viewport:h-full ds:*:data-radix-scroll-area-viewport:max-h-[inherit]":
               isVertical,
           })}
         >
@@ -915,13 +883,11 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
         ref={containerRef}
         className={cn("ds:flex", {
           [alignmentClasses[alignment].horizontal]: !isVertical,
-          [alignmentClasses[alignment].vertical]: isVertical,
-          "w-full":
+          [alignmentClasses[alignment].vertical]: isVertical, "ds:w-full":
             (fullWidth ||
               overflowMode === "dropdown" ||
               overflowMode === "fade") &&
-            !isVertical,
-          "overflow-hidden":
+            !isVertical, "ds:overflow-hidden":
             overflowMode === "dropdown" || overflowMode === "fade",
         })}
       >

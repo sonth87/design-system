@@ -33,21 +33,17 @@ const multiSelectTriggerVariants = cva(
   {
     variants: {
       size: {
-        xs: "min-h-6 text-xs px-2 py-0.5",
-        sm: "min-h-8 text-sm px-2.5 py-1",
-        normal: "min-h-9 px-3 py-1.5",
-        lg: "min-h-11 px-4 py-2",
-        xl: "min-h-14 px-5 py-3",
+        xs: "ds:min-h-6 ds:text-xs ds:px-2 ds:py-0.5",
+        sm: "ds:min-h-8 ds:text-sm ds:px-2.5 ds:py-1",
+        normal: "ds:min-h-9 ds:px-3 ds:py-1.5",
+        lg: "ds:min-h-11 ds:px-4 ds:py-2",
+        xl: "ds:min-h-14 ds:px-5 ds:py-3",
       },
       state: {
-        default:
-          "border-input focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40",
-        success:
-          "border-success ring-success/30 focus-visible:border-success focus-visible:ring-success/50",
-        error:
-          "border-destructive ring-destructive/30 focus-visible:border-destructive focus-visible:ring-destructive/50",
-        warning:
-          "border-warning ring-warning/30 focus-visible:border-warning focus-visible:ring-warning/50",
+        default: "ds:border-input ds:focus-visible:border-ring ds:focus-visible:ring-ring/50 ds:aria-invalid:border-destructive ds:aria-invalid:ring-destructive/20 ds:dark:aria-invalid:ring-destructive/40",
+        success: "ds:border-success ds:ring-success/30 ds:focus-visible:border-success ds:focus-visible:ring-success/50",
+        error: "ds:border-destructive ds:ring-destructive/30 ds:focus-visible:border-destructive ds:focus-visible:ring-destructive/50",
+        warning: "ds:border-warning ds:ring-warning/30 ds:focus-visible:border-warning ds:focus-visible:ring-warning/50",
       },
     },
     defaultVariants: {
@@ -149,8 +145,7 @@ export function MultiSelectTrigger({
         role={props.role ?? "combobox"}
         aria-expanded={props["aria-expanded"] ?? open}
         className={cn(
-          multiSelectTriggerVariants({ size, state }),
-          "whitespace-nowrap text-sm",
+          multiSelectTriggerVariants({ size, state }), "ds:whitespace-nowrap ds:text-sm",
           className
         )}
       >
@@ -289,17 +284,14 @@ export function MultiSelectValue({
                   key: value,
                   onClick: clickToRemove ? removeHandler : undefined,
                   className: cn(
-                    element.props.className,
-                    "group flex items-center gap-1 whitespace-nowrap hover:scale-105 transition-transform",
+                    element.props.className, "ds:group ds:flex ds:items-center ds:gap-1 ds:whitespace-nowrap ds:hover:scale-105 ds:transition-transform",
                     {
                       "cursor-pointer": clickToRemove,
                     }
-                  ),
-                  "data-selected-item": true,
+                  ), "ds:data-selected-item": true,
                 }
               : {
-                  key: value,
-                  "data-selected-item": true,
+                  key: value, "ds:data-selected-item": true,
                 };
 
             return React.cloneElement(

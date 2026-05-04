@@ -45,7 +45,7 @@ export function DataTableViewOptions<TData>({
             </span>
             <Check
               className={cn("ds:ml-auto ds:size-4 shrink-0",
-                column.getIsVisible() ? "opacity-100" : "opacity-0"
+                column.getIsVisible() ? "opacity-100" : "ds:opacity-0"
               )}
             />
           </>

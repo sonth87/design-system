@@ -143,7 +143,7 @@ const Command = React.forwardRef<HTMLDivElement, CommandProps>((props, ref) => {
       {search && (
         <CommandInput
           placeholder={
-            typeof search === "string" ? search : "Type a command or search..."
+            typeof search === "string" ? search : "ds:Type ds:a ds:command ds:or ds:search..."
           }
         />
       )}

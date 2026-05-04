@@ -50,31 +50,22 @@ export type BreadcrumbProps = React.ComponentProps<"nav"> & {
 
 const colorClasses = {
   default: "",
-  primary:
-    "text-primary [&_[data-slot=breadcrumb-link]:hover]:text-primary/80 [&_[data-slot=breadcrumb-page]]:text-primary",
-  secondary:
-    "text-secondary [&_[data-slot=breadcrumb-link]:hover]:text-secondary/80 [&_[data-slot=breadcrumb-page]]:text-secondary",
-  accent:
-    "text-accent [&_[data-slot=breadcrumb-link]:hover]:text-accent/80 [&_[data-slot=breadcrumb-page]]:text-accent",
-  destructive:
-    "text-destructive [&_[data-slot=breadcrumb-link]:hover]:text-destructive/80 [&_[data-slot=breadcrumb-page]]:text-destructive",
-  muted:
-    "text-muted-foreground [&_[data-slot=breadcrumb-link]:hover]:text-muted-foreground/80 [&_[data-slot=breadcrumb-page]]:text-muted-foreground",
-  success:
-    "text-success [&_[data-slot=breadcrumb-link]:hover]:text-success/80 [&_[data-slot=breadcrumb-page]]:text-success",
-  error:
-    "text-error [&_[data-slot=breadcrumb-link]:hover]:text-error/80 [&_[data-slot=breadcrumb-page]]:text-error",
-  warning:
-    "text-warning [&_[data-slot=breadcrumb-link]:hover]:text-warning/80 [&_[data-slot=breadcrumb-page]]:text-warning",
+  primary: "ds:text-primary [&_[data-slot=breadcrumb-link]:hover]:text-primary/80 [&_[data-slot=breadcrumb-page]]:text-primary",
+  secondary: "ds:text-secondary [&_[data-slot=breadcrumb-link]:hover]:text-secondary/80 [&_[data-slot=breadcrumb-page]]:text-secondary",
+  accent: "ds:text-accent [&_[data-slot=breadcrumb-link]:hover]:text-accent/80 [&_[data-slot=breadcrumb-page]]:text-accent",
+  destructive: "ds:text-destructive [&_[data-slot=breadcrumb-link]:hover]:text-destructive/80 [&_[data-slot=breadcrumb-page]]:text-destructive",
+  muted: "ds:text-muted-foreground [&_[data-slot=breadcrumb-link]:hover]:text-muted-foreground/80 [&_[data-slot=breadcrumb-page]]:text-muted-foreground",
+  success: "ds:text-success [&_[data-slot=breadcrumb-link]:hover]:text-success/80 [&_[data-slot=breadcrumb-page]]:text-success",
+  error: "ds:text-error [&_[data-slot=breadcrumb-link]:hover]:text-error/80 [&_[data-slot=breadcrumb-page]]:text-error",
+  warning: "ds:text-warning [&_[data-slot=breadcrumb-link]:hover]:text-warning/80 [&_[data-slot=breadcrumb-page]]:text-warning",
 };
 
 const variantClasses = {
   default: "",
-  compact:
-    "text-xs [&_[data-slot=breadcrumb-list]]:gap-1 [&_[data-slot=breadcrumb-separator]>svg]:size-3",
+  compact: "ds:text-xs [&_[data-slot=breadcrumb-list]]:gap-1 [&_[data-slot=breadcrumb-separator]>svg]:size-3",
   badge:
     "[&_[data-slot=breadcrumb-list]]:gap-1 [&_[data-slot=breadcrumb-item]]:border [&_[data-slot=breadcrumb-item]]:bg-muted [&_[data-slot=breadcrumb-item]]:px-2 [&_[data-slot=breadcrumb-item]]:py-0.5 [&_[data-slot=breadcrumb-item]]:rounded-full [&_[data-slot=breadcrumb-item]]:text-sm",
-  bordered: "border rounded-md px-3 py-2",
+  bordered: "ds:border ds:rounded-md ds:px-3 ds:py-2",
 };
 
 const Breadcrumb = React.forwardRef<HTMLElement, BreadcrumbProps>(

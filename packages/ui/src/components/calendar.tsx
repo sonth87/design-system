@@ -97,10 +97,10 @@ function Calendar({
           "select-none font-medium",
           captionLayout === "label"
             ? "text-sm"
-            : "rounded-md pl-2 pr-1 flex items-center gap-1 text-sm h-8 [&>svg]:text-muted-foreground [&>svg]:size-3.5",
+            : "ds:rounded-md ds:pl-2 ds:pr-1 ds:flex ds:items-center ds:gap-1 ds:text-sm ds:h-8 [&>svg]:text-muted-foreground [&>svg]:size-3.5",
           defaultClassNames.caption_label
         ),
-        table: "w-full border-collapse",
+        table: "ds:w-full ds:border-collapse",
         weekdays: cn("flex", defaultClassNames.weekdays),
         weekday: cn(
           "text-muted-foreground rounded-md flex-1 font-normal text-[0.8rem] select-none",
@@ -125,23 +125,23 @@ function Calendar({
         range_start: cn(
           variant === "rounded"
             ? `${colorClasses.rangeBg} rounded-l-full`
-            : "rounded-l-md bg-accent",
+            : "ds:rounded-l-md ds:bg-accent",
           defaultClassNames.range_start
         ),
         range_middle: cn(
-          variant === "rounded" ? "rounded-none" : "rounded-none",
+          variant === "rounded" ? "rounded-none" : "ds:rounded-none",
           defaultClassNames.range_middle
         ),
         range_end: cn(
           variant === "rounded"
             ? `${colorClasses.rangeBg} rounded-r-full`
-            : "rounded-r-md bg-accent",
+            : "ds:rounded-r-md ds:bg-accent",
           defaultClassNames.range_end
         ),
         today: cn(
           variant === "rounded"
             ? `rounded-full bg-accent data-[selected=true]:rounded-l-none data-[selected=true]:${colorClasses.rangeBg} [&_button[data-range-middle=true]]:bg-transparent`
-            : "bg-accent text-accent-foreground rounded-md data-[selected=true]:rounded-none",
+            : "ds:bg-accent ds:text-accent-foreground ds:rounded-md ds:data-[selected=true]:rounded-none",
           defaultClassNames.today
         ),
         outside: cn(
@@ -217,58 +217,58 @@ type CalendarDayButtonProps = Omit<
 const getColorClasses = (color: CalendarColor = "foreground") => {
   const colorMap = {
     primary: {
-      selected: "bg-primary text-primary-foreground",
-      selectedHover: "hover:bg-primary/90",
-      rangeBg: "bg-primary/20 dark:bg-primary/10",
-      focusRing: "ring-primary/20 dark:ring-primary/40",
+      selected: "ds:bg-primary ds:text-primary-foreground",
+      selectedHover: "ds:hover:bg-primary/90",
+      rangeBg: "ds:bg-primary/20 ds:dark:bg-primary/10",
+      focusRing: "ds:ring-primary/20 ds:dark:ring-primary/40",
     },
     secondary: {
-      selected: "bg-secondary text-secondary-foreground",
-      selectedHover: "hover:bg-secondary/90",
-      rangeBg: "bg-secondary/20 dark:bg-secondary/10",
-      focusRing: "ring-secondary/20 dark:ring-secondary/40",
+      selected: "ds:bg-secondary ds:text-secondary-foreground",
+      selectedHover: "ds:hover:bg-secondary/90",
+      rangeBg: "ds:bg-secondary/20 ds:dark:bg-secondary/10",
+      focusRing: "ds:ring-secondary/20 ds:dark:ring-secondary/40",
     },
     accent: {
-      selected: "bg-accent text-accent-foreground",
-      selectedHover: "hover:bg-accent/90",
-      rangeBg: "bg-accent/20 dark:bg-accent/10",
-      focusRing: "ring-accent/20 dark:ring-accent/40",
+      selected: "ds:bg-accent ds:text-accent-foreground",
+      selectedHover: "ds:hover:bg-accent/90",
+      rangeBg: "ds:bg-accent/20 ds:dark:bg-accent/10",
+      focusRing: "ds:ring-accent/20 ds:dark:ring-accent/40",
     },
     destructive: {
-      selected: "bg-destructive text-destructive-foreground",
-      selectedHover: "hover:bg-destructive/90",
-      rangeBg: "bg-destructive/20 dark:bg-destructive/10",
-      focusRing: "ring-destructive/20 dark:ring-destructive/40",
+      selected: "ds:bg-destructive ds:text-destructive-foreground",
+      selectedHover: "ds:hover:bg-destructive/90",
+      rangeBg: "ds:bg-destructive/20 ds:dark:bg-destructive/10",
+      focusRing: "ds:ring-destructive/20 ds:dark:ring-destructive/40",
     },
     muted: {
-      selected: "bg-muted text-muted-foreground",
-      selectedHover: "hover:bg-muted/90",
-      rangeBg: "bg-muted/30 dark:bg-muted/20",
-      focusRing: "ring-muted/20 dark:ring-muted/40",
+      selected: "ds:bg-muted ds:text-muted-foreground",
+      selectedHover: "ds:hover:bg-muted/90",
+      rangeBg: "ds:bg-muted/30 ds:dark:bg-muted/20",
+      focusRing: "ds:ring-muted/20 ds:dark:ring-muted/40",
     },
     success: {
-      selected: "bg-success text-success-foreground",
-      selectedHover: "hover:bg-success/90",
-      rangeBg: "bg-success/20 dark:bg-success/10",
-      focusRing: "ring-success/20 dark:ring-success/40",
+      selected: "ds:bg-success ds:text-success-foreground",
+      selectedHover: "ds:hover:bg-success/90",
+      rangeBg: "ds:bg-success/20 ds:dark:bg-success/10",
+      focusRing: "ds:ring-success/20 ds:dark:ring-success/40",
     },
     error: {
-      selected: "bg-error text-error-foreground",
-      selectedHover: "hover:bg-error/90",
-      rangeBg: "bg-error/20 dark:bg-error/10",
-      focusRing: "ring-error/20 dark:ring-error/40",
+      selected: "ds:bg-error ds:text-error-foreground",
+      selectedHover: "ds:hover:bg-error/90",
+      rangeBg: "ds:bg-error/20 ds:dark:bg-error/10",
+      focusRing: "ds:ring-error/20 ds:dark:ring-error/40",
     },
     warning: {
-      selected: "bg-warning text-warning-foreground",
-      selectedHover: "hover:bg-warning/90",
-      rangeBg: "bg-warning/20 dark:bg-warning/10",
-      focusRing: "ring-warning/20 dark:ring-warning/40",
+      selected: "ds:bg-warning ds:text-warning-foreground",
+      selectedHover: "ds:hover:bg-warning/90",
+      rangeBg: "ds:bg-warning/20 ds:dark:bg-warning/10",
+      focusRing: "ds:ring-warning/20 ds:dark:ring-warning/40",
     },
     foreground: {
-      selected: "bg-foreground text-background",
-      selectedHover: "hover:bg-foreground/90",
-      rangeBg: "bg-foreground/10 dark:bg-foreground/5",
-      focusRing: "ring-foreground/20 dark:ring-foreground/40",
+      selected: "ds:bg-foreground ds:text-background",
+      selectedHover: "ds:hover:bg-foreground/90",
+      rangeBg: "ds:bg-foreground/10 ds:dark:bg-foreground/5",
+      focusRing: "ds:ring-foreground/20 ds:dark:ring-foreground/40",
     },
   };
 
@@ -306,16 +306,13 @@ function CalendarDayButton({
       data-range-start={modifiers.range_start}
       data-range-end={modifiers.range_end}
       data-range-middle={modifiers.range_middle}
-      className={cn("ds:flex ds:aspect-square ds:size-auto ds:w-full ds:min-w-(--cell-size) ds:flex-col ds:gap-1 ds:leading-none ds:font-normal",
-        "group-data-[focused=true]/day:relative group-data-[focused=true]/day:z-10 group-data-[focused=true]/day:ring-[3px]",
-        "group-data-[focused=true]/day:border-ring group-data-[focused=true]/day:ring-ring/50",
+      className={cn("ds:flex ds:aspect-square ds:size-auto ds:w-full ds:min-w-(--cell-size) ds:flex-col ds:gap-1 ds:leading-none ds:font-normal", "ds:group-data-[focused=true]/day:relative ds:group-data-[focused=true]/day:z-10 ds:group-data-[focused=true]/day:ring-[3px]", "ds:group-data-[focused=true]/day:border-ring ds:group-data-[focused=true]/day:ring-ring/50",
         "[&>span]:text-xs [&>span]:opacity-70",
         // Hover effect chỉ khi chưa selected
         !modifiers.selected &&
           !modifiers.range_start &&
           !modifiers.range_end &&
-          !modifiers.range_middle &&
-          "hover:bg-accent hover:text-accent-foreground dark:hover:text-accent-foreground",
+          !modifiers.range_middle && "ds:hover:bg-accent ds:hover:text-accent-foreground ds:dark:hover:text-accent-foreground",
         // Selected single day - chỉ apply color khi selected
         modifiers.selected &&
           !modifiers.range_start &&
@@ -329,25 +326,20 @@ function CalendarDayButton({
         modifiers.range_middle &&
           `${colorClasses.rangeBg} text-accent-foreground`,
         variant === "default" && [
-          "data-[range-end=true]:rounded-md data-[range-end=true]:rounded-r-md",
-          "data-[range-middle=true]:rounded-none",
-          "data-[range-start=true]:rounded-md data-[range-start=true]:rounded-l-md",
+          "data-[range-end=true]:rounded-md data-[range-end=true]:rounded-r-md", "ds:data-[range-middle=true]:rounded-none", "ds:data-[range-start=true]:rounded-md ds:data-[range-start=true]:rounded-l-md",
         ],
         variant === "rounded" && [
-          "data-[selected-single=true]:rounded-full",
-          "data-[range-end=true]:rounded-full",
-          "data-[range-start=true]:rounded-full",
+          "data-[selected-single=true]:rounded-full", "ds:data-[range-end=true]:rounded-full", "ds:data-[range-start=true]:rounded-full",
           modifiers.range_start &&
             `group-data-[focused=true]/day:${colorClasses.focusRing}`,
           modifiers.range_end &&
             `group-data-[focused=true]/day:${colorClasses.focusRing}`,
-          modifiers.range_middle && "rounded-none",
+          modifiers.range_middle && "ds:rounded-none",
           // Chỉ hover:rounded-full khi chưa selected
           !modifiers.selected &&
             !modifiers.range_start &&
             !modifiers.range_end &&
-            !modifiers.range_middle &&
-            "hover:rounded-full",
+            !modifiers.range_middle && "ds:hover:rounded-full",
         ],
         defaultClassNames.day,
         className

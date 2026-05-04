@@ -367,9 +367,9 @@ export function RangePicker({
     >
       <CalendarIcon
         className={cn({
-          "ds:size-3": props.size === "xs" || props.size === "ds:sm",
+          "ds:size-3": props.size === "xs" || props.size === "sm",
           "ds:size-3.5": !props.size || props.size === "normal",
-          "ds:size-4": props.size === "ds:lg" || props.size === "ds:xl",
+          "ds:size-4": props.size === "lg" || props.size === "xl",
         })}
       />
       <span className="sr-only">Select date range</span>
@@ -715,7 +715,7 @@ export function RangePicker({
         {
           "ds:border-input ds:focus-within:ring-ring": !props.state,
           "ds:border-success ds:focus-within:ring-success": props.state === "success",
-          "ds:border-warning ds:focus-within:ring-warning": props.state === "ds:warning",
+          "ds:border-warning ds:focus-within:ring-warning": props.state === "warning",
           "ds:border-error ds:focus-within:ring-error": props.state === "error",
         }
       )}

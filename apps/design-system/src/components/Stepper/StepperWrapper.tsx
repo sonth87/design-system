@@ -106,9 +106,9 @@ function StepperWrapper({
                 <div
                   className={cn("ds:flex ds:flex-col ds:gap-1", {
                     "ds:text-center":
-                      labelPosition === "ds:top" || labelPosition === "ds:bottom",
-                    "ds:text-left": labelPosition === "ds:right",
-                    "ds:text-right": labelPosition === "ds:left",
+                      labelPosition === "top" || labelPosition === "bottom",
+                    "ds:text-left": labelPosition === "right",
+                    "ds:text-right": labelPosition === "left",
                   })}
                 >
                   <StepperTitle>{step.title}</StepperTitle>

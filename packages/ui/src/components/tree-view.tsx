@@ -241,7 +241,7 @@ const TreeItem = React.forwardRef<HTMLDivElement, TreeItemProps>(
       <div ref={ref} role="tree" className={className} {...props}>
         <ul>
           {data.map((item, index) => (
-            <li key={item.id} className="ds:relative">
+            <li key={item.id} className= "relative">
               {item.children ? (
                 <TreeNode
                   item={item}
@@ -392,7 +392,7 @@ const TreeNode = ({
       value={value}
       onValueChange={(s: string[]) => setValue(s)}
     >
-      <AccordionPrimitive.Item value={item.id} className="ds:relative">
+      <AccordionPrimitive.Item value={item.id} className= "relative">
         {treeLine === "full" && (
           <div
             className={cn(
@@ -537,7 +537,7 @@ const TreeNode = ({
         <AccordionContent
           className={cn(
             "ds:ml-4 ds:pl-1",
-            treeLine === true && "border-l",
+            treeLine === true && "ds:border-l",
             treeLine === "full" && "ds:pl-2 ds:border-l ds:ml-4"
           )}
         >
@@ -605,11 +605,11 @@ const TreeLeaf = React.forwardRef<
       <div
         ref={ref}
         className={cn("ds:ml-5 ds:flex ds:text-left ds:items-center ds:py-2 cursor-pointer ds:before:right-1",
-          treeLine === "full" && "ml-[1.25rem]",
+          treeLine === "full" && "ds:ml-[1.25rem]",
           treeVariants(),
           className,
           selectedItemId === item.id && selectedTreeVariants(),
-          item.disabled && "opacity-50 cursor-not-allowed pointer-events-none"
+          item.disabled && "ds:opacity-50 ds:cursor-not-allowed ds:pointer-events-none"
         )}
         onClick={() => {
           if (item.disabled) return;

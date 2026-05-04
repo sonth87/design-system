@@ -8,15 +8,15 @@ const pad = (num: number): string => String(num).padStart(2, "0");
 // Color variants for time picker items
 const getColorClass = (color: CalendarColor = "primary"): string => {
   const colorMap = {
-    primary: "text-primary",
-    secondary: "text-secondary",
-    accent: "text-accent",
-    destructive: "text-destructive",
-    muted: "text-muted-foreground",
-    success: "text-success",
-    error: "text-error",
-    warning: "text-warning",
-    foreground: "text-foreground",
+    primary: "ds:text-primary",
+    secondary: "ds:text-secondary",
+    accent: "ds:text-accent",
+    destructive: "ds:text-destructive",
+    muted: "ds:text-muted-foreground",
+    success: "ds:text-success",
+    error: "ds:text-error",
+    warning: "ds:text-warning",
+    foreground: "ds:text-foreground",
   };
   return colorMap[color];
 };
@@ -183,7 +183,7 @@ export const TimeColumnwheel = memo(
         return {
           opacity,
           fontSize,
-          transition: "opacity 0.2s ease, transform 0.2s ease",
+          transition: "ds:opacity ds:0.2s ds:ease, ds:transform ds:0.2s ds:ease",
         };
       };
 
@@ -196,7 +196,7 @@ export const TimeColumnwheel = memo(
           )}
           <div
             className={cn("ds:relative ds:w-full",
-              timeLabel ? "h-[calc(100%_-_2rem)]" : " h-full"
+              timeLabel ? "h-[calc(100%_-_2rem)]" : " ds:h-full"
             )}
           >
             {/* wheel style divider lines */}
@@ -247,7 +247,7 @@ export const TimeColumnwheel = memo(
                       "ds:disabled:opacity-30 ds:disabled:cursor-not-allowed ds:disabled:line-through",
                       isSelected
                         ? `${getColorClass(color)} font-bold`
-                        : "text-muted-foreground"
+                        : "ds:text-muted-foreground"
                     )}
                     style={itemStyle}
                   >

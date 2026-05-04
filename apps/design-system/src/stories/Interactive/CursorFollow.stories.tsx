@@ -246,7 +246,7 @@ export const CustomCursor: Story = {
       <CursorProvider>
         <div className="ds:text-white ds:text-xl">Custom animated cursor</div>
         <Cursor>
-          <div className="ds:relative">
+          <div className= "relative">
             <div className="ds:h-8 ds:w-8 ds:rounded-full ds:bg-emerald-400 ds:animate-pulse" />
             <div className="ds:absolute ds:inset-0 ds:h-8 ds:w-8 ds:rounded-full ds:bg-emerald-400/30 ds:animate-ping" />
           </div>
@@ -521,7 +521,7 @@ export const CustomCursorTypeAsReactNode: Story = {
     <div className="ds:relative h-[300px] w-[500px] ds:flex ds:items-center ds:justify-center ds:bg-gradient-to-br ds:from-purple-900 ds:to-pink-800 ds:rounded-xl">
       <CursorProvider
         cursorType={
-          <div className="ds:relative">
+          <div className= "relative">
             <div className="ds:h-8 ds:w-8 ds:rounded-full ds:bg-pink-400 ds:border-2 ds:border-white ds:shadow-lg" />
             <div className="ds:absolute ds:inset-0 ds:h-8 ds:w-8 ds:rounded-full ds:bg-pink-400/50 ds:animate-ping" />
           </div>

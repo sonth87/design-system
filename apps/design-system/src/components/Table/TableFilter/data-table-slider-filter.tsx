@@ -145,7 +145,7 @@ export function DataTableSliderFilter<TData>({
           <label htmlFor={`${id}-from`} className="sr-only">
             From
           </label>
-          <div className="ds:relative">
+          <div className= "relative">
             <Input
               id={`${id}-from`}
               type="number"
@@ -169,7 +169,7 @@ export function DataTableSliderFilter<TData>({
           <label htmlFor={`${id}-to`} className="sr-only">
             to
           </label>
-          <div className="ds:relative">
+          <div className= "relative">
             <Input
               id={`${id}-to`}
               type="number"

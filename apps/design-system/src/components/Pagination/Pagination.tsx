@@ -148,7 +148,7 @@ const PaginationEllipsisWithJump = ({
   }
 
   return (
-    <PaginationItem className="ds:group">
+    <PaginationItem className= "group">
       {position === "before" ? (
         <PaginationPrevious
           href="#"

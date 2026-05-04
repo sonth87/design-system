@@ -66,10 +66,10 @@ const InputOTP = React.forwardRef<
             : undefined;
 
     const helperTextStyles = {
-      default: "text-muted-foreground",
-      success: "text-success",
-      warning: "text-warning",
-      error: "text-error",
+      default: "ds:text-muted-foreground",
+      success: "ds:text-success",
+      warning: "ds:text-warning",
+      error: "ds:text-error",
     };
 
     return (
@@ -86,7 +86,7 @@ const InputOTP = React.forwardRef<
             className={cn(
               {
                 "ds:gap-2 *:data-[slot=input-otp-slot]:rounded-md *:data-[slot=input-otp-slot]:border":
-                  variant === "ds:outlined" && gapSize > 0,
+                  variant === "outlined" && gapSize > 0,
               },
               className
             )}

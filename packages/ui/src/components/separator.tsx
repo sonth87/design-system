@@ -6,14 +6,14 @@ import * as SeparatorPrimitive from "@radix-ui/react-separator";
 import { cn } from "@dsui/ui/lib/utils";
 
 const colorVariants = {
-  primary: "bg-primary",
-  secondary: "bg-secondary",
-  accent: "bg-accent",
-  destructive: "bg-destructive",
-  muted: "bg-muted",
-  success: "bg-success",
-  error: "bg-error",
-  warning: "bg-warning",
+  primary: "ds:bg-primary",
+  secondary: "ds:bg-secondary",
+  accent: "ds:bg-accent",
+  destructive: "ds:bg-destructive",
+  muted: "ds:bg-muted",
+  success: "ds:bg-success",
+  error: "ds:bg-error",
+  warning: "ds:bg-warning",
 };
 
 interface SeparatorProps
@@ -32,7 +32,7 @@ function Separator({
   color,
   ...props
 }: SeparatorProps) {
-  const baseColor = color ? colorVariants[color] : "bg-border";
+  const baseColor = color ? colorVariants[color] : "ds:bg-border";
   if (children) {
     if (orientation === "horizontal") {
       return (
@@ -85,7 +85,7 @@ function Separator({
         <div
           className={cn(
             "ds:flex ds:flex-col ds:items-center",
-            orientation === "vertical" && "h-full",
+            orientation === "vertical" && "ds:h-full",
             className
           )}
         >

@@ -10,40 +10,40 @@ const pad = (num: number): string => String(num).padStart(2, "0");
 const getColorClasses = (color: CalendarColor = "primary") => {
   const colorMap = {
     primary: {
-      bg: "bg-primary",
-      text: "text-primary-foreground",
+      bg: "ds:bg-primary",
+      text: "ds:text-primary-foreground",
     },
     secondary: {
-      bg: "bg-secondary",
-      text: "text-secondary-foreground",
+      bg: "ds:bg-secondary",
+      text: "ds:text-secondary-foreground",
     },
     accent: {
-      bg: "bg-accent",
-      text: "text-accent-foreground",
+      bg: "ds:bg-accent",
+      text: "ds:text-accent-foreground",
     },
     destructive: {
-      bg: "bg-destructive",
-      text: "text-destructive-foreground",
+      bg: "ds:bg-destructive",
+      text: "ds:text-destructive-foreground",
     },
     muted: {
-      bg: "bg-muted",
-      text: "text-muted-foreground",
+      bg: "ds:bg-muted",
+      text: "ds:text-muted-foreground",
     },
     success: {
-      bg: "bg-success",
-      text: "text-success-foreground",
+      bg: "ds:bg-success",
+      text: "ds:text-success-foreground",
     },
     error: {
-      bg: "bg-error",
-      text: "text-error-foreground",
+      bg: "ds:bg-error",
+      text: "ds:text-error-foreground",
     },
     warning: {
-      bg: "bg-warning",
-      text: "text-warning-foreground",
+      bg: "ds:bg-warning",
+      text: "ds:text-warning-foreground",
     },
     foreground: {
-      bg: "bg-foreground",
-      text: "text-background",
+      bg: "ds:bg-foreground",
+      text: "ds:text-background",
     },
   };
   return colorMap[color];

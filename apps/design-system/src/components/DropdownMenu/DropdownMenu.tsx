@@ -254,7 +254,7 @@ const DropdownMenu = React.forwardRef<HTMLDivElement, DropdownMenuProps>(
           >
             <SDropdownMenuTrigger asChild>
               <div
-                className="ds:fixed"
+                className= "fixed"
                 style={{
                   left: contextMenuPosition.x,
                   top: contextMenuPosition.y,

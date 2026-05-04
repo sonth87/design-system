@@ -39,7 +39,7 @@ function DialogOverlay({
   backdropFilter?: number;
   overlay?: "dark" | "light";
 }) {
-  const overlayClass = overlay === "dark" ? "bg-black/50" : "bg-white/50";
+  const overlayClass = overlay === "dark" ? "bg-black/50" : "ds:bg-white/50";
   return (
     <DialogPrimitive.Overlay
       data-slot="dialog-overlay"

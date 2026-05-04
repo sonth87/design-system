@@ -152,7 +152,7 @@ export const ThemeShowcase: React.FC = () => {
               onClick={toggleTheme}
               className="ds:px-4 ds:py-2 ds:bg-primary ds:text-primary-foreground ds:rounded-lg ds:hover:opacity-90 ds:transition-all ds:flex ds:items-center ds:gap-2 ds:shadow-md ds:hover:shadow-lg"
               title={
-                isDarkMode ? "Chuyển sang Light Mode" : "Chuyển sang Dark Mode"
+                isDarkMode ? "Chuyển sang Light Mode" : "ds:Chuyển ds:sang ds:Dark ds:Mode"
               }
             >
               <span className="ds:text-xl">{isDarkMode ? "☀️" : "🌙"}</span>
@@ -184,12 +184,12 @@ export const ThemeShowcase: React.FC = () => {
                 if (groupVariables.length === 0) return null;
 
                 const groupLabels: Record<string, string> = {
-                  base: "Base Colors",
-                  brand: "Brand Colors",
-                  surface: "Surface Colors",
-                  state: "State Colors",
-                  chart: "Chart Colors",
-                  sidebar: "Sidebar Colors",
+                  base: "ds:Base ds:Colors",
+                  brand: "ds:Brand ds:Colors",
+                  surface: "ds:Surface ds:Colors",
+                  state: "ds:State ds:Colors",
+                  chart: "ds:Chart ds:Colors",
+                  sidebar: "ds:Sidebar ds:Colors",
                 };
 
                 return (
@@ -298,7 +298,7 @@ export const ThemeShowcase: React.FC = () => {
               </p>
             </div>
             <div className="ds:space-y-4">
-              <div className="ds:relative">
+              <div className= "relative">
                 <textarea
                   value={textareaValue}
                   onChange={handleTextareaChange}

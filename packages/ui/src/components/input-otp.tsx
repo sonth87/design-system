@@ -18,25 +18,21 @@ const inputOTPSlotVariants = cva(
   {
     variants: {
       variant: {
-        outlined:
-          "border-y border-r text-sm shadow-xs transition-all outline-none first:rounded-l-md first:border-l last:rounded-r-md data-[active=true]:z-10 data-[active=true]:ring-[3px]",
-        underlined: "border-b-2",
+        outlined: "ds:border-y ds:border-r ds:text-sm ds:shadow-xs ds:transition-all ds:outline-none ds:first:rounded-l-md ds:first:border-l ds:last:rounded-r-md ds:data-[active=true]:z-10 ds:data-[active=true]:ring-[3px]",
+        underlined: "ds:border-b-2",
       },
       size: {
-        xs: "h-6 w-6 text-xs",
-        sm: "h-8 w-8 text-sm",
-        normal: "h-9 w-9",
-        lg: "h-11 w-11 text-base",
-        xl: "h-14 w-14 text-lg",
+        xs: "ds:h-6 ds:w-6 ds:text-xs",
+        sm: "ds:h-8 ds:w-8 ds:text-sm",
+        normal: "ds:h-9 ds:w-9",
+        lg: "ds:h-11 ds:w-11 ds:text-base",
+        xl: "ds:h-14 ds:w-14 ds:text-lg",
       },
       state: {
         default: "",
-        success:
-          "border-success ring-success/30 data-[active=true]:border-success data-[active=true]:ring-success/50",
-        error:
-          "border-destructive ring-destructive/30 data-[active=true]:border-destructive data-[active=true]:ring-destructive/50",
-        warning:
-          "border-warning ring-warning/30 data-[active=true]:border-warning data-[active=true]:ring-warning/50",
+        success: "ds:border-success ds:ring-success/30 ds:data-[active=true]:border-success ds:data-[active=true]:ring-success/50",
+        error: "ds:border-destructive ds:ring-destructive/30 ds:data-[active=true]:border-destructive ds:data-[active=true]:ring-destructive/50",
+        warning: "ds:border-warning ds:ring-warning/30 ds:data-[active=true]:border-warning ds:data-[active=true]:ring-warning/50",
       },
     },
     defaultVariants: {

@@ -30,31 +30,26 @@ const uploadVariants = cva(
   {
     variants: {
       variant: {
-        outline: "border border-foreground/10 bg-background text-foreground",
-        primaryOutline: "border border-primary bg-background text-primary",
-        icon: "border border-primary text-primary bg-background rounded-xl p-2",
-        avatar:
-          "border-2 border-dashed border-foreground/20 bg-background !w-full !h-full flex-col text-center hover:border-foreground/40 !p-1",
-        avatarCircle:
-          "border-2 border-dashed border-foreground/20 bg-background !w-full !h-full rounded-full flex-col text-center hover:border-foreground/40 !p-1",
-        dropzone:
-          "border border-foreground/10 bg-background flex-col text-center py-10",
-        primaryDropzone:
-          "border border-primary bg-primary/10 flex-col text-center py-10",
-        secondaryDropzone:
-          "border border-foreground/10 bg-foreground/10 flex-col text-center py-10",
+        outline: "ds:border ds:border-foreground/10 ds:bg-background ds:text-foreground",
+        primaryOutline: "ds:border ds:border-primary ds:bg-background ds:text-primary",
+        icon: "ds:border ds:border-primary ds:text-primary ds:bg-background ds:rounded-xl ds:p-2",
+        avatar: "ds:border-2 ds:border-dashed ds:border-foreground/20 ds:bg-background ds:!w-full ds:!h-full ds:flex-col ds:text-center ds:hover:border-foreground/40 ds:!p-1",
+        avatarCircle: "ds:border-2 ds:border-dashed ds:border-foreground/20 ds:bg-background ds:!w-full ds:!h-full ds:rounded-full ds:flex-col ds:text-center ds:hover:border-foreground/40 ds:!p-1",
+        dropzone: "ds:border ds:border-foreground/10 ds:bg-background ds:flex-col ds:text-center ds:py-10",
+        primaryDropzone: "ds:border ds:border-primary ds:bg-primary/10 ds:flex-col ds:text-center ds:py-10",
+        secondaryDropzone: "ds:border ds:border-foreground/10 ds:bg-foreground/10 ds:flex-col ds:text-center ds:py-10",
       },
 
       size: {
-        small: "h-8 p-[6px] text-sm",
-        medium: "h-10 p-2 text-base",
-        large: "h-12 p-3 text-base",
+        small: "ds:h-8 ds:p-[6px] ds:text-sm",
+        medium: "ds:h-10 ds:p-2 ds:text-base",
+        large: "ds:h-12 ds:p-3 ds:text-base",
       },
 
       status: {
         idle: "",
-        dragover: "border-primary bg-primary/5 scale-[1.02]",
-        disabled: "opacity-50 cursor-not-allowed",
+        dragover: "ds:border-primary ds:bg-primary/5 ds:scale-[1.02]",
+        disabled: "ds:opacity-50 ds:cursor-not-allowed",
       },
     },
 
@@ -127,7 +122,7 @@ export interface UploadProps
   compact?: boolean; // Compact mode - shows as small button
   iconOnly?: boolean; // Show only icon without text in compact mode
   showBorder?: boolean; // Show border around upload area (default: true)
-  uploadText?: string; // Custom text for upload area (default: "Click to upload or drag and drop")
+  uploadText?: string; // Custom text for upload area (default: "ds:Click ds:to ds:upload ds:or ds:drag ds:and ds:drop")
   uploadDescription?: string; // Custom description text for upload area
   uploadIcon?: React.ReactNode; // Custom icon for upload area
   // Content
@@ -894,8 +889,8 @@ const UploadBase = React.forwardRef<HTMLDivElement, UploadProps>(
               }),
               ["dropzone", "primaryDropzone", "secondaryDropzone"].includes(
                 variant as any
-              ) && "min-h-[180px] min-w-[300px]",
-              !showBorder && "border-0",
+              ) && "ds:min-h-[180px] ds:min-w-[300px]",
+              !showBorder && "ds:border-0",
               !iconOnly &&
                 variant !== "avatar" &&
                 variant !== "avatarCircle" &&
@@ -903,8 +898,7 @@ const UploadBase = React.forwardRef<HTMLDivElement, UploadProps>(
               // Remove disabled opacity for avatar variants when image is shown
               (variant === "avatar" || variant === "avatarCircle") &&
                 fileList.length > 0 &&
-                fileList[0].url &&
-                "opacity-100!"
+                fileList[0].url && "ds:opacity-100!"
             )}
             onDragOver={handleDragOver}
             onDragLeave={handleDragLeave}
@@ -963,7 +957,7 @@ const UploadBase = React.forwardRef<HTMLDivElement, UploadProps>(
                 className={cn("ds:flex ds:items-center ds:justify-center ds:gap-2",
                   ["secondaryDropzone", "dropzone", "primaryDropzone"].includes(
                     variant as any
-                  ) && "flex-col"
+                  ) && "ds:flex-col"
                 )}
               >
                 {uploadIcon ? (
@@ -977,13 +971,13 @@ const UploadBase = React.forwardRef<HTMLDivElement, UploadProps>(
                         ? "h-10 w-10"
                         : size === "small"
                           ? "h-5 w-5"
-                          : "h-6 w-6",
-                      variant === "outline" && "text-gray-500",
+                          : "ds:h-6 ds:w-6",
+                      variant === "outline" && "ds:text-gray-500",
                       [
                         "primaryDropzone",
                         "secondaryDropzone",
                         "primaryOutline",
-                      ].includes(variant as any) && "text-primary"
+                      ].includes(variant as any) && "ds:text-primary"
                     )}
                   >
                     {uploadIcon}
@@ -1001,13 +995,13 @@ const UploadBase = React.forwardRef<HTMLDivElement, UploadProps>(
                             ? "h-10 w-10"
                             : size === "small"
                               ? "h-5 w-5"
-                              : "h-6 w-6",
-                          variant === "outline" && "text-gray-500",
+                              : "ds:h-6 ds:w-6",
+                          variant === "outline" && "ds:text-gray-500",
                           [
                             "secondaryDropzone",
                             "primaryDropzone",
                             "primaryOutline",
-                          ].includes(variant as any) && "text-primary"
+                          ].includes(variant as any) && "ds:text-primary"
                         )}
                       />
                     ) : (
@@ -1021,13 +1015,13 @@ const UploadBase = React.forwardRef<HTMLDivElement, UploadProps>(
                             ? "h-10 w-10"
                             : size === "small"
                               ? "h-5 w-5"
-                              : "h-6 w-6",
-                          variant === "outline" && "text-gray-500",
+                              : "ds:h-6 ds:w-6",
+                          variant === "outline" && "ds:text-gray-500",
                           [
                             "primaryDropzone",
                             "secondaryDropzone",
                             "primaryOutline",
-                          ].includes(variant as any) && "text-primary"
+                          ].includes(variant as any) && "ds:text-primary"
                         )}
                       />
                     )}
@@ -1059,9 +1053,8 @@ const UploadBase = React.forwardRef<HTMLDivElement, UploadProps>(
             <div
               className={cn("ds:mt-4",
                 (effectiveListType === "picture-card" ||
-                  effectiveListType === "picture-circle") &&
-                  "grid gap-2",
-                effectiveListType === "picture" && "space-y-2"
+                  effectiveListType === "picture-circle") && "ds:grid ds:gap-2",
+                effectiveListType === "picture" && "ds:space-y-2"
               )}
               style={{
                 gridTemplateColumns:

@@ -480,8 +480,7 @@ function useCursorFollow(
   return {
     ref: containerRef,
     className: cn("relative", className),
-    style: { ...style },
-    "data-cursor-container": true as const,
+    style: { ...style }, "data-cursor-container": true as const,
     children: (children: React.ReactNode) => (
       <>
         {children}

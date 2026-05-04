@@ -86,14 +86,14 @@ const Rate = React.forwardRef<HTMLDivElement, RateProps>(
 
     // Color mapping for filled stars
     const colorMap = {
-      primary: "text-primary [&_svg]:fill-primary",
-      secondary: "text-secondary [&_svg]:fill-secondary",
-      accent: "text-accent [&_svg]:fill-accent",
-      destructive: "text-destructive [&_svg]:fill-destructive",
-      muted: "text-muted-foreground [&_svg]:fill-muted-foreground",
-      success: "text-success [&_svg]:fill-success",
-      error: "text-error [&_svg]:fill-error",
-      warning: "text-yellow-400 [&_svg]:fill-yellow-400",
+      primary: "ds:text-primary [&_svg]:fill-primary",
+      secondary: "ds:text-secondary [&_svg]:fill-secondary",
+      accent: "ds:text-accent [&_svg]:fill-accent",
+      destructive: "ds:text-destructive [&_svg]:fill-destructive",
+      muted: "ds:text-muted-foreground [&_svg]:fill-muted-foreground",
+      success: "ds:text-success [&_svg]:fill-success",
+      error: "ds:text-error [&_svg]:fill-error",
+      warning: "ds:text-yellow-400 [&_svg]:fill-yellow-400",
     };
 
     // Handle star click
@@ -231,7 +231,7 @@ const Rate = React.forwardRef<HTMLDivElement, RateProps>(
         className={cn(
           "ds:inline-flex ds:items-center ds:gap-1",
           disabled && "ds:opacity-50 cursor-not-allowed",
-          !disabled && "cursor-pointer",
+          !disabled && "ds:cursor-pointer",
           className
         )}
         style={style}

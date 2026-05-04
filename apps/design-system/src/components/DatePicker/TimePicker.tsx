@@ -619,7 +619,7 @@ export function TimePicker({
         <div
           className={cn(
             "ds:flex ds:rounded overflow-clip ds:mb-auto",
-            mode === "ds:wheel"
+            mode === "wheel"
               ? "ds:items-end ds:justify-center ds:p-0 ds:h-72"
               : "ds:items-start ds:justify-center"
           )}
@@ -652,7 +652,7 @@ export function TimePicker({
         className={cn("ds:flex ds:rounded overflow-clip ds:my-auto ds:mx-auto ds:max-w-sm ds:md:max-w-md ds:lg:max-w-lg ds:relative",
           mode === "wheel"
             ? "items-end justify-center p-0"
-            : "items-start justify-center",
+            : "ds:items-start ds:justify-center",
           {
             "h-72": mode === "wheel",
             "w-xs": standalone && (isMobile || desktopMode === "drawer"),

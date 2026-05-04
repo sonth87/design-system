@@ -126,34 +126,33 @@ const variantIcons = {
 
 const variantColors = {
   dialog: "",
-  confirm: "border-blue-500/20",
-  alert: "border-red-500/20",
-  info: "border-blue-500/20",
-  warning: "border-yellow-500/20",
+  confirm: "ds:border-blue-500/20",
+  alert: "ds:border-red-500/20",
+  info: "ds:border-blue-500/20",
+  warning: "ds:border-yellow-500/20",
 };
 
 const sizeClasses: Record<DialogSize, string> = {
-  sm: "sm:max-w-sm",
-  md: "sm:max-w-md",
-  lg: "sm:max-w-lg",
-  xl: "sm:max-w-xl",
-  "2xl": "sm:max-w-2xl max-h-[90vh]",
-  "3xl": "sm:max-w-3xl max-h-[90vh]",
-  "4xl": "sm:max-w-4xl max-h-[90vh]",
-  full: "sm:max-w-[95vw] h-[98vh]",
+  sm: "ds:sm:max-w-sm",
+  md: "ds:sm:max-w-md",
+  lg: "ds:sm:max-w-lg",
+  xl: "ds:sm:max-w-xl",
+  "2xl": "ds:sm:max-w-2xl ds:max-h-[90vh]",
+  "3xl": "ds:sm:max-w-3xl ds:max-h-[90vh]",
+  "4xl": "ds:sm:max-w-4xl ds:max-h-[90vh]",
+  full: "ds:sm:max-w-[95vw] ds:h-[98vh]",
 };
 
 const positionClasses: Record<DialogPosition, string> = {
-  center: "!top-[50%] !left-[50%] !translate-x-[-50%] !translate-y-[-50%]",
-  top: "!top-4 !left-[50%] !translate-x-[-50%] !translate-y-0",
-  bottom: "!top-auto !bottom-4 !left-[50%] !translate-x-[-50%] !translate-y-0",
-  left: "!left-4 !top-[50%] !translate-x-0 !translate-y-[-50%]",
-  right: "!left-auto !right-4 !top-[50%] !translate-x-0 !translate-y-[-50%]",
-  "top-left": "!top-4 !left-4 !translate-x-0 !translate-y-0",
-  "top-right": "!top-4 !left-auto !right-4 !translate-x-0 !translate-y-0",
-  "bottom-left": "!top-auto !bottom-4 !left-4 !translate-x-0 !translate-y-0",
-  "bottom-right":
-    "!top-auto !bottom-4 !left-auto !right-4 !translate-x-0 !translate-y-0",
+  center: "ds:!top-[50%] ds:!left-[50%] ds:!translate-x-[-50%] ds:!translate-y-[-50%]",
+  top: "ds:!top-4 ds:!left-[50%] ds:!translate-x-[-50%] ds:!translate-y-0",
+  bottom: "ds:!top-auto ds:!bottom-4 ds:!left-[50%] ds:!translate-x-[-50%] ds:!translate-y-0",
+  left: "ds:!left-4 ds:!top-[50%] ds:!translate-x-0 ds:!translate-y-[-50%]",
+  right: "ds:!left-auto ds:!right-4 ds:!top-[50%] ds:!translate-x-0 ds:!translate-y-[-50%]",
+  "top-left": "ds:!top-4 ds:!left-4 ds:!translate-x-0 ds:!translate-y-0",
+  "top-right": "ds:!top-4 ds:!left-auto ds:!right-4 ds:!translate-x-0 ds:!translate-y-0",
+  "bottom-left": "ds:!top-auto ds:!bottom-4 ds:!left-4 ds:!translate-x-0 ds:!translate-y-0",
+  "bottom-right": "ds:!top-auto ds:!bottom-4 ds:!left-auto ds:!right-4 ds:!translate-x-0 ds:!translate-y-0",
 };
 
 const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
@@ -201,18 +200,18 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
     positionClasses[position],
     variantColors[variant],
     animationResult.className,
-    fullscreen ? "h-[98vh]" : "max-h-[90vh]"
+    fullscreen ? "h-[98vh]" : "ds:max-h-[90vh]"
   );
 
   const headerClasses = cn(
     "px-6 pt-6 text-left",
-    !scrollable && "contents space-y-0",
+    !scrollable && "ds:contents ds:space-y-0",
     headerClassName
   );
 
   const footerClasses = cn(
     "px-6 pb-6 sm:justify-end",
-    !scrollable && "border-t py-4",
+    !scrollable && "ds:border-t ds:py-4",
     footerClassName
   );
 

@@ -30,8 +30,7 @@ const FloatingLabel = React.forwardRef<
 
     return (
       <Label
-        className={cn("ds:absolute start-2 select-none pointer-events-none",
-          "bg-background px-3 translate-y-2",
+        className={cn("ds:absolute start-2 select-none pointer-events-none", "ds:bg-background ds:px-3 ds:translate-y-2",
           "flex",
           {
             "top-0.5 origin-left scale-75 translate-x-1 max-w-full h-3 py-0 bg-transparent":
@@ -70,8 +69,7 @@ const FloatingLabel = React.forwardRef<
               typeof shouldFloat === "boolean" && shouldFloat && lagerSize,
             "top-0 scale-100 translate-x-0 w-[calc(100%-(--spacing(4)))] h-[calc(100%-(--spacing(4)))] py-3 bg-background":
               typeof shouldFloat === "boolean" && !shouldFloat && lagerSize,
-          },
-          "will-change-transform transition-all duration-300 ease-in-out",
+          }, "ds:will-change-transform ds:transition-all ds:duration-300 ds:ease-in-out",
           className
         )}
         ref={ref}

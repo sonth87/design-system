@@ -37,7 +37,7 @@ function AlertDialogOverlay({
   backdropFilter?: number;
   overlay?: "dark" | "light";
 }) {
-  const overlayClass = overlay === "dark" ? "bg-black/50" : "bg-white/50";
+  const overlayClass = overlay === "dark" ? "bg-black/50" : "ds:bg-white/50";
   return (
     <AlertDialogPrimitive.Overlay
       data-slot="alert-dialog-overlay"

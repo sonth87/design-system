@@ -69,11 +69,11 @@ export interface SheetProps {
 const getSizeClasses = (size: SheetSize, side: SheetSide): string => {
   const isVertical = side === "top" || side === "bottom";
   const sizeMap: Record<SheetSize, string> = {
-    sm: isVertical ? "max-h-[20vh]!" : "sm:max-w-sm",
-    md: isVertical ? "max-h-[40vh]!" : "sm:max-w-md",
-    lg: isVertical ? "max-h-[60vh]!" : "sm:max-w-lg",
-    xl: isVertical ? "max-h-[80vh]!" : "sm:max-w-xl",
-    full: isVertical ? "max-h-full!" : "sm:max-w-full",
+    sm: isVertical ? "max-h-[20vh]!" : "ds:sm:max-w-sm",
+    md: isVertical ? "max-h-[40vh]!" : "ds:sm:max-w-md",
+    lg: isVertical ? "max-h-[60vh]!" : "ds:sm:max-w-lg",
+    xl: isVertical ? "max-h-[80vh]!" : "ds:sm:max-w-xl",
+    full: isVertical ? "max-h-full!" : "ds:sm:max-w-full",
   };
   return sizeMap[size];
 };

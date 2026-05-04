@@ -79,10 +79,10 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
 
     // State
     const helperTextStyles = {
-      default: "text-muted-foreground",
-      success: "text-success",
-      warning: "text-warning",
-      error: "text-error",
+      default: "ds:text-muted-foreground",
+      success: "ds:text-success",
+      warning: "ds:text-warning",
+      error: "ds:text-error",
     };
 
     return (
@@ -109,18 +109,16 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
             </Label>
           )}
 
-          <div className="ds:relative">
+          <div className= "relative">
             <STextarea
               ref={innerRef}
               id={textareaId}
               className={cn(
                 "peer resize-y",
                 {
-                  "pt-6 pb-2": isFloatLabel && (size === "lg" || size === "xl"),
-                  "pt-6 pb-1": isFloatLabel && size !== "lg" && size !== "xl",
-                  "text-lg": (size === "xl" || size === "lg") && !isFloatLabel,
+                  "pt-6 pb-2": isFloatLabel && (size === "lg" || size === "xl"), "ds:pt-6 ds:pb-1": isFloatLabel && size !== "lg" && size !== "xl", "ds:text-lg": (size === "xl" || size === "lg") && !isFloatLabel,
                 },
-                clearable && charCount > 0 && "pr-10"
+                clearable && charCount > 0 && "ds:pr-10"
                 // className
               )}
               placeholder={placeholder}

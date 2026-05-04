@@ -193,7 +193,7 @@ export const ImageViewer: React.FC<ImageViewerProps> = ({
                   style={{
                     background: "none",
                     border: "none",
-                    cursor: "pointer",
+                    cursor: "ds:pointer",
                     padding: 0,
                   }}
                   onClick={(e) => {

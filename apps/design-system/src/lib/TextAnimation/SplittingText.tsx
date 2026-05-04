@@ -133,7 +133,7 @@ export const SplittingText: React.FC<SplittingTextProps> = ({
                 key={index}
                 variants={itemVariants}
                 style={{
-                  display: "inline-block",
+                  display: "ds:inline-block",
                   whiteSpace:
                     type === "chars"
                       ? "pre"

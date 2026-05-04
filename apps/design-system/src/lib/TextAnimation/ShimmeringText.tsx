@@ -27,8 +27,7 @@ function ShimmeringText({
       className={cn("ds:relative ds:inline-block [perspective:500px]", className)}
       style={
         {
-          "--shimmering-color": shimmeringColor,
-          "--color": color,
+          "--shimmering-color": shimmeringColor, "ds:--color": color,
           color: "var(--color)",
         } as React.CSSProperties
       }

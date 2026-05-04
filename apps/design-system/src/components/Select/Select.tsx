@@ -118,10 +118,10 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
 
     // Helper text styles
     const helperTextStyles = {
-      default: "text-muted-foreground",
-      success: "text-success",
-      warning: "text-warning",
-      error: "text-error",
+      default: "ds:text-muted-foreground",
+      success: "ds:text-success",
+      warning: "ds:text-warning",
+      error: "ds:text-error",
     };
 
     // Calculate current size
@@ -169,7 +169,7 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
             </label>
           )}
 
-          <div className="ds:relative">
+          <div className= "relative">
             {!multiple ? (
               // Single Mode
               <>
@@ -180,7 +180,7 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
                   emptyText={
                     typeof search === "object"
                       ? search.emptyMessage
-                      : "No results found"
+                      : "ds:No ds:results ds:found"
                   }
                   onChange={handleSingleValueChange}
                   clearable={clearable}
@@ -189,7 +189,7 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
                   className={cn(
                     "ds:peer ds:w-full ds:justify-start",
                     {
-                      "ds:pt-5 ds:pb-1": isFloatLabel && size !== "ds:lg",
+                      "ds:pt-5 ds:pb-1": isFloatLabel && size !== "lg",
                     }
                     // className,
                   )}
@@ -233,7 +233,7 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
                   className={cn(
                     "ds:peer ds:w-full",
                     {
-                      "ds:pt-5 ds:pb-1": isFloatLabel && size !== "ds:lg",
+                      "ds:pt-5 ds:pb-1": isFloatLabel && size !== "lg",
                     },
                     className
                   )}

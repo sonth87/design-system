@@ -58,10 +58,10 @@ const Checkbox = React.forwardRef<HTMLButtonElement, CheckboxProps>(
 
     // State
     const helperTextStyles = {
-      default: "text-muted-foreground",
-      success: "text-success",
-      warning: "text-warning",
-      error: "text-error",
+      default: "ds:text-muted-foreground",
+      success: "ds:text-success",
+      warning: "ds:text-warning",
+      error: "ds:text-error",
     };
 
     const handleCheckedChange = (checked: CheckedState) => {
@@ -73,15 +73,15 @@ const Checkbox = React.forwardRef<HTMLButtonElement, CheckboxProps>(
     };
 
     const isVertical = labelPosition === "top" || labelPosition === "bottom";
-    const flexDirection = isVertical ? "flex-col" : "flex-row";
-    const gapClass = isVertical ? "gap-1.5" : "gap-2";
+    const flexDirection = isVertical ? "flex-col" : "ds:flex-row";
+    const gapClass = isVertical ? "gap-1.5" : "ds:gap-2";
 
     const alignmentClass =
       labelAlignment === "start"
         ? "items-start"
         : labelAlignment === "center"
           ? "items-center"
-          : "items-end";
+          : "ds:items-end";
 
     const labelClass =
       "flex gap-2 peer-disabled:cursor-not-allowed peer-disabled:opacity-70";

@@ -8,20 +8,17 @@ const textareaVariants = cva(
   {
     variants: {
       size: {
-        xs: "text-xs min-h-32 px-2 py-0.5",
-        sm: "text-sm min-h-32 px-2.5 py-1",
-        normal: "min-h-32 px-3 py-1",
-        lg: "min-h-32 px-4 py-2",
-        xl: "min-h-32 px-5 py-3",
+        xs: "ds:text-xs ds:min-h-32 ds:px-2 ds:py-0.5",
+        sm: "ds:text-sm ds:min-h-32 ds:px-2.5 ds:py-1",
+        normal: "ds:min-h-32 ds:px-3 ds:py-1",
+        lg: "ds:min-h-32 ds:px-4 ds:py-2",
+        xl: "ds:min-h-32 ds:px-5 ds:py-3",
       },
       state: {
         default: "",
-        success:
-          "border-success ring-success/30 focus-visible:border-success focus-visible:ring-success/50",
-        error:
-          "border-destructive ring-destructive/30 focus-visible:border-destructive focus-visible:ring-destructive/50",
-        warning:
-          "border-warning ring-warning/30 focus-visible:border-warning focus-visible:ring-warning/50",
+        success: "ds:border-success ds:ring-success/30 ds:focus-visible:border-success ds:focus-visible:ring-success/50",
+        error: "ds:border-destructive ds:ring-destructive/30 ds:focus-visible:border-destructive ds:focus-visible:ring-destructive/50",
+        warning: "ds:border-warning ds:ring-warning/30 ds:focus-visible:border-warning ds:focus-visible:ring-warning/50",
       },
     },
     defaultVariants: {

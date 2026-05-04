@@ -1437,8 +1437,8 @@ function TourArrow(props: TourArrowProps) {
         transformOrigin: {
           top: "",
           right: "0 0",
-          bottom: "center 0",
-          left: "100% 0",
+          bottom: "ds:center ds:0",
+          left: "ds:100% ds:0",
         }[stepContext.placedSide],
         transform: {
           top: "translateY(100%)",

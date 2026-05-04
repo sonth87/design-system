@@ -8,44 +8,36 @@ import { cn } from "@dsui/ui/lib/utils";
 
 const colorVariants = {
   primary: {
-    checked: "data-[state=checked]:bg-primary",
-    unchecked:
-      "data-[state=unchecked]:bg-input dark:data-[state=unchecked]:bg-input/80",
+    checked: "ds:data-[state=checked]:bg-primary",
+    unchecked: "ds:data-[state=unchecked]:bg-input ds:dark:data-[state=unchecked]:bg-input/80",
   },
   secondary: {
-    checked: "data-[state=checked]:bg-secondary",
-    unchecked:
-      "data-[state=unchecked]:bg-secondary/30 dark:data-[state=unchecked]:bg-secondary/20",
+    checked: "ds:data-[state=checked]:bg-secondary",
+    unchecked: "ds:data-[state=unchecked]:bg-secondary/30 ds:dark:data-[state=unchecked]:bg-secondary/20",
   },
   accent: {
-    checked: "data-[state=checked]:bg-accent",
-    unchecked:
-      "data-[state=unchecked]:bg-accent/30 dark:data-[state=unchecked]:bg-accent/20",
+    checked: "ds:data-[state=checked]:bg-accent",
+    unchecked: "ds:data-[state=unchecked]:bg-accent/30 ds:dark:data-[state=unchecked]:bg-accent/20",
   },
   destructive: {
-    checked: "data-[state=checked]:bg-destructive",
-    unchecked:
-      "data-[state=unchecked]:bg-destructive/30 dark:data-[state=unchecked]:bg-destructive/20",
+    checked: "ds:data-[state=checked]:bg-destructive",
+    unchecked: "ds:data-[state=unchecked]:bg-destructive/30 ds:dark:data-[state=unchecked]:bg-destructive/20",
   },
   muted: {
-    checked: "data-[state=checked]:bg-muted",
-    unchecked:
-      "data-[state=unchecked]:bg-muted dark:data-[state=unchecked]:bg-muted/80",
+    checked: "ds:data-[state=checked]:bg-muted",
+    unchecked: "ds:data-[state=unchecked]:bg-muted ds:dark:data-[state=unchecked]:bg-muted/80",
   },
   success: {
-    checked: "data-[state=checked]:bg-success",
-    unchecked:
-      "data-[state=unchecked]:bg-success/30 dark:data-[state=unchecked]:bg-success/20",
+    checked: "ds:data-[state=checked]:bg-success",
+    unchecked: "ds:data-[state=unchecked]:bg-success/30 ds:dark:data-[state=unchecked]:bg-success/20",
   },
   error: {
-    checked: "data-[state=checked]:bg-error",
-    unchecked:
-      "data-[state=unchecked]:bg-error/30 dark:data-[state=unchecked]:bg-error/20",
+    checked: "ds:data-[state=checked]:bg-error",
+    unchecked: "ds:data-[state=unchecked]:bg-error/30 ds:dark:data-[state=unchecked]:bg-error/20",
   },
   warning: {
-    checked: "data-[state=checked]:bg-warning",
-    unchecked:
-      "data-[state=unchecked]:bg-warning/30 dark:data-[state=unchecked]:bg-warning/20",
+    checked: "ds:data-[state=checked]:bg-warning",
+    unchecked: "ds:data-[state=unchecked]:bg-warning/30 ds:dark:data-[state=unchecked]:bg-warning/20",
   },
 };
 
@@ -54,17 +46,17 @@ const switchVariants = cva(
   {
     variants: {
       variant: {
-        default: "rounded-full",
-        square1: "rounded-sm",
-        square2: "rounded-none",
-        mini: "rounded-sm [&_span]:border-input !h-3 !w-8 border-none [&_span]:size-4.5 [&_span]:border",
+        default: "ds:rounded-full",
+        square1: "ds:rounded-sm",
+        square2: "ds:rounded-none",
+        mini: "ds:rounded-sm [&_span]:border-input ds:!h-3 ds:!w-8 ds:border-none [&_span]:size-4.5 [&_span]:border",
       },
       size: {
-        xs: "h-4 w-7",
-        sm: "h-5 w-9",
-        normal: "h-6 w-11",
-        lg: "h-7 w-12",
-        xl: "h-8 w-14",
+        xs: "ds:h-4 ds:w-7",
+        sm: "ds:h-5 ds:w-9",
+        normal: "ds:h-6 ds:w-11",
+        lg: "ds:h-7 ds:w-12",
+        xl: "ds:h-8 ds:w-14",
       },
       color: {
         primary: "",
@@ -96,49 +88,49 @@ const thumbVariants = cva(
   {
     variants: {
       variant: {
-        default: "rounded-full",
-        square1: "rounded-sm",
-        square2: "rounded-none",
+        default: "ds:rounded-full",
+        square1: "ds:rounded-sm",
+        square2: "ds:rounded-none",
         mini: "rounded-full data-[state=checked]:!translate-x-[calc(100%-2px)]",
       },
       size: {
-        xs: "size-3",
-        sm: "size-4",
-        normal: "size-5",
-        lg: "size-6",
-        xl: "size-7",
+        xs: "ds:size-3",
+        sm: "ds:size-4",
+        normal: "ds:size-5",
+        lg: "ds:size-6",
+        xl: "ds:size-7",
       },
       color: {
-        primary: "dark:data-[state=checked]:bg-primary-foreground",
-        secondary: "dark:data-[state=checked]:bg-secondary-foreground",
-        accent: "dark:data-[state=checked]:bg-accent-foreground",
-        destructive: "dark:data-[state=checked]:bg-destructive-foreground",
-        muted: "dark:data-[state=checked]:bg-muted-foreground",
-        success: "dark:data-[state=checked]:bg-success-foreground",
-        error: "dark:data-[state=checked]:bg-error-foreground",
-        warning: "dark:data-[state=checked]:bg-warning-foreground",
+        primary: "ds:dark:data-[state=checked]:bg-primary-foreground",
+        secondary: "ds:dark:data-[state=checked]:bg-secondary-foreground",
+        accent: "ds:dark:data-[state=checked]:bg-accent-foreground",
+        destructive: "ds:dark:data-[state=checked]:bg-destructive-foreground",
+        muted: "ds:dark:data-[state=checked]:bg-muted-foreground",
+        success: "ds:dark:data-[state=checked]:bg-success-foreground",
+        error: "ds:dark:data-[state=checked]:bg-error-foreground",
+        warning: "ds:dark:data-[state=checked]:bg-warning-foreground",
       },
     },
     compoundVariants: [
       {
         size: "xs",
-        className: "data-[state=checked]:translate-x-[0.75rem]",
+        className: "ds:data-[state=checked]:translate-x-[0.75rem]",
       },
       {
         size: "sm",
-        className: "data-[state=checked]:translate-x-[1rem]",
+        className: "ds:data-[state=checked]:translate-x-[1rem]",
       },
       {
         size: "normal",
-        className: "data-[state=checked]:translate-x-[1.25rem]",
+        className: "ds:data-[state=checked]:translate-x-[1.25rem]",
       },
       {
         size: "lg",
-        className: "data-[state=checked]:translate-x-[1.25rem]",
+        className: "ds:data-[state=checked]:translate-x-[1.25rem]",
       },
       {
         size: "xl",
-        className: "data-[state=checked]:translate-x-[1.45rem]",
+        className: "ds:data-[state=checked]:translate-x-[1.45rem]",
       },
     ],
     defaultVariants: {

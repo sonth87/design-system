@@ -6,116 +6,76 @@ import { cn } from "../lib/utils";
 
 const colorVariants = {
   primary: {
-    solid:
-      "border-primary bg-primary text-primary-foreground hover:bg-primary/90 focus-visible:ring-primary/20",
-    mix: "bg-primary/30 border-primary text-primary hover:bg-primary/40 dark:bg-primary/30 dark:hover:bg-primary/40",
-    light:
-      "bg-primary/30 border-primary/0 text-primary hover:bg-primary/40 dark:bg-primary/30 dark:hover:bg-primary/40",
-    outline:
-      "border-primary text-primary hover:bg-primary/10 dark:border-primary dark:hover:bg-primary/20",
-    stroke:
-      "border-primary text-primary hover:bg-primary/10 dark:border-primary dark:hover:bg-primary/20",
-    ghost:
-      "text-primary hover:bg-primary/10 hover:text-primary dark:hover:bg-primary/20",
-    link: "text-primary",
+    solid: "ds:border-primary ds:bg-primary ds:text-primary-foreground ds:hover:bg-primary/90 ds:focus-visible:ring-primary/20",
+    mix: "ds:bg-primary/30 ds:border-primary ds:text-primary ds:hover:bg-primary/40 ds:dark:bg-primary/30 ds:dark:hover:bg-primary/40",
+    light: "ds:bg-primary/30 ds:border-primary/0 ds:text-primary ds:hover:bg-primary/40 ds:dark:bg-primary/30 ds:dark:hover:bg-primary/40",
+    outline: "ds:border-primary ds:text-primary ds:hover:bg-primary/10 ds:dark:border-primary ds:dark:hover:bg-primary/20",
+    stroke: "ds:border-primary ds:text-primary ds:hover:bg-primary/10 ds:dark:border-primary ds:dark:hover:bg-primary/20",
+    ghost: "ds:text-primary ds:hover:bg-primary/10 ds:hover:text-primary ds:dark:hover:bg-primary/20",
+    link: "ds:text-primary",
   },
   secondary: {
-    solid:
-      "border-secondary bg-secondary text-secondary-foreground hover:bg-secondary/80 focus-visible:ring-secondary/20",
-    mix: "bg-secondary/30 border-secondary text-secondary hover:bg-secondary/40 dark:bg-secondary/30 dark:hover:bg-secondary/40",
-    light:
-      "bg-secondary/30 border-secondary/0 text-secondary hover:bg-secondary/40 dark:bg-secondary/30 dark:hover:bg-secondary/40",
-    outline:
-      "border-secondary text-secondary hover:bg-secondary/10 dark:border-secondary dark:hover:bg-secondary/20",
-    stroke:
-      "border-secondary text-secondary hover:bg-secondary/10 dark:border-secondary dark:hover:bg-secondary/20",
-    ghost:
-      "text-secondary hover:bg-secondary/10 hover:text-secondary dark:hover:bg-secondary/20",
-    link: "text-secondary",
+    solid: "ds:border-secondary ds:bg-secondary ds:text-secondary-foreground ds:hover:bg-secondary/80 ds:focus-visible:ring-secondary/20",
+    mix: "ds:bg-secondary/30 ds:border-secondary ds:text-secondary ds:hover:bg-secondary/40 ds:dark:bg-secondary/30 ds:dark:hover:bg-secondary/40",
+    light: "ds:bg-secondary/30 ds:border-secondary/0 ds:text-secondary ds:hover:bg-secondary/40 ds:dark:bg-secondary/30 ds:dark:hover:bg-secondary/40",
+    outline: "ds:border-secondary ds:text-secondary ds:hover:bg-secondary/10 ds:dark:border-secondary ds:dark:hover:bg-secondary/20",
+    stroke: "ds:border-secondary ds:text-secondary ds:hover:bg-secondary/10 ds:dark:border-secondary ds:dark:hover:bg-secondary/20",
+    ghost: "ds:text-secondary ds:hover:bg-secondary/10 ds:hover:text-secondary ds:dark:hover:bg-secondary/20",
+    link: "ds:text-secondary",
   },
   accent: {
-    solid:
-      "border-accent bg-accent text-accent-foreground hover:bg-accent/80 focus-visible:ring-accent/20",
-    mix: "bg-accent/30 border-accent text-accent hover:bg-accent/40 dark:bg-accent/30 dark:hover:bg-accent/40",
-    light:
-      "bg-accent/30 border-accent/0 text-accent hover:bg-accent/40 dark:bg-accent/30 dark:hover:bg-accent/40",
-    outline:
-      "border-accent text-accent hover:bg-accent/10 dark:border-accent dark:hover:bg-accent/20",
-    stroke:
-      "border-accent text-accent hover:bg-accent/10 dark:border-accent dark:hover:bg-accent/20",
-    ghost:
-      "text-accent hover:bg-accent/10 hover:text-accent dark:hover:bg-accent/20",
-    link: "text-accent",
+    solid: "ds:border-accent ds:bg-accent ds:text-accent-foreground ds:hover:bg-accent/80 ds:focus-visible:ring-accent/20",
+    mix: "ds:bg-accent/30 ds:border-accent ds:text-accent ds:hover:bg-accent/40 ds:dark:bg-accent/30 ds:dark:hover:bg-accent/40",
+    light: "ds:bg-accent/30 ds:border-accent/0 ds:text-accent ds:hover:bg-accent/40 ds:dark:bg-accent/30 ds:dark:hover:bg-accent/40",
+    outline: "ds:border-accent ds:text-accent ds:hover:bg-accent/10 ds:dark:border-accent ds:dark:hover:bg-accent/20",
+    stroke: "ds:border-accent ds:text-accent ds:hover:bg-accent/10 ds:dark:border-accent ds:dark:hover:bg-accent/20",
+    ghost: "ds:text-accent ds:hover:bg-accent/10 ds:hover:text-accent ds:dark:hover:bg-accent/20",
+    link: "ds:text-accent",
   },
   destructive: {
-    solid:
-      "border-destructive bg-destructive text-destructive-foreground hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:bg-destructive/60",
-    mix: "bg-destructive/30 border-destructive text-destructive hover:bg-destructive/40 dark:bg-destructive/30 dark:hover:bg-destructive/40",
-    light:
-      "bg-destructive/30 border-destructive/0 text-destructive hover:bg-destructive/40 dark:bg-destructive/30 dark:hover:bg-destructive/40",
-    outline:
-      "border-destructive text-destructive hover:bg-destructive/10 dark:border-destructive dark:hover:bg-destructive/20",
-    stroke:
-      "border-destructive text-destructive hover:bg-destructive/10 dark:border-destructive dark:hover:bg-destructive/20",
-    ghost:
-      "text-destructive hover:bg-destructive/10 hover:text-destructive dark:hover:bg-destructive/20",
-    link: "text-destructive",
+    solid: "ds:border-destructive ds:bg-destructive ds:text-destructive-foreground ds:hover:bg-destructive/90 ds:focus-visible:ring-destructive/20 ds:dark:bg-destructive/60",
+    mix: "ds:bg-destructive/30 ds:border-destructive ds:text-destructive ds:hover:bg-destructive/40 ds:dark:bg-destructive/30 ds:dark:hover:bg-destructive/40",
+    light: "ds:bg-destructive/30 ds:border-destructive/0 ds:text-destructive ds:hover:bg-destructive/40 ds:dark:bg-destructive/30 ds:dark:hover:bg-destructive/40",
+    outline: "ds:border-destructive ds:text-destructive ds:hover:bg-destructive/10 ds:dark:border-destructive ds:dark:hover:bg-destructive/20",
+    stroke: "ds:border-destructive ds:text-destructive ds:hover:bg-destructive/10 ds:dark:border-destructive ds:dark:hover:bg-destructive/20",
+    ghost: "ds:text-destructive ds:hover:bg-destructive/10 ds:hover:text-destructive ds:dark:hover:bg-destructive/20",
+    link: "ds:text-destructive",
   },
   muted: {
-    solid:
-      "border-muted bg-muted text-muted-foreground hover:bg-muted/80 focus-visible:ring-muted/20",
-    mix: "bg-muted/30 border-muted text-muted-foreground hover:bg-muted/40 dark:bg-muted/30 dark:hover:bg-muted/40",
-    light:
-      "bg-muted/30 border-muted/0 text-muted-foreground hover:bg-muted/40 dark:bg-muted/30 dark:hover:bg-muted/40",
-    outline:
-      "border-input text-muted-foreground hover:bg-accent hover:text-accent-foreground dark:border-input dark:hover:bg-input/50",
-    stroke:
-      "border-input text-muted-foreground hover:bg-accent hover:text-accent-foreground dark:border-input dark:hover:bg-input/50",
-    ghost:
-      "text-muted-foreground hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
-    link: "text-muted-foreground",
+    solid: "ds:border-muted ds:bg-muted ds:text-muted-foreground ds:hover:bg-muted/80 ds:focus-visible:ring-muted/20",
+    mix: "ds:bg-muted/30 ds:border-muted ds:text-muted-foreground ds:hover:bg-muted/40 ds:dark:bg-muted/30 ds:dark:hover:bg-muted/40",
+    light: "ds:bg-muted/30 ds:border-muted/0 ds:text-muted-foreground ds:hover:bg-muted/40 ds:dark:bg-muted/30 ds:dark:hover:bg-muted/40",
+    outline: "ds:border-input ds:text-muted-foreground ds:hover:bg-accent ds:hover:text-accent-foreground ds:dark:border-input ds:dark:hover:bg-input/50",
+    stroke: "ds:border-input ds:text-muted-foreground ds:hover:bg-accent ds:hover:text-accent-foreground ds:dark:border-input ds:dark:hover:bg-input/50",
+    ghost: "ds:text-muted-foreground ds:hover:bg-accent ds:hover:text-accent-foreground ds:dark:hover:bg-accent/50",
+    link: "ds:text-muted-foreground",
   },
   success: {
-    solid:
-      "border-success bg-success text-success-foreground hover:bg-success/90 focus-visible:ring-success/20 dark:bg-success/60",
-    mix: "bg-success/30 border-success text-success hover:bg-success/40 dark:bg-success/30 dark:hover:bg-success/40",
-    light:
-      "bg-success/30 border-success/0 text-success hover:bg-success/40 dark:bg-success/30 dark:hover:bg-success/40",
-    outline:
-      "border-success text-success hover:bg-success/10 dark:border-success dark:hover:bg-success/20",
-    stroke:
-      "border-success text-success hover:bg-success/10 dark:border-success dark:hover:bg-success/20",
-    ghost:
-      "text-success hover:bg-success/10 hover:text-success dark:hover:bg-success/20",
-    link: "text-success",
+    solid: "ds:border-success ds:bg-success ds:text-success-foreground ds:hover:bg-success/90 ds:focus-visible:ring-success/20 ds:dark:bg-success/60",
+    mix: "ds:bg-success/30 ds:border-success ds:text-success ds:hover:bg-success/40 ds:dark:bg-success/30 ds:dark:hover:bg-success/40",
+    light: "ds:bg-success/30 ds:border-success/0 ds:text-success ds:hover:bg-success/40 ds:dark:bg-success/30 ds:dark:hover:bg-success/40",
+    outline: "ds:border-success ds:text-success ds:hover:bg-success/10 ds:dark:border-success ds:dark:hover:bg-success/20",
+    stroke: "ds:border-success ds:text-success ds:hover:bg-success/10 ds:dark:border-success ds:dark:hover:bg-success/20",
+    ghost: "ds:text-success ds:hover:bg-success/10 ds:hover:text-success ds:dark:hover:bg-success/20",
+    link: "ds:text-success",
   },
   error: {
-    solid:
-      "border-error bg-error text-error-foreground hover:bg-error/90 focus-visible:ring-error/20 dark:bg-error/60",
-    mix: "bg-error/30 border-error text-error hover:bg-error/40 dark:bg-error/30 dark:hover:bg-error/40",
-    light:
-      "bg-error/30 border-error/0 text-error hover:bg-error/40 dark:bg-error/30 dark:hover:bg-error/40",
-    outline:
-      "border-error text-error hover:bg-error/10 dark:border-error dark:hover:bg-error/20",
-    stroke:
-      "border-error text-error hover:bg-error/10 dark:border-error dark:hover:bg-error/20",
-    ghost:
-      "text-error hover:bg-error/10 hover:text-error dark:hover:bg-error/20",
-    link: "text-error",
+    solid: "ds:border-error ds:bg-error ds:text-error-foreground ds:hover:bg-error/90 ds:focus-visible:ring-error/20 ds:dark:bg-error/60",
+    mix: "ds:bg-error/30 ds:border-error ds:text-error ds:hover:bg-error/40 ds:dark:bg-error/30 ds:dark:hover:bg-error/40",
+    light: "ds:bg-error/30 ds:border-error/0 ds:text-error ds:hover:bg-error/40 ds:dark:bg-error/30 ds:dark:hover:bg-error/40",
+    outline: "ds:border-error ds:text-error ds:hover:bg-error/10 ds:dark:border-error ds:dark:hover:bg-error/20",
+    stroke: "ds:border-error ds:text-error ds:hover:bg-error/10 ds:dark:border-error ds:dark:hover:bg-error/20",
+    ghost: "ds:text-error ds:hover:bg-error/10 ds:hover:text-error ds:dark:hover:bg-error/20",
+    link: "ds:text-error",
   },
   warning: {
-    solid:
-      "border-warning bg-warning text-warning-foreground hover:bg-warning/90 focus-visible:ring-warning/20 dark:bg-warning/60",
-    mix: "bg-warning/30 border-warning text-warning hover:bg-warning/40 dark:bg-warning/30 dark:hover:bg-warning/40",
-    light:
-      "bg-warning/30 border-warning/0 text-warning hover:bg-warning/40 dark:bg-warning/30 dark:hover:bg-warning/40",
-    outline:
-      "border-warning text-warning hover:bg-warning/10 dark:border-warning dark:hover:bg-warning/20",
-    stroke:
-      "border-warning text-warning hover:bg-warning/10 dark:border-warning dark:hover:bg-warning/20",
-    ghost:
-      "text-warning hover:bg-warning/10 hover:text-warning dark:hover:bg-warning/20",
-    link: "text-warning",
+    solid: "ds:border-warning ds:bg-warning ds:text-warning-foreground ds:hover:bg-warning/90 ds:focus-visible:ring-warning/20 ds:dark:bg-warning/60",
+    mix: "ds:bg-warning/30 ds:border-warning ds:text-warning ds:hover:bg-warning/40 ds:dark:bg-warning/30 ds:dark:hover:bg-warning/40",
+    light: "ds:bg-warning/30 ds:border-warning/0 ds:text-warning ds:hover:bg-warning/40 ds:dark:bg-warning/30 ds:dark:hover:bg-warning/40",
+    outline: "ds:border-warning ds:text-warning ds:hover:bg-warning/10 ds:dark:border-warning ds:dark:hover:bg-warning/20",
+    stroke: "ds:border-warning ds:text-warning ds:hover:bg-warning/10 ds:dark:border-warning ds:dark:hover:bg-warning/20",
+    ghost: "ds:text-warning ds:hover:bg-warning/10 ds:hover:text-warning ds:dark:hover:bg-warning/20",
+    link: "ds:text-warning",
   },
 };
 
@@ -150,34 +110,25 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        solid: "border hover:bg-border",
-        mix: "border bg-background shadow-xs dark:bg-input/30",
-        light: "shadow-xs",
-        outline: "border bg-background shadow-xs dark:bg-input/30",
-        stroke: "border bg-background shadow-xs dark:bg-input/30",
+        solid: "ds:border ds:hover:bg-border",
+        mix: "ds:border ds:bg-background ds:shadow-xs ds:dark:bg-input/30",
+        light: "ds:shadow-xs",
+        outline: "ds:border ds:bg-background ds:shadow-xs ds:dark:bg-input/30",
+        stroke: "ds:border ds:bg-background ds:shadow-xs ds:dark:bg-input/30",
         ghost: "",
         link: "",
       },
       size: {
-        xs: "h-6 rounded-md gap-2 px-2 text-sm py-0.5 has-[>svg]:px-2",
-        sm: "h-8 rounded-md gap-2 px-3 text-sm py-1.5 has-[>svg]:px-2.5",
-        normal: "h-10 px-4 py-2 has-[>svg]:px-3",
-        lg: "h-12 rounded-md px-4 py-3 has-[>svg]:px-4",
-        xl: "h-14 rounded-md px-4 py-4 has-[>svg]:px-4",
-        icon: "size-10 [&_svg:not([class*='size-'])]:size-6",
-        "icon-xs": "size-6 [&_svg:not([class*='size-'])]:size-4",
-        "icon-sm": "size-8 [&_svg:not([class*='size-'])]:size-5",
-        "icon-lg": "size-12 [&_svg:not([class*='size-'])]:size-6",
-        "icon-xl": "size-14 [&_svg:not([class*='size-'])]:size-6",
-        "circle-icon":
-          "size-10 rounded-full [&_svg:not([class*='size-'])]:size-6",
-        "circle-icon-xs":
-          "size-6 rounded-full [&_svg:not([class*='size-'])]:size-4",
-        "circle-icon-sm":
-          "size-8 rounded-full [&_svg:not([class*='size-'])]:size-5",
-        "circle-icon-lg":
-          "size-12 rounded-full [&_svg:not([class*='size-'])]:size-6",
-        "circle-icon-xl":
+        xs: "ds:h-6 ds:rounded-md ds:gap-2 ds:px-2 ds:text-sm ds:py-0.5 ds:has-[>svg]:px-2",
+        sm: "ds:h-8 ds:rounded-md ds:gap-2 ds:px-3 ds:text-sm ds:py-1.5 ds:has-[>svg]:px-2.5",
+        normal: "ds:h-10 ds:px-4 ds:py-2 ds:has-[>svg]:px-3",
+        lg: "ds:h-12 ds:rounded-md ds:px-4 ds:py-3 ds:has-[>svg]:px-4",
+        xl: "ds:h-14 ds:rounded-md ds:px-4 ds:py-4 ds:has-[>svg]:px-4",
+        icon: "size-10 [&_svg:not([class*='size-'])]:size-6", "ds:icon-xs": "size-6 [&_svg:not([class*='size-'])]:size-4", "ds:icon-sm": "size-8 [&_svg:not([class*='size-'])]:size-5", "ds:icon-lg": "size-12 [&_svg:not([class*='size-'])]:size-6", "ds:icon-xl": "size-14 [&_svg:not([class*='size-'])]:size-6", "ds:circle-icon":
+          "size-10 rounded-full [&_svg:not([class*='size-'])]:size-6", "ds:circle-icon-xs":
+          "size-6 rounded-full [&_svg:not([class*='size-'])]:size-4", "ds:circle-icon-sm":
+          "size-8 rounded-full [&_svg:not([class*='size-'])]:size-5", "ds:circle-icon-lg":
+          "size-12 rounded-full [&_svg:not([class*='size-'])]:size-6", "ds:circle-icon-xl":
           "size-14 rounded-full [&_svg:not([class*='size-'])]:size-6",
       },
       color: {

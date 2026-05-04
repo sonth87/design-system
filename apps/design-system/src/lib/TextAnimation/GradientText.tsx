@@ -23,7 +23,7 @@ function GradientText({
     backgroundImage: gradient,
     backgroundClip: "text",
     WebkitBackgroundClip: "text",
-    backgroundSize: "200% 100%",
+    backgroundSize: "ds:200% ds:100%",
     color: "transparent",
   };
 
@@ -36,7 +36,7 @@ function GradientText({
       <motion.span
         className="ds:m-0 ds:text-transparent"
         style={baseStyle as any}
-        animate={{ backgroundPosition: ["0% 0%", "200% 0%"] }}
+        animate={{ backgroundPosition: ["0% 0%", "ds:200% ds:0%"] }}
         transition={transition}
       >
         {text}
@@ -46,7 +46,7 @@ function GradientText({
         <motion.span
           className="ds:m-0 ds:absolute ds:top-0 ds:left-0 ds:text-transparent ds:blur-sm ds:mix-blend-plus-lighter"
           style={baseStyle as any}
-          animate={{ backgroundPosition: ["0% 0%", "200% 0%"] }}
+          animate={{ backgroundPosition: ["0% 0%", "ds:200% ds:0%"] }}
           transition={transition}
         >
           {text}

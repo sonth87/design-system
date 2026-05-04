@@ -45,52 +45,52 @@ const COLOR_CONFIG: Record<
   }
 > = {
   primary: {
-    range: "bg-primary",
-    thumb: "border-primary/50",
-    labelBg: "bg-primary",
-    labelText: "text-primary-foreground",
+    range: "ds:bg-primary",
+    thumb: "ds:border-primary/50",
+    labelBg: "ds:bg-primary",
+    labelText: "ds:text-primary-foreground",
   },
   secondary: {
-    range: "bg-secondary",
-    thumb: "border-secondary/50",
-    labelBg: "bg-secondary",
-    labelText: "text-secondary-foreground",
+    range: "ds:bg-secondary",
+    thumb: "ds:border-secondary/50",
+    labelBg: "ds:bg-secondary",
+    labelText: "ds:text-secondary-foreground",
   },
   success: {
-    range: "bg-success",
-    thumb: "border-success/50",
-    labelBg: "bg-success",
-    labelText: "text-success-foreground",
+    range: "ds:bg-success",
+    thumb: "ds:border-success/50",
+    labelBg: "ds:bg-success",
+    labelText: "ds:text-success-foreground",
   },
   warning: {
-    range: "bg-warning",
-    thumb: "border-warning/50",
-    labelBg: "bg-warning",
-    labelText: "text-warning-foreground",
+    range: "ds:bg-warning",
+    thumb: "ds:border-warning/50",
+    labelBg: "ds:bg-warning",
+    labelText: "ds:text-warning-foreground",
   },
   error: {
-    range: "bg-error",
-    thumb: "border-error/50",
-    labelBg: "bg-error",
-    labelText: "text-error-foreground",
+    range: "ds:bg-error",
+    thumb: "ds:border-error/50",
+    labelBg: "ds:bg-error",
+    labelText: "ds:text-error-foreground",
   },
   glass: {
-    range: "bg-white/30 backdrop-blur-sm",
-    thumb: "border-white/30 backdrop-blur-sm",
-    labelBg: "bg-white/15",
-    labelText: "text-foreground",
+    range: "ds:bg-white/30 ds:backdrop-blur-sm",
+    thumb: "ds:border-white/30 ds:backdrop-blur-sm",
+    labelBg: "ds:bg-white/15",
+    labelText: "ds:text-foreground",
   },
   muted: {
-    range: "bg-muted-foreground",
-    thumb: "border-muted-foreground/50",
-    labelBg: "bg-muted",
-    labelText: "text-muted-foreground",
+    range: "ds:bg-muted-foreground",
+    thumb: "ds:border-muted-foreground/50",
+    labelBg: "ds:bg-muted",
+    labelText: "ds:text-muted-foreground",
   },
   accent: {
-    range: "bg-accent",
-    thumb: "border-accent/50",
-    labelBg: "bg-accent",
-    labelText: "text-accent-foreground",
+    range: "ds:bg-accent",
+    thumb: "ds:border-accent/50",
+    labelBg: "ds:bg-accent",
+    labelText: "ds:text-accent-foreground",
   },
 };
 
@@ -103,17 +103,16 @@ const SIZE_CONFIG: Record<
   }
 > = {
   sm: {
-    track: "data-[orientation=horizontal]:h-1 data-[orientation=vertical]:w-1",
-    thumb: "size-3",
+    track: "ds:data-[orientation=horizontal]:h-1 ds:data-[orientation=vertical]:w-1",
+    thumb: "ds:size-3",
   },
   md: {
-    track:
-      "data-[orientation=horizontal]:h-1.5 data-[orientation=vertical]:w-1.5",
-    thumb: "size-4",
+    track: "ds:data-[orientation=horizontal]:h-1.5 ds:data-[orientation=vertical]:w-1.5",
+    thumb: "ds:size-4",
   },
   lg: {
-    track: "data-[orientation=horizontal]:h-2 data-[orientation=vertical]:w-2",
-    thumb: "size-5",
+    track: "ds:data-[orientation=horizontal]:h-2 ds:data-[orientation=vertical]:w-2",
+    thumb: "ds:size-5",
   },
 };
 
@@ -140,7 +139,7 @@ const getArrowColorClass = (
   color: SliderColor,
   direction: "top" | "bottom" | "left" | "right"
 ): string => {
-  // Generate full border class (e.g., "border-t-primary")
+  // Generate full border class (e.g., "ds:border-t-primary")
   const prefix =
     direction === "top"
       ? "t"
@@ -170,44 +169,29 @@ const getLabelPositionClasses = (
 ): { badge: string; arrow: string } => {
   const positions: Record<string, { badge: string; arrow: string }> = {
     "horizontal-top": {
-      badge: "left-1/2 -translate-x-1/2 bottom-full -translate-y-1/2",
-      arrow:
-        "top-full left-1/2 -translate-x-1/2 border-t-[6px] border-l-[6px] border-r-[6px] border-b-0 border-l-transparent border-r-transparent",
-    },
-    "horizontal-bottom": {
-      badge: "left-1/2 -translate-x-1/2 top-full translate-y-1/2",
-      arrow:
-        "bottom-full left-1/2 -translate-x-1/2 border-b-[6px] border-l-[6px] border-r-[6px] border-t-0 border-l-transparent border-r-transparent",
-    },
-    "horizontal-left": {
-      badge: "top-1/2 -translate-y-1/2 right-full -translate-x-1/2",
-      arrow:
-        "left-full top-1/2 -translate-y-1/2 border-l-[6px] border-t-[6px] border-b-[6px] border-r-0 border-t-transparent border-b-transparent",
-    },
-    "horizontal-right": {
-      badge: "top-1/2 -translate-y-1/2 left-full translate-x-1/2",
-      arrow:
-        "right-full top-1/2 -translate-y-1/2 border-r-[6px] border-t-[6px] border-b-[6px] border-l-0 border-t-transparent border-b-transparent",
-    },
-    "vertical-left": {
-      badge: "top-1/2 -translate-y-1/2 right-full -translate-x-1/2",
-      arrow:
-        "left-full top-1/2 -translate-y-1/2 border-l-[6px] border-t-[6px] border-b-[6px] border-r-0 border-t-transparent border-b-transparent",
-    },
-    "vertical-right": {
-      badge: "top-1/2 -translate-y-1/2 left-full translate-x-1/2",
-      arrow:
-        "right-full top-1/2 -translate-y-1/2 border-r-[6px] border-t-[6px] border-b-[6px] border-l-0 border-t-transparent border-b-transparent",
-    },
-    "vertical-top": {
-      badge: "left-1/2 -translate-x-1/2 bottom-full -translate-y-1/2",
-      arrow:
-        "top-full left-1/2 -translate-x-1/2 border-t-[6px] border-l-[6px] border-r-[6px] border-b-0 border-l-transparent border-r-transparent",
-    },
-    "vertical-bottom": {
-      badge: "left-1/2 -translate-x-1/2 top-full translate-y-1/2",
-      arrow:
-        "bottom-full left-1/2 -translate-x-1/2 border-b-[6px] border-l-[6px] border-r-[6px] border-t-0 border-l-transparent border-r-transparent",
+      badge: "ds:left-1/2 ds:-translate-x-1/2 ds:bottom-full ds:-translate-y-1/2",
+      arrow: "ds:top-full ds:left-1/2 ds:-translate-x-1/2 ds:border-t-[6px] ds:border-l-[6px] ds:border-r-[6px] ds:border-b-0 ds:border-l-transparent ds:border-r-transparent",
+    }, "ds:horizontal-bottom": {
+      badge: "ds:left-1/2 ds:-translate-x-1/2 ds:top-full ds:translate-y-1/2",
+      arrow: "ds:bottom-full ds:left-1/2 ds:-translate-x-1/2 ds:border-b-[6px] ds:border-l-[6px] ds:border-r-[6px] ds:border-t-0 ds:border-l-transparent ds:border-r-transparent",
+    }, "ds:horizontal-left": {
+      badge: "ds:top-1/2 ds:-translate-y-1/2 ds:right-full ds:-translate-x-1/2",
+      arrow: "ds:left-full ds:top-1/2 ds:-translate-y-1/2 ds:border-l-[6px] ds:border-t-[6px] ds:border-b-[6px] ds:border-r-0 ds:border-t-transparent ds:border-b-transparent",
+    }, "ds:horizontal-right": {
+      badge: "ds:top-1/2 ds:-translate-y-1/2 ds:left-full ds:translate-x-1/2",
+      arrow: "ds:right-full ds:top-1/2 ds:-translate-y-1/2 ds:border-r-[6px] ds:border-t-[6px] ds:border-b-[6px] ds:border-l-0 ds:border-t-transparent ds:border-b-transparent",
+    }, "ds:vertical-left": {
+      badge: "ds:top-1/2 ds:-translate-y-1/2 ds:right-full ds:-translate-x-1/2",
+      arrow: "ds:left-full ds:top-1/2 ds:-translate-y-1/2 ds:border-l-[6px] ds:border-t-[6px] ds:border-b-[6px] ds:border-r-0 ds:border-t-transparent ds:border-b-transparent",
+    }, "ds:vertical-right": {
+      badge: "ds:top-1/2 ds:-translate-y-1/2 ds:left-full ds:translate-x-1/2",
+      arrow: "ds:right-full ds:top-1/2 ds:-translate-y-1/2 ds:border-r-[6px] ds:border-t-[6px] ds:border-b-[6px] ds:border-l-0 ds:border-t-transparent ds:border-b-transparent",
+    }, "ds:vertical-top": {
+      badge: "ds:left-1/2 ds:-translate-x-1/2 ds:bottom-full ds:-translate-y-1/2",
+      arrow: "ds:top-full ds:left-1/2 ds:-translate-x-1/2 ds:border-t-[6px] ds:border-l-[6px] ds:border-r-[6px] ds:border-b-0 ds:border-l-transparent ds:border-r-transparent",
+    }, "ds:vertical-bottom": {
+      badge: "ds:left-1/2 ds:-translate-x-1/2 ds:top-full ds:translate-y-1/2",
+      arrow: "ds:bottom-full ds:left-1/2 ds:-translate-x-1/2 ds:border-b-[6px] ds:border-l-[6px] ds:border-r-[6px] ds:border-t-0 ds:border-l-transparent ds:border-r-transparent",
     },
   };
 
@@ -220,22 +204,7 @@ const getSpecLabelPositionClass = (
   position: LabelPosition
 ): string => {
   const positions: Record<string, string> = {
-    "horizontal-top":
-      "data-[orientation=horizontal]:bottom-full data-[orientation=horizontal]:left-1/2 data-[orientation=horizontal]:-translate-x-1/2 data-[orientation=horizontal]:-translate-y-1/2",
-    "horizontal-bottom":
-      "data-[orientation=horizontal]:top-full data-[orientation=horizontal]:left-1/2 data-[orientation=horizontal]:-translate-x-1/2 data-[orientation=horizontal]:translate-y-1/2",
-    "horizontal-left":
-      "data-[orientation=horizontal]:top-1/2 data-[orientation=horizontal]:right-full data-[orientation=horizontal]:-translate-y-1/2 data-[orientation=horizontal]:-translate-x-1/2",
-    "horizontal-right":
-      "data-[orientation=horizontal]:top-1/2 data-[orientation=horizontal]:left-full data-[orientation=horizontal]:-translate-y-1/2 data-[orientation=horizontal]:translate-x-1/2",
-    "vertical-left":
-      "data-[orientation=vertical]:right-full data-[orientation=vertical]:top-1/2 data-[orientation=vertical]:-translate-x-1/2 data-[orientation=vertical]:-translate-y-1/2",
-    "vertical-right":
-      "data-[orientation=vertical]:left-full data-[orientation=vertical]:top-1/2 data-[orientation=vertical]:translate-x-1/2 data-[orientation=vertical]:-translate-y-1/2",
-    "vertical-top":
-      "data-[orientation=vertical]:bottom-full data-[orientation=vertical]:left-1/2 data-[orientation=vertical]:-translate-x-1/2 data-[orientation=vertical]:-translate-y-1/2",
-    "vertical-bottom":
-      "data-[orientation=vertical]:top-full data-[orientation=vertical]:left-1/2 data-[orientation=vertical]:-translate-x-1/2 data-[orientation=vertical]:translate-y-1/2",
+    "horizontal-top": "ds:data-[orientation=horizontal]:bottom-full ds:data-[orientation=horizontal]:left-1/2 ds:data-[orientation=horizontal]:-translate-x-1/2 ds:data-[orientation=horizontal]:-translate-y-1/2", "ds:horizontal-bottom": "ds:data-[orientation=horizontal]:top-full ds:data-[orientation=horizontal]:left-1/2 ds:data-[orientation=horizontal]:-translate-x-1/2 ds:data-[orientation=horizontal]:translate-y-1/2", "ds:horizontal-left": "ds:data-[orientation=horizontal]:top-1/2 ds:data-[orientation=horizontal]:right-full ds:data-[orientation=horizontal]:-translate-y-1/2 ds:data-[orientation=horizontal]:-translate-x-1/2", "ds:horizontal-right": "ds:data-[orientation=horizontal]:top-1/2 ds:data-[orientation=horizontal]:left-full ds:data-[orientation=horizontal]:-translate-y-1/2 ds:data-[orientation=horizontal]:translate-x-1/2", "ds:vertical-left": "ds:data-[orientation=vertical]:right-full ds:data-[orientation=vertical]:top-1/2 ds:data-[orientation=vertical]:-translate-x-1/2 ds:data-[orientation=vertical]:-translate-y-1/2", "ds:vertical-right": "ds:data-[orientation=vertical]:left-full ds:data-[orientation=vertical]:top-1/2 ds:data-[orientation=vertical]:translate-x-1/2 ds:data-[orientation=vertical]:-translate-y-1/2", "ds:vertical-top": "ds:data-[orientation=vertical]:bottom-full ds:data-[orientation=vertical]:left-1/2 ds:data-[orientation=vertical]:-translate-x-1/2 ds:data-[orientation=vertical]:-translate-y-1/2", "ds:vertical-bottom": "ds:data-[orientation=vertical]:top-full ds:data-[orientation=vertical]:left-1/2 ds:data-[orientation=vertical]:-translate-x-1/2 ds:data-[orientation=vertical]:translate-y-1/2",
   };
 
   return positions[`${orientation}-${position}`];

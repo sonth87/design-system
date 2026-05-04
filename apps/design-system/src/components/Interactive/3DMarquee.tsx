@@ -52,7 +52,7 @@ export const ThreeDMarquee = ({
               >
                 <GridLineVertical className="ds:-left-4" offset="80px" />
                 {subarray.map((image, imageIndex) => (
-                  <div className="ds:relative" key={imageIndex + image}>
+                  <div className= "relative" key={imageIndex + image}>
                     <GridLineHorizontal className="ds:-top-4" offset="20px" />
                     <motion.img
                       whileHover={{
@@ -90,12 +90,7 @@ const GridLineHorizontal = ({ className, offset }: GridLineHorizontalProps) => {
     <div
       style={
         {
-          "--background": "#ffffff",
-          "--color": "rgba(0, 0, 0, 0.2)",
-          "--height": "1px",
-          "--width": "5px",
-          "--fade-stop": "90%",
-          "--offset": offset || "200px", //-100px if you want to keep the line inside
+          "--background": "#ffffff", "ds:--color": "rgba(0, 0, 0, 0.2)", "ds:--height": "1px", "ds:--width": "5px", "ds:--fade-stop": "90%", "ds:--offset": offset || "200px", //-100px if you want to keep the line inside
           "--color-dark": "rgba(255, 255, 255, 0.2)",
           maskComposite: "exclude",
         } as React.CSSProperties
@@ -103,8 +98,7 @@ const GridLineHorizontal = ({ className, offset }: GridLineHorizontalProps) => {
       className={cn("ds:absolute left-[calc(var(--offset)/2*-1)] h-[var(--height)] w-[calc(100%+var(--offset))]",
         "bg-[linear-gradient(to_right,var(--color),var(--color)_50%,transparent_0,transparent)]",
         "[background-size:var(--width)_var(--height)]",
-        "[mask:linear-gradient(to_left,var(--background)_var(--fade-stop),transparent),_linear-gradient(to_right,var(--background)_var(--fade-stop),transparent),_linear-gradient(black,black)]",
-        "[mask-composite:exclude]",
+        "[mask:linear-gradient(to_left,var(--background)_var(--fade-stop),transparent),_linear-gradient(to_right,var(--background)_var(--fade-stop),transparent),_linear-gradient(black,black)]", "ds:[mask-composite:exclude]",
         "z-30",
         "dark:bg-[linear-gradient(to_right,var(--color-dark),var(--color-dark)_50%,transparent_0,transparent)]",
         className
@@ -123,12 +117,7 @@ const GridLineVertical = ({ className, offset }: GridLineVerticalProps) => {
     <div
       style={
         {
-          "--background": "#ffffff",
-          "--color": "rgba(0, 0, 0, 0.2)",
-          "--height": "5px",
-          "--width": "1px",
-          "--fade-stop": "90%",
-          "--offset": offset || "150px", //-100px if you want to keep the line inside
+          "--background": "#ffffff", "ds:--color": "rgba(0, 0, 0, 0.2)", "ds:--height": "5px", "ds:--width": "1px", "ds:--fade-stop": "90%", "ds:--offset": offset || "150px", //-100px if you want to keep the line inside
           "--color-dark": "rgba(255, 255, 255, 0.2)",
           maskComposite: "exclude",
         } as React.CSSProperties
@@ -136,8 +125,7 @@ const GridLineVertical = ({ className, offset }: GridLineVerticalProps) => {
       className={cn("ds:absolute top-[calc(var(--offset)/2*-1)] h-[calc(100%+var(--offset))] w-[var(--width)]",
         "bg-[linear-gradient(to_bottom,var(--color),var(--color)_50%,transparent_0,transparent)]",
         "[background-size:var(--width)_var(--height)]",
-        "[mask:linear-gradient(to_top,var(--background)_var(--fade-stop),transparent),_linear-gradient(to_bottom,var(--background)_var(--fade-stop),transparent),_linear-gradient(black,black)]",
-        "[mask-composite:exclude]",
+        "[mask:linear-gradient(to_top,var(--background)_var(--fade-stop),transparent),_linear-gradient(to_bottom,var(--background)_var(--fade-stop),transparent),_linear-gradient(black,black)]", "ds:[mask-composite:exclude]",
         "z-30",
         "dark:bg-[linear-gradient(to_bottom,var(--color-dark),var(--color-dark)_50%,transparent_0,transparent)]",
         className

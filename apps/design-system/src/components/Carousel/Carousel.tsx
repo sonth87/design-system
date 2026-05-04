@@ -674,7 +674,7 @@ export const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>(
                     bulletIndex,
                     cn(
                       "carousel-pagination-bullet",
-                      isActive && "carousel-pagination-bullet-active"
+                      isActive && "ds:carousel-pagination-bullet-active"
                     )
                   )}
                 </React.Fragment>
@@ -684,13 +684,13 @@ export const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>(
                   onClick={() => clickable && slideTo(bulletIndex)}
                   className={cn(
                     "ds:rounded-full ds:transition-all",
-                    direction === "ds:horizontal" ? "ds:w-2 ds:h-2" : "ds:w-2 ds:h-2",
+                    direction === "horizontal" ? "ds:w-2 ds:h-2" : "ds:w-2 ds:h-2",
                     isActive
-                      ? direction === "ds:horizontal"
+                      ? direction === "horizontal"
                         ? "ds:bg-primary ds:w-6"
                         : "ds:bg-primary ds:h-6"
                       : "ds:bg-muted-foreground/30 ds:hover:bg-muted-foreground/50",
-                    clickable && "cursor-pointer"
+                    clickable && "ds:cursor-pointer"
                   )}
                   aria-label={`Go to slide ${bulletIndex + 1}`}
                 />
@@ -712,8 +712,7 @@ export const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>(
           >
             {paginationOptions.renderFraction ? (
               paginationOptions.renderFraction(
-                "carousel-pagination-current",
-                "carousel-pagination-total"
+                "carousel-pagination-current", "ds:carousel-pagination-total"
               )
             ) : (
               <>
@@ -751,7 +750,7 @@ export const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>(
               isInside
                 ? "ds:absolute ds:bottom-0 ds:left-0 ds:right-0 ds:rounded-none"
                 : "ds:mt-4",
-              clickable && "cursor-pointer"
+              clickable && "ds:cursor-pointer"
             )}
           >
             {paginationOptions.renderProgressbar ? (
@@ -814,7 +813,7 @@ export const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>(
               isOutside
                 ? "ds:mt-4" // Outside: margin-top for spacing
                 : "ds:absolute ds:bottom-0 ds:left-1/2 ds:-translate-x-1/2", // Inside: overlay at bottom
-              clickable && "cursor-pointer",
+              clickable && "ds:cursor-pointer",
               showScrollbar ? "ds:opacity-100" : "ds:opacity-0"
             )}
           >
@@ -849,7 +848,7 @@ export const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>(
         case "cube":
           return {
             transform: `translateX(${diff * 100}%) rotateY(${diff * -90}deg)`,
-            transformOrigin: diff > 0 ? "left center" : "right center",
+            transformOrigin: diff > 0 ? "left center" : "ds:right ds:center",
           };
         case "coverflow":
           return {
@@ -866,7 +865,7 @@ export const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>(
             transform: `translateX(${diff * 50}px) translateZ(${-Math.abs(diff) * 100}px) scale(${1 - Math.abs(diff) * 0.2})`,
             opacity: diff === 0 ? 1 : 0.5,
             zIndex: 100 - Math.abs(diff) * 10,
-            transition: "all 0.5s ease",
+            transition: "ds:all ds:0.5s ds:ease",
           };
         default:
           return {};
@@ -887,12 +886,11 @@ export const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>(
               (effect === "fade" ||
                 effect === "cube" ||
                 effect === "flip" ||
-                effect === "cards") &&
-                "aspect-4/3",
-              effect === "coverflow" && "aspect-4/2 rounded-xl",
-              direction === "vertical" && effect === "slide" && "h-full",
-              grabCursor && allowTouchMove && !isDragging && "cursor-grab",
-              isDragging && "cursor-grabbing"
+                effect === "cards") && "ds:aspect-4/3",
+              effect === "coverflow" && "ds:aspect-4/2 ds:rounded-xl",
+              direction === "vertical" && effect === "slide" && "ds:h-full",
+              grabCursor && allowTouchMove && !isDragging && "ds:cursor-grab",
+              isDragging && "ds:cursor-grabbing"
             )}
           >
             {/* Wrapper */}
@@ -942,14 +940,12 @@ export const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>(
                     "carousel-slide",
                     slideClassName,
                     slideElement.props.className,
-                    effect !== "slide" && "absolute inset-0",
-                    effect === "fade" && "transition-opacity duration-300",
+                    effect !== "slide" && "ds:absolute ds:inset-0",
+                    effect === "fade" && "ds:transition-opacity ds:duration-300",
                     effect !== "slide" &&
-                      effect !== "fade" &&
-                      "transition-all duration-500",
+                      effect !== "fade" && "ds:transition-all ds:duration-500",
                     enableImageViewer &&
-                      imageInfos[index]?.src &&
-                      "cursor-pointer"
+                      imageInfos[index]?.src && "ds:cursor-pointer"
                   ),
                   style: {
                     flex:
@@ -980,9 +976,7 @@ export const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>(
                     e.stopPropagation();
                     handleSlideClick(index);
                   },
-                  onDragStart: (e: React.DragEvent) => e.preventDefault(),
-                  "data-active": isActive,
-                  "data-index": index,
+                  onDragStart: (e: React.DragEvent) => e.preventDefault(), "ds:data-active": isActive, "ds:data-index": index,
                 } as Partial<CarouselSlideProps>);
               })}
             </div>
@@ -1001,7 +995,7 @@ export const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>(
                     disabled={!loop && !rewind && isBeginning}
                     className={cn(
                       "ds:absolute ds:z-10 ds:w-10 ds:h-10 ds:rounded-full ds:bg-background/80 ds:backdrop-blur ds:shadow-lg ds:flex ds:items-center ds:justify-center ds:transition-all ds:hover:bg-background ds:disabled:opacity-30 ds:disabled:cursor-not-allowed",
-                      direction === "ds:horizontal"
+                      direction === "horizontal"
                         ? "ds:left-4 ds:top-1/2 ds:-translate-y-1/2"
                         : "ds:top-4 ds:left-1/2 ds:-translate-x-1/2"
                     )}
@@ -1019,7 +1013,7 @@ export const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>(
                     disabled={!loop && !rewind && isEnd}
                     className={cn(
                       "ds:absolute ds:z-10 ds:w-10 ds:h-10 ds:rounded-full ds:bg-background/80 ds:backdrop-blur ds:shadow-lg ds:flex ds:items-center ds:justify-center ds:transition-all ds:hover:bg-background ds:disabled:opacity-30 ds:disabled:cursor-not-allowed",
-                      direction === "ds:horizontal"
+                      direction === "horizontal"
                         ? "ds:right-4 ds:top-1/2 ds:-translate-y-1/2"
                         : "ds:bottom-4 ds:left-1/2 ds:-translate-x-1/2"
                     )}

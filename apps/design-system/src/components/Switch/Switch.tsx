@@ -77,7 +77,7 @@ const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>(
       // Handle glass animation separately for Switch (don't affect other components)
       if (animation === "glass") {
         return {
-          className: "!bg-transparent !shadow-none !border-none",
+          className: "ds:!bg-transparent ds:!shadow-none ds:!border-none",
           isGlass: true, // Custom flag for glass effect
           variant: "default",
         };
@@ -121,7 +121,7 @@ const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>(
         })?.match(/((?:!)?rounded-\S+)/g);
         const roundedClass = roundedMatches
           ? roundedMatches[roundedMatches.length - 1]
-          : "rounded-full";
+          : "ds:rounded-full";
 
         return (
           <Glass
@@ -191,8 +191,8 @@ const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>(
     // Render with label (outside wrap)
     if (label) {
       const isVertical = labelPosition === "top" || labelPosition === "bottom";
-      const flexDirection = isVertical ? "flex-col" : "flex-row";
-      const alignItems = isVertical ? "items-start" : "items-center";
+      const flexDirection = isVertical ? "flex-col" : "ds:flex-row";
+      const alignItems = isVertical ? "items-start" : "ds:items-center";
       const labelFirst = labelPosition === "left" || labelPosition === "top";
 
       return (
