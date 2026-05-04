@@ -10,7 +10,7 @@ const meta: Meta = {
 export default meta;
 
 export const Documentation = () => (
-  <div className="max-w-4xl mx-auto p-8 prose prose-slate dark:prose-invert">
+  <div className="ds:max-w-4xl ds:mx-auto ds:p-8 ds:prose ds:prose-slate ds:dark:prose-invert">
     <h1>Shadcn Design System</h1>
 
     <p>
@@ -25,7 +25,7 @@ export const Documentation = () => (
       with powerful features and enhancements.
     </p>
 
-    <div className="flex gap-2 my-4">
+    <div className="ds:flex ds:gap-2 ds:my-4">
       <a href="https://www.npmjs.com/package/@sth87/shadcn-design-system">
         <img
           src="https://img.shields.io/npm/v/@sth87/shadcn-design-system"
@@ -121,10 +121,10 @@ import "@sth87/shadcn-design-system/animation.css";`}</code>
 
 function App() {
   return (
-    <div className="p-6 max-w-md">
-      <h1 className="text-2xl font-bold mb-4">Welcome</h1>
-      <Input placeholder="Enter your email" className="mb-4" />
-      <Button variant="default" className="w-full">
+    <div className="ds:p-6 ds:max-w-md">
+      <h1 className="ds:text-2xl ds:font-bold ds:mb-4">Welcome</h1>
+      <Input placeholder="Enter your email" className="ds:mb-4" />
+      <Button variant="default" className="ds:w-full">
         Get Started
       </Button>
     </div>
@@ -193,8 +193,8 @@ function SearchComponent() {
       </li>
     </ul>
 
-    <hr className="my-8" />
-    <p className="text-center">
+    <hr className="ds:my-8" />
+    <p className="ds:text-center">
       Made by{" "}
       <a
         href="https://github.com/sonth87"

@@ -225,7 +225,7 @@ export const Default: Story = {
     );
 
     return (
-      <div className="w-80">
+      <div className="ds:w-80">
         <Slider {...args} value={value} onValueChange={setValue} />
       </div>
     );
@@ -238,10 +238,10 @@ export const WithValue: Story = {
     const [value, setValue] = React.useState([50]);
 
     return (
-      <div className="w-80 space-y-4">
-        <div className="flex justify-between items-center">
-          <label className="text-sm font-medium">Volume</label>
-          <span className="text-sm text-muted-foreground">{value[0]}%</span>
+      <div className="ds:w-80 ds:space-y-4">
+        <div className="ds:flex ds:justify-between ds:items-center">
+          <label className="ds:text-sm ds:font-medium">Volume</label>
+          <span className="ds:text-sm ds:text-muted-foreground">{value[0]}%</span>
         </div>
         <Slider value={value} onValueChange={setValue} max={100} step={1} />
       </div>
@@ -255,10 +255,10 @@ export const Range: Story = {
     const [value, setValue] = React.useState([25, 75]);
 
     return (
-      <div className="w-80 space-y-4">
-        <div className="flex justify-between items-center">
-          <label className="text-sm font-medium">Price Range</label>
-          <span className="text-sm text-muted-foreground">
+      <div className="ds:w-80 ds:space-y-4">
+        <div className="ds:flex ds:justify-between ds:items-center">
+          <label className="ds:text-sm ds:font-medium">Price Range</label>
+          <span className="ds:text-sm ds:text-muted-foreground">
             ${value[0]} - ${value[1]}
           </span>
         </div>
@@ -271,11 +271,11 @@ export const Range: Story = {
 // Different steps
 export const Marks: Story = {
   render: () => (
-    <div className="w-80 space-y-8">
-      <div className="space-y-2">
-        <label className="text-sm font-medium">Select Memory:</label>
+    <div className="ds:w-80 ds:space-y-8">
+      <div className="ds:space-y-2">
+        <label className="ds:text-sm ds:font-medium">Select Memory:</label>
         <Slider defaultValue={[1]} max={2} step={1} />
-        <div className="mt-2 -mx-1.5 flex items-center justify-between text-muted-foreground text-xs">
+        <div className="ds:mt-2 -mx-1.5 ds:flex ds:items-center ds:justify-between ds:text-muted-foreground ds:text-xs">
           {["4GB", "6GB", "8GB"].map((expansion) => (
             <span key={expansion}>{expansion}</span>
           ))}
@@ -291,16 +291,16 @@ export const Vertical: Story = {
     const [value, setValue] = React.useState([50]);
 
     return (
-      <div className="flex gap-8 h-64">
-        <div className="flex flex-col items-center gap-4">
-          <span className="text-sm text-muted-foreground">{value[0]}%</span>
+      <div className="ds:flex ds:gap-8 ds:h-64">
+        <div className="ds:flex ds:flex-col ds:items-center ds:gap-4">
+          <span className="ds:text-sm ds:text-muted-foreground">{value[0]}%</span>
           <Slider
             value={value}
             onValueChange={setValue}
             orientation="vertical"
-            className="h-full"
+            className="ds:h-full"
           />
-          <label className="text-sm font-medium">Volume</label>
+          <label className="ds:text-sm ds:font-medium">Volume</label>
         </div>
       </div>
     );
@@ -315,33 +315,33 @@ export const Equalizer: Story = {
     const [treble, setTreble] = React.useState([70]);
 
     return (
-      <div className="flex gap-8 h-64 items-end">
-        <div className="flex flex-col items-center gap-4">
+      <div className="ds:flex ds:gap-8 ds:h-64 ds:items-end">
+        <div className="ds:flex ds:flex-col ds:items-center ds:gap-4">
           <Slider
             value={bass}
             onValueChange={setBass}
             orientation="vertical"
-            className="h-48"
+            className="ds:h-48"
           />
-          <label className="text-sm font-medium">Bass</label>
+          <label className="ds:text-sm ds:font-medium">Bass</label>
         </div>
-        <div className="flex flex-col items-center gap-4">
+        <div className="ds:flex ds:flex-col ds:items-center ds:gap-4">
           <Slider
             value={mid}
             onValueChange={setMid}
             orientation="vertical"
-            className="h-48"
+            className="ds:h-48"
           />
-          <label className="text-sm font-medium">Mid</label>
+          <label className="ds:text-sm ds:font-medium">Mid</label>
         </div>
-        <div className="flex flex-col items-center gap-4">
+        <div className="ds:flex ds:flex-col ds:items-center ds:gap-4">
           <Slider
             value={treble}
             onValueChange={setTreble}
             orientation="vertical"
-            className="h-48"
+            className="ds:h-48"
           />
-          <label className="text-sm font-medium">Treble</label>
+          <label className="ds:text-sm ds:font-medium">Treble</label>
         </div>
       </div>
     );
@@ -351,15 +351,15 @@ export const Equalizer: Story = {
 // Disabled state
 export const Disabled: Story = {
   render: () => (
-    <div className="w-80 space-y-8">
-      <div className="space-y-2">
-        <label className="text-sm font-medium text-muted-foreground">
+    <div className="ds:w-80 ds:space-y-8">
+      <div className="ds:space-y-2">
+        <label className="ds:text-sm ds:font-medium ds:text-muted-foreground">
           Disabled Single
         </label>
         <Slider defaultValue={[50]} disabled />
       </div>
-      <div className="space-y-2">
-        <label className="text-sm font-medium text-muted-foreground">
+      <div className="ds:space-y-2">
+        <label className="ds:text-sm ds:font-medium ds:text-muted-foreground">
           Disabled Range
         </label>
         <Slider defaultValue={[25, 75]} disabled />
@@ -374,18 +374,18 @@ export const VolumeControl: Story = {
     const [volume, setVolume] = React.useState([75]);
 
     return (
-      <div className="w-80 space-y-4 p-6 rounded-lg border bg-card">
-        <div className="flex items-center justify-between">
+      <div className="ds:w-80 ds:space-y-4 ds:p-6 ds:rounded-lg ds:border ds:bg-card">
+        <div className="ds:flex ds:items-center ds:justify-between">
           <div>
-            <h3 className="font-semibold">Volume Control</h3>
-            <p className="text-sm text-muted-foreground">
+            <h3 className="ds:font-semibold">Volume Control</h3>
+            <p className="ds:text-sm ds:text-muted-foreground">
               Adjust the system volume
             </p>
           </div>
-          <span className="text-2xl font-bold">{volume[0]}%</span>
+          <span className="ds:text-2xl ds:font-bold">{volume[0]}%</span>
         </div>
         <Slider value={volume} onValueChange={setVolume} max={100} step={1} />
-        <div className="flex justify-between text-xs text-muted-foreground">
+        <div className="ds:flex ds:justify-between ds:text-xs ds:text-muted-foreground">
           <span>Muted</span>
           <span>Max</span>
         </div>
@@ -406,15 +406,15 @@ export const Temperature: Story = {
     };
 
     return (
-      <div className="w-80 space-y-4 p-6 rounded-lg border bg-card">
-        <div className="flex items-center justify-between">
+      <div className="ds:w-80 ds:space-y-4 ds:p-6 ds:rounded-lg ds:border ds:bg-card">
+        <div className="ds:flex ds:items-center ds:justify-between">
           <div>
-            <h3 className="font-semibold">Temperature</h3>
-            <p className="text-sm text-muted-foreground">
+            <h3 className="ds:font-semibold">Temperature</h3>
+            <p className="ds:text-sm ds:text-muted-foreground">
               Set your preferred temperature
             </p>
           </div>
-          <span className={`text-3xl font-bold ${getTempColor(temp[0])}`}>
+          <span className={`ds:text-3xl ds:font-bold ${getTempColor(temp[0])}`}>
             {temp[0]}°C
           </span>
         </div>
@@ -425,7 +425,7 @@ export const Temperature: Story = {
           max={30}
           step={0.5}
         />
-        <div className="flex justify-between text-xs text-muted-foreground">
+        <div className="ds:flex ds:justify-between ds:text-xs ds:text-muted-foreground">
           <span>16°C</span>
           <span>30°C</span>
         </div>
@@ -440,13 +440,13 @@ export const Brightness: Story = {
     const [brightness, setBrightness] = React.useState([80]);
 
     return (
-      <div className="w-80 space-y-4 p-6 rounded-lg border bg-card">
-        <div className="flex items-center justify-between">
-          <h3 className="font-semibold">Brightness</h3>
-          <span className="text-sm font-medium">{brightness[0]}%</span>
+      <div className="ds:w-80 ds:space-y-4 ds:p-6 ds:rounded-lg ds:border ds:bg-card">
+        <div className="ds:flex ds:items-center ds:justify-between">
+          <h3 className="ds:font-semibold">Brightness</h3>
+          <span className="ds:text-sm ds:font-medium">{brightness[0]}%</span>
         </div>
         <div
-          className="h-32 rounded-lg transition-opacity"
+          className="ds:h-32 ds:rounded-lg ds:transition-opacity"
           style={{
             opacity: brightness[0] / 100,
             background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
@@ -477,37 +477,37 @@ export const SliderColors: Story = {
     const [glass, setGlass] = React.useState([65]);
 
     return (
-      <div className="w-80 space-y-6">
-        <div className="space-y-2">
-          <label className="text-sm font-medium">Primary</label>
+      <div className="ds:w-80 ds:space-y-6">
+        <div className="ds:space-y-2">
+          <label className="ds:text-sm ds:font-medium">Primary</label>
           <Slider value={primary} onValueChange={setPrimary} color="primary" />
         </div>
-        <div className="space-y-2">
-          <label className="text-sm font-medium">Secondary</label>
+        <div className="ds:space-y-2">
+          <label className="ds:text-sm ds:font-medium">Secondary</label>
           <Slider
             value={secondary}
             onValueChange={setSecondary}
             color="secondary"
           />
         </div>
-        <div className="space-y-2">
-          <label className="text-sm font-medium">Success</label>
+        <div className="ds:space-y-2">
+          <label className="ds:text-sm ds:font-medium">Success</label>
           <Slider value={success} onValueChange={setSuccess} color="success" />
         </div>
-        <div className="space-y-2">
-          <label className="text-sm font-medium">Warning</label>
+        <div className="ds:space-y-2">
+          <label className="ds:text-sm ds:font-medium">Warning</label>
           <Slider value={warning} onValueChange={setWarning} color="warning" />
         </div>
-        <div className="space-y-2">
-          <label className="text-sm font-medium">Error</label>
+        <div className="ds:space-y-2">
+          <label className="ds:text-sm ds:font-medium">Error</label>
           <Slider value={error} onValueChange={setError} color="error" />
         </div>
-        <div className="space-y-2">
-          <label className="text-sm font-medium">Accent</label>
+        <div className="ds:space-y-2">
+          <label className="ds:text-sm ds:font-medium">Accent</label>
           <Slider value={accent} onValueChange={setAccent} color="accent" />
         </div>
-        <div className="space-y-2">
-          <label className="text-sm font-medium">Glass</label>
+        <div className="ds:space-y-2">
+          <label className="ds:text-sm ds:font-medium">Glass</label>
           <Slider value={glass} onValueChange={setGlass} color="glass" />
         </div>
       </div>
@@ -525,17 +525,17 @@ export const SliderSizes: Story = {
     const [large, setLarge] = React.useState([70]);
 
     return (
-      <div className="w-80 space-y-8">
-        <div className="space-y-2">
-          <label className="text-sm font-medium">Small</label>
+      <div className="ds:w-80 ds:space-y-8">
+        <div className="ds:space-y-2">
+          <label className="ds:text-sm ds:font-medium">Small</label>
           <Slider value={small} onValueChange={setSmall} size="sm" />
         </div>
-        <div className="space-y-2">
-          <label className="text-sm font-medium">Medium (Default)</label>
+        <div className="ds:space-y-2">
+          <label className="ds:text-sm ds:font-medium">Medium (Default)</label>
           <Slider value={medium} onValueChange={setMedium} size="md" />
         </div>
-        <div className="space-y-2">
-          <label className="text-sm font-medium">Large</label>
+        <div className="ds:space-y-2">
+          <label className="ds:text-sm ds:font-medium">Large</label>
           <Slider value={large} onValueChange={setLarge} size="lg" />
         </div>
       </div>
@@ -551,9 +551,9 @@ export const SliderSizesWithLabels: Story = {
     const [large, setLarge] = React.useState([70]);
 
     return (
-      <div className="w-80 space-y-8">
-        <div className="space-y-2">
-          <label className="text-sm font-medium">Small slider + label</label>
+      <div className="ds:w-80 ds:space-y-8">
+        <div className="ds:space-y-2">
+          <label className="ds:text-sm ds:font-medium">Small slider + label</label>
           <Slider
             value={small}
             onValueChange={setSmall}
@@ -562,8 +562,8 @@ export const SliderSizesWithLabels: Story = {
             labelArrow
           />
         </div>
-        <div className="space-y-2">
-          <label className="text-sm font-medium">Medium slider + label</label>
+        <div className="ds:space-y-2">
+          <label className="ds:text-sm ds:font-medium">Medium slider + label</label>
           <Slider
             value={medium}
             onValueChange={setMedium}
@@ -572,8 +572,8 @@ export const SliderSizesWithLabels: Story = {
             labelArrow
           />
         </div>
-        <div className="space-y-2">
-          <label className="text-sm font-medium">Large slider + label</label>
+        <div className="ds:space-y-2">
+          <label className="ds:text-sm ds:font-medium">Large slider + label</label>
           <Slider
             value={large}
             onValueChange={setLarge}
@@ -593,10 +593,10 @@ export const LabelOnHover: Story = {
     const [value, setValue] = React.useState([50]);
 
     return (
-      <div className="w-80 space-y-4">
-        <div className="flex justify-between items-center">
-          <label className="text-sm font-medium">Hover to see value</label>
-          <span className="text-sm text-muted-foreground">{value[0]}%</span>
+      <div className="ds:w-80 ds:space-y-4">
+        <div className="ds:flex ds:justify-between ds:items-center">
+          <label className="ds:text-sm ds:font-medium">Hover to see value</label>
+          <span className="ds:text-sm ds:text-muted-foreground">{value[0]}%</span>
         </div>
         <Slider value={value} onValueChange={setValue} showLabel="hover" />
       </div>
@@ -610,9 +610,9 @@ export const LabelAlwaysVisible: Story = {
     const [value, setValue] = React.useState([75]);
 
     return (
-      <div className="w-80 space-y-4">
-        <div className="flex justify-between items-center">
-          <label className="text-sm font-medium">Label always visible</label>
+      <div className="ds:w-80 ds:space-y-4">
+        <div className="ds:flex ds:justify-between ds:items-center">
+          <label className="ds:text-sm ds:font-medium">Label always visible</label>
         </div>
         <Slider value={value} onValueChange={setValue} showLabel="always" />
       </div>
@@ -626,9 +626,9 @@ export const LabelWithArrow: Story = {
     const [value, setValue] = React.useState([60]);
 
     return (
-      <div className="w-80 space-y-4">
-        <div className="flex justify-between items-center">
-          <label className="text-sm font-medium">Label with arrow</label>
+      <div className="ds:w-80 ds:space-y-4">
+        <div className="ds:flex ds:justify-between ds:items-center">
+          <label className="ds:text-sm ds:font-medium">Label with arrow</label>
         </div>
         <Slider
           value={value}
@@ -651,9 +651,9 @@ export const LabelColors: Story = {
     const [glass, setGlass] = React.useState([60]);
 
     return (
-      <div className="w-80 space-y-6">
-        <div className="space-y-2">
-          <label className="text-sm font-medium">
+      <div className="ds:w-80 ds:space-y-6">
+        <div className="ds:space-y-2">
+          <label className="ds:text-sm ds:font-medium">
             Primary (slider + label)
           </label>
           <Slider
@@ -664,8 +664,8 @@ export const LabelColors: Story = {
             labelArrow
           />
         </div>
-        <div className="space-y-2">
-          <label className="text-sm font-medium">Success</label>
+        <div className="ds:space-y-2">
+          <label className="ds:text-sm ds:font-medium">Success</label>
           <Slider
             value={success}
             onValueChange={setSuccess}
@@ -674,8 +674,8 @@ export const LabelColors: Story = {
             labelArrow
           />
         </div>
-        <div className="space-y-2">
-          <label className="text-sm font-medium">Warning</label>
+        <div className="ds:space-y-2">
+          <label className="ds:text-sm ds:font-medium">Warning</label>
           <Slider
             value={warning}
             onValueChange={setWarning}
@@ -684,8 +684,8 @@ export const LabelColors: Story = {
             labelArrow
           />
         </div>
-        <div className="space-y-2">
-          <label className="text-sm font-medium">Error</label>
+        <div className="ds:space-y-2">
+          <label className="ds:text-sm ds:font-medium">Error</label>
           <Slider
             value={error}
             onValueChange={setError}
@@ -694,8 +694,8 @@ export const LabelColors: Story = {
             labelArrow
           />
         </div>
-        <div className="space-y-2">
-          <label className="text-sm font-medium">Glass</label>
+        <div className="ds:space-y-2">
+          <label className="ds:text-sm ds:font-medium">Glass</label>
           <Slider
             value={glass}
             onValueChange={setGlass}
@@ -715,10 +715,10 @@ export const NumberFlowAnimation: Story = {
     const [value, setValue] = React.useState([50]);
 
     return (
-      <div className="w-80 space-y-4">
-        <div className="flex justify-between items-center">
-          <label className="text-sm font-medium">Number Flow Animation</label>
-          <span className="text-sm text-muted-foreground">
+      <div className="ds:w-80 ds:space-y-4">
+        <div className="ds:flex ds:justify-between ds:items-center">
+          <label className="ds:text-sm ds:font-medium">Number Flow Animation</label>
+          <span className="ds:text-sm ds:text-muted-foreground">
             Drag to see animation
           </span>
         </div>
@@ -740,10 +740,10 @@ export const SpecAnimation: Story = {
     const [value, setValue] = React.useState([50]);
 
     return (
-      <div className="w-80 space-y-4">
-        <div className="flex justify-between items-center">
-          <label className="text-sm font-medium">Spec Animation</label>
-          <span className="text-sm text-muted-foreground">
+      <div className="ds:w-80 ds:space-y-4">
+        <div className="ds:flex ds:justify-between ds:items-center">
+          <label className="ds:text-sm ds:font-medium">Spec Animation</label>
+          <span className="ds:text-sm ds:text-muted-foreground">
             Hover and move mouse
           </span>
         </div>
@@ -786,9 +786,9 @@ export const CustomFormatter: Story = {
     };
 
     return (
-      <div className="w-80 space-y-8">
-        <div className="space-y-2">
-          <label className="text-sm font-medium">Temperature (°C)</label>
+      <div className="ds:w-80 ds:space-y-8">
+        <div className="ds:space-y-2">
+          <label className="ds:text-sm ds:font-medium">Temperature (°C)</label>
           <Slider
             value={temperature}
             onValueChange={setTemperature}
@@ -801,8 +801,8 @@ export const CustomFormatter: Story = {
             color="warning"
           />
         </div>
-        <div className="space-y-2">
-          <label className="text-sm font-medium">Price</label>
+        <div className="ds:space-y-2">
+          <label className="ds:text-sm ds:font-medium">Price</label>
           <Slider
             value={price}
             onValueChange={setPrice}
@@ -815,8 +815,8 @@ export const CustomFormatter: Story = {
             color="success"
           />
         </div>
-        <div className="space-y-2">
-          <label className="text-sm font-medium">Progress</label>
+        <div className="ds:space-y-2">
+          <label className="ds:text-sm ds:font-medium">Progress</label>
           <Slider
             value={percentage}
             onValueChange={setPercentage}
@@ -829,8 +829,8 @@ export const CustomFormatter: Story = {
             color="primary"
           />
         </div>
-        <div className="space-y-2">
-          <label className="text-sm font-medium">File Size</label>
+        <div className="ds:space-y-2">
+          <label className="ds:text-sm ds:font-medium">File Size</label>
           <Slider
             value={fileSize}
             onValueChange={setFileSize}
@@ -843,8 +843,8 @@ export const CustomFormatter: Story = {
             color="accent"
           />
         </div>
-        <div className="space-y-2">
-          <label className="text-sm font-medium">Rating</label>
+        <div className="ds:space-y-2">
+          <label className="ds:text-sm ds:font-medium">Rating</label>
           <Slider
             value={rating}
             onValueChange={setRating}
@@ -857,8 +857,8 @@ export const CustomFormatter: Story = {
             color="warning"
           />
         </div>
-        <div className="space-y-2">
-          <label className="text-sm font-medium">Duration</label>
+        <div className="ds:space-y-2">
+          <label className="ds:text-sm ds:font-medium">Duration</label>
           <Slider
             value={duration}
             onValueChange={setDuration}
@@ -882,10 +882,10 @@ export const RangeWithLabels: Story = {
     const [range, setRange] = React.useState([25, 75]);
 
     return (
-      <div className="w-80 space-y-4">
-        <div className="flex justify-between items-center">
-          <label className="text-sm font-medium">Price Range</label>
-          <span className="text-sm text-muted-foreground">
+      <div className="ds:w-80 ds:space-y-4">
+        <div className="ds:flex ds:justify-between ds:items-center">
+          <label className="ds:text-sm ds:font-medium">Price Range</label>
+          <span className="ds:text-sm ds:text-muted-foreground">
             ${range[0]} - ${range[1]}
           </span>
         </div>
@@ -915,15 +915,15 @@ export const VolumeWithLabel: Story = {
     };
 
     return (
-      <div className="w-80 space-y-4 p-6 rounded-lg border bg-card">
-        <div className="flex items-center justify-between">
+      <div className="ds:w-80 ds:space-y-4 ds:p-6 ds:rounded-lg ds:border ds:bg-card">
+        <div className="ds:flex ds:items-center ds:justify-between">
           <div>
-            <h3 className="font-semibold">Volume Control</h3>
-            <p className="text-sm text-muted-foreground">
+            <h3 className="ds:font-semibold">Volume Control</h3>
+            <p className="ds:text-sm ds:text-muted-foreground">
               Drag to adjust volume
             </p>
           </div>
-          <span className="text-2xl font-bold">{volume[0]}%</span>
+          <span className="ds:text-2xl ds:font-bold">{volume[0]}%</span>
         </div>
         <Slider
           value={volume}
@@ -935,7 +935,7 @@ export const VolumeWithLabel: Story = {
           color={getVolumeColor(volume[0])}
           labelArrow
         />
-        <div className="flex justify-between text-xs text-muted-foreground">
+        <div className="ds:flex ds:justify-between ds:text-xs ds:text-muted-foreground">
           <span>Muted</span>
           <span>Max</span>
         </div>
@@ -951,10 +951,10 @@ export const SpecAnimationPositions: Story = {
     const [bottomValue, setBottomValue] = React.useState([60]);
 
     return (
-      <div className="w-80 space-y-12">
-        <div className="space-y-4">
-          <label className="text-sm font-medium">Spec Animation - Top</label>
-          <p className="text-xs text-muted-foreground">Hover and move mouse</p>
+      <div className="ds:w-80 ds:space-y-12">
+        <div className="ds:space-y-4">
+          <label className="ds:text-sm ds:font-medium">Spec Animation - Top</label>
+          <p className="ds:text-xs ds:text-muted-foreground">Hover and move mouse</p>
           <Slider
             value={topValue}
             onValueChange={setTopValue}
@@ -964,9 +964,9 @@ export const SpecAnimationPositions: Story = {
             color="primary"
           />
         </div>
-        <div className="space-y-4">
-          <label className="text-sm font-medium">Spec Animation - Bottom</label>
-          <p className="text-xs text-muted-foreground">Hover and move mouse</p>
+        <div className="ds:space-y-4">
+          <label className="ds:text-sm ds:font-medium">Spec Animation - Bottom</label>
+          <p className="ds:text-xs ds:text-muted-foreground">Hover and move mouse</p>
           <Slider
             value={bottomValue}
             onValueChange={setBottomValue}
@@ -990,9 +990,9 @@ export const AllHorizontalPositions: Story = {
     const [rightValue, setRightValue] = React.useState([70]);
 
     return (
-      <div className="w-96 space-y-16 p-8">
-        <div className="space-y-4">
-          <label className="text-sm font-medium">Horizontal - Label Top</label>
+      <div className="ds:w-96 ds:space-y-16 ds:p-8">
+        <div className="ds:space-y-4">
+          <label className="ds:text-sm ds:font-medium">Horizontal - Label Top</label>
           <Slider
             value={topValue}
             onValueChange={setTopValue}
@@ -1002,8 +1002,8 @@ export const AllHorizontalPositions: Story = {
             color="primary"
           />
         </div>
-        <div className="space-y-4">
-          <label className="text-sm font-medium">
+        <div className="ds:space-y-4">
+          <label className="ds:text-sm ds:font-medium">
             Horizontal - Label Bottom
           </label>
           <Slider
@@ -1015,8 +1015,8 @@ export const AllHorizontalPositions: Story = {
             color="secondary"
           />
         </div>
-        <div className="space-y-4">
-          <label className="text-sm font-medium">Horizontal - Label Left</label>
+        <div className="ds:space-y-4">
+          <label className="ds:text-sm ds:font-medium">Horizontal - Label Left</label>
           <Slider
             value={leftValue}
             onValueChange={setLeftValue}
@@ -1026,8 +1026,8 @@ export const AllHorizontalPositions: Story = {
             color="success"
           />
         </div>
-        <div className="space-y-4">
-          <label className="text-sm font-medium">
+        <div className="ds:space-y-4">
+          <label className="ds:text-sm ds:font-medium">
             Horizontal - Label Right
           </label>
           <Slider
@@ -1053,8 +1053,8 @@ export const AllVerticalPositions: Story = {
     const [rightValue, setRightValue] = React.useState([70]);
 
     return (
-      <div className="flex gap-12 h-96 items-center p-8">
-        <div className="flex flex-col items-center gap-4">
+      <div className="ds:flex ds:gap-12 ds:h-96 ds:items-center ds:p-8">
+        <div className="ds:flex ds:flex-col ds:items-center ds:gap-4">
           <Slider
             value={topValue}
             onValueChange={setTopValue}
@@ -1063,11 +1063,11 @@ export const AllVerticalPositions: Story = {
             labelPosition="top"
             labelArrow
             color="primary"
-            className="h-64"
+            className="ds:h-64"
           />
-          <label className="text-sm font-medium">Label Top</label>
+          <label className="ds:text-sm ds:font-medium">Label Top</label>
         </div>
-        <div className="flex flex-col items-center gap-4">
+        <div className="ds:flex ds:flex-col ds:items-center ds:gap-4">
           <Slider
             value={bottomValue}
             onValueChange={setBottomValue}
@@ -1076,11 +1076,11 @@ export const AllVerticalPositions: Story = {
             labelPosition="bottom"
             labelArrow
             color="secondary"
-            className="h-64"
+            className="ds:h-64"
           />
-          <label className="text-sm font-medium">Label Bottom</label>
+          <label className="ds:text-sm ds:font-medium">Label Bottom</label>
         </div>
-        <div className="flex flex-col items-center gap-4">
+        <div className="ds:flex ds:flex-col ds:items-center ds:gap-4">
           <Slider
             value={leftValue}
             onValueChange={setLeftValue}
@@ -1089,11 +1089,11 @@ export const AllVerticalPositions: Story = {
             labelPosition="left"
             labelArrow
             color="success"
-            className="h-64"
+            className="ds:h-64"
           />
-          <label className="text-sm font-medium">Label Left</label>
+          <label className="ds:text-sm ds:font-medium">Label Left</label>
         </div>
-        <div className="flex flex-col items-center gap-4">
+        <div className="ds:flex ds:flex-col ds:items-center ds:gap-4">
           <Slider
             value={rightValue}
             onValueChange={setRightValue}
@@ -1102,9 +1102,9 @@ export const AllVerticalPositions: Story = {
             labelPosition="right"
             labelArrow
             color="warning"
-            className="h-64"
+            className="ds:h-64"
           />
-          <label className="text-sm font-medium">Label Right</label>
+          <label className="ds:text-sm ds:font-medium">Label Right</label>
         </div>
       </div>
     );
@@ -1119,9 +1119,9 @@ export const CustomColorPinkYellow: Story = {
     const [value, setValue] = React.useState([50]);
 
     return (
-      <div className="w-80 space-y-4">
-        <div className="flex justify-between items-center">
-          <label className="text-sm font-medium">
+      <div className="ds:w-80 ds:space-y-4">
+        <div className="ds:flex ds:justify-between ds:items-center">
+          <label className="ds:text-sm ds:font-medium">
             Pink Slider + Yellow Label
           </label>
         </div>
@@ -1147,9 +1147,9 @@ export const CustomColorPurpleBrown: Story = {
     const [value, setValue] = React.useState([60]);
 
     return (
-      <div className="w-80 space-y-4">
-        <div className="flex justify-between items-center">
-          <label className="text-sm font-medium">
+      <div className="ds:w-80 ds:space-y-4">
+        <div className="ds:flex ds:justify-between ds:items-center">
+          <label className="ds:text-sm ds:font-medium">
             Purple Slider + Brown Label
           </label>
         </div>
@@ -1175,9 +1175,9 @@ export const CustomColorBlueOrange: Story = {
     const [value, setValue] = React.useState([70]);
 
     return (
-      <div className="w-80 space-y-4">
-        <div className="flex justify-between items-center">
-          <label className="text-sm font-medium">
+      <div className="ds:w-80 ds:space-y-4">
+        <div className="ds:flex ds:justify-between ds:items-center">
+          <label className="ds:text-sm ds:font-medium">
             Blue Slider + Orange Label
           </label>
         </div>
@@ -1205,9 +1205,9 @@ export const CustomColorsShowcase: Story = {
     const [blue, setBlue] = React.useState([70]);
 
     return (
-      <div className="w-80 space-y-8">
-        <div className="space-y-2">
-          <label className="text-sm font-medium">
+      <div className="ds:w-80 ds:space-y-8">
+        <div className="ds:space-y-2">
+          <label className="ds:text-sm ds:font-medium">
             Pink Slider + Yellow Label
           </label>
           <Slider
@@ -1222,8 +1222,8 @@ export const CustomColorsShowcase: Story = {
             labelArrowColor="border-t-yellow-200"
           />
         </div>
-        <div className="space-y-2">
-          <label className="text-sm font-medium">
+        <div className="ds:space-y-2">
+          <label className="ds:text-sm ds:font-medium">
             Purple Slider + Brown Label
           </label>
           <Slider
@@ -1238,8 +1238,8 @@ export const CustomColorsShowcase: Story = {
             labelArrowColor="border-t-amber-800"
           />
         </div>
-        <div className="space-y-2">
-          <label className="text-sm font-medium">
+        <div className="ds:space-y-2">
+          <label className="ds:text-sm ds:font-medium">
             Blue Slider + Orange Label
           </label>
           <Slider

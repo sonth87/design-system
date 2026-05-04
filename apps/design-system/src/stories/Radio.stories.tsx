@@ -125,10 +125,10 @@ export const Sizes = (args: RadioProps) => {
     { label: "Large", value: "lg" },
   ];
   return (
-    <div className="flex flex-col gap-4">
-      <Radio {...args} size="sm" options={option} className="flex gap-2" />
-      <Radio {...args} size="default" options={option} className="flex gap-2" />
-      <Radio {...args} size="lg" options={option} className="flex gap-2" />
+    <div className="ds:flex ds:flex-col ds:gap-4">
+      <Radio {...args} size="sm" options={option} className="ds:flex ds:gap-2" />
+      <Radio {...args} size="default" options={option} className="ds:flex ds:gap-2" />
+      <Radio {...args} size="lg" options={option} className="ds:flex ds:gap-2" />
     </div>
   );
 };
@@ -144,8 +144,8 @@ export const Colors = (args: RadioProps) => {
     { label: "Warning", value: "warning" },
   ];
   return (
-    <div className="flex flex-col gap-4">
-      <Radio.Group {...args} className="flex gap-2">
+    <div className="ds:flex ds:flex-col ds:gap-4">
+      <Radio.Group {...args} className="ds:flex ds:gap-2">
         {option.map((opt) => (
           <Radio.Item
             key={opt.value}
@@ -156,46 +156,46 @@ export const Colors = (args: RadioProps) => {
         ))}
       </Radio.Group>
 
-      <Radio.Group {...args} className="flex gap-2">
+      <Radio.Group {...args} className="ds:flex ds:gap-2">
         <Radio.Item
           value="option1"
           label="Purple"
-          className="border-purple-500 text-purple-500"
+          className="ds:border-purple-500 ds:text-purple-500"
         />
         <Radio.Item
           value="option2"
           label="Yellow"
-          className="border-yellow-500 text-yellow-500"
+          className="ds:border-yellow-500 ds:text-yellow-500"
         />
         <Radio.Item
           value="option3"
           label="Green"
-          className="border-green-500 bg-green-500 text-white"
+          className="ds:border-green-500 ds:bg-green-500 ds:text-white"
         />
         <Radio.Item
           value="option4"
           label="Pink"
-          className="border-pink-500 bg-pink-500 text-white"
+          className="ds:border-pink-500 ds:bg-pink-500 ds:text-white"
         />
         <Radio.Item
           value="option5"
           label="Blue"
-          className="hover:border-blue-500 text-white data-[state=checked]:border-blue-500 data-[state=checked]:bg-blue-500"
+          className="ds:hover:border-blue-500 ds:text-white data-[state=checked]:border-blue-500 data-[state=checked]:bg-blue-500"
         />
         <Radio.Item
           value="option6"
           label="Lime"
-          className="border-lime-400 text-white data-[state=checked]:border-lime-400 data-[state=checked]:bg-lime-400"
+          className="ds:border-lime-400 ds:text-white data-[state=checked]:border-lime-400 data-[state=checked]:bg-lime-400"
         />
         <Radio.Item
           value="option7"
           label="Square"
-          className="rounded-none border-red-400 text-white data-[state=checked]:border-red-400 data-[state=checked]:bg-red-400"
+          className="ds:rounded-none ds:border-red-400 ds:text-white data-[state=checked]:border-red-400 data-[state=checked]:bg-red-400"
         />
         <Radio.Item
           value="option8"
           label="Square"
-          className="rounded-none border-teal-300 text-white data-[state=checked]:border-teal-300 data-[state=checked]:bg-teal-300"
+          className="ds:rounded-none ds:border-teal-300 ds:text-white data-[state=checked]:border-teal-300 data-[state=checked]:bg-teal-300"
         />
       </Radio.Group>
     </div>
@@ -211,7 +211,7 @@ export const WithLabelAndHelper = (args: RadioProps) => {
       helperText="This is a helper text"
       value={value}
       onValueChange={setValue}
-      className="flex flex-row gap-4"
+      className="ds:flex ds:flex-row ds:gap-4"
       options={[
         { label: "Option 1", value: "option1" },
         { label: "Option 2", value: "option2" },
@@ -245,29 +245,29 @@ export const CustomGroupStyles = () => {
 
   return (
     <Radio.Group
-      className="w-full max-w-96 min-w-80 gap-0 -space-y-px rounded-md shadow-xs"
+      className="ds:w-full ds:max-w-96 ds:min-w-80 ds:gap-0 -space-y-px ds:rounded-md ds:shadow-xs"
       defaultValue="2"
     >
       {items.map((item, idx) => (
         <div
           key={`${idx}-${item.value}`}
-          className="border-input has-data-[state=checked]:border-primary/50 has-data-[state=checked]:bg-accent relative flex flex-col gap-4 border p-4 outline-none first:rounded-t-md last:rounded-b-md has-data-[state=checked]:z-10"
+          className="ds:border-input has-data-[state=checked]:border-primary/50 has-data-[state=checked]:bg-accent ds:relative ds:flex ds:flex-col ds:gap-4 ds:border ds:p-4 ds:outline-none ds:first:rounded-t-md ds:last:rounded-b-md has-data-[state=checked]:z-10"
         >
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
+          <div className="ds:flex ds:items-center ds:justify-between">
+            <div className="ds:flex ds:items-center ds:gap-2">
               <Radio.Item
                 id={`${idx}-${item.value}`}
                 value={item.value}
-                className="after:absolute after:inset-0"
+                className="ds:after:absolute ds:after:inset-0"
                 color="primary"
               />
               <label
-                className="inline-flex items-center"
+                className="ds:inline-flex ds:items-center"
                 htmlFor={`${idx}-${item.value}`}
               >
                 {item.label}
                 {item.value === "2" && (
-                  <Badge className="px-1.5 py-px text-xs ml-2">
+                  <Badge className="ds:px-1.5 ds:py-px ds:text-xs ds:ml-2">
                     Best Seller
                   </Badge>
                 )}
@@ -275,7 +275,7 @@ export const CustomGroupStyles = () => {
             </div>
             <div
               id={`${`${idx}-${item.value}`}-price`}
-              className="text-muted-foreground text-xs leading-[inherit]"
+              className="ds:text-muted-foreground ds:text-xs leading-[inherit]"
             >
               {item.price}
             </div>
@@ -297,15 +297,15 @@ export const CustomGroupStyles2 = () => {
   ];
 
   return (
-    <fieldset className="w-full space-y-4">
-      <legend className="text-foreground text-sm leading-none font-medium">
+    <fieldset className="ds:w-full ds:space-y-4">
+      <legend className="ds:text-foreground ds:text-sm ds:leading-none ds:font-medium">
         Select your mood
       </legend>
-      <Radio.Group className="grid grid-cols-6 gap-2" defaultValue="1">
+      <Radio.Group className="ds:grid ds:grid-cols-6 ds:gap-2" defaultValue="1">
         {items.map((item, idx) => (
           <label
             key={`${idx}-${item.value}`}
-            className="border-input has-data-[state=checked]:border-secondary/80 has-data-[state=checked]:bg-secondary/20 has-focus-visible:border-ring has-focus-visible:ring-ring/50 relative flex flex-col items-center gap-2 rounded-md border px-2 py-3 text-center shadow-xs transition-[color,box-shadow] outline-none has-focus-visible:ring-[3px] has-data-disabled:cursor-not-allowed has-data-disabled:opacity-50"
+            className="ds:border-input has-data-[state=checked]:border-secondary/80 has-data-[state=checked]:bg-secondary/20 ds:has-focus-visible:border-ring ds:has-focus-visible:ring-ring/50 ds:relative ds:flex ds:flex-col ds:items-center ds:gap-2 ds:rounded-md ds:border ds:px-2 ds:py-3 ds:text-center ds:shadow-xs transition-[color,box-shadow] ds:outline-none has-focus-visible:ring-[3px] ds:has-data-disabled:cursor-not-allowed ds:has-data-disabled:opacity-50"
           >
             <Radio.Item
               id={`${idx}-${item.value}`}
@@ -315,8 +315,8 @@ export const CustomGroupStyles2 = () => {
               disabled={item?.disabled}
               color="secondary"
             />
-            <span className="text-2xl">{item.icon}</span>
-            <p className="text-foreground text-sm leading-none font-medium">
+            <span className="ds:text-2xl">{item.icon}</span>
+            <p className="ds:text-foreground ds:text-sm ds:leading-none ds:font-medium">
               {item.label}
             </p>
           </label>
@@ -329,18 +329,18 @@ export const CustomGroupStyles2 = () => {
 export const CustomChildren = () => {
   const [value, setValue] = useState("option1");
   return (
-    <div className="flex items-center space-x-2">
+    <div className="ds:flex ds:items-center ds:space-x-2">
       <Radio.Group value={value} onValueChange={setValue}>
-        <div className="flex items-center space-x-2">
+        <div className="ds:flex ds:items-center ds:space-x-2">
           <Radio.Item value="option1" id="option1" />
-          <label htmlFor="option1" className="flex flex-col items-center gap-2">
+          <label htmlFor="option1" className="ds:flex ds:flex-col ds:items-center ds:gap-2">
             <Angry />
             Option 1
           </label>
         </div>
-        <div className="flex items-center space-x-2">
+        <div className="ds:flex ds:items-center ds:space-x-2">
           <Radio.Item value="option2" id="option2" />
-          <label htmlFor="option2" className="flex flex-col items-center gap-2">
+          <label htmlFor="option2" className="ds:flex ds:flex-col ds:items-center ds:gap-2">
             <Annoyed />
             Option 2
           </label>

@@ -97,7 +97,7 @@ export const Tooltip = React.memo(function Tooltip({
     return (
       <span
         onMouseMove={handleMouseMove}
-        className={cn("inline-block", childClassName)}
+        className={cn("ds:inline-block", childClassName)}
       >
         {children}
       </span>
@@ -107,7 +107,7 @@ export const Tooltip = React.memo(function Tooltip({
   if (animation === "spec") {
     return (
       <motion.div
-        className={cn("relative -me-2.5 inline-block", className)}
+        className={cn("ds:relative -me-2.5 ds:inline-block", className)}
         whileHover="hover"
         initial="initial"
       >
@@ -131,11 +131,11 @@ export const Tooltip = React.memo(function Tooltip({
             whiteSpace: "nowrap",
           }}
           className={cn(
-            "absolute -top-2 left-1/2 z-50 flex -translate-x-1/2 -translate-y-full flex-col items-center justify-center rounded-md px-4 py-2 text-xs shadow-xl",
+            "ds:absolute ds:-top-2 ds:left-1/2 ds:z-50 ds:flex ds:-translate-x-1/2 -translate-y-full ds:flex-col ds:items-center ds:justify-center ds:rounded-md ds:px-4 ds:py-2 ds:text-xs ds:shadow-xl",
             tooltipColor
           )}
         >
-          <div className="relative z-1">{content}</div>
+          <div className="ds:relative ds:z-1">{content}</div>
         </motion.div>
 
         <ChildComp />

@@ -75,23 +75,23 @@ const recentUsers = [
 export default function DashboardPage() {
   return (
     <AdminLayout>
-      <div className="space-y-6">
+      <div className="ds:space-y-6">
         {/* Page Header */}
-        <div className="flex items-center justify-between">
+        <div className="ds:flex ds:items-center ds:justify-between">
           <div>
-            <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
-            <p className="text-muted-foreground">
+            <h1 className="ds:text-3xl ds:font-bold ds:tracking-tight">Dashboard</h1>
+            <p className="ds:text-muted-foreground">
               Welcome back! Here&apos;s what&apos;s happening with your business.
             </p>
           </div>
-          <div className="flex gap-2">
+          <div className="ds:flex ds:gap-2">
             <Button variant="outline">Download</Button>
             <Button>Create Report</Button>
           </div>
         </div>
 
         {/* Stats Grid */}
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <div className="ds:grid ds:gap-4 ds:md:grid-cols-2 ds:lg:grid-cols-4">
           {stats.map((stat) => {
             const Icon = stat.icon;
             const TrendIcon =
@@ -100,21 +100,19 @@ export default function DashboardPage() {
             return (
               <div
                 key={stat.title}
-                className="rounded-lg border bg-card p-6 shadow-sm"
+                className="ds:rounded-lg ds:border ds:bg-card ds:p-6 ds:shadow-sm"
               >
-                <div className="flex items-center justify-between">
-                  <p className="text-sm font-medium text-muted-foreground">
+                <div className="ds:flex ds:items-center ds:justify-between">
+                  <p className="ds:text-sm ds:font-medium ds:text-muted-foreground">
                     {stat.title}
                   </p>
-                  <Icon className="h-4 w-4 text-muted-foreground" />
+                  <Icon className="ds:h-4 ds:w-4 ds:text-muted-foreground" />
                 </div>
-                <div className="mt-3">
-                  <p className="text-2xl font-bold">{stat.value}</p>
-                  <div className="mt-1 flex items-center gap-1 text-xs">
+                <div className="ds:mt-3">
+                  <p className="ds:text-2xl ds:font-bold">{stat.value}</p>
+                  <div className="ds:mt-1 ds:flex ds:items-center ds:gap-1 ds:text-xs">
                     <TrendIcon
-                      className={`h-3 w-3 ${
-                        stat.trend === "up" ? "text-green-600" : "text-red-600"
-                      }`}
+                      className={`ds:h-3 ds:w-3 ${ stat.trend === "up" ? "text-green-600" : "text-red-600" }`}
                     />
                     <span
                       className={
@@ -123,7 +121,7 @@ export default function DashboardPage() {
                     >
                       {stat.change}
                     </span>
-                    <span className="text-muted-foreground">
+                    <span className="ds:text-muted-foreground">
                       from last month
                     </span>
                   </div>
@@ -140,27 +138,27 @@ export default function DashboardPage() {
               key: "overview",
               label: "Overview",
               children: (
-                <div className="space-y-4">
-                  <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
+                <div className="ds:space-y-4">
+                  <div className="ds:grid ds:gap-4 ds:md:grid-cols-2 ds:lg:grid-cols-7">
                     {/* Recent Activity */}
-                    <div className="col-span-4 rounded-lg border bg-card p-6 shadow-sm">
-                      <div className="mb-4 flex items-center justify-between">
-                        <h3 className="text-lg font-semibold">
+                    <div className="ds:col-span-4 ds:rounded-lg ds:border ds:bg-card ds:p-6 ds:shadow-sm">
+                      <div className="ds:mb-4 ds:flex ds:items-center ds:justify-between">
+                        <h3 className="ds:text-lg ds:font-semibold">
                           Recent Activity
                         </h3>
                         <Button variant="ghost" size="sm">
                           View All
                         </Button>
                       </div>
-                      <div className="space-y-4">
+                      <div className="ds:space-y-4">
                         {[1, 2, 3, 4].map((i) => (
-                          <div key={i} className="flex items-center gap-4">
-                            <div className="h-2 w-2 rounded-full bg-blue-500" />
-                            <div className="flex-1">
-                              <p className="text-sm font-medium">
+                          <div key={i} className="ds:flex ds:items-center ds:gap-4">
+                            <div className="ds:h-2 ds:w-2 ds:rounded-full ds:bg-blue-500" />
+                            <div className="ds:flex-1">
+                              <p className="ds:text-sm ds:font-medium">
                                 New order from customer #{1000 + i}
                               </p>
-                              <p className="text-xs text-muted-foreground">
+                              <p className="ds:text-xs ds:text-muted-foreground">
                                 {i} hours ago
                               </p>
                             </div>
@@ -171,18 +169,18 @@ export default function DashboardPage() {
                     </div>
 
                     {/* Recent Users */}
-                    <div className="col-span-3 rounded-lg border bg-card p-6 shadow-sm">
-                      <div className="mb-4 flex items-center justify-between">
-                        <h3 className="text-lg font-semibold">Recent Users</h3>
+                    <div className="ds:col-span-3 ds:rounded-lg ds:border ds:bg-card ds:p-6 ds:shadow-sm">
+                      <div className="ds:mb-4 ds:flex ds:items-center ds:justify-between">
+                        <h3 className="ds:text-lg ds:font-semibold">Recent Users</h3>
                         <Button variant="ghost" size="sm">
                           View All
                         </Button>
                       </div>
-                      <div className="space-y-4">
+                      <div className="ds:space-y-4">
                         {recentUsers.map((user) => (
                           <div
                             key={user.email}
-                            className="flex items-center gap-3"
+                            className="ds:flex ds:items-center ds:gap-3"
                           >
                             <Avatar
                               src={user.avatar}
@@ -191,9 +189,9 @@ export default function DashboardPage() {
                               color="default"
                               className=""
                             />
-                            <div className="flex-1">
-                              <p className="text-sm font-medium">{user.name}</p>
-                              <p className="text-xs text-muted-foreground">
+                            <div className="ds:flex-1">
+                              <p className="ds:text-sm ds:font-medium">{user.name}</p>
+                              <p className="ds:text-xs ds:text-muted-foreground">
                                 {user.email}
                               </p>
                             </div>
@@ -216,11 +214,11 @@ export default function DashboardPage() {
               key: "analytics",
               label: "Analytics",
               children: (
-                <div className="rounded-lg border bg-card p-6 shadow-sm">
-                  <h3 className="text-lg font-semibold mb-4">
+                <div className="ds:rounded-lg ds:border ds:bg-card ds:p-6 ds:shadow-sm">
+                  <h3 className="ds:text-lg ds:font-semibold ds:mb-4">
                     Analytics Overview
                   </h3>
-                  <p className="text-muted-foreground">
+                  <p className="ds:text-muted-foreground">
                     Analytics data will be displayed here...
                   </p>
                 </div>
@@ -230,16 +228,16 @@ export default function DashboardPage() {
               key: "reports",
               label: "Reports",
               children: (
-                <div className="rounded-lg border bg-card p-6 shadow-sm">
-                  <h3 className="text-lg font-semibold mb-4">Reports</h3>
-                  <p className="text-muted-foreground">
+                <div className="ds:rounded-lg ds:border ds:bg-card ds:p-6 ds:shadow-sm">
+                  <h3 className="ds:text-lg ds:font-semibold ds:mb-4">Reports</h3>
+                  <p className="ds:text-muted-foreground">
                     Reports will be displayed here...
                   </p>
                 </div>
               ),
             },
           ]}
-          className="space-y-4"
+          className="ds:space-y-4"
         />
       </div>
     </AdminLayout>

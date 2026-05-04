@@ -103,23 +103,23 @@ export interface DialogProps {
 const variantIcons = {
   dialog: null,
   confirm: (
-    <div className="size-12 flex items-center justify-center rounded-full bg-success/10 mx-auto mb-4">
-      <CheckCircle2 className="size-6 text-success" />
+    <div className="ds:size-12 ds:flex ds:items-center ds:justify-center ds:rounded-full ds:bg-success/10 ds:mx-auto ds:mb-4">
+      <CheckCircle2 className="ds:size-6 ds:text-success" />
     </div>
   ),
   alert: (
-    <div className="size-12 flex items-center justify-center rounded-full bg-error/10 mx-auto mb-4">
-      <AlertCircle className="size-5 text-error" />
+    <div className="ds:size-12 ds:flex ds:items-center ds:justify-center ds:rounded-full ds:bg-error/10 ds:mx-auto ds:mb-4">
+      <AlertCircle className="ds:size-5 ds:text-error" />
     </div>
   ),
   info: (
-    <div className="size-12 flex items-center justify-center rounded-full bg-blue-500/10 mx-auto mb-4">
-      <Info className="size-5 text-blue-500" />
+    <div className="ds:size-12 ds:flex ds:items-center ds:justify-center ds:rounded-full ds:bg-blue-500/10 ds:mx-auto ds:mb-4">
+      <Info className="ds:size-5 ds:text-blue-500" />
     </div>
   ),
   warning: (
-    <div className="size-12 flex items-center justify-center rounded-full bg-warning/10 mx-auto mb-4">
-      <AlertTriangle className="size-5 text-warning" />
+    <div className="ds:size-12 ds:flex ds:items-center ds:justify-center ds:rounded-full ds:bg-warning/10 ds:mx-auto ds:mb-4">
+      <AlertTriangle className="ds:size-5 ds:text-warning" />
     </div>
   ),
 };
@@ -222,8 +222,8 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
     return title || icon || description ? (
       <AlertDialogHeader
         className={cn(
-          "flex items-center gap-2 py-4",
-          { "border-b": stickyHeader },
+          "ds:flex ds:items-center ds:gap-2 ds:py-4",
+          { "ds:border-b": stickyHeader },
           headerClasses
         )}
       >
@@ -267,7 +267,7 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
 
     return footer || confirmButton || cancelButton ? (
       <AlertDialogFooter
-        className={cn("py-4", { "border-t": stickyFooter }, footerClasses)}
+        className={cn("ds:py-4", { "ds:border-t": stickyFooter }, footerClasses)}
       >
         {footer || (
           <>
@@ -312,10 +312,10 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
         >
           {stickyHeader && headerComponents}
 
-          <ScrollArea className="flex max-h-full flex-col overflow-hidden">
+          <ScrollArea className="ds:flex ds:max-h-full ds:flex-col overflow-hidden">
             {!stickyHeader && headerComponents}
             {children && (
-              <div className={cn("px-6 py-4", contentClassName)}>
+              <div className={cn("ds:px-6 ds:py-4", contentClassName)}>
                 {children}
               </div>
             )}
@@ -344,7 +344,7 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
       >
         {stickyHeader && (title || description) && (
           <DialogHeader
-            className={cn({ "py-4 border-b": stickyHeader }, headerClasses)}
+            className={cn({ "ds:py-4 ds:border-b": stickyHeader }, headerClasses)}
           >
             {title && (
               <DialogTitle className={titleClassName}>{title}</DialogTitle>
@@ -356,9 +356,9 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
             )}
           </DialogHeader>
         )}
-        <ScrollArea className="flex max-h-full flex-col overflow-hidden">
+        <ScrollArea className="ds:flex ds:max-h-full ds:flex-col overflow-hidden">
           {!stickyHeader && (title || description) && (
-            <DialogHeader className={cn("py-4", headerClasses)}>
+            <DialogHeader className={cn("ds:py-4", headerClasses)}>
               {title && (
                 <DialogTitle className={titleClassName}>{title}</DialogTitle>
               )}
@@ -370,17 +370,17 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
             </DialogHeader>
           )}
           {children && (
-            <div className={cn("px-6 py-4", contentClassName)}>{children}</div>
+            <div className={cn("ds:px-6 ds:py-4", contentClassName)}>{children}</div>
           )}
           {!stickyFooter && footer && (
-            <DialogFooter className={cn("py-4", footerClasses)}>
+            <DialogFooter className={cn("ds:py-4", footerClasses)}>
               {footer}
             </DialogFooter>
           )}
         </ScrollArea>
         {stickyFooter && footer && (
           <DialogFooter
-            className={cn({ "py-4 border-t": stickyFooter }, footerClasses)}
+            className={cn({ "ds:py-4 ds:border-t": stickyFooter }, footerClasses)}
           >
             {footer}
           </DialogFooter>

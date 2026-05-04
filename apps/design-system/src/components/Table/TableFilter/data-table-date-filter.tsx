@@ -129,13 +129,13 @@ export function DataTableDateFilter<TData>({
         : "Select date range";
 
       return (
-        <span className="flex items-center gap-2">
+        <span className="ds:flex ds:items-center ds:gap-2">
           <span>{title}</span>
           {hasSelectedDates && (
             <>
               <Separator
                 orientation="vertical"
-                className="mx-0.5 data-[orientation=vertical]:h-4"
+                className="ds:mx-0.5 data-[orientation=vertical]:h-4"
               />
               <span>{dateText}</span>
             </>
@@ -152,13 +152,13 @@ export function DataTableDateFilter<TData>({
       : "Select date";
 
     return (
-      <span className="flex items-center gap-2">
+      <span className="ds:flex ds:items-center ds:gap-2">
         <span>{title}</span>
         {hasSelectedDate && (
           <>
             <Separator
               orientation="vertical"
-              className="mx-0.5 data-[orientation=vertical]:h-4"
+              className="ds:mx-0.5 data-[orientation=vertical]:h-4"
             />
             <span>{dateText}</span>
           </>
@@ -168,7 +168,7 @@ export function DataTableDateFilter<TData>({
   }, [selectedDates, multiple, formatDateRange, title]);
 
   const PopContent = (
-    <div className="w-auto p-0">
+    <div className="ds:w-auto ds:p-0">
       {multiple ? (
         <Calendar
           autoFocus
@@ -196,14 +196,14 @@ export function DataTableDateFilter<TData>({
 
   return (
     <Popover content={PopContent}>
-      <Button variant="outline" size="sm" className="border-dashed font-normal">
+      <Button variant="outline" size="sm" className="ds:border-dashed ds:font-normal">
         {hasValue ? (
           <div
             role="button"
             aria-label={`Clear ${title} filter`}
             tabIndex={0}
             onClick={onReset}
-            className="rounded-sm opacity-70 transition-opacity hover:opacity-100 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+            className="ds:rounded-sm ds:opacity-70 ds:transition-opacity ds:hover:opacity-100 ds:focus-visible:outline-none ds:focus-visible:ring-1 ds:focus-visible:ring-ring"
           >
             <XCircle />
           </div>

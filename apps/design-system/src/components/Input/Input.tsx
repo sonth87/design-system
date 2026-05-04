@@ -242,33 +242,33 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     return (
       <div className={className}>
         <div
-          className={cn("flex flex-col gap-1.5 relative flex-auto", {
-            "floating-label relative": isFloatLabel,
+          className={cn("ds:flex ds:flex-col ds:gap-1.5 ds:relative ds:flex-auto", {
+            "ds:floating-label ds:relative": isFloatLabel,
           })}
         >
           {!isFloatLabel && label && (
             <Label
               htmlFor={inputId}
-              className="flex gap-2 text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+              className="ds:flex ds:gap-2 ds:text-sm ds:font-medium ds:leading-none ds:peer-disabled:cursor-not-allowed ds:peer-disabled:opacity-70"
             >
               <span>
                 {label}
-                {required && <span className="text-error ml-0.5">*</span>}
+                {required && <span className="ds:text-error ds:ml-0.5">*</span>}
               </span>
               {infoTooltip && (
                 <Tooltip content={infoTooltip}>
-                  <Info className="size-3.5 min-w-3.5" />
+                  <Info className="ds:size-3.5 ds:min-w-3.5" />
                 </Tooltip>
               )}
             </Label>
           )}
 
-          <div className="relative">
+          <div className="ds:relative">
             {/* Prefix Icon */}
             {prefixIcon && (
               <div
                 className={cn(
-                  "absolute top-1/2 -translate-y-1/2 text-muted-foreground leading-0",
+                  "ds:absolute ds:top-1/2 ds:-translate-y-1/2 ds:text-muted-foreground ds:leading-0",
                   iconPosition.left
                 )}
               >
@@ -333,30 +333,30 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
             {/* Spinner Buttons */}
             {type === "number" && (
-              <div className="absolute right-1 top-0 h-full flex flex-col gap-0.5">
+              <div className="ds:absolute ds:right-1 ds:top-0 ds:h-full ds:flex ds:flex-col ds:gap-0.5">
                 <button
                   type="button"
                   onClick={handleIncrement}
                   disabled={props.disabled}
                   className={cn(
-                    "h-1/2 w-6 flex items-center justify-center rounded cursor-pointer hover:scale-150 transition-transform",
-                    "disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent"
+                    "ds:h-1/2 ds:w-6 ds:flex ds:items-center ds:justify-center ds:rounded cursor-pointer ds:hover:scale-150 ds:transition-transform",
+                    "ds:disabled:opacity-50 ds:disabled:cursor-not-allowed ds:disabled:hover:bg-transparent"
                   )}
                   tabIndex={-1}
                 >
-                  <ChevronUp className="size-3" />
+                  <ChevronUp className="ds:size-3" />
                 </button>
                 <button
                   type="button"
                   onClick={handleDecrement}
                   disabled={props.disabled}
                   className={cn(
-                    "h-1/2 w-6 flex items-center justify-center rounded cursor-pointer hover:scale-150 transition-transform",
-                    "disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent"
+                    "ds:h-1/2 ds:w-6 ds:flex ds:items-center ds:justify-center ds:rounded cursor-pointer ds:hover:scale-150 ds:transition-transform",
+                    "ds:disabled:opacity-50 ds:disabled:cursor-not-allowed ds:disabled:hover:bg-transparent"
                   )}
                   tabIndex={-1}
                 >
-                  <ChevronDown className="size-3" />
+                  <ChevronDown className="ds:size-3" />
                 </button>
               </div>
             )}
@@ -370,19 +370,19 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                   type="button"
                   tabIndex={-1}
                   className={cn(
-                    "absolute top-1/2 -translate-y-1/2 p-1 rounded hover:bg-accent transition-colors cursor-pointer",
-                    type === "password"
+                    "ds:absolute ds:top-1/2 ds:-translate-y-1/2 ds:p-1 ds:rounded ds:hover:bg-accent ds:transition-colors cursor-pointer",
+                    type === "ds:password"
                       ? suffixIcon
-                        ? "right-14"
-                        : "right-10"
+                        ? "ds:right-14"
+                        : "ds:right-10"
                       : suffixIcon
-                        ? "right-10"
-                        : "right-2"
+                        ? "ds:right-10"
+                        : "ds:right-2"
                   )}
                   onClick={handleClear}
                   disabled={props.disabled}
                 >
-                  <X className="size-4" />
+                  <X className="ds:size-4" />
                 </button>
               )}
 
@@ -392,16 +392,16 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                 type="button"
                 tabIndex={-1}
                 className={cn(
-                  "absolute top-1/2 -translate-y-1/2 p-1 rounded hover:bg-accent transition-colors",
-                  suffixIcon ? "right-10" : "right-2"
+                  "ds:absolute ds:top-1/2 ds:-translate-y-1/2 ds:p-1 ds:rounded ds:hover:bg-accent ds:transition-colors",
+                  suffixIcon ? "ds:right-10" : "ds:right-2"
                 )}
                 onClick={() => setShowPassword((prev) => !prev)}
                 disabled={props.disabled}
               >
                 {showPassword ? (
-                  <EyeOff className="size-4" />
+                  <EyeOff className="ds:size-4" />
                 ) : (
-                  <Eye className="size-4" />
+                  <Eye className="ds:size-4" />
                 )}
               </button>
             )}
@@ -410,7 +410,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             {suffixIcon && (
               <div
                 className={cn(
-                  "absolute top-1/2 -translate-y-1/2 text-muted-foreground leading-0",
+                  "ds:absolute ds:top-1/2 ds:-translate-y-1/2 ds:text-muted-foreground ds:leading-0",
                   iconPosition.right
                 )}
               >
@@ -427,11 +427,11 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           </div>
 
           {(helperText || (showCharCount && typeof maxLength === "number")) && (
-            <div className="flex items-center justify-between text-xs gap-2">
+            <div className="ds:flex ds:items-center ds:justify-between ds:text-xs ds:gap-2">
               {helperText && (
                 <p
                   className={cn(
-                    "text-xs",
+                    "ds:text-xs",
                     state ? helperTextStyles?.[state] : ""
                   )}
                 >
@@ -439,7 +439,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                 </p>
               )}
               {showCharCount && typeof maxLength === "number" && (
-                <span className="ml-auto text-muted-foreground">
+                <span className="ds:ml-auto ds:text-muted-foreground">
                   {charCount} / {maxLength}
                 </span>
               )}

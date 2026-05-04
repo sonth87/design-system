@@ -95,7 +95,7 @@ export function Avatar({
   return (
     <DsAvatar
       className={cn(
-        "relative flex shrink-0 transition-all duration-300",
+        "ds:relative ds:flex ds:shrink-0 ds:transition-all ds:duration-300",
         avatarSize,
         avatarVariant,
         avatarAnimation?.className,

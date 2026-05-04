@@ -291,18 +291,18 @@ export const ImageViewerImage: React.FC<ImageViewerImageProps> = ({
     <>
       <div
         className={cn(
-          "ds-image-viewer-root relative inline-block",
+          "ds-image-viewer-root ds:relative ds:inline-block",
           wrapperClassName
         )}
       >
-        <div className="relative inline-block">
+        <div className="ds:relative ds:inline-block">
           {showPlaceholder && (
             <div
-              className="absolute inset-0 flex items-center justify-center bg-muted animate-pulse"
+              className="ds:absolute ds:inset-0 ds:flex ds:items-center ds:justify-center ds:bg-muted ds:animate-pulse"
               style={{ width, height }}
             >
               {placeholder === true ? (
-                <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+                <div className="ds:w-8 ds:h-8 ds:border-2 ds:border-primary ds:border-t-transparent ds:rounded-full ds:animate-spin" />
               ) : (
                 placeholder
               )}
@@ -315,8 +315,8 @@ export const ImageViewerImage: React.FC<ImageViewerImageProps> = ({
             width={width}
             height={height}
             className={cn(
-              "ds-image-viewer-img max-w-full h-auto align-middle",
-              loading && "opacity-0",
+              "ds-image-viewer-img ds:max-w-full ds:h-auto align-middle",
+              loading && "ds:opacity-0",
               className
             )}
             onLoad={handleLoad}
@@ -328,12 +328,12 @@ export const ImageViewerImage: React.FC<ImageViewerImageProps> = ({
             <div
               onClick={handlePreview}
               className={cn(
-                "ds-image-viewer-mask absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity cursor-pointer",
-                "bg-black/50 backdrop-blur-sm"
+                "ds-image-viewer-mask ds:absolute ds:inset-0 ds:flex ds:items-center ds:justify-center ds:opacity-0 ds:hover:opacity-100 ds:transition-opacity cursor-pointer",
+                "ds:bg-black/50 ds:backdrop-blur-sm"
               )}
             >
-              <div className="text-white text-sm flex items-center gap-2">
-                <ZoomIn className="w-5 h-5" />
+              <div className="ds:text-white ds:text-sm ds:flex ds:items-center ds:gap-2">
+                <ZoomIn className="ds:w-5 ds:h-5" />
                 <span>Preview</span>
               </div>
             </div>

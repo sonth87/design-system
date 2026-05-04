@@ -26,12 +26,12 @@ export function DataTablePagination<TData>({
   return (
     <div
       className={cn(
-        "flex w-full flex-col-reverse items-center justify-between gap-4 overflow-auto p-1 sm:flex-row sm:gap-8",
+        "ds:flex ds:w-full ds:flex-col-reverse ds:items-center ds:justify-between ds:gap-4 overflow-auto ds:p-1 ds:sm:flex-row ds:sm:gap-8",
         className
       )}
       {...props}
     >
-      <div className="flex-1 whitespace-nowrap text-muted-foreground text-sm">
+      <div className="ds:flex-1 ds:whitespace-nowrap ds:text-muted-foreground ds:text-sm">
         {showRowSelectionCount && (
           <>
             {table.getFilteredSelectedRowModel().rows.length} of{" "}
@@ -39,9 +39,9 @@ export function DataTablePagination<TData>({
           </>
         )}
       </div>
-      <div className="flex flex-col-reverse items-center gap-2 sm:flex-row sm:gap-2 lg:gap-4">
+      <div className="ds:flex ds:flex-col-reverse ds:items-center ds:gap-2 ds:sm:flex-row ds:sm:gap-2 ds:lg:gap-4">
         {showPageInfo && (
-          <div className="flex items-center justify-center font-medium text-sm">
+          <div className="ds:flex ds:items-center ds:justify-center ds:font-medium ds:text-sm">
             Page {table.getState().pagination.pageIndex + 1} of{" "}
             {table.getPageCount()}
           </div>

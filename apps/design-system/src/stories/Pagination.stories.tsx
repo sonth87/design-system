@@ -235,7 +235,7 @@ export const Manual: Story = {
 
 export const WithSize: Story = {
   render: () => (
-    <div className="space-y-4">
+    <div className="ds:space-y-4">
       <div>
         <Pagination
           total={10}
@@ -268,9 +268,9 @@ export const WithSize: Story = {
 
 export const WithCustomText: Story = {
   render: () => (
-    <div className="space-y-4">
+    <div className="ds:space-y-4">
       <div>
-        <h3 className="text-sm font-medium mb-2">Custom Text (string)</h3>
+        <h3 className="ds:text-sm ds:font-medium ds:mb-2">Custom Text (string)</h3>
         <Pagination
           total={10}
           currentPage={1}
@@ -282,7 +282,7 @@ export const WithCustomText: Story = {
         />
       </div>
       <div>
-        <h3 className="text-sm font-medium mb-2">Default Text (true)</h3>
+        <h3 className="ds:text-sm ds:font-medium ds:mb-2">Default Text (true)</h3>
         <Pagination
           total={10}
           currentPage={1}
@@ -292,7 +292,7 @@ export const WithCustomText: Story = {
         />
       </div>
       <div>
-        <h3 className="text-sm font-medium mb-2">No Text (false)</h3>
+        <h3 className="ds:text-sm ds:font-medium ds:mb-2">No Text (false)</h3>
         <Pagination
           total={10}
           currentPage={1}
@@ -309,9 +309,9 @@ export const WithCustomText: Story = {
 
 export const WithColors: Story = {
   render: () => (
-    <div className="space-y-4">
+    <div className="ds:space-y-4">
       <div>
-        <h3 className="text-sm font-medium mb-2">
+        <h3 className="ds:text-sm ds:font-medium ds:mb-2">
           Default (muted - follows text color)
         </h3>
         <Pagination
@@ -322,7 +322,7 @@ export const WithColors: Story = {
         />
       </div>
       <div>
-        <h3 className="text-sm font-medium mb-2">Primary</h3>
+        <h3 className="ds:text-sm ds:font-medium ds:mb-2">Primary</h3>
         <Pagination
           total={10}
           currentPage={1}
@@ -332,7 +332,7 @@ export const WithColors: Story = {
         />
       </div>
       <div>
-        <h3 className="text-sm font-medium mb-2">Secondary</h3>
+        <h3 className="ds:text-sm ds:font-medium ds:mb-2">Secondary</h3>
         <Pagination
           total={10}
           currentPage={1}
@@ -351,12 +351,12 @@ export const WithJumpOnEllipsis: Story = {
       const [currentPage, setCurrentPage] = React.useState(10);
 
       return (
-        <div className="space-y-4">
+        <div className="ds:space-y-4">
           <div>
-            <h3 className="text-sm font-medium mb-2">
+            <h3 className="ds:text-sm ds:font-medium ds:mb-2">
               Jump on Ellipsis (hover over ... to see directional jump buttons)
             </h3>
-            <p className="text-xs text-muted-foreground mb-2">
+            <p className="ds:text-xs ds:text-muted-foreground ds:mb-2">
               Current page: {currentPage}. Hover over the ellipsis (...) before
               the active page to see "Previous" button, or after the active page
               to see "Next" button. Clicking jumps by maxPages amount.
@@ -374,7 +374,7 @@ export const WithJumpOnEllipsis: Story = {
             />
           </div>
           <div>
-            <h3 className="text-sm font-medium mb-2">
+            <h3 className="ds:text-sm ds:font-medium ds:mb-2">
               Jump on Ellipsis with Custom Text
             </h3>
             <Pagination
@@ -405,12 +405,12 @@ export const WithSelectJump: Story = {
       const [currentPage, setCurrentPage] = React.useState(10);
 
       return (
-        <div className="space-y-4">
+        <div className="ds:space-y-4">
           <div>
-            <h3 className="text-sm font-medium mb-2">
+            <h3 className="ds:text-sm ds:font-medium ds:mb-2">
               Popover Jump on Ellipsis (click ... to open searchable page list)
             </h3>
-            <p className="text-xs text-muted-foreground mb-2">
+            <p className="ds:text-xs ds:text-muted-foreground ds:mb-2">
               Current page: {currentPage}. Click on the ellipsis (...) to open a
               popover with a searchable list of all pages. You can search by
               typing page numbers or scroll through the list.

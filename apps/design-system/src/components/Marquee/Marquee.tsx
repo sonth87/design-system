@@ -390,7 +390,7 @@ function MarqueeRoot(props: MarqueeRootProps) {
 
   return (
     <MarqueeContext.Provider value={contextValue}>
-      <div data-slot="marquee-wrapper" className="grid">
+      <div data-slot="marquee-wrapper" className="ds:grid">
         <MarqueePrimitive
           role="marquee"
           aria-live="off"
@@ -401,13 +401,13 @@ function MarqueeRoot(props: MarqueeRootProps) {
           {...marqueeProps}
           ref={composedRef}
           className={cn(
-            "relative flex overflow-hidden motion-reduce:animate-none",
-            orientation === "vertical" && "h-full flex-col",
-            orientation === "horizontal" && "w-full",
+            "ds:relative ds:flex overflow-hidden ds:motion-reduce:animate-none",
+            orientation === "vertical" && "ds:h-full ds:flex-col",
+            orientation === "ds:horizontal" && "ds:w-full",
             paused && "[&_*]:[animation-play-state:paused]",
             pauseOnHover && "group",
             pauseOnKeyboard &&
-              "rounded-md focus-visible:border-ring focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50",
+              "ds:rounded-md ds:focus-visible:border-ring ds:focus-visible:outline-none focus-visible:ring-[3px] ds:focus-visible:ring-ring/50",
             className
           )}
           style={style}
@@ -556,8 +556,7 @@ function MarqueeContent(props: DivProps) {
       >
         <div
           ref={composedRef}
-          className={cn(
-            "flex shrink-0 gap-(--marquee-gap)",
+          className={cn("ds:flex shrink-0 ds:gap-(--marquee-gap)",
             isVertical && "flex-col"
           )}
         >
@@ -596,7 +595,7 @@ function MarqueeItem(props: DivProps) {
     <ItemPrimitive
       data-slot="marquee-item"
       {...itemProps}
-      className={cn("shrink-0", className)}
+      className={cn("ds:shrink-0", className)}
     />
   );
 }

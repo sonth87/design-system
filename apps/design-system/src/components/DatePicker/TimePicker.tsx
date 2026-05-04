@@ -276,7 +276,7 @@ export function TimePicker({
   const shareLabel = typeof timeLabel === "string" && (
     <div
       key="common-label"
-      className="text-xs font-semibold text-muted-foreground uppercase p-2 border-b w-full text-center"
+      className="ds:text-xs ds:font-semibold ds:text-muted-foreground uppercase ds:p-2 ds:border-b ds:w-full ds:text-center"
     >
       {timeLabel}
     </div>
@@ -445,13 +445,13 @@ export function TimePicker({
       timeLabel?: string;
       type: "hours" | "minutes" | "seconds";
     }) => (
-      <div className="flex flex-col gap-2">
+      <div className="ds:flex ds:flex-col ds:gap-2">
         {timeLabel && (
-          <div className="text-xs font-semibold text-muted-foreground uppercase p-2 border-b w-full text-center">
+          <div className="ds:text-xs ds:font-semibold ds:text-muted-foreground uppercase ds:p-2 ds:border-b ds:w-full ds:text-center">
             {timeLabel}
           </div>
         )}
-        <div className="p-2">
+        <div className="ds:p-2">
           <Select
             value={selectedValue?.toString() || ""}
             onValueChange={(value) => onChangeCol(Number(value))}
@@ -612,16 +612,16 @@ export function TimePicker({
   if (!standalone) {
     return (
       <div
-        className={cn("flex flex-col gap-2 h-full justify-between", className)}
+        className={cn("ds:flex ds:flex-col ds:gap-2 ds:h-full ds:justify-between", className)}
       >
         {shareLabel}
 
         <div
           className={cn(
-            "flex rounded overflow-clip mb-auto",
-            mode === "wheel"
-              ? "items-end justify-center p-0 h-72"
-              : "items-start justify-center"
+            "ds:flex ds:rounded overflow-clip ds:mb-auto",
+            mode === "ds:wheel"
+              ? "ds:items-end ds:justify-center ds:p-0 ds:h-72"
+              : "ds:items-start ds:justify-center"
           )}
         >
           {renderColumns()}
@@ -634,7 +634,7 @@ export function TimePicker({
             size="xs"
             onClick={handleNowClick}
             disabled={disabled}
-            className={cn("rounded-none")}
+            className={cn("ds:rounded-none")}
           >
             {nowButtonLabel}
           </Button>
@@ -645,12 +645,11 @@ export function TimePicker({
 
   // Render the time picker content
   const timePickerContent = (
-    <div className={cn("flex flex-col gap-4 h-full", className)}>
+    <div className={cn("ds:flex ds:flex-col ds:gap-4 ds:h-full", className)}>
       {shareLabel}
 
       <div
-        className={cn(
-          "flex rounded overflow-clip my-auto mx-auto max-w-sm md:max-w-md lg:max-w-lg relative",
+        className={cn("ds:flex ds:rounded overflow-clip ds:my-auto ds:mx-auto ds:max-w-sm ds:md:max-w-md ds:lg:max-w-lg ds:relative",
           mode === "wheel"
             ? "items-end justify-center p-0"
             : "items-start justify-center",
@@ -670,7 +669,7 @@ export function TimePicker({
           size="xs"
           onClick={handleNowClick}
           disabled={disabled}
-          className={cn("rounded-none")}
+          className={cn("ds:rounded-none")}
         >
           {nowButtonLabel}
         </Button>
@@ -682,10 +681,10 @@ export function TimePicker({
   const iconTrigger = (
     <Button
       variant="ghost"
-      className="!p-1 !leading-0 h-auto rounded hover:bg-accent transition-colors"
+      className="!p-1 !leading-0 ds:h-auto ds:rounded ds:hover:bg-accent ds:transition-colors"
       disabled={disabled}
     >
-      <Clock className="size-4" />
+      <Clock className="ds:size-4" />
       <span className="sr-only">Select time</span>
     </Button>
   );
@@ -697,8 +696,8 @@ export function TimePicker({
       </PopoverTrigger>
       <PopoverContent
         className={cn(
-          "w-auto overflow-hidden p-0",
-          "backdrop-blur bg-background/50"
+          "ds:w-auto overflow-hidden ds:p-0",
+          "ds:backdrop-blur ds:bg-background/50"
         )}
       >
         {timePickerContent}
@@ -711,8 +710,8 @@ export function TimePicker({
       <DrawerTrigger asChild>{iconTrigger}</DrawerTrigger>
       <DrawerContent
         className={cn(
-          "w-auto overflow-hidden p-0",
-          "backdrop-blur bg-background"
+          "ds:w-auto overflow-hidden ds:p-0",
+          "ds:backdrop-blur ds:bg-background"
         )}
       >
         <DrawerHeader className="sr-only">

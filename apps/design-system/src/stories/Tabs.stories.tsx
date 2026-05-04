@@ -133,9 +133,9 @@ const defaultItems: TabsProps["items"] = [
     key: "account",
     label: "Account",
     children: (
-      <div className="space-y-4 p-4 border rounded-lg">
-        <h3 className="text-lg font-semibold">Account</h3>
-        <p className="text-sm text-muted-foreground">
+      <div className="ds:space-y-4 ds:p-4 ds:border ds:rounded-lg">
+        <h3 className="ds:text-lg ds:font-semibold">Account</h3>
+        <p className="ds:text-sm ds:text-muted-foreground">
           Make changes to your account here. Click save when you're done.
         </p>
         <Input label="Name" placeholder="Enter your name" />
@@ -148,9 +148,9 @@ const defaultItems: TabsProps["items"] = [
     key: "password",
     label: "Password",
     children: (
-      <div className="space-y-4 p-4 border rounded-lg">
-        <h3 className="text-lg font-semibold">Password</h3>
-        <p className="text-sm text-muted-foreground">
+      <div className="ds:space-y-4 ds:p-4 ds:border ds:rounded-lg">
+        <h3 className="ds:text-lg ds:font-semibold">Password</h3>
+        <p className="ds:text-sm ds:text-muted-foreground">
           Change your password here. After saving, you'll be logged out.
         </p>
         <Input label="Current password" type="password" />
@@ -163,9 +163,9 @@ const defaultItems: TabsProps["items"] = [
     key: "tab3",
     label: "Tab 3",
     children: (
-      <div className="space-y-4 p-4 border rounded-lg bg-blue-100">
-        <h3 className="text-lg font-semibold">Tab 3 Content</h3>
-        <p className="text-sm text-muted-foreground">
+      <div className="ds:space-y-4 ds:p-4 ds:border ds:rounded-lg ds:bg-blue-100">
+        <h3 className="ds:text-lg ds:font-semibold">Tab 3 Content</h3>
+        <p className="ds:text-sm ds:text-muted-foreground">
           This is the content for Tab 3.
         </p>
       </div>
@@ -175,9 +175,9 @@ const defaultItems: TabsProps["items"] = [
     key: "tab4",
     label: "Tab 4",
     children: (
-      <div className="space-y-4 p-4 border rounded-lg bg-red-100">
-        <h3 className="text-lg font-semibold">Tab 4 Content</h3>
-        <p className="text-sm text-muted-foreground">
+      <div className="ds:space-y-4 ds:p-4 ds:border ds:rounded-lg ds:bg-red-100">
+        <h3 className="ds:text-lg ds:font-semibold">Tab 4 Content</h3>
+        <p className="ds:text-sm ds:text-muted-foreground">
           This is the content for Tab 4.
         </p>
       </div>
@@ -187,9 +187,9 @@ const defaultItems: TabsProps["items"] = [
     key: "tab5",
     label: "Tab 5",
     children: (
-      <div className="space-y-4 p-4 border rounded-lg bg-green-100">
-        <h3 className="text-lg font-semibold">Tab 5 Content</h3>
-        <p className="text-sm text-muted-foreground">
+      <div className="ds:space-y-4 ds:p-4 ds:border ds:rounded-lg ds:bg-green-100">
+        <h3 className="ds:text-lg ds:font-semibold">Tab 5 Content</h3>
+        <p className="ds:text-sm ds:text-muted-foreground">
           This is the content for Tab 5.
         </p>
       </div>
@@ -199,9 +199,9 @@ const defaultItems: TabsProps["items"] = [
     key: "tab6",
     label: "Tab 6",
     children: (
-      <div className="space-y-4 p-4 border rounded-lg bg-gray-100">
-        <h3 className="text-lg font-semibold">Tab 6 Content</h3>
-        <p className="text-sm text-muted-foreground">
+      <div className="ds:space-y-4 ds:p-4 ds:border ds:rounded-lg ds:bg-gray-100">
+        <h3 className="ds:text-lg ds:font-semibold">Tab 6 Content</h3>
+        <p className="ds:text-sm ds:text-muted-foreground">
           This is the content for Tab 6.
         </p>
       </div>
@@ -211,9 +211,9 @@ const defaultItems: TabsProps["items"] = [
     key: "tab7",
     label: "Tab 7",
     children: (
-      <div className="space-y-4 p-4 border rounded-lg bg-amber-100">
-        <h3 className="text-lg font-semibold">Tab 7 Content</h3>
-        <p className="text-sm text-muted-foreground">
+      <div className="ds:space-y-4 ds:p-4 ds:border ds:rounded-lg ds:bg-amber-100">
+        <h3 className="ds:text-lg ds:font-semibold">Tab 7 Content</h3>
+        <p className="ds:text-sm ds:text-muted-foreground">
           This is the content for Tab 7.
         </p>
       </div>
@@ -223,9 +223,9 @@ const defaultItems: TabsProps["items"] = [
     key: "tab8",
     label: "Tab 8",
     children: (
-      <div className="space-y-4 p-4 border rounded-lg bg-pink-100">
-        <h3 className="text-lg font-semibold">Tab 8 Content</h3>
-        <p className="text-sm text-muted-foreground">
+      <div className="ds:space-y-4 ds:p-4 ds:border ds:rounded-lg ds:bg-pink-100">
+        <h3 className="ds:text-lg ds:font-semibold">Tab 8 Content</h3>
+        <p className="ds:text-sm ds:text-muted-foreground">
           This is the content for Tab 8.
         </p>
       </div>
@@ -235,9 +235,9 @@ const defaultItems: TabsProps["items"] = [
     key: "tab9",
     label: "Tab 9",
     children: (
-      <div className="space-y-4 p-4 border rounded-lg bg-purple-100">
-        <h3 className="text-lg font-semibold">Tab 9 Content</h3>
-        <p className="text-sm text-muted-foreground">
+      <div className="ds:space-y-4 ds:p-4 ds:border ds:rounded-lg ds:bg-purple-100">
+        <h3 className="ds:text-lg ds:font-semibold">Tab 9 Content</h3>
+        <p className="ds:text-sm ds:text-muted-foreground">
           This is the content for Tab 9.
         </p>
       </div>
@@ -247,9 +247,9 @@ const defaultItems: TabsProps["items"] = [
     key: "tab10",
     label: "Tab 10",
     children: (
-      <div className="space-y-4 p-4 border rounded-lg bg-lime-100">
-        <h3 className="text-lg font-semibold">Tab 10 Content</h3>
-        <p className="text-sm text-muted-foreground">
+      <div className="ds:space-y-4 ds:p-4 ds:border ds:rounded-lg ds:bg-lime-100">
+        <h3 className="ds:text-lg ds:font-semibold">Tab 10 Content</h3>
+        <p className="ds:text-sm ds:text-muted-foreground">
           This is the content for Tab 10.
         </p>
       </div>
@@ -259,9 +259,9 @@ const defaultItems: TabsProps["items"] = [
     key: "tab11",
     label: "Tab 11",
     children: (
-      <div className="space-y-4 p-4 border rounded-lg">
-        <h3 className="text-lg font-semibold">Tab 11 Content</h3>
-        <p className="text-sm text-muted-foreground">
+      <div className="ds:space-y-4 ds:p-4 ds:border ds:rounded-lg">
+        <h3 className="ds:text-lg ds:font-semibold">Tab 11 Content</h3>
+        <p className="ds:text-sm ds:text-muted-foreground">
           This is the content for Tab 11.
         </p>
       </div>
@@ -288,11 +288,11 @@ export const WithIcons: Story = {
       {
         key: "overview",
         label: "Overview",
-        icon: <Home className="size-4" />,
+        icon: <Home className="ds:size-4" />,
         children: (
-          <div className="p-4 border rounded-lg">
-            <h3 className="font-semibold mb-2">Overview</h3>
-            <p className="text-sm text-muted-foreground">
+          <div className="ds:p-4 ds:border ds:rounded-lg">
+            <h3 className="ds:font-semibold ds:mb-2">Overview</h3>
+            <p className="ds:text-sm ds:text-muted-foreground">
               Dashboard overview with key metrics and statistics.
             </p>
           </div>
@@ -301,11 +301,11 @@ export const WithIcons: Story = {
       {
         key: "profile",
         label: "Profile",
-        icon: <User className="size-4" />,
+        icon: <User className="ds:size-4" />,
         children: (
-          <div className="p-4 border rounded-lg">
-            <h3 className="font-semibold mb-2">Profile</h3>
-            <p className="text-sm text-muted-foreground">
+          <div className="ds:p-4 ds:border ds:rounded-lg">
+            <h3 className="ds:font-semibold ds:mb-2">Profile</h3>
+            <p className="ds:text-sm ds:text-muted-foreground">
               Manage your profile information and preferences.
             </p>
           </div>
@@ -314,11 +314,11 @@ export const WithIcons: Story = {
       {
         key: "settings",
         label: "Settings",
-        icon: <Settings className="size-4" />,
+        icon: <Settings className="ds:size-4" />,
         children: (
-          <div className="p-4 border rounded-lg">
-            <h3 className="font-semibold mb-2">Settings</h3>
-            <p className="text-sm text-muted-foreground">
+          <div className="ds:p-4 ds:border ds:rounded-lg">
+            <h3 className="ds:font-semibold ds:mb-2">Settings</h3>
+            <p className="ds:text-sm ds:text-muted-foreground">
               Configure your application settings and preferences.
             </p>
           </div>
@@ -327,11 +327,11 @@ export const WithIcons: Story = {
       {
         key: "notifications",
         label: "Notifications",
-        icon: <Bell className="size-4" />,
+        icon: <Bell className="ds:size-4" />,
         children: (
-          <div className="p-4 border rounded-lg">
-            <h3 className="font-semibold mb-2">Notifications</h3>
-            <p className="text-sm text-muted-foreground">
+          <div className="ds:p-4 ds:border ds:rounded-lg">
+            <h3 className="ds:font-semibold ds:mb-2">Notifications</h3>
+            <p className="ds:text-sm ds:text-muted-foreground">
               Manage your notification preferences and alerts.
             </p>
           </div>
@@ -358,22 +358,22 @@ export const FullWidth: Story = {
         key: "all",
         label: "All",
         children: (
-          <div className="p-4 border rounded-lg">
-            <div className="space-y-2">
-              <h3 className="font-semibold">All Messages</h3>
-              <div className="space-y-2">
+          <div className="ds:p-4 ds:border ds:rounded-lg">
+            <div className="ds:space-y-2">
+              <h3 className="ds:font-semibold">All Messages</h3>
+              <div className="ds:space-y-2">
                 {[1, 2, 3, 4].map((i) => (
                   <div
                     key={i}
-                    className="p-3 rounded-md border hover:bg-accent cursor-pointer"
+                    className="ds:p-3 ds:rounded-md ds:border ds:hover:bg-accent cursor-pointer"
                   >
-                    <div className="flex items-center justify-between">
-                      <span className="font-medium">Message {i}</span>
-                      <span className="text-xs text-muted-foreground">
+                    <div className="ds:flex ds:items-center ds:justify-between">
+                      <span className="ds:font-medium">Message {i}</span>
+                      <span className="ds:text-xs ds:text-muted-foreground">
                         2 hours ago
                       </span>
                     </div>
-                    <p className="text-sm text-muted-foreground mt-1">
+                    <p className="ds:text-sm ds:text-muted-foreground ds:mt-1">
                       Preview of the message content...
                     </p>
                   </div>
@@ -387,10 +387,10 @@ export const FullWidth: Story = {
         key: "unread",
         label: "Unread",
         children: (
-          <div className="p-4 border rounded-lg">
-            <div className="space-y-2">
-              <h3 className="font-semibold">Unread Messages</h3>
-              <p className="text-sm text-muted-foreground">
+          <div className="ds:p-4 ds:border ds:rounded-lg">
+            <div className="ds:space-y-2">
+              <h3 className="ds:font-semibold">Unread Messages</h3>
+              <p className="ds:text-sm ds:text-muted-foreground">
                 You have 2 unread messages.
               </p>
             </div>
@@ -401,10 +401,10 @@ export const FullWidth: Story = {
         key: "archived",
         label: "Archived",
         children: (
-          <div className="p-4 border rounded-lg">
-            <div className="space-y-2">
-              <h3 className="font-semibold">Archived Messages</h3>
-              <p className="text-sm text-muted-foreground">
+          <div className="ds:p-4 ds:border ds:rounded-lg">
+            <div className="ds:space-y-2">
+              <h3 className="ds:font-semibold">Archived Messages</h3>
+              <p className="ds:text-sm ds:text-muted-foreground">
                 No archived messages yet.
               </p>
             </div>
@@ -434,9 +434,9 @@ export const Controlled: Story = {
         key: "tab1",
         label: "Tab 1",
         children: (
-          <div className="p-4 border rounded-lg">
-            <p className="text-sm">Content for Tab 1</p>
-            <p className="text-xs text-muted-foreground mt-2">
+          <div className="ds:p-4 ds:border ds:rounded-lg">
+            <p className="ds:text-sm">Content for Tab 1</p>
+            <p className="ds:text-xs ds:text-muted-foreground ds:mt-2">
               Current tab: {activeTab}
             </p>
           </div>
@@ -446,9 +446,9 @@ export const Controlled: Story = {
         key: "tab2",
         label: "Tab 2",
         children: (
-          <div className="p-4 border rounded-lg">
-            <p className="text-sm">Content for Tab 2</p>
-            <p className="text-xs text-muted-foreground mt-2">
+          <div className="ds:p-4 ds:border ds:rounded-lg">
+            <p className="ds:text-sm">Content for Tab 2</p>
+            <p className="ds:text-xs ds:text-muted-foreground ds:mt-2">
               Current tab: {activeTab}
             </p>
           </div>
@@ -458,9 +458,9 @@ export const Controlled: Story = {
         key: "tab3",
         label: "Tab 3",
         children: (
-          <div className="p-4 border rounded-lg">
-            <p className="text-sm">Content for Tab 3</p>
-            <p className="text-xs text-muted-foreground mt-2">
+          <div className="ds:p-4 ds:border ds:rounded-lg">
+            <p className="ds:text-sm">Content for Tab 3</p>
+            <p className="ds:text-xs ds:text-muted-foreground ds:mt-2">
               Current tab: {activeTab}
             </p>
           </div>
@@ -469,8 +469,8 @@ export const Controlled: Story = {
     ];
 
     return (
-      <div className="w-[400px] space-y-4">
-        <div className="flex gap-2">
+      <div className="w-[400px] ds:space-y-4">
+        <div className="ds:flex ds:gap-2">
           <Button
             onClick={() => setActiveTab("tab1")}
             variant="outline"
@@ -512,23 +512,23 @@ export const CardStyle: Story = {
         key: "pricing",
         label: "Pricing",
         children: (
-          <div className="grid grid-cols-2 gap-4 mt-4">
+          <div className="ds:grid ds:grid-cols-2 ds:gap-4 ds:mt-4">
             {["Basic", "Pro"].map((plan) => (
-              <div key={plan} className="p-6 border rounded-lg space-y-4">
-                <h3 className="text-xl font-bold">{plan}</h3>
-                <div className="text-3xl font-bold">
+              <div key={plan} className="ds:p-6 ds:border ds:rounded-lg ds:space-y-4">
+                <h3 className="ds:text-xl ds:font-bold">{plan}</h3>
+                <div className="ds:text-3xl ds:font-bold">
                   ${plan === "Basic" ? "9" : "29"}
-                  <span className="text-sm font-normal text-muted-foreground">
+                  <span className="ds:text-sm ds:font-normal ds:text-muted-foreground">
                     /month
                   </span>
                 </div>
-                <ul className="space-y-2 text-sm">
+                <ul className="ds:space-y-2 ds:text-sm">
                   <li>✓ Feature 1</li>
                   <li>✓ Feature 2</li>
                   <li>✓ Feature 3</li>
                   {plan === "Pro" && <li>✓ Premium Feature</li>}
                 </ul>
-                <Button className="w-full">Choose {plan}</Button>
+                <Button className="ds:w-full">Choose {plan}</Button>
               </div>
             ))}
           </div>
@@ -538,9 +538,9 @@ export const CardStyle: Story = {
         key: "features",
         label: "Features",
         children: (
-          <div className="p-6 border rounded-lg mt-4">
-            <h3 className="font-semibold mb-4">Key Features</h3>
-            <ul className="space-y-2 text-sm">
+          <div className="ds:p-6 ds:border ds:rounded-lg ds:mt-4">
+            <h3 className="ds:font-semibold ds:mb-4">Key Features</h3>
+            <ul className="ds:space-y-2 ds:text-sm">
               <li>• Advanced analytics dashboard</li>
               <li>• Real-time collaboration</li>
               <li>• Unlimited storage</li>
@@ -553,20 +553,20 @@ export const CardStyle: Story = {
         key: "faq",
         label: "FAQ",
         children: (
-          <div className="p-6 border rounded-lg mt-4">
-            <h3 className="font-semibold mb-4">Frequently Asked Questions</h3>
-            <div className="space-y-4">
+          <div className="ds:p-6 ds:border ds:rounded-lg ds:mt-4">
+            <h3 className="ds:font-semibold ds:mb-4">Frequently Asked Questions</h3>
+            <div className="ds:space-y-4">
               <div>
-                <p className="font-medium text-sm">
+                <p className="ds:font-medium ds:text-sm">
                   Can I change my plan later?
                 </p>
-                <p className="text-sm text-muted-foreground mt-1">
+                <p className="ds:text-sm ds:text-muted-foreground ds:mt-1">
                   Yes, you can upgrade or downgrade at any time.
                 </p>
               </div>
               <div>
-                <p className="font-medium text-sm">Is there a free trial?</p>
-                <p className="text-sm text-muted-foreground mt-1">
+                <p className="ds:font-medium ds:text-sm">Is there a free trial?</p>
+                <p className="ds:text-sm ds:text-muted-foreground ds:mt-1">
                   We offer a 14-day free trial for all plans.
                 </p>
               </div>
@@ -590,18 +590,18 @@ export const Minimal: Story = {
         key: "today",
         label: "Today",
         children: (
-          <div className="mt-4 space-y-2">
-            <div className="flex items-center justify-between text-sm">
+          <div className="ds:mt-4 ds:space-y-2">
+            <div className="ds:flex ds:items-center ds:justify-between ds:text-sm">
               <span>Tasks completed</span>
-              <span className="font-semibold">12</span>
+              <span className="ds:font-semibold">12</span>
             </div>
-            <div className="flex items-center justify-between text-sm">
+            <div className="ds:flex ds:items-center ds:justify-between ds:text-sm">
               <span>Hours worked</span>
-              <span className="font-semibold">6.5</span>
+              <span className="ds:font-semibold">6.5</span>
             </div>
-            <div className="flex items-center justify-between text-sm">
+            <div className="ds:flex ds:items-center ds:justify-between ds:text-sm">
               <span>Meetings</span>
-              <span className="font-semibold">3</span>
+              <span className="ds:font-semibold">3</span>
             </div>
           </div>
         ),
@@ -610,18 +610,18 @@ export const Minimal: Story = {
         key: "week",
         label: "This Week",
         children: (
-          <div className="mt-4 space-y-2">
-            <div className="flex items-center justify-between text-sm">
+          <div className="ds:mt-4 ds:space-y-2">
+            <div className="ds:flex ds:items-center ds:justify-between ds:text-sm">
               <span>Tasks completed</span>
-              <span className="font-semibold">58</span>
+              <span className="ds:font-semibold">58</span>
             </div>
-            <div className="flex items-center justify-between text-sm">
+            <div className="ds:flex ds:items-center ds:justify-between ds:text-sm">
               <span>Hours worked</span>
-              <span className="font-semibold">32.5</span>
+              <span className="ds:font-semibold">32.5</span>
             </div>
-            <div className="flex items-center justify-between text-sm">
+            <div className="ds:flex ds:items-center ds:justify-between ds:text-sm">
               <span>Meetings</span>
-              <span className="font-semibold">14</span>
+              <span className="ds:font-semibold">14</span>
             </div>
           </div>
         ),
@@ -630,18 +630,18 @@ export const Minimal: Story = {
         key: "month",
         label: "This Month",
         children: (
-          <div className="mt-4 space-y-2">
-            <div className="flex items-center justify-between text-sm">
+          <div className="ds:mt-4 ds:space-y-2">
+            <div className="ds:flex ds:items-center ds:justify-between ds:text-sm">
               <span>Tasks completed</span>
-              <span className="font-semibold">234</span>
+              <span className="ds:font-semibold">234</span>
             </div>
-            <div className="flex items-center justify-between text-sm">
+            <div className="ds:flex ds:items-center ds:justify-between ds:text-sm">
               <span>Hours worked</span>
-              <span className="font-semibold">152</span>
+              <span className="ds:font-semibold">152</span>
             </div>
-            <div className="flex items-center justify-between text-sm">
+            <div className="ds:flex ds:items-center ds:justify-between ds:text-sm">
               <span>Meetings</span>
-              <span className="font-semibold">47</span>
+              <span className="ds:font-semibold">47</span>
             </div>
           </div>
         ),
@@ -663,16 +663,16 @@ export const WithBadges: Story = {
         label: (
           <>
             Inbox
-            <span className="ml-2 rounded-full bg-primary text-primary-foreground px-2 py-0.5 text-xs font-semibold">
+            <span className="ds:ml-2 ds:rounded-full ds:bg-primary ds:text-primary-foreground ds:px-2 ds:py-0.5 ds:text-xs ds:font-semibold">
               5
             </span>
           </>
         ),
-        icon: <Mail className="size-4" />,
+        icon: <Mail className="ds:size-4" />,
         children: (
-          <div className="p-4 border rounded-lg">
-            <h3 className="font-semibold mb-2">Inbox (5)</h3>
-            <p className="text-sm text-muted-foreground">
+          <div className="ds:p-4 ds:border ds:rounded-lg">
+            <h3 className="ds:font-semibold ds:mb-2">Inbox (5)</h3>
+            <p className="ds:text-sm ds:text-muted-foreground">
               You have 5 unread messages in your inbox.
             </p>
           </div>
@@ -682,9 +682,9 @@ export const WithBadges: Story = {
         key: "sent",
         label: "Sent",
         children: (
-          <div className="p-4 border rounded-lg">
-            <h3 className="font-semibold mb-2">Sent Messages</h3>
-            <p className="text-sm text-muted-foreground">
+          <div className="ds:p-4 ds:border ds:rounded-lg">
+            <h3 className="ds:font-semibold ds:mb-2">Sent Messages</h3>
+            <p className="ds:text-sm ds:text-muted-foreground">
               View all your sent messages here.
             </p>
           </div>
@@ -695,15 +695,15 @@ export const WithBadges: Story = {
         label: (
           <>
             Drafts
-            <span className="ml-2 rounded-full bg-muted text-muted-foreground px-2 py-0.5 text-xs">
+            <span className="ds:ml-2 ds:rounded-full ds:bg-muted ds:text-muted-foreground ds:px-2 ds:py-0.5 ds:text-xs">
               2
             </span>
           </>
         ),
         children: (
-          <div className="p-4 border rounded-lg">
-            <h3 className="font-semibold mb-2">Drafts (2)</h3>
-            <p className="text-sm text-muted-foreground">
+          <div className="ds:p-4 ds:border ds:rounded-lg">
+            <h3 className="ds:font-semibold ds:mb-2">Drafts (2)</h3>
+            <p className="ds:text-sm ds:text-muted-foreground">
               You have 2 draft messages.
             </p>
           </div>
@@ -725,8 +725,8 @@ export const TabPositions: Story = {
         key: "1",
         label: "Tab 1",
         children: (
-          <div className="p-4 border rounded-lg">
-            <p className="text-sm">Content of Tab Pane 1</p>
+          <div className="ds:p-4 ds:border ds:rounded-lg">
+            <p className="ds:text-sm">Content of Tab Pane 1</p>
           </div>
         ),
       },
@@ -734,8 +734,8 @@ export const TabPositions: Story = {
         key: "2",
         label: "Tab 2",
         children: (
-          <div className="p-4 border rounded-lg">
-            <p className="text-sm">Content of Tab Pane 2</p>
+          <div className="ds:p-4 ds:border ds:rounded-lg">
+            <p className="ds:text-sm">Content of Tab Pane 2</p>
           </div>
         ),
       },
@@ -743,29 +743,29 @@ export const TabPositions: Story = {
         key: "3",
         label: "Tab 3",
         children: (
-          <div className="p-4 border rounded-lg">
-            <p className="text-sm">Content of Tab Pane 3</p>
+          <div className="ds:p-4 ds:border ds:rounded-lg">
+            <p className="ds:text-sm">Content of Tab Pane 3</p>
           </div>
         ),
       },
     ];
 
     return (
-      <div className="space-y-8 w-[600px]">
+      <div className="ds:space-y-8 w-[600px]">
         <div>
-          <h3 className="text-sm font-semibold mb-4">Top (Default)</h3>
+          <h3 className="ds:text-sm ds:font-semibold ds:mb-4">Top (Default)</h3>
           <Tabs defaultActiveKey="1" items={items} tabPosition="top" />
         </div>
         <div>
-          <h3 className="text-sm font-semibold mb-4">Bottom</h3>
+          <h3 className="ds:text-sm ds:font-semibold ds:mb-4">Bottom</h3>
           <Tabs defaultActiveKey="1" items={items} tabPosition="bottom" />
         </div>
         <div>
-          <h3 className="text-sm font-semibold mb-4">Left</h3>
+          <h3 className="ds:text-sm ds:font-semibold ds:mb-4">Left</h3>
           <Tabs defaultActiveKey="1" items={items} tabPosition="left" />
         </div>
         <div>
-          <h3 className="text-sm font-semibold mb-4">Right</h3>
+          <h3 className="ds:text-sm ds:font-semibold ds:mb-4">Right</h3>
           <Tabs defaultActiveKey="1" items={items} tabPosition="right" />
         </div>
       </div>
@@ -781,8 +781,8 @@ export const Sizes: Story = {
         key: "1",
         label: "Tab 1",
         children: (
-          <div className="p-4 border rounded-lg">
-            <p className="text-sm">Content of Tab Pane 1</p>
+          <div className="ds:p-4 ds:border ds:rounded-lg">
+            <p className="ds:text-sm">Content of Tab Pane 1</p>
           </div>
         ),
       },
@@ -790,8 +790,8 @@ export const Sizes: Story = {
         key: "2",
         label: "Tab 2",
         children: (
-          <div className="p-4 border rounded-lg">
-            <p className="text-sm">Content of Tab Pane 2</p>
+          <div className="ds:p-4 ds:border ds:rounded-lg">
+            <p className="ds:text-sm">Content of Tab Pane 2</p>
           </div>
         ),
       },
@@ -799,25 +799,25 @@ export const Sizes: Story = {
         key: "3",
         label: "Tab 3",
         children: (
-          <div className="p-4 border rounded-lg">
-            <p className="text-sm">Content of Tab Pane 3</p>
+          <div className="ds:p-4 ds:border ds:rounded-lg">
+            <p className="ds:text-sm">Content of Tab Pane 3</p>
           </div>
         ),
       },
     ];
 
     return (
-      <div className="space-y-8 w-[600px]">
+      <div className="ds:space-y-8 w-[600px]">
         <div>
-          <h3 className="text-sm font-semibold mb-4">Small</h3>
+          <h3 className="ds:text-sm ds:font-semibold ds:mb-4">Small</h3>
           <Tabs defaultActiveKey="1" items={items} size="sm" />
         </div>
         <div>
-          <h3 className="text-sm font-semibold mb-4">Medium (Default)</h3>
+          <h3 className="ds:text-sm ds:font-semibold ds:mb-4">Medium (Default)</h3>
           <Tabs defaultActiveKey="1" items={items} size="md" />
         </div>
         <div>
-          <h3 className="text-sm font-semibold mb-4">Large</h3>
+          <h3 className="ds:text-sm ds:font-semibold ds:mb-4">Large</h3>
           <Tabs defaultActiveKey="1" items={items} size="lg" />
         </div>
       </div>
@@ -833,8 +833,8 @@ export const DisabledTabs: Story = {
         key: "1",
         label: "Tab 1",
         children: (
-          <div className="p-4 border rounded-lg">
-            <p className="text-sm">Content of Tab Pane 1</p>
+          <div className="ds:p-4 ds:border ds:rounded-lg">
+            <p className="ds:text-sm">Content of Tab Pane 1</p>
           </div>
         ),
       },
@@ -842,8 +842,8 @@ export const DisabledTabs: Story = {
         key: "2",
         label: "Tab 2 (Disabled)",
         children: (
-          <div className="p-4 border rounded-lg">
-            <p className="text-sm">Content of Tab Pane 2</p>
+          <div className="ds:p-4 ds:border ds:rounded-lg">
+            <p className="ds:text-sm">Content of Tab Pane 2</p>
           </div>
         ),
         disabled: true,
@@ -852,8 +852,8 @@ export const DisabledTabs: Story = {
         key: "3",
         label: "Tab 3",
         children: (
-          <div className="p-4 border rounded-lg">
-            <p className="text-sm">Content of Tab Pane 3</p>
+          <div className="ds:p-4 ds:border ds:rounded-lg">
+            <p className="ds:text-sm">Content of Tab Pane 3</p>
           </div>
         ),
       },
@@ -871,8 +871,8 @@ export const SolidVariant: Story = {
         key: "1",
         label: "Overview",
         children: (
-          <div className="p-4 border rounded-lg">
-            <p className="text-sm">Default variant with muted background</p>
+          <div className="ds:p-4 ds:border ds:rounded-lg">
+            <p className="ds:text-sm">Default variant with muted background</p>
           </div>
         ),
       },
@@ -880,8 +880,8 @@ export const SolidVariant: Story = {
         key: "2",
         label: "Analytics",
         children: (
-          <div className="p-4 border rounded-lg">
-            <p className="text-sm">Active tab has white background</p>
+          <div className="ds:p-4 ds:border ds:rounded-lg">
+            <p className="ds:text-sm">Active tab has white background</p>
           </div>
         ),
       },
@@ -889,21 +889,21 @@ export const SolidVariant: Story = {
         key: "3",
         label: "Reports",
         children: (
-          <div className="p-4 border rounded-lg">
-            <p className="text-sm">Shadow on active state</p>
+          <div className="ds:p-4 ds:border ds:rounded-lg">
+            <p className="ds:text-sm">Shadow on active state</p>
           </div>
         ),
       },
     ];
 
     return (
-      <div className="space-y-8 w-[600px]">
+      <div className="ds:space-y-8 w-[600px]">
         <div>
-          <h3 className="text-sm font-semibold mb-4">Horizontal</h3>
+          <h3 className="ds:text-sm ds:font-semibold ds:mb-4">Horizontal</h3>
           <Tabs defaultActiveKey="1" items={items} variant="solid" />
         </div>
         <div>
-          <h3 className="text-sm font-semibold mb-4">Vertical</h3>
+          <h3 className="ds:text-sm ds:font-semibold ds:mb-4">Vertical</h3>
           <Tabs
             defaultActiveKey="1"
             items={items}
@@ -924,8 +924,8 @@ export const BorderedVariant: Story = {
         key: "1",
         label: "Primary",
         children: (
-          <div className="p-4 border rounded-lg">
-            <p className="text-sm">
+          <div className="ds:p-4 ds:border ds:rounded-lg">
+            <p className="ds:text-sm">
               Variant 2 with border on group and colored active background
             </p>
           </div>
@@ -935,8 +935,8 @@ export const BorderedVariant: Story = {
         key: "2",
         label: "Secondary",
         children: (
-          <div className="p-4 border rounded-lg">
-            <p className="text-sm">Active tab uses the selected color</p>
+          <div className="ds:p-4 ds:border ds:rounded-lg">
+            <p className="ds:text-sm">Active tab uses the selected color</p>
           </div>
         ),
       },
@@ -944,17 +944,17 @@ export const BorderedVariant: Story = {
         key: "3",
         label: "Success",
         children: (
-          <div className="p-4 border rounded-lg">
-            <p className="text-sm">Gap between tabs</p>
+          <div className="ds:p-4 ds:border ds:rounded-lg">
+            <p className="ds:text-sm">Gap between tabs</p>
           </div>
         ),
       },
     ];
 
     return (
-      <div className="space-y-8 w-[600px]">
+      <div className="ds:space-y-8 w-[600px]">
         <div>
-          <h3 className="text-sm font-semibold mb-4">
+          <h3 className="ds:text-sm ds:font-semibold ds:mb-4">
             Primary Color - Horizontal
           </h3>
           <Tabs
@@ -965,7 +965,7 @@ export const BorderedVariant: Story = {
           />
         </div>
         <div>
-          <h3 className="text-sm font-semibold mb-4">
+          <h3 className="ds:text-sm ds:font-semibold ds:mb-4">
             Success Color - Horizontal
           </h3>
           <Tabs
@@ -976,7 +976,7 @@ export const BorderedVariant: Story = {
           />
         </div>
         <div>
-          <h3 className="text-sm font-semibold mb-4">
+          <h3 className="ds:text-sm ds:font-semibold ds:mb-4">
             Primary Color - Vertical
           </h3>
           <Tabs
@@ -1000,8 +1000,8 @@ export const PillStrokeVariant: Story = {
         key: "1",
         label: "Dashboard",
         children: (
-          <div className="p-4 border rounded-lg">
-            <p className="text-sm">Pill-style with stroke border</p>
+          <div className="ds:p-4 ds:border ds:rounded-lg">
+            <p className="ds:text-sm">Pill-style with stroke border</p>
           </div>
         ),
       },
@@ -1009,8 +1009,8 @@ export const PillStrokeVariant: Story = {
         key: "2",
         label: "Analytics",
         children: (
-          <div className="p-4 border rounded-lg">
-            <p className="text-sm">Stronger border radius than pills</p>
+          <div className="ds:p-4 ds:border ds:rounded-lg">
+            <p className="ds:text-sm">Stronger border radius than pills</p>
           </div>
         ),
       },
@@ -1018,17 +1018,17 @@ export const PillStrokeVariant: Story = {
         key: "3",
         label: "Reports",
         children: (
-          <div className="p-4 border rounded-lg">
-            <p className="text-sm">Active has border color, no background</p>
+          <div className="ds:p-4 ds:border ds:rounded-lg">
+            <p className="ds:text-sm">Active has border color, no background</p>
           </div>
         ),
       },
     ];
 
     return (
-      <div className="space-y-8 w-[600px]">
+      <div className="ds:space-y-8 w-[600px]">
         <div>
-          <h3 className="text-sm font-semibold mb-4">Primary Color</h3>
+          <h3 className="ds:text-sm ds:font-semibold ds:mb-4">Primary Color</h3>
           <Tabs
             defaultActiveKey="1"
             items={items}
@@ -1037,7 +1037,7 @@ export const PillStrokeVariant: Story = {
           />
         </div>
         <div>
-          <h3 className="text-sm font-semibold mb-4">Secondary Color</h3>
+          <h3 className="ds:text-sm ds:font-semibold ds:mb-4">Secondary Color</h3>
           <Tabs
             defaultActiveKey="1"
             items={items}
@@ -1046,7 +1046,7 @@ export const PillStrokeVariant: Story = {
           />
         </div>
         <div>
-          <h3 className="text-sm font-semibold mb-4">
+          <h3 className="ds:text-sm ds:font-semibold ds:mb-4">
             Warning Color - Vertical
           </h3>
           <Tabs
@@ -1070,8 +1070,8 @@ export const TextVariant: Story = {
         key: "1",
         label: "Home",
         children: (
-          <div className="p-4 border rounded-lg">
-            <p className="text-sm">Only text color changes on active</p>
+          <div className="ds:p-4 ds:border ds:rounded-lg">
+            <p className="ds:text-sm">Only text color changes on active</p>
           </div>
         ),
       },
@@ -1079,8 +1079,8 @@ export const TextVariant: Story = {
         key: "2",
         label: "Products",
         children: (
-          <div className="p-4 border rounded-lg">
-            <p className="text-sm">No background or border</p>
+          <div className="ds:p-4 ds:border ds:rounded-lg">
+            <p className="ds:text-sm">No background or border</p>
           </div>
         ),
       },
@@ -1088,17 +1088,17 @@ export const TextVariant: Story = {
         key: "3",
         label: "Services",
         children: (
-          <div className="p-4 border rounded-lg">
-            <p className="text-sm">Minimal text-only variant</p>
+          <div className="ds:p-4 ds:border ds:rounded-lg">
+            <p className="ds:text-sm">Minimal text-only variant</p>
           </div>
         ),
       },
     ];
 
     return (
-      <div className="space-y-8 w-[600px]">
+      <div className="ds:space-y-8 w-[600px]">
         <div>
-          <h3 className="text-sm font-semibold mb-4">Primary Color</h3>
+          <h3 className="ds:text-sm ds:font-semibold ds:mb-4">Primary Color</h3>
           <Tabs
             defaultActiveKey="1"
             items={items}
@@ -1107,7 +1107,7 @@ export const TextVariant: Story = {
           />
         </div>
         <div>
-          <h3 className="text-sm font-semibold mb-4">Destructive Color</h3>
+          <h3 className="ds:text-sm ds:font-semibold ds:mb-4">Destructive Color</h3>
           <Tabs
             defaultActiveKey="1"
             items={items}
@@ -1116,7 +1116,7 @@ export const TextVariant: Story = {
           />
         </div>
         <div>
-          <h3 className="text-sm font-semibold mb-4">
+          <h3 className="ds:text-sm ds:font-semibold ds:mb-4">
             Success Color - Vertical
           </h3>
           <Tabs
@@ -1140,8 +1140,8 @@ export const OutlineVariant: Story = {
         key: "1",
         label: "Overview",
         children: (
-          <div className="p-4 border rounded-lg">
-            <p className="text-sm">Border outline on active tab</p>
+          <div className="ds:p-4 ds:border ds:rounded-lg">
+            <p className="ds:text-sm">Border outline on active tab</p>
           </div>
         ),
       },
@@ -1149,8 +1149,8 @@ export const OutlineVariant: Story = {
         key: "2",
         label: "Details",
         children: (
-          <div className="p-4 border rounded-lg">
-            <p className="text-sm">Stroke style variant</p>
+          <div className="ds:p-4 ds:border ds:rounded-lg">
+            <p className="ds:text-sm">Stroke style variant</p>
           </div>
         ),
       },
@@ -1158,17 +1158,17 @@ export const OutlineVariant: Story = {
         key: "3",
         label: "Settings",
         children: (
-          <div className="p-4 border rounded-lg">
-            <p className="text-sm">Clean outlined tabs</p>
+          <div className="ds:p-4 ds:border ds:rounded-lg">
+            <p className="ds:text-sm">Clean outlined tabs</p>
           </div>
         ),
       },
     ];
 
     return (
-      <div className="space-y-8 w-[600px]">
+      <div className="ds:space-y-8 w-[600px]">
         <div>
-          <h3 className="text-sm font-semibold mb-4">Primary Border</h3>
+          <h3 className="ds:text-sm ds:font-semibold ds:mb-4">Primary Border</h3>
           <Tabs
             defaultActiveKey="1"
             items={items}
@@ -1177,7 +1177,7 @@ export const OutlineVariant: Story = {
           />
         </div>
         <div>
-          <h3 className="text-sm font-semibold mb-4">Success Border</h3>
+          <h3 className="ds:text-sm ds:font-semibold ds:mb-4">Success Border</h3>
           <Tabs
             defaultActiveKey="1"
             items={items}
@@ -1186,7 +1186,7 @@ export const OutlineVariant: Story = {
           />
         </div>
         <div>
-          <h3 className="text-sm font-semibold mb-4">
+          <h3 className="ds:text-sm ds:font-semibold ds:mb-4">
             Secondary Border - Vertical
           </h3>
           <Tabs
@@ -1210,8 +1210,8 @@ export const UnderlinedVariant: Story = {
         key: "1",
         label: "Home",
         children: (
-          <div className="p-4 border rounded-lg">
-            <p className="text-sm">Underline style tabs</p>
+          <div className="ds:p-4 ds:border ds:rounded-lg">
+            <p className="ds:text-sm">Underline style tabs</p>
           </div>
         ),
       },
@@ -1219,8 +1219,8 @@ export const UnderlinedVariant: Story = {
         key: "2",
         label: "About",
         children: (
-          <div className="p-4 border rounded-lg">
-            <p className="text-sm">Active tab has colored underline</p>
+          <div className="ds:p-4 ds:border ds:rounded-lg">
+            <p className="ds:text-sm">Active tab has colored underline</p>
           </div>
         ),
       },
@@ -1228,17 +1228,17 @@ export const UnderlinedVariant: Story = {
         key: "3",
         label: "Contact",
         children: (
-          <div className="p-4 border rounded-lg">
-            <p className="text-sm">Clean modern style</p>
+          <div className="ds:p-4 ds:border ds:rounded-lg">
+            <p className="ds:text-sm">Clean modern style</p>
           </div>
         ),
       },
     ];
 
     return (
-      <div className="space-y-8 w-[600px]">
+      <div className="ds:space-y-8 w-[600px]">
         <div>
-          <h3 className="text-sm font-semibold mb-4">Primary Underline</h3>
+          <h3 className="ds:text-sm ds:font-semibold ds:mb-4">Primary Underline</h3>
           <Tabs
             defaultActiveKey="1"
             items={items}
@@ -1247,7 +1247,7 @@ export const UnderlinedVariant: Story = {
           />
         </div>
         <div>
-          <h3 className="text-sm font-semibold mb-4">Warning Underline</h3>
+          <h3 className="ds:text-sm ds:font-semibold ds:mb-4">Warning Underline</h3>
           <Tabs
             defaultActiveKey="1"
             items={items}
@@ -1256,7 +1256,7 @@ export const UnderlinedVariant: Story = {
           />
         </div>
         <div>
-          <h3 className="text-sm font-semibold mb-4">
+          <h3 className="ds:text-sm ds:font-semibold ds:mb-4">
             Success Side-line - Vertical
           </h3>
           <Tabs
@@ -1280,8 +1280,8 @@ export const EnclosedVariant: Story = {
         key: "1",
         label: "index.html",
         children: (
-          <div className="p-4 border rounded-lg">
-            <p className="text-sm">Browser-like tab style</p>
+          <div className="ds:p-4 ds:border ds:rounded-lg">
+            <p className="ds:text-sm">Browser-like tab style</p>
           </div>
         ),
       },
@@ -1289,8 +1289,8 @@ export const EnclosedVariant: Story = {
         key: "2",
         label: "styles.css",
         children: (
-          <div className="p-4 border rounded-lg">
-            <p className="text-sm">Active tab connects to content</p>
+          <div className="ds:p-4 ds:border ds:rounded-lg">
+            <p className="ds:text-sm">Active tab connects to content</p>
           </div>
         ),
       },
@@ -1298,17 +1298,17 @@ export const EnclosedVariant: Story = {
         key: "3",
         label: "script.js",
         children: (
-          <div className="p-4 border rounded-lg">
-            <p className="text-sm">Classic tab appearance</p>
+          <div className="ds:p-4 ds:border ds:rounded-lg">
+            <p className="ds:text-sm">Classic tab appearance</p>
           </div>
         ),
       },
     ];
 
     return (
-      <div className="space-y-8 w-[600px]">
+      <div className="ds:space-y-8 w-[600px]">
         <div>
-          <h3 className="text-sm font-semibold mb-4">Primary Border</h3>
+          <h3 className="ds:text-sm ds:font-semibold ds:mb-4">Primary Border</h3>
           <Tabs
             defaultActiveKey="1"
             items={items}
@@ -1317,7 +1317,7 @@ export const EnclosedVariant: Story = {
           />
         </div>
         <div>
-          <h3 className="text-sm font-semibold mb-4">
+          <h3 className="ds:text-sm ds:font-semibold ds:mb-4">
             Secondary Border - Vertical
           </h3>
           <Tabs
@@ -1341,8 +1341,8 @@ export const EnclosedFillVariant: Story = {
         key: "1",
         label: "index.html",
         children: (
-          <div className="p-4 border rounded-lg">
-            <p className="text-sm">Browser-like tab style with background</p>
+          <div className="ds:p-4 ds:border ds:rounded-lg">
+            <p className="ds:text-sm">Browser-like tab style with background</p>
           </div>
         ),
       },
@@ -1350,8 +1350,8 @@ export const EnclosedFillVariant: Story = {
         key: "2",
         label: "styles.css",
         children: (
-          <div className="p-4 border rounded-lg">
-            <p className="text-sm">Inactive tabs have muted background</p>
+          <div className="ds:p-4 ds:border ds:rounded-lg">
+            <p className="ds:text-sm">Inactive tabs have muted background</p>
           </div>
         ),
       },
@@ -1359,17 +1359,17 @@ export const EnclosedFillVariant: Story = {
         key: "3",
         label: "script.js",
         children: (
-          <div className="p-4 border rounded-lg">
-            <p className="text-sm">Active tab connects to content</p>
+          <div className="ds:p-4 ds:border ds:rounded-lg">
+            <p className="ds:text-sm">Active tab connects to content</p>
           </div>
         ),
       },
     ];
 
     return (
-      <div className="space-y-8 w-[600px]">
+      <div className="ds:space-y-8 w-[600px]">
         <div>
-          <h3 className="text-sm font-semibold mb-4">Primary Border</h3>
+          <h3 className="ds:text-sm ds:font-semibold ds:mb-4">Primary Border</h3>
           <Tabs
             defaultActiveKey="1"
             items={items}
@@ -1378,7 +1378,7 @@ export const EnclosedFillVariant: Story = {
           />
         </div>
         <div>
-          <h3 className="text-sm font-semibold mb-4">
+          <h3 className="ds:text-sm ds:font-semibold ds:mb-4">
             Secondary Border - Vertical
           </h3>
           <Tabs
@@ -1402,8 +1402,8 @@ export const AllVariants: Story = {
         key: "1",
         label: "Tab 1",
         children: (
-          <div className="p-4 border rounded-lg">
-            <p className="text-sm">Content 1</p>
+          <div className="ds:p-4 ds:border ds:rounded-lg">
+            <p className="ds:text-sm">Content 1</p>
           </div>
         ),
       },
@@ -1411,8 +1411,8 @@ export const AllVariants: Story = {
         key: "2",
         label: "Tab 2",
         children: (
-          <div className="p-4 border rounded-lg">
-            <p className="text-sm">Content 2</p>
+          <div className="ds:p-4 ds:border ds:rounded-lg">
+            <p className="ds:text-sm">Content 2</p>
           </div>
         ),
       },
@@ -1420,23 +1420,23 @@ export const AllVariants: Story = {
         key: "3",
         label: "Tab 3",
         children: (
-          <div className="p-4 border rounded-lg">
-            <p className="text-sm">Content 3</p>
+          <div className="ds:p-4 ds:border ds:rounded-lg">
+            <p className="ds:text-sm">Content 3</p>
           </div>
         ),
       },
     ];
 
     return (
-      <div className="space-y-8 w-[600px]">
+      <div className="ds:space-y-8 w-[600px]">
         <div>
-          <h3 className="text-sm font-semibold mb-2">
+          <h3 className="ds:text-sm ds:font-semibold ds:mb-2">
             Solid - Default (Muted)
           </h3>
           <Tabs defaultActiveKey="1" items={items} variant="solid" />
         </div>
         <div>
-          <h3 className="text-sm font-semibold mb-2">
+          <h3 className="ds:text-sm ds:font-semibold ds:mb-2">
             Bordered - With Border (Primary)
           </h3>
           <Tabs
@@ -1447,7 +1447,7 @@ export const AllVariants: Story = {
           />
         </div>
         <div>
-          <h3 className="text-sm font-semibold mb-2">
+          <h3 className="ds:text-sm ds:font-semibold ds:mb-2">
             Pills - Background Only (Secondary)
           </h3>
           <Tabs
@@ -1458,7 +1458,7 @@ export const AllVariants: Story = {
           />
         </div>
         <div>
-          <h3 className="text-sm font-semibold mb-2">
+          <h3 className="ds:text-sm ds:font-semibold ds:mb-2">
             Pill Stroke - Border Only (Secondary)
           </h3>
           <Tabs
@@ -1469,7 +1469,7 @@ export const AllVariants: Story = {
           />
         </div>
         <div>
-          <h3 className="text-sm font-semibold mb-2">
+          <h3 className="ds:text-sm ds:font-semibold ds:mb-2">
             Text - Text Color Only (Success)
           </h3>
           <Tabs
@@ -1480,7 +1480,7 @@ export const AllVariants: Story = {
           />
         </div>
         <div>
-          <h3 className="text-sm font-semibold mb-2">
+          <h3 className="ds:text-sm ds:font-semibold ds:mb-2">
             Outline - Border Stroke (Warning)
           </h3>
           <Tabs
@@ -1491,7 +1491,7 @@ export const AllVariants: Story = {
           />
         </div>
         <div>
-          <h3 className="text-sm font-semibold mb-2">
+          <h3 className="ds:text-sm ds:font-semibold ds:mb-2">
             Underlined - Bottom Line (Primary)
           </h3>
           <Tabs
@@ -1502,13 +1502,13 @@ export const AllVariants: Story = {
           />
         </div>
         <div>
-          <h3 className="text-sm font-semibold mb-2">
+          <h3 className="ds:text-sm ds:font-semibold ds:mb-2">
             Enclosed - Browser Tab Style (Accent)
           </h3>
           <Tabs defaultActiveKey="1" items={items} variant="enclosed" />
         </div>
         <div>
-          <h3 className="text-sm font-semibold mb-2">
+          <h3 className="ds:text-sm ds:font-semibold ds:mb-2">
             Enclosed Fill - Browser Tab with Background (Accent)
           </h3>
           <Tabs defaultActiveKey="1" items={items} variant="enclosed-fill" />
@@ -1527,9 +1527,9 @@ export const CustomColor: Story = {
         key: "1",
         label: "Custom Red",
         children: (
-          <div className="p-4 border rounded-lg">
-            <p className="text-sm">Using custom color: {customColor}</p>
-            <p className="text-sm text-muted-foreground mt-2">
+          <div className="ds:p-4 ds:border ds:rounded-lg">
+            <p className="ds:text-sm">Using custom color: {customColor}</p>
+            <p className="ds:text-sm ds:text-muted-foreground ds:mt-2">
               You can customize the active tab color by overriding CSS variables
               or using custom classes.
             </p>
@@ -1540,8 +1540,8 @@ export const CustomColor: Story = {
         key: "2",
         label: "Tab 2",
         children: (
-          <div className="p-4 border rounded-lg">
-            <p className="text-sm">Inactive tabs maintain default styling</p>
+          <div className="ds:p-4 ds:border ds:rounded-lg">
+            <p className="ds:text-sm">Inactive tabs maintain default styling</p>
           </div>
         ),
       },
@@ -1549,17 +1549,17 @@ export const CustomColor: Story = {
         key: "3",
         label: "Tab 3",
         children: (
-          <div className="p-4 border rounded-lg">
-            <p className="text-sm">Custom color applied to active state only</p>
+          <div className="ds:p-4 ds:border ds:rounded-lg">
+            <p className="ds:text-sm">Custom color applied to active state only</p>
           </div>
         ),
       },
     ];
 
     return (
-      <div className="w-[600px] space-y-4">
-        <div className="flex items-center gap-4">
-          <label htmlFor="custom-color" className="text-sm font-medium">
+      <div className="w-[600px] ds:space-y-4">
+        <div className="ds:flex ds:items-center ds:gap-4">
+          <label htmlFor="custom-color" className="ds:text-sm ds:font-medium">
             Custom Color:
           </label>
           <input
@@ -1567,14 +1567,14 @@ export const CustomColor: Story = {
             type="color"
             value={customColor}
             onChange={(e) => setCustomColor(e.target.value)}
-            className="w-12 h-8 border rounded cursor-pointer"
+            className="ds:w-12 ds:h-8 ds:border ds:rounded cursor-pointer"
           />
-          <span className="text-sm text-muted-foreground">{customColor}</span>
+          <span className="ds:text-sm ds:text-muted-foreground">{customColor}</span>
         </div>
 
-        <div className="space-y-6">
+        <div className="ds:space-y-6">
           <div>
-            <h3 className="text-sm font-semibold mb-4">
+            <h3 className="ds:text-sm ds:font-semibold ds:mb-4">
               Pill Stroke Variant with Custom Color
             </h3>
             <div
@@ -1590,7 +1590,7 @@ export const CustomColor: Story = {
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold mb-4">
+            <h3 className="ds:text-sm ds:font-semibold ds:mb-4">
               Outline Variant with Custom Color
             </h3>
             <div
@@ -1606,7 +1606,7 @@ export const CustomColor: Story = {
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold mb-4">
+            <h3 className="ds:text-sm ds:font-semibold ds:mb-4">
               Text Variant with Custom Color
             </h3>
             <div
@@ -1622,11 +1622,11 @@ export const CustomColor: Story = {
           </div>
         </div>
 
-        <div className="mt-6 p-4 bg-muted rounded-lg">
-          <h4 className="text-sm font-semibold mb-2">
+        <div className="ds:mt-6 ds:p-4 ds:bg-muted ds:rounded-lg">
+          <h4 className="ds:text-sm ds:font-semibold ds:mb-2">
             How to customize colors:
           </h4>
-          <ul className="text-sm text-muted-foreground space-y-1">
+          <ul className="ds:text-sm ds:text-muted-foreground ds:space-y-1">
             <li>
               • Use <code>tabTriggerClassName</code> to override active state
               styles
@@ -1652,9 +1652,9 @@ export const OverflowScroll: Story = {
         key: `tab-${i + 1}`,
         label: `Tab ${i + 1}`,
         children: (
-          <div className="p-4 border rounded-lg">
-            <h3 className="text-lg font-semibold">Tab {i + 1} Content</h3>
-            <p className="text-sm text-muted-foreground mt-2">
+          <div className="ds:p-4 ds:border ds:rounded-lg">
+            <h3 className="ds:text-lg ds:font-semibold">Tab {i + 1} Content</h3>
+            <p className="ds:text-sm ds:text-muted-foreground ds:mt-2">
               This is the content for tab {i + 1}. With scroll overflow mode,
               all tabs are visible and can be scrolled horizontally or
               vertically.
@@ -1665,9 +1665,9 @@ export const OverflowScroll: Story = {
     );
 
     return (
-      <div className="space-y-8">
+      <div className="ds:space-y-8">
         <div>
-          <h3 className="text-sm font-semibold mb-4">
+          <h3 className="ds:text-sm ds:font-semibold ds:mb-4">
             Scroll Mode - Horizontal (20 tabs)
           </h3>
           <div className="w-[600px]">
@@ -1681,7 +1681,7 @@ export const OverflowScroll: Story = {
         </div>
 
         <div>
-          <h3 className="text-sm font-semibold mb-4">
+          <h3 className="ds:text-sm ds:font-semibold ds:mb-4">
             Scroll Mode - Vertical (20 tabs)
           </h3>
           <div className="h-[400px]">
@@ -1696,7 +1696,7 @@ export const OverflowScroll: Story = {
         </div>
 
         <div>
-          <h3 className="text-sm font-semibold mb-4">
+          <h3 className="ds:text-sm ds:font-semibold ds:mb-4">
             Scroll Mode - Underlined Variant (20 tabs)
           </h3>
           <div className="w-[600px]">
@@ -1722,11 +1722,11 @@ export const OverflowDropdown: Story = {
       (_, i) => ({
         key: `tab-${i + 1}`,
         label: `Tab ${i + 1}`,
-        icon: i === 0 ? <Home className="size-4" /> : undefined,
+        icon: i === 0 ? <Home className="ds:size-4" /> : undefined,
         children: (
-          <div className="p-4 border rounded-lg">
-            <h3 className="text-lg font-semibold">Tab {i + 1} Content</h3>
-            <p className="text-sm text-muted-foreground mt-2">
+          <div className="ds:p-4 ds:border ds:rounded-lg">
+            <h3 className="ds:text-lg ds:font-semibold">Tab {i + 1} Content</h3>
+            <p className="ds:text-sm ds:text-muted-foreground ds:mt-2">
               This is the content for tab {i + 1}. With dropdown overflow mode,
               only visible tabs are shown, and the rest appear in a [...]
               dropdown menu.
@@ -1737,9 +1737,9 @@ export const OverflowDropdown: Story = {
     );
 
     return (
-      <div className="space-y-8">
+      <div className="ds:space-y-8">
         <div>
-          <h3 className="text-sm font-semibold mb-4">
+          <h3 className="ds:text-sm ds:font-semibold ds:mb-4">
             Dropdown Mode - Horizontal (15 tabs)
           </h3>
           <div className="w-[600px]">
@@ -1750,13 +1750,13 @@ export const OverflowDropdown: Story = {
               variant="solid"
             />
           </div>
-          <p className="text-xs text-muted-foreground mt-2">
+          <p className="ds:text-xs ds:text-muted-foreground ds:mt-2">
             Tabs that don't fit are accessible via the [...] button
           </p>
         </div>
 
         <div>
-          <h3 className="text-sm font-semibold mb-4">
+          <h3 className="ds:text-sm ds:font-semibold ds:mb-4">
             Dropdown Mode - Pills Variant (15 tabs)
           </h3>
           <div className="w-[600px]">
@@ -1771,7 +1771,7 @@ export const OverflowDropdown: Story = {
         </div>
 
         <div>
-          <h3 className="text-sm font-semibold mb-4">
+          <h3 className="ds:text-sm ds:font-semibold ds:mb-4">
             Dropdown Mode - Vertical (15 tabs)
           </h3>
           <div>
@@ -1798,11 +1798,11 @@ export const OverflowFade: Story = {
       (_, i) => ({
         key: `tab-${i + 1}`,
         label: `Tab ${i + 1}`,
-        icon: i < 3 ? <Settings className="size-4" /> : undefined,
+        icon: i < 3 ? <Settings className="ds:size-4" /> : undefined,
         children: (
-          <div className="p-4 border rounded-lg">
-            <h3 className="text-lg font-semibold">Tab {i + 1} Content</h3>
-            <p className="text-sm text-muted-foreground mt-2">
+          <div className="ds:p-4 ds:border ds:rounded-lg">
+            <h3 className="ds:text-lg ds:font-semibold">Tab {i + 1} Content</h3>
+            <p className="ds:text-sm ds:text-muted-foreground ds:mt-2">
               This is the content for tab {i + 1}. With fade overflow mode, all
               tabs are shown but overflow tabs fade out with a gradient effect.
               A [...] button provides access to all tabs.
@@ -1813,9 +1813,9 @@ export const OverflowFade: Story = {
     );
 
     return (
-      <div className="space-y-8">
+      <div className="ds:space-y-8">
         <div>
-          <h3 className="text-sm font-semibold mb-4">
+          <h3 className="ds:text-sm ds:font-semibold ds:mb-4">
             Fade Mode - Horizontal (18 tabs)
           </h3>
           <div className="w-[600px]">
@@ -1826,13 +1826,13 @@ export const OverflowFade: Story = {
               variant="solid"
             />
           </div>
-          <p className="text-xs text-muted-foreground mt-2">
+          <p className="ds:text-xs ds:text-muted-foreground ds:mt-2">
             Notice the gradient fade effect on the right and the [...] button
           </p>
         </div>
 
         <div>
-          <h3 className="text-sm font-semibold mb-4">
+          <h3 className="ds:text-sm ds:font-semibold ds:mb-4">
             Fade Mode - Bordered Variant (18 tabs)
           </h3>
           <div className="w-[600px]">
@@ -1847,7 +1847,7 @@ export const OverflowFade: Story = {
         </div>
 
         <div>
-          <h3 className="text-sm font-semibold mb-4">
+          <h3 className="ds:text-sm ds:font-semibold ds:mb-4">
             Fade Mode - Underlined Variant (18 tabs)
           </h3>
           <div className="w-[600px]">
@@ -1872,9 +1872,9 @@ export const OverflowModesComparison: Story = {
       key: `tab-${i + 1}`,
       label: `Tab ${i + 1}`,
       children: (
-        <div className="p-4 border rounded-lg">
-          <h3 className="text-lg font-semibold">Tab {i + 1}</h3>
-          <p className="text-sm text-muted-foreground mt-2">
+        <div className="ds:p-4 ds:border ds:rounded-lg">
+          <h3 className="ds:text-lg ds:font-semibold">Tab {i + 1}</h3>
+          <p className="ds:text-sm ds:text-muted-foreground ds:mt-2">
             Content for tab {i + 1}
           </p>
         </div>
@@ -1882,12 +1882,12 @@ export const OverflowModesComparison: Story = {
     }));
 
     return (
-      <div className="space-y-10">
+      <div className="ds:space-y-10">
         <div>
-          <h3 className="text-sm font-semibold mb-2">
+          <h3 className="ds:text-sm ds:font-semibold ds:mb-2">
             Mode 1: Scroll - Show all tabs with scrolling
           </h3>
-          <p className="text-xs text-muted-foreground mb-4">
+          <p className="ds:text-xs ds:text-muted-foreground ds:mb-4">
             All tabs are visible and scrollable when they overflow the container
           </p>
           <div className="w-[500px]">
@@ -1901,10 +1901,10 @@ export const OverflowModesComparison: Story = {
         </div>
 
         <div>
-          <h3 className="text-sm font-semibold mb-2">
+          <h3 className="ds:text-sm ds:font-semibold ds:mb-2">
             Mode 2: Dropdown - Show visible tabs, rest in dropdown
           </h3>
-          <p className="text-xs text-muted-foreground mb-4">
+          <p className="ds:text-xs ds:text-muted-foreground ds:mb-4">
             Only visible tabs are shown, overflow tabs are in a [...] dropdown
             menu
           </p>
@@ -1919,10 +1919,10 @@ export const OverflowModesComparison: Story = {
         </div>
 
         <div>
-          <h3 className="text-sm font-semibold mb-2">
+          <h3 className="ds:text-sm ds:font-semibold ds:mb-2">
             Mode 3: Fade - Show all with gradient fade and dropdown
           </h3>
-          <p className="text-xs text-muted-foreground mb-4">
+          <p className="ds:text-xs ds:text-muted-foreground ds:mb-4">
             All tabs are shown with a gradient fade effect, [...] button
             provides full access
           </p>

@@ -206,12 +206,12 @@ function Checkbox({
       ) : (
         <CheckboxPrimitive.Indicator
           data-slot="checkbox-indicator"
-          className="grid place-content-center text-current transition-none"
+          className="ds:grid ds:place-content-center ds:text-current ds:transition-none"
         >
           {props.checked === "indeterminate" ? (
-            <MinusIcon className="size-3.5" />
+            <MinusIcon className="ds:size-3.5" />
           ) : (
-            <CheckIcon className="size-3.5" />
+            <CheckIcon className="ds:size-3.5" />
           )}
         </CheckboxPrimitive.Indicator>
       )}

@@ -741,7 +741,7 @@ function CropperRoot(props: CropperRootProps) {
       <CropperContext.Provider value={contextValue}>
         <div
           data-slot="cropper-wrapper"
-          className={cn("relative size-full overflow-hidden", className)}
+          className={cn("ds:relative ds:size-full overflow-hidden", className)}
         >
           <CropperRootImpl {...rootProps} />
         </div>
@@ -1321,7 +1321,7 @@ function CropperRootImpl(props: CropperRootImplProps) {
       {...contentProps}
       ref={composedRef}
       className={cn(
-        "absolute inset-0 flex cursor-move touch-none select-none items-center justify-center overflow-hidden outline-none",
+        "ds:absolute ds:inset-0 ds:flex cursor-move touch-none select-none ds:items-center ds:justify-center overflow-hidden ds:outline-none",
         className
       )}
       onKeyUp={onKeyUp}

@@ -86,18 +86,18 @@ export default meta;
 
 export const Default = (args: SeparatorProps) => (
   <div
-    className={`w-64 h-48 flex items-center justify-center ${args.orientation === "vertical" ? "flex-row" : "flex-col"}`}
+    className={`ds:w-64 ds:h-48 ds:flex ds:items-center ds:justify-center ${args.orientation === "vertical" ? "flex-row" : "flex-col"}`}
   >
-    <div className="p-4">Content 1</div>
-    <Separator {...args} className="w-full h-full">
+    <div className="ds:p-4">Content 1</div>
+    <Separator {...args} className="ds:w-full ds:h-full">
       {args?.children}
     </Separator>
-    <div className="p-4">Content 2</div>
+    <div className="ds:p-4">Content 2</div>
   </div>
 );
 
 export const Horizontal = (args: SeparatorProps) => (
-  <div className="w-64 space-y-4">
+  <div className="ds:w-64 ds:space-y-4">
     <div>Content above</div>
     <Separator {...args} orientation="horizontal" />
     <div>Content below</div>
@@ -105,7 +105,7 @@ export const Horizontal = (args: SeparatorProps) => (
 );
 
 export const VerticalWithText = (args: SeparatorProps) => (
-  <div className="flex h-64 items-center space-x-4">
+  <div className="ds:flex ds:h-64 ds:items-center ds:space-x-4">
     <div>Left content</div>
     <Separator {...args} orientation="vertical" textPosition="center">
       Or
@@ -115,7 +115,7 @@ export const VerticalWithText = (args: SeparatorProps) => (
 );
 
 export const Decorative = (args: SeparatorProps) => (
-  <div className="w-64 space-y-4">
+  <div className="ds:w-64 ds:space-y-4">
     <div>Section 1</div>
     <Separator {...args} decorative />
     <div>Section 2</div>
@@ -123,7 +123,7 @@ export const Decorative = (args: SeparatorProps) => (
 );
 
 export const WithTextCenter = (args: SeparatorProps) => (
-  <div className="w-64 space-y-4">
+  <div className="ds:w-64 ds:space-y-4">
     <div>Content above</div>
     <Separator {...args} textPosition="center">
       Or
@@ -133,7 +133,7 @@ export const WithTextCenter = (args: SeparatorProps) => (
 );
 
 export const WithTextStart = (args: SeparatorProps) => (
-  <div className="w-64 space-y-4">
+  <div className="ds:w-64 ds:space-y-4">
     <div>Content above</div>
     <Separator {...args} textPosition="start">
       Section
@@ -143,7 +143,7 @@ export const WithTextStart = (args: SeparatorProps) => (
 );
 
 export const WithTextStartVertical = (args: SeparatorProps) => (
-  <div className="flex h-64 items-center space-x-4">
+  <div className="ds:flex ds:h-64 ds:items-center ds:space-x-4">
     <div>Left content</div>
     <Separator {...args} orientation="vertical" textPosition="start">
       Section
@@ -153,7 +153,7 @@ export const WithTextStartVertical = (args: SeparatorProps) => (
 );
 
 export const WithTextCenterVertical = (args: SeparatorProps) => (
-  <div className="flex h-64 items-center space-x-4">
+  <div className="ds:flex ds:h-64 ds:items-center ds:space-x-4">
     <div>Left content</div>
     <Separator {...args} orientation="vertical" textPosition="center">
       Or
@@ -163,7 +163,7 @@ export const WithTextCenterVertical = (args: SeparatorProps) => (
 );
 
 export const WithTextEndVertical = (args: SeparatorProps) => (
-  <div className="flex h-64 items-center space-x-4">
+  <div className="ds:flex ds:h-64 ds:items-center ds:space-x-4">
     <div>Left content</div>
     <Separator {...args} orientation="vertical" textPosition="end">
       Continue

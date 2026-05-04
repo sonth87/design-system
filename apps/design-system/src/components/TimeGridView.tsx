@@ -105,10 +105,10 @@ export const TimeGridView = memo(
       };
 
       return (
-        <div className="flex flex-col gap-2">
+        <div className="ds:flex ds:flex-col ds:gap-2">
           <div
             ref={ref}
-            className="flex flex-col gap-1 h-64 overflow-y-auto p-2 rounded-md"
+            className="ds:flex ds:flex-col ds:gap-1 ds:h-64 overflow-y-auto ds:p-2 ds:rounded-md"
           >
             {timeOptions.map(({ h, m, display }) => {
               const itemDisabled = isTimeDisabled(h, m, 0);
@@ -127,7 +127,7 @@ export const TimeGridView = memo(
                   className={cn(
                     isSelected
                       ? `${colorClasses.bg} ${colorClasses.text} font-semibold`
-                      : "text-foreground"
+                      : "ds:text-foreground"
                   )}
                 >
                   {display}

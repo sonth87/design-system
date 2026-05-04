@@ -163,7 +163,7 @@ const TreeView = React.forwardRef<HTMLDivElement, TreeViewProps>(
     }, [data, expandAll, initialSelectedItemId]);
 
     return (
-      <div className={cn("overflow-hidden relative p-2", className)}>
+      <div className={cn("overflow-hidden ds:relative ds:p-2", className)}>
         <TreeItem
           data={data}
           ref={ref}
@@ -241,7 +241,7 @@ const TreeItem = React.forwardRef<HTMLDivElement, TreeItemProps>(
       <div ref={ref} role="tree" className={className} {...props}>
         <ul>
           {data.map((item, index) => (
-            <li key={item.id} className="relative">
+            <li key={item.id} className="ds:relative">
               {item.children ? (
                 <TreeNode
                   item={item}
@@ -392,28 +392,27 @@ const TreeNode = ({
       value={value}
       onValueChange={(s: string[]) => setValue(s)}
     >
-      <AccordionPrimitive.Item value={item.id} className="relative">
+      <AccordionPrimitive.Item value={item.id} className="ds:relative">
         {treeLine === "full" && (
           <div
             className={cn(
-              "absolute left-[-1.05rem] w-px bg-border",
-              isLastChild ? "h-5" : "h-full",
+              "ds:absolute left-[-1.05rem] ds:w-px ds:bg-border",
+              isLastChild ? "ds:h-5" : "ds:h-full",
               isRoot && "hidden"
             )}
           >
-            <div className="absolute left-0 top-5 w-4 h-px bg-border" />
+            <div className="ds:absolute ds:left-0 ds:top-5 ds:w-4 ds:h-px ds:bg-border" />
           </div>
         )}
         <div
-          className={cn(
-            "flex items-center relative",
+          className={cn("ds:flex ds:items-center ds:relative",
             !expandOnArrowClick && treeVariants(),
             !expandOnArrowClick &&
               selectedItemId === item.id &&
               selectedTreeVariants()
           )}
         >
-          <AccordionPrimitive.Header className="flex items-center w-full">
+          <AccordionPrimitive.Header className="ds:flex ds:items-center ds:w-full">
             <AccordionPrimitive.Trigger
               asChild
               onClick={(e) => {
@@ -424,14 +423,14 @@ const TreeNode = ({
             >
               <div
                 className={cn(
-                  "flex items-center p-2 transition-all gap-1",
+                  "ds:flex ds:items-center ds:p-2 ds:transition-all ds:gap-1",
                   indicatorVariant === "arrow" &&
                     !customExpandIcon &&
                     !customCollapseIcon &&
                     "[&[data-state=open]>svg:first-of-type]:rotate-90",
                   expandOnArrowClick
-                    ? "hover:bg-accent/50 rounded-sm cursor-pointer"
-                    : "flex-1 cursor-pointer"
+                    ? "ds:hover:bg-accent/50 ds:rounded-sm cursor-pointer"
+                    : "ds:flex-1 cursor-pointer"
                 )}
               >
                 <IndicatorIcon
@@ -455,13 +454,13 @@ const TreeNode = ({
                           handleCheckChange?.(item, checked === true);
                         }}
                         onClick={(e) => e.stopPropagation()}
-                        className="mr-2 h-4 w-4 shrink-0 rounded-sm border border-primary data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground data-[state=indeterminate]:bg-primary data-[state=indeterminate]:text-primary-foreground"
+                        className="ds:mr-2 ds:h-4 ds:w-4 ds:shrink-0 ds:rounded-sm ds:border ds:border-primary data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground data-[state=indeterminate]:bg-primary data-[state=indeterminate]:text-primary-foreground"
                       >
-                        <CheckboxPrimitive.Indicator className="flex items-center justify-center text-current">
+                        <CheckboxPrimitive.Indicator className="ds:flex ds:items-center ds:justify-center ds:text-current">
                           {isIndeterminate ? (
-                            <Minus className="h-3 w-3" />
+                            <Minus className="ds:h-3 ds:w-3" />
                           ) : (
-                            <Check className="h-3 w-3" />
+                            <Check className="ds:h-3 ds:w-3" />
                           )}
                         </CheckboxPrimitive.Indicator>
                       </CheckboxPrimitive.Root>
@@ -474,15 +473,14 @@ const TreeNode = ({
                         default={defaultNodeIcon}
                       />
                     )}
-                    <span className="text-sm truncate">{item.name}</span>
+                    <span className="ds:text-sm truncate">{item.name}</span>
                   </>
                 )}
               </div>
             </AccordionPrimitive.Trigger>
             {expandOnArrowClick && (
               <div
-                className={cn(
-                  "flex items-center flex-1 py-2 cursor-pointer",
+                className={cn("ds:flex ds:items-center ds:flex-1 ds:py-2 cursor-pointer",
                   treeVariants(),
                   selectedItemId === item.id && selectedTreeVariants()
                 )}
@@ -506,13 +504,13 @@ const TreeNode = ({
                       handleCheckChange?.(item, checked === true);
                     }}
                     onClick={(e) => e.stopPropagation()}
-                    className="mr-2 h-4 w-4 shrink-0 rounded-sm border border-primary data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground data-[state=indeterminate]:bg-primary data-[state=indeterminate]:text-primary-foreground"
+                    className="ds:mr-2 ds:h-4 ds:w-4 ds:shrink-0 ds:rounded-sm ds:border ds:border-primary data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground data-[state=indeterminate]:bg-primary data-[state=indeterminate]:text-primary-foreground"
                   >
-                    <CheckboxPrimitive.Indicator className="flex items-center justify-center text-current">
+                    <CheckboxPrimitive.Indicator className="ds:flex ds:items-center ds:justify-center ds:text-current">
                       {isIndeterminate ? (
-                        <Minus className="h-3 w-3" />
+                        <Minus className="ds:h-3 ds:w-3" />
                       ) : (
-                        <Check className="h-3 w-3" />
+                        <Check className="ds:h-3 ds:w-3" />
                       )}
                     </CheckboxPrimitive.Indicator>
                   </CheckboxPrimitive.Root>
@@ -525,12 +523,12 @@ const TreeNode = ({
                     default={defaultNodeIcon}
                   />
                 )}
-                <span className="text-sm truncate">{item.name}</span>
+                <span className="ds:text-sm truncate">{item.name}</span>
               </div>
             )}
             <TreeActions
               isSelected={selectedItemId === item.id}
-              className={cn(expandOnArrowClick && "right-1")}
+              className={cn(expandOnArrowClick && "ds:right-1")}
             >
               {item.actions}
             </TreeActions>
@@ -538,9 +536,9 @@ const TreeNode = ({
         </div>
         <AccordionContent
           className={cn(
-            "ml-4 pl-1",
+            "ds:ml-4 ds:pl-1",
             treeLine === true && "border-l",
-            treeLine === "full" && "pl-2 border-l ml-4"
+            treeLine === "full" && "ds:pl-2 ds:border-l ds:ml-4"
           )}
         >
           <TreeItem
@@ -606,8 +604,7 @@ const TreeLeaf = React.forwardRef<
     return (
       <div
         ref={ref}
-        className={cn(
-          "ml-5 flex text-left items-center py-2 cursor-pointer before:right-1",
+        className={cn("ds:ml-5 ds:flex ds:text-left ds:items-center ds:py-2 cursor-pointer ds:before:right-1",
           treeLine === "full" && "ml-[1.25rem]",
           treeVariants(),
           className,
@@ -626,12 +623,12 @@ const TreeLeaf = React.forwardRef<
         {treeLine === "full" && (
           <div
             className={cn(
-              "absolute left-[-1.05rem] w-px bg-border",
-              isLastChild ? "h-1/2" : "h-full",
+              "ds:absolute left-[-1.05rem] ds:w-px ds:bg-border",
+              isLastChild ? "ds:h-1/2" : "ds:h-full",
               isRoot && "hidden"
             )}
           >
-            <div className="absolute left-0 top-1/2 w-4 h-px bg-border" />
+            <div className="ds:absolute ds:left-0 ds:top-1/2 ds:w-4 ds:h-px ds:bg-border" />
           </div>
         )}
         {multiSelect && (
@@ -642,10 +639,10 @@ const TreeLeaf = React.forwardRef<
             }}
             disabled={item.disabled}
             onClick={(e) => e.stopPropagation()}
-            className="mr-2 h-4 w-4 shrink-0 rounded-sm border border-primary data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground"
+            className="ds:mr-2 ds:h-4 ds:w-4 ds:shrink-0 ds:rounded-sm ds:border ds:border-primary data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground"
           >
-            <CheckboxPrimitive.Indicator className="flex items-center justify-center text-current">
-              <Check className="h-3 w-3" />
+            <CheckboxPrimitive.Indicator className="ds:flex ds:items-center ds:justify-center ds:text-current">
+              <Check className="ds:h-3 ds:w-3" />
             </CheckboxPrimitive.Indicator>
           </CheckboxPrimitive.Root>
         )}
@@ -656,7 +653,7 @@ const TreeLeaf = React.forwardRef<
             default={defaultLeafIcon}
           />
         )}
-        <span className="grow text-sm truncate">{item.name}</span>
+        <span className="grow ds:text-sm truncate">{item.name}</span>
         <TreeActions isSelected={selectedItemId === item.id && !item.disabled}>
           {item.actions}
         </TreeActions>
@@ -675,11 +672,11 @@ const AccordionTrigger = React.forwardRef<
       <div
         ref={ref}
         className={cn(
-          "flex flex-1 w-full items-center py-2 transition-all first:[&[data-state=open]>svg]:first-of-type:rotate-90",
+          "ds:flex ds:flex-1 ds:w-full ds:items-center ds:py-2 ds:transition-all first:[&[data-state=open]>svg]:first-of-type:rotate-90",
           className
         )}
       >
-        <ChevronRight className="h-4 w-4 shrink-0 transition-transform duration-200 text-accent-foreground/50" />
+        <ChevronRight className="ds:h-4 ds:w-4 ds:shrink-0 ds:transition-transform ds:duration-200 ds:text-accent-foreground/50" />
         {children}
       </div>
     </AccordionPrimitive.Trigger>
@@ -694,12 +691,12 @@ const AccordionContent = React.forwardRef<
   <AccordionPrimitive.Content
     ref={ref}
     className={cn(
-      "overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down",
+      "overflow-hidden ds:text-sm ds:transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down",
       className
     )}
     {...props}
   >
-    <div className="pb-1 pt-0">{children}</div>
+    <div className="ds:pb-1 ds:pt-0">{children}</div>
   </AccordionPrimitive.Content>
 ));
 AccordionContent.displayName = AccordionPrimitive.Content.displayName;
@@ -723,7 +720,7 @@ const TreeIcon = ({
   } else if (item.icon) {
     Icon = item.icon;
   }
-  return Icon ? <Icon className="h-4 w-4 shrink-0 mr-2" /> : <></>;
+  return Icon ? <Icon className="ds:h-4 ds:w-4 ds:shrink-0 ds:mr-2" /> : <></>;
 };
 
 const TreeActions = ({
@@ -738,8 +735,8 @@ const TreeActions = ({
   return (
     <div
       className={cn(
-        isSelected ? "block" : "hidden",
-        "absolute right-3 group-hover:block",
+        isSelected ? "ds:block" : "ds:hidden",
+        "ds:absolute ds:right-3 ds:group-hover:block",
         className
       )}
     >
@@ -761,25 +758,25 @@ const IndicatorIcon = ({
 }) => {
   if (CustomExpand && !isOpen) {
     return (
-      <CustomExpand className="h-4 w-4 shrink-0 transition-transform duration-200 text-accent-foreground/50" />
+      <CustomExpand className="ds:h-4 ds:w-4 ds:shrink-0 ds:transition-transform ds:duration-200 ds:text-accent-foreground/50" />
     );
   }
   if (CustomCollapse && isOpen) {
     return (
-      <CustomCollapse className="h-4 w-4 shrink-0 transition-transform duration-200 text-accent-foreground/50" />
+      <CustomCollapse className="ds:h-4 ds:w-4 ds:shrink-0 ds:transition-transform ds:duration-200 ds:text-accent-foreground/50" />
     );
   }
 
   if (variant === "plus-minus") {
     return isOpen ? (
-      <SquareMinus className="h-4 w-4 shrink-0 transition-transform duration-200 text-accent-foreground/50" />
+      <SquareMinus className="ds:h-4 ds:w-4 ds:shrink-0 ds:transition-transform ds:duration-200 ds:text-accent-foreground/50" />
     ) : (
-      <SquarePlus className="h-4 w-4 shrink-0 transition-transform duration-200 text-accent-foreground/50" />
+      <SquarePlus className="ds:h-4 ds:w-4 ds:shrink-0 ds:transition-transform ds:duration-200 ds:text-accent-foreground/50" />
     );
   }
 
   return (
-    <ChevronRight className="h-4 w-4 shrink-0 transition-transform duration-200 text-accent-foreground/50" />
+    <ChevronRight className="ds:h-4 ds:w-4 ds:shrink-0 ds:transition-transform ds:duration-200 ds:text-accent-foreground/50" />
   );
 };
 

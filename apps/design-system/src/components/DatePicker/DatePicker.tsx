@@ -304,14 +304,14 @@ export function DatePicker({
   ) : (
     <Button
       variant="ghost"
-      className="!p-1 !leading-0 h-auto rounded hover:bg-accent transition-colors"
+      className="!p-1 !leading-0 ds:h-auto ds:rounded ds:hover:bg-accent ds:transition-colors"
       size={props.size}
     >
       <CalendarIcon
         className={cn({
-          "size-3": props.size === "xs" || props.size === "sm",
-          "size-3.5": !props.size || props.size === "normal",
-          "size-4": props.size === "lg" || props.size === "xl",
+          "ds:size-3": props.size === "xs" || props.size === "ds:sm",
+          "ds:size-3.5": !props.size || props.size === "normal",
+          "ds:size-4": props.size === "ds:lg" || props.size === "ds:xl",
         })}
       />
       <span className="sr-only">Select date</span>
@@ -321,10 +321,8 @@ export function DatePicker({
   const calendarSelection = (
     <div
       className={cn(
-        "flex items-stretch mx-auto w-full",
-        showTime && !hideDate ? "gap-0 md:max-w-lg" : "",
-        // mode === "drawer" ? "mb-6" : "",
-        isMobile ? "max-w-md md:max-w-md lg:max-w-lg" : ""
+        "ds:flex ds:items-stretch ds:mx-auto ds:w-full",
+        showTime && !hideDate ? "ds:gap-0 ds:md:max-w-lg" : "", // ds:mode ==="drawer"?"mb-6":"", isMobile ?"max-w-md md:max-w-md lg:max-w-lg":""
       )}
     >
       {!hideDate && (
@@ -361,8 +359,7 @@ export function DatePicker({
               date.toLocaleString(_locale.code, { month: "short" }),
           }}
           showOutsideDays={showOutsideDays}
-          className={cn(
-            "my-auto bg-transparent mx-auto",
+          className={cn("ds:my-auto ds:bg-transparent ds:mx-auto",
             {
               "[--cell-size:clamp(0px,calc(100vw/7.5),52px)] mb-8 bg-transparent":
                 (isMobile && !showTime) || desktopMode === "drawer",
@@ -375,7 +372,7 @@ export function DatePicker({
         />
       )}
       {showTime && (
-        <div className="border-l border-border">
+        <div className="ds:border-l ds:border-border">
           <TimePicker
             value={date ? dfFormat(date, timeFormat) : undefined}
             format={timeFormat}
@@ -408,8 +405,8 @@ export function DatePicker({
       </PopoverTrigger>
       <PopoverContent
         className={cn(
-          "w-auto overflow-hidden p-0",
-          "backdrop-blur bg-background/50"
+          "ds:w-auto overflow-hidden ds:p-0",
+          "ds:backdrop-blur ds:bg-background/50"
         )}
         side={side}
         align={align}
@@ -424,8 +421,8 @@ export function DatePicker({
       <DrawerTrigger asChild>{triggerComponent}</DrawerTrigger>
       <DrawerContent
         className={cn(
-          "w-auto overflow-hidden p-0",
-          "backdrop-blur bg-background"
+          "ds:w-auto overflow-hidden ds:p-0",
+          "ds:backdrop-blur ds:bg-background"
         )}
       >
         <DrawerHeader className="sr-only">

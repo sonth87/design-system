@@ -186,9 +186,9 @@ export const SingleMode: Story = {
     const [date, setDate] = useState<Date>();
 
     return (
-      <div className="flex flex-col gap-4">
+      <div className="ds:flex ds:flex-col ds:gap-4">
         {date && (
-          <p className="text-sm">
+          <p className="ds:text-sm">
             Selected: <strong>{format(date, "dd/MM/yyyy")}</strong>
           </p>
         )}
@@ -197,7 +197,7 @@ export const SingleMode: Story = {
           mode="single"
           selected={date}
           onSelect={setDate}
-          className="w-full"
+          className="ds:w-full"
         />
       </div>
     );
@@ -210,9 +210,9 @@ export const SingleModeWithValue: Story = {
     const [date, setDate] = useState<Date>(new Date(2024, 5, 15));
 
     return (
-      <div className="flex flex-col gap-4">
+      <div className="ds:flex ds:flex-col ds:gap-4">
         {date && (
-          <p className="text-sm">
+          <p className="ds:text-sm">
             Selected: <strong>{format(date, "dd/MM/yyyy")}</strong>
           </p>
         )}
@@ -229,11 +229,11 @@ export const MultipleMode: Story = {
     const [dates, setDates] = useState<Date[]>([]);
 
     return (
-      <div className="flex flex-col gap-4">
+      <div className="ds:flex ds:flex-col ds:gap-4">
         {dates.length > 0 && (
-          <div className="text-sm">
+          <div className="ds:text-sm">
             <strong>Selected dates:</strong>
-            <ul className="list-disc list-inside mt-1">
+            <ul className="ds:list-disc ds:list-inside ds:mt-1">
               {dates.map((date, i) => (
                 <li key={i}>{format(date, "dd/MM/yyyy")}</li>
               ))}
@@ -257,9 +257,9 @@ export const RangeMode: Story = {
     const [range, setRange] = useState<DateRange | undefined>();
 
     return (
-      <div className="flex flex-col gap-4">
+      <div className="ds:flex ds:flex-col ds:gap-4">
         {range?.from && (
-          <div className="text-sm">
+          <div className="ds:text-sm">
             <strong>Selected range:</strong>
             <p>
               From: {format(range.from, "dd/MM/yyyy")}
@@ -282,9 +282,9 @@ export const RangeModeWithValue: Story = {
     });
 
     return (
-      <div className="flex flex-col gap-4">
+      <div className="ds:flex ds:flex-col ds:gap-4">
         {range?.from && (
-          <div className="text-sm">
+          <div className="ds:text-sm">
             <strong>Selected range:</strong>
             <p>
               From: {format(range.from, "dd/MM/yyyy")}
@@ -305,9 +305,9 @@ export const VietnameseLocale: Story = {
     const [date, setDate] = useState<Date>();
 
     return (
-      <div className="flex flex-col gap-4">
+      <div className="ds:flex ds:flex-col ds:gap-4">
         {date && (
-          <p className="text-sm">
+          <p className="ds:text-sm">
             Đã chọn:{" "}
             <strong>
               {format(date, "EEEE, dd MMMM yyyy", { locale: vi })}
@@ -328,9 +328,9 @@ export const EnglishLocale: Story = {
     const [date, setDate] = useState<Date>();
 
     return (
-      <div className="flex flex-col gap-4">
+      <div className="ds:flex ds:flex-col ds:gap-4">
         {date && (
-          <p className="text-sm">
+          <p className="ds:text-sm">
             Selected: <strong>{format(date, "EEEE, MMMM dd, yyyy")}</strong>
           </p>
         )}
@@ -348,9 +348,9 @@ export const WithMultipleMonths: Story = {
     const [range, setRange] = useState<DateRange | undefined>();
 
     return (
-      <div className="flex flex-col gap-4">
+      <div className="ds:flex ds:flex-col ds:gap-4">
         {range?.from && (
-          <div className="text-sm">
+          <div className="ds:text-sm">
             <strong>Selected range:</strong>
             <p>
               From: {format(range.from, "dd/MM/yyyy")}
@@ -377,10 +377,10 @@ export const WithDisabledDates: Story = {
     ];
 
     return (
-      <div className="flex flex-col gap-4">
-        <p className="text-sm text-muted-foreground">Weekends are disabled</p>
+      <div className="ds:flex ds:flex-col ds:gap-4">
+        <p className="ds:text-sm ds:text-muted-foreground">Weekends are disabled</p>
         {date && (
-          <p className="text-sm">
+          <p className="ds:text-sm">
             Selected: <strong>{format(date, "dd/MM/yyyy")}</strong>
           </p>
         )}
@@ -405,12 +405,12 @@ export const WithMinMaxDates: Story = {
     const nextMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0);
 
     return (
-      <div className="flex flex-col gap-4">
-        <p className="text-sm text-muted-foreground">
+      <div className="ds:flex ds:flex-col ds:gap-4">
+        <p className="ds:text-sm ds:text-muted-foreground">
           Only dates in the current month are selectable
         </p>
         {date && (
-          <p className="text-sm">
+          <p className="ds:text-sm">
             Selected: <strong>{format(date, "dd/MM/yyyy")}</strong>
           </p>
         )}
@@ -435,12 +435,12 @@ export const WithDefaultMonth: Story = {
     const [date, setDate] = useState<Date>();
 
     return (
-      <div className="flex flex-col gap-4">
-        <p className="text-sm text-muted-foreground">
+      <div className="ds:flex ds:flex-col ds:gap-4">
+        <p className="ds:text-sm ds:text-muted-foreground">
           Calendar opens to December 2025
         </p>
         {date && (
-          <p className="text-sm">
+          <p className="ds:text-sm">
             Selected: <strong>{format(date, "dd/MM/yyyy")}</strong>
           </p>
         )}
@@ -462,9 +462,9 @@ export const WithWeekNumbers: Story = {
     const [date, setDate] = useState<Date>();
 
     return (
-      <div className="flex flex-col gap-4">
+      <div className="ds:flex ds:flex-col ds:gap-4">
         {date && (
-          <p className="text-sm">
+          <p className="ds:text-sm">
             Selected: <strong>{format(date, "dd/MM/yyyy")}</strong>
           </p>
         )}
@@ -497,12 +497,12 @@ export const UnavailableDates: Story = {
     ];
 
     return (
-      <div className="flex flex-col gap-4">
-        <p className="text-sm text-muted-foreground">
+      <div className="ds:flex ds:flex-col ds:gap-4">
+        <p className="ds:text-sm ds:text-muted-foreground">
           Unavailable dates are styled differently
         </p>
         {date && (
-          <p className="text-sm">
+          <p className="ds:text-sm">
             Selected: <strong>{format(date, "dd/MM/yyyy")}</strong>
           </p>
         )}
@@ -534,7 +534,7 @@ export const CustomDaysAndFormatters: Story = {
     });
 
     return (
-      <div className="flex flex-col gap-4">
+      <div className="ds:flex ds:flex-col ds:gap-4">
         <Calendar
           mode="range"
           defaultMonth={range?.from}
@@ -542,7 +542,7 @@ export const CustomDaysAndFormatters: Story = {
           onSelect={setRange}
           numberOfMonths={1}
           captionLayout="dropdown"
-          className="rounded-lg border shadow-sm [--cell-size:--spacing(11)] md:[--cell-size:--spacing(13)]"
+          className="ds:rounded-lg ds:border ds:shadow-sm [--cell-size:--spacing(11)] md:[--cell-size:--spacing(13)]"
           formatters={{
             formatMonthDropdown: (date) => {
               return date.toLocaleString("default", { month: "long" });
@@ -577,8 +577,8 @@ export const RoundedVariant: Story = {
     });
 
     return (
-      <div className="flex flex-col gap-4">
-        <p className="text-sm text-muted-foreground">
+      <div className="ds:flex ds:flex-col ds:gap-4">
+        <p className="ds:text-sm ds:text-muted-foreground">
           Rounded variant with pill-shaped range selection
         </p>
         <Calendar
@@ -587,7 +587,7 @@ export const RoundedVariant: Story = {
           variant="rounded"
           selected={range}
           onSelect={setRange}
-          className="rounded-md border"
+          className="ds:rounded-md ds:border"
         />
       </div>
     );
@@ -600,13 +600,13 @@ export const RoundedVariantSingleMode: Story = {
     const [date, setDate] = useState<Date>();
 
     return (
-      <div className="flex flex-col gap-4">
+      <div className="ds:flex ds:flex-col ds:gap-4">
         {date && (
-          <p className="text-sm">
+          <p className="ds:text-sm">
             Selected: <strong>{format(date, "dd/MM/yyyy")}</strong>
           </p>
         )}
-        <p className="text-sm text-muted-foreground">
+        <p className="ds:text-sm ds:text-muted-foreground">
           Rounded variant also works with single date selection
         </p>
         <Calendar
@@ -615,7 +615,7 @@ export const RoundedVariantSingleMode: Story = {
           variant="rounded"
           selected={date}
           onSelect={setDate}
-          className="rounded-md border"
+          className="ds:rounded-md ds:border"
         />
       </div>
     );
@@ -631,9 +631,9 @@ export const RoundedVariantMultipleMonths: Story = {
     });
 
     return (
-      <div className="flex flex-col gap-4">
+      <div className="ds:flex ds:flex-col ds:gap-4">
         {range?.from && (
-          <div className="text-sm">
+          <div className="ds:text-sm">
             <strong>Selected range:</strong>
             <p>
               From: {format(range.from, "dd/MM/yyyy")}
@@ -641,7 +641,7 @@ export const RoundedVariantMultipleMonths: Story = {
             </p>
           </div>
         )}
-        <p className="text-sm text-muted-foreground">
+        <p className="ds:text-sm ds:text-muted-foreground">
           Rounded variant with multiple months display
         </p>
         <Calendar
@@ -651,7 +651,7 @@ export const RoundedVariantMultipleMonths: Story = {
           selected={range}
           onSelect={setRange}
           numberOfMonths={2}
-          className="rounded-md border"
+          className="ds:rounded-md ds:border"
         />
       </div>
     );
@@ -667,8 +667,8 @@ export const CustomStyle: Story = {
     });
 
     return (
-      <div className="flex flex-col gap-4">
-        <p className="text-sm text-muted-foreground">
+      <div className="ds:flex ds:flex-col ds:gap-4">
+        <p className="ds:text-sm ds:text-muted-foreground">
           Custom styling with classNames (manually styled rounded effect)
         </p>
         <Calendar
@@ -697,9 +697,9 @@ export const WithHomeButton: Story = {
     const [month, setMonth] = useState<Date | undefined>(new Date());
 
     return (
-      <div className="flex flex-col gap-4">
+      <div className="ds:flex ds:flex-col ds:gap-4">
         {date && (
-          <p className="text-sm">
+          <p className="ds:text-sm">
             Selected: <strong>{format(date, "dd/MM/yyyy")}</strong>
           </p>
         )}
@@ -740,7 +740,7 @@ export const LocalizedCalendar: Story = {
     };
 
     return (
-      <div className="flex flex-col gap-4">
+      <div className="ds:flex ds:flex-col ds:gap-4">
         <Select
           value={locale}
           onValueChange={(value) => setLocale(value)}
@@ -749,7 +749,7 @@ export const LocalizedCalendar: Story = {
             label,
             value,
           }))}
-          className="w-fit"
+          className="ds:w-fit"
         />
         <Calendar
           mode="single"

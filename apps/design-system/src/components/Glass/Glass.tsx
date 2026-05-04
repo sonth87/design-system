@@ -18,20 +18,19 @@ export type GlassProps = {
 const Glass: React.FC<GlassProps> = ({ className, children }) => {
   return (
     <div
-      className={cn(
-        "relative inline-flex overflow-hidden cursor-pointer shadow-[0_6px_6px_rgba(0,0,0,0.2),0_0_20px_rgba(0,0,0,0.1)] transition-all duration-400 ease-[cubic-bezier(0.175,0.885,0.32,2.2)] p-0 rounded-md",
+      className={cn("ds:relative ds:inline-flex overflow-hidden cursor-pointer shadow-[0_6px_6px_rgba(0,0,0,0.2),0_0_20px_rgba(0,0,0,0.1)] ds:transition-all ds:duration-400 ease-[cubic-bezier(0.175,0.885,0.32,2.2)] ds:p-0 ds:rounded-md",
         className
       )}
     >
-      <div className="absolute z-0 inset-0 backdrop-blur-[2.5px] overflow-hidden isolate [filter:url(#glass-distortion)] rounded-[inherit]"></div>
-      <div className="z-[1] absolute inset-0 bg-white/25 rounded-[inherit]"></div>
-      <div className="absolute inset-0 z-[2] overflow-hidden shadow-[inset_2px_2px_1px_0_rgba(255,255,255,0.5),inset_-1px_-1px_1px_1px_rgba(255,255,255,0.5)] rounded-[inherit]"></div>
-      <div className="z-[3] relative">
-        <div className="text-foreground [text-shadow:0px_1px_3px_rgba(255, 255, 255, 0.3)] transition-all duration-100 ease-in inline-flex gap-2">
+      <div className="ds:absolute ds:z-0 ds:inset-0 backdrop-blur-[2.5px] overflow-hidden isolate [filter:url(#glass-distortion)] rounded-[inherit]"></div>
+      <div className="z-[1] ds:absolute ds:inset-0 ds:bg-white/25 rounded-[inherit]"></div>
+      <div className="ds:absolute ds:inset-0 z-[2] overflow-hidden shadow-[inset_2px_2px_1px_0_rgba(255,255,255,0.5),inset_-1px_-1px_1px_1px_rgba(255,255,255,0.5)] rounded-[inherit]"></div>
+      <div className="z-[3] ds:relative">
+        <div className="ds:text-foreground [text-shadow:0px_1px_3px_rgba(255, 255, 255, 0.3)] ds:transition-all ds:duration-100 ds:ease-in ds:inline-flex ds:gap-2">
           {children}
         </div>
       </div>
-      <svg className="hidden">
+      <svg className="ds:hidden">
         <filter
           id="glass-distortion"
           x="0%"

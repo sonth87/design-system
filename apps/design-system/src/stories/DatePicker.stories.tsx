@@ -426,7 +426,7 @@ export const DefaultWithValue: Story = {
 export const WithLabel: Story = {
   render: function WithLabelComponent(args) {
     return (
-      <div className="flex flex-col gap-4">
+      <div className="ds:flex ds:flex-col ds:gap-4">
         <DatePicker {...args} value="20/10/1991" />
         <DatePicker isFloatLabel size="lg" {...args} value="29/08/2017" />
         <DatePicker isFloatLabel {...args} value="26/02/2020" />
@@ -524,7 +524,7 @@ export const WithAutoMask: Story = {
 export const WithDifferentFormats: Story = {
   render: function WithDifferentFormats(args) {
     return (
-      <div className="flex flex-col gap-4">
+      <div className="ds:flex ds:flex-col ds:gap-4">
         <DatePicker {...args} label="yyyy-MM-DD" format="yyyy-MM-dd" />
         <DatePicker {...args} label="MM.yyyy" format="MM.yyyy" />
         <DatePicker
@@ -549,8 +549,8 @@ export const CustomWithChildren: Story = {
     const [date, setDate] = useState<Date | undefined>();
 
     return (
-      <div className="flex flex-col gap-4">
-        <p className="text-sm text-muted-foreground">
+      <div className="ds:flex ds:flex-col ds:gap-4">
+        <p className="ds:text-sm ds:text-muted-foreground">
           Custom trigger with children render prop
         </p>
         <DatePicker
@@ -560,7 +560,7 @@ export const CustomWithChildren: Story = {
         >
           {({ value, date: currentDate }) => (
             <button
-              className="px-4 py-2 rounded-md border border-input bg-background hover:bg-accent hover:text-accent-foreground transition-colors"
+              className="ds:px-4 ds:py-2 ds:rounded-md ds:border ds:border-input ds:bg-background ds:hover:bg-accent ds:hover:text-accent-foreground ds:transition-colors"
               onClick={() => {
                 console.log("Current value:", value);
                 console.log("Current date:", currentDate);
@@ -571,7 +571,7 @@ export const CustomWithChildren: Story = {
           )}
         </DatePicker>
         {date && (
-          <p className="text-sm">
+          <p className="ds:text-sm">
             Selected: <strong>{format(date, DATE_FORMAT)}</strong>
           </p>
         )}
@@ -589,8 +589,8 @@ export const CustomWithCard: Story = {
     const [date, setDate] = useState<Date | undefined>();
 
     return (
-      <div className="flex flex-col gap-4">
-        <p className="text-sm text-muted-foreground">
+      <div className="ds:flex ds:flex-col ds:gap-4">
+        <p className="ds:text-sm ds:text-muted-foreground">
           Custom card-style trigger
         </p>
         <DatePicker
@@ -599,15 +599,15 @@ export const CustomWithCard: Story = {
           onSelect={(d) => setDate(d)}
         >
           {({ value, date: currentDate }) => (
-            <div className="p-4 rounded-lg border border-input bg-card hover:bg-accent transition-colors cursor-pointer min-w-[200px]">
-              <div className="text-xs text-muted-foreground mb-1">
+            <div className="ds:p-4 ds:rounded-lg ds:border ds:border-input ds:bg-card ds:hover:bg-accent ds:transition-colors cursor-pointer min-w-[200px]">
+              <div className="ds:text-xs ds:text-muted-foreground ds:mb-1">
                 Ngày sinh
               </div>
-              <div className="text-lg font-semibold">
+              <div className="ds:text-lg ds:font-semibold">
                 {value || "Chưa chọn"}
               </div>
               {currentDate && (
-                <div className="text-xs text-muted-foreground mt-1">
+                <div className="ds:text-xs ds:text-muted-foreground ds:mt-1">
                   {format(currentDate, "EEEE, dd MMMM yyyy", { locale: vi })}
                 </div>
               )}
@@ -628,8 +628,8 @@ export const WithDrawerMode: Story = {
     const [date, setDate] = useState<Date | undefined>();
     const handleSelect = (d: Date | undefined) => setDate(d);
     return (
-      <div className="flex flex-col gap-4">
-        <p className="text-sm text-muted-foreground">
+      <div className="ds:flex ds:flex-col ds:gap-4">
+        <p className="ds:text-sm ds:text-muted-foreground">
           Desktop mode set to drawer (default is popover)
         </p>
         <DatePicker
@@ -652,9 +652,9 @@ export const WithTime: Story = {
     const [date, setDate] = useState<Date | undefined>(new Date());
     const handleSelect = (d: Date | undefined) => setDate(d);
     return (
-      <div className="flex flex-col gap-4">
+      <div className="ds:flex ds:flex-col ds:gap-4">
         {date && (
-          <p className="text-sm">
+          <p className="ds:text-sm">
             Selected: <strong>{format(date, "dd/MM/yyyy HH:mm")}</strong>
           </p>
         )}
@@ -678,9 +678,9 @@ export const WithTimeAndSeconds: Story = {
     const [date, setDate] = useState<Date | undefined>(new Date());
     const handleSelect = (d: Date | undefined) => setDate(d);
     return (
-      <div className="flex flex-col gap-4">
+      <div className="ds:flex ds:flex-col ds:gap-4">
         {date && (
-          <p className="text-sm">
+          <p className="ds:text-sm">
             Selected: <strong>{format(date, "dd/MM/yyyy HH:mm:ss")}</strong>
           </p>
         )}
@@ -704,9 +704,9 @@ export const TimeOnly: Story = {
     const [date, setDate] = useState<Date | undefined>(new Date());
     const handleSelect = (d: Date | undefined) => setDate(d);
     return (
-      <div className="flex flex-col gap-4">
+      <div className="ds:flex ds:flex-col ds:gap-4">
         {date && (
-          <p className="text-sm">
+          <p className="ds:text-sm">
             Selected: <strong>{format(date, "HH:mm")}</strong>
           </p>
         )}
@@ -731,9 +731,9 @@ export const WithTimePickerNormalMode: Story = {
     const [date, setDate] = useState<Date | undefined>(new Date());
     const handleSelect = (d: Date | undefined) => setDate(d);
     return (
-      <div className="flex flex-col gap-4">
+      <div className="ds:flex ds:flex-col ds:gap-4">
         {date && (
-          <p className="text-sm">
+          <p className="ds:text-sm">
             Selected: <strong>{format(date, "dd/MM/yyyy HH:mm")}</strong>
           </p>
         )}
@@ -759,13 +759,13 @@ export const WithTimePickerGridMode: Story = {
     const [date, setDate] = useState<Date | undefined>(new Date());
     const handleSelect = (d: Date | undefined) => setDate(d);
     return (
-      <div className="flex flex-col gap-4">
+      <div className="ds:flex ds:flex-col ds:gap-4">
         {date && (
-          <p className="text-sm">
+          <p className="ds:text-sm">
             Selected: <strong>{format(date, "dd/MM/yyyy HH:mm")}</strong>
           </p>
         )}
-        <p className="text-xs text-muted-foreground">
+        <p className="ds:text-xs ds:text-muted-foreground">
           Grid mode displays time as a vertical list
         </p>
         <DatePicker
@@ -789,13 +789,13 @@ export const WithTimeIntervals: Story = {
     const [date, setDate] = useState<Date | undefined>(new Date());
     const handleSelect = (d: Date | undefined) => setDate(d);
     return (
-      <div className="flex flex-col gap-4">
+      <div className="ds:flex ds:flex-col ds:gap-4">
         {date && (
-          <p className="text-sm">
+          <p className="ds:text-sm">
             Selected: <strong>{format(date, "dd/MM/yyyy HH:mm")}</strong>
           </p>
         )}
-        <p className="text-xs text-muted-foreground">
+        <p className="ds:text-xs ds:text-muted-foreground">
           15-minute intervals: 00:00, 00:15, 00:30, 00:45...
         </p>
         <DatePicker
@@ -820,13 +820,13 @@ export const WithDisabledTimeRanges: Story = {
     const [date, setDate] = useState<Date | undefined>(new Date());
     const handleSelect = (d: Date | undefined) => setDate(d);
     return (
-      <div className="flex flex-col gap-4">
+      <div className="ds:flex ds:flex-col ds:gap-4">
         {date && (
-          <p className="text-sm">
+          <p className="ds:text-sm">
             Selected: <strong>{format(date, "dd/MM/yyyy HH:mm")}</strong>
           </p>
         )}
-        <p className="text-xs text-muted-foreground">
+        <p className="ds:text-xs ds:text-muted-foreground">
           Disabled: 00:00-06:00 (night) and 12:00-13:00 (lunch break)
         </p>
         <DatePicker
@@ -854,13 +854,13 @@ export const WithNowButton: Story = {
     const [date, setDate] = useState<Date | undefined>(new Date());
     const handleSelect = (d: Date | undefined) => setDate(d);
     return (
-      <div className="flex flex-col gap-4">
+      <div className="ds:flex ds:flex-col ds:gap-4">
         {date && (
-          <p className="text-sm">
+          <p className="ds:text-sm">
             Selected: <strong>{format(date, "dd/MM/yyyy HH:mm")}</strong>
           </p>
         )}
-        <p className="text-xs text-muted-foreground">
+        <p className="ds:text-xs ds:text-muted-foreground">
           Click "Now" button to select current time or nearest available time
         </p>
         <DatePicker
@@ -887,13 +887,13 @@ export const ComplexTimeConfiguration: Story = {
     const [date, setDate] = useState<Date | undefined>(new Date());
     const handleSelect = (d: Date | undefined) => setDate(d);
     return (
-      <div className="flex flex-col gap-4">
+      <div className="ds:flex ds:flex-col ds:gap-4">
         {date && (
-          <p className="text-sm">
+          <p className="ds:text-sm">
             Selected: <strong>{format(date, "dd/MM/yyyy HH:mm")}</strong>
           </p>
         )}
-        <p className="text-xs text-muted-foreground">
+        <p className="ds:text-xs ds:text-muted-foreground">
           • Compact mode with 30-minute intervals
           <br />
           • Disabled: 22:00-23:30 (late night)
@@ -927,13 +927,13 @@ export const RoundedVariant: Story = {
     const [date, setDate] = useState<Date | undefined>(new Date());
     const handleSelect = (d: Date | undefined) => setDate(d);
     return (
-      <div className="flex flex-col gap-4">
+      <div className="ds:flex ds:flex-col ds:gap-4">
         {date && (
-          <p className="text-sm">
+          <p className="ds:text-sm">
             Selected: <strong>{format(date, "dd/MM/yyyy")}</strong>
           </p>
         )}
-        <p className="text-xs text-muted-foreground">
+        <p className="ds:text-xs ds:text-muted-foreground">
           Rounded variant with pill-shaped selection (for single date)
         </p>
         <DatePicker
@@ -955,13 +955,13 @@ export const RoundedVariantWithTime: Story = {
     const [date, setDate] = useState<Date | undefined>(new Date());
     const handleSelect = (d: Date | undefined) => setDate(d);
     return (
-      <div className="flex flex-col gap-4">
+      <div className="ds:flex ds:flex-col ds:gap-4">
         {date && (
-          <p className="text-sm">
+          <p className="ds:text-sm">
             Selected: <strong>{format(date, "dd/MM/yyyy HH:mm")}</strong>
           </p>
         )}
-        <p className="text-xs text-muted-foreground">
+        <p className="ds:text-xs ds:text-muted-foreground">
           Rounded variant also works with time picker
         </p>
         <DatePicker
@@ -985,13 +985,13 @@ export const RoundedVariantMultipleMonths: Story = {
     const [date, setDate] = useState<Date | undefined>(new Date());
     const handleSelect = (d: Date | undefined) => setDate(d);
     return (
-      <div className="flex flex-col gap-4">
+      <div className="ds:flex ds:flex-col ds:gap-4">
         {date && (
-          <p className="text-sm">
+          <p className="ds:text-sm">
             Selected: <strong>{format(date, "dd/MM/yyyy")}</strong>
           </p>
         )}
-        <p className="text-xs text-muted-foreground">
+        <p className="ds:text-xs ds:text-muted-foreground">
           Rounded variant with multiple months display
         </p>
         <DatePicker

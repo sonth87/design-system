@@ -631,8 +631,8 @@ function StepperRoot(props: StepperRootProps) {
           dir={dir}
           {...rootProps}
           className={cn(
-            "flex gap-6",
-            orientation === "horizontal" ? "w-full flex-col" : "flex-row",
+            "ds:flex ds:gap-6",
+            orientation === "ds:horizontal" ? "ds:w-full ds:flex-col" : "ds:flex-row",
             className
           )}
         />
@@ -822,10 +822,10 @@ function StepperList(props: StepperListProps) {
         {...listProps}
         ref={composedRef}
         className={cn(
-          "flex outline-none",
-          orientation === "horizontal"
-            ? "flex-row items-center"
-            : "flex-col items-start",
+          "ds:flex ds:outline-none",
+          orientation === "ds:horizontal"
+            ? "ds:flex-row ds:items-center"
+            : "ds:flex-col ds:items-start",
           className
         )}
         onBlur={onBlur}
@@ -1001,8 +1001,7 @@ function StepperItem(props: StepperItemProps) {
         leftSeparator = (
           <div
             key="left-separator"
-            className={cn(
-              "h-px flex-1 transition-colors",
+            className={cn("ds:h-px ds:flex-1 ds:transition-colors",
               getSeparatorColorClass(color, customColor, leftSeparatorState)
             )}
             style={getCustomColorStyle(customColor, leftSeparatorState, false)}
@@ -1013,21 +1012,21 @@ function StepperItem(props: StepperItemProps) {
 
       const indicatorRow = (
         <div
-          className="flex w-full items-center justify-center"
+          className="ds:flex ds:w-full ds:items-center ds:justify-center"
           key="indicator-row"
         >
           {/* Left separator - connects to previous step */}
           {leftSeparator}
           {/* Spacer if first step */}
           {isFirstStep && (
-            <div className="h-px flex-1 bg-transparent" aria-hidden="true" />
+            <div className="ds:h-px ds:flex-1 ds:bg-transparent" aria-hidden="true" />
           )}
           {indicator}
           {/* Right separator - connects to next step */}
           {!isLastStep && separator}
           {/* Spacer for last step to maintain centering */}
           {isLastStep && (
-            <div className="h-px flex-1 bg-transparent" aria-hidden="true" />
+            <div className="ds:h-px ds:flex-1 ds:bg-transparent" aria-hidden="true" />
           )}
         </div>
       );
@@ -1389,8 +1388,7 @@ function StepperTrigger(props: ButtonProps) {
       tabIndex={isTabStop ? 0 : -1}
       {...triggerProps}
       ref={composedRef}
-      className={cn(
-        "inline-flex items-center justify-center gap-3 rounded-md text-left outline-none transition-all focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+      className={cn("ds:inline-flex ds:items-center ds:justify-center ds:gap-3 ds:rounded-md ds:text-left ds:outline-none ds:transition-all ds:focus-visible:border-ring focus-visible:ring-[3px] ds:focus-visible:ring-ring/50 ds:disabled:pointer-events-none ds:disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 ds:dark:aria-invalid:ring-destructive/40 [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
         "not-has-data-[slot=description]:rounded-full not-has-data-[slot=title]:rounded-full",
         shouldWrapIndicator ? "" : getFlexDirection(),
         className
@@ -1455,8 +1453,8 @@ function StepperIndicator(props: StepperIndicatorProps) {
       ref={ref}
       style={{ ...indicatorProps.style, ...customStyle }}
       className={cn(
-        "flex shrink-0 items-center justify-center rounded-full border-2 font-medium text-sm transition-colors",
-        isDot ? "size-7 data-[variant=dot]:size-2" : "size-7",
+        "ds:flex ds:shrink-0 ds:items-center ds:justify-center ds:rounded-full ds:border-2 ds:font-medium ds:text-sm ds:transition-colors",
+        isDot ? "ds:size-7 data-[variant=dot]:size-2" : "ds:size-7",
         colorClass,
         className
       )}
@@ -1467,7 +1465,7 @@ function StepperIndicator(props: StepperIndicatorProps) {
         ) : children ? (
           children
         ) : dataState === "completed" ? (
-          <Check className="size-4" />
+          <Check className="ds:size-4" />
         ) : (
           stepPosition
         ))}
@@ -1561,8 +1559,7 @@ function StepperSeparator(props: StepperSeparatorProps) {
       {...separatorProps}
       ref={ref}
       style={{ ...separatorProps.style, ...customStyle }}
-      className={cn(
-        "transition-colors",
+      className={cn("ds:transition-colors",
         getSeparatorClasses(),
         colorClass,
         className
@@ -1592,7 +1589,7 @@ function StepperTitle(props: StepperTitleProps) {
       dir={context.dir}
       {...titleProps}
       ref={ref}
-      className={cn("font-medium text-sm", className)}
+      className={cn("ds:font-medium ds:text-sm", className)}
     />
   );
 }
@@ -1617,7 +1614,7 @@ function StepperDescription(props: StepperDescriptionProps) {
       dir={context.dir}
       {...descriptionProps}
       ref={ref}
-      className={cn("text-muted-foreground text-xs", className)}
+      className={cn("ds:text-muted-foreground ds:text-xs", className)}
     />
   );
 }
@@ -1656,7 +1653,7 @@ function StepperContent(props: StepperContentProps) {
       dir={context.dir}
       {...contentProps}
       ref={ref}
-      className={cn("flex-1 outline-none", className)}
+      className={cn("ds:flex-1 ds:outline-none", className)}
     />
   );
 }

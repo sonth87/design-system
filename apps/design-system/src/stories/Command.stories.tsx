@@ -163,7 +163,7 @@ export const Default: Story = {
 
     return (
       <Command
-        className="rounded-lg border shadow-md md:min-w-[450px]"
+        className="ds:rounded-lg ds:border ds:shadow-md md:min-w-[450px]"
         items={items}
         search
       />
@@ -231,12 +231,12 @@ export const WithDialog = () => {
   return (
     <>
       <p
-        className="text-muted-foreground text-sm"
+        className="ds:text-muted-foreground ds:text-sm"
         onClick={() => setOpen(true)}
       >
         Press{" "}
-        <div className="bg-muted text-muted-foreground pointer-events-none inline-flex h-5 items-center gap-1 rounded border px-1.5 font-mono text-[10px] font-medium opacity-100 select-none">
-          <span className="text-xs">⌘</span>J
+        <div className="ds:bg-muted ds:text-muted-foreground ds:pointer-events-none ds:inline-flex ds:h-5 ds:items-center ds:gap-1 ds:rounded ds:border ds:px-1.5 ds:font-mono text-[10px] ds:font-medium ds:opacity-100 select-none">
+          <span className="ds:text-xs">⌘</span>J
         </div>
       </p>
       <Command items={items} search open={open} onOpenChange={setOpen} modal />
@@ -247,7 +247,7 @@ export const WithDialog = () => {
 // With manual usage
 export const Manual: Story = {
   render: () => (
-    <Command className="rounded-lg border shadow-md md:min-w-[450px]">
+    <Command className="ds:rounded-lg ds:border ds:shadow-md md:min-w-[450px]">
       <Command.Input placeholder="Type a command or search..." />
       <Command.List>
         <Command.Empty>No results found.</Command.Empty>
@@ -291,7 +291,7 @@ export const Manual: Story = {
 // Empty state
 export const Empty: Story = {
   render: () => (
-    <Command className="w-80">
+    <Command className="ds:w-80">
       <Command.Input placeholder="Type a command or search..." />
       <Command.List>
         <Command.Empty>No results found.</Command.Empty>
@@ -303,17 +303,17 @@ export const Empty: Story = {
 // Custom styled
 export const CustomStyled: Story = {
   render: () => (
-    <Command className="w-80 bg-blue-50 dark:bg-blue-950 border-blue-200 dark:border-blue-800">
+    <Command className="ds:w-80 ds:bg-blue-50 ds:dark:bg-blue-950 ds:border-blue-200 ds:dark:border-blue-800">
       <Command.Input placeholder="Type a command or search..." />
       <Command.List>
         <Command.Empty>No results found.</Command.Empty>
         <Command.Group heading="Suggestions">
           <Command.Item>
-            <Calendar className="mr-2 h-4 w-4" />
+            <Calendar className="ds:mr-2 ds:h-4 ds:w-4" />
             <span>Calendar</span>
           </Command.Item>
           <Command.Item>
-            <Search className="mr-2 h-4 w-4" />
+            <Search className="ds:mr-2 ds:h-4 ds:w-4" />
             <span>Search</span>
           </Command.Item>
         </Command.Group>

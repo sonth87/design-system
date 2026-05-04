@@ -155,7 +155,7 @@ export function MultiSelectTrigger({
         )}
       >
         {children}
-        <ChevronsUpDownIcon className="size-4 shrink-0 opacity-50" />
+        <ChevronsUpDownIcon className="ds:size-4 ds:shrink-0 ds:opacity-50" />
       </Button> */}
 
       <Label
@@ -165,10 +165,10 @@ export function MultiSelectTrigger({
         {open && (
           <ChevronUp
             className={cn(
-              "z-10 opacity-50",
+              "ds:z-10 ds:opacity-50",
               {
-                "size-4": size === "sm" || size === "xs",
-                "size-5": size === "lg" || size === "xl",
+                "ds:size-4": size === "sm" || size === "xs",
+                "ds:size-5": size === "lg" || size === "xl",
               },
               dropdownClassName
             )}
@@ -177,10 +177,10 @@ export function MultiSelectTrigger({
         {!open && (
           <ChevronDown
             className={cn(
-              "z-10 opacity-50",
+              "ds:z-10 ds:opacity-50",
               {
-                "size-4": size === "sm" || size === "xs",
-                "size-5": size === "lg" || size === "xl",
+                "ds:size-4": size === "sm" || size === "xs",
+                "ds:size-5": size === "lg" || size === "xl",
               },
               dropdownClassName
             )}
@@ -252,7 +252,7 @@ export function MultiSelectValue({
 
   if (selectedValues.size === 0 && placeholder) {
     return (
-      <span className="min-w-0 overflow-hidden font-normal text-muted-foreground">
+      <span className="ds:min-w-0 overflow-hidden ds:font-normal ds:text-muted-foreground">
         {placeholder}
       </span>
     );
@@ -263,8 +263,8 @@ export function MultiSelectValue({
       {...props}
       ref={handleResize}
       className={cn(
-        "flex w-fit gap-1.5 overflow-hidden",
-        shouldWrap && "h-full flex-wrap",
+        "ds:flex ds:w-fit ds:gap-1.5 overflow-hidden",
+        shouldWrap && "ds:h-full ds:flex-wrap",
         className
       )}
     >
@@ -308,7 +308,7 @@ export function MultiSelectValue({
               <>
                 {element.props.children}
                 {clickToRemove && (
-                  <XIcon className="size-2 text-muted-foreground group-hover:text-destructive" />
+                  <XIcon className="ds:size-2 ds:text-muted-foreground ds:group-hover:text-destructive" />
                 )}
               </>
             );
@@ -318,13 +318,13 @@ export function MultiSelectValue({
             <Badge
               variant="outline"
               data-selected-item
-              className="group flex items-center gap-1"
+              className="ds:group ds:flex ds:items-center ds:gap-1"
               key={value}
               onClick={clickToRemove ? removeHandler : undefined}
             >
               {itemNode}
               {clickToRemove && (
-                <XIcon className="size-2 text-muted-foreground group-hover:text-destructive" />
+                <XIcon className="ds:size-2 ds:text-muted-foreground ds:group-hover:text-destructive" />
               )}
             </Badge>
           );
@@ -360,7 +360,7 @@ export function MultiSelectContent({
           <CommandList>{children}</CommandList>
         </Command>
       </div>
-      <PopoverContent className="min-w-[var(--radix-popover-trigger-width)] p-0">
+      <PopoverContent className="min-w-[var(--radix-popover-trigger-width)] ds:p-0">
         <Command {...props}>
           {canSearch ? (
             <CommandInput
@@ -418,18 +418,18 @@ export function MultiSelectItem({
             }
       }
       className={cn(
-        props?.disabled && "opacity-50 cursor-not-allowed grayscale",
-        isSelected && "bg-primary/10 dark:bg-primary/20"
+        props?.disabled && "ds:opacity-50 cursor-not-allowed ds:grayscale",
+        isSelected && "ds:bg-primary/10 ds:dark:bg-primary/20"
       )}
     >
       {!tagRender && icon && (
-        <span className="mr-2 max-w-4 max-h-4">{icon}</span>
+        <span className="ds:mr-2 ds:max-w-4 ds:max-h-4">{icon}</span>
       )}
       {children}
       <CheckIcon
         className={cn(
-          "mr-2 ml-auto size-4",
-          isSelected ? "opacity-100" : "opacity-0"
+          "ds:mr-2 ds:ml-auto ds:size-4",
+          isSelected ? "ds:opacity-100" : "ds:opacity-0"
         )}
       />
     </CommandItem>

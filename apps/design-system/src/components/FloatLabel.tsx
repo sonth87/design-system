@@ -30,8 +30,7 @@ const FloatingLabel = React.forwardRef<
 
     return (
       <Label
-        className={cn(
-          "absolute start-2 select-none pointer-events-none",
+        className={cn("ds:absolute start-2 select-none pointer-events-none",
           "bg-background px-3 translate-y-2",
           "flex",
           {
@@ -78,14 +77,14 @@ const FloatingLabel = React.forwardRef<
         ref={ref}
         {...props}
       >
-        <span className="truncate whitespace-nowrap max-w-full pointer-events-none">
+        <span className="truncate ds:whitespace-nowrap ds:max-w-full ds:pointer-events-none">
           {children}
-          {required && <span className="text-error ml-0.5">*</span>}
+          {required && <span className="ds:text-error ds:ml-0.5">*</span>}
         </span>
 
         {infoTooltip && (
           <Tooltip content={infoTooltip}>
-            <Info className="size-3.5 min-w-3.5 z-10 pointer-events-auto" />
+            <Info className="ds:size-3.5 ds:min-w-3.5 ds:z-10 ds:pointer-events-auto" />
           </Tooltip>
         )}
       </Label>

@@ -128,7 +128,7 @@ const Sheet = React.forwardRef<HTMLDivElement, SheetProps>((props, ref) => {
   const headerComponents = useMemo(() => {
     return title || description ? (
       <SheetHeader
-        className={cn("py-4", { "border-b": stickyHeader }, headerClasses)}
+        className={cn("ds:py-4", { "ds:border-b": stickyHeader }, headerClasses)}
       >
         {title && <SheetTitle className={titleClassName}>{title}</SheetTitle>}
         {description && (
@@ -150,7 +150,7 @@ const Sheet = React.forwardRef<HTMLDivElement, SheetProps>((props, ref) => {
   const footerComponents = useMemo(() => {
     return footer ? (
       <SheetFooter
-        className={cn("py-4", { "border-t": stickyFooter }, footerClasses)}
+        className={cn("ds:py-4", { "ds:border-t": stickyFooter }, footerClasses)}
       >
         {footer}
       </SheetFooter>
@@ -188,9 +188,9 @@ const Sheet = React.forwardRef<HTMLDivElement, SheetProps>((props, ref) => {
             </DrawerHeader>
           )}
 
-          <ScrollArea className={cn("flex flex-col overflow-hidden")}>
+          <ScrollArea className={cn("ds:flex ds:flex-col overflow-hidden")}>
             {children && (
-              <div className={cn("px-4 py-2", contentClassName)}>
+              <div className={cn("ds:px-4 ds:py-2", contentClassName)}>
                 {children}
               </div>
             )}
@@ -227,10 +227,10 @@ const Sheet = React.forwardRef<HTMLDivElement, SheetProps>((props, ref) => {
 
         {stickyHeader && headerComponents}
 
-        <ScrollArea className="flex max-h-full flex-col overflow-hidden">
+        <ScrollArea className="ds:flex ds:max-h-full ds:flex-col overflow-hidden">
           {!stickyHeader && headerComponents}
           {children && (
-            <div className={cn("px-6 py-4", contentClassName)}>{children}</div>
+            <div className={cn("ds:px-6 ds:py-4", contentClassName)}>{children}</div>
           )}
           {!stickyFooter && footerComponents}
         </ScrollArea>

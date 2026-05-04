@@ -102,7 +102,7 @@ export const Default: Story = {
 
 export const Colorful: Story = {
   render: () => (
-    <div className="flex gap-2">
+    <div className="ds:flex ds:gap-2">
       <QRCode
         value="https://example.com"
         size={100}
@@ -135,7 +135,7 @@ export const WithOverlay: Story = {
   render: () => (
     <QRCode value="https://example.com">
       <QRCode.Canvas />
-      <QRCode.Overlay className="rounded-full border-2 border-white bg-linear-to-br from-primary to-secondary p-2 text-white">
+      <QRCode.Overlay className="ds:rounded-full ds:border-2 ds:border-white ds:bg-linear-to-br from-primary to-secondary ds:p-2 ds:text-white">
         <span>Hi!</span>
       </QRCode.Overlay>
     </QRCode>

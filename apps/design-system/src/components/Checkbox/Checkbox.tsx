@@ -87,20 +87,20 @@ const Checkbox = React.forwardRef<HTMLButtonElement, CheckboxProps>(
       "flex gap-2 peer-disabled:cursor-not-allowed peer-disabled:opacity-70";
 
     return (
-      <div className={cn("flex flex-col gap-1.5 relative", {})}>
-        <div className={cn("flex", flexDirection, gapClass, alignmentClass)}>
+      <div className={cn("ds:flex ds:flex-col ds:gap-1.5 ds:relative", {})}>
+        <div className={cn("ds:flex", flexDirection, gapClass, alignmentClass)}>
           {(labelPosition === "top" || labelPosition === "left") && label && (
             <label htmlFor={inputId} className={labelClass}>
               {label}
               {infoTooltip && (
                 <Tooltip content={infoTooltip}>
-                  <Info className="size-3.5 min-w-3.5" />
+                  <Info className="ds:size-3.5 ds:min-w-3.5" />
                 </Tooltip>
               )}
             </label>
           )}
 
-          <div className="relative inline-flex">
+          <div className="ds:relative ds:inline-flex">
             <SCheckbox
               ref={ref}
               id={inputId}
@@ -116,7 +116,7 @@ const Checkbox = React.forwardRef<HTMLButtonElement, CheckboxProps>(
 
             <AnimatePresence>
               {showConfetti && (
-                <div className="pointer-events-none absolute inset-0">
+                <div className="ds:pointer-events-none ds:absolute ds:inset-0">
                   {[...Array(12)].map((_, i) => (
                     <ConfettiPiece key={i} index={i} />
                   ))}
@@ -131,7 +131,7 @@ const Checkbox = React.forwardRef<HTMLButtonElement, CheckboxProps>(
                 {label}
                 {infoTooltip && (
                   <Tooltip content={infoTooltip}>
-                    <Info className="size-3.5 min-w-3.5" />
+                    <Info className="ds:size-3.5 ds:min-w-3.5" />
                   </Tooltip>
                 )}
               </Label>
@@ -139,11 +139,11 @@ const Checkbox = React.forwardRef<HTMLButtonElement, CheckboxProps>(
         </div>
 
         {helperText && (
-          <div className="flex items-center justify-between text-xs gap-2">
+          <div className="ds:flex ds:items-center ds:justify-between ds:text-xs ds:gap-2">
             {helperText && (
               <p
                 className={cn(
-                  "text-xs",
+                  "ds:text-xs",
                   state ? helperTextStyles?.[state] : ""
                 )}
               >

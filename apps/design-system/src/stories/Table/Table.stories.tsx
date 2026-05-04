@@ -217,7 +217,7 @@ const columns: ColumnDef<Project>[] = [
       return (
         <Badge
           variant="outline"
-          className="capitalize gap-1"
+          className="capitalize ds:gap-1"
           color={status === "active" ? "success" : "error"}
         >
           <Icon />
@@ -254,8 +254,8 @@ const columns: ColumnDef<Project>[] = [
       const budget = cell.getValue<Project["budget"]>();
 
       return (
-        <div className="flex items-center gap-1">
-          <DollarSign className="size-4" />
+        <div className="ds:flex ds:items-center ds:gap-1">
+          <DollarSign className="ds:size-4" />
           {budget.toLocaleString()}
         </div>
       );
@@ -393,7 +393,7 @@ const columns: ColumnDef<Project>[] = [
     cell: ({ cell }: CellContext<Project, unknown>) => {
       const tags = cell.getValue<Project["tags"]>();
       return (
-        <div className="flex gap-1">
+        <div className="ds:flex ds:gap-1">
           {tags.map((tag, idx) => (
             <Badge key={idx} variant="outline" size="sm">
               {tag}
@@ -433,7 +433,7 @@ const columns: ColumnDef<Project>[] = [
     id: "actions",
     cell: function Cell() {
       return (
-        <div className="flex gap-1 justify-end">
+        <div className="ds:flex ds:gap-1 ds:justify-end">
           <Button variant={"ghost"} color="muted">
             <Edit3 />
           </Button>
@@ -451,8 +451,8 @@ const columns: ColumnDef<Project>[] = [
   //     return (
   //       <DropdownMenu
   //         trigger={
-  //           <button className="inline-flex items-center justify-center rounded-md p-2 hover:bg-accent hover:text-accent-foreground">
-  //             <MoreHorizontal className="h-4 w-4" />
+  //           <button className="ds:inline-flex ds:items-center ds:justify-center ds:rounded-md ds:p-2 ds:hover:bg-accent ds:hover:text-accent-foreground">
+  //             <MoreHorizontal className="ds:h-4 ds:w-4" />
   //             <span className="sr-only">Open menu</span>
   //           </button>
   //         }
@@ -490,7 +490,7 @@ export const Default = () => {
   });
   console.log(table.getRowModel());
   return (
-    <div className="data-table-container">
+    <div className="ds:data-table-container">
       <DataTableToolbar
         table={table}
         showColumnFilters
@@ -531,7 +531,7 @@ const WithNuqsStory = () => {
   });
 
   return (
-    <div className="data-table-container">
+    <div className="ds:data-table-container">
       <DataTable table={table}>
         <DataTableToolbar table={table} />
       </DataTable>
@@ -556,7 +556,7 @@ export const WithOptions = () => {
   });
 
   return (
-    <div className="data-table-container">
+    <div className="ds:data-table-container">
       <DataTableToolbar table={table} showColumnVisibilityToggle />
       <DataTable
         table={table}
@@ -564,7 +564,7 @@ export const WithOptions = () => {
         bordered={true}
         loading={false}
         footer={(currentPageData) => (
-          <div className="text-center py-2">
+          <div className="ds:text-center ds:py-2">
             Footer: Showing {currentPageData.length} of {demoData.length}{" "}
             projects
           </div>

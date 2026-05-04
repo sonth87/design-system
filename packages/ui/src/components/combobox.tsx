@@ -103,9 +103,9 @@ function Combobox({
           <Label className={cn(comboboxVariants({ size, state }), className)}>
             <span
               className={cn(
-                "truncate w-full inline-block align-middle text-left",
+                "truncate ds:w-full ds:inline-block align-middle ds:text-left",
                 {
-                  "pr-8": clearable,
+                  "ds:pr-8": clearable,
                 }
               )}
             >
@@ -116,10 +116,10 @@ function Combobox({
             {open && (
               <ChevronUp
                 className={cn(
-                  "z-10 opacity-50",
+                  "ds:z-10 ds:opacity-50",
                   {
-                    "size-4 min-w-4": size === "sm" || size === "xs",
-                    "size-5 min-w-5": size === "lg" || size === "xl",
+                    "ds:size-4 ds:min-w-4": size === "sm" || size === "xs",
+                    "ds:size-5 ds:min-w-5": size === "lg" || size === "xl",
                   },
                   dropdownClassName
                 )}
@@ -128,10 +128,10 @@ function Combobox({
             {!open && (
               <ChevronDown
                 className={cn(
-                  "z-10 opacity-50",
+                  "ds:z-10 ds:opacity-50",
                   {
-                    "size-4 min-w-4": size === "sm" || size === "xs",
-                    "size-5 min-w-5": size === "lg" || size === "xl",
+                    "ds:size-4 ds:min-w-4": size === "sm" || size === "xs",
+                    "ds:size-5 ds:min-w-5": size === "lg" || size === "xl",
                   },
                   dropdownClassName
                 )}
@@ -147,9 +147,9 @@ function Combobox({
             e.stopPropagation();
             onChange?.("");
           }}
-          className="absolute right-11 top-1/2 -translate-y-1/2 rounded-sm p-1 text-muted-foreground hover:bg-accent hover:text-accent-foreground cursor-pointer size-6 opacity-50"
+          className="ds:absolute ds:right-11 ds:top-1/2 ds:-translate-y-1/2 ds:rounded-sm ds:p-1 ds:text-muted-foreground ds:hover:bg-accent ds:hover:text-accent-foreground cursor-pointer ds:size-6 ds:opacity-50"
         >
-          <X className="h-4 w-4" />
+          <X className="ds:h-4 ds:w-4" />
         </Label>
       )}
       <PopoverContent
@@ -164,7 +164,7 @@ function Combobox({
       >
         <Command>
           {searchable && (
-            <CommandInput placeholder={placeHolder} className="h-9" />
+            <CommandInput placeholder={placeHolder} className="ds:h-9" />
           )}
           <CommandList>
             <CommandEmpty>{emptyText || "Not found"}</CommandEmpty>
@@ -183,8 +183,8 @@ function Combobox({
                   }
                   className={cn(
                     option?.disabled &&
-                      "opacity-50 cursor-not-allowed grayscale",
-                    value === option.value && "bg-primary/10 dark:bg-primary/20"
+                      "ds:opacity-50 cursor-not-allowed ds:grayscale",
+                    value === option.value && "ds:bg-primary/10 ds:dark:bg-primary/20"
                   )}
                 >
                   {tagRender ? (
@@ -192,7 +192,7 @@ function Combobox({
                   ) : (
                     <>
                       {option.icon && (
-                        <span className="mr-2 max-w-4 max-h-4">
+                        <span className="ds:mr-2 ds:max-w-4 ds:max-h-4">
                           {option.icon}
                         </span>
                       )}
@@ -201,8 +201,8 @@ function Combobox({
                   )}
                   <Check
                     className={cn(
-                      "ml-auto",
-                      value === option.value ? "opacity-100" : "opacity-0" // So sánh theo value
+                      "ds:ml-auto",
+                      value === option.value ? "ds:opacity-100" : "ds:opacity-0" // So sánh theo value
                     )}
                   />
                 </CommandItem>

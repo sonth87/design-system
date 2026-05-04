@@ -101,10 +101,10 @@ const Breadcrumb = React.forwardRef<HTMLElement, BreadcrumbProps>(
       if (normalizedShowHome === "label") {
         homeItem = [{ label: "Home", href: "/" }];
       } else if (normalizedShowHome === "icon") {
-        homeItem = [{ icon: <Home className="size-4" />, href: "/" }];
+        homeItem = [{ icon: <Home className="ds:size-4" />, href: "/" }];
       } else if (normalizedShowHome === "both") {
         homeItem = [
-          { label: "Home", icon: <Home className="size-4" />, href: "/" },
+          { label: "Home", icon: <Home className="ds:size-4" />, href: "/" },
         ];
       } else if (
         typeof normalizedShowHome === "object" &&
@@ -148,15 +148,15 @@ const Breadcrumb = React.forwardRef<HTMLElement, BreadcrumbProps>(
                 <SBreadcrumbEllipsis />
               </SBreadcrumbItem>
             </PopoverTrigger>
-            <PopoverContent className="w-auto max-w-64 p-2">
+            <PopoverContent className="ds:w-auto ds:max-w-64 ds:p-2">
               {hiddenItems.map((item, index) => (
                 <div
                   key={index}
-                  className="flex items-center gap-2 py-1 px-3 rounded hover:bg-muted"
+                  className="ds:flex ds:items-center ds:gap-2 ds:py-1 ds:px-3 ds:rounded ds:hover:bg-muted"
                 >
                   {item.icon}
                   {item.label && (
-                    <a href={item.href} className="text-sm hover:underline">
+                    <a href={item.href} className="ds:text-sm ds:hover:underline">
                       {item.label}
                     </a>
                   )}
@@ -195,14 +195,14 @@ const Breadcrumb = React.forwardRef<HTMLElement, BreadcrumbProps>(
                 <SBreadcrumbItem>
                   {isLast ? (
                     <SBreadcrumbPage>
-                      <div className="flex items-center gap-1">
+                      <div className="ds:flex ds:items-center ds:gap-1">
                         {item.icon}
                         {item.label}
                       </div>
                     </SBreadcrumbPage>
                   ) : (
                     <SBreadcrumbLink href={item.href}>
-                      <div className="flex items-center gap-1">
+                      <div className="ds:flex ds:items-center ds:gap-1">
                         {item.icon}
                         {item.label}
                       </div>

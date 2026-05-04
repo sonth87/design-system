@@ -19,9 +19,15 @@
     }
   },
   "devDependencies": {
+    "@babel/generator": "^7.29.1",
+    "@babel/parser": "^7.29.3",
+    "@babel/traverse": "^7.29.0",
+    "@babel/types": "^7.29.0",
     "@dsui/eslint-config": "workspace:*",
     "@dsui/typescript-config": "workspace:*",
+    "glob": "^11.0.3",
     "prettier": "^3.6.2",
+    "tsx": "^4.21.0",
     "turbo": "^2.5.8",
     "typescript": "5.9.2"
   },

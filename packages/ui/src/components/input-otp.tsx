@@ -56,7 +56,7 @@ function InputOTP({ className, containerClassName, ...props }: InputOTPProps) {
     <OTPInput
       data-slot="input-otp"
       containerClassName={containerClassName}
-      className={cn("disabled:cursor-not-allowed", className)}
+      className={cn("ds:disabled:cursor-not-allowed", className)}
       {...props}
     />
   );
@@ -66,7 +66,7 @@ function InputOTPGroup({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="input-otp-group"
-      className={cn("flex items-center", className)}
+      className={cn("ds:flex ds:items-center", className)}
       {...props}
     />
   );
@@ -96,8 +96,8 @@ function InputOTPSlot({
     >
       {char}
       {hasFakeCaret && (
-        <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-          <div className="animate-caret-blink bg-foreground h-4 w-px duration-1000" />
+        <div className="ds:pointer-events-none ds:absolute ds:inset-0 ds:flex ds:items-center ds:justify-center">
+          <div className="ds:animate-caret-blink ds:bg-foreground ds:h-4 ds:w-px ds:duration-1000" />
         </div>
       )}
     </div>

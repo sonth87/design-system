@@ -275,10 +275,10 @@ export const Interactive: Story = {
           defaultLeafIcon={File}
         />
         {selectedItem && (
-          <div className="mt-4 p-4 border rounded-lg">
-            <p className="text-sm font-medium">Selected Item:</p>
-            <p className="text-sm text-muted-foreground">{selectedItem.name}</p>
-            <p className="text-xs text-muted-foreground mt-1">
+          <div className="ds:mt-4 ds:p-4 ds:border ds:rounded-lg">
+            <p className="ds:text-sm ds:font-medium">Selected Item:</p>
+            <p className="ds:text-sm ds:text-muted-foreground">{selectedItem.name}</p>
+            <p className="ds:text-xs ds:text-muted-foreground ds:mt-1">
               ID: {selectedItem.id}
             </p>
           </div>
@@ -316,13 +316,13 @@ export const MultiSelect: Story = {
 
     return (
       <div className="w-[400px]">
-        <div className="mb-4 p-4 bg-muted rounded-lg">
-          <p className="text-sm font-medium">Multi-Select Mode</p>
-          <p className="text-xs text-muted-foreground">
+        <div className="ds:mb-4 ds:p-4 ds:bg-muted ds:rounded-lg">
+          <p className="ds:text-sm ds:font-medium">Multi-Select Mode</p>
+          <p className="ds:text-xs ds:text-muted-foreground">
             Use checkboxes to select multiple items
           </p>
           {selectedIds.length > 0 && (
-            <p className="text-xs text-muted-foreground mt-2">
+            <p className="ds:text-xs ds:text-muted-foreground ds:mt-2">
               Selected: {selectedIds.length} item
               {selectedIds.length > 1 ? "s" : ""}
             </p>
@@ -341,13 +341,13 @@ export const MultiSelect: Story = {
           defaultLeafIcon={File}
         />
         {selectedIds.length > 0 && (
-          <div className="mt-4 p-4 border rounded-lg">
-            <p className="text-sm font-medium mb-2">Selected Items:</p>
-            <div className="flex flex-wrap gap-2">
+          <div className="ds:mt-4 ds:p-4 ds:border ds:rounded-lg">
+            <p className="ds:text-sm ds:font-medium ds:mb-2">Selected Items:</p>
+            <div className="ds:flex ds:flex-wrap ds:gap-2">
               {selectedIds.map((id) => (
                 <span
                   key={id}
-                  className="px-2 py-1 bg-primary/10 text-primary text-xs rounded"
+                  className="ds:px-2 ds:py-1 ds:bg-primary/10 ds:text-primary ds:text-xs ds:rounded"
                 >
                   {id}
                 </span>
@@ -370,9 +370,9 @@ export const MultiSelectWithInitialSelection: Story = {
 
     return (
       <div className="w-[400px]">
-        <div className="mb-4 p-4 bg-muted rounded-lg">
-          <p className="text-sm font-medium">Pre-selected Items</p>
-          <p className="text-xs text-muted-foreground">
+        <div className="ds:mb-4 ds:p-4 ds:bg-muted ds:rounded-lg">
+          <p className="ds:text-sm ds:font-medium">Pre-selected Items</p>
+          <p className="ds:text-xs ds:text-muted-foreground">
             Some items are already selected
           </p>
         </div>
@@ -463,7 +463,7 @@ function ReactIcon({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "flex items-center justify-center rounded bg-[#61DAFB]/10 p-0.5",
+        "ds:flex ds:items-center ds:justify-center ds:rounded bg-[#61DAFB]/10 ds:p-0.5",
         className
       )}
     >
@@ -474,7 +474,7 @@ function ReactIcon({ className }: { className?: string }) {
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="h-full w-full"
+        className="ds:h-full ds:w-full"
       >
         <circle cx="12" cy="12" r="2" />
         <path d="M12 21.5c4.7 0 8.5-1.8 8.5-4s-3.8-4-8.5-4-8.5 1.8-8.5 4 3.8 4 8.5 4z" />
@@ -491,7 +491,7 @@ function JsIcon({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "flex items-center justify-center rounded bg-[#F7DF1E] text-[10px] font-bold text-black",
+        "ds:flex ds:items-center ds:justify-center ds:rounded bg-[#F7DF1E] text-[10px] ds:font-bold ds:text-black",
         className
       )}
     >
@@ -505,7 +505,7 @@ function HtmlIcon({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "flex items-center justify-center rounded bg-[#E34F26] text-[10px] font-bold text-white",
+        "ds:flex ds:items-center ds:justify-center ds:rounded bg-[#E34F26] text-[10px] ds:font-bold ds:text-white",
         className
       )}
     >
@@ -519,7 +519,7 @@ function CssIcon({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "flex items-center justify-center rounded bg-[#1572B6] text-[10px] font-bold text-white",
+        "ds:flex ds:items-center ds:justify-center ds:rounded bg-[#1572B6] text-[10px] ds:font-bold ds:text-white",
         className
       )}
     >

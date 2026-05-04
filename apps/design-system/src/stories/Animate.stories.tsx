@@ -99,31 +99,29 @@ export const Showcase: Story = {
 
       return (
         <div
-          className="border rounded-lg p-4 space-y-2"
+          className="ds:border ds:rounded-lg ds:p-4 ds:space-y-2"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
-          <h3 className="font-semibold">{anim.name}</h3>
-          <div className="flex items-center space-x-2">
-            <code className="text-sm bg-gray-100 px-2 py-1 rounded flex-1">
+          <h3 className="ds:font-semibold">{anim.name}</h3>
+          <div className="ds:flex ds:items-center ds:space-x-2">
+            <code className="ds:text-sm ds:bg-gray-100 ds:px-2 ds:py-1 ds:rounded ds:flex-1">
               {anim.class}
             </code>
             <button
               onClick={handleCopy}
-              className="p-1 hover:bg-gray-200 rounded transition-colors"
+              className="ds:p-1 ds:hover:bg-gray-200 ds:rounded ds:transition-colors"
               title="Copy class"
             >
               {copied ? (
-                <Check className="w-4 h-4 text-green-600" />
+                <Check className="ds:w-4 ds:h-4 ds:text-green-600" />
               ) : (
-                <Copy className="w-4 h-4" />
+                <Copy className="ds:w-4 ds:h-4" />
               )}
             </button>
           </div>
           <div
-            className={`w-full h-16 bg-gray-200 rounded flex items-center justify-center text-sm font-medium ${
-              isHovered ? anim.class : ""
-            }`}
+            className={`ds:w-full ds:h-16 ds:bg-gray-200 ds:rounded ds:flex ds:items-center ds:justify-center ds:text-sm ds:font-medium ${ isHovered ? anim.class : "" }`}
           >
             {anim.name}
           </div>
@@ -132,30 +130,30 @@ export const Showcase: Story = {
     };
 
     return (
-      <div className="p-8 space-y-8">
-        <h1 className="text-2xl font-bold">Animation Showcase</h1>
+      <div className="ds:p-8 ds:space-y-8">
+        <h1 className="ds:text-2xl ds:font-bold">Animation Showcase</h1>
         {Object.entries(animationGroups).map(([groupName, anims]) => (
-          <div key={groupName} className="space-y-4">
-            <h2 className="text-xl font-semibold">{groupName}</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div key={groupName} className="ds:space-y-4">
+            <h2 className="ds:text-xl ds:font-semibold">{groupName}</h2>
+            <div className="ds:grid ds:grid-cols-1 ds:md:grid-cols-2 ds:lg:grid-cols-3 ds:gap-6">
               {anims.map((anim) => (
                 <AnimationItem key={anim.name} anim={anim} />
               ))}
             </div>
           </div>
         ))}
-        <div className="border rounded-lg p-4 space-y-2">
-          <h3 className="font-semibold">Draw Animation (Hover)</h3>
-          <p className="text-sm text-gray-600">
+        <div className="ds:border ds:rounded-lg ds:p-4 ds:space-y-2">
+          <h3 className="ds:font-semibold">Draw Animation (Hover)</h3>
+          <p className="ds:text-sm ds:text-gray-600">
             Hover over the SVG to see the draw animation
-            <div className="flex items-center space-x-2 w-fit">
-              <code className="text-sm bg-gray-100 px-2 py-1 rounded flex-1 w-fit">
+            <div className="ds:flex ds:items-center ds:space-x-2 ds:w-fit">
+              <code className="ds:text-sm ds:bg-gray-100 ds:px-2 ds:py-1 ds:rounded ds:flex-1 ds:w-fit">
                 animate-draw
               </code>
             </div>
           </p>
-          <div className="animate-draw size-32">
-            <Bone className="size-32" />
+          <div className="ds:animate-draw ds:size-32">
+            <Bone className="ds:size-32" />
           </div>
         </div>
       </div>

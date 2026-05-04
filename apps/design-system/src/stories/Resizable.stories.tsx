@@ -124,8 +124,8 @@ const PanelContent = ({
   title: string;
   className?: string;
 }) => (
-  <div className={`flex h-full items-center justify-center p-6 ${className}`}>
-    <span className="font-semibold">{title}</span>
+  <div className={`ds:flex ds:h-full ds:items-center ds:justify-center ds:p-6 ${className}`}>
+    <span className="ds:font-semibold">{title}</span>
   </div>
 );
 
@@ -141,16 +141,16 @@ export const Default: Story = {
       {
         defaultSize: 25,
         minSize: 15,
-        children: <PanelContent title="Sidebar" className="bg-muted/50" />,
+        children: <PanelContent title="Sidebar" className="ds:bg-muted/50" />,
       },
       {
         defaultSize: 75,
-        children: <PanelContent title="Content" className="bg-background" />,
+        children: <PanelContent title="Content" className="ds:bg-background" />,
       },
     ],
   },
   render: (args) => (
-    <div className="h-[400px] w-[800px] rounded-lg border">
+    <div className="h-[400px] w-[800px] ds:rounded-lg ds:border">
       <Resizable {...args} />
     </div>
   ),
@@ -164,18 +164,18 @@ export const Vertical: Story = {
       {
         defaultSize: 30,
         minSize: 20,
-        children: <PanelContent title="Header" className="bg-muted/50" />,
+        children: <PanelContent title="Header" className="ds:bg-muted/50" />,
       },
       {
         defaultSize: 70,
         children: (
-          <PanelContent title="Main Content" className="bg-background" />
+          <PanelContent title="Main Content" className="ds:bg-background" />
         ),
       },
     ],
   },
   render: (args) => (
-    <div className="h-[400px] w-[600px] rounded-lg border">
+    <div className="h-[400px] w-[600px] ds:rounded-lg ds:border">
       <Resizable {...args} />
     </div>
   ),
@@ -190,24 +190,24 @@ export const ThreePanels: Story = {
         id: "left",
         defaultSize: 20,
         minSize: 10,
-        children: <PanelContent title="Left" className="bg-blue-500/20" />,
+        children: <PanelContent title="Left" className="ds:bg-blue-500/20" />,
       },
       {
         id: "center",
         defaultSize: 60,
         minSize: 30,
-        children: <PanelContent title="Center" className="bg-green-500/20" />,
+        children: <PanelContent title="Center" className="ds:bg-green-500/20" />,
       },
       {
         id: "right",
         defaultSize: 20,
         minSize: 10,
-        children: <PanelContent title="Right" className="bg-orange-500/20" />,
+        children: <PanelContent title="Right" className="ds:bg-orange-500/20" />,
       },
     ],
   },
   render: (args) => (
-    <div className="h-[400px] w-[800px] rounded-lg border">
+    <div className="h-[400px] w-[800px] ds:rounded-lg ds:border">
       <Resizable {...args} />
     </div>
   ),
@@ -220,16 +220,16 @@ export const WithoutHandle: Story = {
     panels: [
       {
         defaultSize: 30,
-        children: <PanelContent title="Panel A" className="bg-muted/50" />,
+        children: <PanelContent title="Panel A" className="ds:bg-muted/50" />,
       },
       {
         defaultSize: 70,
-        children: <PanelContent title="Panel B" className="bg-background" />,
+        children: <PanelContent title="Panel B" className="ds:bg-background" />,
       },
     ],
   },
   render: (args) => (
-    <div className="h-[400px] w-[600px] rounded-lg border">
+    <div className="h-[400px] w-[600px] ds:rounded-lg ds:border">
       <Resizable {...args} />
     </div>
   ),
@@ -246,16 +246,16 @@ export const LineVariant: Story = {
     panels: [
       {
         defaultSize: 30,
-        children: <PanelContent title="Panel A" className="bg-muted/50" />,
+        children: <PanelContent title="Panel A" className="ds:bg-muted/50" />,
       },
       {
         defaultSize: 70,
-        children: <PanelContent title="Panel B" className="bg-background" />,
+        children: <PanelContent title="Panel B" className="ds:bg-background" />,
       },
     ],
   },
   render: (args) => (
-    <div className="h-[400px] w-[600px] rounded-lg border">
+    <div className="h-[400px] w-[600px] ds:rounded-lg ds:border">
       <Resizable {...args} />
     </div>
   ),
@@ -274,23 +274,23 @@ export const CustomHandleIcon: Story = {
     direction: "horizontal",
     withHandle: true,
     handleIcon: (
-      <span className="text-[8px] -rotate-90 h-fit w-fit px-2 py-1 bg-muted hover:bg-primary rounded-xl z-10">
+      <span className="text-[8px] ds:-rotate-90 ds:h-fit ds:w-fit ds:px-2 ds:py-1 ds:bg-muted ds:hover:bg-primary ds:rounded-xl ds:z-10">
         Custom
       </span>
     ),
     panels: [
       {
         defaultSize: 30,
-        children: <PanelContent title="Panel A" className="bg-muted/50" />,
+        children: <PanelContent title="Panel A" className="ds:bg-muted/50" />,
       },
       {
         defaultSize: 70,
-        children: <PanelContent title="Panel B" className="bg-background" />,
+        children: <PanelContent title="Panel B" className="ds:bg-background" />,
       },
     ],
   },
   render: (args) => (
-    <div className="h-[400px] w-[600px] rounded-lg border">
+    <div className="h-[400px] w-[600px] ds:rounded-lg ds:border">
       <Resizable {...args} />
     </div>
   ),
@@ -319,9 +319,9 @@ export const AutoSaveLayout: Story = {
         defaultSize: 20,
         minSize: 10,
         children: (
-          <div className="flex h-full flex-col bg-muted/50 p-4">
-            <h3 className="font-semibold mb-2">Navigation</h3>
-            <p className="text-xs text-muted-foreground">
+          <div className="ds:flex ds:h-full ds:flex-col ds:bg-muted/50 ds:p-4">
+            <h3 className="ds:font-semibold ds:mb-2">Navigation</h3>
+            <p className="ds:text-xs ds:text-muted-foreground">
               Layout is saved to localStorage
             </p>
           </div>
@@ -331,9 +331,9 @@ export const AutoSaveLayout: Story = {
         id: "main",
         defaultSize: 80,
         children: (
-          <div className="flex h-full flex-col p-4">
-            <h3 className="font-semibold mb-2">Content</h3>
-            <p className="text-sm text-muted-foreground">
+          <div className="ds:flex ds:h-full ds:flex-col ds:p-4">
+            <h3 className="ds:font-semibold ds:mb-2">Content</h3>
+            <p className="ds:text-sm ds:text-muted-foreground">
               Resize the panels and refresh the page - your layout will be
               preserved!
             </p>
@@ -343,7 +343,7 @@ export const AutoSaveLayout: Story = {
     ],
   },
   render: (args) => (
-    <div className="h-[400px] w-[800px] rounded-lg border">
+    <div className="h-[400px] w-[800px] ds:rounded-lg ds:border">
       <Resizable {...args} />
     </div>
   ),
@@ -364,18 +364,18 @@ export const AutoSaveLayout: Story = {
 export const PrimitiveUsage: Story = {
   render: () => {
     return (
-      <div className="h-[400px] w-[800px] rounded-lg border">
+      <div className="h-[400px] w-[800px] ds:rounded-lg ds:border">
         <Resizable direction="horizontal">
           <Resizable.Panel defaultSize={25} minSize={15}>
-            <PanelContent title="Panel 1" className="bg-red-500/20" />
+            <PanelContent title="Panel 1" className="ds:bg-red-500/20" />
           </Resizable.Panel>
           <Resizable.Handle withHandle />
           <Resizable.Panel defaultSize={50}>
-            <PanelContent title="Panel 2" className="bg-green-500/20" />
+            <PanelContent title="Panel 2" className="ds:bg-green-500/20" />
           </Resizable.Panel>
           <Resizable.Handle withHandle />
           <Resizable.Panel defaultSize={25} minSize={15}>
-            <PanelContent title="Panel 3" className="bg-blue-500/20" />
+            <PanelContent title="Panel 3" className="ds:bg-blue-500/20" />
           </Resizable.Panel>
         </Resizable>
       </div>
@@ -403,7 +403,7 @@ export const NestedPanels: Story = {
       {
         defaultSize: 30,
         minSize: 20,
-        children: <PanelContent title="Sidebar" className="bg-muted/50" />,
+        children: <PanelContent title="Sidebar" className="ds:bg-muted/50" />,
       },
       {
         defaultSize: 70,
@@ -411,12 +411,12 @@ export const NestedPanels: Story = {
           <Resizable
             direction="vertical"
             withHandle
-            className="h-full"
+            className="ds:h-full"
             panels={[
               {
                 defaultSize: 30,
                 children: (
-                  <PanelContent title="Header" className="bg-blue-500/20" />
+                  <PanelContent title="Header" className="ds:bg-blue-500/20" />
                 ),
               },
               {
@@ -424,7 +424,7 @@ export const NestedPanels: Story = {
                 children: (
                   <PanelContent
                     title="Main Content"
-                    className="bg-green-500/20"
+                    className="ds:bg-green-500/20"
                   />
                 ),
               },
@@ -435,7 +435,7 @@ export const NestedPanels: Story = {
     ],
   },
   render: (args) => (
-    <div className="h-[500px] w-[800px] rounded-lg border">
+    <div className="h-[500px] w-[800px] ds:rounded-lg ds:border">
       <Resizable {...args} />
     </div>
   ),
@@ -456,11 +456,11 @@ export const IDELayout: Story = {
         maxSize: 8,
         className: "bg-muted",
         children: (
-          <div className="flex h-full flex-col items-center gap-4 p-2 pt-4">
-            <div className="w-8 h-8 rounded bg-primary/20" />
-            <div className="w-8 h-8 rounded bg-muted-foreground/20" />
-            <div className="w-8 h-8 rounded bg-muted-foreground/20" />
-            <div className="w-8 h-8 rounded bg-muted-foreground/20" />
+          <div className="ds:flex ds:h-full ds:flex-col ds:items-center ds:gap-4 ds:p-2 ds:pt-4">
+            <div className="ds:w-8 ds:h-8 ds:rounded ds:bg-primary/20" />
+            <div className="ds:w-8 ds:h-8 ds:rounded ds:bg-muted-foreground/20" />
+            <div className="ds:w-8 ds:h-8 ds:rounded ds:bg-muted-foreground/20" />
+            <div className="ds:w-8 ds:h-8 ds:rounded ds:bg-muted-foreground/20" />
           </div>
         ),
       },
@@ -472,20 +472,20 @@ export const IDELayout: Story = {
         collapsible: true,
         collapsedSize: 0,
         children: (
-          <div className="flex h-full flex-col bg-muted/30">
-            <div className="border-b p-3 font-semibold text-sm">Explorer</div>
-            <div className="flex-1 p-2">
-              <div className="space-y-1">
-                <div className="px-2 py-1 text-sm rounded hover:bg-accent cursor-pointer">
+          <div className="ds:flex ds:h-full ds:flex-col ds:bg-muted/30">
+            <div className="ds:border-b ds:p-3 ds:font-semibold ds:text-sm">Explorer</div>
+            <div className="ds:flex-1 ds:p-2">
+              <div className="ds:space-y-1">
+                <div className="ds:px-2 ds:py-1 ds:text-sm ds:rounded ds:hover:bg-accent cursor-pointer">
                   📁 src
                 </div>
-                <div className="px-2 py-1 text-sm rounded hover:bg-accent cursor-pointer ml-4">
+                <div className="ds:px-2 ds:py-1 ds:text-sm ds:rounded ds:hover:bg-accent cursor-pointer ds:ml-4">
                   📁 components
                 </div>
-                <div className="px-2 py-1 text-sm rounded hover:bg-accent cursor-pointer ml-4">
+                <div className="ds:px-2 ds:py-1 ds:text-sm ds:rounded ds:hover:bg-accent cursor-pointer ds:ml-4">
                   📄 index.ts
                 </div>
-                <div className="px-2 py-1 text-sm rounded hover:bg-accent cursor-pointer">
+                <div className="ds:px-2 ds:py-1 ds:text-sm ds:rounded ds:hover:bg-accent cursor-pointer">
                   📄 package.json
                 </div>
               </div>
@@ -505,18 +505,18 @@ export const IDELayout: Story = {
                 id: "editor",
                 defaultSize: 70,
                 children: (
-                  <div className="flex h-full flex-col">
-                    <div className="border-b px-4 py-2 bg-muted/20">
-                      <span className="text-sm font-medium">Resizable.tsx</span>
+                  <div className="ds:flex ds:h-full ds:flex-col">
+                    <div className="ds:border-b ds:px-4 ds:py-2 ds:bg-muted/20">
+                      <span className="ds:text-sm ds:font-medium">Resizable.tsx</span>
                     </div>
-                    <div className="flex-1 p-4 font-mono text-sm">
-                      <div className="text-muted-foreground">
+                    <div className="ds:flex-1 ds:p-4 ds:font-mono ds:text-sm">
+                      <div className="ds:text-muted-foreground">
                         // Your code here
                       </div>
                       <div>
-                        <span className="text-blue-500">import</span> React{" "}
-                        <span className="text-blue-500">from</span>{" "}
-                        <span className="text-green-500">"react"</span>;
+                        <span className="ds:text-blue-500">import</span> React{" "}
+                        <span className="ds:text-blue-500">from</span>{" "}
+                        <span className="ds:text-green-500">"react"</span>;
                       </div>
                     </div>
                   </div>
@@ -528,13 +528,13 @@ export const IDELayout: Story = {
                 minSize: 15,
                 collapsible: true,
                 children: (
-                  <div className="flex h-full flex-col bg-muted/20">
-                    <div className="border-b px-4 py-2">
-                      <span className="text-sm font-medium">Terminal</span>
+                  <div className="ds:flex ds:h-full ds:flex-col ds:bg-muted/20">
+                    <div className="ds:border-b ds:px-4 ds:py-2">
+                      <span className="ds:text-sm ds:font-medium">Terminal</span>
                     </div>
-                    <div className="flex-1 p-4 font-mono text-sm text-muted-foreground">
+                    <div className="ds:flex-1 ds:p-4 ds:font-mono ds:text-sm ds:text-muted-foreground">
                       <div>$ npm run dev</div>
-                      <div className="text-green-500">
+                      <div className="ds:text-green-500">
                         Server running on :3000
                       </div>
                     </div>
@@ -552,10 +552,10 @@ export const IDELayout: Story = {
         collapsible: true,
         collapsedSize: 0,
         children: (
-          <div className="flex h-full flex-col bg-muted/30">
-            <div className="border-b p-3 font-semibold text-sm">Properties</div>
-            <div className="flex-1 p-4">
-              <p className="text-sm text-muted-foreground">
+          <div className="ds:flex ds:h-full ds:flex-col ds:bg-muted/30">
+            <div className="ds:border-b ds:p-3 ds:font-semibold ds:text-sm">Properties</div>
+            <div className="ds:flex-1 ds:p-4">
+              <p className="ds:text-sm ds:text-muted-foreground">
                 Select an element to see its properties
               </p>
             </div>
@@ -565,7 +565,7 @@ export const IDELayout: Story = {
     ],
   },
   render: (args) => (
-    <div className="h-[600px] w-[1000px] rounded-lg border bg-background overflow-hidden">
+    <div className="h-[600px] w-[1000px] ds:rounded-lg ds:border ds:bg-background overflow-hidden">
       <Resizable {...args} />
     </div>
   ),
@@ -599,8 +599,8 @@ export const ImperativeControl: Story = {
       const panelRef = useRef<PanelHandle>(null) as any;
 
       return (
-        <div className="space-y-4">
-          <div className="flex gap-2">
+        <div className="ds:space-y-4">
+          <div className="ds:flex ds:gap-2">
             <Button size="sm" onClick={() => panelRef.current?.collapse()}>
               Collapse
             </Button>
@@ -611,7 +611,7 @@ export const ImperativeControl: Story = {
               Resize to 50%
             </Button>
           </div>
-          <div className="h-[300px] w-[600px] rounded-lg border">
+          <div className="h-[300px] w-[600px] ds:rounded-lg ds:border">
             <Resizable direction="horizontal">
               <Resizable.Panel
                 ref={panelRef}
@@ -622,12 +622,12 @@ export const ImperativeControl: Story = {
               >
                 <PanelContent
                   title="Controlled Panel"
-                  className="bg-primary/20"
+                  className="ds:bg-primary/20"
                 />
               </Resizable.Panel>
               <Resizable.Handle withHandle />
               <Resizable.Panel defaultSize={70}>
-                <PanelContent title="Content" className="bg-muted/50" />
+                <PanelContent title="Content" className="ds:bg-muted/50" />
               </Resizable.Panel>
             </Resizable>
           </div>
@@ -661,18 +661,18 @@ export const WithMinMaxSize: Story = {
         minSize: 20,
         maxSize: 40,
         children: (
-          <div className="flex h-full flex-col bg-amber-500/20 p-4">
-            <h3 className="font-semibold mb-2">Constrained Panel</h3>
-            <p className="text-xs text-muted-foreground">Min: 20%, Max: 40%</p>
+          <div className="ds:flex ds:h-full ds:flex-col ds:bg-amber-500/20 ds:p-4">
+            <h3 className="ds:font-semibold ds:mb-2">Constrained Panel</h3>
+            <p className="ds:text-xs ds:text-muted-foreground">Min: 20%, Max: 40%</p>
           </div>
         ),
       },
       {
         defaultSize: 70,
         children: (
-          <div className="flex h-full flex-col p-4">
-            <h3 className="font-semibold mb-2">Flexible Panel</h3>
-            <p className="text-sm text-muted-foreground">
+          <div className="ds:flex ds:h-full ds:flex-col ds:p-4">
+            <h3 className="ds:font-semibold ds:mb-2">Flexible Panel</h3>
+            <p className="ds:text-sm ds:text-muted-foreground">
               This panel has no min/max constraints.
             </p>
           </div>
@@ -681,7 +681,7 @@ export const WithMinMaxSize: Story = {
     ],
   },
   render: (args) => (
-    <div className="h-[300px] w-[600px] rounded-lg border">
+    <div className="h-[300px] w-[600px] ds:rounded-lg ds:border">
       <Resizable {...args} />
     </div>
   ),

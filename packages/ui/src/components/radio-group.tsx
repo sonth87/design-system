@@ -165,12 +165,12 @@ function RadioGroupItem({
     >
       <RadioGroupPrimitive.Indicator
         data-slot="radio-group-indicator"
-        className="relative flex items-center justify-center"
+        className="ds:relative ds:flex ds:items-center ds:justify-center"
       >
         {variant === "button-group" ? (
-          <CircleIcon className="fill-current size-2" />
+          <CircleIcon className="ds:fill-current ds:size-2" />
         ) : (
-          <CircleIcon className="fill-current absolute top-1/2 left-1/2 size-2 -translate-x-1/2 -translate-y-1/2" />
+          <CircleIcon className="ds:fill-current ds:absolute ds:top-1/2 ds:left-1/2 ds:size-2 ds:-translate-x-1/2 ds:-translate-y-1/2" />
         )}
       </RadioGroupPrimitive.Indicator>
     </RadioGroupPrimitive.Item>

@@ -117,7 +117,7 @@ export const Underlined: Story = {
 
 export const SizeVariants: Story = {
   render: () => (
-    <div className="flex flex-col items-center gap-4">
+    <div className="ds:flex ds:flex-col ds:items-center ds:gap-4">
       <InputOTP size="xs" />
       <InputOTP size="sm" />
       <InputOTP size="normal" />
@@ -129,7 +129,7 @@ export const SizeVariants: Story = {
 
 export const CustomColorVariants: Story = {
   render: () => (
-    <div className="flex flex-col items-center gap-4">
+    <div className="ds:flex ds:flex-col ds:items-center ds:gap-4">
       <InputOTP size="normal" childClassName="border-red-500 text-red-500" />
       <InputOTP
         size="normal"
@@ -142,11 +142,11 @@ export const CustomColorVariants: Story = {
       />
       <InputOTP
         size="normal"
-        className="[&>div:first-child]:border-red-500 [&>div:nth-child(2)]:border-green-500  [&>div:nth-child(3)]:border-blue-500 [&>div:nth-child(4)]:border-yellow-500 [&>div:nth-child(5)]:border-purple-500"
+        className="[&>div:first-child]:border-red-500 [&>div:nth-child(2)]:border-green-500 [&>div:nth-child(3)]:border-blue-500 [&>div:nth-child(4)]:border-yellow-500 [&>div:nth-child(5)]:border-purple-500"
       />
       <InputOTP
         size="normal"
-        className="[&>div]:border-none text-white [&>div:first-child]:bg-red-500 [&>div:nth-child(2)]:bg-green-500  [&>div:nth-child(3)]:bg-blue-500 [&>div:nth-child(4)]:bg-yellow-500 [&>div:nth-child(5)]:bg-purple-500"
+        className="[&>div]:border-none ds:text-white [&>div:first-child]:bg-red-500 [&>div:nth-child(2)]:bg-green-500 [&>div:nth-child(3)]:bg-blue-500 [&>div:nth-child(4)]:bg-yellow-500 [&>div:nth-child(5)]:bg-purple-500"
       />
     </div>
   ),

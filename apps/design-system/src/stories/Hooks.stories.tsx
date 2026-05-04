@@ -50,7 +50,7 @@ type Story = StoryObj;
  *   onChange={handleChange}
  *   placeholder="Type something..."
  *   size="lg"
- *   className="my-4"
+ *   className="ds:my-4"
  * />
  * );
  * ```
@@ -70,7 +70,7 @@ export const DebounceCallback: Story = {
     };
 
     return (
-      <div className="max-w-sm">
+      <div className="ds:max-w-sm">
         <h3>Debounce Callback</h3>
         <Input
           type="text"
@@ -78,7 +78,7 @@ export const DebounceCallback: Story = {
           onChange={handleChange}
           placeholder="Type something..."
           size="lg"
-          className="my-4"
+          className="ds:my-4"
         />
         <p>You typed: {output}</p>
       </div>
@@ -106,7 +106,7 @@ export const DebounceValue: Story = {
     const [debouncedValue] = useDebounceValue(input, 500);
 
     return (
-      <div className="max-w-sm">
+      <div className="ds:max-w-sm">
         <h3>Debounce Value</h3>
         <Input
           type="text"
@@ -114,7 +114,7 @@ export const DebounceValue: Story = {
           onChange={(e) => setInput(e.target.value)}
           placeholder="Type something..."
           size="lg"
-          className="my-4"
+          className="ds:my-4"
         />
         <p>Input: {input}</p>
         <p>Debounced: {debouncedValue}</p>
@@ -153,25 +153,25 @@ export const IntersectionObserver: Story = {
     }, [ref]);
 
     return (
-      <div className="h-[200vh] p-5">
+      <div className="h-[200vh] ds:p-5">
         <h3>Intersection Observer</h3>
         <p>Scroll down to see the target element.</p>
         <div
           ref={targetRef}
           className={cn(
-            "flex flex-col items-center justify-center mt-[50vh] text-white p-4",
-            isIntersecting ? "bg-green-500/50" : "bg-red-500/50"
+            "ds:flex ds:flex-col ds:items-center ds:justify-center mt-[50vh] ds:text-white ds:p-4",
+            isIntersecting ? "ds:bg-green-500/50" : "ds:bg-red-500/50"
           )}
         >
           {isIntersecting ? "Intersecting!" : "Not intersecting"}
 
           {/* Diagram */}
-          <div className="p-4 rounded">
-            <h4 className="text-sm font-semibold mb-2">How it works</h4>
+          <div className="ds:p-4 ds:rounded">
+            <h4 className="ds:text-sm ds:font-semibold ds:mb-2">How it works</h4>
             <pre
               className={cn(
-                "text-xs font-mono whitespace-pre-wrap",
-                isIntersecting ? "text-green-600" : "text-red-600"
+                "ds:text-xs ds:font-mono ds:whitespace-pre-wrap",
+                isIntersecting ? "ds:text-green-600" : "ds:text-red-600"
               )}
             >
               {`Viewport (Browser Window)
@@ -213,14 +213,14 @@ React.useEffect(() => {
   }
 }, [ref]);
 
-<div className="h-[200vh] p-5">
+<div className="h-[200vh] ds:p-5">
   <h3>Intersection Observer</h3>
   <p>Scroll down to see the target element.</p>
   <div
     ref={targetRef}
     className={cn(
-      "h-24 flex items-center justify-center mt-[50vh]",
-      isIntersecting ? "bg-green-500" : "bg-red-500"
+      "ds:h-24 ds:flex ds:items-center ds:justify-center mt-[50vh]",
+      isIntersecting ? "ds:bg-green-500" : "ds:bg-red-500"
     )}
   >
     {isIntersecting ? "Intersecting!" : "Not intersecting"}
@@ -283,23 +283,23 @@ export const UseScript: Story = {
     };
 
     return (
-      <div className="p-6 max-w-sm mx-auto space-y-4">
+      <div className="ds:p-6 ds:max-w-sm ds:mx-auto ds:space-y-4">
         {/* Header */}
-        <div className="text-center space-y-1">
-          <h3 className="text-lg font-semibold">Script Loader Demo</h3>
-          <p className="text-sm text-muted-foreground">
+        <div className="ds:text-center ds:space-y-1">
+          <h3 className="ds:text-lg ds:font-semibold">Script Loader Demo</h3>
+          <p className="ds:text-sm ds:text-muted-foreground">
             Dynamic canvas-confetti loading
           </p>
         </div>
 
         {/* Status Display */}
-        <div className="space-y-2">
-          <Label className="text-sm font-medium">Loading Status</Label>
-          <div className="bg-muted rounded p-2 min-h-[40px] flex items-center justify-center">
-            <div className="flex items-center gap-2">
+        <div className="ds:space-y-2">
+          <Label className="ds:text-sm ds:font-medium">Loading Status</Label>
+          <div className="ds:bg-muted ds:rounded ds:p-2 min-h-[40px] ds:flex ds:items-center ds:justify-center">
+            <div className="ds:flex ds:items-center ds:gap-2">
               <Badge
                 color={getStatusVariant(status)}
-                className="text-sm px-3 py-1 font-mono"
+                className="ds:text-sm ds:px-3 ds:py-1 ds:font-mono"
               >
                 {status}
               </Badge>
@@ -307,9 +307,9 @@ export const UseScript: Story = {
           </div>
         </div>
         {/* Action Button */}
-        <div className="space-y-2">
-          <Label className="text-sm font-medium">Test Script</Label>
-          <div className="min-h-[40px] flex items-center">
+        <div className="ds:space-y-2">
+          <Label className="ds:text-sm ds:font-medium">Test Script</Label>
+          <div className="min-h-[40px] ds:flex ds:items-center">
             <Button onClick={triggerConfetti} disabled={status !== "ready"}>
               {status === "ready"
                 ? "🎉 Trigger Confetti!"
@@ -319,25 +319,25 @@ export const UseScript: Story = {
         </div>
 
         {/* Status Messages */}
-        <div className="text-center min-h-[32px] flex items-center justify-center">
+        <div className="ds:text-center min-h-[32px] ds:flex ds:items-center ds:justify-center">
           {status === "ready" && (
-            <div className="text-xs text-green-600">
+            <div className="ds:text-xs ds:text-green-600">
               Script loaded! Click button to test confetti
             </div>
           )}
 
           {status === "error" && (
-            <div className="text-xs text-red-600">
+            <div className="ds:text-xs ds:text-red-600">
               Failed to load script. Check your connection.
             </div>
           )}
           {status === "loading" && (
-            <div className="text-xs text-muted-foreground">
+            <div className="ds:text-xs ds:text-muted-foreground">
               Loading canvas-confetti from CDN...
             </div>
           )}
           {status === "idle" && (
-            <div className="text-xs text-muted-foreground">
+            <div className="ds:text-xs ds:text-muted-foreground">
               Script loader ready
             </div>
           )}
@@ -398,17 +398,17 @@ const ChildWithStableCallback = React.memo(
     renderCount.current += 1;
 
     return (
-      <div className="space-y-2 p-4 border rounded bg-green-50 dark:bg-green-950">
-        <div className="flex items-center justify-between">
-          <span className="text-sm font-medium">{label}</span>
-          <Badge color="muted" className="font-mono">
+      <div className="ds:space-y-2 ds:p-4 ds:border ds:rounded ds:bg-green-50 ds:dark:bg-green-950">
+        <div className="ds:flex ds:items-center ds:justify-between">
+          <span className="ds:text-sm ds:font-medium">{label}</span>
+          <Badge color="muted" className="ds:font-mono">
             {rendersLabel} {renderCount.current}
           </Badge>
         </div>
-        <Button onClick={onClick} className="w-full">
+        <Button onClick={onClick} className="ds:w-full">
           {buttonText}
         </Button>
-        <p className="text-xs text-muted-foreground">{description}</p>
+        <p className="ds:text-xs ds:text-muted-foreground">{description}</p>
       </div>
     );
   }
@@ -433,17 +433,17 @@ const ChildWithUnstableCallback = React.memo(
     renderCount.current += 1;
 
     return (
-      <div className="space-y-2 p-4 border rounded bg-red-50 dark:bg-red-950">
-        <div className="flex items-center justify-between">
-          <span className="text-sm font-medium">{label}</span>
-          <Badge color="destructive" className="font-mono">
+      <div className="ds:space-y-2 ds:p-4 ds:border ds:rounded ds:bg-red-50 ds:dark:bg-red-950">
+        <div className="ds:flex ds:items-center ds:justify-between">
+          <span className="ds:text-sm ds:font-medium">{label}</span>
+          <Badge color="destructive" className="ds:font-mono">
             {rendersLabel} {renderCount.current}
           </Badge>
         </div>
-        <Button onClick={onClick} className="w-full">
+        <Button onClick={onClick} className="ds:w-full">
           {buttonText}
         </Button>
-        <p className="text-xs text-muted-foreground">{description}</p>
+        <p className="ds:text-xs ds:text-muted-foreground">{description}</p>
       </div>
     );
   }
@@ -514,40 +514,40 @@ export const UseCallbackRef: Story = {
       };
 
       return (
-        <div className="max-w-2xl space-y-6">
+        <div className="ds:max-w-2xl ds:space-y-6">
           <div>
-            <h3 className="text-lg font-semibold">
+            <h3 className="ds:text-lg ds:font-semibold">
               {i18n.t("stories.usecallbackref.title")}
             </h3>
-            <p className="text-sm text-muted-foreground mt-1">
+            <p className="ds:text-sm ds:text-muted-foreground ds:mt-1">
               {i18n.t("stories.usecallbackref.subtitle")}
             </p>
           </div>
 
           {/* Parent Status */}
-          <div className="p-4 bg-blue-50 dark:bg-blue-950 border border-blue-200 dark:border-blue-800 rounded space-y-2">
-            <div className="flex items-center justify-between">
-              <span className="font-medium">
+          <div className="ds:p-4 ds:bg-blue-50 ds:dark:bg-blue-950 ds:border ds:border-blue-200 ds:dark:border-blue-800 ds:rounded ds:space-y-2">
+            <div className="ds:flex ds:items-center ds:justify-between">
+              <span className="ds:font-medium">
                 {i18n.t("stories.usecallbackref.parentComponent")}
               </span>
-              <Badge color="secondary" className="font-mono">
+              <Badge color="secondary" className="ds:font-mono">
                 {i18n.t("stories.usecallbackref.renders")}{" "}
                 {parentRenderCount.current}
               </Badge>
             </div>
-            <div className="flex items-center gap-2">
-              <span className="text-sm">
+            <div className="ds:flex ds:items-center ds:gap-2">
+              <span className="ds:text-sm">
                 {i18n.t("stories.usecallbackref.count")}
               </span>
-              <Badge className="font-mono text-lg px-3 py-1">{count}</Badge>
+              <Badge className="ds:font-mono ds:text-lg ds:px-3 ds:py-1">{count}</Badge>
             </div>
-            <p className="text-xs text-muted-foreground">
+            <p className="ds:text-xs ds:text-muted-foreground">
               {i18n.t("stories.usecallbackref.parentDescription")}
             </p>
           </div>
 
           {/* Children Components */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="ds:grid ds:grid-cols-1 ds:md:grid-cols-2 ds:gap-4">
             <ChildWithStableCallback
               onClick={stableCallback}
               label={i18n.t("stories.usecallbackref.withCallbackRef")}
@@ -567,20 +567,20 @@ export const UseCallbackRef: Story = {
           </div>
 
           {/* Explanation */}
-          <div className="p-4 bg-muted rounded space-y-2">
-            <p className="text-sm font-medium">
+          <div className="ds:p-4 ds:bg-muted ds:rounded ds:space-y-2">
+            <p className="ds:text-sm ds:font-medium">
               {i18n.t("stories.usecallbackref.explanationTitle")}
             </p>
-            <ul className="text-sm space-y-1 list-disc list-inside text-muted-foreground">
+            <ul className="ds:text-sm ds:space-y-1 ds:list-disc ds:list-inside ds:text-muted-foreground">
               <li>{i18n.t("stories.usecallbackref.explanation1")}</li>
               <li>{i18n.t("stories.usecallbackref.explanation2")}</li>
               <li>{i18n.t("stories.usecallbackref.explanation3")}</li>
             </ul>
 
             {/* Diagram */}
-            <div className="mt-4 p-4 bg-white dark:bg-gray-800 rounded border">
-              <h4 className="text-sm font-semibold mb-2">Flow Diagram</h4>
-              <pre className="text-xs font-mono text-muted-foreground whitespace-pre-wrap">
+            <div className="ds:mt-4 ds:p-4 ds:bg-white ds:dark:bg-gray-800 ds:rounded ds:border">
+              <h4 className="ds:text-sm ds:font-semibold ds:mb-2">Flow Diagram</h4>
+              <pre className="ds:text-xs ds:font-mono ds:text-muted-foreground ds:whitespace-pre-wrap">
                 {`Without useCallbackRef:
 Parent Component ──(render)──► New Callback ──(prop)──► Child Component (re-renders)
 
@@ -660,75 +660,75 @@ export const ScrollLock: Story = {
     });
 
     return (
-      <div className="max-w-2xl space-y-6">
+      <div className="ds:max-w-2xl ds:space-y-6">
         <h3>Scroll Lock</h3>
 
         {/* Body Scroll Lock */}
-        <div className="space-y-4">
-          <h4 className="text-lg font-medium">Body Scroll Lock</h4>
-          <div className="space-y-2">
-            <Label className="text-sm font-medium">Status</Label>
+        <div className="ds:space-y-4">
+          <h4 className="ds:text-lg ds:font-medium">Body Scroll Lock</h4>
+          <div className="ds:space-y-2">
+            <Label className="ds:text-sm ds:font-medium">Status</Label>
             <Badge
               color={isLocked ? "destructive" : "muted"}
-              className="font-mono"
+              className="ds:font-mono"
             >
               {isLocked ? "Locked" : "Unlocked"}
             </Badge>
           </div>
-          <div className="flex gap-2">
-            <Button onClick={lock} disabled={isLocked} className="flex-1">
+          <div className="ds:flex ds:gap-2">
+            <Button onClick={lock} disabled={isLocked} className="ds:flex-1">
               Lock Body Scroll
             </Button>
-            <Button onClick={unlock} disabled={!isLocked} className="flex-1">
+            <Button onClick={unlock} disabled={!isLocked} className="ds:flex-1">
               Unlock Body Scroll
             </Button>
           </div>
-          <p className="text-xs text-muted-foreground">
+          <p className="ds:text-xs ds:text-muted-foreground">
             Try scrolling the page after locking. The page scroll should be
             disabled.
           </p>
         </div>
 
         {/* Container Scroll Lock */}
-        <div className="space-y-4">
-          <h4 className="text-lg font-medium">Container Scroll Lock</h4>
-          <div className="space-y-2">
-            <Label className="text-sm font-medium">Status</Label>
+        <div className="ds:space-y-4">
+          <h4 className="ds:text-lg ds:font-medium">Container Scroll Lock</h4>
+          <div className="ds:space-y-2">
+            <Label className="ds:text-sm ds:font-medium">Status</Label>
             <Badge
               color={isContainerLocked ? "destructive" : "muted"}
-              className="font-mono"
+              className="ds:font-mono"
             >
               {isContainerLocked ? "Locked" : "Unlocked"}
             </Badge>
           </div>
-          <div className="flex gap-2">
+          <div className="ds:flex ds:gap-2">
             <Button
               onClick={lockContainer}
               disabled={isContainerLocked}
-              className="flex-1"
+              className="ds:flex-1"
             >
               Lock Container Scroll
             </Button>
             <Button
               onClick={unlockContainer}
               disabled={!isContainerLocked}
-              className="flex-1"
+              className="ds:flex-1"
             >
               Unlock Container Scroll
             </Button>
           </div>
-          <p className="text-xs text-muted-foreground">
+          <p className="ds:text-xs ds:text-muted-foreground">
             Try scrolling inside the container after locking. Only the container
             scroll should be disabled.
           </p>
           <div
             ref={containerRef}
-            className="h-64 bg-gradient-to-b from-green-200 to-blue-200 rounded p-4 overflow-auto border-2 border-dashed border-gray-300"
+            className="ds:h-64 ds:bg-gradient-to-b ds:from-green-200 ds:to-blue-200 ds:rounded ds:p-4 overflow-auto ds:border-2 ds:border-dashed ds:border-gray-300"
             style={{ height: "200px" }}
           >
             <p>This is a scrollable container.</p>
             <p>Scroll down to see more content...</p>
-            <div className="h-96 bg-gray-100 rounded p-2 mt-4">
+            <div className="ds:h-96 ds:bg-gray-100 ds:rounded ds:p-2 ds:mt-4">
               <p>More content here.</p>
               <p>Even more content.</p>
               <p>Keep scrolling...</p>
@@ -776,30 +776,30 @@ export const MousePosition: Story = {
     const isInside =
       mouse.elementX !== undefined && mouse.elementY !== undefined;
     return (
-      <div className="p-6 max-w-sm mx-auto space-y-6">
+      <div className="ds:p-6 ds:max-w-sm ds:mx-auto ds:space-y-6">
         {/* Header */}
-        <div className="text-center space-y-2">
-          <h3 className="text-lg font-semibold">Mouse Position Demo</h3>
-          <p className="text-sm text-muted-foreground">
+        <div className="ds:text-center ds:space-y-2">
+          <h3 className="ds:text-lg ds:font-semibold">Mouse Position Demo</h3>
+          <p className="ds:text-sm ds:text-muted-foreground">
             Real-time cursor tracking
           </p>
         </div>
 
         {/* Tracking Area */}
-        <div className="space-y-2">
-          <Label className="text-sm font-medium">Tracking Area</Label>
+        <div className="ds:space-y-2">
+          <Label className="ds:text-sm ds:font-medium">Tracking Area</Label>
           <div
             ref={trackingRef as any}
-            className="bg-muted rounded-lg h-20 flex items-center justify-center relative cursor-crosshair"
+            className="ds:bg-muted ds:rounded-lg ds:h-20 ds:flex ds:items-center ds:justify-center ds:relative cursor-crosshair"
           >
-            <span className="text-sm text-muted-foreground">
+            <span className="ds:text-sm ds:text-muted-foreground">
               Move mouse here
             </span>
 
             {/* Position indicator dot */}
             {isInside && (
               <div
-                className="absolute w-2 h-2 bg-primary rounded-full transform -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+                className="ds:absolute ds:w-2 ds:h-2 ds:bg-primary ds:rounded-full ds:transform ds:-translate-x-1/2 ds:-translate-y-1/2 ds:pointer-events-none"
                 style={{
                   left: `${mouse.elementX}px`,
                   top: `${mouse.elementY}px`,
@@ -809,21 +809,21 @@ export const MousePosition: Story = {
           </div>
         </div>
         {/* Position Display */}
-        <div className="space-y-2">
-          <Label className="text-sm font-medium">Coordinates</Label>
-          <div className="grid grid-cols-2 gap-2">
-            <div className="bg-muted rounded p-2 min-h-[40px] flex items-center justify-center">
-              <div className="text-center">
-                <div className="text-xs text-muted-foreground">Global</div>
-                <Badge variant="outline" className="text-xs font-mono">
+        <div className="ds:space-y-2">
+          <Label className="ds:text-sm ds:font-medium">Coordinates</Label>
+          <div className="ds:grid ds:grid-cols-2 ds:gap-2">
+            <div className="ds:bg-muted ds:rounded ds:p-2 min-h-[40px] ds:flex ds:items-center ds:justify-center">
+              <div className="ds:text-center">
+                <div className="ds:text-xs ds:text-muted-foreground">Global</div>
+                <Badge variant="outline" className="ds:text-xs ds:font-mono">
                   {mouse.x}, {mouse.y}
                 </Badge>
               </div>
             </div>
-            <div className="bg-muted rounded p-2 min-h-[40px] flex items-center justify-center">
-              <div className="text-center">
-                <div className="text-xs text-muted-foreground">Relative</div>
-                <Badge variant="outline" className="text-xs font-mono">
+            <div className="ds:bg-muted ds:rounded ds:p-2 min-h-[40px] ds:flex ds:items-center ds:justify-center">
+              <div className="ds:text-center">
+                <div className="ds:text-xs ds:text-muted-foreground">Relative</div>
+                <Badge variant="outline" className="ds:text-xs ds:font-mono">
                   {isInside
                     ? `${Math.round(mouse.elementX!)}, ${Math.round(mouse.elementY!)}`
                     : "-, -"}
@@ -833,20 +833,20 @@ export const MousePosition: Story = {
           </div>
         </div>
         {/* Status */}
-        <div className="space-y-2">
-          <Label className="text-sm font-medium">Status</Label>
-          <div className="bg-muted rounded p-2 min-h-[40px] flex items-center justify-center">
+        <div className="ds:space-y-2">
+          <Label className="ds:text-sm ds:font-medium">Status</Label>
+          <div className="ds:bg-muted ds:rounded ds:p-2 min-h-[40px] ds:flex ds:items-center ds:justify-center">
             <Badge
               color={isInside ? "muted" : "secondary"}
-              className="text-sm px-3 py-1"
+              className="ds:text-sm ds:px-3 ds:py-1"
             >
               {isInside ? "🎯 Tracking" : "📍 Waiting"}
             </Badge>
           </div>
         </div>
         {/* Instructions */}
-        <div className="text-center min-h-[20px] flex items-center justify-center">
-          <div className="text-xs text-muted-foreground">
+        <div className="ds:text-center min-h-[20px] ds:flex ds:items-center ds:justify-center">
+          <div className="ds:text-xs ds:text-muted-foreground">
             Hover over tracking area to see coordinates
           </div>
         </div>
@@ -869,16 +869,16 @@ export const OnClickOutside: Story = {
       });
 
       return (
-        <div className="max-w-sm space-y-2">
+        <div className="ds:max-w-sm ds:space-y-2">
           <h3>On Click Outside</h3>
           <div
             ref={ref}
-            className="bg-muted rounded-lg h-20 flex items-center justify-center relative cursor-crosshair"
+            className="ds:bg-muted ds:rounded-lg ds:h-20 ds:flex ds:items-center ds:justify-center ds:relative cursor-crosshair"
             onClick={() => setClickedOutside(false)}
           >
             Click inside me to reset
           </div>
-          <div className="flex items-center gap-2">
+          <div className="ds:flex ds:items-center ds:gap-2">
             Clicked outside:
             <Badge color={clickedOutside ? "success" : "error"}>
               {clickedOutside ? "Yes" : "No"}
@@ -933,42 +933,42 @@ export const EventListener: Story = {
     useEventListener("keydown", handleKeyDown);
 
     return (
-      <div className="p-6 max-w-sm mx-auto space-y-6">
+      <div className="ds:p-6 ds:max-w-sm ds:mx-auto ds:space-y-6">
         {/* Header */}
-        <div className="text-center space-y-2">
-          <h3 className="text-lg font-semibold">Event Listener Demo</h3>
-          <p className="text-sm text-muted-foreground">
+        <div className="ds:text-center ds:space-y-2">
+          <h3 className="ds:text-lg ds:font-semibold">Event Listener Demo</h3>
+          <p className="ds:text-sm ds:text-muted-foreground">
             Global keyboard event handling
           </p>
         </div>
 
         {/* Key Display */}
-        <div className="space-y-2">
-          <Label className="text-sm font-medium">Last Key Pressed</Label>
-          <div className="bg-muted rounded p-3 min-h-[48px] flex items-center justify-center">
+        <div className="ds:space-y-2">
+          <Label className="ds:text-sm ds:font-medium">Last Key Pressed</Label>
+          <div className="ds:bg-muted ds:rounded ds:p-3 min-h-[48px] ds:flex ds:items-center ds:justify-center">
             <Badge
               color={keyPressed ? "primary" : "muted"}
-              className="font-mono text-lg px-4 py-2"
+              className="ds:font-mono ds:text-lg ds:px-4 ds:py-2"
             >
               {keyPressed || "None"}
             </Badge>
           </div>
         </div>
         {/* Clear Button */}
-        <div className="min-h-[36px] flex items-center">
+        <div className="min-h-[36px] ds:flex ds:items-center">
           <Button
             onClick={() => setKeyPressed("")}
             disabled={!keyPressed}
             variant="outline"
             size="sm"
-            className="w-full text-sm h-9"
+            className="ds:w-full ds:text-sm ds:h-9"
           >
             Clear
           </Button>
         </div>
         {/* Instructions */}
-        <div className="text-center min-h-[20px] flex items-center justify-center">
-          <div className="text-xs text-muted-foreground">
+        <div className="ds:text-center min-h-[20px] ds:flex ds:items-center ds:justify-center">
+          <div className="ds:text-xs ds:text-muted-foreground">
             Press any key to see it captured globally
           </div>
         </div>
@@ -1007,50 +1007,50 @@ export const MediaQuery: Story = {
       const isDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
 
       return (
-        <div className="p-6 max-w-sm mx-auto space-y-6">
+        <div className="ds:p-6 ds:max-w-sm ds:mx-auto ds:space-y-6">
           {/* Header */}
-          <div className="text-center space-y-2">
-            <h3 className="text-lg font-semibold">Media Query Demo</h3>
-            <p className="text-sm text-muted-foreground">
+          <div className="ds:text-center ds:space-y-2">
+            <h3 className="ds:text-lg ds:font-semibold">Media Query Demo</h3>
+            <p className="ds:text-sm ds:text-muted-foreground">
               Responsive breakpoint detection
             </p>
           </div>
 
           {/* Breakpoints */}
-          <div className="space-y-4">
-            <div className="space-y-2">
-              <Label className="text-sm font-medium">Screen Size</Label>
-              <div className="grid grid-cols-3 gap-2">
-                <div className="bg-muted rounded p-2 min-h-[40px] flex flex-col items-center justify-center">
+          <div className="ds:space-y-4">
+            <div className="ds:space-y-2">
+              <Label className="ds:text-sm ds:font-medium">Screen Size</Label>
+              <div className="ds:grid ds:grid-cols-3 ds:gap-2">
+                <div className="ds:bg-muted ds:rounded ds:p-2 min-h-[40px] ds:flex ds:flex-col ds:items-center ds:justify-center">
                   <Badge
                     color={isSmall ? "success" : "muted"}
-                    className="text-xs"
+                    className="ds:text-xs"
                   >
                     Small
                   </Badge>
-                  <span className="text-xs text-muted-foreground mt-1">
+                  <span className="ds:text-xs ds:text-muted-foreground ds:mt-1">
                     ≤768px
                   </span>
                 </div>
-                <div className="bg-muted rounded p-2 min-h-[40px] flex flex-col items-center justify-center">
+                <div className="ds:bg-muted ds:rounded ds:p-2 min-h-[40px] ds:flex ds:flex-col ds:items-center ds:justify-center">
                   <Badge
                     color={isMedium ? "success" : "muted"}
-                    className="text-xs"
+                    className="ds:text-xs"
                   >
                     Medium
                   </Badge>
-                  <span className="text-xs text-muted-foreground mt-1">
+                  <span className="ds:text-xs ds:text-muted-foreground ds:mt-1">
                     769-1024px
                   </span>
                 </div>
-                <div className="bg-muted rounded p-2 min-h-[40px] flex flex-col items-center justify-center">
+                <div className="ds:bg-muted ds:rounded ds:p-2 min-h-[40px] ds:flex ds:flex-col ds:items-center ds:justify-center">
                   <Badge
                     color={isLarge ? "success" : "muted"}
-                    className="text-xs"
+                    className="ds:text-xs"
                   >
                     Large
                   </Badge>
-                  <span className="text-xs text-muted-foreground mt-1">
+                  <span className="ds:text-xs ds:text-muted-foreground ds:mt-1">
                     ≥1025px
                   </span>
                 </div>
@@ -1058,12 +1058,12 @@ export const MediaQuery: Story = {
             </div>
 
             {/* Dark Mode */}
-            <div className="space-y-2">
-              <Label className="text-sm font-medium">Color Scheme</Label>
-              <div className="bg-muted rounded p-2 min-h-[40px] flex items-center justify-center">
+            <div className="ds:space-y-2">
+              <Label className="ds:text-sm ds:font-medium">Color Scheme</Label>
+              <div className="ds:bg-muted ds:rounded ds:p-2 min-h-[40px] ds:flex ds:items-center ds:justify-center">
                 <Badge
                   color={isDarkMode ? "secondary" : "muted"}
-                  className="text-sm px-3 py-1"
+                  className="ds:text-sm ds:px-3 ds:py-1"
                 >
                   {isDarkMode ? "Dark Mode" : "Light Mode"}
                 </Badge>
@@ -1072,8 +1072,8 @@ export const MediaQuery: Story = {
           </div>
 
           {/* Instructions */}
-          <div className="text-center min-h-[20px] flex items-center justify-center">
-            <div className="text-xs text-muted-foreground">
+          <div className="ds:text-center min-h-[20px] ds:flex ds:items-center ds:justify-center">
+            <div className="ds:text-xs ds:text-muted-foreground">
               Resize your browser window to see changes
             </div>
           </div>

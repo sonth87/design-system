@@ -143,7 +143,7 @@ const TextPressure: React.FC<TextPressureProps> = ({
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-full overflow-hidden bg-transparent"
+      className="ds:relative ds:w-full ds:h-full ds:overflow-hidden ds:bg-transparent"
     >
       <style>{`
         @font-face {
@@ -169,8 +169,8 @@ const TextPressure: React.FC<TextPressureProps> = ({
       <h1
         ref={titleRef}
         className={`text-pressure-title ${className} ${
-          flex ? "flex justify-between" : ""
-        } ${stroke ? "stroke" : ""} uppercase text-center`}
+          flex ? "ds:flex ds:justify-between" : ""
+        } ${stroke ? "ds:stroke" : ""} ds:uppercase ds:text-center`}
         style={{
           fontFamily,
           fontSize: fontSize,
@@ -189,7 +189,7 @@ const TextPressure: React.FC<TextPressureProps> = ({
               spansRef.current[i] = el;
             }}
             data-char={char}
-            className="inline-block"
+            className="ds:inline-block"
           >
             {char}
           </span>

@@ -88,28 +88,28 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
     return (
       <div className={className}>
         <div
-          className={cn("flex flex-col gap-1.5 relative", {
-            "floating-label": isFloatLabel,
+          className={cn("ds:flex ds:flex-col ds:gap-1.5 ds:relative", {
+            "ds:floating-label": isFloatLabel,
           })}
         >
           {!isFloatLabel && label && (
             <Label
               htmlFor={textareaId}
-              className="flex gap-2 text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+              className="ds:flex ds:gap-2 ds:text-sm ds:font-medium ds:leading-none ds:peer-disabled:cursor-not-allowed ds:peer-disabled:opacity-70"
             >
               <span>
                 {label}
-                {required && <span className="text-error ml-0.5">*</span>}
+                {required && <span className="ds:text-error ds:ml-0.5">*</span>}
               </span>
               {infoTooltip && (
                 <Tooltip content={infoTooltip}>
-                  <Info className="size-3.5 min-w-3.5" />
+                  <Info className="ds:size-3.5 ds:min-w-3.5" />
                 </Tooltip>
               )}
             </Label>
           )}
 
-          <div className="relative">
+          <div className="ds:relative">
             <STextarea
               ref={innerRef}
               id={textareaId}
@@ -143,7 +143,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
                 size={size}
                 infoTooltip={infoTooltip}
                 required={required}
-                className="peer-placeholder-shown:items-start"
+                className="ds:peer-placeholder-shown:items-start"
               >
                 {label}
               </FloatingLabel>
@@ -155,22 +155,22 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
                 type="button"
                 tabIndex={-1}
                 className={cn(
-                  "absolute top-2 right-2 p-1 rounded hover:bg-accent transition-colors"
+                  "ds:absolute ds:top-2 ds:right-2 ds:p-1 ds:rounded ds:hover:bg-accent ds:transition-colors"
                 )}
                 onClick={handleClear}
                 disabled={props.disabled}
               >
-                <X className="size-4" />
+                <X className="ds:size-4" />
               </button>
             )}
           </div>
 
           {(helperText || (showCharCount && typeof maxLength === "number")) && (
-            <div className="flex items-center justify-between text-xs gap-2">
+            <div className="ds:flex ds:items-center ds:justify-between ds:text-xs ds:gap-2">
               {helperText && (
                 <p
                   className={cn(
-                    "text-xs",
+                    "ds:text-xs",
                     state ? helperTextStyles?.[state] : ""
                   )}
                 >
@@ -178,7 +178,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
                 </p>
               )}
               {showCharCount && typeof maxLength === "number" && (
-                <span className="ml-auto text-muted-foreground">
+                <span className="ds:ml-auto ds:text-muted-foreground">
                   {charCount} / {maxLength}
                 </span>
               )}

@@ -70,16 +70,16 @@ const BasicDemo = (props: any) => {
   return (
     <div>
       <div
-        className="relative cursor-pointer inline-block"
+        className="ds:relative cursor-pointer ds:inline-block"
         onClick={() => setVisible(true)}
       >
         <img
           src={sampleImages[0].src}
           alt={sampleImages[0].alt}
-          className="w-80 h-60 object-cover rounded-lg"
+          className="ds:w-80 ds:h-60 object-cover ds:rounded-lg"
         />
-        <div className="absolute inset-0 bg-black/0 hover:bg-black/10 transition-colors flex items-center justify-center rounded-lg pointer-events-none">
-          <span className="text-white opacity-0 hover:opacity-100 transition-opacity">
+        <div className="ds:absolute ds:inset-0 ds:bg-black/0 ds:hover:bg-black/10 ds:transition-colors ds:flex ds:items-center ds:justify-center ds:rounded-lg ds:pointer-events-none">
+          <span className="ds:text-white ds:opacity-0 ds:hover:opacity-100 ds:transition-opacity">
             Click to preview
           </span>
         </div>
@@ -111,16 +111,16 @@ const SingleImageDemo = () => {
   return (
     <div>
       <div
-        className="relative cursor-pointer inline-block"
+        className="ds:relative cursor-pointer ds:inline-block"
         onClick={() => setVisible(true)}
       >
         <img
           src={sampleImages[0].src}
           alt={sampleImages[0].alt}
-          className="w-80 h-60 object-cover rounded-lg"
+          className="ds:w-80 ds:h-60 object-cover ds:rounded-lg"
         />
-        <div className="absolute inset-0 bg-black/0 hover:bg-black/10 transition-colors flex items-center justify-center rounded-lg pointer-events-none">
-          <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity">
+        <div className="ds:absolute ds:inset-0 ds:bg-black/0 ds:hover:bg-black/10 ds:transition-colors ds:flex ds:items-center ds:justify-center ds:rounded-lg ds:pointer-events-none">
+          <span className="ds:text-white ds:opacity-0 ds:group-hover:opacity-100 ds:transition-opacity">
             Click to preview
           </span>
         </div>
@@ -147,11 +147,11 @@ const ImageGridDemo = () => {
 
   return (
     <div>
-      <div className="grid grid-cols-2 gap-4 max-w-2xl">
+      <div className="ds:grid ds:grid-cols-2 ds:gap-4 ds:max-w-2xl">
         {sampleImages.map((img, index) => (
           <div
             key={index}
-            className="relative group cursor-pointer"
+            className="ds:relative ds:group cursor-pointer"
             onClick={() => {
               setCurrentIndex(index);
               setVisible(true);
@@ -160,10 +160,10 @@ const ImageGridDemo = () => {
             <img
               src={img.src}
               alt={img.alt}
-              className="w-full h-48 object-cover rounded-lg"
+              className="ds:w-full ds:h-48 object-cover ds:rounded-lg"
             />
-            <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center rounded-lg">
-              <span className="text-white text-sm">Click to preview</span>
+            <div className="ds:absolute ds:inset-0 ds:bg-black/50 ds:opacity-0 ds:group-hover:opacity-100 ds:transition-opacity ds:flex ds:items-center ds:justify-center ds:rounded-lg">
+              <span className="ds:text-white ds:text-sm">Click to preview</span>
             </div>
           </div>
         ))}
@@ -193,17 +193,17 @@ const CustomConfigDemo = () => {
   return (
     <div>
       <div
-        className="relative cursor-pointer inline-block group"
+        className="ds:relative cursor-pointer ds:inline-block ds:group"
         onClick={() => setVisible(true)}
       >
         <img
           src={sampleImages[1].src}
           alt={sampleImages[1].alt}
-          className="w-80 h-60 object-cover rounded-lg"
+          className="ds:w-80 ds:h-60 object-cover ds:rounded-lg"
         />
-        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center rounded-lg pointer-events-none">
-          <div className="bg-black/70 px-4 py-2 rounded-lg">
-            <span className="text-white text-sm font-medium">
+        <div className="ds:absolute ds:inset-0 ds:bg-black/0 ds:group-hover:bg-black/30 ds:transition-colors ds:flex ds:items-center ds:justify-center ds:rounded-lg ds:pointer-events-none">
+          <div className="ds:bg-black/70 ds:px-4 ds:py-2 ds:rounded-lg">
+            <span className="ds:text-white ds:text-sm ds:font-medium">
               Custom Config (Rotatable, Scalable, Downloadable)
             </span>
           </div>
@@ -237,17 +237,17 @@ const WithoutToolbarDemo = () => {
   return (
     <div>
       <div
-        className="relative cursor-pointer inline-block group"
+        className="ds:relative cursor-pointer ds:inline-block ds:group"
         onClick={() => setVisible(true)}
       >
         <img
           src={sampleImages[2].src}
           alt={sampleImages[2].alt}
-          className="w-80 h-60 object-cover rounded-lg"
+          className="ds:w-80 ds:h-60 object-cover ds:rounded-lg"
         />
-        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center rounded-lg pointer-events-none">
-          <div className="bg-black/70 px-4 py-2 rounded-lg">
-            <span className="text-white text-sm font-medium">
+        <div className="ds:absolute ds:inset-0 ds:bg-black/0 ds:group-hover:bg-black/30 ds:transition-colors ds:flex ds:items-center ds:justify-center ds:rounded-lg ds:pointer-events-none">
+          <div className="ds:bg-black/70 ds:px-4 ds:py-2 ds:rounded-lg">
+            <span className="ds:text-white ds:text-sm ds:font-medium">
               Without Toolbar (No zoom/rotate controls)
             </span>
           </div>
@@ -276,17 +276,17 @@ const WithoutNavbarDemo = () => {
   return (
     <div>
       <div
-        className="relative cursor-pointer inline-block group"
+        className="ds:relative cursor-pointer ds:inline-block ds:group"
         onClick={() => setVisible(true)}
       >
         <img
           src={sampleImages[3].src}
           alt={sampleImages[3].alt}
-          className="w-80 h-60 object-cover rounded-lg"
+          className="ds:w-80 ds:h-60 object-cover ds:rounded-lg"
         />
-        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center rounded-lg pointer-events-none">
-          <div className="bg-black/70 px-4 py-2 rounded-lg">
-            <span className="text-white text-sm font-medium">
+        <div className="ds:absolute ds:inset-0 ds:bg-black/0 ds:group-hover:bg-black/30 ds:transition-colors ds:flex ds:items-center ds:justify-center ds:rounded-lg ds:pointer-events-none">
+          <div className="ds:bg-black/70 ds:px-4 ds:py-2 ds:rounded-lg">
+            <span className="ds:text-white ds:text-sm ds:font-medium">
               Without Navbar (No image counter)
             </span>
           </div>
@@ -342,11 +342,11 @@ const GalleryLayoutDemo = () => {
 
   return (
     <div>
-      <div className="grid grid-cols-3 gap-3 max-w-3xl">
+      <div className="ds:grid ds:grid-cols-3 ds:gap-3 ds:max-w-3xl">
         {galleryImages.map((img, index) => (
           <div
             key={index}
-            className="relative group cursor-pointer overflow-hidden rounded-lg"
+            className="ds:relative ds:group cursor-pointer overflow-hidden ds:rounded-lg"
             onClick={() => {
               setCurrentIndex(index);
               setVisible(true);
@@ -355,10 +355,10 @@ const GalleryLayoutDemo = () => {
             <img
               src={img.src}
               alt={img.alt}
-              className="w-full h-40 object-cover transition-transform group-hover:scale-110"
+              className="ds:w-full ds:h-40 object-cover ds:transition-transform ds:group-hover:scale-110"
             />
-            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center">
-              <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity">
+            <div className="ds:absolute ds:inset-0 ds:bg-black/0 ds:group-hover:bg-black/30 ds:transition-colors ds:flex ds:items-center ds:justify-center">
+              <span className="ds:text-white ds:opacity-0 ds:group-hover:opacity-100 ds:transition-opacity">
                 {index + 1}
               </span>
             </div>

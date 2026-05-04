@@ -312,7 +312,7 @@ export const Default: Story = {
         title="Dialog Title"
         description="This is a default dialog with a simple message."
         footer={
-          <div className="flex gap-2 justify-end w-full">
+          <div className="ds:flex ds:gap-2 ds:justify-end ds:w-full">
             <Button variant="outline" onClick={() => setOpen(false)}>
               Cancel
             </Button>
@@ -322,7 +322,7 @@ export const Default: Story = {
           </div>
         }
       >
-        <p className="text-sm text-muted-foreground">
+        <p className="ds:text-sm ds:text-muted-foreground">
           You can place any content here. The dialog will automatically handle
           the layout and styling.
         </p>
@@ -343,7 +343,7 @@ return (
     title="Dialog Title"
     description="This is a default dialog with a simple message."
     footer={
-      <div className="flex gap-2 justify-end w-full">
+      <div className="ds:flex ds:gap-2 ds:justify-end ds:w-full">
         <Button variant="outline" onClick={() => setOpen(false)}>
           Cancel
         </Button>
@@ -351,7 +351,7 @@ return (
       </div>
     }
   >
-    <p className="text-sm text-muted-foreground">
+    <p className="ds:text-sm ds:text-muted-foreground">
       You can place any content here. The dialog will automatically handle
       the layout and styling.
     </p>
@@ -377,7 +377,7 @@ export const Standalone: Story = {
           title="Dialog Title"
           description="This is a default dialog with a simple message."
           footer={
-            <div className="flex gap-2 justify-end w-full">
+            <div className="ds:flex ds:gap-2 ds:justify-end ds:w-full">
               <Button variant="outline" onClick={() => setOpen(false)}>
                 Cancel
               </Button>
@@ -385,7 +385,7 @@ export const Standalone: Story = {
             </div>
           }
         >
-          <p className="text-sm text-muted-foreground">
+          <p className="ds:text-sm ds:text-muted-foreground">
             You can place any content here. The dialog will automatically handle
             the layout and styling.
           </p>
@@ -403,7 +403,7 @@ export const Alert: Story = {
     const [openWarning, setOpenWarning] = useState(false);
 
     return (
-      <div className="flex gap-2">
+      <div className="ds:flex ds:gap-2">
         <Dialog
           variant="confirm"
           open={openConfirm}
@@ -515,7 +515,7 @@ export const Variants: Story = {
     const [openWarning, setOpenWarning] = useState(false);
 
     return (
-      <div className="flex flex-wrap gap-4">
+      <div className="ds:flex ds:flex-wrap ds:gap-4">
         <Dialog
           variant="dialog"
           open={openDialog}
@@ -524,15 +524,15 @@ export const Variants: Story = {
           title="Standard Dialog"
           description="This is a standard dialog for general purposes."
           footer={
-            <div className="flex gap-2 justify-end w-full">
+            <div className="ds:flex ds:gap-2 ds:justify-end ds:w-full">
               <Button variant="outline" onClick={() => setOpenDialog(false)}>
                 Close
               </Button>
             </div>
           }
         >
-          <div className="py-4">
-            <p className="text-sm">Standard dialog content goes here.</p>
+          <div className="ds:py-4">
+            <p className="ds:text-sm">Standard dialog content goes here.</p>
           </div>
         </Dialog>
 
@@ -634,15 +634,15 @@ export const Variants: Story = {
 // Different sizes
 export const Sizes: Story = {
   render: () => (
-    <div className="flex flex-wrap gap-4">
+    <div className="ds:flex ds:flex-wrap ds:gap-4">
       <Dialog
         size="sm"
         trigger={<Button size="sm">Small</Button>}
         title="Small Dialog"
         description="This is a small dialog."
       >
-        <div className="py-4">
-          <p className="text-sm">Small dialog content.</p>
+        <div className="ds:py-4">
+          <p className="ds:text-sm">Small dialog content.</p>
         </div>
       </Dialog>
 
@@ -652,8 +652,8 @@ export const Sizes: Story = {
         title="Medium Dialog"
         description="This is a medium dialog."
       >
-        <div className="py-4">
-          <p className="text-sm">Medium dialog content.</p>
+        <div className="ds:py-4">
+          <p className="ds:text-sm">Medium dialog content.</p>
         </div>
       </Dialog>
 
@@ -663,8 +663,8 @@ export const Sizes: Story = {
         title="Large Dialog"
         description="This is a large dialog."
       >
-        <div className="py-4">
-          <p className="text-sm">Large dialog content with more space.</p>
+        <div className="ds:py-4">
+          <p className="ds:text-sm">Large dialog content with more space.</p>
         </div>
       </Dialog>
 
@@ -674,8 +674,8 @@ export const Sizes: Story = {
         title="Extra Large Dialog"
         description="This is an extra large dialog."
       >
-        <div className="py-4">
-          <p className="text-sm">
+        <div className="ds:py-4">
+          <p className="ds:text-sm">
             Extra large dialog content with even more space.
           </p>
         </div>
@@ -687,8 +687,8 @@ export const Sizes: Story = {
         title="Fullscreen Dialog"
         description="This dialog takes up most of the screen."
       >
-        <div className="py-4">
-          <p className="text-sm">
+        <div className="ds:py-4">
+          <p className="ds:text-sm">
             Fullscreen dialog content. This is great for complex forms or
             detailed information.
           </p>
@@ -701,15 +701,15 @@ export const Sizes: Story = {
 // Different positions
 export const Positions: Story = {
   render: () => (
-    <div className="flex flex-wrap gap-4">
+    <div className="ds:flex ds:flex-wrap ds:gap-4">
       <Dialog
         position="center"
         trigger={<Button>Center</Button>}
         title="Centered Dialog"
         description="This dialog appears in the center of the screen."
       >
-        <div className="py-4">
-          <p className="text-sm">Center position (default).</p>
+        <div className="ds:py-4">
+          <p className="ds:text-sm">Center position (default).</p>
         </div>
       </Dialog>
 
@@ -719,8 +719,8 @@ export const Positions: Story = {
         title="Top Dialog"
         description="This dialog appears at the top."
       >
-        <div className="py-4">
-          <p className="text-sm">Top position.</p>
+        <div className="ds:py-4">
+          <p className="ds:text-sm">Top position.</p>
         </div>
       </Dialog>
 
@@ -730,8 +730,8 @@ export const Positions: Story = {
         title="Bottom Dialog"
         description="This dialog appears at the bottom."
       >
-        <div className="py-4">
-          <p className="text-sm">Bottom position.</p>
+        <div className="ds:py-4">
+          <p className="ds:text-sm">Bottom position.</p>
         </div>
       </Dialog>
 
@@ -741,8 +741,8 @@ export const Positions: Story = {
         title="Left Dialog"
         description="This dialog appears on the left side."
       >
-        <div className="py-4">
-          <p className="text-sm">Left position.</p>
+        <div className="ds:py-4">
+          <p className="ds:text-sm">Left position.</p>
         </div>
       </Dialog>
 
@@ -752,8 +752,8 @@ export const Positions: Story = {
         title="Right Dialog"
         description="This dialog appears on the right side."
       >
-        <div className="py-4">
-          <p className="text-sm">Right position.</p>
+        <div className="ds:py-4">
+          <p className="ds:text-sm">Right position.</p>
         </div>
       </Dialog>
 
@@ -763,8 +763,8 @@ export const Positions: Story = {
         title="Top-Left Dialog"
         description="This dialog appears in the top-left corner."
       >
-        <div className="py-4">
-          <p className="text-sm">Top-left corner.</p>
+        <div className="ds:py-4">
+          <p className="ds:text-sm">Top-left corner.</p>
         </div>
       </Dialog>
 
@@ -774,8 +774,8 @@ export const Positions: Story = {
         title="Top-Right Dialog"
         description="This dialog appears in the top-right corner."
       >
-        <div className="py-4">
-          <p className="text-sm">Top-right corner.</p>
+        <div className="ds:py-4">
+          <p className="ds:text-sm">Top-right corner.</p>
         </div>
       </Dialog>
 
@@ -785,8 +785,8 @@ export const Positions: Story = {
         title="Bottom-Left Dialog"
         description="This dialog appears in the bottom-left corner."
       >
-        <div className="py-4">
-          <p className="text-sm">Bottom-left corner.</p>
+        <div className="ds:py-4">
+          <p className="ds:text-sm">Bottom-left corner.</p>
         </div>
       </Dialog>
 
@@ -796,8 +796,8 @@ export const Positions: Story = {
         title="Bottom-Right Dialog"
         description="This dialog appears in the bottom-right corner."
       >
-        <div className="py-4">
-          <p className="text-sm">Bottom-right corner.</p>
+        <div className="ds:py-4">
+          <p className="ds:text-sm">Bottom-right corner.</p>
         </div>
       </Dialog>
     </div>
@@ -807,15 +807,15 @@ export const Positions: Story = {
 // Animations
 export const Animations: Story = {
   render: () => (
-    <div className="flex flex-wrap gap-4">
+    <div className="ds:flex ds:flex-wrap ds:gap-4">
       <Dialog
         animation="bounce"
         trigger={<Button>Bounce</Button>}
         title="Bounce Animation"
         description="Dialog with bounce animation."
       >
-        <div className="py-4">
-          <p className="text-sm">Content with bounce animation.</p>
+        <div className="ds:py-4">
+          <p className="ds:text-sm">Content with bounce animation.</p>
         </div>
       </Dialog>
 
@@ -825,8 +825,8 @@ export const Animations: Story = {
         title="Slide Up Animation"
         description="Dialog slides up from bottom."
       >
-        <div className="py-4">
-          <p className="text-sm">Content slides up.</p>
+        <div className="ds:py-4">
+          <p className="ds:text-sm">Content slides up.</p>
         </div>
       </Dialog>
 
@@ -836,8 +836,8 @@ export const Animations: Story = {
         title="Slide Down Animation"
         description="Dialog slides down from top."
       >
-        <div className="py-4">
-          <p className="text-sm">Content slides down.</p>
+        <div className="ds:py-4">
+          <p className="ds:text-sm">Content slides down.</p>
         </div>
       </Dialog>
 
@@ -847,8 +847,8 @@ export const Animations: Story = {
         title="Zoom In Animation"
         description="Dialog zooms in."
       >
-        <div className="py-4">
-          <p className="text-sm">Content zooms in.</p>
+        <div className="ds:py-4">
+          <p className="ds:text-sm">Content zooms in.</p>
         </div>
       </Dialog>
 
@@ -858,8 +858,8 @@ export const Animations: Story = {
         title="Flip Animation"
         description="Dialog flips in."
       >
-        <div className="py-4">
-          <p className="text-sm">Content flips in.</p>
+        <div className="ds:py-4">
+          <p className="ds:text-sm">Content flips in.</p>
         </div>
       </Dialog>
 
@@ -869,8 +869,8 @@ export const Animations: Story = {
         title="Glow Animation"
         description="Dialog with glow effect."
       >
-        <div className="py-4">
-          <p className="text-sm">Content with glow effect.</p>
+        <div className="ds:py-4">
+          <p className="ds:text-sm">Content with glow effect.</p>
         </div>
       </Dialog>
     </div>
@@ -880,7 +880,7 @@ export const Animations: Story = {
 // Scrollable content
 export const ScrollableContent: Story = {
   render: () => (
-    <div className="flex flex-wrap gap-4">
+    <div className="ds:flex ds:flex-wrap ds:gap-4">
       <Dialog
         stickyHeader
         stickyFooter
@@ -888,17 +888,17 @@ export const ScrollableContent: Story = {
         title="Scrollable Dialog"
         description="Header and footer are outside scroll area, only content scrolls."
         footer={
-          <div className="flex gap-2 justify-end w-full">
+          <div className="ds:flex ds:gap-2 ds:justify-end ds:w-full">
             <Button variant="outline">Cancel</Button>
             <Button>Save</Button>
           </div>
         }
       >
-        <div className="space-y-4">
+        <div className="ds:space-y-4">
           {Array.from({ length: 20 }).map((_, i) => (
-            <div key={i} className="p-4 border rounded">
-              <h3 className="font-semibold">Section {i + 1}</h3>
-              <p className="text-sm text-muted-foreground">
+            <div key={i} className="ds:p-4 ds:border ds:rounded">
+              <h3 className="ds:font-semibold">Section {i + 1}</h3>
+              <p className="ds:text-sm ds:text-muted-foreground">
                 This is a scrollable section. The header and footer remain
                 visible as you scroll through the content.
               </p>
@@ -913,17 +913,17 @@ export const ScrollableContent: Story = {
         title="Sticky Header Dialog"
         description="Header is outside scroll area, content and footer scroll together."
         footer={
-          <div className="flex gap-2 justify-end w-full">
+          <div className="ds:flex ds:gap-2 ds:justify-end ds:w-full">
             <Button variant="outline">Cancel</Button>
             <Button>Save</Button>
           </div>
         }
       >
-        <div className="space-y-4">
+        <div className="ds:space-y-4">
           {Array.from({ length: 20 }).map((_, i) => (
-            <div key={i} className="p-4 border rounded">
-              <h3 className="font-semibold">Section {i + 1}</h3>
-              <p className="text-sm text-muted-foreground">
+            <div key={i} className="ds:p-4 ds:border ds:rounded">
+              <h3 className="ds:font-semibold">Section {i + 1}</h3>
+              <p className="ds:text-sm ds:text-muted-foreground">
                 Content and footer scroll together.
               </p>
             </div>
@@ -937,17 +937,17 @@ export const ScrollableContent: Story = {
         title="Sticky Footer Dialog"
         description="Footer is outside scroll area, header and content scroll together."
         footer={
-          <div className="flex gap-2 justify-end w-full">
+          <div className="ds:flex ds:gap-2 ds:justify-end ds:w-full">
             <Button variant="outline">Cancel</Button>
             <Button>Save</Button>
           </div>
         }
       >
-        <div className="space-y-4">
+        <div className="ds:space-y-4">
           {Array.from({ length: 20 }).map((_, i) => (
-            <div key={i} className="p-4 border rounded">
-              <h3 className="font-semibold">Section {i + 1}</h3>
-              <p className="text-sm text-muted-foreground">
+            <div key={i} className="ds:p-4 ds:border ds:rounded">
+              <h3 className="ds:font-semibold">Section {i + 1}</h3>
+              <p className="ds:text-sm ds:text-muted-foreground">
                 Header and content scroll together.
               </p>
             </div>
@@ -960,17 +960,17 @@ export const ScrollableContent: Story = {
         title="Full Scroll Dialog"
         description="Everything scrolls together - header, content, and footer."
         footer={
-          <div className="flex gap-2 justify-end w-full">
+          <div className="ds:flex ds:gap-2 ds:justify-end ds:w-full">
             <Button variant="outline">Cancel</Button>
             <Button>Save</Button>
           </div>
         }
       >
-        <div className="space-y-4">
+        <div className="ds:space-y-4">
           {Array.from({ length: 20 }).map((_, i) => (
-            <div key={i} className="p-4 border rounded">
-              <h3 className="font-semibold">Section {i + 1}</h3>
-              <p className="text-sm text-muted-foreground">
+            <div key={i} className="ds:p-4 ds:border ds:rounded">
+              <h3 className="ds:font-semibold">Section {i + 1}</h3>
+              <p className="ds:text-sm ds:text-muted-foreground">
                 Everything scrolls together in this dialog.
               </p>
             </div>
@@ -984,20 +984,20 @@ export const ScrollableContent: Story = {
 // Behavior options
 export const BehaviorOptions: Story = {
   render: () => (
-    <div className="flex flex-wrap gap-4">
+    <div className="ds:flex ds:flex-wrap ds:gap-4">
       <Dialog
         closeOnEsc={false}
         trigger={<Button>No ESC Close</Button>}
         title="ESC Key Disabled"
         description="Press ESC - nothing happens. Use the button to close."
         footer={
-          <div className="flex gap-2 justify-end w-full">
+          <div className="ds:flex ds:gap-2 ds:justify-end ds:w-full">
             <Button>Close</Button>
           </div>
         }
       >
-        <div className="py-4">
-          <p className="text-sm">
+        <div className="ds:py-4">
+          <p className="ds:text-sm">
             This dialog cannot be closed with the ESC key.
           </p>
         </div>
@@ -1009,13 +1009,13 @@ export const BehaviorOptions: Story = {
         title="Outside Click Disabled"
         description="Click outside - nothing happens. Use the button to close."
         footer={
-          <div className="flex gap-2 justify-end w-full">
+          <div className="ds:flex ds:gap-2 ds:justify-end ds:w-full">
             <Button>Close</Button>
           </div>
         }
       >
-        <div className="py-4">
-          <p className="text-sm">
+        <div className="ds:py-4">
+          <p className="ds:text-sm">
             This dialog cannot be closed by clicking outside.
           </p>
         </div>
@@ -1027,13 +1027,13 @@ export const BehaviorOptions: Story = {
         title="No Close Button"
         description="The X button is hidden. Use the footer button to close."
         footer={
-          <div className="flex gap-2 justify-end w-full">
+          <div className="ds:flex ds:gap-2 ds:justify-end ds:w-full">
             <Button>Close</Button>
           </div>
         }
       >
-        <div className="py-4">
-          <p className="text-sm">
+        <div className="ds:py-4">
+          <p className="ds:text-sm">
             This dialog has no close button in the corner.
           </p>
         </div>
@@ -1045,7 +1045,7 @@ export const BehaviorOptions: Story = {
 // Custom styling
 export const CustomStyling: Story = {
   render: () => (
-    <div className="flex flex-wrap gap-4">
+    <div className="ds:flex ds:flex-wrap ds:gap-4">
       <Dialog
         trigger={<Button>Custom Header</Button>}
         title="Custom Styled Header"
@@ -1056,10 +1056,10 @@ export const CustomStyling: Story = {
         contentClassName="!border-2 !border-purple-500 overflow-hidden rounded-b-md"
       >
         <div>
-          <p className="text-sm">
+          <p className="ds:text-sm">
             Dialog with custom header styling that extends to edges.
           </p>
-          <p className="text-xs text-muted-foreground mt-2">
+          <p className="ds:text-xs ds:text-muted-foreground ds:mt-2">
             Notice how the header background extends to the full width without
             padding gaps.
           </p>
@@ -1072,9 +1072,9 @@ export const CustomStyling: Story = {
         description="This dialog has a custom footer style."
         footerClassName="!bg-gray-100 dark:!bg-gray-800"
         footer={
-          <div className="flex gap-2 justify-between w-full">
+          <div className="ds:flex ds:gap-2 ds:justify-between ds:w-full">
             <Button variant="ghost">Help</Button>
-            <div className="flex gap-2">
+            <div className="ds:flex ds:gap-2">
               <Button variant="outline">Cancel</Button>
               <Button>Submit</Button>
             </div>
@@ -1082,7 +1082,7 @@ export const CustomStyling: Story = {
         }
       >
         <div>
-          <p className="text-sm">
+          <p className="ds:text-sm">
             Dialog with custom footer styling that extends to edges.
           </p>
         </div>
@@ -1092,24 +1092,24 @@ export const CustomStyling: Story = {
         trigger={<Button>Gradient Background</Button>}
         title="Fully Customized"
         description="Every part of this dialog is customized."
-        className="to-card bg-linear-to-b from-sky-100 to-40% bg-size-[100%_101%] sm:max-w-sm dark:from-sky-900"
+        className="to-card ds:bg-linear-to-b ds:from-sky-100 to-40% bg-size-[100%_101%] ds:sm:max-w-sm ds:dark:from-sky-900"
         footer={
-          <div className="flex gap-2 justify-end w-full">
+          <div className="ds:flex ds:gap-2 ds:justify-end ds:w-full">
             <Button
               variant="outline"
-              className="border-white text-white hover:bg-white hover:text-blue-500"
+              className="ds:border-white ds:text-white ds:hover:bg-white ds:hover:text-blue-500"
             >
               Cancel
             </Button>
-            <Button className="bg-white text-blue-500 hover:bg-blue-100">
+            <Button className="ds:bg-white ds:text-blue-500 ds:hover:bg-blue-100">
               Confirm
             </Button>
           </div>
         }
       >
-        <div className="space-y-2">
-          <p className="text-sm font-semibold">Every element is customized:</p>
-          <ul className="text-sm space-y-1 list-disc list-inside">
+        <div className="ds:space-y-2">
+          <p className="ds:text-sm ds:font-semibold">Every element is customized:</p>
+          <ul className="ds:text-sm ds:space-y-1 ds:list-disc ds:list-inside">
             <li>Custom border color</li>
             <li>Custom header background (full width)</li>
             <li>Custom title and description styles</li>
@@ -1147,7 +1147,7 @@ export const ComplexForm: Story = {
         size="lg"
         stickyFooter
         footer={
-          <div className="flex gap-2 justify-end w-full">
+          <div className="ds:flex ds:gap-2 ds:justify-end ds:w-full">
             <Button variant="outline" onClick={() => setOpen(false)}>
               Cancel
             </Button>
@@ -1155,15 +1155,15 @@ export const ComplexForm: Story = {
           </div>
         }
       >
-        <div className="space-y-4 py-4">
+        <div className="ds:space-y-4 ds:py-4">
           <div>
-            <label htmlFor="name" className="block text-sm font-medium mb-2">
+            <label htmlFor="name" className="ds:block ds:text-sm ds:font-medium ds:mb-2">
               Name
             </label>
             <input
               id="name"
               type="text"
-              className="w-full px-3 py-2 border rounded-md"
+              className="ds:w-full ds:px-3 ds:py-2 ds:border ds:rounded-md"
               value={formData.name}
               onChange={(e) =>
                 setFormData({ ...formData, name: e.target.value })
@@ -1172,13 +1172,13 @@ export const ComplexForm: Story = {
             />
           </div>
           <div>
-            <label htmlFor="email" className="block text-sm font-medium mb-2">
+            <label htmlFor="email" className="ds:block ds:text-sm ds:font-medium ds:mb-2">
               Email
             </label>
             <input
               id="email"
               type="email"
-              className="w-full px-3 py-2 border rounded-md"
+              className="ds:w-full ds:px-3 ds:py-2 ds:border ds:rounded-md"
               value={formData.email}
               onChange={(e) =>
                 setFormData({ ...formData, email: e.target.value })
@@ -1187,13 +1187,13 @@ export const ComplexForm: Story = {
             />
           </div>
           <div>
-            <label htmlFor="message" className="block text-sm font-medium mb-2">
+            <label htmlFor="message" className="ds:block ds:text-sm ds:font-medium ds:mb-2">
               Message
             </label>
             <textarea
               id="message"
               rows={5}
-              className="w-full px-3 py-2 border rounded-md"
+              className="ds:w-full ds:px-3 ds:py-2 ds:border ds:rounded-md"
               value={formData.message}
               onChange={(e) =>
                 setFormData({ ...formData, message: e.target.value })
@@ -1213,14 +1213,14 @@ export const ControlledDialog: Story = {
     const [open, setOpen] = useState(false);
 
     return (
-      <div className="space-y-4">
-        <div className="flex gap-2">
+      <div className="ds:space-y-4">
+        <div className="ds:flex ds:gap-2">
           <Button onClick={() => setOpen(true)}>Open Dialog</Button>
           <Button variant="outline" onClick={() => setOpen(false)}>
             Close Dialog
           </Button>
         </div>
-        <p className="text-sm text-muted-foreground">
+        <p className="ds:text-sm ds:text-muted-foreground">
           Dialog is {open ? "open" : "closed"}
         </p>
         <Dialog
@@ -1229,13 +1229,13 @@ export const ControlledDialog: Story = {
           title="Controlled Dialog"
           description="This dialog's open state is controlled externally."
           footer={
-            <div className="flex gap-2 justify-end w-full">
+            <div className="ds:flex ds:gap-2 ds:justify-end ds:w-full">
               <Button onClick={() => setOpen(false)}>Close</Button>
             </div>
           }
         >
-          <div className="py-4">
-            <p className="text-sm">
+          <div className="ds:py-4">
+            <p className="ds:text-sm">
               The buttons above control whether this dialog is open or closed.
             </p>
           </div>

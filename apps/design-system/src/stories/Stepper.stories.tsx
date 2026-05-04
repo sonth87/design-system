@@ -26,7 +26,7 @@ A flexible stepper component that provides navigation through a series of steps.
 \`\`\`tsx
 <Stepper
   aria-label="Onboarding stepper with steps"
-  className="w-full"
+  className="ds:w-full"
   defaultValue="step-1"
   steps={[
     {
@@ -34,7 +34,7 @@ A flexible stepper component that provides navigation through a series of steps.
       title: "Personal Information",
       description: "Enter your basic details",
       content: (
-        <div className="p-4">
+        <div className="ds:p-4">
           <p>Step 1 content</p>
         </div>
       ),
@@ -265,7 +265,7 @@ const steps = [
     title: "Personal Information",
     description: "Enter your basic details",
     content: (
-      <div className="p-4">
+      <div className="ds:p-4">
         <p>Step 1 content: Personal Information form</p>
       </div>
     ),
@@ -275,7 +275,7 @@ const steps = [
     title: "Account Setup",
     description: "Configure your account settings",
     content: (
-      <div className="p-4">
+      <div className="ds:p-4">
         <p>Step 2 content: Account Setup form</p>
       </div>
     ),
@@ -285,7 +285,7 @@ const steps = [
     title: "Review & Submit",
     description: "Review your information and submit",
     content: (
-      <div className="p-4">
+      <div className="ds:p-4">
         <p>Step 3 content: Review and submit</p>
       </div>
     ),
@@ -296,7 +296,7 @@ export const Default = (args: typeof Stepper) => {
   return (
     <Stepper
       aria-label="Onboarding stepper with steps"
-      className="w-full"
+      className="ds:w-full"
       defaultValue="step-1"
       {...args}
       steps={steps}
@@ -306,13 +306,13 @@ export const Default = (args: typeof Stepper) => {
 
 export const Manual = () => {
   return (
-    <Stepper aria-label="Onboarding stepper manual" className="w-full">
+    <Stepper aria-label="Onboarding stepper manual" className="ds:w-full">
       <Stepper.List>
         {steps.map((step, index) => (
           <Stepper.Item key={step.value} value={step.value}>
             <Stepper.Trigger>
               <Stepper.Indicator />
-              <div className="flex flex-col">
+              <div className="ds:flex ds:flex-col">
                 <Stepper.Title>{step.title}</Stepper.Title>
                 <Stepper.Description>{step.description}</Stepper.Description>
               </div>
@@ -418,12 +418,12 @@ export const WithValidation = () => {
 
   const onSubmit = React.useCallback((input: FormSchema) => {
     toast.success(
-      <pre className="w-full">{JSON.stringify(input, null, 2)}</pre>
+      <pre className="ds:w-full">{JSON.stringify(input, null, 2)}</pre>
     );
   }, []);
 
   return (
-    <form className="w-full" onSubmit={form.handleSubmit(onSubmit)}>
+    <form className="ds:w-full" onSubmit={form.handleSubmit(onSubmit)}>
       <Stepper
         value={step}
         onValueChange={setStep}
@@ -432,10 +432,10 @@ export const WithValidation = () => {
       >
         <Stepper.Content
           value="account"
-          className="flex flex-col gap-4 rounded-md border bg-card p-4 text-card-foreground"
+          className="ds:flex ds:flex-col ds:gap-4 ds:rounded-md ds:border ds:bg-card ds:p-4 ds:text-card-foreground"
         >
-          <div className="flex flex-col gap-2">
-            <label htmlFor="username" className="text-sm font-medium">
+          <div className="ds:flex ds:flex-col ds:gap-2">
+            <label htmlFor="username" className="ds:text-sm ds:font-medium">
               Username
             </label>
             <Input
@@ -445,13 +445,13 @@ export const WithValidation = () => {
               state={form.formState.errors.username ? "error" : "default"}
             />
             {form.formState.errors.username && (
-              <p className="text-sm text-destructive">
+              <p className="ds:text-sm ds:text-destructive">
                 {form.formState.errors.username.message}
               </p>
             )}
           </div>
-          <div className="flex flex-col gap-2">
-            <label htmlFor="email" className="text-sm font-medium">
+          <div className="ds:flex ds:flex-col ds:gap-2">
+            <label htmlFor="email" className="ds:text-sm ds:font-medium">
               Email
             </label>
             <Input
@@ -462,7 +462,7 @@ export const WithValidation = () => {
               state={form.formState.errors.email ? "error" : "default"}
             />
             {form.formState.errors.email && (
-              <p className="text-sm text-destructive">
+              <p className="ds:text-sm ds:text-destructive">
                 {form.formState.errors.email.message}
               </p>
             )}
@@ -470,11 +470,11 @@ export const WithValidation = () => {
         </Stepper.Content>
         <Stepper.Content
           value="profile"
-          className="flex flex-col gap-4 rounded-md border bg-card p-4 text-card-foreground"
+          className="ds:flex ds:flex-col ds:gap-4 ds:rounded-md ds:border ds:bg-card ds:p-4 ds:text-card-foreground"
         >
-          <div className="grid grid-cols-2 gap-4">
-            <div className="flex flex-col gap-2">
-              <label htmlFor="firstName" className="text-sm font-medium">
+          <div className="ds:grid ds:grid-cols-2 ds:gap-4">
+            <div className="ds:flex ds:flex-col ds:gap-2">
+              <label htmlFor="firstName" className="ds:text-sm ds:font-medium">
                 First Name
               </label>
               <Input
@@ -484,13 +484,13 @@ export const WithValidation = () => {
                 state={form.formState.errors.firstName ? "error" : "default"}
               />
               {form.formState.errors.firstName && (
-                <p className="text-sm text-destructive">
+                <p className="ds:text-sm ds:text-destructive">
                   {form.formState.errors.firstName.message}
                 </p>
               )}
             </div>
-            <div className="flex flex-col gap-2">
-              <label htmlFor="lastName" className="text-sm font-medium">
+            <div className="ds:flex ds:flex-col ds:gap-2">
+              <label htmlFor="lastName" className="ds:text-sm ds:font-medium">
                 Last Name
               </label>
               <Input
@@ -500,14 +500,14 @@ export const WithValidation = () => {
                 state={form.formState.errors.lastName ? "error" : "default"}
               />
               {form.formState.errors.lastName && (
-                <p className="text-sm text-destructive">
+                <p className="ds:text-sm ds:text-destructive">
                   {form.formState.errors.lastName.message}
                 </p>
               )}
             </div>
           </div>
-          <div className="flex flex-col gap-2">
-            <label htmlFor="bio" className="text-sm font-medium">
+          <div className="ds:flex ds:flex-col ds:gap-2">
+            <label htmlFor="bio" className="ds:text-sm ds:font-medium">
               Bio
             </label>
             <Textarea
@@ -518,7 +518,7 @@ export const WithValidation = () => {
               state={form.formState.errors.bio ? "error" : "default"}
             />
             {form.formState.errors.bio && (
-              <p className="text-sm text-destructive">
+              <p className="ds:text-sm ds:text-destructive">
                 {form.formState.errors.bio.message}
               </p>
             )}
@@ -526,42 +526,42 @@ export const WithValidation = () => {
         </Stepper.Content>
         <Stepper.Content
           value="review"
-          className="grid grid-cols-2 gap-4 rounded-md border bg-card p-4 text-card-foreground lg:grid-cols-3"
+          className="ds:grid ds:grid-cols-2 ds:gap-4 ds:rounded-md ds:border ds:bg-card ds:p-4 ds:text-card-foreground ds:lg:grid-cols-3"
         >
-          <div className="flex flex-col gap-1 rounded-md border p-2">
-            <span className="font-medium text-sm">Username</span>
-            <p className="text-sm">
+          <div className="ds:flex ds:flex-col ds:gap-1 ds:rounded-md ds:border ds:p-2">
+            <span className="ds:font-medium ds:text-sm">Username</span>
+            <p className="ds:text-sm">
               {form.watch("username") ?? "Not provided"}
             </p>
           </div>
-          <div className="flex flex-col gap-1 rounded-md border p-2">
-            <span className="font-medium text-sm">Email</span>
-            <p className="text-sm">{form.watch("email") ?? "Not provided"}</p>
+          <div className="ds:flex ds:flex-col ds:gap-1 ds:rounded-md ds:border ds:p-2">
+            <span className="ds:font-medium ds:text-sm">Email</span>
+            <p className="ds:text-sm">{form.watch("email") ?? "Not provided"}</p>
           </div>
-          <div className="flex flex-col gap-1 rounded-md border p-2">
-            <span className="font-medium text-sm">First Name</span>
-            <p className="text-sm">
+          <div className="ds:flex ds:flex-col ds:gap-1 ds:rounded-md ds:border ds:p-2">
+            <span className="ds:font-medium ds:text-sm">First Name</span>
+            <p className="ds:text-sm">
               {form.watch("firstName") ?? "Not provided"}
             </p>
           </div>
-          <div className="flex flex-col gap-1 rounded-md border p-2">
-            <span className="font-medium text-sm">Last Name</span>
-            <p className="text-sm">
+          <div className="ds:flex ds:flex-col ds:gap-1 ds:rounded-md ds:border ds:p-2">
+            <span className="ds:font-medium ds:text-sm">Last Name</span>
+            <p className="ds:text-sm">
               {form.watch("lastName") ?? "Not provided"}
             </p>
           </div>
-          <div className="flex flex-col gap-1 rounded-md border p-2">
-            <span className="font-medium text-sm">Bio</span>
-            <p className="text-sm">{form.watch("bio") ?? "Not provided"}</p>
+          <div className="ds:flex ds:flex-col ds:gap-1 ds:rounded-md ds:border ds:p-2">
+            <span className="ds:font-medium ds:text-sm">Bio</span>
+            <p className="ds:text-sm">{form.watch("bio") ?? "Not provided"}</p>
           </div>
         </Stepper.Content>
-        <div className="flex justify-between">
+        <div className="ds:flex ds:justify-between">
           <Stepper.Prev asChild>
             <Button type="button" variant="outline">
               Previous
             </Button>
           </Stepper.Prev>
-          <div className="text-muted-foreground text-sm">
+          <div className="ds:text-muted-foreground ds:text-sm">
             Step {stepIndex + 1} of {steps.length}
           </div>
           {stepIndex === steps.length - 1 ? (
@@ -587,12 +587,12 @@ export function StepperVertical() {
           <Stepper.Item key={step.value} value={step.value}>
             <Stepper.Trigger className="not-last:pb-6">
               <Stepper.Indicator />
-              <div className="flex flex-col gap-1">
+              <div className="ds:flex ds:flex-col ds:gap-1">
                 <Stepper.Title>{step.title}</Stepper.Title>
                 <Stepper.Description>{step.description}</Stepper.Description>
               </div>
             </Stepper.Trigger>
-            <Stepper.Separator className="-order-1 -translate-x-1/2 -z-10 absolute inset-y-0 top-5 left-3.5 h-full" />
+            <Stepper.Separator className="ds:-order-1 ds:-translate-x-1/2 ds:-z-10 ds:absolute ds:inset-y-0 ds:top-5 ds:left-3.5 ds:h-full" />
           </Stepper.Item>
         ))}
       </Stepper.List>
@@ -600,13 +600,13 @@ export function StepperVertical() {
         <Stepper.Content
           key={step.value}
           value={step.value}
-          className="flex flex-col gap-4 rounded-lg border bg-card p-6 text-card-foreground"
+          className="ds:flex ds:flex-col ds:gap-4 ds:rounded-lg ds:border ds:bg-card ds:p-6 ds:text-card-foreground"
         >
-          <div className="flex flex-col gap-px">
-            <h4 className="font-semibold">{step.title}</h4>
-            <p className="text-muted-foreground text-sm">{step.description}</p>
+          <div className="ds:flex ds:flex-col ds:gap-px">
+            <h4 className="ds:font-semibold">{step.title}</h4>
+            <p className="ds:text-muted-foreground ds:text-sm">{step.description}</p>
           </div>
-          <p className="text-sm">
+          <p className="ds:text-sm">
             This is the content for {step.title}. You can add forms,
             information, or any other content here.
           </p>

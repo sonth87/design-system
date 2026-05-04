@@ -99,7 +99,7 @@ export const Default: Story = {
     rotateZ: -45,
   },
   render: (args) => (
-    <div className="h-[300px] overflow-hidden rounded-2xl mx-auto">
+    <div className="h-[300px] overflow-hidden ds:rounded-2xl ds:mx-auto">
       <ThreeDMarquee {...args} />
     </div>
   ),
@@ -113,31 +113,31 @@ export const HeroDemo: Story = {
     rotateZ: -45,
   },
   render: (args) => (
-    <div className="relative mx-auto my-10 flex h-screen w-full max-w-7xl flex-col items-center justify-center overflow-hidden rounded-3xl">
-      <h2 className="relative z-20 mx-auto max-w-4xl text-center text-2xl font-bold text-balance text-white md:text-4xl lg:text-6xl">
+    <div className="ds:relative ds:mx-auto ds:my-10 ds:flex ds:h-screen ds:w-full ds:max-w-7xl ds:flex-col ds:items-center ds:justify-center overflow-hidden ds:rounded-3xl">
+      <h2 className="ds:relative ds:z-20 ds:mx-auto ds:max-w-4xl ds:text-center ds:text-2xl ds:font-bold ds:text-balance ds:text-white ds:md:text-4xl ds:lg:text-6xl">
         This is your life and it&apos;s ending one{" "}
-        <span className="relative z-20 inline-block rounded-xl bg-blue-500/40 px-4 py-1 text-white underline decoration-sky-500 decoration-[6px] underline-offset-[16px] backdrop-blur-sm">
+        <span className="ds:relative ds:z-20 ds:inline-block ds:rounded-xl ds:bg-blue-500/40 ds:px-4 ds:py-1 ds:text-white underline ds:decoration-sky-500 decoration-[6px] underline-offset-[16px] ds:backdrop-blur-sm">
           moment
         </span>{" "}
         at a time.
       </h2>
-      <p className="relative z-20 mx-auto max-w-2xl py-8 text-center text-sm text-neutral-200 md:text-base">
+      <p className="ds:relative ds:z-20 ds:mx-auto ds:max-w-2xl ds:py-8 ds:text-center ds:text-sm ds:text-neutral-200 ds:md:text-base">
         You are not your job, you&apos;re not how much money you have in the
         bank. You are not the car you drive. You&apos;re not the contents of
         your wallet.
       </p>
-      <div className="relative z-20 flex flex-wrap items-center justify-center gap-4 pt-4">
-        <button className="rounded-md bg-sky-600 px-6 py-2.5 text-sm font-medium text-white transition-colors hover:bg-sky-700 focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 focus:ring-offset-black focus:outline-none">
+      <div className="ds:relative ds:z-20 ds:flex ds:flex-wrap ds:items-center ds:justify-center ds:gap-4 ds:pt-4">
+        <button className="ds:rounded-md ds:bg-sky-600 ds:px-6 ds:py-2.5 ds:text-sm ds:font-medium ds:text-white ds:transition-colors ds:hover:bg-sky-700 ds:focus:ring-2 ds:focus:ring-sky-500 ds:focus:ring-offset-2 ds:focus:ring-offset-black ds:focus:outline-none">
           Join the club
         </button>
-        <button className="rounded-md border border-white/20 bg-white/10 px-6 py-2.5 text-sm font-medium text-white backdrop-blur-sm transition-colors hover:bg-white/20 focus:ring-2 focus:ring-white/20 focus:ring-offset-2 focus:ring-offset-black focus:outline-none">
+        <button className="ds:rounded-md ds:border ds:border-white/20 ds:bg-white/10 ds:px-6 ds:py-2.5 ds:text-sm ds:font-medium ds:text-white ds:backdrop-blur-sm ds:transition-colors ds:hover:bg-white/20 ds:focus:ring-2 ds:focus:ring-white/20 ds:focus:ring-offset-2 ds:focus:ring-offset-black ds:focus:outline-none">
           Read more
         </button>
       </div>
       {/* overlay */}
-      <div className="absolute inset-0 z-10 h-full w-full bg-black/80 dark:bg-black/40" />
+      <div className="ds:absolute ds:inset-0 ds:z-10 ds:h-full ds:w-full ds:bg-black/80 ds:dark:bg-black/40" />
       <ThreeDMarquee
-        className="pointer-events-none absolute inset-0 h-full w-full"
+        className="ds:pointer-events-none ds:absolute ds:inset-0 ds:h-full ds:w-full"
         {...args}
       />
     </div>

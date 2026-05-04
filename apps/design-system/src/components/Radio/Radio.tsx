@@ -29,12 +29,12 @@ const RadioItem = React.forwardRef<HTMLButtonElement, RadioItemProps>(
     const id = React.useId();
 
     return (
-      <div className={cn("flex items-center space-x-2", rootClassName)}>
+      <div className={cn("ds:flex ds:items-center ds:space-x-2", rootClassName)}>
         <SRadioGroupItem ref={ref} id={id} {...itemProps} />
         {variant === "option" && label && (
           <label
             htmlFor={id}
-            className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+            className="ds:text-sm ds:font-medium ds:leading-none ds:peer-disabled:cursor-not-allowed ds:peer-disabled:opacity-70"
           >
             {label}
           </label>
@@ -93,8 +93,8 @@ const Radio = React.forwardRef<HTMLDivElement, RadioProps>((props, ref) => {
   } = props;
 
   return (
-    <div className={cn("flex flex-col gap-1.5", rootClassName)}>
-      {label && <label className="text-sm font-medium">{label}</label>}
+    <div className={cn("ds:flex ds:flex-col ds:gap-1.5", rootClassName)}>
+      {label && <label className="ds:text-sm ds:font-medium">{label}</label>}
 
       <SRadioGroup
         ref={ref}
@@ -119,7 +119,7 @@ const Radio = React.forwardRef<HTMLDivElement, RadioProps>((props, ref) => {
       </SRadioGroup>
 
       {helperText && (
-        <p className="text-xs text-muted-foreground">{helperText}</p>
+        <p className="ds:text-xs ds:text-muted-foreground">{helperText}</p>
       )}
     </div>
   );

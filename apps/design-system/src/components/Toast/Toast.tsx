@@ -18,13 +18,13 @@ const variantStyles = {
 };
 
 const variantIcons = {
-  success: <CheckCircle className="w-4 h-4 shrink-0" />,
-  error: <XCircle className="w-4 h-4 shrink-0" />,
-  warning: <AlertTriangle className="w-4 h-4 shrink-0" />,
-  info: <Info className="w-4 h-4 shrink-0" />,
+  success: <CheckCircle className="ds:w-4 ds:h-4 ds:shrink-0" />,
+  error: <XCircle className="ds:w-4 ds:h-4 ds:shrink-0" />,
+  warning: <AlertTriangle className="ds:w-4 ds:h-4 ds:shrink-0" />,
+  info: <Info className="ds:w-4 ds:h-4 ds:shrink-0" />,
   default: null,
-  primary: <Info className="w-4 h-4 shrink-0" />,
-  secondary: <Info className="w-4 h-4 shrink-0" />,
+  primary: <Info className="ds:w-4 ds:h-4 ds:shrink-0" />,
+  secondary: <Info className="ds:w-4 ds:h-4 ds:shrink-0" />,
 };
 
 type Variant = keyof typeof variantStyles;
@@ -32,7 +32,7 @@ type Variant = keyof typeof variantStyles;
 const renderToastContent = (variant: Variant, message: React.ReactNode) => (
   <div
     className={cn(
-      "flex items-center gap-2 rounded-md px-3 py-2 shadow-md text-sm font-medium",
+      "ds:flex ds:items-center ds:gap-2 ds:rounded-md ds:px-3 ds:py-2 ds:shadow-md ds:text-sm ds:font-medium",
       variantStyles[variant]
     )}
   >

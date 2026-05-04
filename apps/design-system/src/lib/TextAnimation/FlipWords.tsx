@@ -72,7 +72,7 @@ function FlipWords({
             position: "absolute",
           }}
           className={cn(
-            "inline-block relative text-left px-2 will-change-transform will-change-opacity will-change-filter",
+            "ds:inline-block ds:relative ds:text-left ds:px-2 ds:will-change-transform ds:will-change-opacity ds:will-change-filter",
             className
           )}
           key={currentWord}
@@ -86,7 +86,7 @@ function FlipWords({
                 delay: wordIndex * wordDelay,
                 duration: 0.3,
               }}
-              className="inline-block whitespace-nowrap"
+              className="ds:inline-block ds:whitespace-nowrap"
             >
               {word.split("").map((letter, letterIndex) => (
                 <motion.span
@@ -97,12 +97,12 @@ function FlipWords({
                     delay: wordIndex * wordDelay + letterIndex * letterDelay,
                     duration: 0.2,
                   }}
-                  className="inline-block will-change-transform will-change-opacity will-change-filter"
+                  className="ds:inline-block ds:will-change-transform ds:will-change-opacity ds:will-change-filter"
                 >
                   {letter}
                 </motion.span>
               ))}
-              <span className="inline-block">&nbsp;</span>
+              <span className="ds:inline-block">&nbsp;</span>
             </motion.span>
           ))}
         </motion.span>

@@ -116,13 +116,13 @@ export const Default: Story = {
 export const WithDefaultValue: Story = {
   render: function WithDefaultValueRate() {
     return (
-      <div className="space-y-4">
+      <div className="ds:space-y-4">
         <div>
-          <p className="text-sm text-muted-foreground mb-2">Default value: 3</p>
+          <p className="ds:text-sm ds:text-muted-foreground ds:mb-2">Default value: 3</p>
           <Rate defaultValue={3} />
         </div>
         <div>
-          <p className="text-sm text-muted-foreground mb-2">
+          <p className="ds:text-sm ds:text-muted-foreground ds:mb-2">
             Default value: 2.5
           </p>
           <Rate defaultValue={2.5} allowHalf />
@@ -136,22 +136,22 @@ export const Controlled: Story = {
   render: function ControlledRate() {
     const [value, setValue] = useState(3);
     return (
-      <div className="space-y-4">
+      <div className="ds:space-y-4">
         <Rate value={value} onChange={setValue} />
-        <div className="flex gap-2">
+        <div className="ds:flex ds:gap-2">
           <button
             onClick={() => setValue(0)}
-            className="px-3 py-1 bg-primary text-primary-foreground rounded text-sm"
+            className="ds:px-3 ds:py-1 ds:bg-primary ds:text-primary-foreground ds:rounded ds:text-sm"
           >
             Clear
           </button>
           <button
             onClick={() => setValue(5)}
-            className="px-3 py-1 bg-primary text-primary-foreground rounded text-sm"
+            className="ds:px-3 ds:py-1 ds:bg-primary ds:text-primary-foreground ds:rounded ds:text-sm"
           >
             Set to 5 stars
           </button>
-          <span className="text-sm text-muted-foreground self-center">
+          <span className="ds:text-sm ds:text-muted-foreground ds:self-center">
             Current value: {value}
           </span>
         </div>
@@ -168,9 +168,9 @@ export const AllowHalf: Story = {
   render: function AllowHalfRate() {
     const [value, setValue] = useState(2.5);
     return (
-      <div className="space-y-4">
+      <div className="ds:space-y-4">
         <Rate allowHalf value={value} onChange={setValue} />
-        <p className="text-sm text-muted-foreground">
+        <p className="ds:text-sm ds:text-muted-foreground">
           Current value: {value} stars
         </p>
       </div>
@@ -185,15 +185,15 @@ export const AllowHalf: Story = {
 export const AllowClear: Story = {
   render: function AllowClearRate() {
     return (
-      <div className="space-y-6">
+      <div className="ds:space-y-6">
         <div>
-          <p className="text-sm text-muted-foreground mb-2">
+          <p className="ds:text-sm ds:text-muted-foreground ds:mb-2">
             Allow Clear (default) - Click the same star again to clear
           </p>
           <Rate defaultValue={3} allowClear />
         </div>
         <div>
-          <p className="text-sm text-muted-foreground mb-2">
+          <p className="ds:text-sm ds:text-muted-foreground ds:mb-2">
             Don't Allow Clear - Cannot clear by clicking
           </p>
           <Rate defaultValue={3} allowClear={false} />
@@ -210,17 +210,17 @@ export const AllowClear: Story = {
 export const Sizes: Story = {
   render: function SizesRate() {
     return (
-      <div className="space-y-6">
+      <div className="ds:space-y-6">
         <div>
-          <p className="text-sm text-muted-foreground mb-2">Small</p>
+          <p className="ds:text-sm ds:text-muted-foreground ds:mb-2">Small</p>
           <Rate defaultValue={3} size="small" />
         </div>
         <div>
-          <p className="text-sm text-muted-foreground mb-2">Middle (default)</p>
+          <p className="ds:text-sm ds:text-muted-foreground ds:mb-2">Middle (default)</p>
           <Rate defaultValue={3} size="middle" />
         </div>
         <div>
-          <p className="text-sm text-muted-foreground mb-2">Large</p>
+          <p className="ds:text-sm ds:text-muted-foreground ds:mb-2">Large</p>
           <Rate defaultValue={3} size="large" />
         </div>
       </div>
@@ -235,33 +235,33 @@ export const Sizes: Story = {
 export const Colors: Story = {
   render: function ColorsRate() {
     return (
-      <div className="space-y-6">
+      <div className="ds:space-y-6">
         <div>
-          <p className="text-sm text-muted-foreground mb-2">Primary</p>
+          <p className="ds:text-sm ds:text-muted-foreground ds:mb-2">Primary</p>
           <Rate defaultValue={3} color="primary" />
         </div>
         <div>
-          <p className="text-sm text-muted-foreground mb-2">Secondary</p>
+          <p className="ds:text-sm ds:text-muted-foreground ds:mb-2">Secondary</p>
           <Rate defaultValue={3} color="secondary" />
         </div>
         <div>
-          <p className="text-sm text-muted-foreground mb-2">Accent</p>
+          <p className="ds:text-sm ds:text-muted-foreground ds:mb-2">Accent</p>
           <Rate defaultValue={3} color="accent" />
         </div>
         <div>
-          <p className="text-sm text-muted-foreground mb-2">Destructive</p>
+          <p className="ds:text-sm ds:text-muted-foreground ds:mb-2">Destructive</p>
           <Rate defaultValue={3} color="destructive" />
         </div>
         <div>
-          <p className="text-sm text-muted-foreground mb-2">Success</p>
+          <p className="ds:text-sm ds:text-muted-foreground ds:mb-2">Success</p>
           <Rate defaultValue={3} color="success" />
         </div>
         <div>
-          <p className="text-sm text-muted-foreground mb-2">Error</p>
+          <p className="ds:text-sm ds:text-muted-foreground ds:mb-2">Error</p>
           <Rate defaultValue={3} color="error" />
         </div>
         <div>
-          <p className="text-sm text-muted-foreground mb-2">
+          <p className="ds:text-sm ds:text-muted-foreground ds:mb-2">
             Warning (default)
           </p>
           <Rate defaultValue={3} color="warning" />
@@ -278,19 +278,19 @@ export const Colors: Story = {
 export const CustomCount: Story = {
   render: function CustomCountRate() {
     return (
-      <div className="space-y-6">
+      <div className="ds:space-y-6">
         <div>
-          <p className="text-sm text-muted-foreground mb-2">3 stars</p>
+          <p className="ds:text-sm ds:text-muted-foreground ds:mb-2">3 stars</p>
           <Rate count={3} defaultValue={2} />
         </div>
         <div>
-          <p className="text-sm text-muted-foreground mb-2">
+          <p className="ds:text-sm ds:text-muted-foreground ds:mb-2">
             5 stars (default)
           </p>
           <Rate count={5} defaultValue={3} />
         </div>
         <div>
-          <p className="text-sm text-muted-foreground mb-2">10 stars</p>
+          <p className="ds:text-sm ds:text-muted-foreground ds:mb-2">10 stars</p>
           <Rate count={10} defaultValue={6} />
         </div>
       </div>
@@ -308,9 +308,9 @@ export const WithTooltips: Story = {
     const tooltips = ["Chán", "Tệ", "Bình thường", "Tốt", "Tuyệt vời"];
 
     return (
-      <div className="space-y-4">
+      <div className="ds:space-y-4">
         <Rate value={value} onChange={setValue} tooltips={tooltips} />
-        <p className="text-sm text-muted-foreground">
+        <p className="ds:text-sm ds:text-muted-foreground">
           {value > 0
             ? `${tooltips[value - 1]} (${value} sao)`
             : "Chưa đánh giá"}
@@ -326,9 +326,9 @@ export const WithTooltipsHalf: Story = {
     const tooltips = ["Terrible", "Bad", "Normal", "Good", "Excellent"];
 
     return (
-      <div className="space-y-4">
+      <div className="ds:space-y-4">
         <Rate allowHalf value={value} onChange={setValue} tooltips={tooltips} />
-        <p className="text-sm text-muted-foreground">
+        <p className="ds:text-sm ds:text-muted-foreground">
           {value > 0 ? `${value} stars` : "Not rated yet"}
         </p>
       </div>
@@ -343,29 +343,29 @@ export const WithTooltipsHalf: Story = {
 export const CustomCharacter: Story = {
   render: function CustomCharacterRate() {
     return (
-      <div className="space-y-6">
+      <div className="ds:space-y-6">
         <div>
-          <p className="text-sm text-muted-foreground mb-2">Heart character</p>
+          <p className="ds:text-sm ds:text-muted-foreground ds:mb-2">Heart character</p>
           <Rate
             defaultValue={3}
-            character={<Heart className="w-full h-full fill-current" />}
+            character={<Heart className="ds:w-full ds:h-full ds:fill-current" />}
           />
         </div>
         <div>
-          <p className="text-sm text-muted-foreground mb-2">Smile character</p>
+          <p className="ds:text-sm ds:text-muted-foreground ds:mb-2">Smile character</p>
           <Rate
             defaultValue={4}
-            character={<Smile className="w-full h-full fill-current" />}
+            character={<Smile className="ds:w-full ds:h-full ds:fill-current" />}
             size="large"
           />
         </div>
         <div>
-          <p className="text-sm text-muted-foreground mb-2">
+          <p className="ds:text-sm ds:text-muted-foreground ds:mb-2">
             Custom text character
           </p>
           <Rate
             defaultValue={2}
-            character={<span className="font-bold">A</span>}
+            character={<span className="ds:font-bold">A</span>}
             size="large"
           />
         </div>
@@ -381,21 +381,21 @@ export const CustomCharacter: Story = {
 export const Disabled: Story = {
   render: function DisabledRate() {
     return (
-      <div className="space-y-6">
+      <div className="ds:space-y-6">
         <div>
-          <p className="text-sm text-muted-foreground mb-2">
+          <p className="ds:text-sm ds:text-muted-foreground ds:mb-2">
             Disabled with value
           </p>
           <Rate defaultValue={3} disabled />
         </div>
         <div>
-          <p className="text-sm text-muted-foreground mb-2">
+          <p className="ds:text-sm ds:text-muted-foreground ds:mb-2">
             Disabled with half value
           </p>
           <Rate defaultValue={2.5} allowHalf disabled />
         </div>
         <div>
-          <p className="text-sm text-muted-foreground mb-2">
+          <p className="ds:text-sm ds:text-muted-foreground ds:mb-2">
             Disabled without value
           </p>
           <Rate disabled />
@@ -413,14 +413,14 @@ export const KeyboardSupport: Story = {
   render: function KeyboardSupportRate() {
     const [value, setValue] = useState(3);
     return (
-      <div className="space-y-4">
+      <div className="ds:space-y-4">
         <Rate value={value} onChange={setValue} keyboard />
-        <div className="text-sm text-muted-foreground space-y-1">
+        <div className="ds:text-sm ds:text-muted-foreground ds:space-y-1">
           <p>• Arrow Right/Up: Increase rating</p>
           <p>• Arrow Left/Down: Decrease rating</p>
           <p>• Home: Jump to minimum</p>
           <p>• End: Jump to maximum</p>
-          <p className="mt-2">Current value: {value}</p>
+          <p className="ds:mt-2">Current value: {value}</p>
         </div>
       </div>
     );
@@ -446,7 +446,7 @@ export const WithCallbacks: Story = {
     };
 
     return (
-      <div className="space-y-4">
+      <div className="ds:space-y-4">
         <Rate
           value={value}
           onChange={(v) => {
@@ -466,18 +466,18 @@ export const WithCallbacks: Story = {
             addLog("Blurred");
           }}
         />
-        <div className="space-y-2 text-sm">
-          <p className="text-muted-foreground">Value: {value}</p>
-          <p className="text-muted-foreground">
+        <div className="ds:space-y-2 ds:text-sm">
+          <p className="ds:text-muted-foreground">Value: {value}</p>
+          <p className="ds:text-muted-foreground">
             Hover value: {hoverValue || "-"}
           </p>
-          <p className="text-muted-foreground">
+          <p className="ds:text-muted-foreground">
             Focused: {focused ? "Yes" : "No"}
           </p>
-          <div className="p-2 bg-muted rounded text-xs space-y-1">
-            <p className="font-medium">Event logs:</p>
+          <div className="ds:p-2 ds:bg-muted ds:rounded ds:text-xs ds:space-y-1">
+            <p className="ds:font-medium">Event logs:</p>
             {logs.length === 0 ? (
-              <p className="text-muted-foreground">No events yet</p>
+              <p className="ds:text-muted-foreground">No events yet</p>
             ) : (
               logs.map((log, i) => <p key={i}>{log}</p>)
             )}
@@ -513,13 +513,13 @@ export const ProductReview: Story = {
         Object.values(ratings).filter((v) => v > 0).length || 0;
 
     return (
-      <div className="w-[400px] space-y-6 p-6 border rounded-lg">
-        <h3 className="text-lg font-semibold">Đánh giá sản phẩm</h3>
+      <div className="w-[400px] ds:space-y-6 ds:p-6 ds:border ds:rounded-lg">
+        <h3 className="ds:text-lg ds:font-semibold">Đánh giá sản phẩm</h3>
 
-        <div className="space-y-4">
+        <div className="ds:space-y-4">
           {categories.map(({ key, label }) => (
-            <div key={key} className="flex items-center gap-4">
-              <span className="text-sm w-40">{label}:</span>
+            <div key={key} className="ds:flex ds:items-center ds:gap-4">
+              <span className="ds:text-sm ds:w-40">{label}:</span>
               <Rate
                 allowHalf
                 value={ratings[key as keyof typeof ratings]}
@@ -531,11 +531,11 @@ export const ProductReview: Story = {
           ))}
         </div>
 
-        <div className="pt-4 border-t">
-          <div className="flex items-center justify-between">
-            <span className="text-sm font-medium">Đánh giá trung bình:</span>
-            <div className="flex items-center gap-2">
-              <span className="text-2xl font-bold text-primary">
+        <div className="ds:pt-4 ds:border-t">
+          <div className="ds:flex ds:items-center ds:justify-between">
+            <span className="ds:text-sm ds:font-medium">Đánh giá trung bình:</span>
+            <div className="ds:flex ds:items-center ds:gap-2">
+              <span className="ds:text-2xl ds:font-bold ds:text-primary">
                 {average.toFixed(1)}
               </span>
               <Rate value={average} allowHalf disabled size="small" />
@@ -550,7 +550,7 @@ export const ProductReview: Story = {
             );
           }}
           disabled={average === 0}
-          className="w-full px-4 py-2 bg-primary text-primary-foreground rounded disabled:opacity-50 disabled:cursor-not-allowed"
+          className="ds:w-full ds:px-4 ds:py-2 ds:bg-primary ds:text-primary-foreground ds:rounded ds:disabled:opacity-50 ds:disabled:cursor-not-allowed"
         >
           Gửi đánh giá
         </button>

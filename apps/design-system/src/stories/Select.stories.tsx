@@ -232,13 +232,13 @@ const frameworks = [
 ];
 
 export const Default = (args: SelectProps) => (
-  <div className="w-96">
+  <div className="ds:w-96">
     <Select {...args} />
   </div>
 );
 
 export const WithLabel = () => (
-  <div className="flex flex-col gap-4 w-96">
+  <div className="ds:flex ds:flex-col ds:gap-4 ds:w-96">
     <Select
       label="Country"
       placeholder="Select countries..."
@@ -254,7 +254,7 @@ export const WithLabel = () => (
 );
 
 export const WithHelperText = () => (
-  <div className="w-96">
+  <div className="ds:w-96">
     <Select
       label="Countries"
       placeholder="Select your countries..."
@@ -265,7 +265,7 @@ export const WithHelperText = () => (
 );
 
 export const WithInfo = () => (
-  <div className="w-96 flex flex-col gap-4">
+  <div className="ds:w-96 ds:flex ds:flex-col ds:gap-4">
     <Select
       label="Countries"
       placeholder="Select countries..."
@@ -283,7 +283,7 @@ export const WithInfo = () => (
 );
 
 export const HelperTextStates = () => (
-  <div className="flex flex-col gap-4 w-96">
+  <div className="ds:flex ds:flex-col ds:gap-4 ds:w-96">
     <Select
       label="Default"
       placeholder="Select..."
@@ -318,7 +318,7 @@ export const HelperTextStates = () => (
 );
 
 export const Disabled = () => (
-  <div className="flex flex-col gap-4 w-96">
+  <div className="ds:flex ds:flex-col ds:gap-4 ds:w-96">
     <Select
       label="Disabled Select"
       placeholder="This select is disabled"
@@ -335,7 +335,7 @@ export const Disabled = () => (
 );
 
 export const Sizes = () => (
-  <div className="flex flex-col gap-4 w-96">
+  <div className="ds:flex ds:flex-col ds:gap-4 ds:w-96">
     <Select
       label="Extra Small"
       placeholder="XS select"
@@ -370,7 +370,7 @@ export const Sizes = () => (
 );
 
 export const FloatLabel = () => (
-  <div className="flex flex-col gap-4 w-96">
+  <div className="ds:flex ds:flex-col ds:gap-4 ds:w-96">
     <Select
       label="Countries"
       placeholder=" "
@@ -396,7 +396,7 @@ export const FloatLabel = () => (
 );
 
 export const Clearable = () => (
-  <div className="flex flex-col gap-4 w-96">
+  <div className="ds:flex ds:flex-col ds:gap-4 ds:w-96">
     <Select
       label="Countries"
       placeholder="Select countries..."
@@ -426,7 +426,7 @@ export const Clearable = () => (
 );
 
 export const NotClearable = () => (
-  <div className="flex flex-col gap-4 w-96">
+  <div className="ds:flex ds:flex-col ds:gap-4 ds:w-96">
     <Select
       label="Countries (Not Clearable)"
       placeholder="Select countries..."
@@ -440,7 +440,7 @@ export const NotClearable = () => (
 );
 
 export const WithGroups = () => (
-  <div className="flex flex-col gap-4 w-96">
+  <div className="ds:flex ds:flex-col ds:gap-4 ds:w-96">
     <Select
       label="Frameworks"
       placeholder="Select frameworks..."
@@ -458,7 +458,7 @@ export const WithGroups = () => (
 );
 
 export const WithSearch = () => (
-  <div className="flex flex-col gap-4 w-96">
+  <div className="ds:flex ds:flex-col ds:gap-4 ds:w-96">
     <Select
       label="Search Countries"
       placeholder="Type to search..."
@@ -480,7 +480,7 @@ export const WithSearch = () => (
 );
 
 export const OverflowBehaviors = () => (
-  <div className="flex flex-col gap-4 w-96">
+  <div className="ds:flex ds:flex-col ds:gap-4 ds:w-96">
     <Select
       label="Wrap (always)"
       placeholder="Select items..."
@@ -512,7 +512,7 @@ export const OverflowBehaviors = () => (
 );
 
 export const AllFeaturesCombined = () => (
-  <div className="flex flex-col gap-4 w-96">
+  <div className="ds:flex ds:flex-col ds:gap-4 ds:w-96">
     <Select
       label="Complete Example"
       placeholder="Select frameworks..."
@@ -534,10 +534,10 @@ export const AllFeaturesCombined = () => (
 );
 
 export const CompareSizes = () => (
-  <div className="flex flex-col gap-6 w-96">
+  <div className="ds:flex ds:flex-col ds:gap-6 ds:w-96">
     <div>
-      <h3 className="text-sm font-semibold mb-3">Regular Label</h3>
-      <div className="flex flex-col gap-3">
+      <h3 className="ds:text-sm ds:font-semibold ds:mb-3">Regular Label</h3>
+      <div className="ds:flex ds:flex-col ds:gap-3">
         <Select
           size="xs"
           label="XS"
@@ -572,8 +572,8 @@ export const CompareSizes = () => (
     </div>
 
     <div>
-      <h3 className="text-sm font-semibold mb-3">Float Label</h3>
-      <div className="flex flex-col gap-3">
+      <h3 className="ds:text-sm ds:font-semibold ds:mb-3">Float Label</h3>
+      <div className="ds:flex ds:flex-col ds:gap-3">
         <Select
           size="xs"
           label="XS Float"
@@ -615,7 +615,7 @@ export const CompareSizes = () => (
 );
 
 export const SelectWithStates = () => (
-  <div className="flex flex-col gap-4 w-96">
+  <div className="ds:flex ds:flex-col ds:gap-4 ds:w-96">
     <Select
       label="Default"
       placeholder="Select one..."
@@ -680,7 +680,7 @@ export const CustomTagRender = () => {
 
     return (
       <div
-        className={`${classNames()} px-2 py-1 rounded-full text-xs font-medium`}
+        className={`${classNames()} ds:px-2 ds:py-1 ds:rounded-full ds:text-xs ds:font-medium`}
       >
         {option.icon} {option.label}
       </div>
@@ -688,7 +688,7 @@ export const CustomTagRender = () => {
   };
 
   return (
-    <div className="flex flex-col gap-4 w-96">
+    <div className="ds:flex ds:flex-col ds:gap-4 ds:w-96">
       <Select
         label="Fruits with Custom Tags"
         placeholder="Select fruits..."
@@ -711,9 +711,9 @@ export const CustomTagRender = () => {
 };
 
 export const CompareMultipleVsSingle = () => (
-  <div className="flex flex-col gap-6 w-96">
+  <div className="ds:flex ds:flex-col ds:gap-6 ds:w-96">
     <div>
-      <h3 className="text-sm font-semibold mb-3">Multi Select</h3>
+      <h3 className="ds:text-sm ds:font-semibold ds:mb-3">Multi Select</h3>
       <Select
         label="Select Countries (Multiple)"
         placeholder="Select countries..."
@@ -725,7 +725,7 @@ export const CompareMultipleVsSingle = () => (
     </div>
 
     <div>
-      <h3 className="text-sm font-semibold mb-3">Single Select</h3>
+      <h3 className="ds:text-sm ds:font-semibold ds:mb-3">Single Select</h3>
       <Select
         label="Select Country (Single)"
         placeholder="Select a country..."

@@ -116,63 +116,63 @@ const recentActivity = [
 export default function ReportsPage() {
   return (
     <AdminLayout>
-      <div className="space-y-6">
+      <div className="ds:space-y-6">
         {/* Page Header */}
-        <div className="flex items-center justify-between">
+        <div className="ds:flex ds:items-center ds:justify-between">
           <div>
-            <h1 className="text-3xl font-bold tracking-tight">Reports</h1>
-            <p className="text-muted-foreground">
+            <h1 className="ds:text-3xl ds:font-bold ds:tracking-tight">Reports</h1>
+            <p className="ds:text-muted-foreground">
               Generate and manage your business reports
             </p>
           </div>
           <Button>
-            <FileText className="mr-2 h-4 w-4" />
+            <FileText className="ds:mr-2 ds:h-4 ds:w-4" />
             Generate Report
           </Button>
         </div>
 
         {/* Stats Cards */}
-        <div className="grid gap-4 md:grid-cols-3">
-          <div className="rounded-lg border bg-card p-6 shadow-sm">
-            <div className="flex items-center justify-between">
-              <p className="text-sm font-medium text-muted-foreground">
+        <div className="ds:grid ds:gap-4 ds:md:grid-cols-3">
+          <div className="ds:rounded-lg ds:border ds:bg-card ds:p-6 ds:shadow-sm">
+            <div className="ds:flex ds:items-center ds:justify-between">
+              <p className="ds:text-sm ds:font-medium ds:text-muted-foreground">
                 Total Reports
               </p>
-              <FileText className="h-4 w-4 text-muted-foreground" />
+              <FileText className="ds:h-4 ds:w-4 ds:text-muted-foreground" />
             </div>
-            <div className="mt-3">
-              <p className="text-2xl font-bold">{reports.length}</p>
-              <p className="text-sm text-green-600 mt-1">+3 this month</p>
+            <div className="ds:mt-3">
+              <p className="ds:text-2xl ds:font-bold">{reports.length}</p>
+              <p className="ds:text-sm ds:text-green-600 ds:mt-1">+3 this month</p>
             </div>
           </div>
 
-          <div className="rounded-lg border bg-card p-6 shadow-sm">
-            <div className="flex items-center justify-between">
-              <p className="text-sm font-medium text-muted-foreground">
+          <div className="ds:rounded-lg ds:border ds:bg-card ds:p-6 ds:shadow-sm">
+            <div className="ds:flex ds:items-center ds:justify-between">
+              <p className="ds:text-sm ds:font-medium ds:text-muted-foreground">
                 Total Views
               </p>
-              <Eye className="h-4 w-4 text-muted-foreground" />
+              <Eye className="ds:h-4 ds:w-4 ds:text-muted-foreground" />
             </div>
-            <div className="mt-3">
-              <p className="text-2xl font-bold">
+            <div className="ds:mt-3">
+              <p className="ds:text-2xl ds:font-bold">
                 {reports.reduce((sum, r) => sum + r.views, 0)}
               </p>
-              <p className="text-sm text-green-600 mt-1">+12% from last week</p>
+              <p className="ds:text-sm ds:text-green-600 ds:mt-1">+12% from last week</p>
             </div>
           </div>
 
-          <div className="rounded-lg border bg-card p-6 shadow-sm">
-            <div className="flex items-center justify-between">
-              <p className="text-sm font-medium text-muted-foreground">
+          <div className="ds:rounded-lg ds:border ds:bg-card ds:p-6 ds:shadow-sm">
+            <div className="ds:flex ds:items-center ds:justify-between">
+              <p className="ds:text-sm ds:font-medium ds:text-muted-foreground">
                 In Progress
               </p>
-              <TrendingUp className="h-4 w-4 text-muted-foreground" />
+              <TrendingUp className="ds:h-4 ds:w-4 ds:text-muted-foreground" />
             </div>
-            <div className="mt-3">
-              <p className="text-2xl font-bold">
+            <div className="ds:mt-3">
+              <p className="ds:text-2xl ds:font-bold">
                 {reports.filter((r) => r.status === "processing").length}
               </p>
-              <p className="text-sm text-muted-foreground mt-1">
+              <p className="ds:text-sm ds:text-muted-foreground ds:mt-1">
                 Currently processing
               </p>
             </div>
@@ -182,24 +182,24 @@ export default function ReportsPage() {
         {/* Tabs */}
         <Tabs
           defaultActiveKey="all"
-          className="space-y-4"
+          className="ds:space-y-4"
           items={[
             {
               key: "all",
               label: "All Reports",
               children: (
-                <div className="space-y-4">
+                <div className="ds:space-y-4">
                   {/* Filters */}
-                  <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-                    <div className="relative flex-1 max-w-md">
-                      <Filter className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                  <div className="ds:flex ds:flex-col ds:gap-4 ds:md:flex-row ds:md:items-center ds:md:justify-between">
+                    <div className="ds:relative ds:flex-1 ds:max-w-md">
+                      <Filter className="ds:absolute ds:left-3 ds:top-1/2 ds:h-4 ds:w-4 ds:-translate-y-1/2 ds:text-muted-foreground" />
                       <Input
                         type="search"
                         placeholder="Search reports..."
-                        className="pl-9"
+                        className="ds:pl-9"
                       />
                     </div>
-                    <div className="flex gap-2">
+                    <div className="ds:flex ds:gap-2">
                       <Select
                         options={[
                           { value: "all", label: "All Categories" },
@@ -223,22 +223,22 @@ export default function ReportsPage() {
                         placeholder="Status"
                       />
                       <Button variant="outline" size="icon">
-                        <Calendar className="h-4 w-4" />
+                        <Calendar className="ds:h-4 ds:w-4" />
                       </Button>
                     </div>
                   </div>
 
                   {/* Reports Grid */}
-                  <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                  <div className="ds:grid ds:gap-4 ds:md:grid-cols-2 ds:lg:grid-cols-3">
                     {reports.map((report) => (
                       <div
                         key={report.id}
-                        className="group rounded-lg border bg-card p-6 shadow-sm transition-all hover:shadow-md"
+                        className="ds:group ds:rounded-lg ds:border ds:bg-card ds:p-6 ds:shadow-sm ds:transition-all ds:hover:shadow-md"
                       >
-                        <div className="flex items-start justify-between mb-3">
-                          <div className="flex items-center gap-2">
-                            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
-                              <FileText className="h-5 w-5 text-primary" />
+                        <div className="ds:flex ds:items-start ds:justify-between ds:mb-3">
+                          <div className="ds:flex ds:items-center ds:gap-2">
+                            <div className="ds:flex ds:h-10 ds:w-10 ds:items-center ds:justify-center ds:rounded-lg ds:bg-primary/10">
+                              <FileText className="ds:h-5 ds:w-5 ds:text-primary" />
                             </div>
                             <Badge
                               variant={
@@ -255,39 +255,39 @@ export default function ReportsPage() {
                           <Button
                             variant="ghost"
                             size="icon"
-                            className="opacity-0 group-hover:opacity-100 transition-opacity"
+                            className="ds:opacity-0 ds:group-hover:opacity-100 ds:transition-opacity"
                           >
-                            <MoreVertical className="h-4 w-4" />
+                            <MoreVertical className="ds:h-4 ds:w-4" />
                           </Button>
                         </div>
 
-                        <h3 className="font-semibold mb-1">{report.title}</h3>
-                        <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
+                        <h3 className="ds:font-semibold ds:mb-1">{report.title}</h3>
+                        <p className="ds:text-sm ds:text-muted-foreground ds:mb-4 ds:line-clamp-2">
                           {report.description}
                         </p>
 
-                        <div className="flex items-center justify-between text-sm text-muted-foreground mb-4">
+                        <div className="ds:flex ds:items-center ds:justify-between ds:text-sm ds:text-muted-foreground ds:mb-4">
                           <span>{report.category}</span>
                           <span>{report.format}</span>
                         </div>
 
-                        <div className="flex items-center justify-between pt-4 border-t">
-                          <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                            <div className="flex items-center gap-1">
-                              <Eye className="h-3 w-3" />
+                        <div className="ds:flex ds:items-center ds:justify-between ds:pt-4 ds:border-t">
+                          <div className="ds:flex ds:items-center ds:gap-4 ds:text-sm ds:text-muted-foreground">
+                            <div className="ds:flex ds:items-center ds:gap-1">
+                              <Eye className="ds:h-3 ds:w-3" />
                               {report.views}
                             </div>
                             <span>{report.date}</span>
                           </div>
-                          <div className="flex gap-1">
+                          <div className="ds:flex ds:gap-1">
                             <Button variant="ghost" size="icon">
-                              <Eye className="h-4 w-4" />
+                              <Eye className="ds:h-4 ds:w-4" />
                             </Button>
                             <Button variant="ghost" size="icon">
-                              <Download className="h-4 w-4" />
+                              <Download className="ds:h-4 ds:w-4" />
                             </Button>
                             <Button variant="ghost" size="icon">
-                              <Share2 className="h-4 w-4" />
+                              <Share2 className="ds:h-4 ds:w-4" />
                             </Button>
                           </div>
                         </div>
@@ -301,32 +301,32 @@ export default function ReportsPage() {
               key: "recent",
               label: "Recent Activity",
               children: (
-                <div className="rounded-lg border bg-card shadow-sm">
-                  <div className="p-6">
-                    <h3 className="text-lg font-semibold mb-4">
+                <div className="ds:rounded-lg ds:border ds:bg-card ds:shadow-sm">
+                  <div className="ds:p-6">
+                    <h3 className="ds:text-lg ds:font-semibold ds:mb-4">
                       Recent Activity
                     </h3>
-                    <div className="space-y-4">
+                    <div className="ds:space-y-4">
                       {recentActivity.map((activity, index) => (
                         <div
                           key={index}
-                          className="flex items-center justify-between py-3 border-b last:border-0"
+                          className="ds:flex ds:items-center ds:justify-between ds:py-3 ds:border-b ds:last:border-0"
                         >
-                          <div className="flex items-center gap-3">
-                            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
-                              <FileText className="h-4 w-4 text-primary" />
+                          <div className="ds:flex ds:items-center ds:gap-3">
+                            <div className="ds:flex ds:h-10 ds:w-10 ds:items-center ds:justify-center ds:rounded-full ds:bg-primary/10">
+                              <FileText className="ds:h-4 ds:w-4 ds:text-primary" />
                             </div>
                             <div>
-                              <p className="text-sm">
-                                <span className="font-medium">
+                              <p className="ds:text-sm">
+                                <span className="ds:font-medium">
                                   {activity.user}
                                 </span>{" "}
                                 {activity.action}{" "}
-                                <span className="font-medium">
+                                <span className="ds:font-medium">
                                   {activity.report}
                                 </span>
                               </p>
-                              <p className="text-xs text-muted-foreground">
+                              <p className="ds:text-xs ds:text-muted-foreground">
                                 {activity.time}
                               </p>
                             </div>
@@ -342,15 +342,15 @@ export default function ReportsPage() {
               key: "scheduled",
               label: "Scheduled",
               children: (
-                <div className="rounded-lg border bg-card p-6 shadow-sm">
-                  <div className="h-[400px] flex items-center justify-center border-2 border-dashed rounded-lg">
-                    <div className="text-center text-muted-foreground">
-                      <Calendar className="h-12 w-12 mx-auto mb-2 opacity-50" />
-                      <p className="font-medium">No Scheduled Reports</p>
-                      <p className="text-sm mt-1">
+                <div className="ds:rounded-lg ds:border ds:bg-card ds:p-6 ds:shadow-sm">
+                  <div className="h-[400px] ds:flex ds:items-center ds:justify-center ds:border-2 ds:border-dashed ds:rounded-lg">
+                    <div className="ds:text-center ds:text-muted-foreground">
+                      <Calendar className="ds:h-12 ds:w-12 ds:mx-auto ds:mb-2 ds:opacity-50" />
+                      <p className="ds:font-medium">No Scheduled Reports</p>
+                      <p className="ds:text-sm ds:mt-1">
                         Schedule reports to run automatically
                       </p>
-                      <Button variant="outline" className="mt-4">
+                      <Button variant="outline" className="ds:mt-4">
                         Schedule Report
                       </Button>
                     </div>

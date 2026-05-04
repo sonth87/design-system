@@ -29,7 +29,7 @@ export default meta;
 type Story = StoryObj;
 
 export const Rotating = () => (
-  <RotatingText className="text-4xl" text={["Rotating", "Text", "Demo"]} />
+  <RotatingText className="ds:text-4xl" text={["Rotating", "Text", "Demo"]} />
 );
 
 export const Blur = () => (
@@ -38,7 +38,7 @@ export const Blur = () => (
     delay={150}
     animateBy="words"
     direction="top"
-    className="text-4xl font-bold text-center max-w-4xl"
+    className="ds:text-4xl ds:font-bold ds:text-center ds:max-w-4xl"
   />
 );
 
@@ -47,37 +47,37 @@ export const Circular = () => (
     text="SHADCN/UI • COMPONENTS • "
     onHover="speedUp"
     spinDuration={15}
-    className="text-primary tracking-widest"
+    className="ds:text-primary ds:tracking-widest"
   />
 );
 
 export const Flip = () => (
-  <div className="text-4xl font-normal text-center max-w-2xl">
+  <div className="ds:text-4xl ds:font-normal ds:text-center ds:max-w-2xl">
     Build{" "}
     <FlipWords
       words={["better", "faster", "modern", "beautiful"]}
       duration={2500}
-      className="text-blue-500 font-semibold"
+      className="ds:text-blue-500 ds:font-semibold"
     />{" "}
     websites with shadcn/ui
   </div>
 );
 
 export const Gradient = () => (
-  <GradientText className="text-4xl font-bold" text="Gradient Text" />
+  <GradientText className="ds:text-4xl ds:font-bold" text="Gradient Text" />
 );
 
 export const Rolling = () => (
-  <RollingText className="text-4xl font-bold" text="Rolling Text" />
+  <RollingText className="ds:text-4xl ds:font-bold" text="Rolling Text" />
 );
 
 export const Shimmering = () => (
-  <ShimmeringText className="text-4xl font-bold" text="Shimmering Text" wave />
+  <ShimmeringText className="ds:text-4xl ds:font-bold" text="Shimmering Text" wave />
 );
 
 export const Splitting = () => (
   <SplittingText
-    className="text-4xl font-bold"
+    className="ds:text-4xl ds:font-bold"
     text="Splitting Text"
     type="chars"
   />
@@ -85,20 +85,20 @@ export const Splitting = () => (
 
 export const TextGenerate = () => (
   <TextGenerateEffect
-    className="text-4xl font-bold"
+    className="ds:text-4xl ds:font-bold"
     words="Text Generate Effect"
   />
 );
 
 export const TextHover = () => (
-  <div className="text-4xl font-bold">
-    <span className="mr-2">Hover</span>
+  <div className="ds:text-4xl ds:font-bold">
+    <span className="ds:mr-2">Hover</span>
     <TextHoverEffect text="SKYLINE" />
   </div>
 );
 
 export const TextPressureEffect = () => (
-  <div className="w-full h-56 flex items-center justify-center">
+  <div className="ds:w-full ds:h-56 ds:flex ds:items-center ds:justify-center">
     <TextPressure
       text="Skyline"
       flex={true}
@@ -109,14 +109,14 @@ export const TextPressureEffect = () => (
       italic={false}
       textColor="currentColor"
       minFontSize={56}
-      className="text-foreground"
+      className="ds:text-foreground"
     />
   </div>
 );
 
 export const Typing = () => (
-  <div className="text-4xl font-bold">
-    <span className="mr-2">I am a</span>
+  <div className="ds:text-4xl ds:font-bold">
+    <span className="ds:mr-2">I am a</span>
     <TypingText
       text={[
         "Developer.",
@@ -128,7 +128,7 @@ export const Typing = () => (
       typingSpeed={75}
       pauseDuration={1500}
       showCursor={true}
-      className="text-4xl font-bold text-center max-w-2xl"
+      className="ds:text-4xl ds:font-bold ds:text-center ds:max-w-2xl"
       cursorClassName="h-12"
       textColors={["#3b82f6", "#8b5cf6", "#06b6d4", "#10b981", "#f59e0b"]}
       variableSpeed={{ min: 50, max: 120 }}
@@ -137,9 +137,9 @@ export const Typing = () => (
 );
 
 export const WritingTextEffect = () => (
-  <div className="text-4xl font-bold">
+  <div className="ds:text-4xl ds:font-bold">
     <WritingText
-      className="text-4xl"
+      className="ds:text-4xl"
       text="Welcome to Writing Text Effect"
       spacing={9}
     />

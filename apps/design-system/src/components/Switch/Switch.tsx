@@ -125,7 +125,7 @@ const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>(
 
         return (
           <Glass
-            className={cn("hover:scale-110 [&_span]:opacity-80", roundedClass)}
+            className={cn("ds:hover:scale-110 [&_span]:opacity-80", roundedClass)}
           >
             {baseSwitchElement}
           </Glass>
@@ -146,14 +146,14 @@ const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>(
     // Render with inside labels (icons inside thumb position)
     if (showLabels === "inside" && (offLabel || onLabel)) {
       return (
-        <div className="relative inline-grid h-7 w-fit grid-cols-[1fr_1fr] items-center text-sm font-medium">
+        <div className="ds:relative ds:inline-grid ds:h-7 ds:w-fit grid-cols-[1fr_1fr] ds:items-center ds:text-sm ds:font-medium">
           {switchElement(
             "peer data-[state=unchecked]:bg-input/50 absolute inset-0 h-[inherit] w-14 [&_span]:z-10 [&_span]:size-6.5 [&_span]:transition-transform [&_span]:duration-300 [&_span]:ease-[cubic-bezier(0.16,1,0.3,1)] [&_span]:data-[state=checked]:translate-x-7 [&_span]:data-[state=checked]:rtl:-translate-x-7"
           )}
-          <span className="pointer-events-none relative ml-0.5 flex min-w-8 items-center justify-center text-center transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] peer-data-[state=checked]:invisible peer-data-[state=unchecked]:translate-x-6 peer-data-[state=unchecked]:rtl:-translate-x-6">
+          <span className="ds:pointer-events-none ds:relative ds:ml-0.5 ds:flex ds:min-w-8 ds:items-center ds:justify-center ds:text-center ds:transition-transform ds:duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] peer-data-[state=checked]:invisible peer-data-[state=unchecked]:translate-x-6 peer-data-[state=unchecked]:rtl:-translate-x-6">
             {offLabel}
           </span>
-          <span className="peer-data-[state=checked]:text-background pointer-events-none relative flex min-w-8 items-center justify-center text-center transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] peer-data-[state=checked]:-translate-x-full peer-data-[state=unchecked]:invisible peer-data-[state=checked]:rtl:translate-x-full">
+          <span className="peer-data-[state=checked]:text-background ds:pointer-events-none ds:relative ds:flex ds:min-w-8 ds:items-center ds:justify-center ds:text-center ds:transition-transform ds:duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] peer-data-[state=checked]:-translate-x-full peer-data-[state=unchecked]:invisible peer-data-[state=checked]:rtl:translate-x-full">
             {onLabel}
           </span>
         </div>
@@ -164,12 +164,12 @@ const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>(
     if (showLabels === "outside" && (offLabel || onLabel)) {
       return (
         <div
-          className="group inline-flex items-center gap-2"
+          className="ds:group ds:inline-flex ds:items-center ds:gap-2"
           data-state={isChecked ? "checked" : "unchecked"}
         >
           {offLabel && (
             <span
-              className="flex-1 cursor-pointer text-sm font-medium group-data-[state=checked]:text-muted-foreground/70"
+              className="ds:flex-1 cursor-pointer ds:text-sm ds:font-medium group-data-[state=checked]:text-muted-foreground/70"
               onClick={() => handleCheckedChange(false)}
             >
               {offLabel}
@@ -178,7 +178,7 @@ const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>(
           {switchElement()}
           {onLabel && (
             <span
-              className="flex-1 cursor-pointer text-sm font-medium group-data-[state=unchecked]:text-muted-foreground/70"
+              className="ds:flex-1 cursor-pointer ds:text-sm ds:font-medium group-data-[state=unchecked]:text-muted-foreground/70"
               onClick={() => handleCheckedChange(true)}
             >
               {onLabel}
@@ -196,7 +196,7 @@ const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>(
       const labelFirst = labelPosition === "left" || labelPosition === "top";
 
       return (
-        <div className={cn("flex gap-2", flexDirection, alignItems)}>
+        <div className={cn("ds:flex ds:gap-2", flexDirection, alignItems)}>
           {labelFirst && <label htmlFor={id}>{label}</label>}
           {switchElement()}
           {!labelFirst && <label htmlFor={id}>{label}</label>}

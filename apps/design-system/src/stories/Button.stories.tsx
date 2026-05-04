@@ -144,13 +144,13 @@ export default meta;
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Default = (args: ButtonProps) => (
   <Button {...args}>
-    <BottleWine className="animate-draw" /> {args.children}
+    <BottleWine className="ds:animate-draw" /> {args.children}
   </Button>
 );
 
 export const Variants = (args: ButtonProps) => (
-  <div className="flex flex-col gap-4">
-    <div className="flex flex-row gap-4">
+  <div className="ds:flex ds:flex-col ds:gap-4">
+    <div className="ds:flex ds:flex-row ds:gap-4">
       <Button {...args}>{args.children}</Button>
       <Button {...args} variant="mix">
         {args.children}
@@ -168,7 +168,7 @@ export const Variants = (args: ButtonProps) => (
         {args.children}
       </Button>
     </div>
-    <div className="flex flex-row gap-4">
+    <div className="ds:flex ds:flex-row ds:gap-4">
       <Button {...args}>{args.children}</Button>
       <Button {...args} variant="mix" color="secondary">
         {args.children}
@@ -190,22 +190,22 @@ export const Variants = (args: ButtonProps) => (
 );
 
 export const WithIcon = (args: ButtonProps) => (
-  <div className="flex flex-row gap-4">
+  <div className="ds:flex ds:flex-row ds:gap-4">
     <Button {...args}>
-      <ArrowLeft className="transition-transform duration-200 group-hover:-translate-x-1" />
+      <ArrowLeft className="ds:transition-transform ds:duration-200 ds:group-hover:-translate-x-1" />
       {args.children}
-      <ArrowRight className="transition-transform duration-200 group-hover:translate-x-1" />
+      <ArrowRight className="ds:transition-transform ds:duration-200 ds:group-hover:translate-x-1" />
     </Button>
 
-    <Button className="animate-draw">
+    <Button className="ds:animate-draw">
       <ShoppingBag />
     </Button>
 
-    <Button className="animate-draw rounded-full size-9">
-      <BottleWine className="animate-draw" />
+    <Button className="ds:animate-draw ds:rounded-full ds:size-9">
+      <BottleWine className="ds:animate-draw" />
     </Button>
 
-    <Button className="animate-draw rounded-full size-9 stroke-purple-500">
+    <Button className="ds:animate-draw ds:rounded-full ds:size-9 ds:stroke-purple-500">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -269,7 +269,7 @@ export const DisabledState = (args: ButtonProps) => (
 );
 
 export const Sizes = (args: ButtonProps) => (
-  <div className="flex flex-row gap-4 items-center">
+  <div className="ds:flex ds:flex-row ds:gap-4 ds:items-center">
     <Button {...args} size="xs">
       {args.children} XS
     </Button>
@@ -289,7 +289,7 @@ export const Sizes = (args: ButtonProps) => (
 );
 
 export const AnimatedButton = (args: ButtonProps) => (
-  <div className="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-5 gap-4">
+  <div className="ds:grid ds:grid-cols-2 ds:md:grid-cols-4 ds:xl:grid-cols-5 ds:gap-4">
     <Button {...args} animation="heartbeat">
       {args.children} Heartbeat
     </Button>
@@ -316,7 +316,7 @@ export const AnimatedButton = (args: ButtonProps) => (
 
 export const GlassEffect = (args: ButtonProps) => (
   <div
-    className="w-200 h-60 p-4 flex items-center justify-center bg-cover [animation:move-background_400s_linear_infinite] gap-4"
+    className="ds:w-200 ds:h-60 ds:p-4 ds:flex ds:items-center ds:justify-center ds:bg-cover [animation:move-background_400s_linear_infinite] ds:gap-4"
     style={{
       backgroundImage:
         "url('https://raw.githubusercontent.com/lucasromerodb/liquid-glass-effect-macos/refs/heads/main/assets/flowers.jpg')",

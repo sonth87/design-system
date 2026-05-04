@@ -96,7 +96,7 @@ export const animationEffect = <T, S = undefined>({
         children: (
           <motion.button
             whileHover={{ scale: 1.1 }}
-            className={cn(rootClassName, "transition-none", className)}
+            className={cn(rootClassName, "ds:transition-none", className)}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
             {...rest}
           >
@@ -109,7 +109,7 @@ export const animationEffect = <T, S = undefined>({
         children: (
           <motion.button
             whileTap={{ scale: 0.85 }}
-            className={cn(rootClassName, "transition-none", className)}
+            className={cn(rootClassName, "ds:transition-none", className)}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
             {...rest}
           >
@@ -126,11 +126,11 @@ export const animationEffect = <T, S = undefined>({
       return {
         variant: (variantType ? "link" : undefined) as S,
         children: (
-          <Glass className={cn("hover:scale-110", roundedClass)}>
+          <Glass className={cn("ds:hover:scale-110", roundedClass)}>
             <span
               className={cn(
                 rootClassName,
-                "!bg-none !bg-transparent border-0",
+                "!bg-none !bg-transparent ds:border-0",
                 className
               )}
             >

@@ -44,7 +44,7 @@ const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
       asChild={badgeAnimation?.children ? true : rest.asChild}
     >
       <>
-        {rest?.isLoading && <LoaderCircle className="animate-spin" />}
+        {rest?.isLoading && <LoaderCircle className="ds:animate-spin" />}
         {!rest?.isLoading && (badgeAnimation?.children ?? rest.children)}
       </>
     </SBadge>

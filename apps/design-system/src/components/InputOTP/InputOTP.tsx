@@ -73,7 +73,7 @@ const InputOTP = React.forwardRef<
     };
 
     return (
-      <div className={cn("flex flex-col gap-1.5 relative", rootClassName)}>
+      <div className={cn("ds:flex ds:flex-col ds:gap-1.5 ds:relative", rootClassName)}>
         <Label htmlFor={id}>{label}</Label>
         <SInputOTP
           id={id}
@@ -85,8 +85,8 @@ const InputOTP = React.forwardRef<
           <InputOTPGroup
             className={cn(
               {
-                "gap-2 *:data-[slot=input-otp-slot]:rounded-md *:data-[slot=input-otp-slot]:border":
-                  variant === "outlined" && gapSize > 0,
+                "ds:gap-2 *:data-[slot=input-otp-slot]:rounded-md *:data-[slot=input-otp-slot]:border":
+                  variant === "ds:outlined" && gapSize > 0,
               },
               className
             )}
@@ -105,7 +105,7 @@ const InputOTP = React.forwardRef<
           </InputOTPGroup>
         </SInputOTP>
         {helperText && (
-          <p className={cn("text-xs", state ? helperTextStyles?.[state] : "")}>
+          <p className={cn("ds:text-xs", state ? helperTextStyles?.[state] : "")}>
             {helperText}
           </p>
         )}

@@ -234,7 +234,7 @@ export const Default: Story = {
         onOpenChange={setOpen}
         trigger={<Button>Open Sheet</Button>}
         footer={
-          <div className="flex gap-2 justify-end w-full">
+          <div className="ds:flex ds:gap-2 ds:justify-end ds:w-full">
             <SheetClose asChild>
               <Button variant="outline">Cancel</Button>
             </SheetClose>
@@ -242,61 +242,61 @@ export const Default: Story = {
           </div>
         }
       >
-        <div className="space-y-4">
-          <h2 className="text-lg font-semibold flex items-center gap-2">
+        <div className="ds:space-y-4">
+          <h2 className="ds:text-lg ds:font-semibold ds:flex ds:items-center ds:gap-2">
             📖 Introduction
           </h2>
-          <p className="text-sm text-muted-foreground">
+          <p className="ds:text-sm ds:text-muted-foreground">
             🏠 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
             aliquip ex ea commodo consequat.
           </p>
-          <p className="text-sm text-muted-foreground">
+          <p className="ds:text-sm ds:text-muted-foreground">
             💬 Duis aute irure dolor in reprehenderit in voluptate velit esse
             cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
             cupidatat non proident, sunt in culpa qui officia deserunt mollit
             anim id est laborum.
           </p>
-          <p className="text-sm text-muted-foreground">
+          <p className="ds:text-sm ds:text-muted-foreground">
             📅 Sed ut perspiciatis unde omnis iste natus error sit voluptatem
             accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
             quae ab illo inventore veritatis et quasi architecto beatae vitae
             dicta sunt explicabo.
           </p>
-          <p className="text-sm text-muted-foreground">
+          <p className="ds:text-sm ds:text-muted-foreground">
             ❤️ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
             aut fugit, sed quia consequuntur magni dolores eos qui ratione
             voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem
             ipsum quia dolor sit amet, consectetur, adipisci velit.
           </p>
-          <p className="text-sm text-muted-foreground">
+          <p className="ds:text-sm ds:text-muted-foreground">
             ✉️ At vero eos et accusamus et iusto odio dignissimos ducimus qui
             blanditiis praesentium voluptatum deleniti atque corrupti quos
             dolores et quas molestias excepturi sint occaecati cupiditate non
             provident, similique sunt in culpa qui officia deserunt mollitia
             animi.
           </p>
-          <p className="text-sm text-muted-foreground">
+          <p className="ds:text-sm ds:text-muted-foreground">
             🛒 Et harum quidem rerum facilis est et expedita distinctio. Nam
             libero tempore, cum soluta nobis est eligendi optio cumque nihil
             impedit quo minus id quod maxime placeat facere possimus, omnis
             voluptas assumenda est, omnis dolor repellendus.
           </p>
-          <p className="text-sm text-muted-foreground">
+          <p className="ds:text-sm ds:text-muted-foreground">
             📋 Temporibus autem quibusdam et aut officiis debitis aut rerum
             necessitatibus saepe eveniet ut et voluptates repudiandae sint et
             molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente
             delectus, ut aut reiciendis voluptatibus maiores alias consequatur
             aut perferendis doloribus asperiores repellat.
           </p>
-          <p className="text-sm text-muted-foreground">
+          <p className="ds:text-sm ds:text-muted-foreground">
             📄 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
             aliquip ex ea commodo consequat.
           </p>
-          <p className="text-sm text-muted-foreground">
+          <p className="ds:text-sm ds:text-muted-foreground">
             🔐 Duis aute irure dolor in reprehenderit in voluptate velit esse
             cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
             cupidatat non proident, sunt in culpa qui officia deserunt mollit
@@ -322,7 +322,7 @@ export const Standalone: Story = {
           title="Sheet Title"
           description="This is a sheet opened via standalone control."
           footer={
-            <div className="flex gap-2 justify-end w-full">
+            <div className="ds:flex ds:gap-2 ds:justify-end ds:w-full">
               <Button variant="outline" onClick={() => setOpen(false)}>
                 Cancel
               </Button>
@@ -330,7 +330,7 @@ export const Standalone: Story = {
             </div>
           }
         >
-          <p className="text-sm text-muted-foreground">
+          <p className="ds:text-sm ds:text-muted-foreground">
             The sheet's open state is controlled separately from the trigger
             button.
           </p>
@@ -343,15 +343,15 @@ export const Standalone: Story = {
 // Different sides
 export const Sides: Story = {
   render: () => (
-    <div className="flex flex-wrap gap-4">
+    <div className="ds:flex ds:flex-wrap ds:gap-4">
       <Sheet
         side="right"
         trigger={<Button>Right (Default)</Button>}
         title="Right Sheet"
         description="Sheet slides in from the right side."
       >
-        <div className="py-4">
-          <p className="text-sm">Content from the right side.</p>
+        <div className="ds:py-4">
+          <p className="ds:text-sm">Content from the right side.</p>
         </div>
       </Sheet>
 
@@ -361,8 +361,8 @@ export const Sides: Story = {
         title="Left Sheet"
         description="Sheet slides in from the left side."
       >
-        <div className="py-4">
-          <p className="text-sm">Content from the left side.</p>
+        <div className="ds:py-4">
+          <p className="ds:text-sm">Content from the left side.</p>
         </div>
       </Sheet>
 
@@ -372,8 +372,8 @@ export const Sides: Story = {
         title="Top Sheet"
         description="Sheet slides in from the top."
       >
-        <div className="py-4">
-          <p className="text-sm">Content from the top.</p>
+        <div className="ds:py-4">
+          <p className="ds:text-sm">Content from the top.</p>
         </div>
       </Sheet>
 
@@ -383,8 +383,8 @@ export const Sides: Story = {
         title="Bottom Sheet"
         description="Sheet slides in from the bottom."
       >
-        <div className="py-4">
-          <p className="text-sm">Content from the bottom.</p>
+        <div className="ds:py-4">
+          <p className="ds:text-sm">Content from the bottom.</p>
         </div>
       </Sheet>
     </div>
@@ -394,15 +394,15 @@ export const Sides: Story = {
 // Different sizes
 export const Sizes: Story = {
   render: () => (
-    <div className="flex flex-wrap gap-4">
+    <div className="ds:flex ds:flex-wrap ds:gap-4">
       <Sheet
         size="sm"
         trigger={<Button size="sm">Small</Button>}
         title="Small Sheet"
         description="This is a small sheet."
       >
-        <div className="py-4">
-          <p className="text-sm">Small sheet content.</p>
+        <div className="ds:py-4">
+          <p className="ds:text-sm">Small sheet content.</p>
         </div>
       </Sheet>
 
@@ -412,8 +412,8 @@ export const Sizes: Story = {
         title="Medium Sheet"
         description="This is a medium sheet (default)."
       >
-        <div className="py-4">
-          <p className="text-sm">Medium sheet content.</p>
+        <div className="ds:py-4">
+          <p className="ds:text-sm">Medium sheet content.</p>
         </div>
       </Sheet>
 
@@ -423,8 +423,8 @@ export const Sizes: Story = {
         title="Large Sheet"
         description="This is a large sheet."
       >
-        <div className="py-4">
-          <p className="text-sm">Large sheet content with more space.</p>
+        <div className="ds:py-4">
+          <p className="ds:text-sm">Large sheet content with more space.</p>
         </div>
       </Sheet>
 
@@ -434,8 +434,8 @@ export const Sizes: Story = {
         title="Extra Large Sheet"
         description="This is an extra large sheet."
       >
-        <div className="py-4">
-          <p className="text-sm">
+        <div className="ds:py-4">
+          <p className="ds:text-sm">
             Extra large sheet content with even more space.
           </p>
         </div>
@@ -447,8 +447,8 @@ export const Sizes: Story = {
         title="Full Size Sheet"
         description="This sheet takes up the full size."
       >
-        <div className="py-4">
-          <p className="text-sm">
+        <div className="ds:py-4">
+          <p className="ds:text-sm">
             Full size sheet content. Great for complex forms or detailed
             information.
           </p>
@@ -461,7 +461,7 @@ export const Sizes: Story = {
 // Scrollable content
 export const ScrollableContent: Story = {
   render: () => (
-    <div className="flex flex-wrap gap-4">
+    <div className="ds:flex ds:flex-wrap ds:gap-4">
       <Sheet
         stickyHeader
         stickyFooter
@@ -469,7 +469,7 @@ export const ScrollableContent: Story = {
         title="Scrollable Sheet"
         description="Header and footer are outside scroll area, only content scrolls."
         footer={
-          <div className="flex gap-2 justify-end w-full">
+          <div className="ds:flex ds:gap-2 ds:justify-end ds:w-full">
             <SheetClose asChild>
               <Button variant="outline">Cancel</Button>
             </SheetClose>
@@ -477,11 +477,11 @@ export const ScrollableContent: Story = {
           </div>
         }
       >
-        <div className="space-y-4">
+        <div className="ds:space-y-4">
           {Array.from({ length: 20 }).map((_, i) => (
-            <div key={i} className="p-4 border rounded">
-              <h3 className="font-semibold">Section {i + 1}</h3>
-              <p className="text-sm text-muted-foreground">
+            <div key={i} className="ds:p-4 ds:border ds:rounded">
+              <h3 className="ds:font-semibold">Section {i + 1}</h3>
+              <p className="ds:text-sm ds:text-muted-foreground">
                 This is a scrollable section. The header and footer remain
                 visible as you scroll through the content.
               </p>
@@ -496,7 +496,7 @@ export const ScrollableContent: Story = {
         title="Sticky Header Sheet"
         description="Header is outside scroll area, content and footer scroll together."
         footer={
-          <div className="flex gap-2 justify-end w-full">
+          <div className="ds:flex ds:gap-2 ds:justify-end ds:w-full">
             <SheetClose asChild>
               <Button variant="outline">Cancel</Button>
             </SheetClose>
@@ -504,11 +504,11 @@ export const ScrollableContent: Story = {
           </div>
         }
       >
-        <div className="space-y-4">
+        <div className="ds:space-y-4">
           {Array.from({ length: 20 }).map((_, i) => (
-            <div key={i} className="p-4 border rounded">
-              <h3 className="font-semibold">Section {i + 1}</h3>
-              <p className="text-sm text-muted-foreground">
+            <div key={i} className="ds:p-4 ds:border ds:rounded">
+              <h3 className="ds:font-semibold">Section {i + 1}</h3>
+              <p className="ds:text-sm ds:text-muted-foreground">
                 Content and footer scroll together.
               </p>
             </div>
@@ -522,7 +522,7 @@ export const ScrollableContent: Story = {
         title="Sticky Footer Sheet"
         description="Footer is outside scroll area, header and content scroll together."
         footer={
-          <div className="flex gap-2 justify-end w-full">
+          <div className="ds:flex ds:gap-2 ds:justify-end ds:w-full">
             <SheetClose asChild>
               <Button variant="outline">Cancel</Button>
             </SheetClose>
@@ -530,11 +530,11 @@ export const ScrollableContent: Story = {
           </div>
         }
       >
-        <div className="space-y-4">
+        <div className="ds:space-y-4">
           {Array.from({ length: 20 }).map((_, i) => (
-            <div key={i} className="p-4 border rounded">
-              <h3 className="font-semibold">Section {i + 1}</h3>
-              <p className="text-sm text-muted-foreground">
+            <div key={i} className="ds:p-4 ds:border ds:rounded">
+              <h3 className="ds:font-semibold">Section {i + 1}</h3>
+              <p className="ds:text-sm ds:text-muted-foreground">
                 Header and content scroll together.
               </p>
             </div>
@@ -547,7 +547,7 @@ export const ScrollableContent: Story = {
         title="Full Scroll Sheet"
         description="Everything scrolls together - header, content, and footer."
         footer={
-          <div className="flex gap-2 justify-end w-full">
+          <div className="ds:flex ds:gap-2 ds:justify-end ds:w-full">
             <SheetClose asChild>
               <Button variant="outline">Cancel</Button>
             </SheetClose>
@@ -555,11 +555,11 @@ export const ScrollableContent: Story = {
           </div>
         }
       >
-        <div className="space-y-4">
+        <div className="ds:space-y-4">
           {Array.from({ length: 20 }).map((_, i) => (
-            <div key={i} className="p-4 border rounded">
-              <h3 className="font-semibold">Section {i + 1}</h3>
-              <p className="text-sm text-muted-foreground">
+            <div key={i} className="ds:p-4 ds:border ds:rounded">
+              <h3 className="ds:font-semibold">Section {i + 1}</h3>
+              <p className="ds:text-sm ds:text-muted-foreground">
                 Everything scrolls together in this sheet.
               </p>
             </div>
@@ -573,22 +573,22 @@ export const ScrollableContent: Story = {
 // Behavior options
 export const BehaviorOptions: Story = {
   render: () => (
-    <div className="flex flex-wrap gap-4">
+    <div className="ds:flex ds:flex-wrap ds:gap-4">
       <Sheet
         closeOnEsc={false}
         trigger={<Button>No ESC Close</Button>}
         title="ESC Key Disabled"
         description="Press ESC - nothing happens. Use the button to close."
         footer={
-          <div className="flex gap-2 justify-end w-full">
+          <div className="ds:flex ds:gap-2 ds:justify-end ds:w-full">
             <SheetClose asChild>
               <Button>Close</Button>
             </SheetClose>
           </div>
         }
       >
-        <div className="py-4">
-          <p className="text-sm">
+        <div className="ds:py-4">
+          <p className="ds:text-sm">
             This sheet cannot be closed with the ESC key.
           </p>
         </div>
@@ -600,15 +600,15 @@ export const BehaviorOptions: Story = {
         title="Outside Click Disabled"
         description="Click outside - nothing happens. Use the button to close."
         footer={
-          <div className="flex gap-2 justify-end w-full">
+          <div className="ds:flex ds:gap-2 ds:justify-end ds:w-full">
             <SheetClose asChild>
               <Button>Close</Button>
             </SheetClose>
           </div>
         }
       >
-        <div className="py-4">
-          <p className="text-sm">
+        <div className="ds:py-4">
+          <p className="ds:text-sm">
             This sheet cannot be closed by clicking outside.
           </p>
         </div>
@@ -620,15 +620,15 @@ export const BehaviorOptions: Story = {
         title="No Close Button"
         description="The X button is hidden. Use the footer button to close."
         footer={
-          <div className="flex gap-2 justify-end w-full">
+          <div className="ds:flex ds:gap-2 ds:justify-end ds:w-full">
             <SheetClose asChild>
               <Button>Close</Button>
             </SheetClose>
           </div>
         }
       >
-        <div className="py-4">
-          <p className="text-sm">
+        <div className="ds:py-4">
+          <p className="ds:text-sm">
             This sheet has no close button in the corner.
           </p>
         </div>
@@ -640,7 +640,7 @@ export const BehaviorOptions: Story = {
 // Custom styling
 export const CustomStyling: Story = {
   render: () => (
-    <div className="flex flex-wrap gap-4">
+    <div className="ds:flex ds:flex-wrap ds:gap-4">
       <Sheet
         trigger={<Button>Custom Header</Button>}
         title="Custom Styled Header"
@@ -650,8 +650,8 @@ export const CustomStyling: Story = {
         descriptionClassName="text-white/90"
       >
         <div>
-          <p className="text-sm">Sheet with custom header styling.</p>
-          <p className="text-xs text-muted-foreground mt-2">
+          <p className="ds:text-sm">Sheet with custom header styling.</p>
+          <p className="ds:text-xs ds:text-muted-foreground ds:mt-2">
             Notice the gradient header background.
           </p>
         </div>
@@ -663,9 +663,9 @@ export const CustomStyling: Story = {
         description="This sheet has a custom footer style."
         footerClassName="!bg-gray-100 dark:!bg-gray-800"
         footer={
-          <div className="flex gap-2 justify-between w-full">
+          <div className="ds:flex ds:gap-2 ds:justify-between ds:w-full">
             <Button variant="ghost">Help</Button>
-            <div className="flex gap-2">
+            <div className="ds:flex ds:gap-2">
               <SheetClose asChild>
                 <Button variant="outline">Cancel</Button>
               </SheetClose>
@@ -675,7 +675,7 @@ export const CustomStyling: Story = {
         }
       >
         <div>
-          <p className="text-sm">Sheet with custom footer styling.</p>
+          <p className="ds:text-sm">Sheet with custom footer styling.</p>
         </div>
       </Sheet>
 
@@ -688,17 +688,17 @@ export const CustomStyling: Story = {
         titleClassName="text-2xl font-bold"
         descriptionClassName="text-base"
         footer={
-          <div className="flex gap-2 justify-end w-full">
+          <div className="ds:flex ds:gap-2 ds:justify-end ds:w-full">
             <SheetClose asChild>
               <Button variant="outline">Cancel</Button>
             </SheetClose>
-            <Button className="bg-sky-500 hover:bg-sky-600">Confirm</Button>
+            <Button className="ds:bg-sky-500 ds:hover:bg-sky-600">Confirm</Button>
           </div>
         }
       >
-        <div className="space-y-2">
-          <p className="text-sm font-semibold">Every element is customized:</p>
-          <ul className="text-sm space-y-1 list-disc list-inside">
+        <div className="ds:space-y-2">
+          <p className="ds:text-sm ds:font-semibold">Every element is customized:</p>
+          <ul className="ds:text-sm ds:space-y-1 ds:list-disc ds:list-inside">
             <li>Custom background gradient</li>
             <li>Custom header styling</li>
             <li>Custom title and description styles</li>
@@ -735,7 +735,7 @@ export const ComplexForm: Story = {
         size="lg"
         stickyFooter
         footer={
-          <div className="flex gap-2 justify-end w-full">
+          <div className="ds:flex ds:gap-2 ds:justify-end ds:w-full">
             <Button variant="outline" onClick={() => setOpen(false)}>
               Cancel
             </Button>
@@ -743,15 +743,15 @@ export const ComplexForm: Story = {
           </div>
         }
       >
-        <div className="space-y-4 py-4">
+        <div className="ds:space-y-4 ds:py-4">
           <div>
-            <label htmlFor="name" className="block text-sm font-medium mb-2">
+            <label htmlFor="name" className="ds:block ds:text-sm ds:font-medium ds:mb-2">
               Name
             </label>
             <input
               id="name"
               type="text"
-              className="w-full px-3 py-2 border rounded-md"
+              className="ds:w-full ds:px-3 ds:py-2 ds:border ds:rounded-md"
               value={formData.name}
               onChange={(e) =>
                 setFormData({ ...formData, name: e.target.value })
@@ -760,13 +760,13 @@ export const ComplexForm: Story = {
             />
           </div>
           <div>
-            <label htmlFor="email" className="block text-sm font-medium mb-2">
+            <label htmlFor="email" className="ds:block ds:text-sm ds:font-medium ds:mb-2">
               Email
             </label>
             <input
               id="email"
               type="email"
-              className="w-full px-3 py-2 border rounded-md"
+              className="ds:w-full ds:px-3 ds:py-2 ds:border ds:rounded-md"
               value={formData.email}
               onChange={(e) =>
                 setFormData({ ...formData, email: e.target.value })
@@ -775,13 +775,13 @@ export const ComplexForm: Story = {
             />
           </div>
           <div>
-            <label htmlFor="message" className="block text-sm font-medium mb-2">
+            <label htmlFor="message" className="ds:block ds:text-sm ds:font-medium ds:mb-2">
               Message
             </label>
             <textarea
               id="message"
               rows={5}
-              className="w-full px-3 py-2 border rounded-md"
+              className="ds:w-full ds:px-3 ds:py-2 ds:border ds:rounded-md"
               value={formData.message}
               onChange={(e) =>
                 setFormData({ ...formData, message: e.target.value })
@@ -918,35 +918,35 @@ export const NavigationMenu: Story = {
       if (item.type === "page") {
         return (
           <div
-            className="focus-visible:ring-ring/50 flex items-center gap-2 rounded-md p-1 outline-none focus-visible:ring-[3px]"
+            className="ds:focus-visible:ring-ring/50 ds:flex ds:items-center ds:gap-2 ds:rounded-md ds:p-1 ds:outline-none focus-visible:ring-[3px]"
             style={{ paddingLeft: `${level === 0 ? 0.25 : 1.75}rem` }}
           >
             {level === 0 ? (
-              <item.icon className="size-4 shrink-0" />
+              <item.icon className="ds:size-4 ds:shrink-0" />
             ) : (
-              <CircleSmallIcon className="size-4 shrink-0" />
+              <CircleSmallIcon className="ds:size-4 ds:shrink-0" />
             )}
-            <span className="text-sm">{item.name}</span>
+            <span className="ds:text-sm">{item.name}</span>
           </div>
         );
       }
 
       return (
         <Collapsible
-          className="flex flex-col gap-1.5"
+          className="ds:flex ds:flex-col ds:gap-1.5"
           style={{ paddingLeft: `${level === 0 ? 0 : 1.5}rem` }}
           variant="ghost"
         >
-          <CollapsibleTrigger className="focus-visible:ring-ring/50 flex items-center gap-2 rounded-md p-1 outline-none focus-visible:ring-[3px]">
+          <CollapsibleTrigger className="ds:focus-visible:ring-ring/50 ds:flex ds:items-center ds:gap-2 ds:rounded-md ds:p-1 ds:outline-none focus-visible:ring-[3px]">
             {level === 0 ? (
-              <item.icon className="size-4 shrink-0" />
+              <item.icon className="ds:size-4 ds:shrink-0" />
             ) : (
-              <CircleSmallIcon className="size-4 shrink-0" />
+              <CircleSmallIcon className="ds:size-4 ds:shrink-0" />
             )}
-            <span className="flex-1 text-start text-sm">{item.name}</span>
-            <ChevronRightIcon className='size-4 shrink-0 transition-transform [[data-state="open"]>&]:rotate-90' />
+            <span className="ds:flex-1 ds:text-start ds:text-sm">{item.name}</span>
+            <ChevronRightIcon className="ds:size-4 ds:shrink-0 ds:transition-transform [[data-state=open]>&]:ds:rotate-90" />
           </CollapsibleTrigger>
-          <CollapsibleContent className="data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down flex flex-col gap-1.5 overflow-hidden transition-all duration-300">
+          <CollapsibleContent className="data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down ds:flex ds:flex-col ds:gap-1.5 overflow-hidden ds:transition-all ds:duration-300">
             {item.children.map((item: any) => (
               <NavigationMenu key={item.name} item={item} level={level + 1} />
             ))}
@@ -965,7 +965,7 @@ export const NavigationMenu: Story = {
         title="Navigation"
         description="Main menu"
       >
-        <nav className="space-y-1">
+        <nav className="ds:space-y-1">
           {navigationMenu.map((item) => (
             <NavigationMenu key={item.name} item={item} level={0} />
           ))}
@@ -981,14 +981,14 @@ export const ControlledSheet: Story = {
     const [open, setOpen] = useState(false);
 
     return (
-      <div className="space-y-4">
-        <div className="flex gap-2">
+      <div className="ds:space-y-4">
+        <div className="ds:flex ds:gap-2">
           <Button onClick={() => setOpen(true)}>Open Sheet</Button>
           <Button variant="outline" onClick={() => setOpen(false)}>
             Close Sheet
           </Button>
         </div>
-        <p className="text-sm text-muted-foreground">
+        <p className="ds:text-sm ds:text-muted-foreground">
           Sheet is {open ? "open" : "closed"}
         </p>
         <Sheet
@@ -997,13 +997,13 @@ export const ControlledSheet: Story = {
           title="Controlled Sheet"
           description="This sheet's open state is controlled externally."
           footer={
-            <div className="flex gap-2 justify-end w-full">
+            <div className="ds:flex ds:gap-2 ds:justify-end ds:w-full">
               <Button onClick={() => setOpen(false)}>Close</Button>
             </div>
           }
         >
-          <div className="py-4">
-            <p className="text-sm">
+          <div className="ds:py-4">
+            <p className="ds:text-sm">
               The buttons above control whether this sheet is open or closed.
             </p>
           </div>
@@ -1020,7 +1020,7 @@ export const MultipleSheets: Story = {
     const [sheet2Open, setSheet2Open] = useState(false);
 
     return (
-      <div className="space-y-4">
+      <div className="ds:space-y-4">
         <Sheet
           open={sheet1Open}
           onOpenChange={setSheet1Open}
@@ -1029,8 +1029,8 @@ export const MultipleSheets: Story = {
           title="First Sheet"
           description="This is the first sheet."
         >
-          <div className="py-4">
-            <p className="text-sm mb-4">
+          <div className="ds:py-4">
+            <p className="ds:text-sm ds:mb-4">
               You can open another sheet from here:
             </p>
             <Button onClick={() => setSheet2Open(true)}>
@@ -1046,8 +1046,8 @@ export const MultipleSheets: Story = {
           title="Second Sheet"
           description="This is the second sheet."
         >
-          <div className="py-4">
-            <p className="text-sm">
+          <div className="ds:py-4">
+            <p className="ds:text-sm">
               This sheet was opened from the first sheet!
             </p>
           </div>
@@ -1060,15 +1060,15 @@ export const MultipleSheets: Story = {
 export const Customize: Story = {
   render: function RenderCustomOverlay() {
     return (
-      <div className="flex flex-wrap gap-4">
+      <div className="ds:flex ds:flex-wrap ds:gap-4">
         <Sheet
           trigger={<Button>Custom Overlay</Button>}
           title="Custom Overlay Sheet"
           description="This sheet uses a custom overlay style."
           overlayClassName="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 opacity-80"
         >
-          <div className="py-4">
-            <p className="text-sm">
+          <div className="ds:py-4">
+            <p className="ds:text-sm">
               The overlay behind this sheet has a vibrant gradient background.
             </p>
           </div>
@@ -1080,8 +1080,8 @@ export const Customize: Story = {
           description="This sheet uses a custom overlay style."
           overlayClassName="backdrop-blur-sm"
         >
-          <div className="py-4">
-            <p className="text-sm">
+          <div className="ds:py-4">
+            <p className="ds:text-sm">
               The overlay behind this sheet has a vibrant gradient background.
             </p>
           </div>
@@ -1091,10 +1091,10 @@ export const Customize: Story = {
           trigger={<Button>Custom Background</Button>}
           title="Custom Overlay Sheet"
           description="This sheet uses a custom overlay style."
-          className="to-card bg-gradient-to-b from-green-100 to-40% [background-size:100%_101%] sm:max-w-sm dark:from-green-900"
+          className="to-card ds:bg-gradient-to-b ds:from-green-100 to-40% [background-size:100%_101%] ds:sm:max-w-sm ds:dark:from-green-900"
         >
-          <div className="py-4">
-            <p className="text-sm">
+          <div className="ds:py-4">
+            <p className="ds:text-sm">
               The overlay behind this sheet has a vibrant gradient background.
             </p>
           </div>

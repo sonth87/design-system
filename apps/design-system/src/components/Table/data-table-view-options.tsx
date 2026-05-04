@@ -44,8 +44,7 @@ export function DataTableViewOptions<TData>({
                   : column.id)}
             </span>
             <Check
-              className={cn(
-                "ml-auto size-4 shrink-0",
+              className={cn("ds:ml-auto ds:size-4 shrink-0",
                 column.getIsVisible() ? "opacity-100" : "opacity-0"
               )}
             />
@@ -63,9 +62,9 @@ export function DataTableViewOptions<TData>({
           role="combobox"
           variant="outline"
           size="sm"
-          className="ml-auto h-8 font-normal lg:flex"
+          className="ds:ml-auto ds:h-8 ds:font-normal ds:lg:flex"
         >
-          <Settings2 className="text-muted-foreground" />
+          <Settings2 className="ds:text-muted-foreground" />
           View
         </Button>
       }

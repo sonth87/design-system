@@ -217,9 +217,9 @@ export const Default: Story = {
 // Variants story
 const VariantsComponent = (args: AccordionStoryProps) => {
   return (
-    <div className="w-[400px] space-y-6">
+    <div className="w-[400px] ds:space-y-6">
       <div>
-        <h3 className="text-sm font-medium mb-2">Default</h3>
+        <h3 className="ds:text-sm ds:font-medium ds:mb-2">Default</h3>
         <Accordion
           type="single"
           collapsible
@@ -228,7 +228,7 @@ const VariantsComponent = (args: AccordionStoryProps) => {
         />
       </div>
       <div>
-        <h3 className="text-sm font-medium mb-2">Bordered</h3>
+        <h3 className="ds:text-sm ds:font-medium ds:mb-2">Bordered</h3>
         <Accordion
           type="single"
           collapsible
@@ -237,7 +237,7 @@ const VariantsComponent = (args: AccordionStoryProps) => {
         />
       </div>
       <div>
-        <h3 className="text-sm font-medium mb-2">Separated</h3>
+        <h3 className="ds:text-sm ds:font-medium ds:mb-2">Separated</h3>
         <Accordion
           type="single"
           collapsible
@@ -246,7 +246,7 @@ const VariantsComponent = (args: AccordionStoryProps) => {
         />
       </div>
       <div>
-        <h3 className="text-sm font-medium mb-2">Ghost</h3>
+        <h3 className="ds:text-sm ds:font-medium ds:mb-2">Ghost</h3>
         <Accordion
           type="single"
           collapsible
@@ -298,15 +298,15 @@ export const Primitive = () => {
       <Accordion type="single" collapsible>
         <Accordion.Item value="account">
           <Accordion.Trigger>
-            <div className="flex items-center gap-2">
-              <User className="size-4" />
+            <div className="ds:flex ds:items-center ds:gap-2">
+              <User className="ds:size-4" />
               <span>Account Settings</span>
             </div>
           </Accordion.Trigger>
           <Accordion.Content>
-            <div className="space-y-2 text-sm text-muted-foreground">
+            <div className="ds:space-y-2 ds:text-sm ds:text-muted-foreground">
               <p>Manage your account settings and preferences.</p>
-              <ul className="list-disc list-inside">
+              <ul className="ds:list-disc ds:list-inside">
                 <li>Profile information</li>
                 <li>Email preferences</li>
                 <li>Password settings</li>
@@ -316,15 +316,15 @@ export const Primitive = () => {
         </Accordion.Item>
         <Accordion.Item value="billing">
           <Accordion.Trigger>
-            <div className="flex items-center gap-2">
-              <CreditCard className="size-4" />
+            <div className="ds:flex ds:items-center ds:gap-2">
+              <CreditCard className="ds:size-4" />
               <span>Billing Information</span>
             </div>
           </Accordion.Trigger>
           <Accordion.Content>
-            <div className="space-y-2 text-sm text-muted-foreground">
+            <div className="ds:space-y-2 ds:text-sm ds:text-muted-foreground">
               <p>View and manage your billing details.</p>
-              <ul className="list-disc list-inside">
+              <ul className="ds:list-disc ds:list-inside">
                 <li>Payment methods</li>
                 <li>Billing history</li>
                 <li>Invoices</li>
@@ -334,15 +334,15 @@ export const Primitive = () => {
         </Accordion.Item>
         <Accordion.Item value="notifications">
           <Accordion.Trigger>
-            <div className="flex items-center gap-2">
-              <Bell className="size-4" />
+            <div className="ds:flex ds:items-center ds:gap-2">
+              <Bell className="ds:size-4" />
               <span>Notifications</span>
             </div>
           </Accordion.Trigger>
           <Accordion.Content>
-            <div className="space-y-2 text-sm text-muted-foreground">
+            <div className="ds:space-y-2 ds:text-sm ds:text-muted-foreground">
               <p>Configure your notification preferences.</p>
-              <ul className="list-disc list-inside">
+              <ul className="ds:list-disc ds:list-inside">
                 <li>Email notifications</li>
                 <li>Push notifications</li>
                 <li>SMS alerts</li>
@@ -361,24 +361,24 @@ export const CustomContent = () => {
     {
       value: "settings",
       trigger: (
-        <div className="flex items-center gap-2">
-          <Settings className="size-4" />
-          <span className="font-semibold">Settings</span>
+        <div className="ds:flex ds:items-center ds:gap-2">
+          <Settings className="ds:size-4" />
+          <span className="ds:font-semibold">Settings</span>
         </div>
       ),
       content: (
-        <div className="space-y-3">
-          <div className="flex items-center justify-between">
-            <span className="text-sm">Enable notifications</span>
-            <input type="checkbox" className="size-4" />
+        <div className="ds:space-y-3">
+          <div className="ds:flex ds:items-center ds:justify-between">
+            <span className="ds:text-sm">Enable notifications</span>
+            <input type="checkbox" className="ds:size-4" />
           </div>
-          <div className="flex items-center justify-between">
-            <span className="text-sm">Dark mode</span>
-            <input type="checkbox" className="size-4" />
+          <div className="ds:flex ds:items-center ds:justify-between">
+            <span className="ds:text-sm">Dark mode</span>
+            <input type="checkbox" className="ds:size-4" />
           </div>
-          <div className="flex items-center justify-between">
-            <span className="text-sm">Auto-save</span>
-            <input type="checkbox" className="size-4" defaultChecked />
+          <div className="ds:flex ds:items-center ds:justify-between">
+            <span className="ds:text-sm">Auto-save</span>
+            <input type="checkbox" className="ds:size-4" defaultChecked />
           </div>
         </div>
       ),
@@ -386,13 +386,13 @@ export const CustomContent = () => {
     {
       value: "info",
       trigger: (
-        <div className="flex items-center gap-2">
-          <Info className="size-4" />
-          <span className="font-semibold">Information</span>
+        <div className="ds:flex ds:items-center ds:gap-2">
+          <Info className="ds:size-4" />
+          <span className="ds:font-semibold">Information</span>
         </div>
       ),
       content: (
-        <div className="space-y-2 text-sm">
+        <div className="ds:space-y-2 ds:text-sm">
           <p>Version: 1.0.0</p>
           <p>Last updated: December 3, 2025</p>
           <p>License: MIT</p>
@@ -506,7 +506,7 @@ const FAQComponent = (args: AccordionStoryProps) => {
 
   return (
     <div className="w-[500px]">
-      <h2 className="text-xl font-bold mb-4">Frequently Asked Questions</h2>
+      <h2 className="ds:text-xl ds:font-bold ds:mb-4">Frequently Asked Questions</h2>
       <Accordion
         type="single"
         collapsible
@@ -530,9 +530,9 @@ export const FAQ: Story = {
 // Colors story
 const ColorsComponent = (args: AccordionStoryProps) => {
   return (
-    <div className="w-[400px] space-y-6">
+    <div className="w-[400px] ds:space-y-6">
       <div>
-        <h3 className="text-sm font-medium mb-2">Primary</h3>
+        <h3 className="ds:text-sm ds:font-medium ds:mb-2">Primary</h3>
         <Accordion
           type="single"
           collapsible
@@ -543,7 +543,7 @@ const ColorsComponent = (args: AccordionStoryProps) => {
         />
       </div>
       <div>
-        <h3 className="text-sm font-medium mb-2">Secondary</h3>
+        <h3 className="ds:text-sm ds:font-medium ds:mb-2">Secondary</h3>
         <Accordion
           type="single"
           collapsible
@@ -554,7 +554,7 @@ const ColorsComponent = (args: AccordionStoryProps) => {
         />
       </div>
       <div>
-        <h3 className="text-sm font-medium mb-2">Custom color</h3>
+        <h3 className="ds:text-sm ds:font-medium ds:mb-2">Custom color</h3>
         <Accordion
           type="single"
           collapsible
@@ -580,8 +580,8 @@ export const Colors: Story = {
 export const Playground = () => {
   const trigger = (item: any) => {
     return (
-      <span className="flex items-center gap-4">
-        <item.icon className="size-4 shrink-0" />
+      <span className="ds:flex ds:items-center ds:gap-4">
+        <item.icon className="ds:size-4 ds:shrink-0" />
         <span>{item.title}</span>
       </span>
     );
@@ -589,9 +589,9 @@ export const Playground = () => {
 
   const content = (item: any) => {
     return (
-      <div className="space-y-4">
-        <p className="text-muted-foreground">{item.content}</p>
-        <img src={item.media} alt={item.title} className="w-full rounded-md" />
+      <div className="ds:space-y-4">
+        <p className="ds:text-muted-foreground">{item.content}</p>
+        <img src={item.media} alt={item.title} className="ds:w-full ds:rounded-md" />
       </div>
     );
   };
@@ -643,7 +643,7 @@ export const Playground = () => {
     <Accordion
       type="single"
       collapsible
-      className="w-full"
+      className="ds:w-full"
       defaultValue="item-1"
       items={items}
     />

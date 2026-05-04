@@ -182,7 +182,7 @@ const TypingText = ({
       className: `inline-block whitespace-pre-wrap tracking-tight ${className}`,
       ...props,
     },
-    <span className="inline" style={{ color: getCurrentTextColor() }}>
+    <span className="ds:inline" style={{ color: getCurrentTextColor() }}>
       {displayedText}
     </span>,
     showCursor && (

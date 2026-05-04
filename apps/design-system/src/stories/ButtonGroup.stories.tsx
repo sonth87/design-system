@@ -178,7 +178,7 @@ export const Vertical = (args: ButtonGroupProps) => (
 );
 
 export const Variants = (args: ButtonGroupProps) => (
-  <div className="flex flex-col gap-4">
+  <div className="ds:flex ds:flex-col ds:gap-4">
     <ButtonGroup {...args}>
       <Button variant="solid">Solid</Button>
       <Button variant="outline">Outline</Button>
@@ -199,7 +199,7 @@ export const Variants = (args: ButtonGroupProps) => (
 );
 
 export const Sizes = (args: ButtonGroupProps) => (
-  <div className="flex flex-col gap-4">
+  <div className="ds:flex ds:flex-col ds:gap-4">
     <ButtonGroup {...args}>
       <Button size="sm">Small</Button>
       <Button size="normal">Normal</Button>
@@ -236,7 +236,7 @@ export const DisabledState = (args: ButtonGroupProps) => (
 );
 
 export const IconButtons = (args: ButtonGroupProps) => (
-  <div className="flex flex-col gap-4">
+  <div className="ds:flex ds:flex-col ds:gap-4">
     <ButtonGroup {...args}>
       <Button size="icon">
         <ArrowLeft />
@@ -261,14 +261,14 @@ export const IconButtons = (args: ButtonGroupProps) => (
     <ButtonGroup {...args}>
       <Button
         variant="outline"
-        className="group w-20 justify-start gap-3 overflow-hidden rounded-none rounded-l-md shadow-none transition-all duration-200 not-hover:w-10 hover:bg-sky-500/10 hover:text-sky-500 focus-visible:z-10 dark:hover:bg-sky-400/10 dark:hover:text-sky-400"
+        className="ds:group ds:w-20 ds:justify-start ds:gap-3 overflow-hidden ds:rounded-none ds:rounded-l-md ds:shadow-none ds:transition-all ds:duration-200 not-hover:w-10 ds:hover:bg-sky-500/10 ds:hover:text-sky-500 ds:focus-visible:z-10 ds:dark:hover:bg-sky-400/10 ds:dark:hover:text-sky-400"
       >
         <ThumbsUpIcon />
         Like
       </Button>
       <Button
         variant="outline"
-        className="hover:bg-destructive/10! group hover:text-destructive w-24.5 justify-end gap-3 overflow-hidden rounded-none rounded-r-md shadow-none transition-all duration-200 not-hover:w-10 focus-visible:z-10"
+        className="ds:hover:bg-destructive/10! ds:group ds:hover:text-destructive ds:w-24.5 ds:justify-end ds:gap-3 overflow-hidden ds:rounded-none ds:rounded-r-md ds:shadow-none ds:transition-all ds:duration-200 not-hover:w-10 ds:focus-visible:z-10"
       >
         Dislike
         <ThumbsDownIcon />
@@ -279,7 +279,7 @@ export const IconButtons = (args: ButtonGroupProps) => (
 
 export const GlassEffect = (args: ButtonGroupProps) => (
   <div
-    className="w-200 h-60 p-4 flex items-center justify-center bg-cover [animation:move-background_400s_linear_infinite] gap-4"
+    className="ds:w-200 ds:h-60 ds:p-4 ds:flex ds:items-center ds:justify-center ds:bg-cover [animation:move-background_400s_linear_infinite] ds:gap-4"
     style={{
       backgroundImage:
         "url('https://raw.githubusercontent.com/lucasromerodb/liquid-glass-effect-macos/refs/heads/main/assets/flowers.jpg')",

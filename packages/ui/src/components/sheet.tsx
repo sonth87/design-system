@@ -36,7 +36,7 @@ function SheetOverlay({
     <SheetPrimitive.Overlay
       data-slot="sheet-overlay"
       className={cn(
-        "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/50",
+        "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 ds:fixed ds:inset-0 ds:z-50 ds:bg-black/50",
         className
       )}
       {...props}
@@ -60,22 +60,22 @@ function SheetContent({
       <SheetPrimitive.Content
         data-slot="sheet-content"
         className={cn(
-          "bg-background data-[state=open]:animate-in data-[state=closed]:animate-out fixed z-50 flex flex-col gap-4 shadow-lg transition ease-in-out data-[state=closed]:duration-300 data-[state=open]:duration-500",
+          "ds:bg-background data-[state=open]:animate-in data-[state=closed]:animate-out ds:fixed ds:z-50 ds:flex ds:flex-col ds:gap-4 ds:shadow-lg ds:transition ds:ease-in-out data-[state=closed]:duration-300 data-[state=open]:duration-500",
           side === "right" &&
-            "data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right inset-y-0 right-0 top-0 h-full w-3/4 border-l sm:max-w-sm",
+            "data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right ds:inset-y-0 ds:right-0 ds:top-0 ds:h-full ds:w-3/4 ds:border-l ds:sm:max-w-sm",
           side === "left" &&
-            "data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left inset-y-0 left-0 top-0 h-full w-3/4 border-r sm:max-w-sm",
+            "data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left ds:inset-y-0 ds:left-0 ds:top-0 ds:h-full ds:w-3/4 ds:border-r ds:sm:max-w-sm",
           side === "top" &&
-            "data-[state=closed]:slide-out-to-top data-[state=open]:slide-in-from-top inset-x-0 top-0 h-auto w-full border-b",
+            "data-[state=closed]:slide-out-to-top data-[state=open]:slide-in-from-top ds:inset-x-0 ds:top-0 ds:h-auto ds:w-full ds:border-b",
           side === "bottom" &&
-            "data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom inset-x-0 bottom-0 h-auto w-full border-t",
+            "data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom ds:inset-x-0 ds:bottom-0 ds:h-auto ds:w-full ds:border-t",
           className
         )}
         {...props}
       >
         {children}
-        <SheetPrimitive.Close className="ring-offset-background focus:ring-ring data-[state=open]:bg-secondary absolute top-4 right-4 rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none">
-          <XIcon className="size-4" />
+        <SheetPrimitive.Close className="ds:ring-offset-background ds:focus:ring-ring data-[state=open]:bg-secondary ds:absolute ds:top-4 ds:right-4 ds:rounded-xs ds:opacity-70 ds:transition-opacity ds:hover:opacity-100 ds:focus:ring-2 ds:focus:ring-offset-2 ds:focus:outline-hidden ds:disabled:pointer-events-none">
+          <XIcon className="ds:size-4" />
           <span className="sr-only">Close</span>
         </SheetPrimitive.Close>
       </SheetPrimitive.Content>
@@ -87,7 +87,7 @@ function SheetHeader({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="sheet-header"
-      className={cn("flex flex-col gap-1.5 p-4", className)}
+      className={cn("ds:flex ds:flex-col ds:gap-1.5 ds:p-4", className)}
       {...props}
     />
   );
@@ -97,7 +97,7 @@ function SheetFooter({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="sheet-footer"
-      className={cn("mt-auto flex flex-col gap-2 p-4", className)}
+      className={cn("ds:mt-auto ds:flex ds:flex-col ds:gap-2 ds:p-4", className)}
       {...props}
     />
   );
@@ -110,7 +110,7 @@ function SheetTitle({
   return (
     <SheetPrimitive.Title
       data-slot="sheet-title"
-      className={cn("text-foreground font-semibold", className)}
+      className={cn("ds:text-foreground ds:font-semibold", className)}
       {...props}
     />
   );
@@ -123,7 +123,7 @@ function SheetDescription({
   return (
     <SheetPrimitive.Description
       data-slot="sheet-description"
-      className={cn("text-muted-foreground text-sm", className)}
+      className={cn("ds:text-muted-foreground ds:text-sm", className)}
       {...props}
     />
   );

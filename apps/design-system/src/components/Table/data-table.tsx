@@ -40,17 +40,17 @@ export function DataTable<TData>({
 }: DataTableProps<TData>) {
   return (
     <div
-      className={cn("flex w-full flex-col gap-2.5 relative", className)}
+      className={cn("ds:flex ds:w-full ds:flex-col ds:gap-2.5 ds:relative", className)}
       {...props}
     >
       {children}
       {loading && (
-        <div className="absolute inset-0 bg-background/50 flex items-center justify-center z-20">
+        <div className="ds:absolute ds:inset-0 ds:bg-background/50 ds:flex ds:items-center ds:justify-center ds:z-20">
           Loading...
         </div>
       )}
       <div
-        className={cn("overflow-auto rounded-md border", loading && "blur-sm")}
+        className={cn("overflow-auto ds:rounded-md ds:border", loading && "ds:blur-sm")}
       >
         <Table>
           <TableHeader>
@@ -106,7 +106,7 @@ export function DataTable<TData>({
               <TableRow>
                 <TableCell
                   colSpan={table.getAllColumns().length}
-                  className="h-24 text-center"
+                  className="ds:h-24 ds:text-center"
                 >
                   No results.
                 </TableCell>
@@ -124,7 +124,7 @@ export function DataTable<TData>({
           )}
         </Table>
       </div>
-      <div className="flex flex-col gap-2.5">
+      <div className="ds:flex ds:flex-col ds:gap-2.5">
         {pagination && (
           <DataTablePagination
             table={table}

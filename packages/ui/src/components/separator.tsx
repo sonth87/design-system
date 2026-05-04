@@ -36,15 +36,15 @@ function Separator({
   if (children) {
     if (orientation === "horizontal") {
       return (
-        <div className={cn("flex items-center", className)}>
+        <div className={cn("ds:flex ds:items-center", className)}>
           {textPosition === "start" && (
             <>
-              <span className="text-sm text-muted-foreground">{children}</span>
+              <span className="ds:text-sm ds:text-muted-foreground">{children}</span>
               <SeparatorPrimitive.Root
                 data-slot="separator"
                 decorative={decorative}
                 orientation={orientation}
-                className={`${baseColor} shrink-0 h-px flex-1 ml-2`}
+                className={`${baseColor} ds:shrink-0 ds:h-px ds:flex-1 ds:ml-2`}
               />
             </>
           )}
@@ -54,16 +54,16 @@ function Separator({
                 data-slot="separator"
                 decorative={decorative}
                 orientation={orientation}
-                className={`${baseColor} shrink-0 h-px flex-1`}
+                className={`${baseColor} ds:shrink-0 ds:h-px ds:flex-1`}
               />
-              <span className="text-sm text-muted-foreground px-2">
+              <span className="ds:text-sm ds:text-muted-foreground ds:px-2">
                 {children}
               </span>
               <SeparatorPrimitive.Root
                 data-slot="separator"
                 decorative={decorative}
                 orientation={orientation}
-                className={`${baseColor} shrink-0 h-px flex-1`}
+                className={`${baseColor} ds:shrink-0 ds:h-px ds:flex-1`}
               />
             </>
           )}
@@ -73,9 +73,9 @@ function Separator({
                 data-slot="separator"
                 decorative={decorative}
                 orientation={orientation}
-                className={`${baseColor} shrink-0 h-px flex-1 mr-2`}
+                className={`${baseColor} ds:shrink-0 ds:h-px ds:flex-1 ds:mr-2`}
               />
-              <span className="text-sm text-muted-foreground">{children}</span>
+              <span className="ds:text-sm ds:text-muted-foreground">{children}</span>
             </>
           )}
         </div>
@@ -84,21 +84,21 @@ function Separator({
       return (
         <div
           className={cn(
-            "flex flex-col items-center",
+            "ds:flex ds:flex-col ds:items-center",
             orientation === "vertical" && "h-full",
             className
           )}
         >
           {textPosition === "start" && (
             <>
-              <span className="text-sm text-foreground bg-background px-1 rounded">
+              <span className="ds:text-sm ds:text-foreground ds:bg-background ds:px-1 ds:rounded">
                 {children}
               </span>
               <SeparatorPrimitive.Root
                 data-slot="separator"
                 decorative={decorative}
                 orientation={orientation}
-                className={`${baseColor} shrink-0 w-px h-full flex-1 mt-2`}
+                className={`${baseColor} ds:shrink-0 ds:w-px ds:h-full ds:flex-1 ds:mt-2`}
               />
             </>
           )}
@@ -108,16 +108,16 @@ function Separator({
                 data-slot="separator"
                 decorative={decorative}
                 orientation={orientation}
-                className={`${baseColor} shrink-0 w-px h-full flex-1`}
+                className={`${baseColor} ds:shrink-0 ds:w-px ds:h-full ds:flex-1`}
               />
-              <span className="text-sm text-foreground bg-background px-1 rounded">
+              <span className="ds:text-sm ds:text-foreground ds:bg-background ds:px-1 ds:rounded">
                 {children}
               </span>
               <SeparatorPrimitive.Root
                 data-slot="separator"
                 decorative={decorative}
                 orientation={orientation}
-                className={`${baseColor} shrink-0 w-px h-full flex-1`}
+                className={`${baseColor} ds:shrink-0 ds:w-px ds:h-full ds:flex-1`}
               />
             </>
           )}
@@ -127,9 +127,9 @@ function Separator({
                 data-slot="separator"
                 decorative={decorative}
                 orientation={orientation}
-                className={`${baseColor} shrink-0 w-px h-full flex-1 mb-2`}
+                className={`${baseColor} ds:shrink-0 ds:w-px ds:h-full ds:flex-1 ds:mb-2`}
               />
-              <span className="text-sm text-foreground bg-background px-1 rounded">
+              <span className="ds:text-sm ds:text-foreground ds:bg-background ds:px-1 ds:rounded">
                 {children}
               </span>
             </>

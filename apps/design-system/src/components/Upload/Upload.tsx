@@ -146,11 +146,11 @@ const getFileIcon = (file: UploadFile) => {
   const type = file.type || "";
   const name = file.name.toLowerCase();
 
-  if (type.startsWith("image/")) return <ImageIcon className="h-4 w-4" />;
-  if (type.startsWith("video/")) return <Film className="h-4 w-4" />;
-  if (type.startsWith("audio/")) return <Music className="h-4 w-4" />;
+  if (type.startsWith("image/")) return <ImageIcon className="ds:h-4 ds:w-4" />;
+  if (type.startsWith("video/")) return <Film className="ds:h-4 ds:w-4" />;
+  if (type.startsWith("audio/")) return <Music className="ds:h-4 ds:w-4" />;
   if (name.endsWith(".zip") || name.endsWith(".rar") || name.endsWith(".7z"))
-    return <Archive className="h-4 w-4" />;
+    return <Archive className="ds:h-4 ds:w-4" />;
   if (
     name.endsWith(".js") ||
     name.endsWith(".ts") ||
@@ -159,10 +159,10 @@ const getFileIcon = (file: UploadFile) => {
     name.endsWith(".css") ||
     name.endsWith(".html")
   )
-    return <FileCode className="h-4 w-4" />;
+    return <FileCode className="ds:h-4 ds:w-4" />;
   if (name.endsWith(".txt") || name.endsWith(".md"))
-    return <FileText className="h-4 w-4" />;
-  return <File className="h-4 w-4" />;
+    return <FileText className="ds:h-4 ds:w-4" />;
+  return <File className="ds:h-4 ds:w-4" />;
 };
 
 // Helper function to format file size
@@ -918,7 +918,7 @@ const UploadBase = React.forwardRef<HTMLDivElement, UploadProps>(
               multiple={multiple}
               disabled={disabled}
               onChange={handleFileChange}
-              className="hidden"
+              className="ds:hidden"
               {...(directory
                 ? ({ webkitdirectory: "", directory: "" } as any)
                 : {})}
@@ -928,30 +928,30 @@ const UploadBase = React.forwardRef<HTMLDivElement, UploadProps>(
             {variant === "avatar" || variant === "avatarCircle" ? (
               <>
                 {fileList.length > 0 && fileList[0].url && !disabled ? (
-                  <div className="relative w-full h-full group">
+                  <div className="ds:relative ds:w-full ds:h-full ds:group">
                     <img
                       draggable={false}
                       src={fileList[0].url || fileList[0].thumbUrl}
                       alt={fileList[0].name}
                       className={cn(
-                        "w-full h-full object-cover",
-                        variant === "avatarCircle" && "rounded-full",
-                        variant === "avatar" && "rounded-lg"
+                        "ds:w-full ds:h-full object-cover",
+                        variant === "avatarCircle" && "ds:rounded-full",
+                        variant === "avatar" && "ds:rounded-lg"
                       )}
                     />
                     {/* Delete button overlay */}
                     <div
                       className={cn(
-                        "absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center",
-                        variant === "avatarCircle" && "rounded-full",
-                        variant === "avatar" && "rounded-lg"
+                        "ds:absolute ds:inset-0 ds:bg-black/50 ds:opacity-0 ds:group-hover:opacity-100 ds:transition-opacity ds:flex ds:items-center ds:justify-center",
+                        variant === "avatarCircle" && "ds:rounded-full",
+                        variant === "avatar" && "ds:rounded-lg"
                       )}
                       onClick={(e) => {
                         e.stopPropagation();
                         handleRemove(fileList[0]);
                       }}
                     >
-                      <Trash2 className="h-6 w-6 text-white cursor-pointer hover:scale-110 transition-transform" />
+                      <Trash2 className="ds:h-6 ds:w-6 ds:text-white cursor-pointer ds:hover:scale-110 ds:transition-transform" />
                     </div>
                   </div>
                 ) : (
@@ -960,8 +960,7 @@ const UploadBase = React.forwardRef<HTMLDivElement, UploadProps>(
               </>
             ) : (
               <div
-                className={cn(
-                  "flex items-center justify-center gap-2",
+                className={cn("ds:flex ds:items-center ds:justify-center ds:gap-2",
                   ["secondaryDropzone", "dropzone", "primaryDropzone"].includes(
                     variant as any
                   ) && "flex-col"
@@ -1036,7 +1035,7 @@ const UploadBase = React.forwardRef<HTMLDivElement, UploadProps>(
                 )}
                 {!iconOnly && (
                   <>
-                    <span className="font-medium whitespace-nowrap text-sm">
+                    <span className="ds:font-medium ds:whitespace-nowrap ds:text-sm">
                       {uploadText}
                     </span>
                     {uploadDescription &&
@@ -1045,7 +1044,7 @@ const UploadBase = React.forwardRef<HTMLDivElement, UploadProps>(
                         "primaryDropzone",
                         "secondaryDropzone",
                       ].includes(variant as any) && (
-                        <span className="text-xs text-gray-500">
+                        <span className="ds:text-xs ds:text-gray-500">
                           {uploadDescription}
                         </span>
                       )}
@@ -1058,8 +1057,7 @@ const UploadBase = React.forwardRef<HTMLDivElement, UploadProps>(
           {/* File List */}
           {showUploadList && fileList.length > 0 && (
             <div
-              className={cn(
-                "mt-4",
+              className={cn("ds:mt-4",
                 (effectiveListType === "picture-card" ||
                   effectiveListType === "picture-circle") &&
                   "grid gap-2",
@@ -1108,7 +1106,7 @@ const UploadBase = React.forwardRef<HTMLDivElement, UploadProps>(
           <img
             src={previewImage}
             alt={previewTitle}
-            className="w-full h-auto max-h-[70vh] object-contain"
+            className="ds:w-full ds:h-auto max-h-[70vh] object-contain"
           />
         </Dialog>
       </>
@@ -1159,7 +1157,7 @@ const FileItem: React.FC<FileItemProps> = ({
   if (listType === "picture-card") {
     return (
       <div
-        className="relative aspect-square rounded-lg border bg-muted/50 overflow-hidden group"
+        className="ds:relative ds:aspect-square ds:rounded-lg ds:border ds:bg-muted/50 overflow-hidden ds:group"
         style={{
           width: "100px",
           height: "100px",
@@ -1173,25 +1171,25 @@ const FileItem: React.FC<FileItemProps> = ({
           <img
             src={file.thumbUrl || file.url}
             alt={file.name}
-            className="h-full w-full object-cover rounded-lg"
+            className="ds:h-full ds:w-full object-cover ds:rounded-lg"
           />
         ) : (
-          <div className="flex items-center justify-center h-full">
+          <div className="ds:flex ds:items-center ds:justify-center ds:h-full">
             {getFileIcon(file)}
           </div>
         )}
 
         {/* Upload Progress */}
         {file.status === "uploading" && (
-          <div className="absolute inset-0 bg-background/80 flex items-center justify-center">
-            <div className="w-full px-4">
-              <div className="flex items-center gap-2 mb-2">
-                <Loader2 className="h-4 w-4 animate-spin" />
-                <span className="text-xs">{file.percent}%</span>
+          <div className="ds:absolute ds:inset-0 ds:bg-background/80 ds:flex ds:items-center ds:justify-center">
+            <div className="ds:w-full ds:px-4">
+              <div className="ds:flex ds:items-center ds:gap-2 ds:mb-2">
+                <Loader2 className="ds:h-4 ds:w-4 ds:animate-spin" />
+                <span className="ds:text-xs">{file.percent}%</span>
               </div>
-              <div className="h-1 bg-muted rounded-full overflow-hidden">
+              <div className="ds:h-1 ds:bg-muted ds:rounded-full overflow-hidden">
                 <div
-                  className="h-full bg-primary transition-all duration-300"
+                  className="ds:h-full ds:bg-primary ds:transition-all ds:duration-300"
                   style={{ width: `${file.percent}%` }}
                 />
               </div>
@@ -1201,28 +1199,28 @@ const FileItem: React.FC<FileItemProps> = ({
 
         {/* Status Icon */}
         {file.status === "done" && (
-          <div className="absolute top-2 right-2 bg-green-500 rounded-full p-1">
-            <CheckCircle2 className="h-4 w-4 text-white" />
+          <div className="ds:absolute ds:top-2 ds:right-2 ds:bg-green-500 ds:rounded-full ds:p-1">
+            <CheckCircle2 className="ds:h-4 ds:w-4 ds:text-white" />
           </div>
         )}
         {file.status === "error" && (
-          <div className="absolute top-2 right-2 bg-red-500 rounded-full p-1">
-            <AlertCircle className="h-4 w-4 text-white" />
+          <div className="ds:absolute ds:top-2 ds:right-2 ds:bg-red-500 ds:rounded-full ds:p-1">
+            <AlertCircle className="ds:h-4 ds:w-4 ds:text-white" />
           </div>
         )}
 
         {/* Hover Actions */}
-        <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
+        <div className="ds:absolute ds:inset-0 ds:bg-black/60 ds:opacity-0 ds:group-hover:opacity-100 ds:transition-opacity ds:flex ds:items-center ds:justify-center ds:gap-2">
           {showPreviewIcon && canPreview && (
             <button
               onClick={(e) => {
                 e.stopPropagation();
                 onPreview?.(file);
               }}
-              className="p-1 rounded-full bg-background/20 hover:bg-background/30 transition-colors"
+              className="ds:p-1 ds:rounded-full ds:bg-background/20 ds:hover:bg-background/30 ds:transition-colors"
               title="Preview"
             >
-              <Eye className="h-4 w-4 text-white" />
+              <Eye className="ds:h-4 ds:w-4 ds:text-white" />
             </button>
           )}
           {showDownloadIcon && file.url && (
@@ -1231,10 +1229,10 @@ const FileItem: React.FC<FileItemProps> = ({
                 e.stopPropagation();
                 onDownload?.(file);
               }}
-              className="p-1 rounded-full bg-background/20 hover:bg-background/30 transition-colors"
+              className="ds:p-1 ds:rounded-full ds:bg-background/20 ds:hover:bg-background/30 ds:transition-colors"
               title="Download"
             >
-              <Download className="h-4 w-4 text-white" />
+              <Download className="ds:h-4 ds:w-4 ds:text-white" />
             </button>
           )}
           {showRemoveIcon && (
@@ -1243,16 +1241,16 @@ const FileItem: React.FC<FileItemProps> = ({
                 e.stopPropagation();
                 onRemove();
               }}
-              className="p-1 rounded-full bg-background/20 hover:bg-background/30 transition-colors"
+              className="ds:p-1 ds:rounded-full ds:bg-background/20 ds:hover:bg-background/30 ds:transition-colors"
               title="Remove"
             >
-              <Trash2 className="h-4 w-4 text-white" />
+              <Trash2 className="ds:h-4 ds:w-4 ds:text-white" />
             </button>
           )}
         </div>
 
         {/* File name tooltip */}
-        <div className="absolute bottom-0 left-0 right-0 bg-black/60 p-2 text-white text-xs truncate opacity-0 group-hover:opacity-100 transition-opacity">
+        <div className="ds:absolute ds:bottom-0 ds:left-0 ds:right-0 ds:bg-black/60 ds:p-2 ds:text-white ds:text-xs truncate ds:opacity-0 ds:group-hover:opacity-100 ds:transition-opacity">
           {file.name}
         </div>
       </div>
@@ -1262,10 +1260,9 @@ const FileItem: React.FC<FileItemProps> = ({
   if (listType === "picture-circle") {
     return (
       <div
-        className={cn(
-          "relative aspect-square rounded-full border bg-muted/50 overflow-hidden group",
-          file.status === "done" && "border-2 border-green-500",
-          file.status === "error" && "border-2 border-red-500"
+        className={cn("ds:relative ds:aspect-square ds:rounded-full ds:border ds:bg-muted/50 overflow-hidden ds:group",
+          file.status === "done" && "ds:border-2 ds:border-green-500",
+          file.status === "error" && "ds:border-2 ds:border-red-500"
         )}
         style={{
           width: "100px",
@@ -1280,25 +1277,25 @@ const FileItem: React.FC<FileItemProps> = ({
           <img
             src={file.thumbUrl || file.url}
             alt={file.name}
-            className="h-full w-full object-cover rounded-full"
+            className="ds:h-full ds:w-full object-cover ds:rounded-full"
           />
         ) : (
-          <div className="flex items-center justify-center h-full rounded-full bg-muted">
+          <div className="ds:flex ds:items-center ds:justify-center ds:h-full ds:rounded-full ds:bg-muted">
             {getFileIcon(file)}
           </div>
         )}
 
         {/* Upload Progress */}
         {file.status === "uploading" && (
-          <div className="absolute inset-0 bg-background/80 flex items-center justify-center rounded-full">
-            <div className="w-full px-4">
-              <div className="flex items-center gap-2 mb-2 justify-center">
-                <Loader2 className="h-4 w-4 animate-spin" />
-                <span className="text-xs">{file.percent}%</span>
+          <div className="ds:absolute ds:inset-0 ds:bg-background/80 ds:flex ds:items-center ds:justify-center ds:rounded-full">
+            <div className="ds:w-full ds:px-4">
+              <div className="ds:flex ds:items-center ds:gap-2 ds:mb-2 ds:justify-center">
+                <Loader2 className="ds:h-4 ds:w-4 ds:animate-spin" />
+                <span className="ds:text-xs">{file.percent}%</span>
               </div>
-              <div className="h-1 bg-muted rounded-full overflow-hidden">
+              <div className="ds:h-1 ds:bg-muted ds:rounded-full overflow-hidden">
                 <div
-                  className="h-full bg-primary transition-all duration-300"
+                  className="ds:h-full ds:bg-primary ds:transition-all ds:duration-300"
                   style={{ width: `${file.percent}%` }}
                 />
               </div>
@@ -1307,17 +1304,17 @@ const FileItem: React.FC<FileItemProps> = ({
         )}
 
         {/* Hover Actions */}
-        <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2 rounded-full">
+        <div className="ds:absolute ds:inset-0 ds:bg-black/60 ds:opacity-0 ds:group-hover:opacity-100 ds:transition-opacity ds:flex ds:items-center ds:justify-center ds:gap-2 ds:rounded-full">
           {showPreviewIcon && canPreview && (
             <button
               onClick={(e) => {
                 e.stopPropagation();
                 onPreview?.(file);
               }}
-              className="p-1 rounded-full bg-background/20 hover:bg-background/30 transition-colors"
+              className="ds:p-1 ds:rounded-full ds:bg-background/20 ds:hover:bg-background/30 ds:transition-colors"
               title="Preview"
             >
-              <Eye className="h-4 w-4 text-white" />
+              <Eye className="ds:h-4 ds:w-4 ds:text-white" />
             </button>
           )}
           {showDownloadIcon && file.url && (
@@ -1326,10 +1323,10 @@ const FileItem: React.FC<FileItemProps> = ({
                 e.stopPropagation();
                 onDownload?.(file);
               }}
-              className="p-1 rounded-full bg-background/20 hover:bg-background/30 transition-colors"
+              className="ds:p-1 ds:rounded-full ds:bg-background/20 ds:hover:bg-background/30 ds:transition-colors"
               title="Download"
             >
-              <Download className="h-4 w-4 text-white" />
+              <Download className="ds:h-4 ds:w-4 ds:text-white" />
             </button>
           )}
           {showRemoveIcon && (
@@ -1338,14 +1335,14 @@ const FileItem: React.FC<FileItemProps> = ({
                 e.stopPropagation();
                 onRemove();
               }}
-              className="p-1 rounded-full bg-background/20 hover:bg-background/30 transition-colors"
+              className="ds:p-1 ds:rounded-full ds:bg-background/20 ds:hover:bg-background/30 ds:transition-colors"
               title="Remove"
             >
-              <Trash2 className="h-4 w-4 text-white" />
+              <Trash2 className="ds:h-4 ds:w-4 ds:text-white" />
             </button>
           )}
           {/* File name tooltip */}
-          <div className="absolute bottom-0 left-0 right-0 bg-black/60 p-2 text-white text-xs truncate opacity-0 group-hover:opacity-100 transition-opacity">
+          <div className="ds:absolute ds:bottom-0 ds:left-0 ds:right-0 ds:bg-black/60 ds:p-2 ds:text-white ds:text-xs truncate ds:opacity-0 ds:group-hover:opacity-100 ds:transition-opacity">
             {file.name}
           </div>
         </div>
@@ -1355,14 +1352,14 @@ const FileItem: React.FC<FileItemProps> = ({
 
   if (listType === "picture") {
     return (
-      <div className="flex items-center gap-3 p-2 rounded-lg border bg-background hover:bg-muted/50 transition-colors group">
+      <div className="ds:flex ds:items-center ds:gap-3 ds:p-2 ds:rounded-lg ds:border ds:bg-background ds:hover:bg-muted/50 ds:transition-colors ds:group">
         {/* Thumbnail */}
-        <div className="shrink-0 h-10 w-10 rounded overflow-hidden bg-muted flex items-center justify-center">
+        <div className="ds:shrink-0 ds:h-10 ds:w-10 ds:rounded overflow-hidden ds:bg-muted ds:flex ds:items-center ds:justify-center">
           {file.url && isImage ? (
             <img
               src={file.thumbUrl || file.url}
               alt={file.name}
-              className="h-full w-full object-cover"
+              className="ds:h-full ds:w-full object-cover"
             />
           ) : (
             getFileIcon(file)
@@ -1370,28 +1367,28 @@ const FileItem: React.FC<FileItemProps> = ({
         </div>
 
         {/* Info */}
-        <div className="flex-1 min-w-0">
-          <p className="text-sm font-medium truncate">{file.name}</p>
-          <div className="flex items-center gap-2 mt-1">
+        <div className="ds:flex-1 ds:min-w-0">
+          <p className="ds:text-sm ds:font-medium truncate">{file.name}</p>
+          <div className="ds:flex ds:items-center ds:gap-2 ds:mt-1">
             {file.size && (
-              <span className="text-xs text-muted-foreground">
+              <span className="ds:text-xs ds:text-muted-foreground">
                 {formatFileSize(file.size)}
               </span>
             )}
             {file.status === "uploading" && (
-              <span className="text-xs text-primary">{file.percent}%</span>
+              <span className="ds:text-xs ds:text-primary">{file.percent}%</span>
             )}
             {file.status === "done" && (
-              <CheckCircle2 className="h-4 w-4 text-green-500" />
+              <CheckCircle2 className="ds:h-4 ds:w-4 ds:text-green-500" />
             )}
             {file.status === "error" && (
-              <AlertCircle className="h-4 w-4 text-red-500" />
+              <AlertCircle className="ds:h-4 ds:w-4 ds:text-red-500" />
             )}
           </div>
           {file.status === "uploading" && (
-            <div className="h-1 bg-muted rounded-full overflow-hidden mt-2">
+            <div className="ds:h-1 ds:bg-muted ds:rounded-full overflow-hidden ds:mt-2">
               <div
-                className="h-full bg-primary transition-all duration-300"
+                className="ds:h-full ds:bg-primary ds:transition-all ds:duration-300"
                 style={{ width: `${file.percent}%` }}
               />
             </div>
@@ -1399,17 +1396,17 @@ const FileItem: React.FC<FileItemProps> = ({
         </div>
 
         {/* Actions */}
-        <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+        <div className="ds:flex ds:items-center ds:gap-1 ds:opacity-0 ds:group-hover:opacity-100 ds:transition-opacity">
           {showPreviewIcon && canPreview && (
             <button
               onClick={(e) => {
                 e.stopPropagation();
                 onPreview?.(file);
               }}
-              className="p-1.5 rounded hover:bg-muted transition-colors"
+              className="ds:p-1.5 ds:rounded ds:hover:bg-muted ds:transition-colors"
               title="Preview"
             >
-              <Eye className="h-4 w-4" />
+              <Eye className="ds:h-4 ds:w-4" />
             </button>
           )}
           {showDownloadIcon && file.url && (
@@ -1418,10 +1415,10 @@ const FileItem: React.FC<FileItemProps> = ({
                 e.stopPropagation();
                 onDownload?.(file);
               }}
-              className="p-1.5 rounded hover:bg-muted transition-colors"
+              className="ds:p-1.5 ds:rounded ds:hover:bg-muted ds:transition-colors"
               title="Download"
             >
-              <Download className="h-4 w-4" />
+              <Download className="ds:h-4 ds:w-4" />
             </button>
           )}
           {showRemoveIcon && (
@@ -1430,10 +1427,10 @@ const FileItem: React.FC<FileItemProps> = ({
                 e.stopPropagation();
                 onRemove();
               }}
-              className="p-1.5 rounded hover:bg-destructive/10 transition-colors text-destructive"
+              className="ds:p-1.5 ds:rounded ds:hover:bg-destructive/10 ds:transition-colors ds:text-destructive"
               title="Remove"
             >
-              <X className="h-4 w-4" />
+              <X className="ds:h-4 ds:w-4" />
             </button>
           )}
         </div>
@@ -1443,35 +1440,35 @@ const FileItem: React.FC<FileItemProps> = ({
 
   // Text list
   return (
-    <div className="flex items-center gap-2 p-2 rounded hover:bg-muted/50 transition-colors group">
+    <div className="ds:flex ds:items-center ds:gap-2 ds:p-2 ds:rounded ds:hover:bg-muted/50 ds:transition-colors ds:group">
       {/* Icon */}
-      <div className="shrink-0">{getFileIcon(file)}</div>
+      <div className="ds:shrink-0">{getFileIcon(file)}</div>
 
       {/* Info */}
-      <div className="flex-1 min-w-0">
-        <div className="flex items-center gap-2">
-          <p className="text-sm truncate">{file.name}</p>
+      <div className="ds:flex-1 ds:min-w-0">
+        <div className="ds:flex ds:items-center ds:gap-2">
+          <p className="ds:text-sm truncate">{file.name}</p>
           {/* Status */}
           {file.status === "done" && (
-            <CheckCircle2 className="h-4 w-4 text-green-500 shrink-0" />
+            <CheckCircle2 className="ds:h-4 ds:w-4 ds:text-green-500 ds:shrink-0" />
           )}
           {file.status === "error" && (
-            <AlertCircle className="h-4 w-4 text-red-500 shrink-0" />
+            <AlertCircle className="ds:h-4 ds:w-4 ds:text-red-500 ds:shrink-0" />
           )}
           {file.status === "uploading" && (
-            <Loader2 className="h-4 w-4 animate-spin shrink-0" />
+            <Loader2 className="ds:h-4 ds:w-4 ds:animate-spin ds:shrink-0" />
           )}
         </div>
 
         {file.status === "uploading" && (
-          <div className="flex items-center gap-2">
-            <div className="flex-1 h-1 bg-muted rounded-full overflow-hidden">
+          <div className="ds:flex ds:items-center ds:gap-2">
+            <div className="ds:flex-1 ds:h-1 ds:bg-muted ds:rounded-full overflow-hidden">
               <div
-                className="h-full bg-primary transition-all duration-300"
+                className="ds:h-full ds:bg-primary ds:transition-all ds:duration-300"
                 style={{ width: `${file.percent}%` }}
               />
             </div>
-            <span className="text-xs text-muted-foreground">
+            <span className="ds:text-xs ds:text-muted-foreground">
               {file.percent}%
             </span>
           </div>
@@ -1479,17 +1476,17 @@ const FileItem: React.FC<FileItemProps> = ({
       </div>
 
       {/* Actions */}
-      <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+      <div className="ds:flex ds:items-center ds:gap-1 ds:opacity-0 ds:group-hover:opacity-100 ds:transition-opacity">
         {showPreviewIcon && canPreview && (
           <button
             onClick={(e) => {
               e.stopPropagation();
               onPreview?.(file);
             }}
-            className="p-1 rounded hover:bg-muted transition-colors"
+            className="ds:p-1 ds:rounded ds:hover:bg-muted ds:transition-colors"
             title="Preview"
           >
-            <Eye className="h-4 w-4" />
+            <Eye className="ds:h-4 ds:w-4" />
           </button>
         )}
         {showDownloadIcon && file.url && (
@@ -1498,10 +1495,10 @@ const FileItem: React.FC<FileItemProps> = ({
               e.stopPropagation();
               onDownload?.(file);
             }}
-            className="p-1 rounded hover:bg-muted transition-colors"
+            className="ds:p-1 ds:rounded ds:hover:bg-muted ds:transition-colors"
             title="Download"
           >
-            <Download className="h-4 w-4" />
+            <Download className="ds:h-4 ds:w-4" />
           </button>
         )}
         {showRemoveIcon && (
@@ -1510,10 +1507,10 @@ const FileItem: React.FC<FileItemProps> = ({
               e.stopPropagation();
               onRemove();
             }}
-            className="p-1 rounded hover:bg-destructive/10 transition-colors text-destructive"
+            className="ds:p-1 ds:rounded ds:hover:bg-destructive/10 ds:transition-colors ds:text-destructive"
             title="Remove"
           >
-            <Trash2 className="h-4 w-4" />
+            <Trash2 className="ds:h-4 ds:w-4" />
           </button>
         )}
       </div>

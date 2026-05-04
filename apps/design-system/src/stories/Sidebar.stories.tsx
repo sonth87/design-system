@@ -76,8 +76,8 @@ export const Default: Story = {
     <SidebarProvider>
       <Sidebar {...args}>
         <SidebarHeader>
-          <div className="px-2 py-2">
-            <h2 className="text-lg font-semibold">My App</h2>
+          <div className="ds:px-2 ds:py-2">
+            <h2 className="ds:text-lg ds:font-semibold">My App</h2>
           </div>
         </SidebarHeader>
         <SidebarContent>
@@ -87,31 +87,31 @@ export const Default: Story = {
               <SidebarMenu>
                 <SidebarMenuItem>
                   <SidebarMenuButton>
-                    <Home className="size-4" />
+                    <Home className="ds:size-4" />
                     <span>Home</span>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
                 <SidebarMenuItem>
                   <SidebarMenuButton>
-                    <Inbox className="size-4" />
+                    <Inbox className="ds:size-4" />
                     <span>Inbox</span>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
                 <SidebarMenuItem>
                   <SidebarMenuButton>
-                    <Calendar className="size-4" />
+                    <Calendar className="ds:size-4" />
                     <span>Calendar</span>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
                 <SidebarMenuItem>
                   <SidebarMenuButton>
-                    <Search className="size-4" />
+                    <Search className="ds:size-4" />
                     <span>Search</span>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
                 <SidebarMenuItem>
                   <SidebarMenuButton>
-                    <Settings className="size-4" />
+                    <Settings className="ds:size-4" />
                     <span>Settings</span>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -123,7 +123,7 @@ export const Default: Story = {
           <SidebarMenu>
             <SidebarMenuItem>
               <SidebarMenuButton>
-                <User className="size-4" />
+                <User className="ds:size-4" />
                 <span>Account</span>
               </SidebarMenuButton>
             </SidebarMenuItem>
@@ -131,18 +131,18 @@ export const Default: Story = {
         </SidebarFooter>
       </Sidebar>
       <SidebarInset>
-        <header className="flex h-16 items-center gap-2 border-b px-4">
+        <header className="ds:flex ds:h-16 ds:items-center ds:gap-2 ds:border-b ds:px-4">
           <SidebarTrigger />
-          <h1 className="text-lg font-semibold">Dashboard</h1>
+          <h1 className="ds:text-lg ds:font-semibold">Dashboard</h1>
         </header>
-        <div className="flex flex-1 flex-col gap-4 p-4">
-          <div className="grid auto-rows-min gap-4 md:grid-cols-3">
+        <div className="ds:flex ds:flex-1 ds:flex-col ds:gap-4 ds:p-4">
+          <div className="ds:grid auto-rows-min ds:gap-4 ds:md:grid-cols-3">
             {Array.from({ length: 6 }).map((_, i) => (
-              <div key={i} className="aspect-video rounded-xl bg-muted/50" />
+              <div key={i} className="ds:aspect-video ds:rounded-xl ds:bg-muted/50" />
             ))}
           </div>
-          <div className="flex-1 rounded-xl bg-muted/50 p-4">
-            <p className="text-muted-foreground">Main content area</p>
+          <div className="ds:flex-1 ds:rounded-xl ds:bg-muted/50 ds:p-4">
+            <p className="ds:text-muted-foreground">Main content area</p>
           </div>
         </div>
       </SidebarInset>
@@ -167,8 +167,8 @@ export const WithActiveStates: Story = {
       <SidebarProvider>
         <Sidebar>
           <SidebarHeader>
-            <div className="px-2 py-2">
-              <h2 className="text-lg font-semibold">My App</h2>
+            <div className="ds:px-2 ds:py-2">
+              <h2 className="ds:text-lg ds:font-semibold">My App</h2>
             </div>
           </SidebarHeader>
           <SidebarContent>
@@ -182,7 +182,7 @@ export const WithActiveStates: Story = {
                         isActive={active === item.id}
                         onClick={() => setActive(item.id)}
                       >
-                        <item.icon className="size-4" />
+                        <item.icon className="ds:size-4" />
                         <span>{item.label}</span>
                       </SidebarMenuButton>
                     </SidebarMenuItem>
@@ -193,13 +193,13 @@ export const WithActiveStates: Story = {
           </SidebarContent>
         </Sidebar>
         <SidebarInset>
-          <header className="flex h-16 items-center gap-2 border-b px-4">
+          <header className="ds:flex ds:h-16 ds:items-center ds:gap-2 ds:border-b ds:px-4">
             <SidebarTrigger />
-            <h1 className="text-lg font-semibold capitalize">{active}</h1>
+            <h1 className="ds:text-lg ds:font-semibold capitalize">{active}</h1>
           </header>
-          <div className="flex flex-1 flex-col gap-4 p-4">
-            <div className="min-h-screen flex-1 rounded-xl bg-muted/50 p-4">
-              <p className="text-muted-foreground">Content for {active} page</p>
+          <div className="ds:flex ds:flex-1 ds:flex-col ds:gap-4 ds:p-4">
+            <div className="ds:min-h-screen ds:flex-1 ds:rounded-xl ds:bg-muted/50 ds:p-4">
+              <p className="ds:text-muted-foreground">Content for {active} page</p>
             </div>
           </div>
         </SidebarInset>
@@ -214,8 +214,8 @@ export const Floating: Story = {
     <SidebarProvider>
       <Sidebar variant="floating">
         <SidebarHeader>
-          <div className="px-2 py-2">
-            <h2 className="text-lg font-semibold">Floating Sidebar</h2>
+          <div className="ds:px-2 ds:py-2">
+            <h2 className="ds:text-lg ds:font-semibold">Floating Sidebar</h2>
           </div>
         </SidebarHeader>
         <SidebarContent>
@@ -230,7 +230,7 @@ export const Floating: Story = {
                 ].map((item, i) => (
                   <SidebarMenuItem key={i}>
                     <SidebarMenuButton>
-                      <item.icon className="size-4" />
+                      <item.icon className="ds:size-4" />
                       <span>{item.label}</span>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
@@ -241,13 +241,13 @@ export const Floating: Story = {
         </SidebarContent>
       </Sidebar>
       <SidebarInset>
-        <header className="flex h-16 items-center gap-2 border-b px-4">
+        <header className="ds:flex ds:h-16 ds:items-center ds:gap-2 ds:border-b ds:px-4">
           <SidebarTrigger />
-          <h1 className="text-lg font-semibold">Floating Variant</h1>
+          <h1 className="ds:text-lg ds:font-semibold">Floating Variant</h1>
         </header>
-        <div className="flex flex-1 flex-col gap-4 p-4">
-          <div className="min-h-screen flex-1 rounded-xl bg-muted/50 p-4">
-            <p className="text-muted-foreground">
+        <div className="ds:flex ds:flex-1 ds:flex-col ds:gap-4 ds:p-4">
+          <div className="ds:min-h-screen ds:flex-1 ds:rounded-xl ds:bg-muted/50 ds:p-4">
+            <p className="ds:text-muted-foreground">
               The sidebar floats with padding and rounded corners
             </p>
           </div>
@@ -263,8 +263,8 @@ export const Inset: Story = {
     <SidebarProvider>
       <Sidebar variant="inset">
         <SidebarHeader>
-          <div className="px-2 py-2">
-            <h2 className="text-lg font-semibold">Inset Sidebar</h2>
+          <div className="ds:px-2 ds:py-2">
+            <h2 className="ds:text-lg ds:font-semibold">Inset Sidebar</h2>
           </div>
         </SidebarHeader>
         <SidebarContent>
@@ -279,7 +279,7 @@ export const Inset: Story = {
                 ].map((item, i) => (
                   <SidebarMenuItem key={i}>
                     <SidebarMenuButton>
-                      <item.icon className="size-4" />
+                      <item.icon className="ds:size-4" />
                       <span>{item.label}</span>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
@@ -290,13 +290,13 @@ export const Inset: Story = {
         </SidebarContent>
       </Sidebar>
       <SidebarInset>
-        <header className="flex h-16 items-center gap-2 border-b px-4">
+        <header className="ds:flex ds:h-16 ds:items-center ds:gap-2 ds:border-b ds:px-4">
           <SidebarTrigger />
-          <h1 className="text-lg font-semibold">Inset Variant</h1>
+          <h1 className="ds:text-lg ds:font-semibold">Inset Variant</h1>
         </header>
-        <div className="flex flex-1 flex-col gap-4 p-4">
-          <div className="min-h-screen flex-1 rounded-xl bg-muted/50 p-4">
-            <p className="text-muted-foreground">
+        <div className="ds:flex ds:flex-1 ds:flex-col ds:gap-4 ds:p-4">
+          <div className="ds:min-h-screen ds:flex-1 ds:rounded-xl ds:bg-muted/50 ds:p-4">
+            <p className="ds:text-muted-foreground">
               The sidebar is inset with padding and rounded content area
             </p>
           </div>
@@ -311,13 +311,13 @@ export const RightSide: Story = {
   render: () => (
     <SidebarProvider>
       <SidebarInset>
-        <header className="flex h-16 items-center gap-2 border-b px-4">
-          <h1 className="text-lg font-semibold flex-1">Dashboard</h1>
+        <header className="ds:flex ds:h-16 ds:items-center ds:gap-2 ds:border-b ds:px-4">
+          <h1 className="ds:text-lg ds:font-semibold ds:flex-1">Dashboard</h1>
           <SidebarTrigger />
         </header>
-        <div className="flex flex-1 flex-col gap-4 p-4">
-          <div className="min-h-screen flex-1 rounded-xl bg-muted/50 p-4">
-            <p className="text-muted-foreground">
+        <div className="ds:flex ds:flex-1 ds:flex-col ds:gap-4 ds:p-4">
+          <div className="ds:min-h-screen ds:flex-1 ds:rounded-xl ds:bg-muted/50 ds:p-4">
+            <p className="ds:text-muted-foreground">
               Sidebar appears on the right side
             </p>
           </div>
@@ -325,8 +325,8 @@ export const RightSide: Story = {
       </SidebarInset>
       <Sidebar side="right">
         <SidebarHeader>
-          <div className="px-2 py-2">
-            <h2 className="text-lg font-semibold">Right Sidebar</h2>
+          <div className="ds:px-2 ds:py-2">
+            <h2 className="ds:text-lg ds:font-semibold">Right Sidebar</h2>
           </div>
         </SidebarHeader>
         <SidebarContent>
@@ -338,7 +338,7 @@ export const RightSide: Story = {
                   (item, i) => (
                     <SidebarMenuItem key={i}>
                       <SidebarMenuButton>
-                        <ChevronRight className="size-4" />
+                        <ChevronRight className="ds:size-4" />
                         <span>{item}</span>
                       </SidebarMenuButton>
                     </SidebarMenuItem>
@@ -359,8 +359,8 @@ export const IconCollapsible: Story = {
     <SidebarProvider>
       <Sidebar collapsible="icon">
         <SidebarHeader>
-          <div className="px-2 py-2">
-            <h2 className="text-lg font-semibold">App</h2>
+          <div className="ds:px-2 ds:py-2">
+            <h2 className="ds:text-lg ds:font-semibold">App</h2>
           </div>
         </SidebarHeader>
         <SidebarContent>
@@ -377,7 +377,7 @@ export const IconCollapsible: Story = {
                 ].map((item, i) => (
                   <SidebarMenuItem key={i}>
                     <SidebarMenuButton tooltip={item.label}>
-                      <item.icon className="size-4" />
+                      <item.icon className="ds:size-4" />
                       <span>{item.label}</span>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
@@ -388,13 +388,13 @@ export const IconCollapsible: Story = {
         </SidebarContent>
       </Sidebar>
       <SidebarInset>
-        <header className="flex h-16 items-center gap-2 border-b px-4">
+        <header className="ds:flex ds:h-16 ds:items-center ds:gap-2 ds:border-b ds:px-4">
           <SidebarTrigger />
-          <h1 className="text-lg font-semibold">Icon Collapsible</h1>
+          <h1 className="ds:text-lg ds:font-semibold">Icon Collapsible</h1>
         </header>
-        <div className="flex flex-1 flex-col gap-4 p-4">
-          <div className="flex-1 rounded-xl bg-muted/50 p-4">
-            <p className="text-muted-foreground">
+        <div className="ds:flex ds:flex-1 ds:flex-col ds:gap-4 ds:p-4">
+          <div className="ds:flex-1 ds:rounded-xl ds:bg-muted/50 ds:p-4">
+            <p className="ds:text-muted-foreground">
               Click the trigger to collapse to icon-only mode
             </p>
           </div>
@@ -410,8 +410,8 @@ export const MultipleGroups: Story = {
     <SidebarProvider>
       <Sidebar>
         <SidebarHeader>
-          <div className="px-2 py-2">
-            <h2 className="text-lg font-semibold">Dashboard</h2>
+          <div className="ds:px-2 ds:py-2">
+            <h2 className="ds:text-lg ds:font-semibold">Dashboard</h2>
           </div>
         </SidebarHeader>
         <SidebarContent>
@@ -425,7 +425,7 @@ export const MultipleGroups: Story = {
                 ].map((item, i) => (
                   <SidebarMenuItem key={i}>
                     <SidebarMenuButton>
-                      <item.icon className="size-4" />
+                      <item.icon className="ds:size-4" />
                       <span>{item.label}</span>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
@@ -443,7 +443,7 @@ export const MultipleGroups: Story = {
                 ].map((item, i) => (
                   <SidebarMenuItem key={i}>
                     <SidebarMenuButton>
-                      <item.icon className="size-4" />
+                      <item.icon className="ds:size-4" />
                       <span>{item.label}</span>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
@@ -457,7 +457,7 @@ export const MultipleGroups: Story = {
               <SidebarMenu>
                 <SidebarMenuItem>
                   <SidebarMenuButton>
-                    <Settings className="size-4" />
+                    <Settings className="ds:size-4" />
                     <span>Settings</span>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -469,22 +469,22 @@ export const MultipleGroups: Story = {
           <SidebarMenu>
             <SidebarMenuItem>
               <SidebarMenuButton>
-                <User className="size-4" />
+                <User className="ds:size-4" />
                 <span>Profile</span>
-                <MoreHorizontal className="ml-auto size-4" />
+                <MoreHorizontal className="ds:ml-auto ds:size-4" />
               </SidebarMenuButton>
             </SidebarMenuItem>
           </SidebarMenu>
         </SidebarFooter>
       </Sidebar>
       <SidebarInset>
-        <header className="flex h-16 items-center gap-2 border-b px-4">
+        <header className="ds:flex ds:h-16 ds:items-center ds:gap-2 ds:border-b ds:px-4">
           <SidebarTrigger />
-          <h1 className="text-lg font-semibold">Multiple Groups</h1>
+          <h1 className="ds:text-lg ds:font-semibold">Multiple Groups</h1>
         </header>
-        <div className="flex flex-1 flex-col gap-4 p-4">
-          <div className="flex-1 rounded-xl bg-muted/50 p-4">
-            <p className="text-muted-foreground">
+        <div className="ds:flex ds:flex-1 ds:flex-col ds:gap-4 ds:p-4">
+          <div className="ds:flex-1 ds:rounded-xl ds:bg-muted/50 ds:p-4">
+            <p className="ds:text-muted-foreground">
               Sidebar with multiple grouped sections
             </p>
           </div>
@@ -500,12 +500,12 @@ export const Controlled: Story = {
     const [open, setOpen] = React.useState(true);
 
     return (
-      <div className="space-y-4">
+      <div className="ds:space-y-4">
         <SidebarProvider open={open} onOpenChange={setOpen}>
           <Sidebar>
             <SidebarHeader>
-              <div className="px-2 py-2">
-                <h2 className="text-lg font-semibold">Controlled</h2>
+              <div className="ds:px-2 ds:py-2">
+                <h2 className="ds:text-lg ds:font-semibold">Controlled</h2>
               </div>
             </SidebarHeader>
             <SidebarContent>
@@ -518,7 +518,7 @@ export const Controlled: Story = {
                     ].map((item, i) => (
                       <SidebarMenuItem key={i}>
                         <SidebarMenuButton>
-                          <item.icon className="size-4" />
+                          <item.icon className="ds:size-4" />
                           <span>{item.label}</span>
                         </SidebarMenuButton>
                       </SidebarMenuItem>
@@ -529,12 +529,12 @@ export const Controlled: Story = {
             </SidebarContent>
           </Sidebar>
           <SidebarInset>
-            <header className="flex h-16 items-center gap-2 border-b px-4">
+            <header className="ds:flex ds:h-16 ds:items-center ds:gap-2 ds:border-b ds:px-4">
               <SidebarTrigger />
-              <h1 className="text-lg font-semibold">Controlled Sidebar</h1>
+              <h1 className="ds:text-lg ds:font-semibold">Controlled Sidebar</h1>
             </header>
-            <div className="flex flex-1 flex-col gap-4 p-4">
-              <div className="flex gap-2 p-4 border-b">
+            <div className="ds:flex ds:flex-1 ds:flex-col ds:gap-4 ds:p-4">
+              <div className="ds:flex ds:gap-2 ds:p-4 ds:border-b">
                 <Button
                   onClick={() => setOpen(true)}
                   variant="outline"
@@ -549,12 +549,12 @@ export const Controlled: Story = {
                 >
                   Close Sidebar
                 </Button>
-                <span className="ml-4 text-sm text-muted-foreground">
+                <span className="ds:ml-4 ds:text-sm ds:text-muted-foreground">
                   State: {open ? "Open" : "Closed"}
                 </span>
               </div>
-              <div className="flex-1 rounded-xl bg-muted/50 p-4">
-                <p className="text-muted-foreground">
+              <div className="ds:flex-1 ds:rounded-xl ds:bg-muted/50 ds:p-4">
+                <p className="ds:text-muted-foreground">
                   Use the buttons above to control the sidebar state
                 </p>
               </div>

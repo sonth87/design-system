@@ -14,7 +14,7 @@ function Pagination({ className, ...props }: React.ComponentProps<"nav">) {
       role="navigation"
       aria-label="pagination"
       data-slot="pagination"
-      className={cn("mx-auto flex w-full justify-center", className)}
+      className={cn("ds:mx-auto ds:flex ds:w-full ds:justify-center", className)}
       {...props}
     />
   );
@@ -27,7 +27,7 @@ function PaginationContent({
   return (
     <ul
       data-slot="pagination-content"
-      className={cn("flex flex-row items-center gap-1", className)}
+      className={cn("ds:flex ds:flex-row ds:items-center ds:gap-1", className)}
       {...props}
     />
   );
@@ -38,7 +38,7 @@ function PaginationItem({ ...props }: React.ComponentProps<"li">) {
     <li
       data-slot="pagination-item"
       {...props}
-      className={cn("flex items-center cursor-pointer", props?.className)}
+      className={cn("ds:flex ds:items-center cursor-pointer", props?.className)}
     />
   );
 }
@@ -91,7 +91,7 @@ function PaginationPrevious({
     <PaginationLink
       aria-label="Go to previous page"
       size={size}
-      className={cn("gap-1 justify-center items-center", className)}
+      className={cn("ds:gap-1 ds:justify-center ds:items-center", className)}
       {...props}
     >
       {!hideIcon && <ChevronLeftIcon />}
@@ -118,7 +118,7 @@ function PaginationNext({
     <PaginationLink
       aria-label="Go to next page"
       size={size}
-      className={cn("gap-1 justify-center items-center", className)}
+      className={cn("ds:gap-1 ds:justify-center ds:items-center", className)}
       {...props}
     >
       {showText && text && <span>{text}</span>}
