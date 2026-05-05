@@ -37,7 +37,7 @@ export function DataTableViewOptions<TData>({
         onClick: () => column.toggleVisibility(!column.getIsVisible()),
         children: (
           <>
-            <span className="truncate">
+            <span className="ds:truncate">
               {column.columnDef.meta?.label ??
                 (typeof column.columnDef.header === "string"
                   ? column.columnDef.header
@@ -45,8 +45,8 @@ export function DataTableViewOptions<TData>({
             </span>
             <Check
               className={cn(
-                "ml-auto size-4 shrink-0",
-                column.getIsVisible() ? "opacity-100" : "opacity-0"
+                "ds:ml-auto ds:size-4 ds:shrink-0",
+                column.getIsVisible() ? "ds:opacity-100" : "ds:opacity-0"
               )}
             />
           </>
@@ -63,14 +63,14 @@ export function DataTableViewOptions<TData>({
           role="combobox"
           variant="outline"
           size="sm"
-          className="ml-auto h-8 font-normal lg:flex"
+          className="ds:ml-auto ds:h-8 ds:font-normal ds:lg:flex"
         >
-          <Settings2 className="text-muted-foreground" />
+          <Settings2 className="ds:text-muted-foreground" />
           View
         </Button>
       }
       content={<Command items={items} search="Search columns..." />}
-      contentClassName="w-44 p-0"
+      contentClassName="ds:w-44 ds:p-0"
       {...props}
     />
   );

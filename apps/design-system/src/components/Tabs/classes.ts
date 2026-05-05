@@ -12,16 +12,16 @@ export const sizeClasses: Record<
   { horizontal: string; vertical: string }
 > = {
   sm: {
-    horizontal: "text-xs h-7 [&>button]:px-2",
-    vertical: "text-xs [&>button]:py-0.5",
+    horizontal: "ds:text-xs ds:h-7 ds:[&>button]:px-2",
+    vertical: "ds:text-xs ds:[&>button]:py-0.5",
   },
   md: {
-    horizontal: "text-sm h-9 [&>button]:px-3",
-    vertical: "text-sm [&>button]:py-1",
+    horizontal: "ds:text-sm ds:h-9 ds:[&>button]:px-3",
+    vertical: "ds:text-sm ds:[&>button]:py-1",
   },
   lg: {
-    horizontal: "text-base h-11 [&>button]:px-4",
-    vertical: "text-base [&>button]:py-1.5",
+    horizontal: "ds:text-base ds:h-11 ds:[&>button]:px-4",
+    vertical: "ds:text-base ds:[&>button]:py-1.5",
   },
 };
 
@@ -30,16 +30,16 @@ export const alignmentClasses: Record<
   { horizontal: string; vertical: string }
 > = {
   start: {
-    horizontal: "justify-start",
-    vertical: "items-start",
+    horizontal: "ds:justify-start",
+    vertical: "ds:items-start",
   },
   center: {
-    horizontal: "justify-center",
-    vertical: "items-center",
+    horizontal: "ds:justify-center",
+    vertical: "ds:items-center",
   },
   end: {
-    horizontal: "justify-end",
-    vertical: "items-end",
+    horizontal: "ds:justify-end",
+    vertical: "ds:items-end",
   },
 };
 
@@ -48,20 +48,20 @@ export const positionClasses: Record<
   { root: string; list: string }
 > = {
   top: {
-    root: "flex flex-col",
-    list: "flex-row",
+    root: "ds:flex ds:flex-col",
+    list: "ds:flex-row",
   },
   bottom: {
-    root: "flex flex-col-reverse",
-    list: "flex-row",
+    root: "ds:flex ds:flex-col-reverse",
+    list: "ds:flex-row",
   },
   left: {
-    root: "flex flex-row",
-    list: "flex-col h-fit",
+    root: "ds:flex ds:flex-row",
+    list: "ds:flex-col ds:h-fit",
   },
   right: {
-    root: "flex flex-row-reverse",
-    list: "flex-col h-fit",
+    root: "ds:flex ds:flex-row-reverse",
+    list: "ds:flex-col ds:h-fit",
   },
 };
 
@@ -274,7 +274,7 @@ export const getUnderlinedTriggerClasses = (
   tabPosition: TabPosition
 ): string => {
   const baseClasses =
-    "bg-background dark:bg-background rounded-none border-0 border-transparent data-[state=active]:shadow-none";
+    "ds:bg-background ds:dark:bg-background ds:rounded-none ds:border-0 ds:border-transparent ds:data-[state=active]:shadow-none";
 
   const positionMap: Record<TabPosition, string> = {
     top: `${baseClasses} border-b-2 h-full`,
@@ -289,7 +289,7 @@ export const getUnderlinedTriggerClasses = (
 // Get trigger border classes for enclosed variant based on position
 export const getEnclosedTriggerClasses = (tabPosition: TabPosition): string => {
   const baseClasses =
-    "bg-background dark:bg-background border border-transparent data-[state=active]:shadow-none rounded-none";
+    "ds:bg-background ds:dark:bg-background ds:border ds:border-transparent ds:data-[state=active]:shadow-none ds:rounded-none";
 
   const positionMap: Record<TabPosition, string> = {
     top: `${baseClasses} rounded-t-md data-[state=active]:border-t data-[state=active]:border-l data-[state=active]:border-r data-[state=active]:border-b-0 data-[state=active]:border-b-background dark:data-[state=active]:border-b-background h-full data-[state=active]:-mb-0.5 data-[state=active]:translate-y-[0px]`,
@@ -306,7 +306,7 @@ export const getEnclosedFillTriggerClasses = (
   tabPosition: TabPosition
 ): string => {
   const baseClasses =
-    "bg-muted dark:bg-muted border border-transparent data-[state=active]:bg-background dark:data-[state=active]:bg-background data-[state=active]:shadow-none rounded-none";
+    "ds:bg-muted ds:dark:bg-muted ds:border ds:border-transparent ds:data-[state=active]:bg-background ds:dark:data-[state=active]:bg-background ds:data-[state=active]:shadow-none ds:rounded-none";
 
   const positionMap: Record<TabPosition, string> = {
     top: `${baseClasses} rounded-t-md data-[state=active]:border-t data-[state=active]:border-l data-[state=active]:border-r data-[state=active]:border-b-0 data-[state=active]:border-b-background dark:data-[state=active]:border-b-background h-full data-[state=active]:-mb-0.5 data-[state=active]:translate-y-[0px]`,
@@ -328,8 +328,8 @@ export const variantClasses: Record<
   // Solid: Default style (muted background, active has white background)
   solid: {
     list: {
-      horizontal: "bg-muted dark:bg-muted rounded-lg p-[3px]",
-      vertical: "bg-muted dark:bg-muted rounded-lg p-[3px]",
+      horizontal: "ds:bg-muted ds:dark:bg-muted ds:rounded-lg ds:p-[3px]",
+      vertical: "ds:bg-muted ds:dark:bg-muted ds:rounded-lg ds:p-[3px]",
     },
     trigger: {
       horizontal: "",
@@ -341,8 +341,8 @@ export const variantClasses: Record<
   bordered: {
     list: {
       horizontal:
-        "bg-background dark:bg-background border p-1 gap-1 rounded-lg",
-      vertical: "bg-background dark:bg-background border p-1 gap-1 rounded-lg",
+        "ds:bg-background ds:dark:bg-background ds:border ds:p-1 ds:gap-1 ds:rounded-lg",
+      vertical: "ds:bg-background ds:dark:bg-background ds:border ds:p-1 ds:gap-1 ds:rounded-lg",
     },
     trigger: {
       horizontal: "",
@@ -353,8 +353,8 @@ export const variantClasses: Record<
   // Pills: No border/background on group, colored background on active button
   pills: {
     list: {
-      horizontal: "bg-transparent p-0 gap-1",
-      vertical: "bg-transparent p-0 gap-1",
+      horizontal: "ds:bg-transparent ds:p-0 ds:gap-1",
+      vertical: "ds:bg-transparent ds:p-0 ds:gap-1",
     },
     trigger: {
       horizontal: "",
@@ -365,48 +365,48 @@ export const variantClasses: Record<
   // Pill-stroke: Pill-style with stroke border, stronger border radius, no background on active
   "pill-stroke": {
     list: {
-      horizontal: "bg-transparent p-0 gap-1",
-      vertical: "bg-transparent p-0 gap-1",
+      horizontal: "ds:bg-transparent ds:p-0 ds:gap-1",
+      vertical: "ds:bg-transparent ds:p-0 ds:gap-1",
     },
     trigger: {
-      horizontal: "border border-border rounded-full bg-transparent",
-      vertical: "border border-border rounded-full bg-transparent",
+      horizontal: "ds:border ds:border-border ds:rounded-full ds:bg-transparent",
+      vertical: "ds:border ds:border-border ds:rounded-full ds:bg-transparent",
     },
   },
 
   // Text: No border/background on group, colored text on active button
   text: {
     list: {
-      horizontal: "bg-transparent p-0 gap-1",
-      vertical: "bg-transparent p-0 gap-1",
+      horizontal: "ds:bg-transparent ds:p-0 ds:gap-1",
+      vertical: "ds:bg-transparent ds:p-0 ds:gap-1",
     },
     trigger: {
       horizontal:
-        "bg-transparent data-[state=active]:bg-transparent data-[state=active]:shadow-none",
+        "ds:bg-transparent ds:data-[state=active]:bg-transparent ds:data-[state=active]:shadow-none",
       vertical:
-        "bg-transparent data-[state=active]:bg-transparent data-[state=active]:shadow-none",
+        "ds:bg-transparent ds:data-[state=active]:bg-transparent ds:data-[state=active]:shadow-none",
     },
   },
 
   // Outline: No border/background on group, colored border (stroke) on active button
   outline: {
     list: {
-      horizontal: "bg-transparent p-0 gap-1",
-      vertical: "bg-transparent p-0 gap-1",
+      horizontal: "ds:bg-transparent ds:p-0 ds:gap-1",
+      vertical: "ds:bg-transparent ds:p-0 ds:gap-1",
     },
     trigger: {
       horizontal:
-        "bg-transparent border border-transparent data-[state=active]:bg-transparent data-[state=active]:shadow-none",
+        "ds:bg-transparent ds:border ds:border-transparent ds:data-[state=active]:bg-transparent ds:data-[state=active]:shadow-none",
       vertical:
-        "bg-transparent border border-transparent data-[state=active]:bg-transparent data-[state=active]:shadow-none",
+        "ds:bg-transparent ds:border ds:border-transparent ds:data-[state=active]:bg-transparent ds:data-[state=active]:shadow-none",
     },
   },
 
   // Underlined: Bottom border on group, bottom border on active tab
   underlined: {
     list: {
-      horizontal: "bg-background dark:bg-background rounded-none p-0",
-      vertical: "bg-background dark:bg-background rounded-none p-0",
+      horizontal: "ds:bg-background ds:dark:bg-background ds:rounded-none ds:p-0",
+      vertical: "ds:bg-background ds:dark:bg-background ds:rounded-none ds:p-0",
     },
     trigger: {
       horizontal: "", // Will be set dynamically
@@ -418,8 +418,8 @@ export const variantClasses: Record<
   enclosed: {
     list: {
       horizontal:
-        "bg-background dark:bg-background justify-start rounded-none p-0",
-      vertical: "bg-background dark:bg-background items-start rounded-none p-0",
+        "ds:bg-background ds:dark:bg-background ds:justify-start ds:rounded-none ds:p-0",
+      vertical: "ds:bg-background ds:dark:bg-background ds:items-start ds:rounded-none ds:p-0",
     },
     trigger: {
       horizontal: "", // Will be set dynamically
@@ -431,9 +431,9 @@ export const variantClasses: Record<
   "enclosed-fill": {
     list: {
       horizontal:
-        "bg-background dark:bg-background justify-start rounded-none p-0 gap-1",
+        "ds:bg-background ds:dark:bg-background ds:justify-start ds:rounded-none ds:p-0 ds:gap-1",
       vertical:
-        "bg-background dark:bg-background items-start rounded-none p-0 gap-1",
+        "ds:bg-background ds:dark:bg-background ds:items-start ds:rounded-none ds:p-0 ds:gap-1",
     },
     trigger: {
       horizontal: "", // Will be set dynamically

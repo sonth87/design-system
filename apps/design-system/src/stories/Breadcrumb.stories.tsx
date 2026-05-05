@@ -110,9 +110,9 @@ const meta: Meta<typeof Breadcrumb> = {
       {
         label: "Settings",
         href: "/settings",
-        icon: <Settings className="size-4" />,
+        icon: <Settings className="ds:size-4" />,
       },
-      { label: "Profile", icon: <User className="size-4" /> },
+      { label: "Profile", icon: <User className="ds:size-4" /> },
     ],
   },
 };
@@ -127,13 +127,13 @@ export const WithIcons: Story = {
   args: {
     showHome: false,
     items: [
-      { label: "Home", href: "/", icon: <Home className="size-4" /> },
+      { label: "Home", href: "/", icon: <Home className="ds:size-4" /> },
       {
         label: "Settings",
         href: "/settings",
-        icon: <Settings className="size-4" />,
+        icon: <Settings className="ds:size-4" />,
       },
-      { label: "Profile", icon: <User className="size-4" /> },
+      { label: "Profile", icon: <User className="ds:size-4" /> },
     ],
   },
 };
@@ -142,9 +142,9 @@ export const IconOnly: Story = {
   args: {
     showHome: false,
     items: [
-      { icon: <Home className="size-4" />, href: "/" },
-      { icon: <Settings className="size-4" />, href: "/settings" },
-      { icon: <User className="size-4" /> },
+      { icon: <Home className="ds:size-4" />, href: "/" },
+      { icon: <Settings className="ds:size-4" />, href: "/settings" },
+      { icon: <User className="ds:size-4" /> },
     ],
   },
 };
@@ -222,7 +222,7 @@ export const HomeCustomObject: Story = {
   args: {
     showHome: {
       label: "🏠 Custom Home",
-      icon: <Star className="size-4" />,
+      icon: <Star className="ds:size-4" />,
       href: "/custom-home",
     },
     items: [{ label: "Settings", href: "/settings" }, { label: "Profile" }],
@@ -268,21 +268,21 @@ export const MaxItemsOneWithHome: Story = {
 
 export const Variants: Story = {
   render: (args) => (
-    <div className="flex flex-col gap-6">
+    <div className="ds:flex ds:flex-col ds:gap-6">
       <div>
-        <h3 className="text-sm font-medium mb-3">Default Variant</h3>
+        <h3 className="ds:text-sm ds:font-medium ds:mb-3">Default Variant</h3>
         <Breadcrumb {...args} variant="default" />
       </div>
       <div>
-        <h3 className="text-sm font-medium mb-3">Compact Variant</h3>
+        <h3 className="ds:text-sm ds:font-medium ds:mb-3">Compact Variant</h3>
         <Breadcrumb {...args} variant="compact" />
       </div>
       <div>
-        <h3 className="text-sm font-medium mb-3">Badge Variant</h3>
+        <h3 className="ds:text-sm ds:font-medium ds:mb-3">Badge Variant</h3>
         <Breadcrumb {...args} variant="badge" />
       </div>
       <div>
-        <h3 className="text-sm font-medium mb-3">Bordered Variant</h3>
+        <h3 className="ds:text-sm ds:font-medium ds:mb-3">Bordered Variant</h3>
         <Breadcrumb {...args} variant="bordered" />
       </div>
     </div>
@@ -291,29 +291,29 @@ export const Variants: Story = {
 
 export const Colors: Story = {
   render: (args) => (
-    <div className="flex flex-col gap-6">
+    <div className="ds:flex ds:flex-col ds:gap-6">
       <div>
-        <h3 className="text-sm font-medium mb-3">Default</h3>
+        <h3 className="ds:text-sm ds:font-medium ds:mb-3">Default</h3>
         <Breadcrumb {...args} color="default" />
       </div>
       <div>
-        <h3 className="text-sm font-medium mb-3">Primary</h3>
+        <h3 className="ds:text-sm ds:font-medium ds:mb-3">Primary</h3>
         <Breadcrumb {...args} color="primary" />
       </div>
       <div>
-        <h3 className="text-sm font-medium mb-3">Secondary</h3>
+        <h3 className="ds:text-sm ds:font-medium ds:mb-3">Secondary</h3>
         <Breadcrumb {...args} color="secondary" />
       </div>
       <div>
-        <h3 className="text-sm font-medium mb-3">Success</h3>
+        <h3 className="ds:text-sm ds:font-medium ds:mb-3">Success</h3>
         <Breadcrumb {...args} color="success" />
       </div>
       <div>
-        <h3 className="text-sm font-medium mb-3">Warning</h3>
+        <h3 className="ds:text-sm ds:font-medium ds:mb-3">Warning</h3>
         <Breadcrumb {...args} color="warning" />
       </div>
       <div>
-        <h3 className="text-sm font-medium mb-3">Error</h3>
+        <h3 className="ds:text-sm ds:font-medium ds:mb-3">Error</h3>
         <Breadcrumb {...args} color="error" />
       </div>
     </div>

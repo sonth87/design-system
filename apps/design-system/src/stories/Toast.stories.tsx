@@ -84,7 +84,7 @@ type Story = StoryObj<typeof Toaster>;
 export const Variants: Story = {
   render: (args: any) => {
     return (
-      <div className="flex flex-col items-center gap-3 p-6 w-96">
+      <div className="ds:flex ds:flex-col ds:items-center ds:gap-3 ds:p-6 ds:w-96">
         <Toaster {...args} />
         <Button onClick={() => toast("This is a default toast")}>
           Default
@@ -137,29 +137,29 @@ export const Variants: Story = {
 
 export const Usage: Story = {
   render: () => (
-    <div className="p-6 max-w-2xl">
-      <h2 className="text-2xl font-bold mb-4">Toast</h2>
-      <p className="mb-4">
+    <div className="ds:p-6 ds:max-w-2xl">
+      <h2 className="ds:text-2xl ds:font-bold ds:mb-4">Toast</h2>
+      <p className="ds:mb-4">
         Component Toast được sử dụng để hiển thị thông báo ngắn gọn cho người
         dùng. Hỗ trợ nhiều loại thông báo như success, error, warning, info,
         primary, và secondary.
       </p>
-      <h3 className="text-xl font-semibold mb-2">Cài đặt</h3>
-      <p className="mb-4">
+      <h3 className="ds:text-xl ds:font-semibold ds:mb-2">Cài đặt</h3>
+      <p className="ds:mb-4">
         Import <code>Toaster</code> và <code>toast</code> từ component Toast:
       </p>
-      <pre className="bg-gray-100 p-4 rounded mb-4">
+      <pre className="ds:bg-gray-100 ds:p-4 ds:rounded ds:mb-4">
         {`import { Toaster, toast } from './Toast';`}
       </pre>
-      <h3 className="text-xl font-semibold mb-2">Sử dụng</h3>
-      <ol className="list-decimal list-inside mb-4">
+      <h3 className="ds:text-xl ds:font-semibold ds:mb-2">Sử dụng</h3>
+      <ol className="ds:list-decimal ds:list-inside ds:mb-4">
         <li>
           Thêm <code>&lt;Toaster /&gt;</code> vào root component của ứng dụng
           (thường là App.tsx).
         </li>
         <li>Sử dụng các hàm toast để hiển thị thông báo:</li>
       </ol>
-      <ul className="list-disc list-inside mb-4">
+      <ul className="ds:list-disc ds:list-inside ds:mb-4">
         <li>
           <code>toast("Thông báo mặc định")</code> - Thông báo mặc định
         </li>
@@ -182,13 +182,13 @@ export const Usage: Story = {
           <code>toast.secondary("Secondary")</code> - Secondary color
         </li>
       </ul>
-      <h3 className="text-xl font-semibold mb-2">Tùy chỉnh</h3>
-      <p className="mb-4">
+      <h3 className="ds:text-xl ds:font-semibold ds:mb-2">Tùy chỉnh</h3>
+      <p className="ds:mb-4">
         Tùy chỉnh vị trí, màu sắc, thời gian hiển thị, và các tùy chọn khác
         thông qua props của <code>Toaster</code>.
       </p>
       <p>Ví dụ:</p>
-      <pre className="bg-gray-100 p-4 rounded">
+      <pre className="ds:bg-gray-100 ds:p-4 ds:rounded">
         {`<Toaster
             position="top-right"
             richColors={true}

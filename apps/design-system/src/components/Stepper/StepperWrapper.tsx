@@ -97,18 +97,18 @@ function StepperWrapper({
             >
               <StepperTrigger
                 className={cn({
-                  "not-last:pb-6":
+                  "ds:not-last:pb-6":
                     index < steps.length - 1 &&
                     props.orientation === "vertical",
                 })}
               >
                 <StepperIndicator />
                 <div
-                  className={cn("flex flex-col gap-1", {
-                    "text-center":
+                  className={cn("ds:flex ds:flex-col ds:gap-1", {
+                    "ds:text-center":
                       labelPosition === "top" || labelPosition === "bottom",
-                    "text-left": labelPosition === "right",
-                    "text-right": labelPosition === "left",
+                    "ds:text-left": labelPosition === "right",
+                    "ds:text-right": labelPosition === "left",
                   })}
                 >
                   <StepperTitle>{step.title}</StepperTitle>

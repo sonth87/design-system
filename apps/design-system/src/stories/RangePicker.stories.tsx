@@ -292,7 +292,7 @@ export const Default: Story = {
 
     return (
       <div>
-        <span className="mb-4 block">
+        <span className="ds:mb-4 ds:block">
           Selected date: {range?.from} - {range?.to}
         </span>
         <RangePicker {...args} value={range} onSelect={handleSelect} />
@@ -333,7 +333,7 @@ export const States: Story = {
     ) => setRangeError(t);
 
     return (
-      <div className="space-y-4">
+      <div className="ds:space-y-4">
         <div>
           <label>Default</label>
           <RangePicker
@@ -406,7 +406,7 @@ export const Sizes: Story = {
     ) => setRangeXl(t);
 
     return (
-      <div className="space-y-4">
+      <div className="ds:space-y-4">
         <div>
           <label>Extra Small</label>
           <RangePicker
@@ -493,7 +493,7 @@ export const WithTime: Story = {
     ) => setRangeHHmmss(t);
 
     return (
-      <div className="space-y-4">
+      <div className="ds:space-y-4">
         <div>
           <label>Time Format HH:mm</label>
           <RangePicker
@@ -552,7 +552,7 @@ export const Clearable: Story = {
 
     return (
       <div>
-        <span className="mb-4 block">
+        <span className="ds:mb-4 ds:block">
           Selected date: {range?.from} - {range?.to}
         </span>
         <RangePicker
@@ -576,12 +576,12 @@ export const RoundedVariant: Story = {
     ) => setRange(t);
 
     return (
-      <div className="space-y-4">
-        <p className="text-sm text-muted-foreground">
+      <div className="ds:space-y-4">
+        <p className="ds:text-sm ds:text-muted-foreground">
           Rounded variant with pill-shaped range selection
         </p>
         <div>
-          <span className="mb-4 block">
+          <span className="ds:mb-4 ds:block">
             Selected date: {range?.from} - {range?.to}
           </span>
           <RangePicker
@@ -606,12 +606,12 @@ export const RoundedVariantWithMultipleMonths: Story = {
     ) => setRange(t);
 
     return (
-      <div className="space-y-4">
-        <p className="text-sm text-muted-foreground">
+      <div className="ds:space-y-4">
+        <p className="ds:text-sm ds:text-muted-foreground">
           Rounded variant with 2 months display
         </p>
         <div>
-          <span className="mb-4 block">
+          <span className="ds:mb-4 ds:block">
             Selected date: {range?.from} - {range?.to}
           </span>
           <RangePicker
@@ -637,12 +637,12 @@ export const RoundedVariantWithTime: Story = {
     ) => setRange(t);
 
     return (
-      <div className="space-y-4">
-        <p className="text-sm text-muted-foreground">
+      <div className="ds:space-y-4">
+        <p className="ds:text-sm ds:text-muted-foreground">
           Rounded variant with time picker (HH:mm format)
         </p>
         <div>
-          <span className="mb-4 block">
+          <span className="ds:mb-4 ds:block">
             Selected date: {range?.from} - {range?.to}
           </span>
           <RangePicker
@@ -670,12 +670,12 @@ export const RoundedVariantFloatLabel: Story = {
     ) => setRange(t);
 
     return (
-      <div className="space-y-4">
-        <p className="text-sm text-muted-foreground">
+      <div className="ds:space-y-4">
+        <p className="ds:text-sm ds:text-muted-foreground">
           Rounded variant with floating labels and large size
         </p>
         <div>
-          <span className="mb-4 block">
+          <span className="ds:mb-4 ds:block">
             Selected date: {range?.from} - {range?.to}
           </span>
           <RangePicker

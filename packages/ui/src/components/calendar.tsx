@@ -46,9 +46,9 @@ function Calendar({
     <DayPicker
       showOutsideDays={showOutsideDays}
       className={cn(
-        "bg-background group/calendar p-3 [--cell-size:--spacing(8)] [[data-slot=card-content]_&]:bg-transparent [[data-slot=popover-content]_&]:bg-transparent",
-        String.raw`rtl:**:[.rdp-button\_next>svg]:rotate-180`,
-        String.raw`rtl:**:[.rdp-button\_previous>svg]:rotate-180`,
+        "ds:bg-background ds:group/calendar ds:p-3 ds:[--cell-size:--spacing(8)] ds:[[data-slot=card-content]_&]:bg-transparent ds:[[data-slot=popover-content]_&]:bg-transparent",
+        String.raw`ds:rtl:**:[.rdp-button\_next>svg]:rotate-180`,
+        String.raw`ds:rtl:**:[.rdp-button\_previous>svg]:rotate-180`,
         className
       )}
       captionLayout={captionLayout}
@@ -58,102 +58,102 @@ function Calendar({
         ...formatters,
       }}
       classNames={{
-        root: cn("w-fit", defaultClassNames.root),
+        root: cn("ds:w-fit", defaultClassNames.root),
         months: cn(
-          "flex gap-4 flex-col md:flex-row relative",
+          "ds:flex ds:gap-4 ds:flex-col ds:md:flex-row ds:relative",
           defaultClassNames.months
         ),
-        month: cn("flex flex-col w-full gap-4", defaultClassNames.month),
+        month: cn("ds:flex ds:flex-col ds:w-full ds:gap-4", defaultClassNames.month),
         nav: cn(
-          "flex items-center gap-1 w-full absolute top-0 inset-x-0 justify-between",
+          "ds:flex ds:items-center ds:gap-1 ds:w-full ds:absolute ds:top-0 ds:inset-x-0 ds:justify-between",
           defaultClassNames.nav
         ),
         button_previous: cn(
           buttonVariants({ variant: buttonVariant }),
-          "size-(--cell-size) aria-disabled:opacity-50 p-0 select-none",
+          "ds:size-(--cell-size) ds:aria-disabled:opacity-50 ds:p-0 ds:select-none",
           defaultClassNames.button_previous
         ),
         button_next: cn(
           buttonVariants({ variant: buttonVariant }),
-          "size-(--cell-size) aria-disabled:opacity-50 p-0 select-none",
+          "ds:size-(--cell-size) ds:aria-disabled:opacity-50 ds:p-0 ds:select-none",
           defaultClassNames.button_next
         ),
         month_caption: cn(
-          "flex items-center justify-center h-(--cell-size) w-full px-(--cell-size)",
+          "ds:flex ds:items-center ds:justify-center ds:h-(--cell-size) ds:w-full ds:px-(--cell-size)",
           defaultClassNames.month_caption
         ),
         dropdowns: cn(
-          "w-full flex items-center text-sm font-medium justify-center h-(--cell-size) gap-1.5",
+          "ds:w-full ds:flex ds:items-center ds:text-sm ds:font-medium ds:justify-center ds:h-(--cell-size) ds:gap-1.5",
           defaultClassNames.dropdowns
         ),
         dropdown_root: cn(
-          "relative has-focus:border-ring border border-input shadow-xs has-focus:ring-ring/50 has-focus:ring-[3px] rounded-md",
+          "ds:relative ds:has-focus:border-ring ds:border ds:border-input ds:shadow-xs ds:has-focus:ring-ring/50 ds:has-focus:ring-[3px] ds:rounded-md",
           defaultClassNames.dropdown_root
         ),
         dropdown: cn(
-          "absolute bg-popover inset-0 opacity-0",
+          "ds:absolute ds:bg-popover ds:inset-0 ds:opacity-0",
           defaultClassNames.dropdown
         ),
         caption_label: cn(
-          "select-none font-medium",
+          "ds:select-none ds:font-medium",
           captionLayout === "label"
-            ? "text-sm"
-            : "rounded-md pl-2 pr-1 flex items-center gap-1 text-sm h-8 [&>svg]:text-muted-foreground [&>svg]:size-3.5",
+            ? "ds:text-sm"
+            : "ds:rounded-md ds:pl-2 ds:pr-1 ds:flex ds:items-center ds:gap-1 ds:text-sm ds:h-8 ds:[&>svg]:text-muted-foreground ds:[&>svg]:size-3.5",
           defaultClassNames.caption_label
         ),
         table: "w-full border-collapse",
-        weekdays: cn("flex", defaultClassNames.weekdays),
+        weekdays: cn("ds:flex", defaultClassNames.weekdays),
         weekday: cn(
-          "text-muted-foreground rounded-md flex-1 font-normal text-[0.8rem] select-none",
+          "ds:text-muted-foreground ds:rounded-md ds:flex-1 ds:font-normal ds:text-[0.8rem] ds:select-none",
           defaultClassNames.weekday
         ),
-        week: cn("flex w-full mt-2", defaultClassNames.week),
+        week: cn("ds:flex ds:w-full ds:mt-2", defaultClassNames.week),
         week_number_header: cn(
-          "select-none w-(--cell-size)",
+          "ds:select-none ds:w-(--cell-size)",
           defaultClassNames.week_number_header
         ),
         week_number: cn(
-          "text-[0.8rem] select-none text-muted-foreground",
+          "ds:text-[0.8rem] ds:select-none ds:text-muted-foreground",
           defaultClassNames.week_number
         ),
         day: cn(
-          "relative w-full h-full p-0 text-center [&:last-child[data-selected=true]_button]:rounded-r-md group/day aspect-square select-none",
+          "ds:relative ds:w-full ds:h-full ds:p-0 ds:text-center ds:[&:last-child[data-selected=true]_button]:rounded-r-md ds:group/day ds:aspect-square ds:select-none",
           props.showWeekNumber
-            ? "[&:nth-child(2)[data-selected=true]_button]:rounded-l-md"
-            : "[&:first-child[data-selected=true]_button]:rounded-l-md",
+            ? "ds:[&:nth-child(2)[data-selected=true]_button]:rounded-l-md"
+            : "ds:[&:first-child[data-selected=true]_button]:rounded-l-md",
           defaultClassNames.day
         ),
         range_start: cn(
           variant === "rounded"
-            ? `${colorClasses.rangeBg} rounded-l-full`
-            : "rounded-l-md bg-accent",
+            ? `${colorClasses.rangeBg} ds:rounded-l-full`
+            : "ds:rounded-l-md ds:bg-accent",
           defaultClassNames.range_start
         ),
         range_middle: cn(
-          variant === "rounded" ? "rounded-none" : "rounded-none",
+          variant === "rounded" ? "ds:rounded-none" : "ds:rounded-none",
           defaultClassNames.range_middle
         ),
         range_end: cn(
           variant === "rounded"
-            ? `${colorClasses.rangeBg} rounded-r-full`
-            : "rounded-r-md bg-accent",
+            ? `${colorClasses.rangeBg} ds:rounded-r-full`
+            : "ds:rounded-r-md ds:bg-accent",
           defaultClassNames.range_end
         ),
         today: cn(
           variant === "rounded"
-            ? `rounded-full bg-accent data-[selected=true]:rounded-l-none data-[selected=true]:${colorClasses.rangeBg} [&_button[data-range-middle=true]]:bg-transparent`
-            : "bg-accent text-accent-foreground rounded-md data-[selected=true]:rounded-none",
+            ? `ds:rounded-full ds:bg-accent ds:data-[selected=true]:rounded-l-none ds:data-[selected=true]:${colorClasses.rangeBg} ds:[&_button[data-range-middle=true]]:bg-transparent`
+            : "ds:bg-accent ds:text-accent-foreground ds:rounded-md ds:data-[selected=true]:rounded-none",
           defaultClassNames.today
         ),
         outside: cn(
-          "text-muted-foreground aria-selected:text-muted-foreground",
+          "ds:text-muted-foreground ds:aria-selected:text-muted-foreground",
           defaultClassNames.outside
         ),
         disabled: cn(
-          "text-muted-foreground opacity-50",
+          "ds:text-muted-foreground ds:opacity-50",
           defaultClassNames.disabled
         ),
-        hidden: cn("invisible", defaultClassNames.hidden),
+        hidden: cn("ds:invisible", defaultClassNames.hidden),
         ...classNames,
       }}
       components={{
@@ -170,21 +170,21 @@ function Calendar({
         Chevron: ({ className, orientation, ...props }) => {
           if (orientation === "left") {
             return (
-              <ChevronLeftIcon className={cn("size-4", className)} {...props} />
+              <ChevronLeftIcon className={cn("ds:size-4", className)} {...props} />
             );
           }
 
           if (orientation === "right") {
             return (
               <ChevronRightIcon
-                className={cn("size-4", className)}
+                className={cn("ds:size-4", className)}
                 {...props}
               />
             );
           }
 
           return (
-            <ChevronDownIcon className={cn("size-4", className)} {...props} />
+            <ChevronDownIcon className={cn("ds:size-4", className)} {...props} />
           );
         },
         DayButton: (props) => (
@@ -193,7 +193,7 @@ function Calendar({
         WeekNumber: ({ children, ...props }) => {
           return (
             <td {...props}>
-              <div className="flex size-(--cell-size) items-center justify-center text-center">
+              <div className="ds:flex ds:size-(--cell-size) ds:items-center ds:justify-center ds:text-center">
                 {children}
               </div>
             </td>
@@ -308,16 +308,16 @@ function CalendarDayButton({
       data-range-end={modifiers.range_end}
       data-range-middle={modifiers.range_middle}
       className={cn(
-        "flex aspect-square size-auto w-full min-w-(--cell-size) flex-col gap-1 leading-none font-normal",
-        "group-data-[focused=true]/day:relative group-data-[focused=true]/day:z-10 group-data-[focused=true]/day:ring-[3px]",
-        "group-data-[focused=true]/day:border-ring group-data-[focused=true]/day:ring-ring/50",
-        "[&>span]:text-xs [&>span]:opacity-70",
+        "ds:flex ds:aspect-square ds:size-auto ds:w-full ds:min-w-(--cell-size) ds:flex-col ds:gap-1 ds:leading-none ds:font-normal",
+        "ds:group-data-[focused=true]/day:relative ds:group-data-[focused=true]/day:z-10 ds:group-data-[focused=true]/day:ring-[3px]",
+        "ds:group-data-[focused=true]/day:border-ring ds:group-data-[focused=true]/day:ring-ring/50",
+        "ds:[&>span]:text-xs ds:[&>span]:opacity-70",
         // Hover effect chỉ khi chưa selected
         !modifiers.selected &&
           !modifiers.range_start &&
           !modifiers.range_end &&
           !modifiers.range_middle &&
-          "hover:bg-accent hover:text-accent-foreground dark:hover:text-accent-foreground",
+          "ds:hover:bg-accent ds:hover:text-accent-foreground ds:dark:hover:text-accent-foreground",
         // Selected single day - chỉ apply color khi selected
         modifiers.selected &&
           !modifiers.range_start &&
@@ -329,27 +329,27 @@ function CalendarDayButton({
         modifiers.range_end && colorClasses.selected,
         // Range middle - apply rangeBg nhưng giữ text color mặc định
         modifiers.range_middle &&
-          `${colorClasses.rangeBg} text-accent-foreground`,
+          `${colorClasses.rangeBg} ds:text-accent-foreground`,
         variant === "default" && [
-          "data-[range-end=true]:rounded-md data-[range-end=true]:rounded-r-md",
-          "data-[range-middle=true]:rounded-none",
-          "data-[range-start=true]:rounded-md data-[range-start=true]:rounded-l-md",
+          "ds:data-[range-end=true]:rounded-md ds:data-[range-end=true]:rounded-r-md",
+          "ds:data-[range-middle=true]:rounded-none",
+          "ds:data-[range-start=true]:rounded-md ds:data-[range-start=true]:rounded-l-md",
         ],
         variant === "rounded" && [
-          "data-[selected-single=true]:rounded-full",
-          "data-[range-end=true]:rounded-full",
-          "data-[range-start=true]:rounded-full",
+          "ds:data-[selected-single=true]:rounded-full",
+          "ds:data-[range-end=true]:rounded-full",
+          "ds:data-[range-start=true]:rounded-full",
           modifiers.range_start &&
-            `group-data-[focused=true]/day:${colorClasses.focusRing}`,
+            `ds:group-data-[focused=true]/day:${colorClasses.focusRing}`,
           modifiers.range_end &&
-            `group-data-[focused=true]/day:${colorClasses.focusRing}`,
-          modifiers.range_middle && "rounded-none",
+            `ds:group-data-[focused=true]/day:${colorClasses.focusRing}`,
+          modifiers.range_middle && "ds:rounded-none",
           // Chỉ hover:rounded-full khi chưa selected
           !modifiers.selected &&
             !modifiers.range_start &&
             !modifiers.range_end &&
             !modifiers.range_middle &&
-            "hover:rounded-full",
+            "ds:hover:rounded-full",
         ],
         defaultClassNames.day,
         className

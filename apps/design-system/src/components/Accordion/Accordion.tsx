@@ -53,60 +53,60 @@ export type AccordionProps = AccordionSingleProps | AccordionMultipleProps;
 const colorVariants = {
   primary: {
     trigger:
-      "data-[state=open]:bg-primary/10 data-[state=open]:text-primary data-[state=open]:rounded-b-none data-[state=open]:border-primary/20",
-    content: "bg-primary/10 rounded-b-md",
+      "ds:data-[state=open]:bg-primary/10 ds:data-[state=open]:text-primary ds:data-[state=open]:rounded-b-none ds:data-[state=open]:border-primary/20",
+    content: "ds:bg-primary/10 ds:rounded-b-md",
   },
   secondary: {
     trigger:
-      "data-[state=open]:bg-secondary/10 data-[state=open]:text-secondary data-[state=open]:rounded-b-none data-[state=open]:border-secondary/20",
-    content: "bg-secondary/10 rounded-b-md",
+      "ds:data-[state=open]:bg-secondary/10 ds:data-[state=open]:text-secondary ds:data-[state=open]:rounded-b-none ds:data-[state=open]:border-secondary/20",
+    content: "ds:bg-secondary/10 ds:rounded-b-md",
   },
   success: {
     trigger:
-      "data-[state=open]:bg-success/10 data-[state=open]:text-success data-[state=open]:rounded-b-none data-[state=open]:border-success/20",
-    content: "bg-success/10 rounded-b-md",
+      "ds:data-[state=open]:bg-success/10 ds:data-[state=open]:text-success ds:data-[state=open]:rounded-b-none ds:data-[state=open]:border-success/20",
+    content: "ds:bg-success/10 ds:rounded-b-md",
   },
   warning: {
     trigger:
-      "data-[state=open]:bg-warning/10 data-[state=open]:text-warning data-[state=open]:rounded-b-none data-[state=open]:border-warning/20",
-    content: "bg-warning/10 rounded-b-md",
+      "ds:data-[state=open]:bg-warning/10 ds:data-[state=open]:text-warning ds:data-[state=open]:rounded-b-none ds:data-[state=open]:border-warning/20",
+    content: "ds:bg-warning/10 ds:rounded-b-md",
   },
   error: {
     trigger:
-      "data-[state=open]:bg-error/10 data-[state=open]:text-error data-[state=open]:rounded-b-none data-[state=open]:border-error/20",
-    content: "bg-error/10 rounded-b-md",
+      "ds:data-[state=open]:bg-error/10 ds:data-[state=open]:text-error ds:data-[state=open]:rounded-b-none ds:data-[state=open]:border-error/20",
+    content: "ds:bg-error/10 ds:rounded-b-md",
   },
   glass: {
     trigger:
-      "data-[state=open]:bg-glass/10 data-[state=open]:text-glass data-[state=open]:rounded-b-none data-[state=open]:border-glass/20",
-    content: "bg-glass/10 rounded-b-md",
+      "ds:data-[state=open]:bg-glass/10 ds:data-[state=open]:text-glass ds:data-[state=open]:rounded-b-none ds:data-[state=open]:border-glass/20",
+    content: "ds:bg-glass/10 ds:rounded-b-md",
   },
 };
 
 const variantStyles = {
   default: {
-    root: "rounded-lg",
-    item: "px-0",
-    trigger: "px-4 hover:bg-accent/50",
-    content: "px-4",
+    root: "ds:rounded-lg",
+    item: "ds:px-0",
+    trigger: "ds:px-4 ds:hover:bg-accent/50",
+    content: "ds:px-4",
   },
   bordered: {
-    root: "rounded-lg border-2 divide-y-2",
-    item: "px-0 border-0",
-    trigger: "px-4 font-semibold hover:bg-accent",
-    content: "px-4",
+    root: "ds:rounded-lg ds:border-2 ds:divide-y-2",
+    item: "ds:px-0 ds:border-0",
+    trigger: "ds:px-4 ds:font-semibold ds:hover:bg-accent",
+    content: "ds:px-4",
   },
   separated: {
-    root: "space-y-2",
-    item: "rounded-lg border bg-card last:border-b",
-    trigger: "px-4 hover:bg-accent/50",
-    content: "px-4",
+    root: "ds:space-y-2",
+    item: "ds:rounded-lg ds:border ds:bg-card ds:last:border-b",
+    trigger: "ds:px-4 ds:hover:bg-accent/50",
+    content: "ds:px-4",
   },
   ghost: {
     root: "",
-    item: "border-0",
-    trigger: "px-2 hover:bg-accent/30 rounded-md",
-    content: "px-2",
+    item: "ds:border-0",
+    trigger: "ds:px-2 ds:hover:bg-accent/30 ds:rounded-md",
+    content: "ds:px-2",
   },
 };
 

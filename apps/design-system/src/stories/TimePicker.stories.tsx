@@ -282,8 +282,8 @@ export const Default: Story = {
     const [value, setValue] = useState<string | undefined>("14:30");
 
     return (
-      <div className="flex flex-col gap-4">
-        <p className="text-sm">
+      <div className="ds:flex ds:flex-col ds:gap-4">
+        <p className="ds:text-sm">
           Value String: <strong>{value || "N/A"}</strong>
         </p>
         <TimePicker
@@ -309,8 +309,8 @@ export const wheelMode: Story = {
     const [value, setValue] = useState("14:30");
 
     return (
-      <div className="flex flex-col gap-4">
-        <p className="text-sm">
+      <div className="ds:flex ds:flex-col ds:gap-4">
+        <p className="ds:text-sm">
           Selected: <strong>{value}</strong>
         </p>
         <TimePicker
@@ -333,8 +333,8 @@ export const NormalMode: Story = {
     const [value, setValue] = useState("14:30");
 
     return (
-      <div className="flex flex-col gap-4">
-        <p className="text-sm">
+      <div className="ds:flex ds:flex-col ds:gap-4">
+        <p className="ds:text-sm">
           Selected: <strong>{value}</strong>
         </p>
         <TimePicker
@@ -358,11 +358,11 @@ export const GridMode: Story = {
     const [value, setValue] = useState("14:30");
 
     return (
-      <div className="flex flex-col gap-4">
-        <p className="text-sm">
+      <div className="ds:flex ds:flex-col ds:gap-4">
+        <p className="ds:text-sm">
           Selected: <strong>{value}</strong>
         </p>
-        <p className="text-xs text-muted-foreground">
+        <p className="ds:text-xs ds:text-muted-foreground">
           Grid mode always displays time in HH:mm format (vertical list)
         </p>
         <TimePicker
@@ -385,11 +385,11 @@ export const FiveMinuteIntervals: Story = {
     const [value, setValue] = useState("14:30");
 
     return (
-      <div className="flex flex-col gap-4">
-        <p className="text-sm">
+      <div className="ds:flex ds:flex-col ds:gap-4">
+        <p className="ds:text-sm">
           Selected: <strong>{value}</strong>
         </p>
-        <p className="text-xs text-muted-foreground">
+        <p className="ds:text-xs ds:text-muted-foreground">
           Minutes: 00, 05, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55
         </p>
         <TimePicker
@@ -412,11 +412,11 @@ export const FifteenMinuteIntervals: Story = {
     const [value, setValue] = useState("14:30");
 
     return (
-      <div className="flex flex-col gap-4">
-        <p className="text-sm">
+      <div className="ds:flex ds:flex-col ds:gap-4">
+        <p className="ds:text-sm">
           Selected: <strong>{value}</strong>
         </p>
-        <p className="text-xs text-muted-foreground">
+        <p className="ds:text-xs ds:text-muted-foreground">
           Grid mode with 15-minute intervals: 00:00, 00:15, 00:30, 00:45,
           01:00...
         </p>
@@ -441,11 +441,11 @@ export const CustomIntervals: Story = {
     const [value, setValue] = useState("14:30:00");
 
     return (
-      <div className="flex flex-col gap-4">
-        <p className="text-sm">
+      <div className="ds:flex ds:flex-col ds:gap-4">
+        <p className="ds:text-sm">
           Selected: <strong>{value}</strong>
         </p>
-        <p className="text-xs text-muted-foreground">
+        <p className="ds:text-xs ds:text-muted-foreground">
           Hours: every 2 hours | Minutes: every 10 minutes | Seconds: every 15
           seconds
         </p>
@@ -471,11 +471,11 @@ export const DisabledSpecificTimes: Story = {
     const [value, setValue] = useState("14:30");
 
     return (
-      <div className="flex flex-col gap-4">
-        <p className="text-sm">
+      <div className="ds:flex ds:flex-col ds:gap-4">
+        <p className="ds:text-sm">
           Selected: <strong>{value}</strong>
         </p>
-        <p className="text-xs text-muted-foreground">
+        <p className="ds:text-xs ds:text-muted-foreground">
           Disabled times: 09:00, 12:00, 15:00, 18:00
         </p>
         <TimePicker
@@ -499,11 +499,11 @@ export const DisabledTimeRanges: Story = {
     const [value, setValue] = useState("14:30");
 
     return (
-      <div className="flex flex-col gap-4">
-        <p className="text-sm">
+      <div className="ds:flex ds:flex-col ds:gap-4">
+        <p className="ds:text-sm">
           Selected: <strong>{value}</strong>
         </p>
-        <p className="text-xs text-muted-foreground">
+        <p className="ds:text-xs ds:text-muted-foreground">
           Disabled: 01:00-05:00 (night) and 12:00-13:00 (lunch break)
         </p>
         <TimePicker
@@ -529,11 +529,11 @@ export const WithNowButton: Story = {
     const [value, setValue] = useState("14:30");
 
     return (
-      <div className="flex flex-col gap-4">
-        <p className="text-sm">
+      <div className="ds:flex ds:flex-col ds:gap-4">
+        <p className="ds:text-sm">
           Selected: <strong>{value}</strong>
         </p>
-        <p className="text-xs text-muted-foreground">
+        <p className="ds:text-xs ds:text-muted-foreground">
           Current time: {format(new Date(), "HH:mm:ss")}
         </p>
         <TimePicker
@@ -557,15 +557,15 @@ export const NowButtonWithIntervals: Story = {
     const [value, setValue] = useState("14:30");
 
     return (
-      <div className="flex flex-col gap-4">
-        <p className="text-sm">
+      <div className="ds:flex ds:flex-col ds:gap-4">
+        <p className="ds:text-sm">
           Selected: <strong>{value}</strong>
         </p>
-        <p className="text-xs text-muted-foreground">
+        <p className="ds:text-xs ds:text-muted-foreground">
           Current time: {format(new Date(), "HH:mm:ss")} | Minute interval: 5
           minutes
         </p>
-        <p className="text-xs text-muted-foreground">
+        <p className="ds:text-xs ds:text-muted-foreground">
           Click "Now" to select the nearest available time
         </p>
         <TimePicker
@@ -590,11 +590,11 @@ export const ComplexConfiguration: Story = {
     const [value, setValue] = useState("14:30");
 
     return (
-      <div className="flex flex-col gap-4">
-        <p className="text-sm">
+      <div className="ds:flex ds:flex-col ds:gap-4">
+        <p className="ds:text-sm">
           Selected: <strong>{value}</strong>
         </p>
-        <p className="text-xs text-muted-foreground">
+        <p className="ds:text-xs ds:text-muted-foreground">
           • Grid mode with 30-minute intervals (00:00, 00:30, 01:00...)
           <br />
           • Disabled: 00:00-06:00 (night) and 22:00-23:30 (late night)
@@ -627,8 +627,8 @@ export const HoursAndMinutes: Story = {
     const [value, setValue] = useState("14:30");
 
     return (
-      <div className="flex flex-col gap-4">
-        <p className="text-sm">
+      <div className="ds:flex ds:flex-col ds:gap-4">
+        <p className="ds:text-sm">
           Selected: <strong>{value}</strong>
         </p>
         <TimePicker
@@ -650,8 +650,8 @@ export const WithSeconds: Story = {
     const [value, setValue] = useState("14:30:45");
 
     return (
-      <div className="flex flex-col gap-4">
-        <p className="text-sm">
+      <div className="ds:flex ds:flex-col ds:gap-4">
+        <p className="ds:text-sm">
           Selected: <strong>{value}</strong>
         </p>
         <TimePicker
@@ -673,8 +673,8 @@ export const HoursOnly: Story = {
     const [value, setValue] = useState("14:00");
 
     return (
-      <div className="flex flex-col gap-4">
-        <p className="text-sm">
+      <div className="ds:flex ds:flex-col ds:gap-4">
+        <p className="ds:text-sm">
           Selected: <strong>{value}</strong>
         </p>
         <TimePicker
@@ -696,8 +696,8 @@ export const Disabled: Story = {
     const [value, setValue] = useState("14:30");
 
     return (
-      <div className="flex flex-col gap-4">
-        <p className="text-sm">
+      <div className="ds:flex ds:flex-col ds:gap-4">
+        <p className="ds:text-sm">
           Selected: <strong>{value}</strong>
         </p>
         <TimePicker
@@ -719,14 +719,14 @@ export const WithDrawer: Story = {
     const [value, setValue] = useState("14:30");
 
     return (
-      <div className="flex flex-col gap-4">
-        <p className="text-sm">
+      <div className="ds:flex ds:flex-col ds:gap-4">
+        <p className="ds:text-sm">
           Selected: <strong>{value}</strong>
         </p>
-        <p className="text-xs text-muted-foreground">
+        <p className="ds:text-xs ds:text-muted-foreground">
           Standalone mode (force drawer): Always shows as drawer on desktop
         </p>
-        <div className="w-48">
+        <div className="ds:w-48">
           <TimePicker
             {...args}
             value={value}
@@ -750,14 +750,14 @@ export const IntegratedMode: Story = {
     const [value, setValue] = useState("14:30");
 
     return (
-      <div className="flex flex-col gap-4">
-        <p className="text-sm">
+      <div className="ds:flex ds:flex-col ds:gap-4">
+        <p className="ds:text-sm">
           Selected: <strong>{value}</strong>
         </p>
-        <p className="text-xs text-muted-foreground">
+        <p className="ds:text-xs ds:text-muted-foreground">
           Integrated mode: TimePicker renders inline (used inside DatePicker)
         </p>
-        <div className="border border-border rounded p-4">
+        <div className="ds:border ds:border-border ds:rounded ds:p-4">
           <TimePicker
             {...args}
             value={value}
@@ -781,14 +781,14 @@ export const IntegratedWithWheelMode: Story = {
     const [value, setValue] = useState("14:30:45");
 
     return (
-      <div className="flex flex-col gap-4">
-        <p className="text-sm">
+      <div className="ds:flex ds:flex-col ds:gap-4">
+        <p className="ds:text-sm">
           Selected: <strong>{value}</strong>
         </p>
-        <p className="text-xs text-muted-foreground">
+        <p className="ds:text-xs ds:text-muted-foreground">
           Integrated mode with wheel picker (e.g., inside DatePicker)
         </p>
-        <div className="border border-border rounded p-4 overflow-auto">
+        <div className="ds:border ds:border-border ds:rounded ds:p-4 ds:overflow-auto">
           <TimePicker
             {...args}
             value={value}
@@ -811,11 +811,11 @@ export const WithMask: Story = {
     const [value, setValue] = useState("14:30:45");
 
     return (
-      <div className="flex flex-col gap-4">
-        <p className="text-sm">
+      <div className="ds:flex ds:flex-col ds:gap-4">
+        <p className="ds:text-sm">
           Value String: <strong>{value || "N/A"}</strong>
         </p>
-        <p className="text-xs text-muted-foreground">
+        <p className="ds:text-xs ds:text-muted-foreground">
           Try typing time directly in the input (e.g., 14:30:45). The mask will
           auto-format as you type.
         </p>
@@ -843,11 +843,11 @@ export const WithCustomMask: Story = {
     const [value, setValue] = useState("14:30");
 
     return (
-      <div className="flex flex-col gap-4">
-        <p className="text-sm">
+      <div className="ds:flex ds:flex-col ds:gap-4">
+        <p className="ds:text-sm">
           Value String: <strong>{value || "N/A"}</strong>
         </p>
-        <p className="text-xs text-muted-foreground">
+        <p className="ds:text-xs ds:text-muted-foreground">
           Custom mask: "99:99" - Try typing time directly (e.g., 14:30)
         </p>
         <TimePicker
@@ -877,13 +877,13 @@ export const TimeLabels: Story = {
     const [value4, setValue4] = useState("14:30:45");
 
     return (
-      <div className="flex flex-col gap-8">
-        <div className="flex flex-col gap-4">
-          <h3 className="text-lg font-semibold">Boolean Labels (Default)</h3>
-          <p className="text-sm text-muted-foreground">
+      <div className="ds:flex ds:flex-col ds:gap-8">
+        <div className="ds:flex ds:flex-col ds:gap-4">
+          <h3 className="ds:text-lg ds:font-semibold">Boolean Labels (Default)</h3>
+          <p className="ds:text-sm ds:text-muted-foreground">
             timeLabel=true shows default labels: "Hour", "Minute", "Second"
           </p>
-          <p className="text-sm">
+          <p className="ds:text-sm">
             Selected: <strong>{value1}</strong>
           </p>
           <TimePicker
@@ -898,12 +898,12 @@ export const TimeLabels: Story = {
           />
         </div>
 
-        <div className="flex flex-col gap-4">
-          <h3 className="text-lg font-semibold">String Label (Same for All)</h3>
-          <p className="text-sm text-muted-foreground">
+        <div className="ds:flex ds:flex-col ds:gap-4">
+          <h3 className="ds:text-lg ds:font-semibold">String Label (Same for All)</h3>
+          <p className="ds:text-sm ds:text-muted-foreground">
             timeLabel="Time" shows the same label for all columns
           </p>
-          <p className="text-sm">
+          <p className="ds:text-sm">
             Selected: <strong>{value2}</strong>
           </p>
           <TimePicker
@@ -918,13 +918,13 @@ export const TimeLabels: Story = {
           />
         </div>
 
-        <div className="flex flex-col gap-4">
-          <h3 className="text-lg font-semibold">Custom Labels (Object)</h3>
-          <p className="text-sm text-muted-foreground">
+        <div className="ds:flex ds:flex-col ds:gap-4">
+          <h3 className="ds:text-lg ds:font-semibold">Custom Labels (Object)</h3>
+          <p className="ds:text-sm ds:text-muted-foreground">
             timeLabel=&#123;&#123; hours: "Giờ", minutes: "Phút", seconds:
             "Giây" &#125;&#125; shows custom labels for each column
           </p>
-          <p className="text-sm">
+          <p className="ds:text-sm">
             Selected: <strong>{value3}</strong>
           </p>
           <TimePicker
@@ -939,13 +939,13 @@ export const TimeLabels: Story = {
           />
         </div>
 
-        <div className="flex flex-col gap-4">
-          <h3 className="text-lg font-semibold">Partial Custom Labels</h3>
-          <p className="text-sm text-muted-foreground">
+        <div className="ds:flex ds:flex-col ds:gap-4">
+          <h3 className="ds:text-lg ds:font-semibold">Partial Custom Labels</h3>
+          <p className="ds:text-sm ds:text-muted-foreground">
             timeLabel=&#123;&#123; hours: "Hour", seconds: "Second" &#125;&#125;
             uses custom labels where provided, defaults otherwise
           </p>
-          <p className="text-sm">
+          <p className="ds:text-sm">
             Selected: <strong>{value4}</strong>
           </p>
           <TimePicker

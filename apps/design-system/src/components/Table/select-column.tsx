@@ -11,7 +11,7 @@ function createSelectColumn<TData>(
   return {
     id: "select",
     header: ({ table }: HeaderContext<TData, unknown>) => (
-      <div className="flex items-center justify-center">
+      <div className="ds:flex ds:items-center ds:justify-center">
         <Checkbox
           checked={
             table.getIsAllPageRowsSelected() ||
@@ -23,7 +23,7 @@ function createSelectColumn<TData>(
       </div>
     ),
     cell: ({ row }: CellContext<TData, unknown>) => (
-      <div className="flex items-center justify-center">
+      <div className="ds:flex ds:items-center ds:justify-center">
         <Checkbox
           checked={row.getIsSelected()}
           onCheckedChange={(value) => row.toggleSelected(!!value)}

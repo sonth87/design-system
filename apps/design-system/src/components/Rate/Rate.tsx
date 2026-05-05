@@ -207,9 +207,9 @@ const Rate = React.forwardRef<HTMLDivElement, RateProps>(
         });
       }
       if (isHalf) {
-        return <StarHalf className="w-full h-full" />;
+        return <StarHalf className="ds:w-full ds:h-full" />;
       }
-      return character || <Star className="w-full h-full" />;
+      return character || <Star className="ds:w-full ds:h-full" />;
     };
 
     // Get tooltip for star
@@ -229,9 +229,9 @@ const Rate = React.forwardRef<HTMLDivElement, RateProps>(
           }
         }}
         className={cn(
-          "inline-flex items-center gap-1",
-          disabled && "opacity-50 cursor-not-allowed",
-          !disabled && "cursor-pointer",
+          "ds:inline-flex ds:items-center ds:gap-1",
+          disabled && "ds:opacity-50 ds:cursor-not-allowed",
+          !disabled && "ds:cursor-pointer",
           className
         )}
         style={style}
@@ -254,17 +254,17 @@ const Rate = React.forwardRef<HTMLDivElement, RateProps>(
           const showHalfStar = isHalfStar(index);
 
           return (
-            <div key={index} className="relative group" title={tooltip}>
+            <div key={index} className="ds:relative ds:group" title={tooltip}>
               {/* Container for half stars */}
               <div
-                className="relative inline-flex"
+                className="ds:relative ds:inline-flex"
                 style={{
                   width: `${sizeMap[size]}px`,
                   height: `${sizeMap[size]}px`,
                 }}
               >
                 {/* Empty star background */}
-                <div className="text-muted-foreground/30 pointer-events-none">
+                <div className="ds:text-muted-foreground/30 ds:pointer-events-none">
                   {renderCharacter(false)}
                 </div>
 
@@ -272,7 +272,7 @@ const Rate = React.forwardRef<HTMLDivElement, RateProps>(
                 {fillPercentage > 0 && (
                   <div
                     className={cn(
-                      "absolute inset-0 pointer-events-none",
+                      "ds:absolute ds:inset-0 ds:pointer-events-none",
                       colorMap[color]
                     )}
                   >
@@ -280,7 +280,7 @@ const Rate = React.forwardRef<HTMLDivElement, RateProps>(
                       renderCharacter(true)
                     ) : (
                       <div
-                        className="overflow-hidden"
+                        className="ds:overflow-hidden"
                         style={{ width: `${fillPercentage}%` }}
                       >
                         {renderCharacter(false)}
@@ -296,20 +296,20 @@ const Rate = React.forwardRef<HTMLDivElement, RateProps>(
                       <>
                         {/* Left half */}
                         <div
-                          className="absolute inset-0 w-1/2 cursor-pointer"
+                          className="ds:absolute ds:inset-0 ds:w-1/2 ds:cursor-pointer"
                           onClick={() => handleStarClick(index, true)}
                           onMouseEnter={() => handleStarHover(index, true)}
                         />
                         {/* Right half */}
                         <div
-                          className="absolute inset-0 left-1/2 w-1/2 cursor-pointer"
+                          className="ds:absolute ds:inset-0 ds:left-1/2 ds:w-1/2 ds:cursor-pointer"
                           onClick={() => handleStarClick(index, false)}
                           onMouseEnter={() => handleStarHover(index, false)}
                         />
                       </>
                     ) : (
                       <div
-                        className="absolute inset-0 cursor-pointer"
+                        className="ds:absolute ds:inset-0 ds:cursor-pointer"
                         onClick={() => handleStarClick(index, false)}
                         onMouseEnter={() => handleStarHover(index, false)}
                       />
@@ -322,7 +322,7 @@ const Rate = React.forwardRef<HTMLDivElement, RateProps>(
               {tooltip &&
                 (hoverValue === index + 1 ||
                   (allowHalf && hoverValue === index + 0.5)) && (
-                  <div className="absolute top-full left-1/2 -translate-x-1/2 mt-1 px-2 py-1 text-xs bg-foreground text-background rounded whitespace-nowrap z-10">
+                  <div className="ds:absolute ds:top-full ds:left-1/2 ds:-translate-x-1/2 ds:mt-1 ds:px-2 ds:py-1 ds:text-xs ds:bg-foreground ds:text-background ds:rounded ds:whitespace-nowrap ds:z-10">
                     {tooltip}
                   </div>
                 )}

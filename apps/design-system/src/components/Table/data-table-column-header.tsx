@@ -42,7 +42,7 @@ export function DataTableColumnHeader<TData, TValue>({
   }
 
   const sortTrigger = (
-    <button className="-ml-1.5 flex h-8 items-center gap-1.5 rounded-md px-2 py-1.5 hover:bg-accent focus:outline-none focus:ring-1 focus:ring-ring data-[state=open]:bg-accent [&_svg]:size-4 [&_svg]:shrink-0 [&_svg]:text-muted-foreground">
+    <button className="ds:-ml-1.5 ds:flex ds:h-8 ds:items-center ds:gap-1.5 ds:rounded-md ds:px-2 ds:py-1.5 ds:hover:bg-accent ds:focus:outline-none ds:focus:ring-1 ds:focus:ring-ring ds:data-[state=open]:bg-accent ds:[&_svg]:size-4 ds:[&_svg]:shrink-0 ds:[&_svg]:text-muted-foreground">
       {displayLabel}
       {column.getCanSort() &&
         (column.getIsSorted() === "desc" ? (
@@ -63,11 +63,11 @@ export function DataTableColumnHeader<TData, TValue>({
           <Button
             variant="ghost"
             className={cn(
-              "hover:bg-accent rounded p-1",
-              column.getFilterValue() ? "text-primary" : ""
+              "ds:hover:bg-accent ds:rounded ds:p-1",
+              column.getFilterValue() ? "ds:text-primary" : ""
             )}
           >
-            <Filter className="size-4" />
+            <Filter className="ds:size-4" />
           </Button>
         }
       />
@@ -122,12 +122,12 @@ export function DataTableColumnHeader<TData, TValue>({
   }
 
   return (
-    <div className={cn("flex items-center gap-1.5", className)}>
+    <div className={cn("ds:flex ds:items-center ds:gap-1.5", className)}>
       <DropdownMenu
         trigger={sortTrigger}
         items={items}
         align="start"
-        contentClassName="w-28"
+        contentClassName="ds:w-28"
       />
       {filterButton}
     </div>

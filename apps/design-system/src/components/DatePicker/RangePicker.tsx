@@ -133,7 +133,7 @@ export function RangePicker({
   desktopMode = "popover",
   mobileMode = "drawer",
   children,
-  separator = <MoveRight className="size-5" />,
+  separator = <MoveRight className="ds:size-5" />,
   showTime = false,
   timeFormat = "HH:mm",
   hideDate = false,
@@ -362,23 +362,23 @@ export function RangePicker({
   ) : (
     <Button
       variant="ghost"
-      className="!p-1 !leading-0 h-auto rounded hover:bg-accent transition-colors"
+      className="ds:!p-1 ds:!leading-0 ds:h-auto ds:rounded ds:hover:bg-accent ds:transition-colors"
       size={props?.size}
     >
       <CalendarIcon
         className={cn({
-          "size-3": props.size === "xs" || props.size === "sm",
-          "size-3.5": !props.size || props.size === "normal",
-          "size-4": props.size === "lg" || props.size === "xl",
+          "ds:size-3": props.size === "xs" || props.size === "sm",
+          "ds:size-3.5": !props.size || props.size === "normal",
+          "ds:size-4": props.size === "lg" || props.size === "xl",
         })}
       />
-      <span className="sr-only">Select date range</span>
+      <span className="ds:sr-only">Select date range</span>
     </Button>
   );
 
   const calendarSelection = (
     <div
-      className={cn("flex items-stretch", showTime && !hideDate ? "gap-0" : "")}
+      className={cn("ds:flex ds:items-stretch", showTime && !hideDate ? "ds:gap-0" : "")}
     >
       {!hideDate && (
         <Calendar
@@ -451,11 +451,11 @@ export function RangePicker({
           }}
           showOutsideDays={showOutsideDays}
           className={cn(
-            "mx-auto",
+            "ds:mx-auto",
             {
-              "[--cell-size:clamp(0px,calc(100vw/7.5),52px)] mb-8 bg-transparent":
+              "ds:[--cell-size:clamp(0px,calc(100vw/7.5),52px)] ds:mb-8 ds:bg-transparent":
                 isMobile || desktopMode === "drawer",
-              "[--cell-size:clamp(0px,calc(100vw/7.5),34px)]":
+              "ds:[--cell-size:clamp(0px,calc(100vw/7.5),34px)]":
                 !isMobile && desktopMode !== "drawer",
             },
             calendarClassName
@@ -463,7 +463,7 @@ export function RangePicker({
         />
       )}
       {showTime && (
-        <div className="flex gap-0 border-l border-border">
+        <div className="ds:flex ds:gap-0 ds:border-l ds:border-border">
           <TimePicker
             {...timeConfig?.[0]}
             value={fromTime ? dfFormat(fromTime, timeFormat) : undefined}
@@ -474,7 +474,7 @@ export function RangePicker({
             showSeconds={timeFormat === "HH:mm:ss"}
             standalone={false}
           />
-          <div className="border-l border-border" />
+          <div className="ds:border-l ds:border-border" />
           <TimePicker
             {...timeConfig?.[1]}
             value={toTime ? dfFormat(toTime, timeFormat) : undefined}
@@ -497,8 +497,8 @@ export function RangePicker({
       </PopoverTrigger>
       <PopoverContent
         className={cn(
-          "w-auto overflow-hidden p-0",
-          "backdrop-blur bg-background/50"
+          "ds:w-auto ds:overflow-hidden ds:p-0",
+          "ds:backdrop-blur ds:bg-background/50"
         )}
         side={side}
         align={align}
@@ -513,11 +513,11 @@ export function RangePicker({
       <DrawerTrigger asChild>{triggerComponent}</DrawerTrigger>
       <DrawerContent
         className={cn(
-          "w-auto overflow-hidden p-0",
-          "backdrop-blur bg-background"
+          "ds:w-auto ds:overflow-hidden ds:p-0",
+          "ds:backdrop-blur ds:bg-background"
         )}
       >
-        <DrawerHeader className="sr-only">
+        <DrawerHeader className="ds:sr-only">
           <DrawerTitle>Select date range</DrawerTitle>
           <DrawerDescription>Set your date range</DrawerDescription>
         </DrawerHeader>
@@ -552,8 +552,8 @@ export function RangePicker({
         }
         className={cn(
           props.className,
-          "relative peer border-0 focus:ring-0 rounded-none hover:bg-transparent active:bg-transparent focus-visible:ring-0 focus-visible:border-0",
-          isFrom ? "pr-0" : ""
+          "ds:relative ds:peer ds:border-0 ds:focus:ring-0 ds:rounded-none ds:hover:bg-transparent ds:active:bg-transparent ds:focus-visible:ring-0 ds:focus-visible:border-0",
+          isFrom ? "ds:pr-0" : ""
         )}
         label={
           props.isFloatLabel && typeof label === "object"
@@ -713,19 +713,19 @@ export function RangePicker({
   return (
     <div
       className={cn(
-        "group relative flex items-center border rounded-md focus-within:ring-2 focus-within:ring-offset-2 bg-background transition-[color,box-shadow]",
+        "ds:group ds:relative ds:flex ds:items-center ds:border ds:rounded-md ds:focus-within:ring-2 ds:focus-within:ring-offset-2 ds:bg-background ds:transition-[color,box-shadow]",
         {
-          "border-input focus-within:ring-ring": !props.state,
-          "border-success focus-within:ring-success": props.state === "success",
-          "border-warning focus-within:ring-warning": props.state === "warning",
-          "border-error focus-within:ring-error": props.state === "error",
+          "ds:border-input ds:focus-within:ring-ring": !props.state,
+          "ds:border-success ds:focus-within:ring-success": props.state === "success",
+          "ds:border-warning ds:focus-within:ring-warning": props.state === "warning",
+          "ds:border-error ds:focus-within:ring-error": props.state === "error",
         }
       )}
     >
       {renderRangeInput("from", fromInputValue, setFromInputValue)}
       <span
-        className={cn("text-muted-foreground select-none pl-2", {
-          "opacity-30": props.disabled,
+        className={cn("ds:text-muted-foreground ds:select-none ds:pl-2", {
+          "ds:opacity-30": props.disabled,
         })}
       >
         {separator}
@@ -744,7 +744,7 @@ export function RangePicker({
           htmlFor={inputId}
           size={props.size}
           infoTooltip={props.infoTooltip}
-          className="z-10"
+          className="ds:z-10"
           shouldFloat={shouldFloat}
         >
           {label}

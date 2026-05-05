@@ -70,32 +70,32 @@ export default function UsersPage() {
 
   return (
     <AdminLayout>
-      <div className="space-y-6">
+      <div className="ds:space-y-6">
         {/* Page Header */}
-        <div className="flex items-center justify-between">
+        <div className="ds:flex ds:items-center ds:justify-between">
           <div>
-            <h1 className="text-3xl font-bold tracking-tight">Users</h1>
-            <p className="text-muted-foreground">
+            <h1 className="ds:text-3xl ds:font-bold ds:tracking-tight">Users</h1>
+            <p className="ds:text-muted-foreground">
               Manage your users and their permissions
             </p>
           </div>
           <Button onClick={() => setOpen(true)}>
-            <Plus className="mr-2 h-4 w-4" />
+            <Plus className="ds:mr-2 ds:h-4 ds:w-4" />
             Add User
           </Button>
         </div>
 
         {/* Filters */}
-        <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-          <div className="relative flex-1 max-w-md">
-            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+        <div className="ds:flex ds:flex-col ds:gap-4 ds:md:flex-row ds:md:items-center ds:md:justify-between">
+          <div className="ds:relative ds:flex-1 ds:max-w-md">
+            <Search className="ds:absolute ds:left-3 ds:top-1/2 ds:h-4 ds:w-4 ds:-translate-y-1/2 ds:text-muted-foreground" />
             <Input
               type="search"
               placeholder="Search users..."
-              className="pl-9"
+              className="ds:pl-9"
             />
           </div>
-          <div className="flex gap-2">
+          <div className="ds:flex ds:gap-2">
             <Select
               options={[
                 { value: "all", label: "All Status" },
@@ -119,42 +119,42 @@ export default function UsersPage() {
         </div>
 
         {/* Users Table */}
-        <div className="rounded-lg border bg-card shadow-sm">
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead className="border-b bg-muted/50">
+        <div className="ds:rounded-lg ds:border ds:bg-card ds:shadow-sm">
+          <div className="ds:overflow-x-auto">
+            <table className="ds:w-full">
+              <thead className="ds:border-b ds:bg-muted/50">
                 <tr>
-                  <th className="h-12 px-4 text-left align-middle font-medium">
+                  <th className="ds:h-12 ds:px-4 ds:text-left ds:align-middle ds:font-medium">
                     <Checkbox />
                   </th>
-                  <th className="h-12 px-4 text-left align-middle font-medium">
+                  <th className="ds:h-12 ds:px-4 ds:text-left ds:align-middle ds:font-medium">
                     User
                   </th>
-                  <th className="h-12 px-4 text-left align-middle font-medium">
+                  <th className="ds:h-12 ds:px-4 ds:text-left ds:align-middle ds:font-medium">
                     Contact
                   </th>
-                  <th className="h-12 px-4 text-left align-middle font-medium">
+                  <th className="ds:h-12 ds:px-4 ds:text-left ds:align-middle ds:font-medium">
                     Role
                   </th>
-                  <th className="h-12 px-4 text-left align-middle font-medium">
+                  <th className="ds:h-12 ds:px-4 ds:text-left ds:align-middle ds:font-medium">
                     Status
                   </th>
-                  <th className="h-12 px-4 text-left align-middle font-medium">
+                  <th className="ds:h-12 ds:px-4 ds:text-left ds:align-middle ds:font-medium">
                     Joined
                   </th>
-                  <th className="h-12 px-4 text-right align-middle font-medium">
+                  <th className="ds:h-12 ds:px-4 ds:text-right ds:align-middle ds:font-medium">
                     Actions
                   </th>
                 </tr>
               </thead>
               <tbody>
                 {users.map((user) => (
-                  <tr key={user.id} className="border-b last:border-0">
-                    <td className="p-4 align-middle">
+                  <tr key={user.id} className="ds:border-b ds:last:border-0">
+                    <td className="ds:p-4 ds:align-middle">
                       <Checkbox />
                     </td>
-                    <td className="p-4 align-middle">
-                      <div className="flex items-center gap-3">
+                    <td className="ds:p-4 ds:align-middle">
+                      <div className="ds:flex ds:items-center ds:gap-3">
                         <Avatar
                           src={user.avatar}
                           alt={user.name}
@@ -162,26 +162,26 @@ export default function UsersPage() {
                           color="primary"
                         />
                         <div>
-                          <p className="font-medium">{user.name}</p>
-                          <p className="text-sm text-muted-foreground">
+                          <p className="ds:font-medium">{user.name}</p>
+                          <p className="ds:text-sm ds:text-muted-foreground">
                             ID: {user.id}
                           </p>
                         </div>
                       </div>
                     </td>
-                    <td className="p-4 align-middle">
-                      <div className="space-y-1">
-                        <div className="flex items-center gap-2 text-sm">
-                          <Mail className="h-3 w-3 text-muted-foreground" />
+                    <td className="ds:p-4 ds:align-middle">
+                      <div className="ds:space-y-1">
+                        <div className="ds:flex ds:items-center ds:gap-2 ds:text-sm">
+                          <Mail className="ds:h-3 ds:w-3 ds:text-muted-foreground" />
                           {user.email}
                         </div>
-                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                          <Phone className="h-3 w-3" />
+                        <div className="ds:flex ds:items-center ds:gap-2 ds:text-sm ds:text-muted-foreground">
+                          <Phone className="ds:h-3 ds:w-3" />
                           {user.phone}
                         </div>
                       </div>
                     </td>
-                    <td className="p-4 align-middle">
+                    <td className="ds:p-4 ds:align-middle">
                       <Badge
                         variant={
                           user.role === "Admin"
@@ -194,19 +194,19 @@ export default function UsersPage() {
                         {user.role}
                       </Badge>
                     </td>
-                    <td className="p-4 align-middle">
+                    <td className="ds:p-4 ds:align-middle">
                       <Badge
                         variant={user.status === "active" ? "solid" : "outline"}
                       >
                         {user.status}
                       </Badge>
                     </td>
-                    <td className="p-4 align-middle">
-                      <span className="text-sm">{user.joinedAt}</span>
+                    <td className="ds:p-4 ds:align-middle">
+                      <span className="ds:text-sm">{user.joinedAt}</span>
                     </td>
-                    <td className="p-4 align-middle text-right">
+                    <td className="ds:p-4 ds:align-middle ds:text-right">
                       <Button variant="ghost" size="icon">
-                        <MoreVertical className="h-4 w-4" />
+                        <MoreVertical className="ds:h-4 ds:w-4" />
                       </Button>
                     </td>
                   </tr>
@@ -217,11 +217,11 @@ export default function UsersPage() {
         </div>
 
         {/* Pagination */}
-        <div className="flex items-center justify-between">
-          <p className="text-sm text-muted-foreground">
+        <div className="ds:flex ds:items-center ds:justify-between">
+          <p className="ds:text-sm ds:text-muted-foreground">
             Showing 1 to {users.length} of {users.length} users
           </p>
-          <div className="flex gap-2">
+          <div className="ds:flex ds:gap-2">
             <Button variant="outline" size="sm" disabled>
               Previous
             </Button>
@@ -237,7 +237,7 @@ export default function UsersPage() {
         title="Add User"
         closeOnOutside={false}
         footer={
-          <div className="flex justify-end gap-2">
+          <div className="ds:flex ds:justify-end ds:gap-2">
             <Button variant="outline" onClick={() => setOpen(false)}>
               Cancel
             </Button>
@@ -245,7 +245,7 @@ export default function UsersPage() {
           </div>
         }
       >
-        <form className="space-y-4">
+        <form className="ds:space-y-4">
           <div>
             <Input placeholder="Enter name" isFloatLabel label="Name" />
           </div>

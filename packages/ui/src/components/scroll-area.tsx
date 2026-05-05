@@ -13,12 +13,12 @@ function ScrollArea({
   return (
     <ScrollAreaPrimitive.Root
       data-slot="scroll-area"
-      className={cn("relative", className)}
+      className={cn("ds:relative", className)}
       {...props}
     >
       <ScrollAreaPrimitive.Viewport
         data-slot="scroll-area-viewport"
-        className="size-full rounded-[inherit] transition-[color,box-shadow] outline-none focus-visible:ring-[3px] focus-visible:outline-1 focus-visible:ring-ring/50 [scrollbar-width:thin] [scrollbar-color:transparent_transparent] hover:[scrollbar-color:hsl(var(--border))_transparent] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded hover:[&::-webkit-scrollbar-thumb]:bg-border"
+        className="ds:size-full ds:rounded-[inherit] ds:transition-[color,box-shadow] ds:outline-none ds:focus-visible:ring-[3px] ds:focus-visible:outline-1 ds:focus-visible:ring-ring/50 ds:[scrollbar-width:thin] ds:[scrollbar-color:transparent_transparent] ds:hover:[scrollbar-color:hsl(var(--border))_transparent] ds:[&::-webkit-scrollbar]:w-2 ds:[&::-webkit-scrollbar]:h-2 ds:[&::-webkit-scrollbar-track]:bg-transparent ds:[&::-webkit-scrollbar-thumb]:bg-transparent ds:[&::-webkit-scrollbar-thumb]:rounded ds:hover:[&::-webkit-scrollbar-thumb]:bg-border"
       >
         {children}
       </ScrollAreaPrimitive.Viewport>
@@ -38,18 +38,18 @@ function ScrollBar({
       data-slot="scroll-area-scrollbar"
       orientation={orientation}
       className={cn(
-        "flex touch-none p-px transition-colors select-none",
+        "ds:flex ds:touch-none ds:p-px ds:transition-colors ds:select-none",
         orientation === "vertical" &&
-          "h-full w-2.5 border-l border-l-transparent",
+          "ds:h-full ds:w-2.5 ds:border-l ds:border-l-transparent",
         orientation === "horizontal" &&
-          "h-2.5 flex-col border-t border-t-transparent",
+          "ds:h-2.5 ds:flex-col ds:border-t ds:border-t-transparent",
         className
       )}
       {...props}
     >
       <ScrollAreaPrimitive.ScrollAreaThumb
         data-slot="scroll-area-thumb"
-        className="bg-border relative flex-1 rounded-full"
+        className="ds:bg-border ds:relative ds:flex-1 ds:rounded-full"
       />
     </ScrollAreaPrimitive.ScrollAreaScrollbar>
   );

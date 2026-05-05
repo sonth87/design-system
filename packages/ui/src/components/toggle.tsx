@@ -9,45 +9,45 @@ import { cn } from "@dsui/ui/lib/utils";
 const colorVariants = {
   primary: {
     default:
-      "data-[state=on]:bg-primary data-[state=on]:text-primary-foreground",
+      "ds:data-[state=on]:bg-primary ds:data-[state=on]:text-primary-foreground",
     outline:
-      "data-[state=on]:bg-primary data-[state=on]:text-primary-foreground",
+      "ds:data-[state=on]:bg-primary ds:data-[state=on]:text-primary-foreground",
   },
   secondary: {
     default:
-      "data-[state=on]:bg-secondary data-[state=on]:text-secondary-foreground",
+      "ds:data-[state=on]:bg-secondary ds:data-[state=on]:text-secondary-foreground",
     outline:
-      "data-[state=on]:bg-secondary data-[state=on]:text-secondary-foreground",
+      "ds:data-[state=on]:bg-secondary ds:data-[state=on]:text-secondary-foreground",
   },
   accent: {
-    default: "data-[state=on]:bg-accent data-[state=on]:text-accent-foreground",
-    outline: "data-[state=on]:bg-accent data-[state=on]:text-accent-foreground",
+    default: "ds:data-[state=on]:bg-accent ds:data-[state=on]:text-accent-foreground",
+    outline: "ds:data-[state=on]:bg-accent ds:data-[state=on]:text-accent-foreground",
   },
   destructive: {
     default:
-      "data-[state=on]:bg-destructive data-[state=on]:text-destructive-foreground",
+      "ds:data-[state=on]:bg-destructive ds:data-[state=on]:text-destructive-foreground",
     outline:
-      "data-[state=on]:bg-destructive data-[state=on]:text-destructive-foreground",
+      "ds:data-[state=on]:bg-destructive ds:data-[state=on]:text-destructive-foreground",
   },
   muted: {
-    default: "data-[state=on]:bg-muted data-[state=on]:text-muted-foreground",
-    outline: "data-[state=on]:bg-muted data-[state=on]:text-muted-foreground",
+    default: "ds:data-[state=on]:bg-muted ds:data-[state=on]:text-muted-foreground",
+    outline: "ds:data-[state=on]:bg-muted ds:data-[state=on]:text-muted-foreground",
   },
   success: {
     default:
-      "data-[state=on]:bg-success data-[state=on]:text-success-foreground",
+      "ds:data-[state=on]:bg-success ds:data-[state=on]:text-success-foreground",
     outline:
-      "data-[state=on]:bg-success data-[state=on]:text-success-foreground",
+      "ds:data-[state=on]:bg-success ds:data-[state=on]:text-success-foreground",
   },
   error: {
-    default: "data-[state=on]:bg-error data-[state=on]:text-error-foreground",
-    outline: "data-[state=on]:bg-error data-[state=on]:text-error-foreground",
+    default: "ds:data-[state=on]:bg-error ds:data-[state=on]:text-error-foreground",
+    outline: "ds:data-[state=on]:bg-error ds:data-[state=on]:text-error-foreground",
   },
   warning: {
     default:
-      "data-[state=on]:bg-warning data-[state=on]:text-warning-foreground",
+      "ds:data-[state=on]:bg-warning ds:data-[state=on]:text-warning-foreground",
     outline:
-      "data-[state=on]:bg-warning data-[state=on]:text-warning-foreground",
+      "ds:data-[state=on]:bg-warning ds:data-[state=on]:text-warning-foreground",
   },
 };
 
@@ -78,18 +78,18 @@ const generateCompoundVariants = () => {
 };
 
 const toggleVariants = cva(
-  "inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium hover:bg-muted hover:text-muted-foreground disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 [&_svg]:shrink-0 focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] outline-none transition-[color,box-shadow] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive whitespace-nowrap",
+  "ds:inline-flex ds:items-center ds:justify-center ds:gap-2 ds:rounded-md ds:text-sm ds:font-medium ds:hover:bg-muted ds:hover:text-muted-foreground ds:disabled:pointer-events-none ds:disabled:opacity-50 ds:[&_svg]:pointer-events-none ds:[&_svg:not([class*='size-'])]:size-4 ds:[&_svg]:shrink-0 ds:focus-visible:border-ring ds:focus-visible:ring-ring/50 ds:focus-visible:ring-[3px] ds:outline-none ds:transition-[color,box-shadow] ds:aria-invalid:ring-destructive/20 ds:dark:aria-invalid:ring-destructive/40 ds:aria-invalid:border-destructive ds:whitespace-nowrap",
   {
     variants: {
       variant: {
-        default: "bg-transparent",
+        default: "ds:bg-transparent",
         outline:
-          "border border-input bg-transparent shadow-xs hover:bg-accent hover:text-accent-foreground",
+          "ds:border ds:border-input ds:bg-transparent ds:shadow-xs ds:hover:bg-accent ds:hover:text-accent-foreground",
       },
       size: {
-        default: "h-9 px-2 min-w-9",
-        sm: "h-8 px-1.5 min-w-8",
-        lg: "h-10 px-2.5 min-w-10",
+        default: "ds:h-9 ds:px-2 ds:min-w-9",
+        sm: "ds:h-8 ds:px-1.5 ds:min-w-8",
+        lg: "ds:h-10 ds:px-2.5 ds:min-w-10",
       },
       color: {
         primary: "",

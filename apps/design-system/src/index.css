@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import "tailwindcss" prefix(ds);
 @import "@dsui/ui/styles/globals.css";
 @import "./theme.css";
 
@@ -13,26 +13,26 @@
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply ds:border-border ds:outline-ring/50;
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply ds:bg-background ds:text-foreground;
   }
 }
 
 .floating-label input[type="date"] {
-  @apply pt-5;
+  @apply ds:pt-5;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 }
 
 .floating-label input[type="date"]::-webkit-calendar-picker-indicator {
-  @apply w-5 h-5 text-primary cursor-pointer -translate-y-1.5 opacity-60;
+  @apply ds:w-5 ds:h-5 ds:text-primary ds:cursor-pointer ds:-translate-y-1.5 ds:opacity-60;
   filter: invert(38%) sepia(0%) saturate(0%) hue-rotate(180deg) brightness(0.8);
 }
 
 input[type="date"]:disabled::-webkit-calendar-picker-indicator {
-  @apply opacity-50 cursor-not-allowed;
+  @apply ds:opacity-50 ds:cursor-not-allowed;
 }

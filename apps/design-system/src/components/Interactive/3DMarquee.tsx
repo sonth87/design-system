@@ -27,17 +27,17 @@ export const ThreeDMarquee = ({
   return (
     <div
       className={cn(
-        "mx-auto block h-[300px] overflow-hidden rounded-2xl max-sm:h-100",
+        "ds:mx-auto ds:block ds:h-[300px] ds:overflow-hidden ds:rounded-2xl ds:max-sm:h-100",
         className
       )}
     >
-      <div className="flex size-full items-center justify-center">
-        <div className="size-[1720px] shrink-0 scale-50 sm:scale-75 lg:scale-100">
+      <div className="ds:flex ds:size-full ds:items-center ds:justify-center">
+        <div className="ds:size-[1720px] ds:shrink-0 ds:scale-50 ds:sm:scale-75 ds:lg:scale-100">
           <div
             style={{
               transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg)`,
             }}
-            className="relative top-96 right-[50%] grid size-full origin-top-left grid-cols-4 gap-8 transform-3d"
+            className="ds:relative ds:top-96 ds:right-[50%] ds:grid ds:size-full ds:origin-top-left ds:grid-cols-4 ds:gap-8 ds:transform-3d"
           >
             {chunks.map((subarray, colIndex) => (
               <motion.div
@@ -48,12 +48,12 @@ export const ThreeDMarquee = ({
                   repeatType: "reverse",
                 }}
                 key={colIndex + "marquee"}
-                className="flex flex-col items-start gap-8"
+                className="ds:flex ds:flex-col ds:items-start ds:gap-8"
               >
-                <GridLineVertical className="-left-4" offset="80px" />
+                <GridLineVertical className="ds:-left-4" offset="80px" />
                 {subarray.map((image, imageIndex) => (
-                  <div className="relative" key={imageIndex + image}>
-                    <GridLineHorizontal className="-top-4" offset="20px" />
+                  <div className="ds:relative" key={imageIndex + image}>
+                    <GridLineHorizontal className="ds:-top-4" offset="20px" />
                     <motion.img
                       whileHover={{
                         y: -10,
@@ -65,7 +65,7 @@ export const ThreeDMarquee = ({
                       key={imageIndex + image}
                       src={image}
                       alt={`Image ${imageIndex + 1}`}
-                      className="aspect-[970/700] rounded-lg object-cover ring ring-gray-950/5 hover:shadow-2xl"
+                      className="ds:aspect-[970/700] ds:rounded-lg ds:object-cover ds:ring ds:ring-gray-950/5 ds:hover:shadow-2xl"
                       width={970}
                       height={700}
                     />
@@ -101,13 +101,13 @@ const GridLineHorizontal = ({ className, offset }: GridLineHorizontalProps) => {
         } as React.CSSProperties
       }
       className={cn(
-        "absolute left-[calc(var(--offset)/2*-1)] h-[var(--height)] w-[calc(100%+var(--offset))]",
-        "bg-[linear-gradient(to_right,var(--color),var(--color)_50%,transparent_0,transparent)]",
-        "[background-size:var(--width)_var(--height)]",
-        "[mask:linear-gradient(to_left,var(--background)_var(--fade-stop),transparent),_linear-gradient(to_right,var(--background)_var(--fade-stop),transparent),_linear-gradient(black,black)]",
-        "[mask-composite:exclude]",
-        "z-30",
-        "dark:bg-[linear-gradient(to_right,var(--color-dark),var(--color-dark)_50%,transparent_0,transparent)]",
+        "ds:absolute ds:left-[calc(var(--offset)/2*-1)] ds:h-[var(--height)] ds:w-[calc(100%+var(--offset))]",
+        "ds:bg-[linear-gradient(to_right,var(--color),var(--color)_50%,transparent_0,transparent)]",
+        "ds:[background-size:var(--width)_var(--height)]",
+        "ds:[mask:linear-gradient(to_left,var(--background)_var(--fade-stop),transparent),_linear-gradient(to_right,var(--background)_var(--fade-stop),transparent),_linear-gradient(black,black)]",
+        "ds:[mask-composite:exclude]",
+        "ds:z-30",
+        "ds:dark:bg-[linear-gradient(to_right,var(--color-dark),var(--color-dark)_50%,transparent_0,transparent)]",
         className
       )}
     ></div>
@@ -135,13 +135,13 @@ const GridLineVertical = ({ className, offset }: GridLineVerticalProps) => {
         } as React.CSSProperties
       }
       className={cn(
-        "absolute top-[calc(var(--offset)/2*-1)] h-[calc(100%+var(--offset))] w-[var(--width)]",
-        "bg-[linear-gradient(to_bottom,var(--color),var(--color)_50%,transparent_0,transparent)]",
-        "[background-size:var(--width)_var(--height)]",
-        "[mask:linear-gradient(to_top,var(--background)_var(--fade-stop),transparent),_linear-gradient(to_bottom,var(--background)_var(--fade-stop),transparent),_linear-gradient(black,black)]",
-        "[mask-composite:exclude]",
-        "z-30",
-        "dark:bg-[linear-gradient(to_bottom,var(--color-dark),var(--color-dark)_50%,transparent_0,transparent)]",
+        "ds:absolute ds:top-[calc(var(--offset)/2*-1)] ds:h-[calc(100%+var(--offset))] ds:w-[var(--width)]",
+        "ds:bg-[linear-gradient(to_bottom,var(--color),var(--color)_50%,transparent_0,transparent)]",
+        "ds:[background-size:var(--width)_var(--height)]",
+        "ds:[mask:linear-gradient(to_top,var(--background)_var(--fade-stop),transparent),_linear-gradient(to_bottom,var(--background)_var(--fade-stop),transparent),_linear-gradient(black,black)]",
+        "ds:[mask-composite:exclude]",
+        "ds:z-30",
+        "ds:dark:bg-[linear-gradient(to_bottom,var(--color-dark),var(--color-dark)_50%,transparent_0,transparent)]",
         className
       )}
     ></div>

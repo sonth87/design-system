@@ -126,7 +126,7 @@ type Story = StoryObj<typeof meta>;
 
 const DefaultComponent = (args: CollapsibleProps) => {
   return (
-    <div className="w-[400px]">
+    <div className="ds:w-[400px]">
       <Collapsible
         {...args}
         trigger="Can I use this in my project?"
@@ -138,7 +138,7 @@ const DefaultComponent = (args: CollapsibleProps) => {
 
 const VariantsComponent = () => {
   return (
-    <div className="w-[400px] space-y-4">
+    <div className="ds:w-[400px] ds:space-y-4">
       <Collapsible
         variant="default"
         trigger="Default Variant"
@@ -160,7 +160,7 @@ const VariantsComponent = () => {
 
 const IconPositionComponent = () => {
   return (
-    <div className="w-[400px] space-y-4">
+    <div className="ds:w-[400px] ds:space-y-4">
       <Collapsible
         iconPosition="left"
         trigger="Icon on Left"
@@ -182,26 +182,26 @@ const IconPositionComponent = () => {
 
 const CustomContentComponent = () => {
   return (
-    <div className="w-[400px] space-y-4">
+    <div className="ds:w-[400px] ds:space-y-4">
       <Collapsible
         trigger={
-          <div className="flex items-center gap-2">
-            <Settings className="size-4" />
-            <span className="font-semibold">Advanced Settings</span>
+          <div className="ds:flex ds:items-center ds:gap-2">
+            <Settings className="ds:size-4" />
+            <span className="ds:font-semibold">Advanced Settings</span>
           </div>
         }
         content={
-          <div className="space-y-2">
-            <div className="flex items-center justify-between">
-              <span className="text-sm">Enable notifications</span>
+          <div className="ds:space-y-2">
+            <div className="ds:flex ds:items-center ds:justify-between">
+              <span className="ds:text-sm">Enable notifications</span>
               <input type="checkbox" />
             </div>
-            <div className="flex items-center justify-between">
-              <span className="text-sm">Dark mode</span>
+            <div className="ds:flex ds:items-center ds:justify-between">
+              <span className="ds:text-sm">Dark mode</span>
               <input type="checkbox" />
             </div>
-            <div className="flex items-center justify-between">
-              <span className="text-sm">Auto-save</span>
+            <div className="ds:flex ds:items-center ds:justify-between">
+              <span className="ds:text-sm">Auto-save</span>
               <input type="checkbox" defaultChecked />
             </div>
           </div>
@@ -210,26 +210,26 @@ const CustomContentComponent = () => {
 
       <Collapsible
         trigger={
-          <div className="flex items-center gap-2">
-            <User className="size-4" />
-            <span className="font-semibold">User Profile</span>
+          <div className="ds:flex ds:items-center ds:gap-2">
+            <User className="ds:size-4" />
+            <span className="ds:font-semibold">User Profile</span>
           </div>
         }
         content={
-          <div className="space-y-3">
+          <div className="ds:space-y-3">
             <div>
-              <label className="text-sm font-medium">Name</label>
+              <label className="ds:text-sm ds:font-medium">Name</label>
               <input
                 type="text"
-                className="mt-1 w-full rounded border px-3 py-2 text-sm"
+                className="ds:mt-1 ds:w-full ds:rounded ds:border ds:px-3 ds:py-2 ds:text-sm"
                 placeholder="Enter your name"
               />
             </div>
             <div>
-              <label className="text-sm font-medium">Email</label>
+              <label className="ds:text-sm ds:font-medium">Email</label>
               <input
                 type="email"
-                className="mt-1 w-full rounded border px-3 py-2 text-sm"
+                className="ds:mt-1 ds:w-full ds:rounded ds:border ds:px-3 ds:py-2 ds:text-sm"
                 placeholder="Enter your email"
               />
             </div>
@@ -258,17 +258,17 @@ const ControlledComponent = () => {
   };
 
   return (
-    <div className="w-[400px] space-y-4">
-      <div className="flex gap-2">
+    <div className="ds:w-[400px] ds:space-y-4">
+      <div className="ds:flex ds:gap-2">
         <button
           onClick={expandAll}
-          className="rounded bg-primary px-3 py-1.5 text-sm text-primary-foreground"
+          className="ds:rounded ds:bg-primary ds:px-3 ds:py-1.5 ds:text-sm ds:text-primary-foreground"
         >
           Expand All
         </button>
         <button
           onClick={collapseAll}
-          className="rounded bg-secondary px-3 py-1.5 text-sm text-secondary-foreground"
+          className="ds:rounded ds:bg-secondary ds:px-3 ds:py-1.5 ds:text-sm ds:text-secondary-foreground"
         >
           Collapse All
         </button>
@@ -304,7 +304,7 @@ const AccordionStyleComponent = () => {
   };
 
   return (
-    <div className="w-[400px] space-y-2">
+    <div className="ds:w-[400px] ds:space-y-2">
       <Collapsible
         open={openItem === "item1"}
         onOpenChange={handleOpenChange("item1")}
@@ -331,19 +331,19 @@ const CustomImplementationComponent = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="w-[400px]">
+    <div className="ds:w-[400px]">
       <Collapsible open={isOpen} onOpenChange={setIsOpen} variant="ghost">
-        <CollapsibleTrigger className="group flex w-full items-center justify-between rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 px-4 py-3 text-white transition-all hover:from-purple-600 hover:to-pink-600">
-          <span className="font-semibold">Custom Styled Collapsible</span>
+        <CollapsibleTrigger className="ds:group ds:flex ds:w-full ds:items-center ds:justify-between ds:rounded-lg ds:bg-gradient-to-r ds:from-purple-500 ds:to-pink-500 ds:px-4 ds:py-3 ds:text-white ds:transition-all ds:hover:from-purple-600 ds:hover:to-pink-600">
+          <span className="ds:font-semibold">Custom Styled Collapsible</span>
           <ChevronRight
             className={cn(
-              "size-4 transition-transform duration-300",
-              isOpen && "rotate-90"
+              "ds:size-4 ds:transition-transform ds:duration-300",
+              isOpen && "ds:rotate-90"
             )}
           />
         </CollapsibleTrigger>
-        <CollapsibleContent className="mt-2 rounded-lg bg-gradient-to-r from-purple-50 to-pink-50 px-4 py-3 dark:from-purple-950 dark:to-pink-950">
-          <p className="text-sm">
+        <CollapsibleContent className="ds:mt-2 ds:rounded-lg ds:bg-gradient-to-r ds:from-purple-50 ds:to-pink-50 ds:px-4 ds:py-3 ds:dark:from-purple-950 ds:dark:to-pink-950">
+          <p className="ds:text-sm">
             This is a completely custom implementation using the base
             components. You have full control over the styling and behavior.
           </p>
@@ -355,12 +355,12 @@ const CustomImplementationComponent = () => {
 
 const NestedCollapsibleComponent = () => {
   return (
-    <div className="w-[400px]">
+    <div className="ds:w-[400px]">
       <Collapsible
         trigger="Parent Collapsible"
         content={
-          <div className="space-y-2">
-            <p className="text-sm">This is the parent content.</p>
+          <div className="ds:space-y-2">
+            <p className="ds:text-sm">This is the parent content.</p>
             <Collapsible
               variant="bordered"
               trigger="Nested Collapsible 1"
@@ -380,7 +380,7 @@ const NestedCollapsibleComponent = () => {
 
 const DisabledStateComponent = () => {
   return (
-    <div className="w-[400px] space-y-4">
+    <div className="ds:w-[400px] ds:space-y-4">
       <Collapsible
         disabled
         trigger="Disabled Collapsible (Closed)"
@@ -398,32 +398,32 @@ const DisabledStateComponent = () => {
 
 const WithRichContentComponent = () => {
   return (
-    <div className="w-[500px] space-y-4">
+    <div className="ds:w-[500px] ds:space-y-4">
       <Collapsible
         trigger={
-          <div className="flex items-start gap-3">
-            <Info className="mt-0.5 size-5 text-blue-500" />
+          <div className="ds:flex ds:items-start ds:gap-3">
+            <Info className="ds:mt-0.5 ds:size-5 ds:text-blue-500" />
             <div>
-              <div className="font-semibold">Important Information</div>
-              <div className="text-muted-foreground text-xs">
+              <div className="ds:font-semibold">Important Information</div>
+              <div className="ds:text-muted-foreground ds:text-xs">
                 Click to expand details
               </div>
             </div>
           </div>
         }
         content={
-          <div className="space-y-3">
-            <p className="text-sm">
+          <div className="ds:space-y-3">
+            <p className="ds:text-sm">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </p>
-            <ul className="list-inside list-disc space-y-1 text-sm">
+            <ul className="ds:list-inside ds:list-disc ds:space-y-1 ds:text-sm">
               <li>Feature one with detailed description</li>
               <li>Feature two with additional context</li>
               <li>Feature three with more information</li>
             </ul>
-            <div className="rounded-md bg-blue-50 p-3 dark:bg-blue-950">
-              <p className="text-sm text-blue-900 dark:text-blue-100">
+            <div className="ds:rounded-md ds:bg-blue-50 ds:p-3 ds:dark:bg-blue-950">
+              <p className="ds:text-sm ds:text-blue-900 ds:dark:text-blue-100">
                 💡 Pro tip: This is an example of rich content within a
                 collapsible component.
               </p>

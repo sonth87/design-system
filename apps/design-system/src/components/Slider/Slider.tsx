@@ -406,7 +406,7 @@ const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
           return (
             <motion.div
               className={cn(
-                "pointer-events-none absolute z-50 flex flex-col items-center justify-center rounded-md px-3 py-1.5 text-xs shadow-xl",
+                "ds:pointer-events-none ds:absolute ds:z-50 ds:flex ds:flex-col ds:items-center ds:justify-center ds:rounded-md ds:px-3 ds:py-1.5 ds:text-xs ds:shadow-xl",
                 labelPositionClassSpec,
                 labelColor && labelColor,
                 labelTextColor && labelTextColor,
@@ -442,7 +442,7 @@ const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
                 whiteSpace: "nowrap",
               }}
             >
-              <div className="relative z-1">
+              <div className="ds:relative ds:z-1">
                 <NumberFlow
                   value={_values[index]}
                   format={{ notation: "standard" }}
@@ -452,7 +452,7 @@ const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
               {labelArrow && (
                 <div
                   className={cn(
-                    "arrow absolute border-transparent",
+                    "ds:arrow ds:absolute ds:border-transparent",
                     labelPositionClass.arrow,
                     arrowColorClass
                   )}
@@ -479,7 +479,7 @@ const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
             }
             variant="solid"
             className={cn(
-              "transition-transform absolute px-3 rounded-md",
+              "ds:transition-transform ds:absolute ds:px-3 ds:rounded-md",
               labelPositionClass.badge,
               labelVisibilityClass,
               labelColor && labelColor,
@@ -487,7 +487,7 @@ const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
               !labelColor &&
                 !labelTextColor &&
                 color === "glass" &&
-                "bg-white/15 text-foreground backdrop-blur-sm shadow-lg [&>div.arrow]:border-t-white/15"
+                "ds:bg-white/15 ds:text-foreground ds:backdrop-blur-sm ds:shadow-lg ds:[&>div.arrow]:border-t-white/15"
             )}
           >
             {labelAnimation === "number-flow" ? (
@@ -502,7 +502,7 @@ const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
             {labelArrow && (
               <div
                 className={cn(
-                  "arrow absolute border-transparent",
+                  "ds:arrow ds:absolute ds:border-transparent",
                   labelPositionClass.arrow,
                   arrowColorClass
                 )}
@@ -543,7 +543,7 @@ const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
           min={min}
           max={max}
           className={cn(
-            "relative flex w-full touch-none items-center select-none data-disabled:opacity-50 data-[orientation=vertical]:h-full data-[orientation=vertical]:min-h-44 data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col",
+            "ds:relative ds:flex ds:w-full ds:touch-none ds:items-center ds:select-none ds:data-disabled:opacity-50 ds:data-[orientation=vertical]:h-full ds:data-[orientation=vertical]:min-h-44 ds:data-[orientation=vertical]:w-auto ds:data-[orientation=vertical]:flex-col",
             className
           )}
           {...props}
@@ -551,14 +551,14 @@ const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
           <SliderPrimitive.Track
             data-slot="slider-track"
             className={cn(
-              "bg-muted relative grow overflow-hidden rounded-full data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full",
+              "ds:bg-muted ds:relative ds:grow ds:overflow-hidden ds:rounded-full ds:data-[orientation=horizontal]:w-full ds:data-[orientation=vertical]:h-full",
               sliderSizeClass.track
             )}
           >
             <SliderPrimitive.Range
               data-slot="slider-range"
               className={cn(
-                "absolute data-[orientation=horizontal]:h-full data-[orientation=vertical]:w-full",
+                "ds:absolute ds:data-[orientation=horizontal]:h-full ds:data-[orientation=vertical]:w-full",
                 sliderColorClass.range
               )}
             />
@@ -568,7 +568,7 @@ const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
               key={index}
               data-slot="slider-thumb"
               className={cn(
-                "block shrink-0 rounded-full border bg-white shadow-sm transition-[color,box-shadow] hover:ring-4 focus-visible:ring-4 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50 ring-ring/50",
+                "ds:block ds:shrink-0 ds:rounded-full ds:border ds:bg-white ds:shadow-sm ds:transition-[color,box-shadow] ds:hover:ring-4 ds:focus-visible:ring-4 ds:focus-visible:outline-hidden ds:disabled:pointer-events-none ds:disabled:opacity-50 ds:ring-ring/50",
                 sliderColorClass.thumb,
                 sliderSizeClass.thumb
               )}
@@ -588,7 +588,7 @@ const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
         min={min}
         max={max}
         className={cn(
-          "relative flex w-full touch-none items-center select-none data-disabled:opacity-50 data-[orientation=vertical]:h-full data-[orientation=vertical]:min-h-44 data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col",
+          "ds:relative ds:flex ds:w-full ds:touch-none ds:items-center ds:select-none ds:data-disabled:opacity-50 ds:data-[orientation=vertical]:h-full ds:data-[orientation=vertical]:min-h-44 ds:data-[orientation=vertical]:w-auto ds:data-[orientation=vertical]:flex-col",
           className
         )}
         {...props}
@@ -596,14 +596,14 @@ const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
         <SliderPrimitive.Track
           data-slot="slider-track"
           className={cn(
-            "bg-muted relative grow overflow-hidden rounded-full data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full",
+            "ds:bg-muted ds:relative ds:grow ds:overflow-hidden ds:rounded-full ds:data-[orientation=horizontal]:w-full ds:data-[orientation=vertical]:h-full",
             sliderSizeClass.track
           )}
         >
           <SliderPrimitive.Range
             data-slot="slider-range"
             className={cn(
-              "absolute data-[orientation=horizontal]:h-full data-[orientation=vertical]:w-full",
+              "ds:absolute ds:data-[orientation=horizontal]:h-full ds:data-[orientation=vertical]:w-full",
               sliderColorClass.range
             )}
           />
@@ -613,7 +613,7 @@ const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
             key={index}
             data-slot="slider-thumb"
             className={cn(
-              "group block shrink-0 rounded-full border bg-white shadow-sm transition-[color,box-shadow] hover:ring-4 focus-visible:ring-4 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50 ring-ring/50",
+              "ds:group ds:block ds:shrink-0 ds:rounded-full ds:border ds:bg-white ds:shadow-sm ds:transition-[color,box-shadow] ds:hover:ring-4 ds:focus-visible:ring-4 ds:focus-visible:outline-hidden ds:disabled:pointer-events-none ds:disabled:opacity-50 ds:ring-ring/50",
               sliderColorClass.thumb,
               sliderSizeClass.thumb
             )}

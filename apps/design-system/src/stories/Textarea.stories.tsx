@@ -143,13 +143,13 @@ export default meta;
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Default = (args: TextareaProps) => (
-  <div className="w-96">
+  <div className="ds:w-96">
     <Textarea {...args} />
   </div>
 );
 
 export const WithLabel = (args: TextareaProps) => (
-  <div className="flex flex-col gap-4 w-[500px]">
+  <div className="ds:flex ds:flex-col ds:gap-4 ds:w-[500px]">
     <Textarea
       {...args}
       label="Description"
@@ -175,7 +175,7 @@ export const WithLabel = (args: TextareaProps) => (
 );
 
 export const FloatingLabel = () => (
-  <div className="flex flex-col gap-4 w-[500px]">
+  <div className="ds:flex ds:flex-col ds:gap-4 ds:w-[500px]">
     <Textarea
       label="Bio"
       isFloatLabel
@@ -194,7 +194,7 @@ export const FloatingLabel = () => (
 );
 
 export const WithHelperText = (args: TextareaProps) => (
-  <div className="w-[500px]">
+  <div className="ds:w-[500px]">
     <Textarea
       {...args}
       label="Bio"
@@ -205,7 +205,7 @@ export const WithHelperText = (args: TextareaProps) => (
 );
 
 export const WithMaxLengthAndCharCount = (args: TextareaProps) => (
-  <div className="flex flex-col gap-4 w-[500px]">
+  <div className="ds:flex ds:flex-col ds:gap-4 ds:w-[500px]">
     <Textarea
       {...args}
       label="Description"
@@ -219,7 +219,7 @@ export const WithMaxLengthAndCharCount = (args: TextareaProps) => (
 );
 
 export const WithInfoTooltip = (args: TextareaProps) => (
-  <div className="w-[500px] flex flex-col gap-4">
+  <div className="ds:w-[500px] ds:flex ds:flex-col ds:gap-4">
     <Textarea
       {...args}
       label="Message"
@@ -237,7 +237,7 @@ export const WithInfoTooltip = (args: TextareaProps) => (
 );
 
 export const HelperTextStates = () => (
-  <div className="flex flex-col gap-4 w-[500px]">
+  <div className="ds:flex ds:flex-col ds:gap-4 ds:w-[500px]">
     <Textarea
       label="Default Helper"
       placeholder="Enter text..."
@@ -268,7 +268,7 @@ export const HelperTextStates = () => (
 );
 
 export const Disabled = (args: TextareaProps) => (
-  <div className="w-[500px]">
+  <div className="ds:w-[500px]">
     <Textarea
       {...args}
       label="Disabled Textarea"
@@ -280,7 +280,7 @@ export const Disabled = (args: TextareaProps) => (
 );
 
 export const CompleteExample = () => (
-  <div className="flex flex-col gap-6 w-[600px]">
+  <div className="ds:flex ds:flex-col ds:gap-6 ds:w-[600px]">
     <Textarea
       label="Feedback"
       placeholder=""

@@ -51,30 +51,30 @@ export type BreadcrumbProps = React.ComponentProps<"nav"> & {
 const colorClasses = {
   default: "",
   primary:
-    "text-primary [&_[data-slot=breadcrumb-link]:hover]:text-primary/80 [&_[data-slot=breadcrumb-page]]:text-primary",
+    "ds:text-primary ds:[&_[data-slot=breadcrumb-link]:hover]:text-primary/80 ds:[&_[data-slot=breadcrumb-page]]:text-primary",
   secondary:
-    "text-secondary [&_[data-slot=breadcrumb-link]:hover]:text-secondary/80 [&_[data-slot=breadcrumb-page]]:text-secondary",
+    "ds:text-secondary ds:[&_[data-slot=breadcrumb-link]:hover]:text-secondary/80 ds:[&_[data-slot=breadcrumb-page]]:text-secondary",
   accent:
-    "text-accent [&_[data-slot=breadcrumb-link]:hover]:text-accent/80 [&_[data-slot=breadcrumb-page]]:text-accent",
+    "ds:text-accent ds:[&_[data-slot=breadcrumb-link]:hover]:text-accent/80 ds:[&_[data-slot=breadcrumb-page]]:text-accent",
   destructive:
-    "text-destructive [&_[data-slot=breadcrumb-link]:hover]:text-destructive/80 [&_[data-slot=breadcrumb-page]]:text-destructive",
+    "ds:text-destructive ds:[&_[data-slot=breadcrumb-link]:hover]:text-destructive/80 ds:[&_[data-slot=breadcrumb-page]]:text-destructive",
   muted:
-    "text-muted-foreground [&_[data-slot=breadcrumb-link]:hover]:text-muted-foreground/80 [&_[data-slot=breadcrumb-page]]:text-muted-foreground",
+    "ds:text-muted-foreground ds:[&_[data-slot=breadcrumb-link]:hover]:text-muted-foreground/80 ds:[&_[data-slot=breadcrumb-page]]:text-muted-foreground",
   success:
-    "text-success [&_[data-slot=breadcrumb-link]:hover]:text-success/80 [&_[data-slot=breadcrumb-page]]:text-success",
+    "ds:text-success ds:[&_[data-slot=breadcrumb-link]:hover]:text-success/80 ds:[&_[data-slot=breadcrumb-page]]:text-success",
   error:
-    "text-error [&_[data-slot=breadcrumb-link]:hover]:text-error/80 [&_[data-slot=breadcrumb-page]]:text-error",
+    "ds:text-error ds:[&_[data-slot=breadcrumb-link]:hover]:text-error/80 ds:[&_[data-slot=breadcrumb-page]]:text-error",
   warning:
-    "text-warning [&_[data-slot=breadcrumb-link]:hover]:text-warning/80 [&_[data-slot=breadcrumb-page]]:text-warning",
+    "ds:text-warning ds:[&_[data-slot=breadcrumb-link]:hover]:text-warning/80 ds:[&_[data-slot=breadcrumb-page]]:text-warning",
 };
 
 const variantClasses = {
   default: "",
   compact:
-    "text-xs [&_[data-slot=breadcrumb-list]]:gap-1 [&_[data-slot=breadcrumb-separator]>svg]:size-3",
+    "ds:text-xs ds:[&_[data-slot=breadcrumb-list]]:gap-1 ds:[&_[data-slot=breadcrumb-separator]>svg]:size-3",
   badge:
-    "[&_[data-slot=breadcrumb-list]]:gap-1 [&_[data-slot=breadcrumb-item]]:border [&_[data-slot=breadcrumb-item]]:bg-muted [&_[data-slot=breadcrumb-item]]:px-2 [&_[data-slot=breadcrumb-item]]:py-0.5 [&_[data-slot=breadcrumb-item]]:rounded-full [&_[data-slot=breadcrumb-item]]:text-sm",
-  bordered: "border rounded-md px-3 py-2",
+    "ds:[&_[data-slot=breadcrumb-list]]:gap-1 ds:[&_[data-slot=breadcrumb-item]]:border ds:[&_[data-slot=breadcrumb-item]]:bg-muted ds:[&_[data-slot=breadcrumb-item]]:px-2 ds:[&_[data-slot=breadcrumb-item]]:py-0.5 ds:[&_[data-slot=breadcrumb-item]]:rounded-full ds:[&_[data-slot=breadcrumb-item]]:text-sm",
+  bordered: "ds:border ds:rounded-md ds:px-3 ds:py-2",
 };
 
 const Breadcrumb = React.forwardRef<HTMLElement, BreadcrumbProps>(
@@ -101,10 +101,10 @@ const Breadcrumb = React.forwardRef<HTMLElement, BreadcrumbProps>(
       if (normalizedShowHome === "label") {
         homeItem = [{ label: "Home", href: "/" }];
       } else if (normalizedShowHome === "icon") {
-        homeItem = [{ icon: <Home className="size-4" />, href: "/" }];
+        homeItem = [{ icon: <Home className="ds:size-4" />, href: "/" }];
       } else if (normalizedShowHome === "both") {
         homeItem = [
-          { label: "Home", icon: <Home className="size-4" />, href: "/" },
+          { label: "Home", icon: <Home className="ds:size-4" />, href: "/" },
         ];
       } else if (
         typeof normalizedShowHome === "object" &&
@@ -148,15 +148,15 @@ const Breadcrumb = React.forwardRef<HTMLElement, BreadcrumbProps>(
                 <SBreadcrumbEllipsis />
               </SBreadcrumbItem>
             </PopoverTrigger>
-            <PopoverContent className="w-auto max-w-64 p-2">
+            <PopoverContent className="ds:w-auto ds:max-w-64 ds:p-2">
               {hiddenItems.map((item, index) => (
                 <div
                   key={index}
-                  className="flex items-center gap-2 py-1 px-3 rounded hover:bg-muted"
+                  className="ds:flex ds:items-center ds:gap-2 ds:py-1 ds:px-3 ds:rounded ds:hover:bg-muted"
                 >
                   {item.icon}
                   {item.label && (
-                    <a href={item.href} className="text-sm hover:underline">
+                    <a href={item.href} className="ds:text-sm ds:hover:underline">
                       {item.label}
                     </a>
                   )}
@@ -195,14 +195,14 @@ const Breadcrumb = React.forwardRef<HTMLElement, BreadcrumbProps>(
                 <SBreadcrumbItem>
                   {isLast ? (
                     <SBreadcrumbPage>
-                      <div className="flex items-center gap-1">
+                      <div className="ds:flex ds:items-center ds:gap-1">
                         {item.icon}
                         {item.label}
                       </div>
                     </SBreadcrumbPage>
                   ) : (
                     <SBreadcrumbLink href={item.href}>
-                      <div className="flex items-center gap-1">
+                      <div className="ds:flex ds:items-center ds:gap-1">
                         {item.icon}
                         {item.label}
                       </div>

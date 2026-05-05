@@ -217,7 +217,7 @@ const columns: ColumnDef<Project>[] = [
       return (
         <Badge
           variant="outline"
-          className="capitalize gap-1"
+          className="ds:capitalize ds:gap-1"
           color={status === "active" ? "success" : "error"}
         >
           <Icon />
@@ -254,8 +254,8 @@ const columns: ColumnDef<Project>[] = [
       const budget = cell.getValue<Project["budget"]>();
 
       return (
-        <div className="flex items-center gap-1">
-          <DollarSign className="size-4" />
+        <div className="ds:flex ds:items-center ds:gap-1">
+          <DollarSign className="ds:size-4" />
           {budget.toLocaleString()}
         </div>
       );
@@ -268,7 +268,7 @@ const columns: ColumnDef<Project>[] = [
     cell: ({ cell }: CellContext<Project, unknown>) => {
       const priority = cell.getValue<Project["priority"]>();
       return (
-        <Badge variant="outline" className="capitalize">
+        <Badge variant="outline" className="ds:capitalize">
           {priority}
         </Badge>
       );
@@ -393,7 +393,7 @@ const columns: ColumnDef<Project>[] = [
     cell: ({ cell }: CellContext<Project, unknown>) => {
       const tags = cell.getValue<Project["tags"]>();
       return (
-        <div className="flex gap-1">
+        <div className="ds:flex ds:gap-1">
           {tags.map((tag, idx) => (
             <Badge key={idx} variant="outline" size="sm">
               {tag}
@@ -433,7 +433,7 @@ const columns: ColumnDef<Project>[] = [
     id: "actions",
     cell: function Cell() {
       return (
-        <div className="flex gap-1 justify-end">
+        <div className="ds:flex ds:gap-1 ds:justify-end">
           <Button variant={"ghost"} color="muted">
             <Edit3 />
           </Button>
@@ -490,7 +490,7 @@ export const Default = () => {
   });
   console.log(table.getRowModel());
   return (
-    <div className="data-table-container">
+    <div className="ds:data-table-container">
       <DataTableToolbar
         table={table}
         showColumnFilters
@@ -531,7 +531,7 @@ const WithNuqsStory = () => {
   });
 
   return (
-    <div className="data-table-container">
+    <div className="ds:data-table-container">
       <DataTable table={table}>
         <DataTableToolbar table={table} />
       </DataTable>
@@ -556,7 +556,7 @@ export const WithOptions = () => {
   });
 
   return (
-    <div className="data-table-container">
+    <div className="ds:data-table-container">
       <DataTableToolbar table={table} showColumnVisibilityToggle />
       <DataTable
         table={table}
@@ -564,7 +564,7 @@ export const WithOptions = () => {
         bordered={true}
         loading={false}
         footer={(currentPageData) => (
-          <div className="text-center py-2">
+          <div className="ds:text-center ds:py-2">
             Footer: Showing {currentPageData.length} of {demoData.length}{" "}
             projects
           </div>

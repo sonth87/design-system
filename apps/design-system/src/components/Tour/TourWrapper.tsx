@@ -116,10 +116,10 @@ function TourWrapper({
               {step.description && (
                 <Description>{step.description}</Description>
               )}
-              {step.content && <div className="py-2">{step.content}</div>}
+              {step.content && <div className="ds:py-2">{step.content}</div>}
               {!step.hideFooter && (
                 <Footer>
-                  <div className="flex items-center gap-2">
+                  <div className="ds:flex ds:items-center ds:gap-2">
                     {!step.hideStepCounter && <StepCounter />}
                     {!step.hideSkip &&
                       index === 0 &&
@@ -129,7 +129,7 @@ function TourWrapper({
                         <Skip />
                       ))}
                   </div>
-                  <div className="flex items-center gap-2">
+                  <div className="ds:flex ds:items-center ds:gap-2">
                     {index > 0 &&
                       (buttonConfig?.prev ? (
                         <Prev>{buttonConfig.prev}</Prev>

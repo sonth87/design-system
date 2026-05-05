@@ -136,16 +136,16 @@ export function DataTableSliderFilter<TData>({
   );
 
   const PopContent = (
-    <div className="flex w-auto flex-col gap-4">
-      <div className="flex flex-col gap-3">
-        <p className="font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+    <div className="ds:flex ds:w-auto ds:flex-col ds:gap-4">
+      <div className="ds:flex ds:flex-col ds:gap-3">
+        <p className="ds:font-medium ds:leading-none ds:peer-disabled:cursor-not-allowed ds:peer-disabled:opacity-70">
           {title}
         </p>
-        <div className="flex items-center gap-4">
-          <label htmlFor={`${id}-from`} className="sr-only">
+        <div className="ds:flex ds:items-center ds:gap-4">
+          <label htmlFor={`${id}-from`} className="ds:sr-only">
             From
           </label>
-          <div className="relative">
+          <div className="ds:relative">
             <Input
               id={`${id}-from`}
               type="number"
@@ -158,18 +158,18 @@ export function DataTableSliderFilter<TData>({
               max={max}
               value={range[0]?.toString()}
               onChange={onFromInputChange}
-              className={cn("h-8 w-24", unit && "pr-8")}
+              className={cn("ds:h-8 ds:w-24", unit && "ds:pr-8")}
             />
             {unit && (
-              <span className="absolute top-0 right-0 bottom-0 flex items-center rounded-r-md bg-accent px-2 text-muted-foreground text-sm">
+              <span className="ds:absolute ds:top-0 ds:right-0 ds:bottom-0 ds:flex ds:items-center ds:rounded-r-md ds:bg-accent ds:px-2 ds:text-muted-foreground ds:text-sm">
                 {unit}
               </span>
             )}
           </div>
-          <label htmlFor={`${id}-to`} className="sr-only">
+          <label htmlFor={`${id}-to`} className="ds:sr-only">
             to
           </label>
-          <div className="relative">
+          <div className="ds:relative">
             <Input
               id={`${id}-to`}
               type="number"
@@ -182,16 +182,16 @@ export function DataTableSliderFilter<TData>({
               max={max}
               value={range[1]?.toString()}
               onChange={onToInputChange}
-              className={cn("h-8 w-24", unit && "pr-8")}
+              className={cn("ds:h-8 ds:w-24", unit && "ds:pr-8")}
             />
             {unit && (
-              <span className="absolute top-0 right-0 bottom-0 flex items-center rounded-r-md bg-accent px-2 text-muted-foreground text-sm">
+              <span className="ds:absolute ds:top-0 ds:right-0 ds:bottom-0 ds:flex ds:items-center ds:rounded-r-md ds:bg-accent ds:px-2 ds:text-muted-foreground ds:text-sm">
                 {unit}
               </span>
             )}
           </div>
         </div>
-        <label htmlFor={`${id}-slider`} className="sr-only">
+        <label htmlFor={`${id}-slider`} className="ds:sr-only">
           {title} slider
         </label>
         <Slider
@@ -216,13 +216,13 @@ export function DataTableSliderFilter<TData>({
 
   return (
     <Popover content={PopContent}>
-      <Button variant="outline" size="sm" className="border-dashed font-normal">
+      <Button variant="outline" size="sm" className="ds:border-dashed ds:font-normal">
         {columnFilterValue ? (
           <div
             role="button"
             aria-label={`Clear ${title} filter`}
             tabIndex={0}
-            className="rounded-sm opacity-70 transition-opacity hover:opacity-100 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+            className="ds:rounded-sm ds:opacity-70 ds:transition-opacity ds:hover:opacity-100 ds:focus-visible:outline-none ds:focus-visible:ring-1 ds:focus-visible:ring-ring"
             onClick={onReset}
           >
             <XCircle />
@@ -235,7 +235,7 @@ export function DataTableSliderFilter<TData>({
           <>
             <Separator
               orientation="vertical"
-              className="mx-0.5 data-[orientation=vertical]:h-4"
+              className="ds:mx-0.5 ds:data-[orientation=vertical]:h-4"
             />
             {formatValue(columnFilterValue[0])} -{" "}
             {formatValue(columnFilterValue[1])}

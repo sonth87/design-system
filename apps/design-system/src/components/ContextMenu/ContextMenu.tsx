@@ -188,7 +188,7 @@ const ContextMenu = React.forwardRef<HTMLDivElement, ContextMenuProps>(
                   <SContextMenuSubTrigger
                     disabled={item.disabled}
                     className={cn(
-                      item.disabled ? "opacity-50 cursor-not-allowed" : "",
+                      item.disabled ? "ds:opacity-50 ds:cursor-not-allowed" : "",
                       item.className
                     )}
                   >

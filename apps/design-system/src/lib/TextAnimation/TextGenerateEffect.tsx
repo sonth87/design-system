@@ -47,7 +47,7 @@ function TextGenerateEffect({
   return (
     <div
       ref={localRef}
-      className={cn("font-bold", className)}
+      className={cn("ds:font-bold", className)}
       data-slot="text-generate-effect"
       {...(props as any)}
     >
@@ -55,7 +55,7 @@ function TextGenerateEffect({
         {wordsArray.map((word, idx) => (
           <motion.span
             key={`${word}-${idx}`}
-            className="opacity-0 will-change-transform will-change-opacity will-change-filter"
+            className="ds:opacity-0 ds:will-change-transform ds:will-change-opacity ds:will-change-filter"
             style={{
               filter: filter ? "blur(10px)" : "none",
             }}

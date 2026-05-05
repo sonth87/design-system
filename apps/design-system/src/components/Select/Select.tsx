@@ -118,10 +118,10 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
 
     // Helper text styles
     const helperTextStyles = {
-      default: "text-muted-foreground",
-      success: "text-success",
-      warning: "text-warning",
-      error: "text-error",
+      default: "ds:text-muted-foreground",
+      success: "ds:text-success",
+      warning: "ds:text-warning",
+      error: "ds:text-error",
     };
 
     // Calculate current size
@@ -148,28 +148,28 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
       <div className={className}>
         <div
           ref={ref}
-          className={cn("flex flex-col gap-1.5 relative", {
-            "floating-label relative": isFloatLabel,
+          className={cn("ds:flex ds:flex-col ds:gap-1.5 ds:relative", {
+            "ds:floating-label ds:relative": isFloatLabel,
           })}
         >
           {!isFloatLabel && label && (
             <label
               htmlFor={selectId}
-              className="flex gap-2 text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+              className="ds:flex ds:gap-2 ds:text-sm ds:font-medium ds:leading-none ds:peer-disabled:cursor-not-allowed ds:peer-disabled:opacity-70"
             >
               <span>
                 {label}
-                {required && <span className="text-error ml-0.5">*</span>}
+                {required && <span className="ds:text-error ds:ml-0.5">*</span>}
               </span>
               {infoTooltip && (
                 <Tooltip content={infoTooltip}>
-                  <Info className="size-3.5 min-w-3.5" />
+                  <Info className="ds:size-3.5 ds:min-w-3.5" />
                 </Tooltip>
               )}
             </label>
           )}
 
-          <div className="relative">
+          <div className="ds:relative">
             {!multiple ? (
               // Single Mode
               <>
@@ -187,16 +187,16 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
                   disabled={disabled}
                   id={selectId}
                   className={cn(
-                    "peer w-full justify-start",
+                    "ds:peer ds:w-full ds:justify-start",
                     {
-                      "pt-5 pb-1": isFloatLabel && size !== "lg",
+                      "ds:pt-5 ds:pb-1": isFloatLabel && size !== "lg",
                     }
                     // className,
                   )}
                   size={currentSize}
                   state={state}
-                  dropdownClassName={cn("opacity-40", {
-                    "translate-y-[-8px]": isFloatLabel && size !== "lg",
+                  dropdownClassName={cn("ds:opacity-40", {
+                    "ds:translate-y-[-8px]": isFloatLabel && size !== "lg",
                   })}
                   searchable={!!search}
                   tagRender={tagRender}
@@ -210,7 +210,7 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
                     infoTooltip={infoTooltip}
                     required={required}
                     shouldFloat={!!(value ?? internalValue)}
-                    className="pointer-events-none"
+                    className="ds:pointer-events-none"
                   >
                     {label}
                   </FloatingLabel>
@@ -231,9 +231,9 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
                   id={selectId}
                   disabled={disabled}
                   className={cn(
-                    "peer w-full",
+                    "ds:peer ds:w-full",
                     {
-                      "pt-5 pb-1": isFloatLabel && size !== "lg",
+                      "ds:pt-5 ds:pb-1": isFloatLabel && size !== "lg",
                     },
                     className
                   )}
@@ -300,7 +300,7 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
           </div>
 
           {helperText && (
-            <p className={cn("text-xs", state ? helperTextStyles[state] : "")}>
+            <p className={cn("ds:text-xs", state ? helperTextStyles[state] : "")}>
               {helperText}
             </p>
           )}

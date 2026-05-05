@@ -186,13 +186,13 @@ export const Default: Story = {
     followText: "Follow me!",
   },
   render: (args) => (
-    <div className="relative h-[300px] w-[500px] flex items-center justify-center bg-gradient-to-br from-slate-900 to-slate-800 rounded-xl">
+    <div className="ds:relative ds:h-[300px] ds:w-[500px] ds:flex ds:items-center ds:justify-center ds:bg-gradient-to-br ds:from-slate-900 ds:to-slate-800 ds:rounded-xl">
       <CursorProvider
         cursorType={
-          <div className="h-12 w-12 rounded-full bg-gradient-to-br from-pink-400 to-purple-400 opacity-50 blur-sm" />
+          <div className="ds:h-12 ds:w-12 ds:rounded-full ds:bg-gradient-to-br ds:from-pink-400 ds:to-purple-400 ds:opacity-50 ds:blur-sm" />
         }
       >
-        <div className="text-white text-lg">Move your cursor here</div>
+        <div className="ds:text-white ds:text-lg">Move your cursor here</div>
         <CursorFollow {...args} />
       </CursorProvider>
     </div>
@@ -201,7 +201,7 @@ export const Default: Story = {
 
 export const DifferentAlignments: Story = {
   render: () => (
-    <div className="grid grid-cols-3 gap-4">
+    <div className="ds:grid ds:grid-cols-3 ds:gap-4">
       {(
         [
           "top-left",
@@ -217,15 +217,15 @@ export const DifferentAlignments: Story = {
       ).map((align) => (
         <div
           key={align}
-          className="relative h-[100px] w-[100px] flex items-center justify-center bg-gradient-to-br from-blue-900 to-blue-700 rounded-lg"
+          className="ds:relative ds:h-[100px] ds:w-[100px] ds:flex ds:items-center ds:justify-center ds:bg-gradient-to-br ds:from-blue-900 ds:to-blue-700 ds:rounded-lg"
         >
           <CursorProvider>
-            <div className="text-white text-xs text-center">{align}</div>
+            <div className="ds:text-white ds:text-xs ds:text-center">{align}</div>
             <Cursor>
-              <div className="h-4 w-4 rounded-full bg-yellow-400" />
+              <div className="ds:h-4 ds:w-4 ds:rounded-full ds:bg-yellow-400" />
             </Cursor>
             <CursorFollow align={align} sideOffset={10}>
-              <div className="px-2 py-1 bg-yellow-400 rounded text-xs font-bold text-blue-900">
+              <div className="ds:px-2 ds:py-1 ds:bg-yellow-400 ds:rounded ds:text-xs ds:font-bold ds:text-blue-900">
                 {align}
               </div>
             </CursorFollow>
@@ -242,19 +242,19 @@ export const CustomCursor: Story = {
     sideOffset: 25,
   },
   render: (args) => (
-    <div className="relative h-[300px] w-[500px] flex items-center justify-center bg-gradient-to-br from-emerald-900 to-teal-800 rounded-xl">
+    <div className="ds:relative ds:h-[300px] ds:w-[500px] ds:flex ds:items-center ds:justify-center ds:bg-gradient-to-br ds:from-emerald-900 ds:to-teal-800 ds:rounded-xl">
       <CursorProvider>
-        <div className="text-white text-xl">Custom animated cursor</div>
+        <div className="ds:text-white ds:text-xl">Custom animated cursor</div>
         <Cursor>
-          <div className="relative">
-            <div className="h-8 w-8 rounded-full bg-emerald-400 animate-pulse" />
-            <div className="absolute inset-0 h-8 w-8 rounded-full bg-emerald-400/30 animate-ping" />
+          <div className="ds:relative">
+            <div className="ds:h-8 ds:w-8 ds:rounded-full ds:bg-emerald-400 ds:animate-pulse" />
+            <div className="ds:absolute ds:inset-0 ds:h-8 ds:w-8 ds:rounded-full ds:bg-emerald-400/30 ds:animate-ping" />
           </div>
         </Cursor>
         <CursorFollow {...args}>
-          <div className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg shadow-xl">
-            <div className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="text-sm font-medium text-emerald-900">
+          <div className="ds:flex ds:items-center ds:gap-2 ds:px-4 ds:py-2 ds:bg-white ds:rounded-lg ds:shadow-xl">
+            <div className="ds:h-2 ds:w-2 ds:rounded-full ds:bg-emerald-500 ds:animate-pulse" />
+            <span className="ds:text-sm ds:font-medium ds:text-emerald-900">
               Following...
             </span>
           </div>
@@ -271,14 +271,14 @@ export const SlowTransition: Story = {
     transition: { stiffness: 100, damping: 20, bounce: 0 },
   },
   render: (args) => (
-    <div className="relative h-[300px] w-[500px] flex items-center justify-center bg-gradient-to-br from-orange-900 to-red-800 rounded-xl">
+    <div className="ds:relative ds:h-[300px] ds:w-[500px] ds:flex ds:items-center ds:justify-center ds:bg-gradient-to-br ds:from-orange-900 ds:to-red-800 ds:rounded-xl">
       <CursorProvider>
-        <div className="text-white text-lg">Slow, smooth follow effect</div>
+        <div className="ds:text-white ds:text-lg">Slow, smooth follow effect</div>
         <Cursor>
-          <div className="h-6 w-6 rounded-full bg-orange-400 border-2 border-white" />
+          <div className="ds:h-6 ds:w-6 ds:rounded-full ds:bg-orange-400 ds:border-2 ds:border-white" />
         </Cursor>
         <CursorFollow {...args}>
-          <div className="px-4 py-2 bg-white rounded-full shadow-lg text-sm font-medium text-orange-900">
+          <div className="ds:px-4 ds:py-2 ds:bg-white ds:rounded-full ds:shadow-lg ds:text-sm ds:font-medium ds:text-orange-900">
             Slow follow
           </div>
         </CursorFollow>
@@ -294,14 +294,14 @@ export const FastTransition: Story = {
     transition: { stiffness: 1000, damping: 80, bounce: 0 },
   },
   render: (args) => (
-    <div className="relative h-[300px] w-[500px] flex items-center justify-center bg-gradient-to-br from-cyan-900 to-blue-800 rounded-xl">
+    <div className="ds:relative ds:h-[300px] ds:w-[500px] ds:flex ds:items-center ds:justify-center ds:bg-gradient-to-br ds:from-cyan-900 ds:to-blue-800 ds:rounded-xl">
       <CursorProvider>
-        <div className="text-white text-lg">Fast, snappy follow effect</div>
+        <div className="ds:text-white ds:text-lg">Fast, snappy follow effect</div>
         <Cursor>
-          <div className="h-6 w-6 rounded-full bg-cyan-400 border-2 border-white" />
+          <div className="ds:h-6 ds:w-6 ds:rounded-full ds:bg-cyan-400 ds:border-2 ds:border-white" />
         </Cursor>
         <CursorFollow {...args}>
-          <div className="px-4 py-2 bg-white rounded-full shadow-lg text-sm font-medium text-cyan-900">
+          <div className="ds:px-4 ds:py-2 ds:bg-white ds:rounded-full ds:shadow-lg ds:text-sm ds:font-medium ds:text-cyan-900">
             Fast follow
           </div>
         </CursorFollow>
@@ -316,23 +316,23 @@ export const InteractiveCard: Story = {
     sideOffset: 0,
   },
   render: (args) => (
-    <div className="relative h-[300px] w-[500px] flex items-center justify-center bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 rounded-xl p-8">
+    <div className="ds:relative ds:h-[300px] ds:w-[500px] ds:flex ds:items-center ds:justify-center ds:bg-gradient-to-br ds:from-indigo-900 ds:via-purple-900 ds:to-pink-900 ds:rounded-xl ds:p-8">
       <CursorProvider>
-        <div className="grid grid-cols-3 gap-6">
+        <div className="ds:grid ds:grid-cols-3 ds:gap-6">
           {[1, 2, 3, 4, 5, 6].map((item) => (
             <div
               key={item}
-              className="h-24 w-24 bg-white/10 backdrop-blur-sm rounded-lg flex items-center justify-center text-white text-2xl font-bold border border-white/20 hover:bg-white/20 transition-colors"
+              className="ds:h-24 ds:w-24 ds:bg-white/10 ds:backdrop-blur-sm ds:rounded-lg ds:flex ds:items-center ds:justify-center ds:text-white ds:text-2xl ds:font-bold ds:border ds:border-white/20 ds:hover:bg-white/20 ds:transition-colors"
             >
               {item}
             </div>
           ))}
         </div>
         <Cursor>
-          <div className="h-12 w-12 rounded-full bg-gradient-to-br from-pink-400 to-purple-400 opacity-50 blur-sm" />
+          <div className="ds:h-12 ds:w-12 ds:rounded-full ds:bg-gradient-to-br ds:from-pink-400 ds:to-purple-400 ds:opacity-50 ds:blur-sm" />
         </Cursor>
         <CursorFollow {...args}>
-          <div className="px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-500 rounded-lg shadow-2xl text-white font-semibold text-sm">
+          <div className="ds:px-6 ds:py-3 ds:bg-gradient-to-r ds:from-pink-500 ds:to-purple-500 ds:rounded-lg ds:shadow-2xl ds:text-white ds:font-semibold ds:text-sm">
             ✨ Interactive
           </div>
         </CursorFollow>
@@ -347,15 +347,15 @@ export const InteractiveCard: Story = {
 export const Method1_Manual: Story = {
   name: "1: Manual Setup",
   render: () => (
-    <div className="relative h-[300px] w-[500px] flex items-center justify-center bg-gradient-to-br from-blue-900 to-indigo-800 rounded-xl">
+    <div className="ds:relative ds:h-[300px] ds:w-[500px] ds:flex ds:items-center ds:justify-center ds:bg-gradient-to-br ds:from-blue-900 ds:to-indigo-800 ds:rounded-xl">
       <CursorProvider>
-        <div className="text-white text-lg text-center space-y-4">
-          <h3 className="font-bold">Cách 1: Manual Setup</h3>
-          <p className="text-sm text-gray-300">
+        <div className="ds:text-white ds:text-lg ds:text-center ds:space-y-4">
+          <h3 className="ds:font-bold">Cách 1: Manual Setup</h3>
+          <p className="ds:text-sm ds:text-gray-300">
             Sử dụng CursorProvider + Cursor + CursorFollow riêng biệt
           </p>
-          <div className="mt-4 p-4 bg-white/10 rounded-lg">
-            <p className="text-xs font-mono text-left">
+          <div className="ds:mt-4 ds:p-4 ds:bg-white/10 ds:rounded-lg">
+            <p className="ds:text-xs ds:font-mono ds:text-left">
               <pre>
                 {`<CursorProvider>
   <div>Nội dung</div> // content
@@ -391,16 +391,16 @@ export const Method2_Hook = () => {
   return (
     <div
       {...cursorProps}
-      className="h-[400px] w-[500px] flex items-center justify-center bg-gradient-to-br from-purple-900 to-pink-800 rounded-xl"
+      className="ds:h-[400px] ds:w-[500px] ds:flex ds:items-center ds:justify-center ds:bg-gradient-to-br ds:from-purple-900 ds:to-pink-800 ds:rounded-xl"
     >
       {cursorProps.children(
-        <div className="text-white text-lg text-center space-y-4">
-          <h3 className="font-bold">Cách 2: Hook-based Setup</h3>
-          <p className="text-sm text-gray-300">
+        <div className="ds:text-white ds:text-lg ds:text-center ds:space-y-4">
+          <h3 className="ds:font-bold">Cách 2: Hook-based Setup</h3>
+          <p className="ds:text-sm ds:text-gray-300">
             Sử dụng hook useCursorFollow và spread props
           </p>
-          <div className="mt-4 p-4 bg-white/10 rounded-lg">
-            <p className="text-xs font-mono text-left whitespace-pre">
+          <div className="ds:mt-4 ds:p-4 ds:bg-white/10 ds:rounded-lg">
+            <p className="ds:text-xs ds:font-mono ds:text-left ds:whitespace-pre">
               {`function MyComponent() {
   const cursorProps = useCursorFollow({
     cursorType: "pointer",
@@ -430,19 +430,19 @@ export const Method2_Hook = () => {
 export const Method3_AutoSetup: Story = {
   name: "3: Auto Setup",
   render: () => (
-    <div className="h-[300px] w-[500px] flex items-center justify-center bg-gradient-to-br from-emerald-900 to-teal-800 rounded-xl">
+    <div className="ds:h-[300px] ds:w-[500px] ds:flex ds:items-center ds:justify-center ds:bg-gradient-to-br ds:from-emerald-900 ds:to-teal-800 ds:rounded-xl">
       <CursorProvider
         cursorType="pointer"
         followText="Click me"
         showFollow={true}
       >
-        <div className="text-white text-lg text-center space-y-4">
-          <h3 className="font-bold">Cách 3: Auto Setup</h3>
-          <p className="text-sm text-gray-300">
+        <div className="ds:text-white ds:text-lg ds:text-center ds:space-y-4">
+          <h3 className="ds:font-bold">Cách 3: Auto Setup</h3>
+          <p className="ds:text-sm ds:text-gray-300">
             CursorProvider tự động render cursor và follow
           </p>
-          <div className="mt-4 p-4 bg-white/10 rounded-lg">
-            <p className="text-xs font-mono text-left">
+          <div className="ds:mt-4 ds:p-4 ds:bg-white/10 ds:rounded-lg">
+            <p className="ds:text-xs ds:font-mono ds:text-left">
               <pre>{`<CursorProvider
   cursorType="pointer" 
   followText="Click me"
@@ -468,16 +468,16 @@ export const HookWithDefaultCursor = () => {
   return (
     <div
       {...cursorProps}
-      className="h-[300px] w-[500px] flex items-center justify-center bg-gradient-to-br from-violet-900 to-fuchsia-800 rounded-xl"
+      className="ds:h-[300px] ds:w-[500px] ds:flex ds:items-center ds:justify-center ds:bg-gradient-to-br ds:from-violet-900 ds:to-fuchsia-800 ds:rounded-xl"
     >
       {cursorProps.children(
-        <div className="text-white text-lg text-center space-y-4">
-          <h3 className="font-bold">Hook with System Cursor</h3>
-          <p className="text-sm text-gray-300">
+        <div className="ds:text-white ds:text-lg ds:text-center ds:space-y-4">
+          <h3 className="ds:font-bold">Hook with System Cursor</h3>
+          <p className="ds:text-sm ds:text-gray-300">
             useCursorFollow với type="default" - hiển thị cursor hệ thống
           </p>
-          <div className="mt-4 p-4 bg-white/10 rounded-lg">
-            <p className="text-xs font-mono text-left whitespace-pre">
+          <div className="ds:mt-4 ds:p-4 ds:bg-white/10 ds:rounded-lg">
+            <p className="ds:text-xs ds:font-mono ds:text-left ds:whitespace-pre">
               {`const cursorProps = useCursorFollow({
   cursorType: "default", // Cursor hệ thống
   followText: "System cursor + Follow",
@@ -493,19 +493,19 @@ export const HookWithDefaultCursor = () => {
 export const FollowWithReactNode: Story = {
   name: "Follow with ReactNode",
   render: () => (
-    <div className="relative h-[300px] w-[500px] flex items-center justify-center bg-gradient-to-br from-rose-900 to-orange-800 rounded-xl">
+    <div className="ds:relative ds:h-[300px] ds:w-[500px] ds:flex ds:items-center ds:justify-center ds:bg-gradient-to-br ds:from-rose-900 ds:to-orange-800 ds:rounded-xl">
       <CursorProvider cursorType="pointer">
-        <div className="text-white text-lg">followText accepts ReactNode!</div>
+        <div className="ds:text-white ds:text-lg">followText accepts ReactNode!</div>
         <CursorFollow
           followText={
-            <div className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-rose-500 to-orange-500 rounded-lg shadow-xl">
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <div className="ds:flex ds:items-center ds:gap-2 ds:px-4 ds:py-2 ds:bg-gradient-to-r ds:from-rose-500 ds:to-orange-500 ds:rounded-lg ds:shadow-xl">
+              <svg className="ds:w-4 ds:h-4" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
               </svg>
-              <span className="text-sm font-bold text-white">
+              <span className="ds:text-sm ds:font-bold ds:text-white">
                 Custom ReactNode!
               </span>
-              <div className="w-2 h-2 rounded-full bg-white animate-pulse" />
+              <div className="ds:w-2 ds:h-2 ds:rounded-full ds:bg-white ds:animate-pulse" />
             </div>
           }
           align="bottom-right"
@@ -518,24 +518,24 @@ export const FollowWithReactNode: Story = {
 export const CustomCursorTypeAsReactNode: Story = {
   name: "Custom cursorType as ReactNode",
   render: () => (
-    <div className="relative h-[300px] w-[500px] flex items-center justify-center bg-gradient-to-br from-purple-900 to-pink-800 rounded-xl">
+    <div className="ds:relative ds:h-[300px] ds:w-[500px] ds:flex ds:items-center ds:justify-center ds:bg-gradient-to-br ds:from-purple-900 ds:to-pink-800 ds:rounded-xl">
       <CursorProvider
         cursorType={
-          <div className="relative">
-            <div className="h-8 w-8 rounded-full bg-pink-400 border-2 border-white shadow-lg" />
-            <div className="absolute inset-0 h-8 w-8 rounded-full bg-pink-400/50 animate-ping" />
+          <div className="ds:relative">
+            <div className="ds:h-8 ds:w-8 ds:rounded-full ds:bg-pink-400 ds:border-2 ds:border-white ds:shadow-lg" />
+            <div className="ds:absolute ds:inset-0 ds:h-8 ds:w-8 ds:rounded-full ds:bg-pink-400/50 ds:animate-ping" />
           </div>
         }
         followText="Custom cursor type!"
         followAlign="bottom-right"
       >
-        <div className="text-white text-lg text-center space-y-4">
-          <h3 className="font-bold">cursorType as ReactNode</h3>
-          <p className="text-sm text-gray-300">
+        <div className="ds:text-white ds:text-lg ds:text-center ds:space-y-4">
+          <h3 className="ds:font-bold">cursorType as ReactNode</h3>
+          <p className="ds:text-sm ds:text-gray-300">
             Bạn có thể truyền custom ReactNode trực tiếp vào cursorType prop
           </p>
-          <div className="mt-4 p-4 bg-white/10 rounded-lg">
-            <p className="text-xs font-mono text-left whitespace-pre">
+          <div className="ds:mt-4 ds:p-4 ds:bg-white/10 ds:rounded-lg">
+            <p className="ds:text-xs ds:font-mono ds:text-left ds:whitespace-pre">
               {`<CursorProvider
   cursorType={
     <div className="custom-cursor">
@@ -557,19 +557,19 @@ export const CustomCursorTypeAsReactNode: Story = {
 export const CursorComponentWithReactNode: Story = {
   name: "Cursor Component with ReactNode",
   render: () => (
-    <div className="relative h-[300px] w-[500px] flex items-center justify-center bg-gradient-to-br from-cyan-900 to-blue-800 rounded-xl">
+    <div className="ds:relative ds:h-[300px] ds:w-[500px] ds:flex ds:items-center ds:justify-center ds:bg-gradient-to-br ds:from-cyan-900 ds:to-blue-800 ds:rounded-xl">
       <CursorProvider>
-        <div className="text-white text-lg text-center space-y-4">
-          <h3 className="font-bold">Cursor với cursorType ReactNode</h3>
-          <p className="text-sm text-gray-300">
+        <div className="ds:text-white ds:text-lg ds:text-center ds:space-y-4">
+          <h3 className="ds:font-bold">Cursor với cursorType ReactNode</h3>
+          <p className="ds:text-sm ds:text-gray-300">
             Truyền custom cursor trực tiếp vào Cursor component
           </p>
         </div>
         <Cursor
           cursorType={
-            <div className="flex items-center gap-1">
-              <div className="h-6 w-6 rounded-full bg-cyan-400 border-2 border-white" />
-              <div className="h-2 w-2 rounded-full bg-cyan-400 animate-bounce" />
+            <div className="ds:flex ds:items-center ds:gap-1">
+              <div className="ds:h-6 ds:w-6 ds:rounded-full ds:bg-cyan-400 ds:border-2 ds:border-white" />
+              <div className="ds:h-2 ds:w-2 ds:rounded-full ds:bg-cyan-400 ds:animate-bounce" />
             </div>
           }
         />

@@ -29,25 +29,25 @@ import { Badge } from "./badge";
 import { Label } from "./label";
 
 const multiSelectTriggerVariants = cva(
-  "flex h-auto w-fit items-center justify-between gap-2 overflow-hidden rounded-md border bg-transparent shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50 data-[placeholder]:text-muted-foreground dark:bg-background dark:hover:bg-input/50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground",
+  "ds:flex ds:h-auto ds:w-fit ds:items-center ds:justify-between ds:gap-2 ds:overflow-hidden ds:rounded-md ds:border ds:bg-transparent ds:shadow-xs ds:transition-[color,box-shadow] ds:outline-none ds:focus-visible:ring-[3px] ds:disabled:cursor-not-allowed ds:disabled:opacity-50 ds:data-[placeholder]:text-muted-foreground ds:dark:bg-background ds:dark:hover:bg-input/50 ds:[&_svg]:pointer-events-none ds:[&_svg]:shrink-0 ds:[&_svg:not([class*='size-'])]:size-4 ds:[&_svg:not([class*='text-'])]:text-muted-foreground",
   {
     variants: {
       size: {
-        xs: "min-h-6 text-xs px-2 py-0.5",
-        sm: "min-h-8 text-sm px-2.5 py-1",
-        normal: "min-h-9 px-3 py-1.5",
-        lg: "min-h-11 px-4 py-2",
-        xl: "min-h-14 px-5 py-3",
+        xs: "ds:min-h-6 ds:text-xs ds:px-2 ds:py-0.5",
+        sm: "ds:min-h-8 ds:text-sm ds:px-2.5 ds:py-1",
+        normal: "ds:min-h-9 ds:px-3 ds:py-1.5",
+        lg: "ds:min-h-11 ds:px-4 ds:py-2",
+        xl: "ds:min-h-14 ds:px-5 ds:py-3",
       },
       state: {
         default:
-          "border-input focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40",
+          "ds:border-input ds:focus-visible:border-ring ds:focus-visible:ring-ring/50 ds:aria-invalid:border-destructive ds:aria-invalid:ring-destructive/20 ds:dark:aria-invalid:ring-destructive/40",
         success:
-          "border-success ring-success/30 focus-visible:border-success focus-visible:ring-success/50",
+          "ds:border-success ds:ring-success/30 ds:focus-visible:border-success ds:focus-visible:ring-success/50",
         error:
-          "border-destructive ring-destructive/30 focus-visible:border-destructive focus-visible:ring-destructive/50",
+          "ds:border-destructive ds:ring-destructive/30 ds:focus-visible:border-destructive ds:focus-visible:ring-destructive/50",
         warning:
-          "border-warning ring-warning/30 focus-visible:border-warning focus-visible:ring-warning/50",
+          "ds:border-warning ds:ring-warning/30 ds:focus-visible:border-warning ds:focus-visible:ring-warning/50",
       },
     },
     defaultVariants: {
@@ -165,10 +165,10 @@ export function MultiSelectTrigger({
         {open && (
           <ChevronUp
             className={cn(
-              "z-10 opacity-50",
+              "ds:z-10 ds:opacity-50",
               {
-                "size-4": size === "sm" || size === "xs",
-                "size-5": size === "lg" || size === "xl",
+                "ds:size-4": size === "sm" || size === "xs",
+                "ds:size-5": size === "lg" || size === "xl",
               },
               dropdownClassName
             )}
@@ -177,10 +177,10 @@ export function MultiSelectTrigger({
         {!open && (
           <ChevronDown
             className={cn(
-              "z-10 opacity-50",
+              "ds:z-10 ds:opacity-50",
               {
-                "size-4": size === "sm" || size === "xs",
-                "size-5": size === "lg" || size === "xl",
+                "ds:size-4": size === "sm" || size === "xs",
+                "ds:size-5": size === "lg" || size === "xl",
               },
               dropdownClassName
             )}
@@ -252,7 +252,7 @@ export function MultiSelectValue({
 
   if (selectedValues.size === 0 && placeholder) {
     return (
-      <span className="min-w-0 overflow-hidden font-normal text-muted-foreground">
+      <span className="ds:min-w-0 ds:overflow-hidden ds:font-normal ds:text-muted-foreground">
         {placeholder}
       </span>
     );
@@ -263,8 +263,8 @@ export function MultiSelectValue({
       {...props}
       ref={handleResize}
       className={cn(
-        "flex w-fit gap-1.5 overflow-hidden",
-        shouldWrap && "h-full flex-wrap",
+        "ds:flex ds:w-fit ds:gap-1.5 ds:overflow-hidden",
+        shouldWrap && "ds:h-full ds:flex-wrap",
         className
       )}
     >
@@ -290,9 +290,9 @@ export function MultiSelectValue({
                   onClick: clickToRemove ? removeHandler : undefined,
                   className: cn(
                     element.props.className,
-                    "group flex items-center gap-1 whitespace-nowrap hover:scale-105 transition-transform",
+                    "ds:group ds:flex ds:items-center ds:gap-1 ds:whitespace-nowrap ds:hover:scale-105 ds:transition-transform",
                     {
-                      "cursor-pointer": clickToRemove,
+                      "ds:cursor-pointer": clickToRemove,
                     }
                   ),
                   "data-selected-item": true,
@@ -308,7 +308,7 @@ export function MultiSelectValue({
               <>
                 {element.props.children}
                 {clickToRemove && (
-                  <XIcon className="size-2 text-muted-foreground group-hover:text-destructive" />
+                  <XIcon className="ds:size-2 ds:text-muted-foreground ds:group-hover:text-destructive" />
                 )}
               </>
             );
@@ -318,13 +318,13 @@ export function MultiSelectValue({
             <Badge
               variant="outline"
               data-selected-item
-              className="group flex items-center gap-1"
+              className="ds:group ds:flex ds:items-center ds:gap-1"
               key={value}
               onClick={clickToRemove ? removeHandler : undefined}
             >
               {itemNode}
               {clickToRemove && (
-                <XIcon className="size-2 text-muted-foreground group-hover:text-destructive" />
+                <XIcon className="ds:size-2 ds:text-muted-foreground ds:group-hover:text-destructive" />
               )}
             </Badge>
           );
@@ -360,7 +360,7 @@ export function MultiSelectContent({
           <CommandList>{children}</CommandList>
         </Command>
       </div>
-      <PopoverContent className="min-w-[var(--radix-popover-trigger-width)] p-0">
+      <PopoverContent className="ds:min-w-[var(--radix-popover-trigger-width)] ds:p-0">
         <Command {...props}>
           {canSearch ? (
             <CommandInput
@@ -369,7 +369,7 @@ export function MultiSelectContent({
               }
             />
           ) : (
-            <button autoFocus className="sr-only" />
+            <button autoFocus className="ds:sr-only" />
           )}
           <CommandList>
             {canSearch && (
@@ -418,18 +418,18 @@ export function MultiSelectItem({
             }
       }
       className={cn(
-        props?.disabled && "opacity-50 cursor-not-allowed grayscale",
-        isSelected && "bg-primary/10 dark:bg-primary/20"
+        props?.disabled && "ds:opacity-50 ds:cursor-not-allowed ds:grayscale",
+        isSelected && "ds:bg-primary/10 ds:dark:bg-primary/20"
       )}
     >
       {!tagRender && icon && (
-        <span className="mr-2 max-w-4 max-h-4">{icon}</span>
+        <span className="ds:mr-2 ds:max-w-4 ds:max-h-4">{icon}</span>
       )}
       {children}
       <CheckIcon
         className={cn(
-          "mr-2 ml-auto size-4",
-          isSelected ? "opacity-100" : "opacity-0"
+          "ds:mr-2 ds:ml-auto ds:size-4",
+          isSelected ? "ds:opacity-100" : "ds:opacity-0"
         )}
       />
     </CommandItem>

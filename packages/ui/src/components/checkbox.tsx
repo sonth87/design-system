@@ -10,86 +10,86 @@ import { cn } from "@dsui/ui/lib/utils";
 const colorVariants = {
   primary: {
     default:
-      "data-[state=checked]:bg-primary data-[state=checked]:border-primary data-[state=checked]:text-primary-foreground data-[state=indeterminate]:bg-primary data-[state=indeterminate]:border-primary data-[state=indeterminate]:text-primary-foreground hover:border-primary transition-colors",
+      "ds:data-[state=checked]:bg-primary ds:data-[state=checked]:border-primary ds:data-[state=checked]:text-primary-foreground ds:data-[state=indeterminate]:bg-primary ds:data-[state=indeterminate]:border-primary ds:data-[state=indeterminate]:text-primary-foreground ds:hover:border-primary ds:transition-colors",
     circle:
-      "rounded-full data-[state=checked]:bg-primary data-[state=checked]:border-primary data-[state=checked]:text-primary-foreground data-[state=indeterminate]:bg-primary data-[state=indeterminate]:border-primary data-[state=indeterminate]:text-primary-foreground hover:border-primary transition-colors",
+      "ds:rounded-full ds:data-[state=checked]:bg-primary ds:data-[state=checked]:border-primary ds:data-[state=checked]:text-primary-foreground ds:data-[state=indeterminate]:bg-primary ds:data-[state=indeterminate]:border-primary ds:data-[state=indeterminate]:text-primary-foreground ds:hover:border-primary ds:transition-colors",
   },
   secondary: {
     default:
-      "data-[state=checked]:bg-secondary data-[state=checked]:border-secondary data-[state=checked]:text-secondary-foreground data-[state=indeterminate]:bg-secondary data-[state=indeterminate]:border-secondary data-[state=indeterminate]:text-secondary-foreground hover:border-primary transition-colors",
+      "ds:data-[state=checked]:bg-secondary ds:data-[state=checked]:border-secondary ds:data-[state=checked]:text-secondary-foreground ds:data-[state=indeterminate]:bg-secondary ds:data-[state=indeterminate]:border-secondary ds:data-[state=indeterminate]:text-secondary-foreground ds:hover:border-primary ds:transition-colors",
     circle:
-      "rounded-full data-[state=checked]:bg-secondary data-[state=checked]:border-secondary data-[state=checked]:text-secondary-foreground data-[state=indeterminate]:bg-secondary data-[state=indeterminate]:border-secondary data-[state=indeterminate]:text-secondary-foreground hover:border-primary transition-colors",
+      "ds:rounded-full ds:data-[state=checked]:bg-secondary ds:data-[state=checked]:border-secondary ds:data-[state=checked]:text-secondary-foreground ds:data-[state=indeterminate]:bg-secondary ds:data-[state=indeterminate]:border-secondary ds:data-[state=indeterminate]:text-secondary-foreground ds:hover:border-primary ds:transition-colors",
   },
   accent: {
     default:
-      "data-[state=checked]:bg-accent data-[state=checked]:border-accent data-[state=checked]:text-accent-foreground data-[state=indeterminate]:bg-accent data-[state=indeterminate]:border-accent data-[state=indeterminate]:text-accent-foreground hover:border-primary transition-colors",
+      "ds:data-[state=checked]:bg-accent ds:data-[state=checked]:border-accent ds:data-[state=checked]:text-accent-foreground ds:data-[state=indeterminate]:bg-accent ds:data-[state=indeterminate]:border-accent ds:data-[state=indeterminate]:text-accent-foreground ds:hover:border-primary ds:transition-colors",
     circle:
-      "rounded-full data-[state=checked]:bg-accent data-[state=checked]:border-accent data-[state=checked]:text-accent-foreground data-[state=indeterminate]:bg-accent data-[state=indeterminate]:border-accent data-[state=indeterminate]:text-accent-foreground hover:border-primary transition-colors",
+      "ds:rounded-full ds:data-[state=checked]:bg-accent ds:data-[state=checked]:border-accent ds:data-[state=checked]:text-accent-foreground ds:data-[state=indeterminate]:bg-accent ds:data-[state=indeterminate]:border-accent ds:data-[state=indeterminate]:text-accent-foreground ds:hover:border-primary ds:transition-colors",
   },
   destructive: {
     default:
-      "data-[state=checked]:bg-destructive data-[state=checked]:border-destructive data-[state=checked]:text-destructive-foreground data-[state=indeterminate]:bg-destructive data-[state=indeterminate]:border-destructive data-[state=indeterminate]:text-destructive-foreground hover:border-primary transition-colors",
+      "ds:data-[state=checked]:bg-destructive ds:data-[state=checked]:border-destructive ds:data-[state=checked]:text-destructive-foreground ds:data-[state=indeterminate]:bg-destructive ds:data-[state=indeterminate]:border-destructive ds:data-[state=indeterminate]:text-destructive-foreground ds:hover:border-primary ds:transition-colors",
     circle:
-      "rounded-full data-[state=checked]:bg-destructive data-[state=checked]:border-destructive data-[state=checked]:text-destructive-foreground data-[state=indeterminate]:bg-destructive data-[state=indeterminate]:border-destructive data-[state=indeterminate]:text-destructive-foreground hover:border-primary transition-colors",
+      "ds:rounded-full ds:data-[state=checked]:bg-destructive ds:data-[state=checked]:border-destructive ds:data-[state=checked]:text-destructive-foreground ds:data-[state=indeterminate]:bg-destructive ds:data-[state=indeterminate]:border-destructive ds:data-[state=indeterminate]:text-destructive-foreground ds:hover:border-primary ds:transition-colors",
   },
   muted: {
     default:
-      "data-[state=checked]:bg-muted data-[state=checked]:border-muted data-[state=checked]:text-muted-foreground data-[state=indeterminate]:bg-muted data-[state=indeterminate]:border-muted data-[state=indeterminate]:text-muted-foreground hover:border-primary transition-colors",
+      "ds:data-[state=checked]:bg-muted ds:data-[state=checked]:border-muted ds:data-[state=checked]:text-muted-foreground ds:data-[state=indeterminate]:bg-muted ds:data-[state=indeterminate]:border-muted ds:data-[state=indeterminate]:text-muted-foreground ds:hover:border-primary ds:transition-colors",
     circle:
-      "rounded-full data-[state=checked]:bg-muted data-[state=checked]:border-muted data-[state=checked]:text-muted-foreground data-[state=indeterminate]:bg-muted data-[state=indeterminate]:border-muted data-[state=indeterminate]:text-muted-foreground hover:border-primary transition-colors",
+      "ds:rounded-full ds:data-[state=checked]:bg-muted ds:data-[state=checked]:border-muted ds:data-[state=checked]:text-muted-foreground ds:data-[state=indeterminate]:bg-muted ds:data-[state=indeterminate]:border-muted ds:data-[state=indeterminate]:text-muted-foreground ds:hover:border-primary ds:transition-colors",
   },
   success: {
     default:
-      "data-[state=checked]:bg-success data-[state=checked]:border-success data-[state=checked]:text-success-foreground data-[state=indeterminate]:bg-success data-[state=indeterminate]:border-success data-[state=indeterminate]:text-success-foreground hover:border-primary transition-colors",
+      "ds:data-[state=checked]:bg-success ds:data-[state=checked]:border-success ds:data-[state=checked]:text-success-foreground ds:data-[state=indeterminate]:bg-success ds:data-[state=indeterminate]:border-success ds:data-[state=indeterminate]:text-success-foreground ds:hover:border-primary ds:transition-colors",
     circle:
-      "rounded-full data-[state=checked]:bg-success data-[state=checked]:border-success data-[state=checked]:text-success-foreground data-[state=indeterminate]:bg-success data-[state=indeterminate]:border-success data-[state=indeterminate]:text-success-foreground hover:border-primary transition-colors",
+      "ds:rounded-full ds:data-[state=checked]:bg-success ds:data-[state=checked]:border-success ds:data-[state=checked]:text-success-foreground ds:data-[state=indeterminate]:bg-success ds:data-[state=indeterminate]:border-success ds:data-[state=indeterminate]:text-success-foreground ds:hover:border-primary ds:transition-colors",
   },
   error: {
     default:
-      "data-[state=checked]:bg-error data-[state=checked]:border-error data-[state=checked]:text-error-foreground data-[state=indeterminate]:bg-error data-[state=indeterminate]:border-error data-[state=indeterminate]:text-error-foreground hover:border-primary transition-colors",
+      "ds:data-[state=checked]:bg-error ds:data-[state=checked]:border-error ds:data-[state=checked]:text-error-foreground ds:data-[state=indeterminate]:bg-error ds:data-[state=indeterminate]:border-error ds:data-[state=indeterminate]:text-error-foreground ds:hover:border-primary ds:transition-colors",
     circle:
-      "rounded-full data-[state=checked]:bg-error data-[state=checked]:border-error data-[state=checked]:text-error-foreground data-[state=indeterminate]:bg-error data-[state=indeterminate]:border-error data-[state=indeterminate]:text-error-foreground hover:border-primary transition-colors",
+      "ds:rounded-full ds:data-[state=checked]:bg-error ds:data-[state=checked]:border-error ds:data-[state=checked]:text-error-foreground ds:data-[state=indeterminate]:bg-error ds:data-[state=indeterminate]:border-error ds:data-[state=indeterminate]:text-error-foreground ds:hover:border-primary ds:transition-colors",
   },
   warning: {
     default:
-      "data-[state=checked]:bg-warning data-[state=checked]:border-warning data-[state=checked]:text-warning-foreground data-[state=indeterminate]:bg-warning data-[state=indeterminate]:border-warning data-[state=indeterminate]:text-warning-foreground hover:border-primary transition-colors",
+      "ds:data-[state=checked]:bg-warning ds:data-[state=checked]:border-warning ds:data-[state=checked]:text-warning-foreground ds:data-[state=indeterminate]:bg-warning ds:data-[state=indeterminate]:border-warning ds:data-[state=indeterminate]:text-warning-foreground ds:hover:border-primary ds:transition-colors",
     circle:
-      "rounded-full data-[state=checked]:bg-warning data-[state=checked]:border-warning data-[state=checked]:text-warning-foreground data-[state=indeterminate]:bg-warning data-[state=indeterminate]:border-warning data-[state=indeterminate]:text-warning-foreground hover:border-primary transition-colors",
+      "ds:rounded-full ds:data-[state=checked]:bg-warning ds:data-[state=checked]:border-warning ds:data-[state=checked]:text-warning-foreground ds:data-[state=indeterminate]:bg-warning ds:data-[state=indeterminate]:border-warning ds:data-[state=indeterminate]:text-warning-foreground ds:hover:border-primary ds:transition-colors",
   },
 };
 
 const iconColorVariants = {
   primary: {
     default:
-      "group-data-[state=unchecked]:stroke-1 group-data-[state=unchecked]:stroke-black/30 group-data-[state=unchecked]:fill-transparent hover:stroke-primary hover:fill-primary/20 dark:hover:fill-primary/20 group-data-[state=checked]:fill-primary group-data-[state=checked]:hover:fill-primary group-data-[state=checked]:stroke-primary stroke-1 dark:fill-primary dark:stroke-primary",
+      "ds:group-data-[state=unchecked]:stroke-1 ds:group-data-[state=unchecked]:stroke-black/30 ds:group-data-[state=unchecked]:fill-transparent ds:hover:stroke-primary ds:hover:fill-primary/20 ds:dark:hover:fill-primary/20 ds:group-data-[state=checked]:fill-primary ds:group-data-[state=checked]:hover:fill-primary ds:group-data-[state=checked]:stroke-primary ds:stroke-1 ds:dark:fill-primary ds:dark:stroke-primary",
   },
   secondary: {
     default:
-      "data-[state=unchecked]:stroke-1 group-data-[state=unchecked]:stroke-black/30 data-[state=unchecked]:fill-transparent hover:stroke-secondary hover:fill-secondary/20 dark:hover:fill-secondary/20 group-data-[state=checked]:fill-secondary group-data-[state=checked]:hover:fill-secondary group-data-[state=checked]:stroke-secondary stroke-1 dark:fill-secondary dark:stroke-secondary",
+      "ds:data-[state=unchecked]:stroke-1 ds:group-data-[state=unchecked]:stroke-black/30 ds:data-[state=unchecked]:fill-transparent ds:hover:stroke-secondary ds:hover:fill-secondary/20 ds:dark:hover:fill-secondary/20 ds:group-data-[state=checked]:fill-secondary ds:group-data-[state=checked]:hover:fill-secondary ds:group-data-[state=checked]:stroke-secondary ds:stroke-1 ds:dark:fill-secondary ds:dark:stroke-secondary",
   },
   accent: {
     default:
-      "data-[state=unchecked]:stroke-1 group-data-[state=unchecked]:stroke-black/30 data-[state=unchecked]:fill-transparent hover:stroke-accent hover:fill-accent/20 dark:hover:fill-accent/20 group-data-[state=checked]:fill-accent group-data-[state=checked]:hover:fill-accent group-data-[state=checked]:stroke-accent stroke-1 dark:fill-accent dark:stroke-accent",
+      "ds:data-[state=unchecked]:stroke-1 ds:group-data-[state=unchecked]:stroke-black/30 ds:data-[state=unchecked]:fill-transparent ds:hover:stroke-accent ds:hover:fill-accent/20 ds:dark:hover:fill-accent/20 ds:group-data-[state=checked]:fill-accent ds:group-data-[state=checked]:hover:fill-accent ds:group-data-[state=checked]:stroke-accent ds:stroke-1 ds:dark:fill-accent ds:dark:stroke-accent",
   },
   destructive: {
     default:
-      "data-[state=unchecked]:stroke-1 group-data-[state=unchecked]:stroke-black/30 data-[state=unchecked]:fill-transparent hover:stroke-destructive hover:fill-destructive/20 dark:hover:fill-destructive/20 group-data-[state=checked]:fill-destructive group-data-[state=checked]:hover:fill-destructive group-data-[state=checked]:stroke-destructive stroke-1 dark:fill-destructive dark:stroke-destructive",
+      "ds:data-[state=unchecked]:stroke-1 ds:group-data-[state=unchecked]:stroke-black/30 ds:data-[state=unchecked]:fill-transparent ds:hover:stroke-destructive ds:hover:fill-destructive/20 ds:dark:hover:fill-destructive/20 ds:group-data-[state=checked]:fill-destructive ds:group-data-[state=checked]:hover:fill-destructive ds:group-data-[state=checked]:stroke-destructive ds:stroke-1 ds:dark:fill-destructive ds:dark:stroke-destructive",
   },
   muted: {
     default:
-      "data-[state=unchecked]:stroke-1 group-data-[state=unchecked]:stroke-black/30 data-[state=unchecked]:fill-transparent hover:stroke-muted hover:fill-muted/20 dark:hover:fill-muted/20 group-data-[state=checked]:fill-muted group-data-[state=checked]:hover:fill-muted group-data-[state=checked]:stroke-muted stroke-1 dark:fill-muted dark:stroke-muted",
+      "ds:data-[state=unchecked]:stroke-1 ds:group-data-[state=unchecked]:stroke-black/30 ds:data-[state=unchecked]:fill-transparent ds:hover:stroke-muted ds:hover:fill-muted/20 ds:dark:hover:fill-muted/20 ds:group-data-[state=checked]:fill-muted ds:group-data-[state=checked]:hover:fill-muted ds:group-data-[state=checked]:stroke-muted ds:stroke-1 ds:dark:fill-muted ds:dark:stroke-muted",
   },
   success: {
     default:
-      "data-[state=unchecked]:stroke-1 group-data-[state=unchecked]:stroke-black/30 data-[state=unchecked]:fill-transparent hover:stroke-success hover:fill-success/20 dark:hover:fill-success/20 group-data-[state=checked]:fill-success group-data-[state=checked]:hover:fill-success group-data-[state=checked]:stroke-success stroke-1 dark:fill-success dark:stroke-success",
+      "ds:data-[state=unchecked]:stroke-1 ds:group-data-[state=unchecked]:stroke-black/30 ds:data-[state=unchecked]:fill-transparent ds:hover:stroke-success ds:hover:fill-success/20 ds:dark:hover:fill-success/20 ds:group-data-[state=checked]:fill-success ds:group-data-[state=checked]:hover:fill-success ds:group-data-[state=checked]:stroke-success ds:stroke-1 ds:dark:fill-success ds:dark:stroke-success",
   },
   error: {
     default:
-      "data-[state=unchecked]:stroke-1 group-data-[state=unchecked]:stroke-black/30 data-[state=unchecked]:fill-transparent hover:stroke-error hover:fill-error/20 dark:hover:fill-error/20 group-data-[state=checked]:fill-error group-data-[state=checked]:hover:fill-error group-data-[state=checked]:stroke-error stroke-1 dark:fill-error dark:stroke-error",
+      "ds:data-[state=unchecked]:stroke-1 ds:group-data-[state=unchecked]:stroke-black/30 ds:data-[state=unchecked]:fill-transparent ds:hover:stroke-error ds:hover:fill-error/20 ds:dark:hover:fill-error/20 ds:group-data-[state=checked]:fill-error ds:group-data-[state=checked]:hover:fill-error ds:group-data-[state=checked]:stroke-error ds:stroke-1 ds:dark:fill-error ds:dark:stroke-error",
   },
   warning: {
     default:
-      "data-[state=unchecked]:stroke-1 group-data-[state=unchecked]:stroke-black/30 data-[state=unchecked]:fill-transparent hover:stroke-warning hover:fill-warning/20 dark:hover:fill-warning/20 group-data-[state=checked]:fill-warning group-data-[state=checked]:hover:fill-warning group-data-[state=checked]:stroke-warning stroke-1 dark:fill-warning dark:stroke-warning",
+      "ds:data-[state=unchecked]:stroke-1 ds:group-data-[state=unchecked]:stroke-black/30 ds:data-[state=unchecked]:fill-transparent ds:hover:stroke-warning ds:hover:fill-warning/20 ds:dark:hover:fill-warning/20 ds:group-data-[state=checked]:fill-warning ds:group-data-[state=checked]:hover:fill-warning ds:group-data-[state=checked]:stroke-warning ds:stroke-1 ds:dark:fill-warning ds:dark:stroke-warning",
   },
 };
 
@@ -120,17 +120,17 @@ const generateCompoundVariants = () => {
 };
 
 const checkboxVariants = cva(
-  "peer border-input dark:bg-input/30 focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive shrink-0 rounded-[4px] border shadow-xs transition-shadow outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50",
+  "ds:peer ds:border-input ds:dark:bg-input/30 ds:focus-visible:border-ring ds:focus-visible:ring-ring/50 ds:aria-invalid:ring-destructive/20 ds:dark:aria-invalid:ring-destructive/40 ds:aria-invalid:border-destructive ds:shrink-0 ds:rounded-[4px] ds:border ds:shadow-xs ds:transition-shadow ds:outline-none ds:focus-visible:ring-[3px] ds:disabled:cursor-not-allowed ds:disabled:opacity-50",
   {
     variants: {
       variant: {
         default: "",
-        circle: "border-2",
+        circle: "ds:border-2",
       },
       size: {
-        sm: "min-w-4 min-h-4 [&_svg]:min-w-3 [&_svg]:min-h-3",
-        default: "min-w-5 min-h-5 [&_svg]:min-w-4 [&_svg]:min-h-4",
-        lg: "min-w-6 min-h-6 [&_svg]:min-w-5 [&_svg]:min-h-5",
+        sm: "ds:min-w-4 ds:min-h-4 ds:[&_svg]:min-w-3 ds:[&_svg]:min-h-3",
+        default: "ds:min-w-5 ds:min-h-5 ds:[&_svg]:min-w-4 ds:[&_svg]:min-h-4",
+        lg: "ds:min-w-6 ds:min-h-6 ds:[&_svg]:min-w-5 ds:[&_svg]:min-h-5",
       },
       color: {
         primary: "",
@@ -181,7 +181,7 @@ function Checkbox({
           className,
         }),
         {
-          "group focus-visible:ring-ring/50 outline-none focus-visible:ring-3 !border-none !bg-transparent shadow-none":
+          "ds:group ds:focus-visible:ring-ring/50 ds:outline-none ds:focus-visible:ring-3 ds:!border-none ds:!bg-transparent ds:shadow-none":
             icon,
         }
       )}
@@ -206,12 +206,12 @@ function Checkbox({
       ) : (
         <CheckboxPrimitive.Indicator
           data-slot="checkbox-indicator"
-          className="grid place-content-center text-current transition-none"
+          className="ds:grid ds:place-content-center ds:text-current ds:transition-none"
         >
           {props.checked === "indeterminate" ? (
-            <MinusIcon className="size-3.5" />
+            <MinusIcon className="ds:size-3.5" />
           ) : (
-            <CheckIcon className="size-3.5" />
+            <CheckIcon className="ds:size-3.5" />
           )}
         </CheckboxPrimitive.Indicator>
       )}

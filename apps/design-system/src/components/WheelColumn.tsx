@@ -188,20 +188,20 @@ export const TimeColumnwheel = memo(
       };
 
       return (
-        <div className="flex flex-col items-center gap-2 w-full h-full max-h-72">
+        <div className="ds:flex ds:flex-col ds:items-center ds:gap-2 ds:w-full ds:h-full ds:max-h-72">
           {timeLabel && (
-            <div className="text-xs font-semibold text-muted-foreground uppercase p-2 border-b w-full text-center h-8">
+            <div className="ds:text-xs ds:font-semibold ds:text-muted-foreground ds:uppercase ds:p-2 ds:border-b ds:w-full ds:text-center ds:h-8">
               {timeLabel}
             </div>
           )}
           <div
             className={cn(
-              "relative w-full",
-              timeLabel ? "h-[calc(100%_-_2rem)]" : " h-full"
+              "ds:relative ds:w-full",
+              timeLabel ? "ds:h-[calc(100%_-_2rem)]" : " ds:h-full"
             )}
           >
             {/* wheel style divider lines */}
-            <div className="absolute top-1/2 left-0 right-0 h-10 -translate-y-1/2 border-t border-b border-border pointer-events-none z-10" />
+            <div className="ds:absolute ds:top-1/2 ds:left-0 ds:right-0 ds:h-10 ds:-translate-y-1/2 ds:border-t ds:border-b ds:border-border ds:pointer-events-none ds:z-10" />
 
             <div
               ref={(el) => {
@@ -213,10 +213,10 @@ export const TimeColumnwheel = memo(
                 }
               }}
               className={cn(
-                "relative h-full w-full min-w-20 min-h-60 overflow-y-scroll scroll-smooth",
-                "[&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-track]:bg-transparent",
-                "[&::-webkit-scrollbar-thumb]:bg-border [&::-webkit-scrollbar-thumb]:rounded",
-                "flex flex-col snap-y snap-mandatory",
+                "ds:relative ds:h-full ds:w-full ds:min-w-20 ds:min-h-60 ds:overflow-y-scroll ds:scroll-smooth",
+                "ds:[&::-webkit-scrollbar]:w-1 ds:[&::-webkit-scrollbar-track]:bg-transparent",
+                "ds:[&::-webkit-scrollbar-thumb]:bg-border ds:[&::-webkit-scrollbar-thumb]:rounded",
+                "ds:flex ds:flex-col ds:snap-y ds:snap-mandatory",
                 itemClassName
               )}
               style={{
@@ -225,7 +225,7 @@ export const TimeColumnwheel = memo(
               }}
             >
               {/* Spacer Top */}
-              <div className="h-[calc(50%-1.25rem)] flex-shrink-0" />
+              <div className="ds:h-[calc(50%-1.25rem)] ds:flex-shrink-0" />
 
               {items.map((item, index) => {
                 const itemDisabled = isItemDisabled(item);
@@ -243,12 +243,12 @@ export const TimeColumnwheel = memo(
                     }
                     data-selected={isSelected || undefined}
                     className={cn(
-                      "h-10 flex-shrink-0 flex items-center justify-center transition-all snap-center",
-                      "cursor-pointer text-lg font-medium select-none",
-                      "disabled:opacity-30 disabled:cursor-not-allowed disabled:line-through",
+                      "ds:h-10 ds:flex-shrink-0 ds:flex ds:items-center ds:justify-center ds:transition-all ds:snap-center",
+                      "ds:cursor-pointer ds:text-lg ds:font-medium ds:select-none",
+                      "ds:disabled:opacity-30 ds:disabled:cursor-not-allowed ds:disabled:line-through",
                       isSelected
-                        ? `${getColorClass(color)} font-bold`
-                        : "text-muted-foreground"
+                        ? `${getColorClass(color)} ds:font-bold`
+                        : "ds:text-muted-foreground"
                     )}
                     style={itemStyle}
                   >
@@ -258,7 +258,7 @@ export const TimeColumnwheel = memo(
               })}
 
               {/* Spacer Bottom */}
-              <div className="h-[calc(50%-1.25rem)] flex-shrink-0" />
+              <div className="ds:h-[calc(50%-1.25rem)] ds:flex-shrink-0" />
             </div>
           </div>
         </div>

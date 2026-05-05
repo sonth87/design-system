@@ -51,7 +51,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
     const buttonContent = rest?.isLoading ? (
       <>
-        <LoaderCircle className="animate-spin" />
+        <LoaderCircle className="ds:animate-spin" />
         {
           (buttonAnimation?.children ??
             rest.children ??
@@ -69,7 +69,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         {...rest}
         className={cn(
-          "cursor-pointer group",
+          "ds:cursor-pointer ds:group",
           rest?.className,
           buttonAnimation?.className
         )}
