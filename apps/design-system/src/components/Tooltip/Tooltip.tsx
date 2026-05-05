@@ -48,25 +48,25 @@ export const Tooltip = React.memo(function Tooltip({
   const tooltipColor = useMemo<string>(() => {
     switch (props.color) {
       case "primary":
-        return "bg-primary text-primary-foreground [&>span>svg]:bg-primary [&>span>svg]:fill-primary";
+        return "ds:bg-primary ds:text-primary-foreground ds:[&>span>svg]:bg-primary ds:[&>span>svg]:fill-primary";
       case "secondary":
-        return "bg-secondary text-secondary-foreground [&>span>svg]:bg-secondary [&>span>svg]:fill-secondary";
+        return "ds:bg-secondary ds:text-secondary-foreground ds:[&>span>svg]:bg-secondary ds:[&>span>svg]:fill-secondary";
       case "dark":
         return "";
       case "light":
-        return "bg-neutral-200 text-neutral-950 [&_svg]:bg-neutral-200 [&_svg]:fill-neutral-200";
+        return "ds:bg-neutral-200 ds:text-neutral-950 ds:[&_svg]:bg-neutral-200 ds:[&_svg]:fill-neutral-200";
       case "inverted":
-        return "dark:bg-white dark:text-black dark:[&_svg]:bg-white dark:[&_svg]:fill-white";
+        return "ds:dark:bg-white ds:dark:text-black ds:dark:[&_svg]:bg-white ds:dark:[&_svg]:fill-white";
       case "success":
-        return "bg-success text-success-foreground [&>span>svg]:bg-success [&>span>svg]:fill-success";
+        return "ds:bg-success ds:text-success-foreground ds:[&>span>svg]:bg-success ds:[&>span>svg]:fill-success";
       case "warning":
-        return "bg-warning text-warning-foreground [&>span>svg]:bg-warning [&>span>svg]:fill-warning";
+        return "ds:bg-warning ds:text-warning-foreground ds:[&>span>svg]:bg-warning ds:[&>span>svg]:fill-warning";
       case "error":
-        return "bg-error text-error-foreground [&>span>svg]:bg-error [&>span>svg]:fill-error";
+        return "ds:bg-error ds:text-error-foreground ds:[&>span>svg]:bg-error ds:[&>span>svg]:fill-error";
       case "glass":
-        return "bg-white/15 text-foreground backdrop-blur-sm shadow-lg [&>span>svg]:bg-white/15 [&>span>svg]:fill-white/15";
+        return "ds:bg-white/15 ds:text-foreground ds:backdrop-blur-sm ds:shadow-lg ds:[&>span>svg]:bg-white/15 ds:[&>span>svg]:fill-white/15";
       default:
-        return "bg-foreground text-background animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 w-fit origin-(--radix-tooltip-content-transform-origin) rounded-md px-3 py-1.5 text-xs text-balance";
+        return "ds:bg-foreground ds:text-background ds:animate-in ds:fade-in-0 ds:zoom-in-95 ds:data-[state=closed]:animate-out ds:data-[state=closed]:fade-out-0 ds:data-[state=closed]:zoom-out-95 ds:data-[side=bottom]:slide-in-from-top-2 ds:data-[side=left]:slide-in-from-right-2 ds:data-[side=right]:slide-in-from-left-2 ds:data-[side=top]:slide-in-from-bottom-2 ds:z-50 ds:w-fit ds:origin-(--radix-tooltip-content-transform-origin) ds:rounded-md ds:px-3 ds:py-1.5 ds:text-xs ds:text-balance";
     }
   }, [props?.color]);
 

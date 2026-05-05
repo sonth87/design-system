@@ -365,6 +365,40 @@ function processFile(sourceFile: SourceFile): boolean {
     if (init) processClassMapValue(init);
   }
 
+  // ─ Phase 4: SwitchStatement inside useMemo<string> / functions that return string ─
+  // Covers: const x = useMemo<string>(() => { switch(...) { case: return "class1 class2" } })
+  // Strategy: find SwitchStatement → scan all ReturnStatement string literals inside
+  // Only process when the switch is inside a function whose return type annotation is "string"
+  const switches = Array.from(sourceFile.getDescendantsOfKind(SyntaxKind.SwitchStatement));
+  for (const sw of switches) {
+    // Walk up to find the nearest ArrowFunction / FunctionExpression
+    let parent: Node | undefined = sw.getParent();
+    let isStringReturner = false;
+    while (parent && !Node.isSourceFile(parent)) {
+      if (
+        Node.isArrowFunction(parent) ||
+        Node.isFunctionExpression(parent) ||
+        Node.isFunctionDeclaration(parent)
+      ) {
+        const returnTypeNode = parent.getReturnTypeNode();
+        if (returnTypeNode && returnTypeNode.getText().trim() === "string") {
+          isStringReturner = true;
+        }
+        break;
+      }
+      parent = parent.getParent();
+    }
+    if (!isStringReturner) continue;
+
+    // Process all ReturnStatement string literals within this switch
+    for (const ret of sw.getDescendantsOfKind(SyntaxKind.ReturnStatement)) {
+      const expr = ret.getExpression();
+      if (expr && Node.isStringLiteral(expr)) {
+        processStringLiteral(expr);
+      }
+    }
+  }
+
   return sourceFile.getFullText() !== before;
 }
 
