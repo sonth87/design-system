@@ -86,14 +86,14 @@ const Rate = React.forwardRef<HTMLDivElement, RateProps>(
 
     // Color mapping for filled stars
     const colorMap = {
-      primary: "text-primary [&_svg]:fill-primary",
-      secondary: "text-secondary [&_svg]:fill-secondary",
-      accent: "text-accent [&_svg]:fill-accent",
-      destructive: "text-destructive [&_svg]:fill-destructive",
-      muted: "text-muted-foreground [&_svg]:fill-muted-foreground",
-      success: "text-success [&_svg]:fill-success",
-      error: "text-error [&_svg]:fill-error",
-      warning: "text-yellow-400 [&_svg]:fill-yellow-400",
+      primary: "ds:text-primary ds:[&_svg]:fill-primary",
+      secondary: "ds:text-secondary ds:[&_svg]:fill-secondary",
+      accent: "ds:text-accent ds:[&_svg]:fill-accent",
+      destructive: "ds:text-destructive ds:[&_svg]:fill-destructive",
+      muted: "ds:text-muted-foreground ds:[&_svg]:fill-muted-foreground",
+      success: "ds:text-success ds:[&_svg]:fill-success",
+      error: "ds:text-error ds:[&_svg]:fill-error",
+      warning: "ds:text-yellow-400 ds:[&_svg]:fill-yellow-400",
     };
 
     // Handle star click

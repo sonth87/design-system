@@ -104,9 +104,9 @@ function Toaster({
         duration: duration,
         classNames: {
           toast:
-            "rounded-md shadow-md border-none text-sm font-medium backdrop-blur-sm text-black dark:text-white",
-          description: "text-muted-foreground",
-          actionButton: "bg-white/10",
+            "ds:rounded-md ds:shadow-md ds:border-none ds:text-sm ds:font-medium ds:backdrop-blur-sm ds:text-black ds:dark:text-white",
+          description: "ds:text-muted-foreground",
+          actionButton: "ds:bg-white/10",
         },
       }}
     />

@@ -73,18 +73,18 @@ const Checkbox = React.forwardRef<HTMLButtonElement, CheckboxProps>(
     };
 
     const isVertical = labelPosition === "top" || labelPosition === "bottom";
-    const flexDirection = isVertical ? "flex-col" : "flex-row";
-    const gapClass = isVertical ? "gap-1.5" : "gap-2";
+    const flexDirection = isVertical ? "ds:flex-col" : "ds:flex-row";
+    const gapClass = isVertical ? "ds:gap-1.5" : "ds:gap-2";
 
     const alignmentClass =
       labelAlignment === "start"
-        ? "items-start"
+        ? "ds:items-start"
         : labelAlignment === "center"
-          ? "items-center"
-          : "items-end";
+          ? "ds:items-center"
+          : "ds:items-end";
 
     const labelClass =
-      "flex gap-2 peer-disabled:cursor-not-allowed peer-disabled:opacity-70";
+      "ds:flex ds:gap-2 ds:peer-disabled:cursor-not-allowed ds:peer-disabled:opacity-70";
 
     return (
       <div className={cn("ds:flex ds:flex-col ds:gap-1.5 ds:relative", {})}>

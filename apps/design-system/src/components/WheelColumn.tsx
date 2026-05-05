@@ -8,15 +8,15 @@ const pad = (num: number): string => String(num).padStart(2, "0");
 // Color variants for time picker items
 const getColorClass = (color: CalendarColor = "primary"): string => {
   const colorMap = {
-    primary: "text-primary",
-    secondary: "text-secondary",
-    accent: "text-accent",
-    destructive: "text-destructive",
-    muted: "text-muted-foreground",
-    success: "text-success",
-    error: "text-error",
-    warning: "text-warning",
-    foreground: "text-foreground",
+    primary: "ds:text-primary",
+    secondary: "ds:text-secondary",
+    accent: "ds:text-accent",
+    destructive: "ds:text-destructive",
+    muted: "ds:text-muted-foreground",
+    success: "ds:text-success",
+    error: "ds:text-error",
+    warning: "ds:text-warning",
+    foreground: "ds:text-foreground",
   };
   return colorMap[color];
 };

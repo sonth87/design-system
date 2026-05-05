@@ -917,13 +917,13 @@ function StepperItem(props: StepperItemProps) {
       if (labelPosition === "top" || labelPosition === "bottom") {
         // When labels are above/below, use flex-col to stack indicator row and label
         // Each item takes equal space
-        return `${baseClasses} flex-col items-center flex-1 gap-2`;
+        return `${baseClasses} ds:flex-col ds:items-center ds:flex-1 ds:gap-2`;
       }
       // Default: labels left/right - flex-row
-      return `${baseClasses} flex-row items-center not-last:flex-1`;
+      return `${baseClasses} ds:flex-row ds:items-center ds:not-last:flex-1`;
     } else {
       // Vertical stepper - always flex-col for vertical orientation
-      return `${baseClasses} flex-col`;
+      return `${baseClasses} ds:flex-col`;
     }
   };
 
@@ -1339,13 +1339,13 @@ function StepperTrigger(props: ButtonProps) {
     ) {
       // For horizontal with top/bottom labels, trigger only contains text
       // Indicator and separator will be siblings at item level
-      return labelPosition === "top" ? "flex-col-reverse" : "flex-col";
+      return labelPosition === "top" ? "ds:flex-col-reverse" : "ds:flex-col";
     }
 
-    if (labelPosition === "top") return "flex-col-reverse";
-    if (labelPosition === "bottom") return "flex-col";
-    if (labelPosition === "left") return "flex-row-reverse";
-    return "flex-row"; // default is right
+    if (labelPosition === "top") return "ds:flex-col-reverse";
+    if (labelPosition === "bottom") return "ds:flex-col";
+    if (labelPosition === "left") return "ds:flex-row-reverse";
+    return "ds:flex-row"; // default is right
   };
 
   const shouldWrapIndicator =
@@ -1530,21 +1530,21 @@ function StepperSeparator(props: StepperSeparatorProps) {
       if (labelPosition === "top" || labelPosition === "bottom") {
         // When labels are above/below, separator is at item level alongside indicator
         // It should be a horizontal line that takes remaining space
-        return "h-px flex-1";
+        return "ds:h-px ds:flex-1";
       }
       // Default: labels left/right - normal flex behavior
-      return "h-px flex-1";
+      return "ds:h-px ds:flex-1";
     } else {
       // Vertical stepper
       if (labelPosition === "top" || labelPosition === "bottom") {
         // When labels are above/below in vertical mode, separator connects vertically
-        return "w-px absolute left-1/2 -translate-x-1/2 top-full h-full -z-10";
+        return "ds:w-px ds:absolute ds:left-1/2 ds:-translate-x-1/2 ds:top-full ds:h-full ds:-z-10";
       } else if (labelPosition === "left") {
         // Label on left, separator on the right side
-        return "w-px absolute right-0 top-full h-full -z-10 translate-x-1/2";
+        return "ds:w-px ds:absolute ds:right-0 ds:top-full ds:h-full ds:-z-10 ds:translate-x-1/2";
       } else {
         // Label on right (default), separator on the left side
-        return "w-px absolute left-0 top-full h-full -z-10 -translate-x-1/2";
+        return "ds:w-px ds:absolute ds:left-0 ds:top-full ds:h-full ds:-z-10 ds:-translate-x-1/2";
       }
     }
   };

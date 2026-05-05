@@ -84,7 +84,7 @@ export function DataTableColumnHeader<TData, TValue>({
       checked: column.getIsSorted() === "asc",
       onClick: () => column.toggleSorting(false),
       className:
-        "relative pr-8 pl-2 [&>span:first-child]:right-2 [&>span:first-child]:left-auto [&_svg]:text-muted-foreground",
+        "ds:relative ds:pr-8 ds:pl-2 ds:[&>span:first-child]:right-2 ds:[&>span:first-child]:left-auto ds:[&_svg]:text-muted-foreground",
     });
     items.push({
       key: "desc",
@@ -94,7 +94,7 @@ export function DataTableColumnHeader<TData, TValue>({
       checked: column.getIsSorted() === "desc",
       onClick: () => column.toggleSorting(true),
       className:
-        "relative pr-8 pl-2 [&>span:first-child]:right-2 [&>span:first-child]:left-auto [&_svg]:text-muted-foreground",
+        "ds:relative ds:pr-8 ds:pl-2 ds:[&>span:first-child]:right-2 ds:[&>span:first-child]:left-auto ds:[&_svg]:text-muted-foreground",
     });
     if (column.getIsSorted()) {
       items.push({
@@ -103,7 +103,7 @@ export function DataTableColumnHeader<TData, TValue>({
         label: "Reset",
         icon: <X />,
         onClick: () => column.clearSorting(),
-        className: "pl-2 [&_svg]:text-muted-foreground",
+        className: "ds:pl-2 ds:[&_svg]:text-muted-foreground",
       });
     }
   }
@@ -117,7 +117,7 @@ export function DataTableColumnHeader<TData, TValue>({
       checked: !column.getIsVisible(),
       onClick: () => column.toggleVisibility(false),
       className:
-        "relative pr-8 pl-2 [&>span:first-child]:right-2 [&>span:first-child]:left-auto [&_svg]:text-muted-foreground",
+        "ds:relative ds:pr-8 ds:pl-2 ds:[&>span:first-child]:right-2 ds:[&>span:first-child]:left-auto ds:[&_svg]:text-muted-foreground",
     });
   }
 

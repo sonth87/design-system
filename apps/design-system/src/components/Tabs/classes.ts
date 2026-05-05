@@ -76,46 +76,46 @@ export const getColorClasses = (
     { bg: string; text: string; border: string }
   > = {
     primary: {
-      bg: "data-[state=active]:bg-primary dark:data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:text-primary-foreground",
-      text: "data-[state=active]:text-primary dark:data-[state=active]:text-primary",
+      bg: "ds:data-[state=active]:bg-primary ds:dark:data-[state=active]:bg-primary ds:data-[state=active]:text-primary-foreground ds:dark:data-[state=active]:text-primary-foreground",
+      text: "ds:data-[state=active]:text-primary ds:dark:data-[state=active]:text-primary",
       border:
-        "data-[state=active]:border-primary dark:data-[state=active]:border-primary",
+        "ds:data-[state=active]:border-primary ds:dark:data-[state=active]:border-primary",
     },
     secondary: {
-      bg: "data-[state=active]:bg-secondary dark:data-[state=active]:bg-secondary data-[state=active]:text-secondary-foreground dark:data-[state=active]:text-secondary-foreground",
-      text: "data-[state=active]:text-secondary dark:data-[state=active]:text-secondary",
+      bg: "ds:data-[state=active]:bg-secondary ds:dark:data-[state=active]:bg-secondary ds:data-[state=active]:text-secondary-foreground ds:dark:data-[state=active]:text-secondary-foreground",
+      text: "ds:data-[state=active]:text-secondary ds:dark:data-[state=active]:text-secondary",
       border:
-        "data-[state=active]:border-secondary dark:data-[state=active]:border-secondary",
+        "ds:data-[state=active]:border-secondary ds:dark:data-[state=active]:border-secondary",
     },
     muted: {
-      bg: "data-[state=active]:bg-muted dark:data-[state=active]:bg-muted data-[state=active]:text-muted-foreground dark:data-[state=active]:text-muted-foreground",
-      text: "data-[state=active]:text-muted-foreground dark:data-[state=active]:text-muted-foreground",
+      bg: "ds:data-[state=active]:bg-muted ds:dark:data-[state=active]:bg-muted ds:data-[state=active]:text-muted-foreground ds:dark:data-[state=active]:text-muted-foreground",
+      text: "ds:data-[state=active]:text-muted-foreground ds:dark:data-[state=active]:text-muted-foreground",
       border:
-        "data-[state=active]:border-border dark:data-[state=active]:border-border",
+        "ds:data-[state=active]:border-border ds:dark:data-[state=active]:border-border",
     },
     accent: {
-      bg: "data-[state=active]:bg-accent dark:data-[state=active]:bg-accent data-[state=active]:text-accent-foreground dark:data-[state=active]:text-accent-foreground",
-      text: "data-[state=active]:text-accent-foreground dark:data-[state=active]:text-accent-foreground",
+      bg: "ds:data-[state=active]:bg-accent ds:dark:data-[state=active]:bg-accent ds:data-[state=active]:text-accent-foreground ds:dark:data-[state=active]:text-accent-foreground",
+      text: "ds:data-[state=active]:text-accent-foreground ds:dark:data-[state=active]:text-accent-foreground",
       border:
-        "data-[state=active]:border-accent dark:data-[state=active]:border-accent",
+        "ds:data-[state=active]:border-accent ds:dark:data-[state=active]:border-accent",
     },
     destructive: {
-      bg: "data-[state=active]:bg-destructive dark:data-[state=active]:bg-destructive data-[state=active]:text-destructive-foreground dark:data-[state=active]:text-destructive-foreground",
-      text: "data-[state=active]:text-destructive dark:data-[state=active]:text-destructive",
+      bg: "ds:data-[state=active]:bg-destructive ds:dark:data-[state=active]:bg-destructive ds:data-[state=active]:text-destructive-foreground ds:dark:data-[state=active]:text-destructive-foreground",
+      text: "ds:data-[state=active]:text-destructive ds:dark:data-[state=active]:text-destructive",
       border:
-        "data-[state=active]:border-destructive dark:data-[state=active]:border-destructive",
+        "ds:data-[state=active]:border-destructive ds:dark:data-[state=active]:border-destructive",
     },
     success: {
-      bg: "data-[state=active]:bg-success dark:data-[state=active]:bg-success data-[state=active]:text-success-foreground dark:data-[state=active]:text-success-foreground",
-      text: "data-[state=active]:text-success dark:data-[state=active]:text-success",
+      bg: "ds:data-[state=active]:bg-success ds:dark:data-[state=active]:bg-success ds:data-[state=active]:text-success-foreground ds:dark:data-[state=active]:text-success-foreground",
+      text: "ds:data-[state=active]:text-success ds:dark:data-[state=active]:text-success",
       border:
-        "data-[state=active]:border-success dark:data-[state=active]:border-success",
+        "ds:data-[state=active]:border-success ds:dark:data-[state=active]:border-success",
     },
     warning: {
-      bg: "data-[state=active]:bg-warning dark:data-[state=active]:bg-warning data-[state=active]:text-warning-foreground dark:data-[state=active]:text-warning-foreground",
-      text: "data-[state=active]:text-warning dark:data-[state=active]:text-warning",
+      bg: "ds:data-[state=active]:bg-warning ds:dark:data-[state=active]:bg-warning ds:data-[state=active]:text-warning-foreground ds:dark:data-[state=active]:text-warning-foreground",
+      text: "ds:data-[state=active]:text-warning ds:dark:data-[state=active]:text-warning",
       border:
-        "data-[state=active]:border-warning dark:data-[state=active]:border-warning",
+        "ds:data-[state=active]:border-warning ds:dark:data-[state=active]:border-warning",
     },
   };
 
@@ -125,10 +125,10 @@ export const getColorClasses = (
     case "bordered":
     case "pills":
       // Background color on active state
-      return `${colors.bg} dark:data-[state=active]:border-transparent`;
+      return `${colors.bg} ds:dark:data-[state=active]:border-transparent`;
     case "pill-stroke":
       // Border color on active state, no background
-      return `data-[state=active]:bg-transparent dark:data-[state=active]:bg-transparent`;
+      return `ds:data-[state=active]:bg-transparent ds:dark:data-[state=active]:bg-transparent`;
     case "text":
       // Text color only on active state
       return colors.text;
@@ -158,10 +158,10 @@ export const getListBorderClasses = (
   if (variant === "underlined") {
     // Underlined variant: border on the opposite side from where tabs connect
     const borderMap: Record<TabPosition, string> = {
-      top: "border-b",
-      bottom: "border-t",
-      left: "border-r",
-      right: "border-l",
+      top: "ds:border-b",
+      bottom: "ds:border-t",
+      left: "ds:border-r",
+      right: "ds:border-l",
     };
     return borderMap[tabPosition];
   }
@@ -169,48 +169,48 @@ export const getListBorderClasses = (
   if (variant === "enclosed") {
     // Enclosed variant: colored border on the opposite side
     const borderBaseMap: Record<TabPosition, string> = {
-      top: "border-b",
-      bottom: "border-t",
-      left: "border-r",
-      right: "border-l",
+      top: "ds:border-b",
+      bottom: "ds:border-t",
+      left: "ds:border-r",
+      right: "ds:border-l",
     };
 
     const colorBorderMap: Record<TabPosition, Record<TabColor, string>> = {
       top: {
-        primary: "border-b-primary",
-        secondary: "border-b-secondary",
-        muted: "border-b-border",
-        accent: "border-b-accent",
-        destructive: "border-b-destructive",
-        success: "border-b-success",
-        warning: "border-b-warning",
+        primary: "ds:border-b-primary",
+        secondary: "ds:border-b-secondary",
+        muted: "ds:border-b-border",
+        accent: "ds:border-b-accent",
+        destructive: "ds:border-b-destructive",
+        success: "ds:border-b-success",
+        warning: "ds:border-b-warning",
       },
       bottom: {
-        primary: "border-t-primary",
-        secondary: "border-t-secondary",
-        muted: "border-t-border",
-        accent: "border-t-accent",
-        destructive: "border-t-destructive",
-        success: "border-t-success",
-        warning: "border-t-warning",
+        primary: "ds:border-t-primary",
+        secondary: "ds:border-t-secondary",
+        muted: "ds:border-t-border",
+        accent: "ds:border-t-accent",
+        destructive: "ds:border-t-destructive",
+        success: "ds:border-t-success",
+        warning: "ds:border-t-warning",
       },
       left: {
-        primary: "border-r-primary",
-        secondary: "border-r-secondary",
-        muted: "border-r-border",
-        accent: "border-r-accent",
-        destructive: "border-r-destructive",
-        success: "border-r-success",
-        warning: "border-r-warning",
+        primary: "ds:border-r-primary",
+        secondary: "ds:border-r-secondary",
+        muted: "ds:border-r-border",
+        accent: "ds:border-r-accent",
+        destructive: "ds:border-r-destructive",
+        success: "ds:border-r-success",
+        warning: "ds:border-r-warning",
       },
       right: {
-        primary: "border-l-primary",
-        secondary: "border-l-secondary",
-        muted: "border-l-border",
-        accent: "border-l-accent",
-        destructive: "border-l-destructive",
-        success: "border-l-success",
-        warning: "border-l-warning",
+        primary: "ds:border-l-primary",
+        secondary: "ds:border-l-secondary",
+        muted: "ds:border-l-border",
+        accent: "ds:border-l-accent",
+        destructive: "ds:border-l-destructive",
+        success: "ds:border-l-success",
+        warning: "ds:border-l-warning",
       },
     };
     return `${borderBaseMap[tabPosition]} ${colorBorderMap[tabPosition][color]}`;
@@ -219,48 +219,48 @@ export const getListBorderClasses = (
   if (variant === "enclosed-fill") {
     // Enclosed-fill variant: colored border on the opposite side
     const borderBaseMap: Record<TabPosition, string> = {
-      top: "border-b",
-      bottom: "border-t",
-      left: "border-r",
-      right: "border-l",
+      top: "ds:border-b",
+      bottom: "ds:border-t",
+      left: "ds:border-r",
+      right: "ds:border-l",
     };
 
     const colorBorderMap: Record<TabPosition, Record<TabColor, string>> = {
       top: {
-        primary: "border-b-primary",
-        secondary: "border-b-secondary",
-        muted: "border-b-border",
-        accent: "border-b-accent",
-        destructive: "border-b-destructive",
-        success: "border-b-success",
-        warning: "border-b-warning",
+        primary: "ds:border-b-primary",
+        secondary: "ds:border-b-secondary",
+        muted: "ds:border-b-border",
+        accent: "ds:border-b-accent",
+        destructive: "ds:border-b-destructive",
+        success: "ds:border-b-success",
+        warning: "ds:border-b-warning",
       },
       bottom: {
-        primary: "border-t-primary",
-        secondary: "border-t-secondary",
-        muted: "border-t-border",
-        accent: "border-t-accent",
-        destructive: "border-t-destructive",
-        success: "border-t-success",
-        warning: "border-t-warning",
+        primary: "ds:border-t-primary",
+        secondary: "ds:border-t-secondary",
+        muted: "ds:border-t-border",
+        accent: "ds:border-t-accent",
+        destructive: "ds:border-t-destructive",
+        success: "ds:border-t-success",
+        warning: "ds:border-t-warning",
       },
       left: {
-        primary: "border-r-primary",
-        secondary: "border-r-secondary",
-        muted: "border-r-border",
-        accent: "border-r-accent",
-        destructive: "border-r-destructive",
-        success: "border-r-success",
-        warning: "border-r-warning",
+        primary: "ds:border-r-primary",
+        secondary: "ds:border-r-secondary",
+        muted: "ds:border-r-border",
+        accent: "ds:border-r-accent",
+        destructive: "ds:border-r-destructive",
+        success: "ds:border-r-success",
+        warning: "ds:border-r-warning",
       },
       right: {
-        primary: "border-l-primary",
-        secondary: "border-l-secondary",
-        muted: "border-l-border",
-        accent: "border-l-accent",
-        destructive: "border-l-destructive",
-        success: "border-l-success",
-        warning: "border-l-warning",
+        primary: "ds:border-l-primary",
+        secondary: "ds:border-l-secondary",
+        muted: "ds:border-l-border",
+        accent: "ds:border-l-accent",
+        destructive: "ds:border-l-destructive",
+        success: "ds:border-l-success",
+        warning: "ds:border-l-warning",
       },
     };
     return `${borderBaseMap[tabPosition]} ${colorBorderMap[tabPosition][color]}`;
@@ -277,10 +277,10 @@ export const getUnderlinedTriggerClasses = (
     "ds:bg-background ds:dark:bg-background ds:rounded-none ds:border-0 ds:border-transparent ds:data-[state=active]:shadow-none";
 
   const positionMap: Record<TabPosition, string> = {
-    top: `${baseClasses} border-b-2 h-full`,
-    bottom: `${baseClasses} border-t-2 h-full`,
-    left: `${baseClasses} border-r-2 w-full`,
-    right: `${baseClasses} border-l-2 w-full`,
+    top: `${baseClasses} ds:border-b-2 ds:h-full`,
+    bottom: `${baseClasses} ds:border-t-2 ds:h-full`,
+    left: `${baseClasses} ds:border-r-2 ds:w-full`,
+    right: `${baseClasses} ds:border-l-2 ds:w-full`,
   };
 
   return positionMap[tabPosition];
@@ -292,10 +292,10 @@ export const getEnclosedTriggerClasses = (tabPosition: TabPosition): string => {
     "ds:bg-background ds:dark:bg-background ds:border ds:border-transparent ds:data-[state=active]:shadow-none ds:rounded-none";
 
   const positionMap: Record<TabPosition, string> = {
-    top: `${baseClasses} rounded-t-md data-[state=active]:border-t data-[state=active]:border-l data-[state=active]:border-r data-[state=active]:border-b-0 data-[state=active]:border-b-background dark:data-[state=active]:border-b-background h-full data-[state=active]:-mb-0.5 data-[state=active]:translate-y-[0px]`,
-    bottom: `${baseClasses} rounded-b-md data-[state=active]:border-b data-[state=active]:border-l data-[state=active]:border-r data-[state=active]:border-t-0 data-[state=active]:border-t-background dark:data-[state=active]:border-t-background h-full data-[state=active]:-mt-0.5 data-[state=active]:translate-y-[0px]`,
-    left: `${baseClasses} rounded-l-md data-[state=active]:border-t data-[state=active]:border-l data-[state=active]:border-b data-[state=active]:border-r-0 data-[state=active]:border-r-background dark:data-[state=active]:border-r-background w-full data-[state=active]:-mr-0.5 data-[state=active]:translate-x-[1px]`,
-    right: `${baseClasses} rounded-r-md data-[state=active]:border-t data-[state=active]:border-r data-[state=active]:border-b data-[state=active]:border-l-0 data-[state=active]:border-l-background dark:data-[state=active]:border-l-background w-full data-[state=active]:-ml-0.5 data-[state=active]:translate-x-[1px]`,
+    top: `${baseClasses} ds:rounded-t-md ds:data-[state=active]:border-t ds:data-[state=active]:border-l ds:data-[state=active]:border-r ds:data-[state=active]:border-b-0 ds:data-[state=active]:border-b-background dark:ds:data-[state=active]:border-b-background ds:h-full ds:data-[state=active]:-mb-0.5 ds:data-[state=active]:translate-y-[0px]`,
+    bottom: `${baseClasses} ds:rounded-b-md ds:data-[state=active]:border-b ds:data-[state=active]:border-l ds:data-[state=active]:border-r ds:data-[state=active]:border-t-0 ds:data-[state=active]:border-t-background dark:ds:data-[state=active]:border-t-background ds:h-full ds:data-[state=active]:-mt-0.5 ds:data-[state=active]:translate-y-[0px]`,
+    left: `${baseClasses} ds:rounded-l-md ds:data-[state=active]:border-t ds:data-[state=active]:border-l ds:data-[state=active]:border-b ds:data-[state=active]:border-r-0 ds:data-[state=active]:border-r-background dark:ds:data-[state=active]:border-r-background ds:w-full ds:data-[state=active]:-mr-0.5 ds:data-[state=active]:translate-x-[1px]`,
+    right: `${baseClasses} ds:rounded-r-md ds:data-[state=active]:border-t ds:data-[state=active]:border-r ds:data-[state=active]:border-b ds:data-[state=active]:border-l-0 ds:data-[state=active]:border-l-background dark:ds:data-[state=active]:border-l-background ds:w-full ds:data-[state=active]:-ml-0.5 ds:data-[state=active]:translate-x-[1px]`,
   };
 
   return positionMap[tabPosition];
@@ -309,10 +309,10 @@ export const getEnclosedFillTriggerClasses = (
     "ds:bg-muted ds:dark:bg-muted ds:border ds:border-transparent ds:data-[state=active]:bg-background ds:dark:data-[state=active]:bg-background ds:data-[state=active]:shadow-none ds:rounded-none";
 
   const positionMap: Record<TabPosition, string> = {
-    top: `${baseClasses} rounded-t-md data-[state=active]:border-t data-[state=active]:border-l data-[state=active]:border-r data-[state=active]:border-b-0 data-[state=active]:border-b-background dark:data-[state=active]:border-b-background h-full data-[state=active]:-mb-0.5 data-[state=active]:translate-y-[0px]`,
-    bottom: `${baseClasses} rounded-b-md data-[state=active]:border-b data-[state=active]:border-l data-[state=active]:border-r data-[state=active]:border-t-0 data-[state=active]:border-t-background dark:data-[state=active]:border-t-background h-full data-[state=active]:-mt-0.5 data-[state=active]:translate-y-[0px]`,
-    left: `${baseClasses} rounded-l-md data-[state=active]:border-t data-[state=active]:border-l data-[state=active]:border-b data-[state=active]:border-r-0 data-[state=active]:border-r-background dark:data-[state=active]:border-r-background w-full data-[state=active]:-mr-0.5 data-[state=active]:translate-x-[1px]`,
-    right: `${baseClasses} rounded-r-md data-[state=active]:border-t data-[state=active]:border-r data-[state=active]:border-b data-[state=active]:border-l-0 data-[state=active]:border-l-background dark:data-[state=active]:border-l-background w-full data-[state=active]:-ml-0.5 data-[state=active]:translate-x-[1px]`,
+    top: `${baseClasses} ds:rounded-t-md ds:data-[state=active]:border-t ds:data-[state=active]:border-l ds:data-[state=active]:border-r ds:data-[state=active]:border-b-0 ds:data-[state=active]:border-b-background dark:ds:data-[state=active]:border-b-background ds:h-full ds:data-[state=active]:-mb-0.5 ds:data-[state=active]:translate-y-[0px]`,
+    bottom: `${baseClasses} ds:rounded-b-md ds:data-[state=active]:border-b ds:data-[state=active]:border-l ds:data-[state=active]:border-r ds:data-[state=active]:border-t-0 ds:data-[state=active]:border-t-background dark:ds:data-[state=active]:border-t-background ds:h-full ds:data-[state=active]:-mt-0.5 ds:data-[state=active]:translate-y-[0px]`,
+    left: `${baseClasses} ds:rounded-l-md ds:data-[state=active]:border-t ds:data-[state=active]:border-l ds:data-[state=active]:border-b ds:data-[state=active]:border-r-0 ds:data-[state=active]:border-r-background dark:ds:data-[state=active]:border-r-background ds:w-full ds:data-[state=active]:-mr-0.5 ds:data-[state=active]:translate-x-[1px]`,
+    right: `${baseClasses} ds:rounded-r-md ds:data-[state=active]:border-t ds:data-[state=active]:border-r ds:data-[state=active]:border-b ds:data-[state=active]:border-l-0 ds:data-[state=active]:border-l-background dark:ds:data-[state=active]:border-l-background ds:w-full ds:data-[state=active]:-ml-0.5 ds:data-[state=active]:translate-x-[1px]`,
   };
 
   return positionMap[tabPosition];
