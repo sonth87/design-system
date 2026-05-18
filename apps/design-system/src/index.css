@@ -13,7 +13,8 @@
 
 @layer base {
   * {
-    @apply ds:border-border ds:outline-ring/50;
+    border: 0 solid var(--border);
+    @apply ds:outline-ring/50;
   }
 
   body {

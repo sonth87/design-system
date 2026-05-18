@@ -90,14 +90,14 @@ const Checkbox = React.forwardRef<HTMLButtonElement, CheckboxProps>(
       <div className={cn("ds:flex ds:flex-col ds:gap-1.5 ds:relative", {})}>
         <div className={cn("ds:flex", flexDirection, gapClass, alignmentClass)}>
           {(labelPosition === "top" || labelPosition === "left") && label && (
-            <label htmlFor={inputId} className={labelClass}>
+            <Label htmlFor={inputId} className={labelClass}>
               {label}
               {infoTooltip && (
                 <Tooltip content={infoTooltip}>
                   <Info className="ds:size-3.5 ds:min-w-3.5" />
                 </Tooltip>
               )}
-            </label>
+            </Label>
           )}
 
           <div className="ds:relative ds:inline-flex">

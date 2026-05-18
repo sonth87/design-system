@@ -17,6 +17,7 @@ import { cn } from "@dsui/ui/lib/utils";
 import { FloatingLabel } from "@/components/FloatLabel";
 import { Info } from "lucide-react";
 import { Tooltip } from "../Tooltip/Tooltip";
+import { Label } from "../Label";
 
 export type SelectOption = SSelectOption;
 
@@ -153,7 +154,7 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
           })}
         >
           {!isFloatLabel && label && (
-            <label
+            <Label
               htmlFor={selectId}
               className="ds:flex ds:gap-2 ds:text-sm ds:font-medium ds:leading-none ds:peer-disabled:cursor-not-allowed ds:peer-disabled:opacity-70"
             >
@@ -166,7 +167,7 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
                   <Info className="ds:size-3.5 ds:min-w-3.5" />
                 </Tooltip>
               )}
-            </label>
+            </Label>
           )}
 
           <div className="ds:relative">
