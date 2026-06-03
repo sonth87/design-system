@@ -46,7 +46,7 @@ function Calendar({
     <DayPicker
       showOutsideDays={showOutsideDays}
       className={cn(
-        "ds:bg-background ds:group/calendar ds:p-3 ds:[--cell-size:--spacing(8)] ds:[[data-slot=card-content]_&]:bg-transparent ds:[[data-slot=popover-content]_&]:bg-transparent",
+        "ds:bg-background ds:group/calendar ds:p-3 ds:[--cell-size:--ds-spacing(8)] ds:[[data-slot=card-content]_&]:bg-transparent ds:[[data-slot=popover-content]_&]:bg-transparent",
         String.raw`ds:rtl:**:[.rdp-button\_next>svg]:rotate-180`,
         String.raw`ds:rtl:**:[.rdp-button\_previous>svg]:rotate-180`,
         className

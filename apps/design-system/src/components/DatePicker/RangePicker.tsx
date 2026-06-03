@@ -550,9 +550,9 @@ export function RangePicker({
         size={
           props.isFloatLabel ? (props.size ? props.size : "xl") : props.size
         }
-        className={cn(
-          props.className,
-          "ds:relative ds:peer ds:border-0 ds:focus:ring-0 ds:rounded-none ds:hover:bg-transparent ds:active:bg-transparent ds:focus-visible:ring-0 ds:focus-visible:border-0",
+        className={props.className}
+        inputClassName={cn(
+          "ds:border-0 ds:focus:ring-0 ds:rounded-none ds:hover:bg-transparent ds:active:bg-transparent ds:focus-visible:ring-0 ds:focus-visible:border-0 ds:shadow-none",
           isFrom ? "ds:pr-0" : ""
         )}
         label={

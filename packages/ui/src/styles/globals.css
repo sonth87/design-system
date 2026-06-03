@@ -1,4 +1,8 @@
-@import "tailwindcss" prefix(ds);
+@layer base, theme, components, utilities;
+@import "tailwindcss/theme.css" layer(theme) prefix(ds);
+@import "tailwindcss/preflight.css" layer(base) prefix(ds);
+@import "tailwindcss/utilities.css" layer(utilities) prefix(ds);
+
 @import "tw-animate-css";
 @source "../../../apps/**/*.{ts,tsx}";
 @source "../../../components/**/*.{ts,tsx}";
@@ -88,9 +92,14 @@
 @layer base {
   * {
     border: 0 solid var(--border);
-    @apply ds:outline-ring/50;
+    @apply ds:border-border ds:outline-ring/50;
   }
   body {
     @apply ds:bg-background ds:text-foreground;
+  }
+
+  * {
+    border: 0 solid var(--border);
+    border-color: var(--border);
   }
 }

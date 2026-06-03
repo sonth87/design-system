@@ -18,7 +18,7 @@ import * as PopoverPrimitive from "@radix-ui/react-popover";
 import { Label } from "./label";
 
 const comboboxVariants = cva(
-  "ds:justify-between ds:relative ds:dark:bg-background ds:dark:hover:bg-input/50 ds:border-input ds:w-full ds:min-w-0 ds:rounded-md ds:border ds:bg-transparent ds:shadow-xs ds:transition-[color,box-shadow] ds:outline-none ds:file:inline-flex ds:file:h-7 ds:file:border-0 ds:file:bg-transparent ds:file:text-sm ds:file:font-medium ds:disabled:pointer-events-none ds:disabled:cursor-not-allowed ds:disabled:opacity-50 ds:focus-visible:border-ring ds:focus-visible:ring-ring/50 ds:focus-visible:ring-[3px] ds:aria-invalid:ring-destructive/20 ds:dark:aria-invalid:ring-destructive/40 ds:aria-invalid:border-destructive",
+  "ds:justify-between ds:relative ds:dark:bg-background ds:dark:hover:bg-input/50 ds:border-input ds:w-full ds:min-w-0 ds:rounded-md ds:border ds:border-border ds:bg-transparent ds:shadow-xs ds:transition-[color,box-shadow] ds:outline-none ds:file:inline-flex ds:file:h-7 ds:file:border-0 ds:file:bg-transparent ds:file:text-sm ds:file:font-medium ds:disabled:pointer-events-none ds:disabled:cursor-not-allowed ds:disabled:opacity-50 ds:focus-visible:border-ring ds:focus-visible:ring-ring/50 ds:focus-visible:ring-[3px] ds:aria-invalid:ring-destructive/20 ds:dark:aria-invalid:ring-destructive/40 ds:aria-invalid:border-destructive",
   {
     variants: {
       size: {

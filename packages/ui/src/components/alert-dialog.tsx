@@ -73,7 +73,7 @@ function AlertDialogContent({
       <AlertDialogPrimitive.Content
         data-slot="alert-dialog-content"
         className={cn(
-          "ds:bg-background ds:data-[state=closed]:animate-out ds:data-[state=closed]:fade-out-0 ds:data-[state=open]:fade-in-0 ds:data-[state=closed]:zoom-out-95 ds:data-[state=open]:zoom-in-95 ds:fixed ds:top-[50%] ds:left-[50%] ds:z-50 ds:grid ds:w-full ds:max-w-[calc(100%-2rem)] ds:translate-x-[-50%] ds:translate-y-[-50%] ds:gap-4 ds:rounded-lg ds:border ds:p-6 ds:shadow-lg ds:duration-200 ds:sm:max-w-lg",
+          "ds:bg-background ds:data-[state=closed]:animate-out ds:data-[state=closed]:fade-out-0 ds:data-[state=open]:fade-in-0 ds:data-[state=closed]:zoom-out-95 ds:data-[state=open]:zoom-in-95 ds:fixed ds:top-[50%] ds:left-[50%] ds:z-50 ds:grid ds:w-full ds:max-w-[calc(100%-2rem)] ds:translate-x-[-50%] ds:translate-y-[-50%] ds:gap-4 ds:rounded-lg ds:border ds:border-border ds:p-6 ds:shadow-lg ds:duration-200 ds:sm:max-w-lg",
           {
             "ds:data-[state=open]:animate-in": !noDefaultAnimation,
           },

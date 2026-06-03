@@ -225,7 +225,7 @@ function Sidebar({
           "ds:group-data-[side=right]:rotate-180",
           "ds:group-data-[side=right]:hidden",
           variant === "floating" || variant === "inset"
-            ? "ds:group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)+(--spacing(4)))]"
+            ? "ds:group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)+(--ds-spacing(4)))]"
             : "ds:group-data-[collapsible=icon]:w-(--sidebar-width-icon)"
         )}
       />
@@ -238,7 +238,7 @@ function Sidebar({
             : "ds:right-0 ds:group-data-[collapsible=offcanvas]:right-[calc(var(--sidebar-width)*-1)]",
           // Adjust the padding for floating and inset variants.
           variant === "floating" || variant === "inset"
-            ? "ds:p-2 ds:group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)+(--spacing(4))+2px)]"
+            ? "ds:p-2 ds:group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)+(--ds-spacing(4))+2px)]"
             : "ds:group-data-[collapsible=icon]:w-(--sidebar-width-icon) ds:group-data-[side=left]:border-r ds:group-data-[side=right]:border-l",
           className
         )}

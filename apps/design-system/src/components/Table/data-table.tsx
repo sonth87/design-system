@@ -40,7 +40,10 @@ export function DataTable<TData>({
 }: DataTableProps<TData>) {
   return (
     <div
-      className={cn("ds:flex ds:w-full ds:flex-col ds:gap-2.5 ds:relative", className)}
+      className={cn(
+        "ds:flex ds:w-full ds:flex-col ds:gap-2.5 ds:relative",
+        className
+      )}
       {...props}
     >
       {children}
@@ -50,7 +53,10 @@ export function DataTable<TData>({
         </div>
       )}
       <div
-        className={cn("ds:overflow-auto ds:rounded-md ds:border", loading && "ds:blur-sm")}
+        className={cn(
+          "ds:overflow-auto ds:rounded-md ds:border ds-border-border",
+          loading && "ds:blur-sm"
+        )}
       >
         <Table>
           <TableHeader>

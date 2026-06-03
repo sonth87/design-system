@@ -26,7 +26,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     const {
       variant = "solid",
       size = "normal",
-      color = "muted",
       animation,
       ...rest
     } = props;
@@ -76,7 +75,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         asChild={shouldUseAsChild}
         style={{ ...(rest.style || {}), ...(buttonAnimation?.style || {}) }}
         variant={buttonAnimation?.variant ?? variant}
-        color={color}
         size={size}
       >
         {buttonContent}

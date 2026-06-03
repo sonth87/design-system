@@ -37,6 +37,7 @@ export type InputProps = BaseInputProps & {
   prefixIcon?: React.ReactNode;
   suffixIcon?: React.ReactNode;
   required?: boolean;
+  inputClassName?: string;
 };
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
@@ -60,6 +61,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       suffixIcon,
       placeholder = " ",
       required,
+      inputClassName,
       ...props
     },
     ref
@@ -296,8 +298,8 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                 },
                 prefixIcon && padding.prefix,
                 mask && "ds:placeholder:text-slate-400 ds:placeholder:opacity-100",
-                getRightPadding()
-                // className,
+                getRightPadding(),
+                inputClassName,
               )}
               state={state}
               size={

@@ -27,6 +27,14 @@ import {
   Marquee,
   FloatingLabel,
 } from "@sth87/shadcn-design-system";
+import {
+  Table,
+  TableHeader,
+  TableBody,
+  TableHead,
+  TableRow,
+  TableCell,
+} from "../../../../packages/ui/src/components/table";
 import { AlertCircle, CheckCircle, Home, Inbox, Settings } from "lucide-react";
 
 export default function ComponentsPage() {
@@ -177,6 +185,36 @@ export default function ComponentsPage() {
             <div className="ds:space-y-2">
               <Label>Calendar</Label>
               <Calendar mode="single" className="ds:rounded-md ds:border" />
+            </div>
+
+            <div className="ds:space-y-2">
+              <Label>Table</Label>
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Name</TableHead>
+                    <TableHead>Email</TableHead>
+                    <TableHead>Status</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  <TableRow>
+                    <TableCell>John Doe</TableCell>
+                    <TableCell>john@example.com</TableCell>
+                    <TableCell>Active</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell>Jane Smith</TableCell>
+                    <TableCell>jane@example.com</TableCell>
+                    <TableCell>Active</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell>Bob Johnson</TableCell>
+                    <TableCell>bob@example.com</TableCell>
+                    <TableCell>Inactive</TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
             </div>
           </div>
         </div>
