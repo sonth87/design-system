@@ -133,8 +133,8 @@ const meta: Meta<ButtonProps> = {
   args: {
     onClick: undefined,
     children: "Button",
-    variant: "solid",
-    color: "primary",
+    // variant: "solid",
+    // color: "primary",
     size: "normal",
   },
 };
@@ -151,11 +151,11 @@ export const Default = (args: ButtonProps) => (
 export const Variants = (args: ButtonProps) => (
   <div className="ds:flex ds:flex-col ds:gap-4">
     <div className="ds:flex ds:flex-row ds:gap-4">
-      <Button {...args}>{args.children}</Button>
-      <Button {...args} variant="mix">
+      <Button {...args} color="primary">{args.children}</Button>
+      <Button {...args} variant="mix" color="primary">
         {args.children}
       </Button>
-      <Button {...args} variant="outline">
+      <Button {...args} variant="outline" color="primary">
         {args.children}
       </Button>
       <Button {...args} variant="light">
@@ -171,6 +171,24 @@ export const Variants = (args: ButtonProps) => (
     <div className="ds:flex ds:flex-row ds:gap-4">
       <Button {...args}>{args.children}</Button>
       <Button {...args} variant="mix" color="secondary">
+        {args.children}
+      </Button>
+      <Button {...args} variant="outline" color="secondary">
+        {args.children}
+      </Button>
+      <Button {...args} variant="light" color="secondary">
+        {args.children}
+      </Button>
+      <Button {...args} variant="ghost" color="secondary">
+        {args.children}
+      </Button>
+      <Button {...args} variant="link" color="secondary">
+        {args.children}
+      </Button>
+    </div>
+    <div className="ds:flex ds:flex-row ds:gap-4">
+      <Button {...args} className="ds:bg-green-400 ds:hover:bg-green-600">{args.children}</Button>
+      <Button {...args} variant="mix" className="ds:bg-[#007be5] ds:hover:bg-[#005bb5] ds:text-white">
         {args.children}
       </Button>
       <Button {...args} variant="outline" color="secondary">

@@ -291,7 +291,7 @@ export const ImageViewerImage: React.FC<ImageViewerImageProps> = ({
     <>
       <div
         className={cn(
-          "ds:ds-image-viewer-root ds:relative ds:inline-block",
+          "ds:image-viewer-root ds:relative ds:inline-block",
           wrapperClassName
         )}
       >
@@ -315,7 +315,7 @@ export const ImageViewerImage: React.FC<ImageViewerImageProps> = ({
             width={width}
             height={height}
             className={cn(
-              "ds:ds-image-viewer-img ds:max-w-full ds:h-auto ds:align-middle",
+              "ds:image-viewer-img ds:max-w-full ds:h-auto ds:align-middle",
               loading && "ds:opacity-0",
               className
             )}
@@ -328,7 +328,7 @@ export const ImageViewerImage: React.FC<ImageViewerImageProps> = ({
             <div
               onClick={handlePreview}
               className={cn(
-                "ds:ds-image-viewer-mask ds:absolute ds:inset-0 ds:flex ds:items-center ds:justify-center ds:opacity-0 ds:hover:opacity-100 ds:transition-opacity ds:cursor-pointer",
+                "ds:image-viewer-mask ds:absolute ds:inset-0 ds:flex ds:items-center ds:justify-center ds:opacity-0 ds:hover:opacity-100 ds:transition-opacity ds:cursor-pointer",
                 "ds:bg-black/50 ds:backdrop-blur-sm"
               )}
             >

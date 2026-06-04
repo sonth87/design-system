@@ -54,7 +54,7 @@ export function DataTable<TData>({
       )}
       <div
         className={cn(
-          "ds:overflow-auto ds:rounded-md ds:border ds-border-border",
+          "ds:overflow-auto ds:rounded-md ds:border ds:border-border",
           loading && "ds:blur-sm"
         )}
       >
