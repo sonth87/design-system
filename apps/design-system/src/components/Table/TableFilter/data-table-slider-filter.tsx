@@ -41,7 +41,7 @@ function parseValuesAsNumbers(value: unknown): RangeValue | undefined {
   return undefined;
 }
 
-interface DataTableSliderFilterProps<TData> {
+export interface DataTableSliderFilterProps<TData> {
   column: Column<TData, unknown>;
   title?: string;
 }

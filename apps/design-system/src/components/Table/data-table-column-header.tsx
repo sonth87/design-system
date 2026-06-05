@@ -17,7 +17,7 @@ import DropdownMenu, {
 import { DataTableFilterPopover } from "./TableFilter/data-table-filter-popover";
 import { Button } from "../Button";
 
-interface DataTableColumnHeaderProps<TData, TValue> {
+export interface DataTableColumnHeaderProps<TData, TValue> {
   column: Column<TData, TValue>;
   label?: string;
   className?: string;
