@@ -38,7 +38,7 @@ const ScrollArea = React.forwardRef<HTMLDivElement, ScrollAreaProps>(
       if (!snapType || snapType === "none") return "snap-none";
 
       const [axis, alignment] = snapType.split(" ");
-      return cn(`snap-${axis}`, alignment && `snap-${alignment}`);
+      return cn(`ds:snap-${axis}`, alignment && `ds:snap-${alignment}`);
     }, [snapType]);
 
     // const snapClass = snapType

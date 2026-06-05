@@ -3,24 +3,24 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@dsui/ui/lib/utils";
 
 const inputVariants = cva(
-  "file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-background border-input w-full min-w-0 rounded-md border bg-transparent shadow-xs transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
+  "ds:file:text-foreground ds:placeholder:text-muted-foreground ds:selection:bg-primary ds:selection:text-primary-foreground ds:dark:bg-background ds:border-input ds:w-full ds:min-w-0 ds:rounded-md ds:border ds:bg-transparent ds:shadow-xs ds:transition-[color,box-shadow] ds:outline-none ds:file:inline-flex ds:file:h-7 ds:file:border-0 ds:file:bg-transparent ds:file:text-sm ds:file:font-medium ds:disabled:pointer-events-none ds:disabled:cursor-not-allowed ds:disabled:opacity-50 ds:focus-visible:border-ring ds:focus-visible:ring-ring/50 ds:focus-visible:ring-[3px] ds:aria-invalid:ring-destructive/20 ds:dark:aria-invalid:ring-destructive/40 ds:aria-invalid:border-destructive",
   {
     variants: {
       size: {
-        xs: "h-6 text-xs px-2 py-0.5",
-        sm: "h-8 text-sm px-2.5 py-1",
-        normal: "h-9 px-3 py-1",
-        lg: "h-11 px-4 py-2",
-        xl: "h-14 px-5 py-3",
+        xs: "ds:h-6 ds:text-xs ds:px-2 ds:py-0.5",
+        sm: "ds:h-8 ds:text-sm ds:px-2.5 ds:py-1",
+        normal: "ds:h-9 ds:px-3 ds:py-1",
+        lg: "ds:h-11 ds:px-4 ds:py-2",
+        xl: "ds:h-14 ds:px-5 ds:py-3",
       },
       state: {
         default: "",
         success:
-          "border-success ring-success/30 focus-visible:border-success focus-visible:ring-success/50",
+          "ds:border-success ds:ring-success/30 ds:focus-visible:border-success ds:focus-visible:ring-success/50",
         error:
-          "border-destructive ring-destructive/30 focus-visible:border-destructive focus-visible:ring-destructive/50",
+          "ds:border-destructive ds:ring-destructive/30 ds:focus-visible:border-destructive ds:focus-visible:ring-destructive/50",
         warning:
-          "border-warning ring-warning/30 focus-visible:border-warning focus-visible:ring-warning/50",
+          "ds:border-warning ds:ring-warning/30 ds:focus-visible:border-warning ds:focus-visible:ring-warning/50",
       },
     },
     defaultVariants: {

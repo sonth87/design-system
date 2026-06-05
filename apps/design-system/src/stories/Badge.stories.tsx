@@ -305,23 +305,23 @@ export const WithBorder: Story = {
 
 export const CustomColor: Story = {
   render: () => (
-    <div className="flex flex-row gap-4 items-center">
-      <Badge size="xl" className="bg-pink-500">
+    <div className="ds:flex ds:flex-row ds:gap-4 ds:items-center">
+      <Badge size="xl" className="ds:bg-pink-500">
         99
       </Badge>
-      <Badge size="xl" className="bg-purple-500">
+      <Badge size="xl" className="ds:bg-purple-500">
         99
       </Badge>
-      <Badge size="xl" className="bg-black">
+      <Badge size="xl" className="ds:bg-black">
         99
       </Badge>
-      <Badge size="xl" className="bg-yellow-500">
+      <Badge size="xl" className="ds:bg-yellow-500">
         99
       </Badge>
-      <Badge size="xl" className="bg-green-500">
+      <Badge size="xl" className="ds:bg-green-500">
         99
       </Badge>
-      <Badge size="xl" className="bg-gray-500">
+      <Badge size="xl" className="ds:bg-gray-500">
         99
       </Badge>
     </div>

@@ -38,7 +38,7 @@ function RotatingText({
   const currentText = Array.isArray(text) ? text[index] : text;
 
   return (
-    <div className={cn("overflow-hidden py-1", containerClassName)}>
+    <div className={cn("ds:overflow-hidden ds:py-1", containerClassName)}>
       <AnimatePresence mode="wait">
         <motion.div
           key={currentText}

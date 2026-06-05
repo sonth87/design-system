@@ -95,7 +95,7 @@ const ResizableWrapper = (props: ResizableProps) => {
         direction={direction}
         autoSaveId={autoSaveId}
         onLayout={onLayout}
-        className={cn("h-full w-full", className)}
+        className={cn("ds:h-full ds:w-full", className)}
         keyboardResizeBy={keyboardResizeBy}
         storage={storage}
       >
@@ -114,7 +114,7 @@ const ResizableWrapper = (props: ResizableProps) => {
       direction={direction}
       autoSaveId={autoSaveId}
       onLayout={onLayout}
-      className={cn("h-full w-full", className)}
+      className={cn("ds:h-full ds:w-full", className)}
       keyboardResizeBy={keyboardResizeBy}
       storage={storage}
     >

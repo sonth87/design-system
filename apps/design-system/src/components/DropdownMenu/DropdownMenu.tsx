@@ -177,7 +177,7 @@ const DropdownMenu = React.forwardRef<HTMLDivElement, DropdownMenuProps>(
                   }
                 }}
               >
-                {item.icon && <span className="mr-2">{item.icon}</span>}
+                {item.icon && <span className="ds:mr-2">{item.icon}</span>}
                 {item.label}
               </SDropdownMenuCheckboxItem>
             );
@@ -190,7 +190,7 @@ const DropdownMenu = React.forwardRef<HTMLDivElement, DropdownMenuProps>(
                   onClick={item.onClick}
                   className={item.className}
                 >
-                  {item.icon && <span className="mr-2">{item.icon}</span>}
+                  {item.icon && <span className="ds:mr-2">{item.icon}</span>}
                   {item.label}
                 </SDropdownMenuRadioItem>
               </SDropdownMenuRadioGroup>
@@ -204,11 +204,11 @@ const DropdownMenu = React.forwardRef<HTMLDivElement, DropdownMenuProps>(
                   <SDropdownMenuSubTrigger
                     disabled={item.disabled}
                     className={cn(
-                      item.disabled ? "opacity-50 cursor-not-allowed" : "",
+                      item.disabled ? "ds:opacity-50 ds:cursor-not-allowed" : "",
                       item.className
                     )}
                   >
-                    {item.icon && <span className="mr-2">{item.icon}</span>}
+                    {item.icon && <span className="ds:mr-2">{item.icon}</span>}
                     {item.label}
                   </SDropdownMenuSubTrigger>
                   <SDropdownMenuSubContent>
@@ -226,7 +226,7 @@ const DropdownMenu = React.forwardRef<HTMLDivElement, DropdownMenuProps>(
                   onClick={item.onClick}
                   className={item.className}
                 >
-                  {item.icon && <span className="mr-2">{item.icon}</span>}
+                  {item.icon && <span className="ds:mr-2">{item.icon}</span>}
                   {item.label}
                 </SDropdownMenuItem>
               );
@@ -254,7 +254,7 @@ const DropdownMenu = React.forwardRef<HTMLDivElement, DropdownMenuProps>(
           >
             <SDropdownMenuTrigger asChild>
               <div
-                className="fixed"
+                className="ds:fixed"
                 style={{
                   left: contextMenuPosition.x,
                   top: contextMenuPosition.y,

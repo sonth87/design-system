@@ -42,51 +42,51 @@ export function Avatar({
   const avatarSize = React.useMemo<string>(() => {
     switch (size) {
       case "xs":
-        return "size-6";
+        return "ds:size-6";
       case "sm":
-        return "size-8";
+        return "ds:size-8";
       case "md":
-        return "size-10";
+        return "ds:size-10";
       case "lg":
-        return "size-12";
+        return "ds:size-12";
       case "xl":
-        return "size-16";
+        return "ds:size-16";
       default:
-        return "size-10";
+        return "ds:size-10";
     }
   }, [size]);
 
   const avatarVariant = React.useMemo<string>(() => {
     switch (variant) {
       case "circle":
-        return "rounded-full";
+        return "ds:rounded-full";
       case "square":
-        return "rounded-md";
+        return "ds:rounded-md";
       default:
-        return "rounded-full";
+        return "ds:rounded-full";
     }
   }, [variant]);
 
   const avatarColor = React.useMemo<string>(() => {
     switch (color) {
       case "primary":
-        return "bg-primary text-primary-foreground";
+        return "ds:bg-primary ds:text-primary-foreground";
       case "secondary":
-        return "bg-secondary text-secondary-foreground";
+        return "ds:bg-secondary ds:text-secondary-foreground";
       case "dark":
-        return "bg-neutral-900 text-white";
+        return "ds:bg-neutral-900 ds:text-white";
       case "light":
-        return "bg-neutral-200 text-neutral-950";
+        return "ds:bg-neutral-200 ds:text-neutral-950";
       case "inverted":
-        return "dark:bg-white dark:text-black";
+        return "ds:dark:bg-white ds:dark:text-black";
       case "success":
-        return "bg-success text-success-foreground";
+        return "ds:bg-success ds:text-success-foreground";
       case "warning":
-        return "bg-warning text-warning-foreground";
+        return "ds:bg-warning ds:text-warning-foreground";
       case "error":
-        return "bg-error text-error-foreground";
+        return "ds:bg-error ds:text-error-foreground";
       case "glass":
-        return "bg-white/15 backdrop-blur-sm";
+        return "ds:bg-white/15 ds:backdrop-blur-sm";
       default:
         return "";
     }
@@ -95,7 +95,7 @@ export function Avatar({
   return (
     <DsAvatar
       className={cn(
-        "relative flex shrink-0 transition-all duration-300",
+        "ds:relative ds:flex ds:shrink-0 ds:transition-all ds:duration-300",
         avatarSize,
         avatarVariant,
         avatarAnimation?.className,
@@ -104,9 +104,9 @@ export function Avatar({
       )}
       {...props}
     >
-      {src && <AvatarImage src={src} alt={alt} className="rounded-[inherit]" />}
+      {src && <AvatarImage src={src} alt={alt} className="ds:rounded-[inherit]" />}
       <AvatarFallback
-        className={cn("rounded-[inherit]", avatarColor, className)}
+        className={cn("ds:rounded-[inherit]", avatarColor, className)}
       >
         {fallback}
       </AvatarFallback>

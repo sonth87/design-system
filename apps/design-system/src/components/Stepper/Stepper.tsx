@@ -38,121 +38,121 @@ const stepperColorClasses: Record<
   primary: {
     indicator: {
       active:
-        "border-primary bg-primary text-primary-foreground data-[variant=dot]:bg-primary/30 data-[variant=dot]:border-primary/0",
+        "ds:border-primary ds:bg-primary ds:text-primary-foreground ds:data-[variant=dot]:bg-primary/30 ds:data-[variant=dot]:border-primary/0",
       completed:
-        "border-primary bg-primary text-primary-foreground data-[variant=dot]:bg-primary/30 data-[variant=dot]:border-primary/0",
+        "ds:border-primary ds:bg-primary ds:text-primary-foreground ds:data-[variant=dot]:bg-primary/30 ds:data-[variant=dot]:border-primary/0",
       inactive:
-        "border-muted bg-background text-muted-foreground data-[variant=dot]:bg-muted/30 data-[variant=dot]:border-muted/0",
+        "ds:border-muted ds:bg-background ds:text-muted-foreground ds:data-[variant=dot]:bg-muted/30 ds:data-[variant=dot]:border-muted/0",
     },
     separator: {
-      active: "bg-primary",
-      completed: "bg-primary",
-      inactive: "bg-border",
+      active: "ds:bg-primary",
+      completed: "ds:bg-primary",
+      inactive: "ds:bg-border",
     },
   },
   secondary: {
     indicator: {
       active:
-        "border-secondary bg-secondary text-secondary-foreground data-[variant=dot]:bg-secondary/30 data-[variant=dot]:border-secondary/0",
+        "ds:border-secondary ds:bg-secondary ds:text-secondary-foreground ds:data-[variant=dot]:bg-secondary/30 ds:data-[variant=dot]:border-secondary/0",
       completed:
-        "border-secondary bg-secondary text-secondary-foreground data-[variant=dot]:bg-secondary/30 data-[variant=dot]:border-secondary/0",
+        "ds:border-secondary ds:bg-secondary ds:text-secondary-foreground ds:data-[variant=dot]:bg-secondary/30 ds:data-[variant=dot]:border-secondary/0",
       inactive:
-        "border-muted bg-background text-muted-foreground data-[variant=dot]:bg-muted/30 data-[variant=dot]:border-muted/0",
+        "ds:border-muted ds:bg-background ds:text-muted-foreground ds:data-[variant=dot]:bg-muted/30 ds:data-[variant=dot]:border-muted/0",
     },
     separator: {
-      active: "bg-secondary",
-      completed: "bg-secondary",
-      inactive: "bg-border",
+      active: "ds:bg-secondary",
+      completed: "ds:bg-secondary",
+      inactive: "ds:bg-border",
     },
   },
   accent: {
     indicator: {
       active:
-        "border-accent bg-accent text-accent-foreground data-[variant=dot]:bg-accent/30 data-[variant=dot]:border-accent/0",
+        "ds:border-accent ds:bg-accent ds:text-accent-foreground ds:data-[variant=dot]:bg-accent/30 ds:data-[variant=dot]:border-accent/0",
       completed:
-        "border-accent bg-accent text-accent-foreground data-[variant=dot]:bg-accent/30 data-[variant=dot]:border-accent/0",
+        "ds:border-accent ds:bg-accent ds:text-accent-foreground ds:data-[variant=dot]:bg-accent/30 ds:data-[variant=dot]:border-accent/0",
       inactive:
-        "border-muted bg-background text-muted-foreground data-[variant=dot]:bg-muted/30 data-[variant=dot]:border-muted/0",
+        "ds:border-muted ds:bg-background ds:text-muted-foreground ds:data-[variant=dot]:bg-muted/30 ds:data-[variant=dot]:border-muted/0",
     },
     separator: {
-      active: "bg-accent",
-      completed: "bg-accent",
-      inactive: "bg-border",
+      active: "ds:bg-accent",
+      completed: "ds:bg-accent",
+      inactive: "ds:bg-border",
     },
   },
   destructive: {
     indicator: {
       active:
-        "border-destructive bg-destructive text-destructive-foreground data-[variant=dot]:bg-destructive/30 data-[variant=dot]:border-destructive/0",
+        "ds:border-destructive ds:bg-destructive ds:text-destructive-foreground ds:data-[variant=dot]:bg-destructive/30 ds:data-[variant=dot]:border-destructive/0",
       completed:
-        "border-destructive bg-destructive text-destructive-foreground data-[variant=dot]:bg-destructive/30 data-[variant=dot]:border-destructive/0",
+        "ds:border-destructive ds:bg-destructive ds:text-destructive-foreground ds:data-[variant=dot]:bg-destructive/30 ds:data-[variant=dot]:border-destructive/0",
       inactive:
-        "border-muted bg-background text-muted-foreground data-[variant=dot]:bg-muted/30 data-[variant=dot]:border-muted/0",
+        "ds:border-muted ds:bg-background ds:text-muted-foreground ds:data-[variant=dot]:bg-muted/30 ds:data-[variant=dot]:border-muted/0",
     },
     separator: {
-      active: "bg-destructive",
-      completed: "bg-destructive",
-      inactive: "bg-border",
+      active: "ds:bg-destructive",
+      completed: "ds:bg-destructive",
+      inactive: "ds:bg-border",
     },
   },
   muted: {
     indicator: {
       active:
-        "border-muted bg-muted text-muted-foreground data-[variant=dot]:bg-muted/30 data-[variant=dot]:border-muted/0",
+        "ds:border-muted ds:bg-muted ds:text-muted-foreground ds:data-[variant=dot]:bg-muted/30 ds:data-[variant=dot]:border-muted/0",
       completed:
-        "border-muted bg-muted text-muted-foreground data-[variant=dot]:bg-muted/30 data-[variant=dot]:border-muted/0",
+        "ds:border-muted ds:bg-muted ds:text-muted-foreground ds:data-[variant=dot]:bg-muted/30 ds:data-[variant=dot]:border-muted/0",
       inactive:
-        "border-muted bg-background text-muted-foreground data-[variant=dot]:bg-muted/30 data-[variant=dot]:border-muted/0",
+        "ds:border-muted ds:bg-background ds:text-muted-foreground ds:data-[variant=dot]:bg-muted/30 ds:data-[variant=dot]:border-muted/0",
     },
     separator: {
-      active: "bg-muted",
-      completed: "bg-muted",
-      inactive: "bg-border",
+      active: "ds:bg-muted",
+      completed: "ds:bg-muted",
+      inactive: "ds:bg-border",
     },
   },
   success: {
     indicator: {
       active:
-        "border-success bg-success text-success-foreground data-[variant=dot]:bg-success/30 data-[variant=dot]:border-success/0",
+        "ds:border-success ds:bg-success ds:text-success-foreground ds:data-[variant=dot]:bg-success/30 ds:data-[variant=dot]:border-success/0",
       completed:
-        "border-success bg-success text-success-foreground data-[variant=dot]:bg-success/30 data-[variant=dot]:border-success/0",
+        "ds:border-success ds:bg-success ds:text-success-foreground ds:data-[variant=dot]:bg-success/30 ds:data-[variant=dot]:border-success/0",
       inactive:
-        "border-muted bg-background text-muted-foreground data-[variant=dot]:bg-muted/30 data-[variant=dot]:border-muted/0",
+        "ds:border-muted ds:bg-background ds:text-muted-foreground ds:data-[variant=dot]:bg-muted/30 ds:data-[variant=dot]:border-muted/0",
     },
     separator: {
-      active: "bg-success",
-      completed: "bg-success",
-      inactive: "bg-border",
+      active: "ds:bg-success",
+      completed: "ds:bg-success",
+      inactive: "ds:bg-border",
     },
   },
   error: {
     indicator: {
       active:
-        "border-error bg-error text-error-foreground data-[variant=dot]:bg-error/30 data-[variant=dot]:border-error/0",
+        "ds:border-error ds:bg-error ds:text-error-foreground ds:data-[variant=dot]:bg-error/30 ds:data-[variant=dot]:border-error/0",
       completed:
-        "border-error bg-error text-error-foreground data-[variant=dot]:bg-error/30 data-[variant=dot]:border-error/0",
+        "ds:border-error ds:bg-error ds:text-error-foreground ds:data-[variant=dot]:bg-error/30 ds:data-[variant=dot]:border-error/0",
       inactive:
-        "border-muted bg-background text-muted-foreground data-[variant=dot]:bg-muted/30 data-[variant=dot]:border-muted/0",
+        "ds:border-muted ds:bg-background ds:text-muted-foreground ds:data-[variant=dot]:bg-muted/30 ds:data-[variant=dot]:border-muted/0",
     },
     separator: {
-      active: "bg-error",
-      completed: "bg-error",
-      inactive: "bg-border",
+      active: "ds:bg-error",
+      completed: "ds:bg-error",
+      inactive: "ds:bg-border",
     },
   },
   warning: {
     indicator: {
       active:
-        "border-warning bg-warning text-warning-foreground data-[variant=dot]:bg-warning/30 data-[variant=dot]:border-warning/0",
+        "ds:border-warning ds:bg-warning ds:text-warning-foreground ds:data-[variant=dot]:bg-warning/30 ds:data-[variant=dot]:border-warning/0",
       completed:
-        "border-warning bg-warning text-warning-foreground data-[variant=dot]:bg-warning/30 data-[variant=dot]:border-warning/0",
+        "ds:border-warning ds:bg-warning ds:text-warning-foreground ds:data-[variant=dot]:bg-warning/30 ds:data-[variant=dot]:border-warning/0",
       inactive:
-        "border-muted bg-background text-muted-foreground data-[variant=dot]:bg-muted/30 data-[variant=dot]:border-muted/0",
+        "ds:border-muted ds:bg-background ds:text-muted-foreground ds:data-[variant=dot]:bg-muted/30 ds:data-[variant=dot]:border-muted/0",
     },
     separator: {
-      active: "bg-warning",
-      completed: "bg-warning",
-      inactive: "bg-border",
+      active: "ds:bg-warning",
+      completed: "ds:bg-warning",
+      inactive: "ds:bg-border",
     },
   },
 };
@@ -631,8 +631,8 @@ function StepperRoot(props: StepperRootProps) {
           dir={dir}
           {...rootProps}
           className={cn(
-            "flex gap-6",
-            orientation === "horizontal" ? "w-full flex-col" : "flex-row",
+            "ds:flex ds:gap-6",
+            orientation === "horizontal" ? "ds:w-full ds:flex-col" : "ds:flex-row",
             className
           )}
         />
@@ -822,10 +822,10 @@ function StepperList(props: StepperListProps) {
         {...listProps}
         ref={composedRef}
         className={cn(
-          "flex outline-none",
+          "ds:flex ds:outline-none",
           orientation === "horizontal"
-            ? "flex-row items-center"
-            : "flex-col items-start",
+            ? "ds:flex-row ds:items-center"
+            : "ds:flex-col ds:items-start",
           className
         )}
         onBlur={onBlur}
@@ -910,20 +910,20 @@ function StepperItem(props: StepperItemProps) {
 
   // Determine item layout based on orientation and labelPosition
   const getItemClasses = () => {
-    const baseClasses = "relative flex";
+    const baseClasses = "ds:relative ds:flex";
 
     if (orientation === "horizontal") {
       // Horizontal stepper
       if (labelPosition === "top" || labelPosition === "bottom") {
         // When labels are above/below, use flex-col to stack indicator row and label
         // Each item takes equal space
-        return `${baseClasses} flex-col items-center flex-1 gap-2`;
+        return `${baseClasses} ds:flex-col ds:items-center ds:flex-1 ds:gap-2`;
       }
       // Default: labels left/right - flex-row
-      return `${baseClasses} flex-row items-center not-last:flex-1`;
+      return `${baseClasses} ds:flex-row ds:items-center ds:not-last:flex-1`;
     } else {
       // Vertical stepper - always flex-col for vertical orientation
-      return `${baseClasses} flex-col`;
+      return `${baseClasses} ds:flex-col`;
     }
   };
 
@@ -1002,7 +1002,7 @@ function StepperItem(props: StepperItemProps) {
           <div
             key="left-separator"
             className={cn(
-              "h-px flex-1 transition-colors",
+              "ds:h-px ds:flex-1 ds:transition-colors",
               getSeparatorColorClass(color, customColor, leftSeparatorState)
             )}
             style={getCustomColorStyle(customColor, leftSeparatorState, false)}
@@ -1013,21 +1013,21 @@ function StepperItem(props: StepperItemProps) {
 
       const indicatorRow = (
         <div
-          className="flex w-full items-center justify-center"
+          className="ds:flex ds:w-full ds:items-center ds:justify-center"
           key="indicator-row"
         >
           {/* Left separator - connects to previous step */}
           {leftSeparator}
           {/* Spacer if first step */}
           {isFirstStep && (
-            <div className="h-px flex-1 bg-transparent" aria-hidden="true" />
+            <div className="ds:h-px ds:flex-1 ds:bg-transparent" aria-hidden="true" />
           )}
           {indicator}
           {/* Right separator - connects to next step */}
           {!isLastStep && separator}
           {/* Spacer for last step to maintain centering */}
           {isLastStep && (
-            <div className="h-px flex-1 bg-transparent" aria-hidden="true" />
+            <div className="ds:h-px ds:flex-1 ds:bg-transparent" aria-hidden="true" />
           )}
         </div>
       );
@@ -1339,13 +1339,13 @@ function StepperTrigger(props: ButtonProps) {
     ) {
       // For horizontal with top/bottom labels, trigger only contains text
       // Indicator and separator will be siblings at item level
-      return labelPosition === "top" ? "flex-col-reverse" : "flex-col";
+      return labelPosition === "top" ? "ds:flex-col-reverse" : "ds:flex-col";
     }
 
-    if (labelPosition === "top") return "flex-col-reverse";
-    if (labelPosition === "bottom") return "flex-col";
-    if (labelPosition === "left") return "flex-row-reverse";
-    return "flex-row"; // default is right
+    if (labelPosition === "top") return "ds:flex-col-reverse";
+    if (labelPosition === "bottom") return "ds:flex-col";
+    if (labelPosition === "left") return "ds:flex-row-reverse";
+    return "ds:flex-row"; // default is right
   };
 
   const shouldWrapIndicator =
@@ -1390,8 +1390,8 @@ function StepperTrigger(props: ButtonProps) {
       {...triggerProps}
       ref={composedRef}
       className={cn(
-        "inline-flex items-center justify-center gap-3 rounded-md text-left outline-none transition-all focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
-        "not-has-data-[slot=description]:rounded-full not-has-data-[slot=title]:rounded-full",
+        "ds:inline-flex ds:items-center ds:justify-center ds:gap-3 ds:rounded-md ds:text-left ds:outline-none ds:transition-all ds:focus-visible:border-ring ds:focus-visible:ring-[3px] ds:focus-visible:ring-ring/50 ds:disabled:pointer-events-none ds:disabled:opacity-50 ds:aria-invalid:border-destructive ds:aria-invalid:ring-destructive/20 ds:dark:aria-invalid:ring-destructive/40 ds:[&_svg:not([class*='size-'])]:size-4 ds:[&_svg]:pointer-events-none ds:[&_svg]:shrink-0",
+        "ds:not-has-data-[slot=description]:rounded-full ds:not-has-data-[slot=title]:rounded-full",
         shouldWrapIndicator ? "" : getFlexDirection(),
         className
       )}
@@ -1455,8 +1455,8 @@ function StepperIndicator(props: StepperIndicatorProps) {
       ref={ref}
       style={{ ...indicatorProps.style, ...customStyle }}
       className={cn(
-        "flex shrink-0 items-center justify-center rounded-full border-2 font-medium text-sm transition-colors",
-        isDot ? "size-7 data-[variant=dot]:size-2" : "size-7",
+        "ds:flex ds:shrink-0 ds:items-center ds:justify-center ds:rounded-full ds:border-2 ds:font-medium ds:text-sm ds:transition-colors",
+        isDot ? "ds:size-7 ds:data-[variant=dot]:size-2" : "ds:size-7",
         colorClass,
         className
       )}
@@ -1467,7 +1467,7 @@ function StepperIndicator(props: StepperIndicatorProps) {
         ) : children ? (
           children
         ) : dataState === "completed" ? (
-          <Check className="size-4" />
+          <Check className="ds:size-4" />
         ) : (
           stepPosition
         ))}
@@ -1530,21 +1530,21 @@ function StepperSeparator(props: StepperSeparatorProps) {
       if (labelPosition === "top" || labelPosition === "bottom") {
         // When labels are above/below, separator is at item level alongside indicator
         // It should be a horizontal line that takes remaining space
-        return "h-px flex-1";
+        return "ds:h-px ds:flex-1";
       }
       // Default: labels left/right - normal flex behavior
-      return "h-px flex-1";
+      return "ds:h-px ds:flex-1";
     } else {
       // Vertical stepper
       if (labelPosition === "top" || labelPosition === "bottom") {
         // When labels are above/below in vertical mode, separator connects vertically
-        return "w-px absolute left-1/2 -translate-x-1/2 top-full h-full -z-10";
+        return "ds:w-px ds:absolute ds:left-1/2 ds:-translate-x-1/2 ds:top-full ds:h-full ds:-z-10";
       } else if (labelPosition === "left") {
         // Label on left, separator on the right side
-        return "w-px absolute right-0 top-full h-full -z-10 translate-x-1/2";
+        return "ds:w-px ds:absolute ds:right-0 ds:top-full ds:h-full ds:-z-10 ds:translate-x-1/2";
       } else {
         // Label on right (default), separator on the left side
-        return "w-px absolute left-0 top-full h-full -z-10 -translate-x-1/2";
+        return "ds:w-px ds:absolute ds:left-0 ds:top-full ds:h-full ds:-z-10 ds:-translate-x-1/2";
       }
     }
   };
@@ -1562,7 +1562,7 @@ function StepperSeparator(props: StepperSeparatorProps) {
       ref={ref}
       style={{ ...separatorProps.style, ...customStyle }}
       className={cn(
-        "transition-colors",
+        "ds:transition-colors",
         getSeparatorClasses(),
         colorClass,
         className
@@ -1592,7 +1592,7 @@ function StepperTitle(props: StepperTitleProps) {
       dir={context.dir}
       {...titleProps}
       ref={ref}
-      className={cn("font-medium text-sm", className)}
+      className={cn("ds:font-medium ds:text-sm", className)}
     />
   );
 }
@@ -1617,7 +1617,7 @@ function StepperDescription(props: StepperDescriptionProps) {
       dir={context.dir}
       {...descriptionProps}
       ref={ref}
-      className={cn("text-muted-foreground text-xs", className)}
+      className={cn("ds:text-muted-foreground ds:text-xs", className)}
     />
   );
 }
@@ -1656,7 +1656,7 @@ function StepperContent(props: StepperContentProps) {
       dir={context.dir}
       {...contentProps}
       ref={ref}
-      className={cn("flex-1 outline-none", className)}
+      className={cn("ds:flex-1 ds:outline-none", className)}
     />
   );
 }

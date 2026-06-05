@@ -48,25 +48,25 @@ export const Tooltip = React.memo(function Tooltip({
   const tooltipColor = useMemo<string>(() => {
     switch (props.color) {
       case "primary":
-        return "bg-primary text-primary-foreground [&>span>svg]:bg-primary [&>span>svg]:fill-primary";
+        return "ds:bg-primary ds:text-primary-foreground ds:[&>span>svg]:bg-primary ds:[&>span>svg]:fill-primary";
       case "secondary":
-        return "bg-secondary text-secondary-foreground [&>span>svg]:bg-secondary [&>span>svg]:fill-secondary";
+        return "ds:bg-secondary ds:text-secondary-foreground ds:[&>span>svg]:bg-secondary ds:[&>span>svg]:fill-secondary";
       case "dark":
         return "";
       case "light":
-        return "bg-neutral-200 text-neutral-950 [&_svg]:bg-neutral-200 [&_svg]:fill-neutral-200";
+        return "ds:bg-neutral-200 ds:text-neutral-950 ds:[&_svg]:bg-neutral-200 ds:[&_svg]:fill-neutral-200";
       case "inverted":
-        return "dark:bg-white dark:text-black dark:[&_svg]:bg-white dark:[&_svg]:fill-white";
+        return "ds:dark:bg-white ds:dark:text-black ds:dark:[&_svg]:bg-white ds:dark:[&_svg]:fill-white";
       case "success":
-        return "bg-success text-success-foreground [&>span>svg]:bg-success [&>span>svg]:fill-success";
+        return "ds:bg-success ds:text-success-foreground ds:[&>span>svg]:bg-success ds:[&>span>svg]:fill-success";
       case "warning":
-        return "bg-warning text-warning-foreground [&>span>svg]:bg-warning [&>span>svg]:fill-warning";
+        return "ds:bg-warning ds:text-warning-foreground ds:[&>span>svg]:bg-warning ds:[&>span>svg]:fill-warning";
       case "error":
-        return "bg-error text-error-foreground [&>span>svg]:bg-error [&>span>svg]:fill-error";
+        return "ds:bg-error ds:text-error-foreground ds:[&>span>svg]:bg-error ds:[&>span>svg]:fill-error";
       case "glass":
-        return "bg-white/15 text-foreground backdrop-blur-sm shadow-lg [&>span>svg]:bg-white/15 [&>span>svg]:fill-white/15";
+        return "ds:bg-white/15 ds:text-foreground ds:backdrop-blur-sm ds:shadow-lg ds:[&>span>svg]:bg-white/15 ds:[&>span>svg]:fill-white/15";
       default:
-        return "bg-foreground text-background animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 w-fit origin-(--radix-tooltip-content-transform-origin) rounded-md px-3 py-1.5 text-xs text-balance";
+        return "ds:bg-foreground ds:text-background ds:animate-in ds:fade-in-0 ds:zoom-in-95 ds:data-[state=closed]:animate-out ds:data-[state=closed]:fade-out-0 ds:data-[state=closed]:zoom-out-95 ds:data-[side=bottom]:slide-in-from-top-2 ds:data-[side=left]:slide-in-from-right-2 ds:data-[side=right]:slide-in-from-left-2 ds:data-[side=top]:slide-in-from-bottom-2 ds:z-50 ds:w-fit ds:origin-(--radix-tooltip-content-transform-origin) ds:rounded-md ds:px-3 ds:py-1.5 ds:text-xs ds:text-balance";
     }
   }, [props?.color]);
 
@@ -97,7 +97,7 @@ export const Tooltip = React.memo(function Tooltip({
     return (
       <span
         onMouseMove={handleMouseMove}
-        className={cn("inline-block", childClassName)}
+        className={cn("ds:inline-block", childClassName)}
       >
         {children}
       </span>
@@ -107,7 +107,7 @@ export const Tooltip = React.memo(function Tooltip({
   if (animation === "spec") {
     return (
       <motion.div
-        className={cn("relative -me-2.5 inline-block", className)}
+        className={cn("ds:relative ds:-me-2.5 ds:inline-block", className)}
         whileHover="hover"
         initial="initial"
       >
@@ -131,11 +131,11 @@ export const Tooltip = React.memo(function Tooltip({
             whiteSpace: "nowrap",
           }}
           className={cn(
-            "absolute -top-2 left-1/2 z-50 flex -translate-x-1/2 -translate-y-full flex-col items-center justify-center rounded-md px-4 py-2 text-xs shadow-xl",
+            "ds:absolute ds:-top-2 ds:left-1/2 ds:z-50 ds:flex ds:-translate-x-1/2 ds:-translate-y-full ds:flex-col ds:items-center ds:justify-center ds:rounded-md ds:px-4 ds:py-2 ds:text-xs ds:shadow-xl",
             tooltipColor
           )}
         >
-          <div className="relative z-1">{content}</div>
+          <div className="ds:relative ds:z-1">{content}</div>
         </motion.div>
 
         <ChildComp />
@@ -152,7 +152,7 @@ export const Tooltip = React.memo(function Tooltip({
           side={position}
           sideOffset={sideOffset}
           className={cn(tooltipAnimation?.className, tooltipColor, {
-            "[&>span>svg]:invisible": noArrow,
+            "ds:[&>span>svg]:invisible": noArrow,
           })}
         >
           {content}

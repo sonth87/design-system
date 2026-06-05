@@ -182,17 +182,15 @@ const TypingText = ({
       className: `inline-block whitespace-pre-wrap tracking-tight ${className}`,
       ...props,
     },
-    <span className="inline" style={{ color: getCurrentTextColor() }}>
+    <span className="ds:inline" style={{ color: getCurrentTextColor() }}>
       {displayedText}
     </span>,
     showCursor && (
       <span
         ref={cursorRef}
-        className={`inline-block opacity-100 ${shouldHideCursor ? "hidden" : ""} ${
-          cursorCharacter === "|"
-            ? `h-5 w-[1px] translate-y-1 bg-foreground ${cursorClassName}`
-            : `ml-1 ${cursorClassName}`
-        }`}
+        className={`ds:inline-block ds:opacity-100 ${shouldHideCursor ? "hidden" : ""} ${cursorCharacter === "|"
+                    ? `h-5 w-[1px] translate-y-1 bg-foreground ${cursorClassName}`
+                    : `ml-1 ${cursorClassName}`}`}
       >
         {cursorCharacter === "|" ? "" : cursorCharacter}
       </span>

@@ -10,51 +10,51 @@ import { cn } from "@dsui/ui/lib/utils";
 const colorVariants = {
   primary: {
     option:
-      "data-[state=checked]:border-primary data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground hover:border-primary transition-colors",
+      "ds:data-[state=checked]:border-primary ds:data-[state=checked]:bg-primary ds:data-[state=checked]:text-primary-foreground ds:hover:border-primary ds:transition-colors",
     "button-group":
-      "data-[state=checked]:border-primary data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground hover:border-primary transition-colors",
+      "ds:data-[state=checked]:border-primary ds:data-[state=checked]:bg-primary ds:data-[state=checked]:text-primary-foreground ds:hover:border-primary ds:transition-colors",
   },
   secondary: {
     option:
-      "data-[state=checked]:border-secondary data-[state=checked]:bg-secondary data-[state=checked]:text-secondary-foreground hover:border-secondary transition-colors",
+      "ds:data-[state=checked]:border-secondary ds:data-[state=checked]:bg-secondary ds:data-[state=checked]:text-secondary-foreground ds:hover:border-secondary ds:transition-colors",
     "button-group":
-      "data-[state=checked]:border-secondary data-[state=checked]:bg-secondary data-[state=checked]:text-secondary-foreground hover:border-secondary transition-colors",
+      "ds:data-[state=checked]:border-secondary ds:data-[state=checked]:bg-secondary ds:data-[state=checked]:text-secondary-foreground ds:hover:border-secondary ds:transition-colors",
   },
   accent: {
     option:
-      "data-[state=checked]:border-accent data-[state=checked]:bg-accent data-[state=checked]:text-accent-foreground hover:border-accent transition-colors",
+      "ds:data-[state=checked]:border-accent ds:data-[state=checked]:bg-accent ds:data-[state=checked]:text-accent-foreground ds:hover:border-accent ds:transition-colors",
     "button-group":
-      "data-[state=checked]:border-accent data-[state=checked]:bg-accent data-[state=checked]:text-accent-foreground hover:border-accent transition-colors",
+      "ds:data-[state=checked]:border-accent ds:data-[state=checked]:bg-accent ds:data-[state=checked]:text-accent-foreground ds:hover:border-accent ds:transition-colors",
   },
   destructive: {
     option:
-      "data-[state=checked]:border-destructive data-[state=checked]:bg-destructive data-[state=checked]:text-destructive-foreground hover:border-destructive transition-colors",
+      "ds:data-[state=checked]:border-destructive ds:data-[state=checked]:bg-destructive ds:data-[state=checked]:text-destructive-foreground ds:hover:border-destructive ds:transition-colors",
     "button-group":
-      "data-[state=checked]:border-destructive data-[state=checked]:bg-destructive data-[state=checked]:text-destructive-foreground hover:border-destructive transition-colors",
+      "ds:data-[state=checked]:border-destructive ds:data-[state=checked]:bg-destructive ds:data-[state=checked]:text-destructive-foreground ds:hover:border-destructive ds:transition-colors",
   },
   muted: {
     option:
-      "data-[state=checked]:border-muted data-[state=checked]:bg-muted data-[state=checked]:text-muted-foreground hover:border-muted transition-colors",
+      "ds:data-[state=checked]:border-muted ds:data-[state=checked]:bg-muted ds:data-[state=checked]:text-muted-foreground ds:hover:border-muted ds:transition-colors",
     "button-group":
-      "data-[state=checked]:border-muted data-[state=checked]:bg-muted data-[state=checked]:text-muted-foreground hover:border-muted transition-colors",
+      "ds:data-[state=checked]:border-muted ds:data-[state=checked]:bg-muted ds:data-[state=checked]:text-muted-foreground ds:hover:border-muted ds:transition-colors",
   },
   success: {
     option:
-      "data-[state=checked]:border-success data-[state=checked]:bg-success data-[state=checked]:text-success-foreground hover:border-success transition-colors",
+      "ds:data-[state=checked]:border-success ds:data-[state=checked]:bg-success ds:data-[state=checked]:text-success-foreground ds:hover:border-success ds:transition-colors",
     "button-group":
-      "data-[state=checked]:border-success data-[state=checked]:bg-success data-[state=checked]:text-success-foreground hover:border-success transition-colors",
+      "ds:data-[state=checked]:border-success ds:data-[state=checked]:bg-success ds:data-[state=checked]:text-success-foreground ds:hover:border-success ds:transition-colors",
   },
   error: {
     option:
-      "data-[state=checked]:border-error data-[state=checked]:bg-error data-[state=checked]:text-error-foreground hover:border-error transition-colors",
+      "ds:data-[state=checked]:border-error ds:data-[state=checked]:bg-error ds:data-[state=checked]:text-error-foreground ds:hover:border-error ds:transition-colors",
     "button-group":
-      "data-[state=checked]:border-error data-[state=checked]:bg-error data-[state=checked]:text-error-foreground hover:border-error transition-colors",
+      "ds:data-[state=checked]:border-error ds:data-[state=checked]:bg-error ds:data-[state=checked]:text-error-foreground ds:hover:border-error ds:transition-colors",
   },
   warning: {
     option:
-      "data-[state=checked]:border-warning data-[state=checked]:bg-warning data-[state=checked]:text-warning-foreground hover:border-warning transition-colors",
+      "ds:data-[state=checked]:border-warning ds:data-[state=checked]:bg-warning ds:data-[state=checked]:text-warning-foreground ds:hover:border-warning ds:transition-colors",
     "button-group":
-      "data-[state=checked]:border-warning data-[state=checked]:bg-warning data-[state=checked]:text-warning-foreground hover:border-warning transition-colors",
+      "ds:data-[state=checked]:border-warning ds:data-[state=checked]:bg-warning ds:data-[state=checked]:text-warning-foreground ds:hover:border-warning ds:transition-colors",
   },
 };
 
@@ -85,18 +85,18 @@ const generateCompoundVariants = () => {
 };
 
 const radioGroupItemVariants = cva(
-  "border border-input text-primary focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:bg-input/30 aspect-square size-4 shrink-0 rounded-full shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-input disabled:border-input",
+  "ds:border ds:border-input ds:text-primary ds:focus-visible:border-ring ds:focus-visible:ring-ring/50 ds:aria-invalid:ring-destructive/20 ds:dark:aria-invalid:ring-destructive/40 ds:aria-invalid:border-destructive ds:dark:bg-input/30 ds:aspect-square ds:size-4 ds:shrink-0 ds:rounded-full ds:shadow-xs ds:transition-[color,box-shadow] ds:outline-none ds:focus-visible:ring-[3px] ds:disabled:cursor-not-allowed ds:disabled:opacity-50 ds:disabled:bg-input ds:disabled:border-input",
   {
     variants: {
       variant: {
         option: "",
         "button-group":
-          "border-0 bg-transparent aspect-auto size-auto rounded-none first:rounded-l-md last:rounded-r-md border border-input hover:bg-accent hover:text-accent-foreground data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground data-[state=checked]:border-primary data-[state=checked]:shadow-sm focus-visible:ring-0 px-3 py-2 text-sm font-medium",
+          "ds:border-0 ds:bg-transparent ds:aspect-auto ds:size-auto ds:rounded-none ds:first:rounded-l-md ds:last:rounded-r-md ds:border ds:border-input ds:hover:bg-accent ds:hover:text-accent-foreground ds:data-[state=checked]:bg-primary ds:data-[state=checked]:text-primary-foreground ds:data-[state=checked]:border-primary ds:data-[state=checked]:shadow-sm ds:focus-visible:ring-0 ds:px-3 ds:py-2 ds:text-sm ds:font-medium",
       },
       size: {
-        default: "size-4",
-        sm: "size-3",
-        lg: "size-5",
+        default: "ds:size-4",
+        sm: "ds:size-3",
+        lg: "ds:size-5",
       },
       color: {
         primary: "",
@@ -118,11 +118,11 @@ const radioGroupItemVariants = cva(
   }
 );
 
-const radioGroupVariants = cva("grid gap-3", {
+const radioGroupVariants = cva("ds:grid ds:gap-3", {
   variants: {
     variant: {
       option: "",
-      "button-group": "flex flex-row gap-0",
+      "button-group": "ds:flex ds:flex-row ds:gap-0",
     },
   },
   defaultVariants: {
@@ -165,12 +165,12 @@ function RadioGroupItem({
     >
       <RadioGroupPrimitive.Indicator
         data-slot="radio-group-indicator"
-        className="relative flex items-center justify-center"
+        className="ds:relative ds:flex ds:items-center ds:justify-center"
       >
         {variant === "button-group" ? (
-          <CircleIcon className="fill-current size-2" />
+          <CircleIcon className="ds:fill-current ds:size-2" />
         ) : (
-          <CircleIcon className="fill-current absolute top-1/2 left-1/2 size-2 -translate-x-1/2 -translate-y-1/2" />
+          <CircleIcon className="ds:fill-current ds:absolute ds:top-1/2 ds:left-1/2 ds:size-2 ds:-translate-x-1/2 ds:-translate-y-1/2" />
         )}
       </RadioGroupPrimitive.Indicator>
     </RadioGroupPrimitive.Item>

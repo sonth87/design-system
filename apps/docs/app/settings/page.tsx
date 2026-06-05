@@ -13,17 +13,17 @@ import Select from "@sth87/shadcn-design-system/select";
 export default function SettingsPage() {
   return (
     <AdminLayout>
-      <div className="space-y-6">
+      <div className="ds:space-y-6">
         {/* Page Header */}
-        <div className="flex items-center justify-between">
+        <div className="ds:flex ds:items-center ds:justify-between">
           <div>
-            <h1 className="text-3xl font-bold tracking-tight">Settings</h1>
-            <p className="text-muted-foreground">
+            <h1 className="ds:text-3xl ds:font-bold ds:tracking-tight">Settings</h1>
+            <p className="ds:text-muted-foreground">
               Manage your application settings and preferences
             </p>
           </div>
           <Button>
-            <Save className="mr-2 h-4 w-4" />
+            <Save className="ds:mr-2 ds:h-4 ds:w-4" />
             Save Changes
           </Button>
         </div>
@@ -31,41 +31,41 @@ export default function SettingsPage() {
         {/* Settings Tabs */}
         <Tabs
           defaultActiveKey="general"
-          className="space-y-6"
+          className="ds:space-y-6"
           items={[
             {
               key: "general",
               label: "General",
               children: (
-                <div className="space-y-6">
-                  <div className="rounded-lg border bg-card p-6 shadow-sm">
-                    <h3 className="text-lg font-semibold mb-4">
+                <div className="ds:space-y-6">
+                  <div className="ds:rounded-lg ds:border ds:bg-card ds:p-6 ds:shadow-sm">
+                    <h3 className="ds:text-lg ds:font-semibold ds:mb-4">
                       General Settings
                     </h3>
-                    <div className="space-y-4">
-                      <div className="grid gap-2">
-                        <label className="text-sm font-medium">Site Name</label>
+                    <div className="ds:space-y-4">
+                      <div className="ds:grid ds:gap-2">
+                        <label className="ds:text-sm ds:font-medium">Site Name</label>
                         <Input defaultValue="DSUI Admin Dashboard" />
-                        <p className="text-xs text-muted-foreground">
+                        <p className="ds:text-xs ds:text-muted-foreground">
                           The name of your application
                         </p>
                       </div>
 
-                      <div className="grid gap-2">
-                        <label className="text-sm font-medium">
+                      <div className="ds:grid ds:gap-2">
+                        <label className="ds:text-sm ds:font-medium">
                           Site Description
                         </label>
                         <Textarea
                           defaultValue="A modern admin dashboard built with DSUI design system"
                           rows={3}
                         />
-                        <p className="text-xs text-muted-foreground">
+                        <p className="ds:text-xs ds:text-muted-foreground">
                           A brief description of your application
                         </p>
                       </div>
 
-                      <div className="grid gap-2">
-                        <label className="text-sm font-medium">Language</label>
+                      <div className="ds:grid ds:gap-2">
+                        <label className="ds:text-sm ds:font-medium">Language</label>
                         <Select
                           options={[
                             { value: "en", label: "English" },
@@ -77,8 +77,8 @@ export default function SettingsPage() {
                         />
                       </div>
 
-                      <div className="grid gap-2">
-                        <label className="text-sm font-medium">Timezone</label>
+                      <div className="ds:grid ds:gap-2">
+                        <label className="ds:text-sm ds:font-medium">Timezone</label>
                         <Select
                           options={[
                             { value: "utc", label: "UTC" },
@@ -99,18 +99,18 @@ export default function SettingsPage() {
               key: "security",
               label: "Security",
               children: (
-                <div className="space-y-6">
-                  <div className="rounded-lg border bg-card p-6 shadow-sm">
-                    <h3 className="text-lg font-semibold mb-4">
+                <div className="ds:space-y-6">
+                  <div className="ds:rounded-lg ds:border ds:bg-card ds:p-6 ds:shadow-sm">
+                    <h3 className="ds:text-lg ds:font-semibold ds:mb-4">
                       Security Settings
                     </h3>
-                    <div className="space-y-6">
-                      <div className="flex items-center justify-between">
-                        <div className="space-y-0.5">
-                          <label className="text-sm font-medium">
+                    <div className="ds:space-y-6">
+                      <div className="ds:flex ds:items-center ds:justify-between">
+                        <div className="ds:space-y-0.5">
+                          <label className="ds:text-sm ds:font-medium">
                             Two-Factor Authentication
                           </label>
-                          <p className="text-xs text-muted-foreground">
+                          <p className="ds:text-xs ds:text-muted-foreground">
                             Add an extra layer of security to your account
                           </p>
                         </div>
@@ -119,12 +119,12 @@ export default function SettingsPage() {
 
                       <Separator />
 
-                      <div className="flex items-center justify-between">
-                        <div className="space-y-0.5">
-                          <label className="text-sm font-medium">
+                      <div className="ds:flex ds:items-center ds:justify-between">
+                        <div className="ds:space-y-0.5">
+                          <label className="ds:text-sm ds:font-medium">
                             Session Timeout
                           </label>
-                          <p className="text-xs text-muted-foreground">
+                          <p className="ds:text-xs ds:text-muted-foreground">
                             Automatically log out after inactivity
                           </p>
                         </div>
@@ -133,9 +133,9 @@ export default function SettingsPage() {
 
                       <Separator />
 
-                      <div className="space-y-4">
-                        <h4 className="text-sm font-medium">Change Password</h4>
-                        <div className="space-y-3">
+                      <div className="ds:space-y-4">
+                        <h4 className="ds:text-sm ds:font-medium">Change Password</h4>
+                        <div className="ds:space-y-3">
                           <Input
                             type="password"
                             placeholder="Current password"
@@ -157,18 +157,18 @@ export default function SettingsPage() {
               key: "notifications",
               label: "Notifications",
               children: (
-                <div className="space-y-6">
-                  <div className="rounded-lg border bg-card p-6 shadow-sm">
-                    <h3 className="text-lg font-semibold mb-4">
+                <div className="ds:space-y-6">
+                  <div className="ds:rounded-lg ds:border ds:bg-card ds:p-6 ds:shadow-sm">
+                    <h3 className="ds:text-lg ds:font-semibold ds:mb-4">
                       Notification Preferences
                     </h3>
-                    <div className="space-y-6">
-                      <div className="flex items-center justify-between">
-                        <div className="space-y-0.5">
-                          <label className="text-sm font-medium">
+                    <div className="ds:space-y-6">
+                      <div className="ds:flex ds:items-center ds:justify-between">
+                        <div className="ds:space-y-0.5">
+                          <label className="ds:text-sm ds:font-medium">
                             Email Notifications
                           </label>
-                          <p className="text-xs text-muted-foreground">
+                          <p className="ds:text-xs ds:text-muted-foreground">
                             Receive email updates about your account
                           </p>
                         </div>
@@ -177,12 +177,12 @@ export default function SettingsPage() {
 
                       <Separator />
 
-                      <div className="flex items-center justify-between">
-                        <div className="space-y-0.5">
-                          <label className="text-sm font-medium">
+                      <div className="ds:flex ds:items-center ds:justify-between">
+                        <div className="ds:space-y-0.5">
+                          <label className="ds:text-sm ds:font-medium">
                             Push Notifications
                           </label>
-                          <p className="text-xs text-muted-foreground">
+                          <p className="ds:text-xs ds:text-muted-foreground">
                             Receive push notifications in your browser
                           </p>
                         </div>
@@ -191,12 +191,12 @@ export default function SettingsPage() {
 
                       <Separator />
 
-                      <div className="flex items-center justify-between">
-                        <div className="space-y-0.5">
-                          <label className="text-sm font-medium">
+                      <div className="ds:flex ds:items-center ds:justify-between">
+                        <div className="ds:space-y-0.5">
+                          <label className="ds:text-sm ds:font-medium">
                             Marketing Emails
                           </label>
-                          <p className="text-xs text-muted-foreground">
+                          <p className="ds:text-xs ds:text-muted-foreground">
                             Receive emails about new features and updates
                           </p>
                         </div>
@@ -205,12 +205,12 @@ export default function SettingsPage() {
 
                       <Separator />
 
-                      <div className="flex items-center justify-between">
-                        <div className="space-y-0.5">
-                          <label className="text-sm font-medium">
+                      <div className="ds:flex ds:items-center ds:justify-between">
+                        <div className="ds:space-y-0.5">
+                          <label className="ds:text-sm ds:font-medium">
                             Security Alerts
                           </label>
-                          <p className="text-xs text-muted-foreground">
+                          <p className="ds:text-xs ds:text-muted-foreground">
                             Get notified about security events
                           </p>
                         </div>
@@ -225,14 +225,14 @@ export default function SettingsPage() {
               key: "appearance",
               label: "Appearance",
               children: (
-                <div className="space-y-6">
-                  <div className="rounded-lg border bg-card p-6 shadow-sm">
-                    <h3 className="text-lg font-semibold mb-4">
+                <div className="ds:space-y-6">
+                  <div className="ds:rounded-lg ds:border ds:bg-card ds:p-6 ds:shadow-sm">
+                    <h3 className="ds:text-lg ds:font-semibold ds:mb-4">
                       Appearance Settings
                     </h3>
-                    <div className="space-y-6">
-                      <div className="grid gap-2">
-                        <label className="text-sm font-medium">Theme</label>
+                    <div className="ds:space-y-6">
+                      <div className="ds:grid ds:gap-2">
+                        <label className="ds:text-sm ds:font-medium">Theme</label>
                         <Select
                           options={[
                             { value: "light", label: "Light" },
@@ -242,19 +242,19 @@ export default function SettingsPage() {
                           defaultValue="system"
                           placeholder="Select theme"
                         />
-                        <p className="text-xs text-muted-foreground">
+                        <p className="ds:text-xs ds:text-muted-foreground">
                           Choose your preferred theme
                         </p>
                       </div>
 
                       <Separator />
 
-                      <div className="flex items-center justify-between">
-                        <div className="space-y-0.5">
-                          <label className="text-sm font-medium">
+                      <div className="ds:flex ds:items-center ds:justify-between">
+                        <div className="ds:space-y-0.5">
+                          <label className="ds:text-sm ds:font-medium">
                             Compact Mode
                           </label>
-                          <p className="text-xs text-muted-foreground">
+                          <p className="ds:text-xs ds:text-muted-foreground">
                             Use a more compact layout
                           </p>
                         </div>
@@ -263,12 +263,12 @@ export default function SettingsPage() {
 
                       <Separator />
 
-                      <div className="flex items-center justify-between">
-                        <div className="space-y-0.5">
-                          <label className="text-sm font-medium">
+                      <div className="ds:flex ds:items-center ds:justify-between">
+                        <div className="ds:space-y-0.5">
+                          <label className="ds:text-sm ds:font-medium">
                             Show Animations
                           </label>
-                          <p className="text-xs text-muted-foreground">
+                          <p className="ds:text-xs ds:text-muted-foreground">
                             Enable interface animations
                           </p>
                         </div>

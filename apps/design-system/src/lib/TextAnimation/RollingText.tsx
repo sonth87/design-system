@@ -53,11 +53,11 @@ function RollingText({
       {characters.map((char, idx) => (
         <span
           key={idx}
-          className="relative inline-block perspective-[9999999px] transform-3d w-auto"
+          className="ds:relative ds:inline-block ds:perspective-[9999999px] ds:transform-3d ds:w-auto"
           aria-hidden="true"
         >
           <motion.span
-            className="absolute inline-block backface-hidden origin-[50%_25%]"
+            className="ds:absolute ds:inline-block ds:backface-hidden ds:origin-[50%_25%]"
             initial={ENTRY_ANIMATION.initial}
             animate={isInView ? ENTRY_ANIMATION.animate : undefined}
             transition={{
@@ -68,7 +68,7 @@ function RollingText({
             {formatCharacter(char)}
           </motion.span>
           <motion.span
-            className="absolute inline-block backface-hidden origin-[50%_100%]"
+            className="ds:absolute ds:inline-block ds:backface-hidden ds:origin-[50%_100%]"
             initial={EXIT_ANIMATION.initial}
             animate={isInView ? EXIT_ANIMATION.animate : undefined}
             transition={{
@@ -78,11 +78,11 @@ function RollingText({
           >
             {formatCharacter(char)}
           </motion.span>
-          <span className="invisible">{formatCharacter(char)}</span>
+          <span className="ds:invisible">{formatCharacter(char)}</span>
         </span>
       ))}
 
-      <span className="sr-only">{text}</span>
+      <span className="ds:sr-only">{text}</span>
     </span>
   );
 }

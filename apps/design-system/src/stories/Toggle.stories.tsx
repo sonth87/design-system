@@ -108,7 +108,7 @@ export const Variants = (args: ToggleProps) => {
   const [pressed1, setPressed1] = useState(false);
   const [pressed2, setPressed2] = useState(false);
   return (
-    <div className="flex flex-row gap-4">
+    <div className="ds:flex ds:flex-row ds:gap-4">
       <Toggle {...args} pressed={pressed1} onPressedChange={setPressed1} />
       <Toggle
         {...args}
@@ -122,24 +122,24 @@ export const Variants = (args: ToggleProps) => {
 
 export const ToggleWithIcon = (args: ToggleProps) => {
   return (
-    <div className="flex flex-row items-center gap-2">
+    <div className="ds:flex ds:flex-row ds:items-center ds:gap-2">
       <Toggle
         {...args}
-        className="data-[state=on]:bg-transparent data-[state=on]:*:[svg]:fill-yellow-500 data-[state=on]:*:[svg]:stroke-yellow-500"
+        className="ds:data-[state=on]:bg-transparent ds:data-[state=on]:*:[svg]:fill-yellow-500 ds:data-[state=on]:*:[svg]:stroke-yellow-500"
       >
         <StarIcon />
         Star
       </Toggle>
       <Toggle
         {...args}
-        className="data-[state=on]:bg-transparent data-[state=on]:*:[svg]:fill-red-500 data-[state=on]:*:[svg]:stroke-red-500"
+        className="ds:data-[state=on]:bg-transparent ds:data-[state=on]:*:[svg]:fill-red-500 ds:data-[state=on]:*:[svg]:stroke-red-500"
       >
         <HeartIcon />
         Heart
       </Toggle>
       <Toggle
         {...args}
-        className="data-[state=on]:bg-transparent data-[state=on]:*:[svg]:fill-blue-500 data-[state=on]:*:[svg]:stroke-blue-500"
+        className="ds:data-[state=on]:bg-transparent ds:data-[state=on]:*:[svg]:fill-blue-500 ds:data-[state=on]:*:[svg]:stroke-blue-500"
       >
         <BookmarkIcon />
         Bookmark
@@ -153,7 +153,7 @@ export const Sizes = (args: ToggleProps) => {
   const [pressed2, setPressed2] = useState(false);
   const [pressed3, setPressed3] = useState(false);
   return (
-    <div className="flex flex-row gap-4 items-center">
+    <div className="ds:flex ds:flex-row ds:gap-4 ds:items-center">
       <Toggle
         {...args}
         size="sm"
@@ -185,7 +185,7 @@ export const Colors = (args: ToggleProps) => {
   const [pressed6, setPressed6] = useState(true);
   const [pressed7, setPressed7] = useState(true);
   return (
-    <div className="flex flex-row gap-4">
+    <div className="ds:flex ds:flex-row ds:gap-4">
       <Toggle
         {...args}
         color="primary"

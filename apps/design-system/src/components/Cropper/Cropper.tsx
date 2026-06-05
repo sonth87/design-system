@@ -741,7 +741,7 @@ function CropperRoot(props: CropperRootProps) {
       <CropperContext.Provider value={contextValue}>
         <div
           data-slot="cropper-wrapper"
-          className={cn("relative size-full overflow-hidden", className)}
+          className={cn("ds:relative ds:size-full ds:overflow-hidden", className)}
         >
           <CropperRootImpl {...rootProps} />
         </div>
@@ -1321,7 +1321,7 @@ function CropperRootImpl(props: CropperRootImplProps) {
       {...contentProps}
       ref={composedRef}
       className={cn(
-        "absolute inset-0 flex cursor-move touch-none select-none items-center justify-center overflow-hidden outline-none",
+        "ds:absolute ds:inset-0 ds:flex ds:cursor-move ds:touch-none ds:select-none ds:items-center ds:justify-center ds:overflow-hidden ds:outline-none",
         className
       )}
       onKeyUp={onKeyUp}
@@ -1332,13 +1332,13 @@ function CropperRootImpl(props: CropperRootImplProps) {
   );
 }
 
-const cropperMediaVariants = cva("will-change-transform", {
+const cropperMediaVariants = cva("ds:will-change-transform", {
   variants: {
     objectFit: {
-      contain: "absolute inset-0 m-auto max-h-full max-w-full",
-      cover: "h-auto w-full",
-      "horizontal-cover": "h-auto w-full",
-      "vertical-cover": "h-full w-auto",
+      contain: "ds:absolute ds:inset-0 ds:m-auto ds:max-h-full ds:max-w-full",
+      cover: "ds:h-auto ds:w-full",
+      "horizontal-cover": "ds:h-auto ds:w-full",
+      "vertical-cover": "ds:h-full ds:w-auto",
     },
   },
   defaultVariants: {
@@ -1747,15 +1747,15 @@ function CropperVideo(props: CropperVideoProps) {
 }
 
 const cropperAreaVariants = cva(
-  "-translate-x-1/2 -translate-y-1/2 absolute top-1/2 left-1/2 box-border overflow-hidden border border-[2.5px] border-white/90 shadow-[0_0_0_9999em_rgba(0,0,0,0.5)]",
+  "ds:-translate-x-1/2 ds:-translate-y-1/2 ds:absolute ds:top-1/2 ds:left-1/2 ds:box-border ds:overflow-hidden ds:border ds:border-[2.5px] ds:border-white/90 ds:shadow-[0_0_0_9999em_rgba(0,0,0,0.5)]",
   {
     variants: {
       shape: {
         rectangle: "",
-        circle: "rounded-full",
+        circle: "ds:rounded-full",
       },
       withGrid: {
-        true: "before:absolute before:top-0 before:right-1/3 before:bottom-0 before:left-1/3 before:box-border before:border before:border-white/50 before:border-t-0 before:border-b-0 before:content-[''] after:absolute after:top-1/3 after:right-0 after:bottom-1/3 after:left-0 after:box-border after:border after:border-white/50 after:border-r-0 after:border-l-0 after:content-['']",
+        true: "ds:before:absolute ds:before:top-0 ds:before:right-1/3 ds:before:bottom-0 ds:before:left-1/3 ds:before:box-border ds:before:border ds:before:border-white/50 ds:before:border-t-0 ds:before:border-b-0 ds:before:content-[''] ds:after:absolute ds:after:top-1/3 ds:after:right-0 ds:after:bottom-1/3 ds:after:left-0 ds:after:box-border ds:after:border ds:after:border-white/50 ds:after:border-r-0 ds:after:border-l-0 ds:after:content-['']",
         false: "",
       },
     },
