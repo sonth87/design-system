@@ -574,3 +574,30 @@ export const WithOptions = () => {
     </div>
   );
 };
+
+export const WithDraggableColumnOptions = () => {
+  const demoData = React.useMemo(() => data.slice(0, 100), []);
+  const { table } = useDataTable({
+    data: demoData,
+    columns,
+    initialState: {
+      columnPinning: { left: ["select", "title"], right: ["actions"] },
+      pagination: { pageIndex: 0, pageSize: 10 },
+    },
+    getRowId: (row) => row.id,
+  });
+
+  return (
+    <div className="data-table-container">
+      <DataTableToolbar
+        table={table}
+        showColumnVisibilityToggle
+        columnVisibilityOptions={{ variant: "draggable" }}
+      />
+      <DataTable
+        table={table}
+        pagination={{ showRowSelectionCount: true, showPageSizeOptions: true }}
+      />
+    </div>
+  );
+};
