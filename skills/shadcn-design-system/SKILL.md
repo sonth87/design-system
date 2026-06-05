@@ -119,6 +119,7 @@ Load the relevant reference file when you need full props, types, or detailed ex
 | [references/utils.md](references/utils.md) | User calls `cn`, formatting helpers, or URL state utilities | `cn`, `animationClass`, `animationEffect`, `formatDate`, `dataTableConfig`, URL state parsers |
 | [references/hooks.md](references/hooks.md) | User uses any hook from this library | 12 hooks including `useDataTable`, `useDebounceValue`, `useIntersectionObserver` |
 | [references/types.md](references/types.md) | User needs TypeScript types or interfaces | All TypeScript types: `BasicColor`, `BasicAnimation`, `UploadFile`, `FilterVariant`, etc. |
+| [references/data-table-column-options.md](references/data-table-column-options.md) | User works on DataTable column visibility, column reorder, draggable column options, pinned columns, or `DataTableViewOptions` | Implementation rules for TanStack `columnOrder`, `columnPinning`, `@dnd-kit`, customization props, and crash-safe edge cases |
 
 ---
 

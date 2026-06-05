@@ -5,7 +5,10 @@ import { PlusCircle, X, XCircle } from "lucide-react";
 import * as React from "react";
 
 import { DataTableFilterPopover } from "./TableFilter/data-table-filter-popover";
-import { DataTableViewOptions } from "./data-table-view-options";
+import {
+  DataTableViewOptions,
+  type DataTableViewOptionsProps,
+} from "./data-table-view-options";
 import { Button } from "../Button";
 import { cn } from "@dsui/ui";
 
@@ -13,6 +16,10 @@ interface DataTableToolbarProps<TData> extends React.ComponentProps<"div"> {
   table: Table<TData>;
   showColumnFilters?: boolean;
   showColumnVisibilityToggle?: boolean;
+  columnVisibilityOptions?: Omit<
+    DataTableViewOptionsProps<TData>,
+    "table" | "align"
+  >;
 }
 
 export function DataTableToolbar<TData>({
@@ -21,6 +28,7 @@ export function DataTableToolbar<TData>({
   className,
   showColumnFilters = false,
   showColumnVisibilityToggle = false,
+  columnVisibilityOptions,
   ...props
 }: DataTableToolbarProps<TData>) {
   const isFiltered = table.getState().columnFilters.length > 0;
@@ -68,7 +76,11 @@ export function DataTableToolbar<TData>({
       <div className="flex items-center gap-2">
         {children}
         {showColumnVisibilityToggle && (
-          <DataTableViewOptions table={table} align="end" />
+          <DataTableViewOptions
+            table={table}
+            align="end"
+            {...columnVisibilityOptions}
+          />
         )}
       </div>
     </div>
