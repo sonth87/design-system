@@ -53,7 +53,7 @@ export function DataTableViewOptions<TData>({
   table,
   variant = "command",
   labels,
-  triggerIcon = <Settings2 className="text-muted-foreground" />,
+  triggerIcon = <Settings2 className="ds:text-muted-foreground" />,
   trigger,
   content,
   contentClassName,
@@ -166,8 +166,8 @@ export function DataTableViewOptions<TData>({
   };
 
   const defaultDraggableContent = (
-    <div className="flex w-full flex-col">
-      <div className="flex items-center gap-3 px-3 py-3">
+    <div className="ds:flex ds:w-full ds:flex-col">
+      <div className="ds:flex ds:items-center ds:gap-3 ds:px-3 ds:py-3">
         <Checkbox
           aria-label="Toggle all columns"
           checked={
@@ -179,11 +179,11 @@ export function DataTableViewOptions<TData>({
           }
           onCheckedChange={(checked) => onToggleAll(checked === true)}
         />
-        <span className="text-sm font-medium text-foreground">
+        <span className="ds:text-sm ds:font-medium ds:text-foreground">
           {resolvedLabels.selectAll}
         </span>
       </div>
-      <div className="mx-3 h-px bg-border" />
+      <div className="ds:mx-3 ds:h-px ds:bg-border" />
       <DndContext
         sensors={sensors}
         collisionDetection={closestCenter}
@@ -193,7 +193,7 @@ export function DataTableViewOptions<TData>({
           items={columnIds}
           strategy={verticalListSortingStrategy}
         >
-          <div className="flex max-h-80 flex-col overflow-y-auto py-2">
+          <div className="ds:flex ds:max-h-80 ds:flex-col ds:overflow-y-auto ds:py-2">
             {columns.map((column) => (
               <DataTableDraggableColumnOption
                 key={column.id}
@@ -208,12 +208,12 @@ export function DataTableViewOptions<TData>({
           </div>
         </SortableContext>
       </DndContext>
-      <div className="mx-3 h-px bg-border" />
+      <div className="ds:mx-3 ds:h-px ds:bg-border" />
       <Button
         type="button"
         variant="ghost"
         size="sm"
-        className="mx-3 my-2 text-primary hover:text-primary"
+        className="ds:mx-3 ds:my-2 ds:text-primary hover:ds:text-primary"
         onClick={() => {
           table.resetColumnVisibility();
           table.resetColumnOrder();
@@ -309,8 +309,8 @@ function DataTableDraggableColumnOption({
     <div
       ref={setNodeRef}
       className={cn(
-        "flex min-h-11 items-center gap-3 px-3 text-sm text-foreground",
-        isDragging && "bg-accent"
+        "ds:flex ds:min-h-11 ds:items-center ds:gap-3 ds:px-3 ds:text-sm ds:text-foreground",
+        isDragging && "ds:bg-accent"
       )}
       style={{
         transform: CSS.Transform.toString(transform),
@@ -319,19 +319,21 @@ function DataTableDraggableColumnOption({
     >
       <button
         type="button"
-        className="flex size-5 shrink-0 cursor-grab items-center justify-center text-muted-foreground active:cursor-grabbing"
+        className="ds:flex ds:size-5 ds:shrink-0 ds:cursor-grab ds:items-center ds:justify-center ds:text-muted-foreground active:ds:cursor-grabbing"
         aria-label={`Reorder ${label}`}
         {...attributes}
         {...listeners}
       >
-        <GripVertical className="size-4" />
+        <GripVertical className="ds:size-4" />
       </button>
       <Checkbox
         aria-label={`Toggle ${label}`}
         checked={checked}
         onCheckedChange={onCheckedChange}
       />
-      <span className="min-w-0 flex-1 truncate font-medium">{label}</span>
+      <span className="ds:min-w-0 ds:flex-1 ds:truncate ds:font-medium">
+        {label}
+      </span>
     </div>
   );
 }

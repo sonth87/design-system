@@ -116,8 +116,8 @@ Expose customization through `columnVisibilityOptions` on `DataTableToolbar`:
       reset: "Khôi phục",
       searchPlaceholder: "Tìm cột...",
     },
-    triggerIcon: <Columns3 className="text-muted-foreground" />,
-    contentClassName: "w-80",
+    triggerIcon: <Columns3 className="ds:text-muted-foreground" />,
+    contentClassName: "ds:w-80",
   }}
 />
 ```
