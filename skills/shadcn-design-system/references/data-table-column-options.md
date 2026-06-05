@@ -40,6 +40,30 @@ const table = useReactTable({
 
 Without this, TanStack may update internally in some usage modes, but the design-system hook will not reliably re-render consumers with the new order.
 
+If `useDataTable` accepts a consumer-provided TanStack `state`, destructure it and merge it into the hook-owned state instead of allowing `...tableProps` to overwrite the whole state object:
+
+```tsx
+const {
+  state: controlledState,
+  ...tableProps
+} = props;
+
+const table = useReactTable({
+  state: {
+    pagination,
+    sorting,
+    columnVisibility,
+    columnOrder,
+    rowSelection,
+    columnFilters,
+    ...controlledState,
+  },
+  ...tableProps,
+});
+```
+
+This prevents common app usage such as `state: { pagination }` from accidentally dropping `columnVisibility` and `columnOrder`, which makes `DataTableViewOptions` appear unable to hide or move columns.
+
 ## Draggable List Ordering
 
 Do not render the draggable list from `table.getAllColumns()` alone. That returns the declaration order and causes the popover list to snap back after dragging.

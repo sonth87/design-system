@@ -82,6 +82,7 @@ export function useDataTable<TData>(props: UseDataTableProps<TData>) {
     shallow = true,
     startTransition,
     enableNuqs = false,
+    state: controlledState,
     ...tableProps
   } = props;
   const pageKey = queryKeys?.page ?? PAGE_KEY;
@@ -316,6 +317,7 @@ export function useDataTable<TData>(props: UseDataTableProps<TData>) {
       columnOrder,
       rowSelection,
       columnFilters,
+      ...controlledState,
     },
     defaultColumn: {
       ...tableProps.defaultColumn,
