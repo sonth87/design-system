@@ -13,7 +13,7 @@ import { DataTableDateFilter } from "./data-table-date-filter";
 import { Separator } from "@/components/Separator";
 import { Button } from "@/components/Button";
 
-interface DataTableFilterPopoverProps<TData> {
+export interface DataTableFilterPopoverProps<TData> {
   column: Column<TData>;
   trigger: React.ReactNode;
   open?: boolean;

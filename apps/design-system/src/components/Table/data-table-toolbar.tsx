@@ -12,7 +12,8 @@ import {
 import { Button } from "../Button";
 import { cn } from "@dsui/ui";
 
-interface DataTableToolbarProps<TData> extends React.ComponentProps<"div"> {
+export interface DataTableToolbarProps<TData>
+  extends React.ComponentProps<"div"> {
   table: Table<TData>;
   showColumnFilters?: boolean;
   showColumnVisibilityToggle?: boolean;
