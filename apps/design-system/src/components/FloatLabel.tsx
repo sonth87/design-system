@@ -31,61 +31,61 @@ const FloatingLabel = React.forwardRef<
     return (
       <Label
         className={cn(
-          "absolute start-2 select-none pointer-events-none",
-          "bg-background px-3 translate-y-2",
-          "flex",
+          "ds:absolute ds:start-2 ds:select-none ds:pointer-events-none",
+          "ds:bg-background ds:px-3 ds:translate-y-2",
+          "ds:flex",
           {
-            "top-0.5 origin-left scale-75 translate-x-1 max-w-full h-3 py-0 bg-transparent":
+            "ds:top-0.5 ds:origin-left ds:scale-75 ds:translate-x-1 ds:max-w-full ds:h-3 ds:py-0 ds:bg-transparent":
               !lagerSize,
             // State empty (placeholder shown) - ở giữa input
-            "peer-placeholder-shown:top-0 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-x-0 peer-placeholder-shown:w-[calc(100%-(--spacing(4)))] peer-placeholder-shown:h-[calc(100%-(--spacing(4)))] peer-placeholder-shown:py-3 peer-placeholder-shown:bg-background":
+            "ds:peer-placeholder-shown:top-0 ds:peer-placeholder-shown:scale-100 ds:peer-placeholder-shown:translate-x-0 ds:peer-placeholder-shown:w-[calc(100%-(--spacing(4)))] ds:peer-placeholder-shown:h-[calc(100%-(--spacing(4)))] ds:peer-placeholder-shown:py-3 ds:peer-placeholder-shown:bg-background":
               !lagerSize,
             // // State focus - nằm trên input
-            "peer-focus:top-0.5 peer-focus:origin-left peer-focus:scale-75 peer-focus:translate-x-1 peer-focus:text-primary peer-focus:max-w-full peer-focus:h-3 peer-focus:py-0 peer-focus:bg-transparent":
+            "ds:peer-focus:top-0.5 ds:peer-focus:origin-left ds:peer-focus:scale-75 ds:peer-focus:translate-x-1 ds:peer-focus:text-primary ds:peer-focus:max-w-full ds:peer-focus:h-3 ds:peer-focus:py-0 ds:peer-focus:bg-transparent":
               !lagerSize,
-            "group-focus-within:top-0.5 group-focus-within:origin-left group-focus-within:scale-75 group-focus-within:translate-x-1 group-focus-within:text-primary group-focus-within:max-w-full group-focus-within:h-3 group-focus-within:py-0 group-focus-within:bg-transparent":
+            "ds:group-focus-within:top-0.5 ds:group-focus-within:origin-left ds:group-focus-within:scale-75 ds:group-focus-within:translate-x-1 ds:group-focus-within:text-primary ds:group-focus-within:max-w-full ds:group-focus-within:h-3 ds:group-focus-within:py-0 ds:group-focus-within:bg-transparent":
               !lagerSize,
           },
           {
-            "-top-3.5 origin-left scale-75 translate-x-0 max-w-full w-auto h-3 py-0":
+            "ds:-top-3.5 ds:origin-left ds:scale-75 ds:translate-x-0 ds:max-w-full ds:w-auto ds:h-3 ds:py-0":
               lagerSize,
             // State empty (placeholder shown) - ở giữa input
-            "peer-placeholder-shown:-top-0.5 peer-placeholder-shown:scale-100 peer-placeholder-shown:w-[calc(100%-(--spacing(4)))] peer-placeholder-shown:h-[calc(100%-(--spacing(3)))] peer-placeholder-shown:py-2 peer-placeholder-shown:bg-background":
+            "ds:peer-placeholder-shown:-top-0.5 ds:peer-placeholder-shown:scale-100 ds:peer-placeholder-shown:w-[calc(100%-(--spacing(4)))] ds:peer-placeholder-shown:h-[calc(100%-(--spacing(3)))] ds:peer-placeholder-shown:py-2 ds:peer-placeholder-shown:bg-background":
               lagerSize,
             // // State focus - nằm trên input
-            "peer-focus:-top-3.5 peer-focus:origin-left peer-focus:scale-75 peer-focus:text-primary peer-focus:max-w-full peer-focus:w-auto peer-focus:h-3 peer-focus:py-0":
+            "ds:peer-focus:-top-3.5 ds:peer-focus:origin-left ds:peer-focus:scale-75 ds:peer-focus:text-primary ds:peer-focus:max-w-full ds:peer-focus:w-auto ds:peer-focus:h-3 ds:peer-focus:py-0":
               lagerSize,
-            "group-focus-within:-top-3.5 group-focus-within:origin-left group-focus-within:scale-75 group-focus-within:text-primary group-focus-within:max-w-full group-focus-within:w-auto group-focus-within:h-3 group-focus-within:py-0":
+            "ds:group-focus-within:-top-3.5 ds:group-focus-within:origin-left ds:group-focus-within:scale-75 ds:group-focus-within:text-primary ds:group-focus-within:max-w-full ds:group-focus-within:w-auto ds:group-focus-within:h-3 ds:group-focus-within:py-0":
               lagerSize,
           },
 
           // State when shouldFloat prop is set
           {
-            "top-0.5 origin-left scale-75 translate-x-1 max-w-full h-3 py-0":
+            "ds:top-0.5 ds:origin-left ds:scale-75 ds:translate-x-1 ds:max-w-full ds:h-3 ds:py-0":
               typeof shouldFloat === "boolean" && shouldFloat && !lagerSize,
-            "top-0 scale-100 translate-x-0 w-[calc(100%-(--spacing(4)))] h-[calc(100%-(--spacing(4)))] py-3 bg-background":
+            "ds:top-0 ds:scale-100 ds:translate-x-0 ds:w-[calc(100%-(--spacing(4)))] ds:h-[calc(100%-(--spacing(4)))] ds:py-3 ds:bg-background":
               typeof shouldFloat === "boolean" && !shouldFloat && !lagerSize,
           },
           {
-            "-top-3.5 origin-left scale-75 translate-x-0 max-w-full h-3 py-0":
+            "ds:-top-3.5 ds:origin-left ds:scale-75 ds:translate-x-0 ds:max-w-full ds:h-3 ds:py-0":
               typeof shouldFloat === "boolean" && shouldFloat && lagerSize,
-            "top-0 scale-100 translate-x-0 w-[calc(100%-(--spacing(4)))] h-[calc(100%-(--spacing(4)))] py-3 bg-background":
+            "ds:top-0 ds:scale-100 ds:translate-x-0 ds:w-[calc(100%-(--spacing(4)))] ds:h-[calc(100%-(--spacing(4)))] ds:py-3 ds:bg-background":
               typeof shouldFloat === "boolean" && !shouldFloat && lagerSize,
           },
-          "will-change-transform transition-all duration-300 ease-in-out",
+          "ds:will-change-transform ds:transition-all ds:duration-300 ds:ease-in-out",
           className
         )}
         ref={ref}
         {...props}
       >
-        <span className="truncate whitespace-nowrap max-w-full pointer-events-none">
+        <span className="ds:truncate ds:whitespace-nowrap ds:max-w-full ds:pointer-events-none">
           {children}
-          {required && <span className="text-error ml-0.5">*</span>}
+          {required && <span className="ds:text-error ds:ml-0.5">*</span>}
         </span>
 
         {infoTooltip && (
           <Tooltip content={infoTooltip}>
-            <Info className="size-3.5 min-w-3.5 z-10 pointer-events-auto" />
+            <Info className="ds:size-3.5 ds:min-w-3.5 ds:z-10 ds:pointer-events-auto" />
           </Tooltip>
         )}
       </Label>

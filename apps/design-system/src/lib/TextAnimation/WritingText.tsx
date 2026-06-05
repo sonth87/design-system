@@ -46,7 +46,7 @@ function WritingText({
       {words.map((word, index) => (
         <motion.span
           key={index}
-          className="inline-block will-change-transform will-change-opacity"
+          className="ds:inline-block ds:will-change-transform ds:will-change-opacity"
           style={{ marginRight: spacing }}
           initial={{ opacity: 0, y: 10 }}
           animate={isInView ? { opacity: 1, y: 0 } : undefined}

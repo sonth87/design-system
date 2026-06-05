@@ -51,16 +51,16 @@ const topPages = [
 export default function AnalyticsPage() {
   return (
     <AdminLayout>
-      <div className="space-y-6">
+      <div className="ds:space-y-6">
         {/* Page Header */}
-        <div className="flex items-center justify-between">
+        <div className="ds:flex ds:items-center ds:justify-between">
           <div>
-            <h1 className="text-3xl font-bold tracking-tight">Analytics</h1>
-            <p className="text-muted-foreground">
+            <h1 className="ds:text-3xl ds:font-bold ds:tracking-tight">Analytics</h1>
+            <p className="ds:text-muted-foreground">
               Track your performance and insights
             </p>
           </div>
-          <div className="flex gap-2">
+          <div className="ds:flex ds:gap-2">
             <Select
               options={[
                 { value: "7d", label: "Last 7 days" },
@@ -76,28 +76,26 @@ export default function AnalyticsPage() {
         </div>
 
         {/* Metrics Grid */}
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <div className="ds:grid ds:gap-4 ds:md:grid-cols-2 ds:lg:grid-cols-4">
           {metrics.map((metric) => (
             <div
               key={metric.label}
-              className="rounded-lg border bg-card p-6 shadow-sm"
+              className="ds:rounded-lg ds:border ds:bg-card ds:p-6 ds:shadow-sm"
             >
-              <div className="flex items-center justify-between">
-                <p className="text-sm font-medium text-muted-foreground">
+              <div className="ds:flex ds:items-center ds:justify-between">
+                <p className="ds:text-sm ds:font-medium ds:text-muted-foreground">
                   {metric.label}
                 </p>
                 {metric.trend === "up" ? (
-                  <TrendingUp className="h-4 w-4 text-green-600" />
+                  <TrendingUp className="ds:h-4 ds:w-4 ds:text-green-600" />
                 ) : (
-                  <TrendingDown className="h-4 w-4 text-red-600" />
+                  <TrendingDown className="ds:h-4 ds:w-4 ds:text-red-600" />
                 )}
               </div>
-              <div className="mt-3">
-                <p className="text-2xl font-bold">{metric.value}</p>
+              <div className="ds:mt-3">
+                <p className="ds:text-2xl ds:font-bold">{metric.value}</p>
                 <p
-                  className={`mt-1 text-sm ${
-                    metric.trend === "up" ? "text-green-600" : "text-red-600"
-                  }`}
+                  className={`ds:mt-1 ds:text-sm ${metric.trend === "up" ? "text-green-600" : "text-red-600"}`}
                 >
                   {metric.change} from last period
                 </p>
@@ -109,37 +107,37 @@ export default function AnalyticsPage() {
         {/* Analytics Tabs */}
         <Tabs
           defaultActiveKey="overview"
-          className="space-y-4"
+          className="ds:space-y-4"
           items={[
             {
               key: "overview",
               label: "Overview",
               children: (
-                <div className="space-y-4">
-                  <div className="grid gap-4 md:grid-cols-2">
+                <div className="ds:space-y-4">
+                  <div className="ds:grid ds:gap-4 ds:md:grid-cols-2">
                     {/* Chart Placeholder 1 */}
-                    <div className="rounded-lg border bg-card p-6 shadow-sm">
-                      <div className="mb-4 flex items-center justify-between">
-                        <h3 className="text-lg font-semibold">Revenue Trend</h3>
-                        <Activity className="h-5 w-5 text-muted-foreground" />
+                    <div className="ds:rounded-lg ds:border ds:bg-card ds:p-6 ds:shadow-sm">
+                      <div className="ds:mb-4 ds:flex ds:items-center ds:justify-between">
+                        <h3 className="ds:text-lg ds:font-semibold">Revenue Trend</h3>
+                        <Activity className="ds:h-5 ds:w-5 ds:text-muted-foreground" />
                       </div>
-                      <div className="h-[300px] flex items-center justify-center border-2 border-dashed rounded-lg">
-                        <div className="text-center text-muted-foreground">
-                          <DollarSign className="h-12 w-12 mx-auto mb-2 opacity-50" />
+                      <div className="ds:h-[300px] ds:flex ds:items-center ds:justify-center ds:border-2 ds:border-dashed ds:rounded-lg">
+                        <div className="ds:text-center ds:text-muted-foreground">
+                          <DollarSign className="ds:h-12 ds:w-12 ds:mx-auto ds:mb-2 ds:opacity-50" />
                           <p>Revenue chart would be displayed here</p>
                         </div>
                       </div>
                     </div>
 
                     {/* Chart Placeholder 2 */}
-                    <div className="rounded-lg border bg-card p-6 shadow-sm">
-                      <div className="mb-4 flex items-center justify-between">
-                        <h3 className="text-lg font-semibold">User Growth</h3>
-                        <Users className="h-5 w-5 text-muted-foreground" />
+                    <div className="ds:rounded-lg ds:border ds:bg-card ds:p-6 ds:shadow-sm">
+                      <div className="ds:mb-4 ds:flex ds:items-center ds:justify-between">
+                        <h3 className="ds:text-lg ds:font-semibold">User Growth</h3>
+                        <Users className="ds:h-5 ds:w-5 ds:text-muted-foreground" />
                       </div>
-                      <div className="h-[300px] flex items-center justify-center border-2 border-dashed rounded-lg">
-                        <div className="text-center text-muted-foreground">
-                          <Users className="h-12 w-12 mx-auto mb-2 opacity-50" />
+                      <div className="ds:h-[300px] ds:flex ds:items-center ds:justify-center ds:border-2 ds:border-dashed ds:rounded-lg">
+                        <div className="ds:text-center ds:text-muted-foreground">
+                          <Users className="ds:h-12 ds:w-12 ds:mx-auto ds:mb-2 ds:opacity-50" />
                           <p>User growth chart would be displayed here</p>
                         </div>
                       </div>
@@ -147,39 +145,39 @@ export default function AnalyticsPage() {
                   </div>
 
                   {/* Top Pages */}
-                  <div className="rounded-lg border bg-card p-6 shadow-sm">
-                    <h3 className="text-lg font-semibold mb-4">Top Pages</h3>
-                    <div className="space-y-4">
+                  <div className="ds:rounded-lg ds:border ds:bg-card ds:p-6 ds:shadow-sm">
+                    <h3 className="ds:text-lg ds:font-semibold ds:mb-4">Top Pages</h3>
+                    <div className="ds:space-y-4">
                       {topPages.map((page, index) => (
                         <div
                           key={page.page}
-                          className="flex items-center justify-between py-2"
+                          className="ds:flex ds:items-center ds:justify-between ds:py-2"
                         >
-                          <div className="flex items-center gap-3">
+                          <div className="ds:flex ds:items-center ds:gap-3">
                             <Badge
                               variant="outline"
-                              className="w-8 justify-center"
+                              className="ds:w-8 ds:justify-center"
                             >
                               {index + 1}
                             </Badge>
-                            <code className="text-sm font-mono">
+                            <code className="ds:text-sm ds:font-mono">
                               {page.page}
                             </code>
                           </div>
-                          <div className="flex items-center gap-6">
-                            <div className="text-right">
-                              <p className="text-sm font-medium">
+                          <div className="ds:flex ds:items-center ds:gap-6">
+                            <div className="ds:text-right">
+                              <p className="ds:text-sm ds:font-medium">
                                 {page.views}
                               </p>
-                              <p className="text-xs text-muted-foreground">
+                              <p className="ds:text-xs ds:text-muted-foreground">
                                 views
                               </p>
                             </div>
-                            <div className="text-right">
-                              <p className="text-sm font-medium">
+                            <div className="ds:text-right">
+                              <p className="ds:text-sm ds:font-medium">
                                 {page.bounce}
                               </p>
-                              <p className="text-xs text-muted-foreground">
+                              <p className="ds:text-xs ds:text-muted-foreground">
                                 bounce
                               </p>
                             </div>
@@ -195,13 +193,13 @@ export default function AnalyticsPage() {
               key: "traffic",
               label: "Traffic",
               children: (
-                <div className="rounded-lg border bg-card p-6 shadow-sm">
-                  <h3 className="text-lg font-semibold mb-4">
+                <div className="ds:rounded-lg ds:border ds:bg-card ds:p-6 ds:shadow-sm">
+                  <h3 className="ds:text-lg ds:font-semibold ds:mb-4">
                     Traffic Sources
                   </h3>
-                  <div className="h-[400px] flex items-center justify-center border-2 border-dashed rounded-lg">
-                    <div className="text-center text-muted-foreground">
-                      <Activity className="h-12 w-12 mx-auto mb-2 opacity-50" />
+                  <div className="ds:h-[400px] ds:flex ds:items-center ds:justify-center ds:border-2 ds:border-dashed ds:rounded-lg">
+                    <div className="ds:text-center ds:text-muted-foreground">
+                      <Activity className="ds:h-12 ds:w-12 ds:mx-auto ds:mb-2 ds:opacity-50" />
                       <p>Traffic analytics would be displayed here</p>
                     </div>
                   </div>
@@ -212,13 +210,13 @@ export default function AnalyticsPage() {
               key: "engagement",
               label: "Engagement",
               children: (
-                <div className="rounded-lg border bg-card p-6 shadow-sm">
-                  <h3 className="text-lg font-semibold mb-4">
+                <div className="ds:rounded-lg ds:border ds:bg-card ds:p-6 ds:shadow-sm">
+                  <h3 className="ds:text-lg ds:font-semibold ds:mb-4">
                     User Engagement
                   </h3>
-                  <div className="h-[400px] flex items-center justify-center border-2 border-dashed rounded-lg">
-                    <div className="text-center text-muted-foreground">
-                      <Users className="h-12 w-12 mx-auto mb-2 opacity-50" />
+                  <div className="ds:h-[400px] ds:flex ds:items-center ds:justify-center ds:border-2 ds:border-dashed ds:rounded-lg">
+                    <div className="ds:text-center ds:text-muted-foreground">
+                      <Users className="ds:h-12 ds:w-12 ds:mx-auto ds:mb-2 ds:opacity-50" />
                       <p>Engagement metrics would be displayed here</p>
                     </div>
                   </div>
@@ -229,13 +227,13 @@ export default function AnalyticsPage() {
               key: "conversions",
               label: "Conversions",
               children: (
-                <div className="rounded-lg border bg-card p-6 shadow-sm">
-                  <h3 className="text-lg font-semibold mb-4">
+                <div className="ds:rounded-lg ds:border ds:bg-card ds:p-6 ds:shadow-sm">
+                  <h3 className="ds:text-lg ds:font-semibold ds:mb-4">
                     Conversion Funnel
                   </h3>
-                  <div className="h-[400px] flex items-center justify-center border-2 border-dashed rounded-lg">
-                    <div className="text-center text-muted-foreground">
-                      <TrendingUp className="h-12 w-12 mx-auto mb-2 opacity-50" />
+                  <div className="ds:h-[400px] ds:flex ds:items-center ds:justify-center ds:border-2 ds:border-dashed ds:rounded-lg">
+                    <div className="ds:text-center ds:text-muted-foreground">
+                      <TrendingUp className="ds:h-12 ds:w-12 ds:mx-auto ds:mb-2 ds:opacity-50" />
                       <p>Conversion funnel would be displayed here</p>
                     </div>
                   </div>

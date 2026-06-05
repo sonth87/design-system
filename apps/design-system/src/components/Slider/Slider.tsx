@@ -45,52 +45,52 @@ const COLOR_CONFIG: Record<
   }
 > = {
   primary: {
-    range: "bg-primary",
-    thumb: "border-primary/50",
-    labelBg: "bg-primary",
-    labelText: "text-primary-foreground",
+    range: "ds:bg-primary",
+    thumb: "ds:border-primary/50",
+    labelBg: "ds:bg-primary",
+    labelText: "ds:text-primary-foreground",
   },
   secondary: {
-    range: "bg-secondary",
-    thumb: "border-secondary/50",
-    labelBg: "bg-secondary",
-    labelText: "text-secondary-foreground",
+    range: "ds:bg-secondary",
+    thumb: "ds:border-secondary/50",
+    labelBg: "ds:bg-secondary",
+    labelText: "ds:text-secondary-foreground",
   },
   success: {
-    range: "bg-success",
-    thumb: "border-success/50",
-    labelBg: "bg-success",
-    labelText: "text-success-foreground",
+    range: "ds:bg-success",
+    thumb: "ds:border-success/50",
+    labelBg: "ds:bg-success",
+    labelText: "ds:text-success-foreground",
   },
   warning: {
-    range: "bg-warning",
-    thumb: "border-warning/50",
-    labelBg: "bg-warning",
-    labelText: "text-warning-foreground",
+    range: "ds:bg-warning",
+    thumb: "ds:border-warning/50",
+    labelBg: "ds:bg-warning",
+    labelText: "ds:text-warning-foreground",
   },
   error: {
-    range: "bg-error",
-    thumb: "border-error/50",
-    labelBg: "bg-error",
-    labelText: "text-error-foreground",
+    range: "ds:bg-error",
+    thumb: "ds:border-error/50",
+    labelBg: "ds:bg-error",
+    labelText: "ds:text-error-foreground",
   },
   glass: {
-    range: "bg-white/30 backdrop-blur-sm",
-    thumb: "border-white/30 backdrop-blur-sm",
-    labelBg: "bg-white/15",
-    labelText: "text-foreground",
+    range: "ds:bg-white/30 backdrop-blur-sm",
+    thumb: "ds:border-white/30 backdrop-blur-sm",
+    labelBg: "ds:bg-white/15",
+    labelText: "ds:text-foreground",
   },
   muted: {
-    range: "bg-muted-foreground",
-    thumb: "border-muted-foreground/50",
-    labelBg: "bg-muted",
-    labelText: "text-muted-foreground",
+    range: "ds:bg-muted-foreground",
+    thumb: "ds:border-muted-foreground/50",
+    labelBg: "ds:bg-muted",
+    labelText: "ds:text-muted-foreground",
   },
   accent: {
-    range: "bg-accent",
-    thumb: "border-accent/50",
-    labelBg: "bg-accent",
-    labelText: "text-accent-foreground",
+    range: "ds:bg-accent",
+    thumb: "ds:border-accent/50",
+    labelBg: "ds:bg-accent",
+    labelText: "ds:text-accent-foreground",
   },
 };
 
@@ -103,17 +103,17 @@ const SIZE_CONFIG: Record<
   }
 > = {
   sm: {
-    track: "data-[orientation=horizontal]:h-1 data-[orientation=vertical]:w-1",
-    thumb: "size-3",
+    track: "ds:data-[orientation=horizontal]:h-1 ds:data-[orientation=vertical]:w-1",
+    thumb: "ds:size-3",
   },
   md: {
     track:
-      "data-[orientation=horizontal]:h-1.5 data-[orientation=vertical]:w-1.5",
-    thumb: "size-4",
+      "ds:data-[orientation=horizontal]:h-1.5 ds:data-[orientation=vertical]:w-1.5",
+    thumb: "ds:size-4",
   },
   lg: {
-    track: "data-[orientation=horizontal]:h-2 data-[orientation=vertical]:w-2",
-    thumb: "size-5",
+    track: "ds:data-[orientation=horizontal]:h-2 ds:data-[orientation=vertical]:w-2",
+    thumb: "ds:size-5",
   },
 };
 
@@ -150,14 +150,14 @@ const getArrowColorClass = (
           ? "l"
           : "r";
   const colorMap: Record<SliderColor, string> = {
-    primary: `border-${prefix}-primary`,
-    secondary: `border-${prefix}-secondary`,
-    success: `border-${prefix}-success`,
-    warning: `border-${prefix}-warning`,
-    error: `border-${prefix}-error`,
-    glass: `border-${prefix}-white/15`,
-    muted: `border-${prefix}-muted`,
-    accent: `border-${prefix}-accent`,
+    primary: `ds:border-${prefix}-primary`,
+    secondary: `ds:border-${prefix}-secondary`,
+    success: `ds:border-${prefix}-success`,
+    warning: `ds:border-${prefix}-warning`,
+    error: `ds:border-${prefix}-error`,
+    glass: `ds:border-${prefix}-white/15`,
+    muted: `ds:border-${prefix}-muted`,
+    accent: `ds:border-${prefix}-accent`,
   };
 
   return colorMap[color];
@@ -170,44 +170,44 @@ const getLabelPositionClasses = (
 ): { badge: string; arrow: string } => {
   const positions: Record<string, { badge: string; arrow: string }> = {
     "horizontal-top": {
-      badge: "left-1/2 -translate-x-1/2 bottom-full -translate-y-1/2",
+      badge: "ds:left-1/2 ds:-translate-x-1/2 ds:bottom-full ds:-translate-y-1/2",
       arrow:
-        "top-full left-1/2 -translate-x-1/2 border-t-[6px] border-l-[6px] border-r-[6px] border-b-0 border-l-transparent border-r-transparent",
+        "ds:top-full left-1/2 ds:-translate-x-1/2 ds:border-t-[6px] ds:border-l-[6px] ds:border-r-[6px] ds:border-b-0 ds:border-l-transparent ds:border-r-transparent",
     },
     "horizontal-bottom": {
-      badge: "left-1/2 -translate-x-1/2 top-full translate-y-1/2",
+      badge: "ds:left-1/2 ds:-translate-x-1/2 ds:top-full ds:translate-y-1/2",
       arrow:
-        "bottom-full left-1/2 -translate-x-1/2 border-b-[6px] border-l-[6px] border-r-[6px] border-t-0 border-l-transparent border-r-transparent",
+        "ds:bottom-full left-1/2 ds:-translate-x-1/2 ds:border-b-[6px] ds:border-l-[6px] ds:border-r-[6px] ds:border-t-0 ds:border-l-transparent ds:border-r-transparent",
     },
     "horizontal-left": {
-      badge: "top-1/2 -translate-y-1/2 right-full -translate-x-1/2",
+      badge: "ds:top-1/2 ds:-translate-y-1/2 ds:right-full ds:-translate-x-1/2",
       arrow:
-        "left-full top-1/2 -translate-y-1/2 border-l-[6px] border-t-[6px] border-b-[6px] border-r-0 border-t-transparent border-b-transparent",
+        "ds:left-full ds:top-1/2 ds:-translate-y-1/2 ds:border-l-[6px] ds:border-t-[6px] ds:border-b-[6px] ds:border-r-0 ds:border-t-transparent ds:border-b-transparent",
     },
     "horizontal-right": {
-      badge: "top-1/2 -translate-y-1/2 left-full translate-x-1/2",
+      badge: "ds:top-1/2 ds:-translate-y-1/2 ds:left-full ds:translate-x-1/2",
       arrow:
-        "right-full top-1/2 -translate-y-1/2 border-r-[6px] border-t-[6px] border-b-[6px] border-l-0 border-t-transparent border-b-transparent",
+        "ds:right-full ds:top-1/2 ds:-translate-y-1/2 ds:border-r-[6px] ds:border-t-[6px] ds:border-b-[6px] ds:border-l-0 ds:border-t-transparent ds:border-b-transparent",
     },
     "vertical-left": {
-      badge: "top-1/2 -translate-y-1/2 right-full -translate-x-1/2",
+      badge: "ds:top-1/2 ds:-translate-y-1/2 ds:right-full ds:-translate-x-1/2",
       arrow:
-        "left-full top-1/2 -translate-y-1/2 border-l-[6px] border-t-[6px] border-b-[6px] border-r-0 border-t-transparent border-b-transparent",
+        "ds:left-full ds:top-1/2 ds:-translate-y-1/2 ds:border-l-[6px] ds:border-t-[6px] ds:border-b-[6px] ds:border-r-0 ds:border-t-transparent ds:border-b-transparent",
     },
     "vertical-right": {
-      badge: "top-1/2 -translate-y-1/2 left-full translate-x-1/2",
+      badge: "ds:top-1/2 ds:-translate-y-1/2 ds:left-full ds:translate-x-1/2",
       arrow:
-        "right-full top-1/2 -translate-y-1/2 border-r-[6px] border-t-[6px] border-b-[6px] border-l-0 border-t-transparent border-b-transparent",
+        "ds:right-full ds:top-1/2 ds:-translate-y-1/2 ds:border-r-[6px] ds:border-t-[6px] ds:border-b-[6px] ds:border-l-0 ds:border-t-transparent ds:border-b-transparent",
     },
     "vertical-top": {
-      badge: "left-1/2 -translate-x-1/2 bottom-full -translate-y-1/2",
+      badge: "ds:left-1/2 ds:-translate-x-1/2 ds:bottom-full ds:-translate-y-1/2",
       arrow:
-        "top-full left-1/2 -translate-x-1/2 border-t-[6px] border-l-[6px] border-r-[6px] border-b-0 border-l-transparent border-r-transparent",
+        "ds:top-full ds:left-1/2 ds:-translate-x-1/2 ds:border-t-[6px] ds:border-l-[6px] ds:border-r-[6px] ds:border-b-0 ds:border-l-transparent ds:border-r-transparent",
     },
     "vertical-bottom": {
-      badge: "left-1/2 -translate-x-1/2 top-full translate-y-1/2",
+      badge: "ds:left-1/2 ds:-translate-x-1/2 ds:top-full ds:translate-y-1/2",
       arrow:
-        "bottom-full left-1/2 -translate-x-1/2 border-b-[6px] border-l-[6px] border-r-[6px] border-t-0 border-l-transparent border-r-transparent",
+        "ds:bottom-full ds:left-1/2 ds:-translate-x-1/2 ds:border-b-[6px] ds:border-l-[6px] ds:border-r-[6px] ds:border-t-0 ds:border-l-transparent ds:border-r-transparent",
     },
   };
 
@@ -221,21 +221,21 @@ const getSpecLabelPositionClass = (
 ): string => {
   const positions: Record<string, string> = {
     "horizontal-top":
-      "data-[orientation=horizontal]:bottom-full data-[orientation=horizontal]:left-1/2 data-[orientation=horizontal]:-translate-x-1/2 data-[orientation=horizontal]:-translate-y-1/2",
+      "ds:data-[orientation=horizontal]:bottom-full ds:data-[orientation=horizontal]:left-1/2 ds:data-[orientation=horizontal]:-translate-x-1/2 ds:data-[orientation=horizontal]:-translate-y-1/2",
     "horizontal-bottom":
-      "data-[orientation=horizontal]:top-full data-[orientation=horizontal]:left-1/2 data-[orientation=horizontal]:-translate-x-1/2 data-[orientation=horizontal]:translate-y-1/2",
+      "ds:data-[orientation=horizontal]:top-full ds:data-[orientation=horizontal]:left-1/2 ds:data-[orientation=horizontal]:-translate-x-1/2 ds:data-[orientation=horizontal]:translate-y-1/2",
     "horizontal-left":
-      "data-[orientation=horizontal]:top-1/2 data-[orientation=horizontal]:right-full data-[orientation=horizontal]:-translate-y-1/2 data-[orientation=horizontal]:-translate-x-1/2",
+      "ds:data-[orientation=horizontal]:top-1/2 ds:data-[orientation=horizontal]:right-full ds:data-[orientation=horizontal]:-translate-y-1/2 ds:data-[orientation=horizontal]:-translate-x-1/2",
     "horizontal-right":
-      "data-[orientation=horizontal]:top-1/2 data-[orientation=horizontal]:left-full data-[orientation=horizontal]:-translate-y-1/2 data-[orientation=horizontal]:translate-x-1/2",
+      "ds:data-[orientation=horizontal]:top-1/2 ds:data-[orientation=horizontal]:left-full ds:data-[orientation=horizontal]:-translate-y-1/2 ds:data-[orientation=horizontal]:translate-x-1/2",
     "vertical-left":
-      "data-[orientation=vertical]:right-full data-[orientation=vertical]:top-1/2 data-[orientation=vertical]:-translate-x-1/2 data-[orientation=vertical]:-translate-y-1/2",
+      "ds:data-[orientation=vertical]:right-full ds:data-[orientation=vertical]:top-1/2 ds:data-[orientation=vertical]:-translate-x-1/2 ds:data-[orientation=vertical]:-translate-y-1/2",
     "vertical-right":
-      "data-[orientation=vertical]:left-full data-[orientation=vertical]:top-1/2 data-[orientation=vertical]:translate-x-1/2 data-[orientation=vertical]:-translate-y-1/2",
+      "ds:data-[orientation=vertical]:left-full ds:data-[orientation=vertical]:top-1/2 ds:data-[orientation=vertical]:translate-x-1/2 ds:data-[orientation=vertical]:-translate-y-1/2",
     "vertical-top":
-      "data-[orientation=vertical]:bottom-full data-[orientation=vertical]:left-1/2 data-[orientation=vertical]:-translate-x-1/2 data-[orientation=vertical]:-translate-y-1/2",
+      "ds:data-[orientation=vertical]:bottom-full ds:data-[orientation=vertical]:left-1/2 ds:data-[orientation=vertical]:-translate-x-1/2 ds:data-[orientation=vertical]:-translate-y-1/2",
     "vertical-bottom":
-      "data-[orientation=vertical]:top-full data-[orientation=vertical]:left-1/2 data-[orientation=vertical]:-translate-x-1/2 data-[orientation=vertical]:translate-y-1/2",
+      "ds:data-[orientation=vertical]:top-full ds:data-[orientation=vertical]:left-1/2 ds:data-[orientation=vertical]:-translate-x-1/2 ds:data-[orientation=vertical]:translate-y-1/2",
   };
 
   return positions[`${orientation}-${position}`];
@@ -348,8 +348,8 @@ const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
     const sliderColorClass = useMemo(() => {
       if (sliderColor || thumbBorderColor) {
         return {
-          range: sliderColor || "bg-primary",
-          thumb: thumbBorderColor || "border-primary/50",
+          range: sliderColor || "ds:bg-primary",
+          thumb: thumbBorderColor || "ds:border-primary/50",
         };
       }
       const config = COLOR_CONFIG[color];
@@ -371,10 +371,10 @@ const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
       const arrowColor = getArrowColorClass(color, direction);
 
       if (color === "glass") {
-        return `${config.labelBg} ${config.labelText} backdrop-blur-sm shadow-lg [&>div.arrow]:${arrowColor}`;
+        return `${config.labelBg} ${config.labelText} ds:backdrop-blur-sm ds:shadow-lg ds:[&>div.arrow]:${arrowColor}`;
       }
 
-      return `${config.labelBg} ${config.labelText} [&>div.arrow]:${arrowColor}`;
+      return `${config.labelBg} ${config.labelText} ds:[&>div.arrow]:${arrowColor}`;
     }, [color, labelPosition, orientation, labelColor, labelTextColor]);
 
     const arrowColorClass = useMemo(() => {
@@ -384,9 +384,9 @@ const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
     }, [color, labelPosition, orientation, labelArrowColor]);
 
     const labelVisibilityClass = useMemo(() => {
-      if (showLabel === "hover") return "scale-0 group-hover:scale-100";
-      if (showLabel === "always") return "scale-100";
-      return "hidden";
+      if (showLabel === "hover") return "ds:scale-0 ds:group-hover:scale-100";
+      if (showLabel === "always") return "ds:scale-100";
+      return "ds:hidden";
     }, [showLabel]);
 
     const labelPositionClass = useMemo(
@@ -406,7 +406,7 @@ const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
           return (
             <motion.div
               className={cn(
-                "pointer-events-none absolute z-50 flex flex-col items-center justify-center rounded-md px-3 py-1.5 text-xs shadow-xl",
+                "ds:pointer-events-none ds:absolute ds:z-50 ds:flex ds:flex-col ds:items-center ds:justify-center ds:rounded-md ds:px-3 ds:py-1.5 ds:text-xs ds:shadow-xl",
                 labelPositionClassSpec,
                 labelColor && labelColor,
                 labelTextColor && labelTextColor,
@@ -442,7 +442,7 @@ const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
                 whiteSpace: "nowrap",
               }}
             >
-              <div className="relative z-1">
+              <div className="ds:relative ds:z-1">
                 <NumberFlow
                   value={_values[index]}
                   format={{ notation: "standard" }}
@@ -452,7 +452,7 @@ const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
               {labelArrow && (
                 <div
                   className={cn(
-                    "arrow absolute border-transparent",
+                    "ds:arrow ds:absolute ds:border-transparent",
                     labelPositionClass.arrow,
                     arrowColorClass
                   )}
@@ -479,7 +479,7 @@ const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
             }
             variant="solid"
             className={cn(
-              "transition-transform absolute px-3 rounded-md",
+              "ds:transition-transform ds:absolute ds:px-3 ds:rounded-md",
               labelPositionClass.badge,
               labelVisibilityClass,
               labelColor && labelColor,
@@ -487,7 +487,7 @@ const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
               !labelColor &&
                 !labelTextColor &&
                 color === "glass" &&
-                "bg-white/15 text-foreground backdrop-blur-sm shadow-lg [&>div.arrow]:border-t-white/15"
+                "ds:bg-white/15 ds:text-foreground ds:backdrop-blur-sm ds:shadow-lg ds:[&>div.arrow]:border-t-white/15"
             )}
           >
             {labelAnimation === "number-flow" ? (
@@ -502,7 +502,7 @@ const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
             {labelArrow && (
               <div
                 className={cn(
-                  "arrow absolute border-transparent",
+                  "ds:arrow ds:absolute ds:border-transparent",
                   labelPositionClass.arrow,
                   arrowColorClass
                 )}
@@ -543,7 +543,7 @@ const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
           min={min}
           max={max}
           className={cn(
-            "relative flex w-full touch-none items-center select-none data-disabled:opacity-50 data-[orientation=vertical]:h-full data-[orientation=vertical]:min-h-44 data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col",
+            "ds:relative ds:flex ds:w-full ds:touch-none ds:items-center ds:select-none ds:data-disabled:opacity-50 ds:data-[orientation=vertical]:h-full ds:data-[orientation=vertical]:min-h-44 ds:data-[orientation=vertical]:w-auto ds:data-[orientation=vertical]:flex-col",
             className
           )}
           {...props}
@@ -551,14 +551,14 @@ const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
           <SliderPrimitive.Track
             data-slot="slider-track"
             className={cn(
-              "bg-muted relative grow overflow-hidden rounded-full data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full",
+              "ds:bg-muted ds:relative ds:grow ds:overflow-hidden ds:rounded-full ds:data-[orientation=horizontal]:w-full ds:data-[orientation=vertical]:h-full",
               sliderSizeClass.track
             )}
           >
             <SliderPrimitive.Range
               data-slot="slider-range"
               className={cn(
-                "absolute data-[orientation=horizontal]:h-full data-[orientation=vertical]:w-full",
+                "ds:absolute ds:data-[orientation=horizontal]:h-full ds:data-[orientation=vertical]:w-full",
                 sliderColorClass.range
               )}
             />
@@ -568,7 +568,7 @@ const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
               key={index}
               data-slot="slider-thumb"
               className={cn(
-                "block shrink-0 rounded-full border bg-white shadow-sm transition-[color,box-shadow] hover:ring-4 focus-visible:ring-4 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50 ring-ring/50",
+                "ds:block ds:shrink-0 ds:rounded-full ds:border ds:bg-white ds:shadow-sm ds:transition-[color,box-shadow] ds:hover:ring-4 ds:focus-visible:ring-4 ds:focus-visible:outline-hidden ds:disabled:pointer-events-none ds:disabled:opacity-50 ds:ring-ring/50",
                 sliderColorClass.thumb,
                 sliderSizeClass.thumb
               )}
@@ -588,7 +588,7 @@ const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
         min={min}
         max={max}
         className={cn(
-          "relative flex w-full touch-none items-center select-none data-disabled:opacity-50 data-[orientation=vertical]:h-full data-[orientation=vertical]:min-h-44 data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col",
+          "ds:relative ds:flex ds:w-full ds:touch-none ds:items-center ds:select-none ds:data-disabled:opacity-50 ds:data-[orientation=vertical]:h-full ds:data-[orientation=vertical]:min-h-44 ds:data-[orientation=vertical]:w-auto ds:data-[orientation=vertical]:flex-col",
           className
         )}
         {...props}
@@ -596,14 +596,14 @@ const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
         <SliderPrimitive.Track
           data-slot="slider-track"
           className={cn(
-            "bg-muted relative grow overflow-hidden rounded-full data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full",
+            "ds:bg-muted ds:relative ds:grow ds:overflow-hidden ds:rounded-full ds:data-[orientation=horizontal]:w-full ds:data-[orientation=vertical]:h-full",
             sliderSizeClass.track
           )}
         >
           <SliderPrimitive.Range
             data-slot="slider-range"
             className={cn(
-              "absolute data-[orientation=horizontal]:h-full data-[orientation=vertical]:w-full",
+              "ds:absolute ds:data-[orientation=horizontal]:h-full ds:data-[orientation=vertical]:w-full",
               sliderColorClass.range
             )}
           />
@@ -613,7 +613,7 @@ const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
             key={index}
             data-slot="slider-thumb"
             className={cn(
-              "group block shrink-0 rounded-full border bg-white shadow-sm transition-[color,box-shadow] hover:ring-4 focus-visible:ring-4 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50 ring-ring/50",
+              "ds:group ds:block ds:shrink-0 ds:rounded-full ds:border ds:bg-white ds:shadow-sm ds:transition-[color,box-shadow] ds:hover:ring-4 ds:focus-visible:ring-4 ds:focus-visible:outline-hidden ds:disabled:pointer-events-none ds:disabled:opacity-50 ds:ring-ring/50",
               sliderColorClass.thumb,
               sliderSizeClass.thumb
             )}

@@ -145,11 +145,11 @@ export function DataTableViewOptions<TData>({
         onClick: () => column.toggleVisibility(!column.getIsVisible()),
         children: (
           <>
-            <span className="truncate">{getColumnLabel(column)}</span>
+            <span className="ds:truncate">{getColumnLabel(column)}</span>
             <Check
               className={cn(
-                "ml-auto size-4 shrink-0",
-                column.getIsVisible() ? "opacity-100" : "opacity-0"
+                "ds:ml-auto ds:size-4 ds:shrink-0",
+                column.getIsVisible() ? "ds:opacity-100" : "ds:opacity-0"
               )}
             />
           </>
@@ -234,7 +234,7 @@ export function DataTableViewOptions<TData>({
             role="combobox"
             variant="outline"
             size="sm"
-            className="ml-auto h-8 font-normal lg:flex"
+            className="ds:ml-auto ds:h-8 ds:font-normal ds:lg:flex"
           >
             {triggerIcon}
             {resolvedLabels.trigger}
@@ -250,8 +250,8 @@ export function DataTableViewOptions<TData>({
         ))
       }
       contentClassName={cn(
-        "p-0",
-        variant === "draggable" ? "w-72" : "w-44",
+        "ds:p-0",
+        variant === "draggable" ? "ds:w-72" : "ds:w-44",
         contentClassName
       )}
       {...props}

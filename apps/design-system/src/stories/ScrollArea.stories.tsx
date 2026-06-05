@@ -62,13 +62,13 @@ type Story = StoryObj<ScrollAreaProps>;
 // Default vertical scroll
 export const Default: Story = {
   render: (args: ScrollAreaProps) => (
-    <ScrollArea className="h-72 w-48 rounded-md border" {...args}>
-      <div className="p-4">
-        <h4 className="mb-4 text-sm font-medium leading-none">Tags</h4>
+    <ScrollArea className="ds:h-72 ds:w-48 ds:rounded-md ds:border" {...args}>
+      <div className="ds:p-4">
+        <h4 className="ds:mb-4 ds:text-sm ds:font-medium ds:leading-none">Tags</h4>
         {Array.from({ length: 50 }).map((_, i) => (
-          <div key={i} className="snap-start">
-            <div className="text-sm">Tag {i + 1}</div>
-            {i < 49 && <Separator className="my-2" />}
+          <div key={i} className="ds:snap-start">
+            <div className="ds:text-sm">Tag {i + 1}</div>
+            {i < 49 && <Separator className="ds:my-2" />}
           </div>
         ))}
       </div>
@@ -79,14 +79,14 @@ export const Default: Story = {
 // Horizontal scroll
 export const Horizontal: Story = {
   render: () => (
-    <ScrollArea className="w-96 whitespace-nowrap rounded-md border">
-      <div className="flex w-max space-x-4 p-4">
+    <ScrollArea className="ds:w-96 ds:whitespace-nowrap ds:rounded-md ds:border">
+      <div className="ds:flex ds:w-max ds:space-x-4 ds:p-4">
         {Array.from({ length: 20 }).map((_, i) => (
           <div
             key={i}
-            className="shrink-0 rounded-md border w-[200px] h-[200px] flex items-center justify-center"
+            className="ds:shrink-0 ds:rounded-md ds:border ds:w-[200px] ds:h-[200px] ds:flex ds:items-center ds:justify-center"
           >
-            <div className="text-sm font-medium">Item {i + 1}</div>
+            <div className="ds:text-sm ds:font-medium">Item {i + 1}</div>
           </div>
         ))}
       </div>
@@ -98,20 +98,20 @@ export const Horizontal: Story = {
 // Both directions
 export const BothDirections: Story = {
   render: () => (
-    <ScrollArea className="h-[400px] w-[400px] rounded-md border">
-      <div className="p-4">
-        <h4 className="mb-4 text-sm font-medium leading-none">
+    <ScrollArea className="ds:h-[400px] ds:w-[400px] ds:rounded-md ds:border">
+      <div className="ds:p-4">
+        <h4 className="ds:mb-4 ds:text-sm ds:font-medium ds:leading-none">
           Scroll in both directions
         </h4>
-        <div className="flex flex-col space-y-4">
+        <div className="ds:flex ds:flex-col ds:space-y-4">
           {Array.from({ length: 20 }).map((_, i) => (
-            <div key={i} className="flex space-x-4">
+            <div key={i} className="ds:flex ds:space-x-4">
               {Array.from({ length: 10 }).map((_, j) => (
                 <div
                   key={j}
-                  className="shrink-0 rounded-md border w-[120px] h-[120px] flex items-center justify-center"
+                  className="ds:shrink-0 ds:rounded-md ds:border ds:w-[120px] ds:h-[120px] ds:flex ds:items-center ds:justify-center"
                 >
-                  <div className="text-sm">
+                  <div className="ds:text-sm">
                     {i + 1},{j + 1}
                   </div>
                 </div>
@@ -129,11 +129,11 @@ export const BothDirections: Story = {
 // Long text content
 export const LongTextContent: Story = {
   render: () => (
-    <ScrollArea className="h-[300px] w-[500px] rounded-md border p-4">
-      <div className="space-y-4">
-        <h3 className="text-lg font-semibold">Long Article</h3>
+    <ScrollArea className="ds:h-[300px] ds:w-[500px] ds:rounded-md ds:border ds:p-4">
+      <div className="ds:space-y-4">
+        <h3 className="ds:text-lg ds:font-semibold">Long Article</h3>
         {Array.from({ length: 10 }).map((_, i) => (
-          <p key={i} className="text-sm text-muted-foreground">
+          <p key={i} className="ds:text-sm ds:text-muted-foreground">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -150,13 +150,13 @@ export const LongTextContent: Story = {
 // Custom styled scrollbar
 export const CustomStyled: Story = {
   render: () => (
-    <ScrollArea className="h-72 w-64 rounded-md border bg-linear-to-br from-purple-50 to-pink-50 dark:from-purple-950 dark:to-pink-950">
-      <div className="p-4 space-y-3">
-        <h4 className="mb-4 text-sm font-bold">Custom Styled</h4>
+    <ScrollArea className="ds:h-72 ds:w-64 ds:rounded-md ds:border ds:bg-linear-to-br ds:from-purple-50 ds:to-pink-50 ds:dark:from-purple-950 ds:dark:to-pink-950">
+      <div className="ds:p-4 ds:space-y-3">
+        <h4 className="ds:mb-4 ds:text-sm ds:font-bold">Custom Styled</h4>
         {Array.from({ length: 30 }).map((_, i) => (
           <div
             key={i}
-            className="rounded-lg bg-white/50 dark:bg-black/20 p-3 text-sm font-medium"
+            className="ds:rounded-lg ds:bg-white/50 ds:dark:bg-black/20 ds:p-3 ds:text-sm ds:font-medium"
           >
             Item {i + 1}
           </div>
@@ -169,12 +169,12 @@ export const CustomStyled: Story = {
 // Compact list
 export const CompactList: Story = {
   render: () => (
-    <ScrollArea className="h-48 w-56 rounded-md border">
-      <div className="p-2">
+    <ScrollArea className="ds:h-48 ds:w-56 ds:rounded-md ds:border">
+      <div className="ds:p-2">
         {Array.from({ length: 20 }).map((_, i) => (
           <div
             key={i}
-            className="px-2 py-1.5 text-sm hover:bg-accent hover:text-accent-foreground rounded-sm cursor-pointer"
+            className="ds:px-2 ds:py-1.5 ds:text-sm ds:hover:bg-accent ds:hover:text-accent-foreground ds:rounded-sm ds:cursor-pointer"
           >
             Option {i + 1}
           </div>
@@ -187,12 +187,12 @@ export const CompactList: Story = {
 // Image gallery
 export const ImageGallery: Story = {
   render: () => (
-    <ScrollArea className="h-[400px] w-[600px] rounded-md border">
-      <div className="grid grid-cols-3 gap-4 p-4">
+    <ScrollArea className="ds:h-[400px] ds:w-[600px] ds:rounded-md ds:border">
+      <div className="ds:grid ds:grid-cols-3 ds:gap-4 ds:p-4">
         {Array.from({ length: 30 }).map((_, i) => (
           <div
             key={i}
-            className="aspect-square rounded-lg bg-linear-to-br from-blue-400 to-purple-500 flex items-center justify-center text-white font-bold text-2xl"
+            className="ds:aspect-square ds:rounded-lg ds:bg-linear-to-br ds:from-blue-400 ds:to-purple-500 ds:flex ds:items-center ds:justify-center ds:text-white ds:font-bold ds:text-2xl"
           >
             {i + 1}
           </div>
@@ -205,27 +205,25 @@ export const ImageGallery: Story = {
 // Chat messages
 export const ChatMessages: Story = {
   render: () => (
-    <ScrollArea className="h-[400px] w-[350px] rounded-md border bg-background">
-      <div className="p-4 space-y-4">
+    <ScrollArea className="ds:h-[400px] ds:w-[350px] ds:rounded-md ds:border ds:bg-background">
+      <div className="ds:p-4 ds:space-y-4">
         {Array.from({ length: 20 }).map((_, i) => {
           const isMe = i % 3 === 0;
           return (
             <div
               key={i}
-              className={`flex ${isMe ? "justify-end" : "justify-start"}`}
+              className={`ds:flex ${isMe ? "justify-end" : "justify-start"}`}
             >
               <div
-                className={`max-w-[70%] rounded-lg px-3 py-2 text-sm ${
-                  isMe
-                    ? "bg-primary text-primary-foreground"
-                    : "bg-muted text-muted-foreground"
-                }`}
+                className={`ds:max-w-[70%] ds:rounded-lg ds:px-3 ds:py-2 ds:text-sm ${isMe
+                                          ? "bg-primary text-primary-foreground"
+                                          : "bg-muted text-muted-foreground"}`}
               >
                 <p>
                   {isMe ? "My message " : "Their message "}
                   {i + 1}
                 </p>
-                <p className="text-xs opacity-70 mt-1">
+                <p className="ds:text-xs ds:opacity-70 ds:mt-1">
                   {new Date().toLocaleTimeString()}
                 </p>
               </div>
@@ -241,22 +239,22 @@ export const ChatMessages: Story = {
 export const SnapVertical: Story = {
   render: () => (
     <ScrollArea
-      className="h-[400px] w-64 rounded-md border"
+      className="ds:h-[400px] ds:w-64 ds:rounded-md ds:border"
       snapType="y mandatory"
     >
-      <div className="p-4">
-        <h4 className="mb-4 text-sm font-medium">Snap Scroll (Vertical)</h4>
-        <p className="text-xs text-muted-foreground mb-4">
+      <div className="ds:p-4">
+        <h4 className="ds:mb-4 ds:text-sm ds:font-medium">Snap Scroll (Vertical)</h4>
+        <p className="ds:text-xs ds:text-muted-foreground ds:mb-4">
           Each item will snap into place when scrolling
         </p>
         {Array.from({ length: 20 }).map((_, i) => (
           <div
             key={i}
-            className="snap-start h-[120px] mb-4 rounded-lg bg-linear-to-br from-blue-100 to-purple-100 dark:from-blue-950 dark:to-purple-950 flex items-center justify-center border"
+            className="ds:snap-start ds:h-[120px] ds:mb-4 ds:rounded-lg ds:bg-linear-to-br ds:from-blue-100 ds:to-purple-100 ds:dark:from-blue-950 ds:dark:to-purple-950 ds:flex ds:items-center ds:justify-center ds:border"
           >
-            <div className="text-center">
-              <div className="text-2xl font-bold">Card {i + 1}</div>
-              <div className="text-sm text-muted-foreground">Snap to start</div>
+            <div className="ds:text-center">
+              <div className="ds:text-2xl ds:font-bold">Card {i + 1}</div>
+              <div className="ds:text-sm ds:text-muted-foreground">Snap to start</div>
             </div>
           </div>
         ))}
@@ -269,18 +267,18 @@ export const SnapVertical: Story = {
 export const SnapHorizontal: Story = {
   render: () => (
     <ScrollArea
-      className="w-[500px] whitespace-nowrap rounded-md border"
+      className="ds:w-[500px] ds:whitespace-nowrap ds:rounded-md ds:border"
       snapType="x mandatory"
     >
-      <div className="flex p-4 gap-4">
+      <div className="ds:flex ds:p-4 ds:gap-4">
         {Array.from({ length: 15 }).map((_, i) => (
           <div
             key={i}
-            className="snap-center shrink-0 w-[300px] h-[200px] rounded-lg bg-linear-to-r from-pink-100 to-orange-100 dark:from-pink-950 dark:to-orange-950 flex items-center justify-center border"
+            className="ds:snap-center ds:shrink-0 ds:w-[300px] ds:h-[200px] ds:rounded-lg ds:bg-linear-to-r ds:from-pink-100 ds:to-orange-100 ds:dark:from-pink-950 ds:dark:to-orange-950 ds:flex ds:items-center ds:justify-center ds:border"
           >
-            <div className="text-center">
-              <div className="text-3xl font-bold">Slide {i + 1}</div>
-              <div className="text-sm text-muted-foreground">
+            <div className="ds:text-center">
+              <div className="ds:text-3xl ds:font-bold">Slide {i + 1}</div>
+              <div className="ds:text-sm ds:text-muted-foreground">
                 Snap to center
               </div>
             </div>
@@ -296,22 +294,22 @@ export const SnapHorizontal: Story = {
 export const SnapProximity: Story = {
   render: () => (
     <ScrollArea
-      className="h-[400px] w-80 rounded-md border"
+      className="ds:h-[400px] ds:w-80 ds:rounded-md ds:border"
       snapType="y proximity"
     >
-      <div className="p-4">
-        <h4 className="mb-2 text-sm font-medium">Snap Proximity</h4>
-        <p className="text-xs text-muted-foreground mb-4">
+      <div className="ds:p-4">
+        <h4 className="ds:mb-2 ds:text-sm ds:font-medium">Snap Proximity</h4>
+        <p className="ds:text-xs ds:text-muted-foreground ds:mb-4">
           Snaps only when close to snap point (softer behavior)
         </p>
         {Array.from({ length: 15 }).map((_, i) => (
           <div
             key={i}
-            className="snap-center h-[150px] mb-4 rounded-lg bg-linear-to-br from-green-100 to-teal-100 dark:from-green-950 dark:to-teal-950 flex items-center justify-center border"
+            className="ds:snap-center ds:h-[150px] ds:mb-4 ds:rounded-lg ds:bg-linear-to-br ds:from-green-100 ds:to-teal-100 ds:dark:from-green-950 ds:dark:to-teal-950 ds:flex ds:items-center ds:justify-center ds:border"
           >
-            <div className="text-center">
-              <div className="text-xl font-bold">Section {i + 1}</div>
-              <div className="text-xs text-muted-foreground">
+            <div className="ds:text-center">
+              <div className="ds:text-xl ds:font-bold">Section {i + 1}</div>
+              <div className="ds:text-xs ds:text-muted-foreground">
                 Proximity snap to center
               </div>
             </div>
@@ -325,26 +323,26 @@ export const SnapProximity: Story = {
 // Carousel-like with snap
 export const SnapCarousel: Story = {
   render: () => (
-    <div className="space-y-4">
-      <div className="text-sm text-muted-foreground text-center">
+    <div className="ds:space-y-4">
+      <div className="ds:text-sm ds:text-muted-foreground ds:text-center">
         Swipe to navigate between slides
       </div>
       <ScrollArea
-        className="w-[600px] whitespace-nowrap rounded-md border overflow-hidden"
+        className="ds:w-[600px] ds:whitespace-nowrap ds:rounded-md ds:border ds:overflow-hidden"
         snapType="x mandatory"
       >
-        <div className="flex">
+        <div className="ds:flex">
           {Array.from({ length: 10 }).map((_, i) => (
             <div
               key={i}
-              className="snap-start shrink-0 w-full h-[300px] flex items-center justify-center"
+              className="ds:snap-start ds:shrink-0 ds:w-full ds:h-[300px] ds:flex ds:items-center ds:justify-center"
               style={{
                 background: `linear-gradient(135deg, hsl(${i * 36}, 70%, 60%), hsl(${i * 36 + 60}, 70%, 50%))`,
               }}
             >
-              <div className="text-white text-center">
-                <div className="text-5xl font-bold mb-2">{i + 1}</div>
-                <div className="text-xl">Slide {i + 1} of 10</div>
+              <div className="ds:text-white ds:text-center">
+                <div className="ds:text-5xl ds:font-bold ds:mb-2">{i + 1}</div>
+                <div className="ds:text-xl">Slide {i + 1} of 10</div>
               </div>
             </div>
           ))}
@@ -363,19 +361,19 @@ export const InteractiveSnapDemo: Story = {
   },
   render: (args) => (
     <ScrollArea {...args}>
-      <div className="p-4">
-        <h4 className="mb-2 text-sm font-medium">Interactive Snap Demo</h4>
-        <p className="text-xs text-muted-foreground mb-4">
+      <div className="ds:p-4">
+        <h4 className="ds:mb-2 ds:text-sm ds:font-medium">Interactive Snap Demo</h4>
+        <p className="ds:text-xs ds:text-muted-foreground ds:mb-4">
           Use the controls below to change snap behavior
         </p>
         {Array.from({ length: 15 }).map((_, i) => (
           <div
             key={i}
-            className="snap-center h-[150px] mb-4 rounded-lg bg-linear-to-br from-indigo-100 to-cyan-100 dark:from-indigo-950 dark:to-cyan-950 flex items-center justify-center border"
+            className="ds:snap-center ds:h-[150px] ds:mb-4 ds:rounded-lg ds:bg-linear-to-br ds:from-indigo-100 ds:to-cyan-100 ds:dark:from-indigo-950 ds:dark:to-cyan-950 ds:flex ds:items-center ds:justify-center ds:border"
           >
-            <div className="text-center">
-              <div className="text-2xl font-bold">Item {i + 1}</div>
-              <div className="text-xs text-muted-foreground mt-1">
+            <div className="ds:text-center">
+              <div className="ds:text-2xl ds:font-bold">Item {i + 1}</div>
+              <div className="ds:text-xs ds:text-muted-foreground ds:mt-1">
                 Snap align: center
               </div>
             </div>

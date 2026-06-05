@@ -105,15 +105,15 @@ const notifications = [
 export function AdminLayout({ children }: AdminLayoutProps) {
   return (
     <SidebarProvider>
-      <Sidebar className="border-r">
-        <SidebarHeader className="border-b p-4">
-          <div className="flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-              <span className="text-sm font-bold">DS</span>
+      <Sidebar className="ds:border-r">
+        <SidebarHeader className="ds:border-b ds:p-4">
+          <div className="ds:flex ds:items-center ds:gap-2">
+            <div className="ds:flex ds:h-8 ds:w-8 ds:items-center ds:justify-center ds:rounded-lg ds:bg-primary ds:text-primary-foreground">
+              <span className="ds:text-sm ds:font-bold">DS</span>
             </div>
             <div>
-              <h2 className="text-sm font-semibold">DSUI Admin</h2>
-              <p className="text-xs text-muted-foreground">Design System</p>
+              <h2 className="ds:text-sm ds:font-semibold">DSUI Admin</h2>
+              <p className="ds:text-xs ds:text-muted-foreground">Design System</p>
             </div>
           </div>
         </SidebarHeader>
@@ -126,11 +126,11 @@ export function AdminLayout({ children }: AdminLayoutProps) {
                 {menuItems.map((item) => (
                   <SidebarMenuItem key={item.href}>
                     <SidebarMenuButton asChild>
-                      <a href={item.href} className="flex items-center gap-3">
-                        <item.icon className="h-4 w-4" />
+                      <a href={item.href} className="ds:flex ds:items-center ds:gap-3">
+                        <item.icon className="ds:h-4 ds:w-4" />
                         <span>{item.label}</span>
                         {item.badge && (
-                          <Badge variant="solid" className="ml-auto">
+                          <Badge variant="solid" className="ds:ml-auto">
                             {item.badge}
                           </Badge>
                         )}
@@ -143,8 +143,8 @@ export function AdminLayout({ children }: AdminLayoutProps) {
           </SidebarGroup>
         </SidebarContent>
 
-        <SidebarFooter className="border-t p-4">
-          <div className="flex items-center gap-3">
+        <SidebarFooter className="ds:border-t ds:p-4">
+          <div className="ds:flex ds:items-center ds:gap-3">
             <Avatar
               src="https://api.dicebear.com/7.x/avataaars/svg?seed=admin"
               alt="Admin User"
@@ -152,9 +152,9 @@ export function AdminLayout({ children }: AdminLayoutProps) {
               color="default"
               className=""
             />
-            <div className="flex-1 text-sm">
-              <p className="font-medium">Admin User</p>
-              <p className="text-xs text-muted-foreground">admin@dsui.com</p>
+            <div className="ds:flex-1 ds:text-sm">
+              <p className="ds:font-medium">Admin User</p>
+              <p className="ds:text-xs ds:text-muted-foreground">admin@dsui.com</p>
             </div>
           </div>
         </SidebarFooter>
@@ -162,43 +162,43 @@ export function AdminLayout({ children }: AdminLayoutProps) {
 
       <SidebarInset>
         {/* Header */}
-        <header className="sticky top-0 z-10 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-          <div className="flex h-16 items-center gap-4 px-6">
+        <header className="ds:sticky ds:top-0 ds:z-10 ds:border-b ds:bg-background/95 ds:backdrop-blur ds:supports-[backdrop-filter]:bg-background/60">
+          <div className="ds:flex ds:h-16 ds:items-center ds:gap-4 ds:px-6">
             <SidebarTrigger>
               <Button variant="ghost" size="icon">
-                <Menu className="h-5 w-5" />
+                <Menu className="ds:h-5 ds:w-5" />
               </Button>
             </SidebarTrigger>
 
             {/* Search */}
-            <div className="flex-1 max-w-md">
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-                <Input type="search" placeholder="Search..." className="pl-9" />
+            <div className="ds:flex-1 ds:max-w-md">
+              <div className="ds:relative">
+                <Search className="ds:absolute ds:left-3 ds:top-1/2 ds:h-4 ds:w-4 ds:-translate-y-1/2 ds:text-muted-foreground" />
+                <Input type="search" placeholder="Search..." className="ds:pl-9" />
               </div>
             </div>
 
             {/* Right Actions */}
-            <div className="flex items-center gap-2 ml-auto">
+            <div className="ds:flex ds:items-center ds:gap-2 ds:ml-auto">
               <Popover
                 side="bottom"
                 align="end"
                 sideOffset={8}
                 trigger={
-                  <Button variant="ghost" size="icon" className="relative">
-                    <Bell className="h-5 w-5" />
+                  <Button variant="ghost" size="icon" className="ds:relative">
+                    <Bell className="ds:h-5 ds:w-5" />
                     {notifications.filter((n) => n.unread).length > 0 && (
-                      <span className="absolute top-1 right-1 h-2 w-2 rounded-full bg-red-500" />
+                      <span className="ds:absolute ds:top-1 ds:right-1 ds:h-2 ds:w-2 ds:rounded-full ds:bg-red-500" />
                     )}
                   </Button>
                 }
                 content={
-                  <div className="w-[320px]">
+                  <div className="ds:w-[320px]">
                     {/* Header */}
-                    <div className="flex items-center justify-between p-4 py-3 border-b">
+                    <div className="ds:flex ds:items-center ds:justify-between ds:p-4 ds:py-3 ds:border-b">
                       <div>
-                        <h3 className="font-semibold">Notifications</h3>
-                        <p className="text-xs text-muted-foreground">
+                        <h3 className="ds:font-semibold">Notifications</h3>
+                        <p className="ds:text-xs ds:text-muted-foreground">
                           You have{" "}
                           {notifications.filter((n) => n.unread).length} unread
                           messages
@@ -210,38 +210,34 @@ export function AdminLayout({ children }: AdminLayoutProps) {
                     </div>
 
                     {/* Notifications List */}
-                    <div className="max-h-[400px] overflow-y-auto">
+                    <div className="ds:max-h-[400px] ds:overflow-y-auto">
                       {notifications.map((notification) => (
                         <div
                           key={notification.id}
-                          className={`flex gap-3 px-4 py-3 border-b last:border-0 hover:bg-accent/50 cursor-pointer transition-colors ${
-                            notification.unread ? "bg-accent/20" : ""
-                          }`}
+                          className={`ds:flex ds:gap-3 ds:px-4 ds:py-3 ds:border-b ds:last:border-0 ds:hover:bg-accent/50 ds:cursor-pointer ds:transition-colors ${notification.unread ? "bg-accent/20" : ""}`}
                         >
                           <div
-                            className={`flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full ${
-                              notification.type === "success"
-                                ? "bg-green-100 text-green-600"
-                                : notification.type === "warning"
-                                  ? "bg-yellow-100 text-yellow-600"
-                                  : "bg-blue-100 text-blue-600"
-                            }`}
+                            className={`ds:flex ds:h-10 ds:w-10 ds:flex-shrink-0 ds:items-center ds:justify-center ds:rounded-full ${notification.type === "success"
+                                                                  ? "bg-green-100 text-green-600"
+                                                                  : notification.type === "warning"
+                                                                    ? "bg-yellow-100 text-yellow-600"
+                                                                    : "bg-blue-100 text-blue-600"}`}
                           >
-                            <notification.icon className="h-5 w-5" />
+                            <notification.icon className="ds:h-5 ds:w-5" />
                           </div>
-                          <div className="flex-1 min-w-0">
-                            <div className="flex items-start justify-between gap-2">
-                              <p className="text-sm font-medium">
+                          <div className="ds:flex-1 ds:min-w-0">
+                            <div className="ds:flex ds:items-start ds:justify-between ds:gap-2">
+                              <p className="ds:text-sm ds:font-medium">
                                 {notification.title}
                               </p>
                               {notification.unread && (
-                                <span className="h-2 w-2 rounded-full bg-blue-600 flex-shrink-0 mt-1" />
+                                <span className="ds:h-2 ds:w-2 ds:rounded-full ds:bg-blue-600 ds:flex-shrink-0 ds:mt-1" />
                               )}
                             </div>
-                            <p className="text-sm text-muted-foreground line-clamp-2">
+                            <p className="ds:text-sm ds:text-muted-foreground ds:line-clamp-2">
                               {notification.description}
                             </p>
-                            <p className="text-xs text-muted-foreground mt-1">
+                            <p className="ds:text-xs ds:text-muted-foreground ds:mt-1">
                               {notification.time}
                             </p>
                           </div>
@@ -250,8 +246,8 @@ export function AdminLayout({ children }: AdminLayoutProps) {
                     </div>
 
                     {/* Footer */}
-                    <div className="px-4 py-3 border-t">
-                      <Button variant="ghost" className="w-full">
+                    <div className="ds:px-4 ds:py-3 ds:border-t">
+                      <Button variant="ghost" className="ds:w-full">
                         View all notifications
                       </Button>
                     </div>
@@ -270,7 +266,7 @@ export function AdminLayout({ children }: AdminLayoutProps) {
         </header>
 
         {/* Page Content */}
-        <main className="flex-1 overflow-auto p-6">{children}</main>
+        <main className="ds:flex-1 ds:overflow-auto ds:p-6">{children}</main>
       </SidebarInset>
     </SidebarProvider>
   );

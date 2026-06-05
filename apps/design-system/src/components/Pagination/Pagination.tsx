@@ -124,7 +124,7 @@ const PaginationEllipsisWithJump = ({
             <PaginationEllipsis size={size} color={color} />
           </PaginationItem>
         </PopoverTrigger>
-        <PopoverContent className="w-40 p-0">
+        <PopoverContent className="ds:w-40 ds:p-0">
           <Command>
             <CommandInput placeholder="Search pages..." />
             <CommandList>
@@ -148,7 +148,7 @@ const PaginationEllipsisWithJump = ({
   }
 
   return (
-    <PaginationItem className="group">
+    <PaginationItem className="ds:group">
       {position === "before" ? (
         <PaginationPrevious
           href="#"
@@ -159,12 +159,12 @@ const PaginationEllipsisWithJump = ({
           color={color}
           size={size}
           hideIcon
-          className="peer"
+          className="ds:peer"
         >
-          <span className="hidden group-hover:block leading-none">
+          <span className="ds:hidden ds:group-hover:block ds:leading-none">
             {previousText}
           </span>
-          <MoreHorizontalIcon className="group-hover:hidden cursor-pointer" />
+          <MoreHorizontalIcon className="ds:group-hover:hidden ds:cursor-pointer" />
         </PaginationPrevious>
       ) : (
         <PaginationNext
@@ -177,10 +177,10 @@ const PaginationEllipsisWithJump = ({
           size={size}
           hideIcon
         >
-          <span className="hidden group-hover:block leading-none">
+          <span className="ds:hidden ds:group-hover:block ds:leading-none">
             {nextText}
           </span>
-          <MoreHorizontalIcon className="group-hover:hidden cursor-pointer" />
+          <MoreHorizontalIcon className="ds:group-hover:hidden ds:cursor-pointer" />
         </PaginationNext>
       )}
     </PaginationItem>
@@ -250,7 +250,7 @@ const Pagination = React.forwardRef<HTMLElement, PaginationWrapperProps>(
       return (
         <PaginationContent>
           {showPreviousNext && (
-            <PaginationItem className="flex justify-center">
+            <PaginationItem className="ds:flex ds:justify-center">
               <PaginationPrevious
                 href="#"
                 onClick={(e) => {
@@ -319,7 +319,7 @@ const Pagination = React.forwardRef<HTMLElement, PaginationWrapperProps>(
             );
           })}
           {showPreviousNext && (
-            <PaginationItem className="flex justify-center">
+            <PaginationItem className="ds:flex ds:justify-center">
               <PaginationNext
                 href="#"
                 onClick={(e) => {

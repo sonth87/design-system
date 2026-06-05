@@ -45,7 +45,7 @@ export function DataTableFilterPopover<TData>({
             onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
               column.setFilterValue(event.target.value)
             }
-            className="h-8 w-full"
+            className="ds:h-8 ds:w-full"
           />
         );
 
@@ -58,7 +58,7 @@ export function DataTableFilterPopover<TData>({
             onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
               column.setFilterValue(event.target.value)
             }
-            className="h-8 w-full"
+            className="ds:h-8 ds:w-full"
           />
         );
 
@@ -89,11 +89,11 @@ export function DataTableFilterPopover<TData>({
           const currentValues = (column.getFilterValue() as string[]) || [];
           return (
             <>
-              <div className="space-y-2 max-h-48 overflow-y-auto text-sm">
+              <div className="ds:space-y-2 ds:max-h-48 ds:overflow-y-auto ds:text-sm">
                 {options.map((option) => (
                   <div
                     key={option.value}
-                    className="flex items-center space-x-2"
+                    className="ds:flex ds:items-center ds:space-x-2"
                   >
                     <Checkbox
                       checked={currentValues.includes(option.value)}
@@ -144,7 +144,7 @@ export function DataTableFilterPopover<TData>({
                 label: option.label,
                 value: option.value,
               }))}
-              className="p-1"
+              className="ds:p-1"
             />
           );
         }
@@ -163,24 +163,24 @@ export function DataTableFilterPopover<TData>({
       onOpenChange={setIsOpen}
       trigger={trigger}
       content={
-        <div className="p-2 min-w-32">
+        <div className="ds:p-2 ds:min-w-32">
           {renderFilterContent()}
           {hasFilterValue && (
             <>
-              <Separator className="mt-3 mb-1" />
+              <Separator className="ds:mt-3 ds:mb-1" />
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={() => column.setFilterValue(undefined)}
               >
-                <X className="size-3" />
+                <X className="ds:size-3" />
                 Clear Filter
               </Button>
             </>
           )}
         </div>
       }
-      contentClassName="p-0"
+      contentClassName="ds:p-0"
     />
   );
 }

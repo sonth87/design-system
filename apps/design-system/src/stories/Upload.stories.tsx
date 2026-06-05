@@ -120,7 +120,7 @@ export const Default: Story = {
     const [fileList, setFileList] = useState<UploadFile[]>([]);
     return (
       <>
-        <div className="text-left">
+        <div className="ds:text-left">
           <Upload
             {...args}
             fileList={fileList}
@@ -143,13 +143,13 @@ export const WithCustomButton: Story = {
     const [fileList, setFileList] = useState<UploadFile[]>([]);
     return (
       <>
-        <div className="w-[500px]">
+        <div className="ds:w-[500px]">
           <Upload
             fileList={fileList}
             onChange={({ fileList: newFileList }) => setFileList(newFileList)}
           >
             <Button>
-              <UploadCloud className="mr-2 h-4 w-4" />
+              <UploadCloud className="ds:mr-2 ds:h-4 ds:w-4" />
               Choose File
             </Button>
           </Upload>
@@ -165,13 +165,13 @@ export const MultipleFiles: Story = {
     const [fileList, setFileList] = useState<UploadFile[]>([]);
     return (
       <>
-        <div className="w-[500px]">
+        <div className="ds:w-[500px]">
           <Upload
             multiple
             fileList={fileList}
             onChange={({ fileList: newFileList }) => setFileList(newFileList)}
           />
-          <p className="text-sm text-muted-foreground mt-2">
+          <p className="ds:text-sm ds:text-muted-foreground ds:mt-2">
             You can select multiple files at once
           </p>
         </div>
@@ -190,7 +190,7 @@ export const TextList: Story = {
     const [fileList, setFileList] = useState<UploadFile[]>([]);
 
     return (
-      <div className="w-[500px]">
+      <div className="ds:w-[500px]">
         <Upload
           listType="text"
           multiple
@@ -214,7 +214,7 @@ export const PictureList: Story = {
     };
 
     return (
-      <div className="w-[500px]">
+      <div className="ds:w-[500px]">
         <Upload
           listType="picture"
           accept="image/*"
@@ -239,7 +239,7 @@ export const PictureCard: Story = {
     };
 
     return (
-      <div className="w-[600px]">
+      <div className="ds:w-[600px]">
         <Upload
           listType="picture-card"
           accept="image/*"
@@ -249,9 +249,9 @@ export const PictureCard: Story = {
           onChange={({ fileList: newFileList }) => setFileList(newFileList)}
           onPreview={handlePreview}
         >
-          <div className="flex flex-col items-center justify-center gap-2 p-4">
-            <ImageIcon className="h-8 w-8 text-muted-foreground" />
-            <p className="text-sm font-medium">Upload</p>
+          <div className="ds:flex ds:flex-col ds:items-center ds:justify-center ds:gap-2 ds:p-4">
+            <ImageIcon className="ds:h-8 ds:w-8 ds:text-muted-foreground" />
+            <p className="ds:text-sm ds:font-medium">Upload</p>
           </div>
         </Upload>
       </div>
@@ -270,7 +270,7 @@ export const PictureCircle: Story = {
     };
 
     return (
-      <div className="w-[600px]">
+      <div className="ds:w-[600px]">
         <Upload
           listType="picture-circle"
           accept="image/*"
@@ -280,12 +280,12 @@ export const PictureCircle: Story = {
           onChange={({ fileList: newFileList }) => setFileList(newFileList)}
           onPreview={handlePreview}
         >
-          <div className="flex flex-col items-center justify-center gap-2 p-4">
-            <ImageIcon className="h-8 w-8 text-muted-foreground" />
-            <p className="text-sm font-medium">Upload</p>
+          <div className="ds:flex ds:flex-col ds:items-center ds:justify-center ds:gap-2 ds:p-4">
+            <ImageIcon className="ds:h-8 ds:w-8 ds:text-muted-foreground" />
+            <p className="ds:text-sm ds:font-medium">Upload</p>
           </div>
         </Upload>
-        <p className="text-sm text-muted-foreground mt-2">
+        <p className="ds:text-sm ds:text-muted-foreground ds:mt-2">
           Perfect for avatar or profile pictures
         </p>
       </div>
@@ -302,14 +302,14 @@ export const WithMaxCount: Story = {
     const [fileList, setFileList] = useState<UploadFile[]>([]);
     return (
       <>
-        <div className="w-[500px]">
+        <div className="ds:w-[500px]">
           <Upload
             multiple
             maxCount={3}
             fileList={fileList}
             onChange={({ fileList: newFileList }) => setFileList(newFileList)}
           />
-          <p className="text-sm text-muted-foreground mt-2">
+          <p className="ds:text-sm ds:text-muted-foreground ds:mt-2">
             Maximum 3 files allowed
           </p>
         </div>
@@ -324,14 +324,14 @@ export const WithMaxSize: Story = {
     const [fileList, setFileList] = useState<UploadFile[]>([]);
     return (
       <>
-        <div className="w-[500px]">
+        <div className="ds:w-[500px]">
           <Upload
             multiple
             maxSize={2 * 1024 * 1024} // 2MB
             fileList={fileList}
             onChange={({ fileList: newFileList }) => setFileList(newFileList)}
           />
-          <p className="text-sm text-muted-foreground mt-2">
+          <p className="ds:text-sm ds:text-muted-foreground ds:mt-2">
             Maximum file size: 2MB
           </p>
         </div>
@@ -362,7 +362,7 @@ export const BeforeUpload: Story = {
     };
 
     return (
-      <div className="w-[500px]">
+      <div className="ds:w-[500px]">
         <Upload
           accept="image/*"
           multiple
@@ -370,7 +370,7 @@ export const BeforeUpload: Story = {
           onChange={({ fileList: newFileList }) => setFileList(newFileList)}
           beforeUpload={handleBeforeUpload}
         />
-        <p className="text-sm text-muted-foreground mt-2">
+        <p className="ds:text-sm ds:text-muted-foreground ds:mt-2">
           Only images under 5MB are allowed
         </p>
       </div>
@@ -386,7 +386,7 @@ export const DirectoryUpload: Story = {
   render: function DirectoryUploadExample() {
     const [fileList, setFileList] = useState<UploadFile[]>([]);
     return (
-      <div className="w-[500px]">
+      <div className="ds:w-[500px]">
         <Upload
           directory
           multiple
@@ -394,15 +394,15 @@ export const DirectoryUpload: Story = {
           onChange={({ fileList: newFileList }) => setFileList(newFileList)}
         >
           <Button>
-            <File className="mr-2 h-4 w-4" />
+            <File className="ds:mr-2 ds:h-4 ds:w-4" />
             Select Folder
           </Button>
         </Upload>
-        <p className="text-sm text-muted-foreground mt-2">
+        <p className="ds:text-sm ds:text-muted-foreground ds:mt-2">
           Upload entire directory with all files
         </p>
         {fileList.length > 0 && (
-          <p className="text-sm font-medium mt-2">
+          <p className="ds:text-sm ds:font-medium ds:mt-2">
             {fileList.length} file(s) uploaded
           </p>
         )}
@@ -429,7 +429,7 @@ export const WithImagePreview: Story = {
     };
 
     return (
-      <div className="w-[600px]">
+      <div className="ds:w-[600px]">
         <Upload
           listType="picture-card"
           accept="image/*"
@@ -438,9 +438,9 @@ export const WithImagePreview: Story = {
           onChange={({ fileList: newFileList }) => setFileList(newFileList)}
           onPreview={handlePreview}
         >
-          <div className="flex flex-col items-center justify-center gap-2 p-4">
-            <ImageIcon className="h-8 w-8 text-muted-foreground" />
-            <p className="text-sm font-medium">Upload</p>
+          <div className="ds:flex ds:flex-col ds:items-center ds:justify-center ds:gap-2 ds:p-4">
+            <ImageIcon className="ds:h-8 ds:w-8 ds:text-muted-foreground" />
+            <p className="ds:text-sm ds:font-medium">Upload</p>
           </div>
         </Upload>
 
@@ -453,11 +453,11 @@ export const WithImagePreview: Story = {
           <img
             src={previewImage}
             alt={previewTitle}
-            className="w-full h-auto max-h-[70vh] object-contain"
+            className="ds:w-full ds:h-auto ds:max-h-[70vh] ds:object-contain"
           />
         </Dialog>
 
-        <p className="text-sm text-muted-foreground mt-2">
+        <p className="ds:text-sm ds:text-muted-foreground ds:mt-2">
           Click on images to preview
         </p>
       </div>
@@ -487,23 +487,23 @@ export const AvatarUpload: Story = {
     };
 
     const uploadButton = (
-      <div className="flex flex-col items-center justify-center gap-2">
-        <div className="text-4xl font-light text-muted-foreground">+</div>
-        <div className="text-sm text-muted-foreground">Upload</div>
+      <div className="ds:flex ds:flex-col ds:items-center ds:justify-center ds:gap-2">
+        <div className="ds:text-4xl ds:font-light ds:text-muted-foreground">+</div>
+        <div className="ds:text-sm ds:text-muted-foreground">Upload</div>
       </div>
     );
 
     return (
-      <div className="w-full max-w-2xl">
-        <h3 className="text-lg font-semibold mb-4">Avatar Upload</h3>
+      <div className="ds:w-full ds:max-w-2xl">
+        <h3 className="ds:text-lg ds:font-semibold ds:mb-4">Avatar Upload</h3>
 
         {/* Avatar variant - New simple style */}
-        <div className="mb-8">
-          <p className="text-sm font-medium mb-3">Avatar Variant (Simple)</p>
-          <div className="flex gap-6">
+        <div className="ds:mb-8">
+          <p className="ds:text-sm ds:font-medium ds:mb-3">Avatar Variant (Simple)</p>
+          <div className="ds:flex ds:gap-6">
             {/* Square Avatar */}
             <div>
-              <p className="text-xs text-muted-foreground mb-2">Square</p>
+              <p className="ds:text-xs ds:text-muted-foreground ds:mb-2">Square</p>
               <Upload
                 variant="avatar"
                 accept="image/png,image/jpeg"
@@ -513,7 +513,7 @@ export const AvatarUpload: Story = {
                   setFileList(newFileList)
                 }
                 beforeUpload={beforeUpload}
-                className="w-[100px] h-[100px]"
+                className="ds:w-[100px] ds:h-[100px]"
                 showUploadList={false}
               >
                 {uploadButton}
@@ -522,7 +522,7 @@ export const AvatarUpload: Story = {
 
             {/* Circle Avatar */}
             <div>
-              <p className="text-xs text-muted-foreground mb-2">Circle</p>
+              <p className="ds:text-xs ds:text-muted-foreground ds:mb-2">Circle</p>
               <Upload
                 variant="avatarCircle"
                 accept="image/png,image/jpeg"
@@ -532,7 +532,7 @@ export const AvatarUpload: Story = {
                   setFileList(newFileList)
                 }
                 beforeUpload={beforeUpload}
-                className="w-[100px] h-[100px]"
+                className="ds:w-[100px] ds:h-[100px]"
                 showUploadList={false}
               >
                 {uploadButton}
@@ -541,7 +541,7 @@ export const AvatarUpload: Story = {
           </div>
         </div>
 
-        <div className="mt-4 p-3 bg-muted rounded text-xs text-muted-foreground">
+        <div className="ds:mt-4 ds:p-3 ds:bg-muted ds:rounded ds:text-xs ds:text-muted-foreground">
           <strong>Validation:</strong> Only JPG/PNG, max 2MB, 1 file only
         </div>
       </div>
@@ -583,7 +583,7 @@ export const CustomRequest: Story = {
     };
 
     return (
-      <div className="w-[500px]">
+      <div className="ds:w-[500px]">
         <Upload
           multiple
           listType="picture"
@@ -591,7 +591,7 @@ export const CustomRequest: Story = {
           onChange={({ fileList: newFileList }) => setFileList(newFileList)}
           customRequest={customUpload}
         />
-        <p className="text-sm text-muted-foreground mt-2">
+        <p className="ds:text-sm ds:text-muted-foreground ds:mt-2">
           Custom upload with progress simulation
         </p>
       </div>
@@ -606,17 +606,17 @@ export const CustomRequest: Story = {
 export const DropzoneVariants: Story = {
   render: function DropzoneVariantsExample() {
     return (
-      <div className="w-[600px] space-y-6">
+      <div className="ds:w-[600px] ds:space-y-6">
         <div>
-          <h3 className="text-sm font-medium mb-2">Primary Dropzone</h3>
+          <h3 className="ds:text-sm ds:font-medium ds:mb-2">Primary Dropzone</h3>
           <Upload variant="primaryDropzone" />
         </div>
         <div>
-          <h3 className="text-sm font-medium mb-2">Secondary Dropzone</h3>
+          <h3 className="ds:text-sm ds:font-medium ds:mb-2">Secondary Dropzone</h3>
           <Upload variant="secondaryDropzone" />
         </div>
         <div>
-          <h3 className="text-sm font-medium mb-2">Default Dropzone</h3>
+          <h3 className="ds:text-sm ds:font-medium ds:mb-2">Default Dropzone</h3>
           <Upload variant="dropzone" />
         </div>
       </div>
@@ -674,8 +674,8 @@ export const WithDefaultFiles: Story = {
 
     return (
       <>
-        <div className="w-[600px]">
-          <h3 className="text-lg font-semibold mb-4">
+        <div className="ds:w-[600px]">
+          <h3 className="ds:text-lg ds:font-semibold ds:mb-4">
             Upload with Default Files
           </h3>
           <Upload
@@ -686,12 +686,12 @@ export const WithDefaultFiles: Story = {
             fileList={fileList}
             onChange={({ fileList: newFileList }) => setFileList(newFileList)}
           >
-            <div className="flex flex-col items-center justify-center gap-2 p-4">
-              <ImageIcon className="h-8 w-8 text-muted-foreground" />
-              <p className="text-sm font-medium">Upload</p>
+            <div className="ds:flex ds:flex-col ds:items-center ds:justify-center ds:gap-2 ds:p-4">
+              <ImageIcon className="ds:h-8 ds:w-8 ds:text-muted-foreground" />
+              <p className="ds:text-sm ds:font-medium">Upload</p>
             </div>
           </Upload>
-          <p className="text-sm text-muted-foreground mt-4">
+          <p className="ds:text-sm ds:text-muted-foreground ds:mt-4">
             These images are already loaded. Try hovering over them to see
             preview and download buttons.
           </p>
@@ -741,9 +741,9 @@ export const WithDifferentStatuses: Story = {
 
     return (
       <>
-        <div className="w-[600px] space-y-8">
+        <div className="ds:w-[600px] ds:space-y-8">
           <div>
-            <h3 className="text-lg font-semibold mb-4">
+            <h3 className="ds:text-lg ds:font-semibold ds:mb-4">
               Different File Statuses - Text List
             </h3>
             <Upload
@@ -754,25 +754,25 @@ export const WithDifferentStatuses: Story = {
               fileList={fileList}
               onChange={({ fileList: newFileList }) => setFileList(newFileList)}
             />
-            <div className="mt-4 p-3 bg-muted rounded-md text-sm space-y-1">
-              <p className="font-medium">File Statuses:</p>
+            <div className="ds:mt-4 ds:p-3 ds:bg-muted ds:rounded-md ds:text-sm ds:space-y-1">
+              <p className="ds:font-medium">File Statuses:</p>
               <p>
-                <span className="inline-flex items-center gap-1">
-                  <span className="w-2 h-2 rounded-full bg-green-500"></span>
+                <span className="ds:inline-flex ds:items-center ds:gap-1">
+                  <span className="ds:w-2 ds:h-2 ds:rounded-full ds:bg-green-500"></span>
                   <strong>Done:</strong> Upload completed successfully (can
                   preview & download)
                 </span>
               </p>
               <p>
-                <span className="inline-flex items-center gap-1">
-                  <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+                <span className="ds:inline-flex ds:items-center ds:gap-1">
+                  <span className="ds:w-2 ds:h-2 ds:rounded-full ds:bg-blue-500 ds:animate-pulse"></span>
                   <strong>Uploading:</strong> File is currently uploading
                   (cannot download yet)
                 </span>
               </p>
               <p>
-                <span className="inline-flex items-center gap-1">
-                  <span className="w-2 h-2 rounded-full bg-red-500"></span>
+                <span className="ds:inline-flex ds:items-center ds:gap-1">
+                  <span className="ds:w-2 ds:h-2 ds:rounded-full ds:bg-red-500"></span>
                   <strong>Error:</strong> Upload failed (cannot download)
                 </span>
               </p>
@@ -780,7 +780,7 @@ export const WithDifferentStatuses: Story = {
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold mb-4">Picture Card View</h3>
+            <h3 className="ds:text-lg ds:font-semibold ds:mb-4">Picture Card View</h3>
             <Upload
               listType="picture-card"
               accept="image/*"
@@ -789,15 +789,15 @@ export const WithDifferentStatuses: Story = {
               fileList={fileList}
               onChange={({ fileList: newFileList }) => setFileList(newFileList)}
             >
-              <div className="flex flex-col items-center justify-center gap-2 p-4">
-                <ImageIcon className="h-8 w-8 text-muted-foreground" />
-                <p className="text-sm font-medium">Upload</p>
+              <div className="ds:flex ds:flex-col ds:items-center ds:justify-center ds:gap-2 ds:p-4">
+                <ImageIcon className="ds:h-8 ds:w-8 ds:text-muted-foreground" />
+                <p className="ds:text-sm ds:font-medium">Upload</p>
               </div>
             </Upload>
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold mb-4">Picture Circle View</h3>
+            <h3 className="ds:text-lg ds:font-semibold ds:mb-4">Picture Circle View</h3>
             <Upload
               listType="picture-circle"
               accept="image/*"
@@ -806,15 +806,15 @@ export const WithDifferentStatuses: Story = {
               fileList={fileList}
               onChange={({ fileList: newFileList }) => setFileList(newFileList)}
             >
-              <div className="flex flex-col items-center justify-center gap-2 p-4">
-                <ImageIcon className="h-8 w-8 text-muted-foreground" />
-                <p className="text-sm font-medium">Upload</p>
+              <div className="ds:flex ds:flex-col ds:items-center ds:justify-center ds:gap-2 ds:p-4">
+                <ImageIcon className="ds:h-8 ds:w-8 ds:text-muted-foreground" />
+                <p className="ds:text-sm ds:font-medium">Upload</p>
               </div>
             </Upload>
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold mb-4">Picture List View</h3>
+            <h3 className="ds:text-lg ds:font-semibold ds:mb-4">Picture List View</h3>
             <Upload
               listType="picture"
               accept="image/*"

@@ -521,31 +521,31 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
               // Apply styles based on variant
               {
                 // For sliding indicator variants, remove default background
-                "relative z-10 bg-transparent data-[state=active]:bg-transparent":
+                "ds:relative ds:z-10 ds:bg-transparent ds:data-[state=active]:bg-transparent":
                   variant === "solid" ||
                   variant === "bordered" ||
                   variant === "pills",
                 // Apply text color for active state with sliding indicator
-                "data-[state=active]:text-primary-foreground":
+                "ds:data-[state=active]:text-primary-foreground":
                   (variant === "bordered" || variant === "pills") &&
                   color === "primary",
-                "data-[state=active]:text-secondary-foreground":
+                "ds:data-[state=active]:text-secondary-foreground":
                   (variant === "bordered" || variant === "pills") &&
                   color === "secondary",
-                "data-[state=active]:text-muted-foreground":
+                "ds:data-[state=active]:text-muted-foreground":
                   (variant === "bordered" || variant === "pills") &&
                   color === "muted",
-                "data-[state=active]:text-accent-foreground":
+                "ds:data-[state=active]:text-accent-foreground":
                   (variant === "bordered" || variant === "pills") &&
                   color === "accent",
-                "data-[state=active]:text-destructive-foreground":
+                "ds:data-[state=active]:text-destructive-foreground":
                   (variant === "bordered" || variant === "pills") &&
                   color === "destructive",
-                "data-[state=active]:text-white":
+                "ds:data-[state=active]:text-white":
                   (variant === "bordered" || variant === "pills") &&
                   (color === "success" || color === "warning"),
-                "flex-1": fullWidth && !isVertical,
-                "w-full justify-start": isVertical,
+                "ds:flex-1": fullWidth && !isVertical,
+                "ds:w-full ds:justify-start": isVertical,
               },
               // For other variants, apply normal color classes
               !(
@@ -558,7 +558,7 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
             )}
           >
             {item.icon && (
-              <span className="mr-2 inline-flex items-center">{item.icon}</span>
+              <span className="ds:mr-2 ds:inline-flex ds:items-center">{item.icon}</span>
             )}
             {item.label}
           </STabsTrigger>
@@ -577,12 +577,12 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
           listVariantClass,
           listBorderClass,
           tabListClassName,
-          "relative",
+          "ds:relative",
           {
-            "overflow-hidden": overflowMode === "fade" && isOverflowing,
-            "max-w-full": overflowMode === "fade", // Limit width for fade mode
+            "ds:overflow-hidden": overflowMode === "fade" && isOverflowing,
+            "ds:max-w-full": overflowMode === "fade", // Limit width for fade mode
             // For overflow modes, allow natural width expansion
-            "w-auto": overflowMode === "dropdown" || overflowMode === "fade",
+            "ds:w-auto": overflowMode === "dropdown" || overflowMode === "fade",
           }
         )}
       >
@@ -593,21 +593,21 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
           indicatorStyle.width > 0 &&
           !isActiveTabInOverflow && (
             <motion.div
-              className={cn("absolute rounded-full z-10", {
+              className={cn("ds:absolute ds:rounded-full ds:z-10", {
                 // Horizontal positions (top/bottom)
-                "h-0.5 bottom-0": tabPosition === "top",
-                "h-0.5 top-0": tabPosition === "bottom",
+                "ds:h-0.5 ds:bottom-0": tabPosition === "top",
+                "ds:h-0.5 ds:top-0": tabPosition === "bottom",
                 // Vertical positions (left/right)
-                "w-0.5 right-0": tabPosition === "left",
-                "w-0.5 left-0": tabPosition === "right",
+                "ds:w-0.5 ds:right-0": tabPosition === "left",
+                "ds:w-0.5 ds:left-0": tabPosition === "right",
                 // Colors
-                "bg-primary": color === "primary",
-                "bg-secondary": color === "secondary",
-                "bg-muted-foreground": color === "muted",
-                "bg-accent": color === "accent",
-                "bg-destructive": color === "destructive",
-                "bg-success": color === "success",
-                "bg-warning": color === "warning",
+                "ds:bg-primary": color === "primary",
+                "ds:bg-secondary": color === "secondary",
+                "ds:bg-muted-foreground": color === "muted",
+                "ds:bg-accent": color === "accent",
+                "ds:bg-destructive": color === "destructive",
+                "ds:bg-success": color === "success",
+                "ds:bg-warning": color === "warning",
               })}
               animate={
                 isVertical
@@ -636,44 +636,44 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
           indicatorStyle.width > 0 &&
           !isActiveTabInOverflow && (
             <motion.div
-              className={cn("absolute rounded-md pointer-events-none z-0", {
-                "bg-background shadow-sm": variant === "solid",
+              className={cn("ds:absolute ds:rounded-md ds:pointer-events-none ds:z-0", {
+                "ds:bg-background ds:shadow-sm": variant === "solid",
 
-                "bg-primary":
+                "ds:bg-primary":
                   (variant === "bordered" || variant === "pills") &&
                   color === "primary",
-                "bg-secondary":
+                "ds:bg-secondary":
                   (variant === "bordered" || variant === "pills") &&
                   color === "secondary",
-                "bg-muted":
+                "ds:bg-muted":
                   (variant === "bordered" || variant === "pills") &&
                   color === "muted",
-                "bg-accent":
+                "ds:bg-accent":
                   (variant === "bordered" || variant === "pills") &&
                   color === "accent",
-                "bg-destructive":
+                "ds:bg-destructive":
                   (variant === "bordered" || variant === "pills") &&
                   color === "destructive",
-                "bg-success":
+                "ds:bg-success":
                   (variant === "bordered" || variant === "pills") &&
                   color === "success",
-                "bg-warning":
+                "ds:bg-warning":
                   (variant === "bordered" || variant === "pills") &&
                   color === "warning",
 
-                "border rounded-full border-primary":
+                "ds:border ds:rounded-full ds:border-primary":
                   variant === "pill-stroke" && color === "primary",
-                "border rounded-full border-secondary":
+                "ds:border ds:rounded-full ds:border-secondary":
                   variant === "pill-stroke" && color === "secondary",
-                "rounded-full border-muted":
+                "ds:rounded-full ds:border-muted":
                   variant === "pill-stroke" && color === "muted",
-                "border rounded-full border-accent":
+                "ds:border ds:rounded-full ds:border-accent":
                   variant === "pill-stroke" && color === "accent",
-                "border rounded-full border-destructive":
+                "ds:border ds:rounded-full ds:border-destructive":
                   variant === "pill-stroke" && color === "destructive",
-                "border rounded-full border-success":
+                "ds:border ds:rounded-full ds:border-success":
                   variant === "pill-stroke" && color === "success",
-                "border rounded-full border-warning":
+                "ds:border ds:rounded-full ds:border-warning":
                   variant === "pill-stroke" && color === "warning",
               })}
               animate={{
@@ -698,9 +698,9 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
         <ScrollArea
           ref={scrollAreaRef}
           className={cn({
-            "w-full": !isVertical,
-            "pb-2": !isVertical && isOverflowing,
-            "max-h-[300px] *:data-radix-scroll-area-viewport:h-full *:data-radix-scroll-area-viewport:max-h-[inherit]":
+            "ds:w-full": !isVertical,
+            "ds:pb-2": !isVertical && isOverflowing,
+            "ds:max-h-[300px] ds:*:data-radix-scroll-area-viewport:h-full ds:*:data-radix-scroll-area-viewport:max-h-[inherit]":
               isVertical,
           })}
         >
@@ -714,8 +714,8 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
     if (overflowMode === "dropdown" && showDropdownButton) {
       return (
         <div
-          className={cn("relative flex items-start gap-1", {
-            "flex-col": isVertical,
+          className={cn("ds:relative ds:flex ds:items-start ds:gap-1", {
+            "ds:flex-col": isVertical,
           })}
         >
           {/* Show only visible tabs */}
@@ -728,22 +728,22 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
             trigger={
               <button
                 className={cn(
-                  "inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors",
-                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
-                  "disabled:pointer-events-none disabled:opacity-50",
-                  "hover:bg-accent hover:text-accent-foreground",
-                  "h-9 px-3 shrink-0",
+                  "ds:inline-flex ds:items-center ds:justify-center ds:rounded-md ds:text-sm ds:font-medium ds:ring-offset-background ds:transition-colors",
+                  "ds:focus-visible:outline-none ds:focus-visible:ring-2 ds:focus-visible:ring-ring ds:focus-visible:ring-offset-2",
+                  "ds:disabled:pointer-events-none ds:disabled:opacity-50",
+                  "ds:hover:bg-accent ds:hover:text-accent-foreground",
+                  "ds:h-9 ds:px-3 ds:shrink-0",
                   {
-                    "bg-accent text-accent-foreground": dropdownOpen,
+                    "ds:bg-accent ds:text-accent-foreground": dropdownOpen,
                   }
                 )}
                 aria-label="More tabs"
               >
-                <MoreHorizontal className="h-4 w-4" />
+                <MoreHorizontal className="ds:h-4 ds:w-4" />
               </button>
             }
             content={
-              <div className={cn("flex flex-col gap-1 p-1")}>
+              <div className={cn("ds:flex ds:flex-col ds:gap-1 ds:p-1")}>
                 {overflowTabs.map((item) => (
                   <button
                     key={item.key}
@@ -753,18 +753,18 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
                     }}
                     disabled={item.disabled}
                     className={cn(
-                      "flex items-center gap-2 rounded-sm px-2 py-1.5 text-sm",
-                      "hover:bg-accent hover:text-accent-foreground",
-                      "disabled:pointer-events-none disabled:opacity-50",
-                      "text-left",
+                      "ds:flex ds:items-center ds:gap-2 ds:rounded-sm ds:px-2 ds:py-1.5 ds:text-sm",
+                      "ds:hover:bg-accent ds:hover:text-accent-foreground",
+                      "ds:disabled:pointer-events-none ds:disabled:opacity-50",
+                      "ds:text-left",
                       {
-                        "bg-accent text-accent-foreground":
+                        "ds:bg-accent ds:text-accent-foreground":
                           item.key === currentActiveKey,
                       }
                     )}
                   >
                     {item.icon && (
-                      <span className="inline-flex items-center">
+                      <span className="ds:inline-flex ds:items-center">
                         {item.icon}
                       </span>
                     )}
@@ -775,7 +775,7 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
             }
             side={isVertical ? "right" : "bottom"}
             align="end"
-            className="w-auto min-w-32 max-w-sm max-h-96 overflow-auto p-0"
+            className="ds:w-auto ds:min-w-32 ds:max-w-sm ds:max-h-96 ds:overflow-auto ds:p-0"
           />
         </div>
       );
@@ -785,23 +785,23 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
     if (overflowMode === "fade" && isOverflowing) {
       return (
         <div
-          className={cn("relative flex items-start gap-1", {
-            "flex-col": isVertical,
-            "flex-1 w-full": true, // Take full width for fade mode
+          className={cn("ds:relative ds:flex ds:items-start ds:gap-1", {
+            "ds:flex-col": isVertical,
+            "ds:flex-1 ds:w-full": true, // Take full width for fade mode
           })}
         >
           {/* Fade effect for mode 3 */}
           <div
-            className={cn("relative flex-1 overflow-hidden", {
-              "w-full": !isVertical,
-              "h-full": isVertical,
+            className={cn("ds:relative ds:flex-1 ds:overflow-hidden", {
+              "ds:w-full": !isVertical,
+              "ds:h-full": isVertical,
             })}
           >
             <ScrollArea
               ref={scrollAreaRef}
               className={cn({
-                "w-full": !isVertical,
-                "h-full": isVertical,
+                "ds:w-full": !isVertical,
+                "ds:h-full": isVertical,
               })}
             >
               {tabsListContent}
@@ -811,10 +811,10 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
             {/* Start gradient overlay (left/top) - only show when scrolled */}
             {showStartFade && (
               <div
-                className={cn("absolute pointer-events-none z-20", {
-                  "top-0 left-0 bottom-0 w-24 bg-linear-to-r from-background to-transparent":
+                className={cn("ds:absolute ds:pointer-events-none ds:z-20", {
+                  "ds:top-0 ds:left-0 ds:bottom-0 ds:w-24 ds:bg-linear-to-r ds:from-background ds:to-transparent":
                     !isVertical,
-                  "left-0 right-0 top-0 h-24 bg-linear-to-b from-background to-transparent":
+                  "ds:left-0 ds:right-0 ds:top-0 ds:h-24 ds:bg-linear-to-b ds:from-background ds:to-transparent":
                     isVertical,
                 })}
               />
@@ -823,10 +823,10 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
             {/* End gradient overlay (right/bottom) - only show when not at end */}
             {showEndFade && (
               <div
-                className={cn("absolute pointer-events-none z-20", {
-                  "top-0 right-0 bottom-0 w-24 bg-linear-to-l from-background to-transparent":
+                className={cn("ds:absolute ds:pointer-events-none ds:z-20", {
+                  "ds:top-0 ds:right-0 ds:bottom-0 ds:w-24 ds:bg-linear-to-l ds:from-background ds:to-transparent":
                     !isVertical,
-                  "left-0 right-0 bottom-0 h-24 bg-linear-to-t from-background to-transparent":
+                  "ds:left-0 ds:right-0 ds:bottom-0 ds:h-24 ds:bg-linear-to-t ds:from-background ds:to-transparent":
                     isVertical,
                 })}
               />
@@ -840,24 +840,24 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
             trigger={
               <button
                 className={cn(
-                  "inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors",
-                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
-                  "disabled:pointer-events-none disabled:opacity-50",
-                  "hover:bg-accent hover:text-accent-foreground",
-                  "h-9 px-3 shrink-0",
+                  "ds:inline-flex ds:items-center ds:justify-center ds:rounded-md ds:text-sm ds:font-medium ds:ring-offset-background ds:transition-colors",
+                  "ds:focus-visible:outline-none ds:focus-visible:ring-2 ds:focus-visible:ring-ring ds:focus-visible:ring-offset-2",
+                  "ds:disabled:pointer-events-none ds:disabled:opacity-50",
+                  "ds:hover:bg-accent ds:hover:text-accent-foreground",
+                  "ds:h-9 ds:px-3 ds:shrink-0",
                   {
-                    "bg-accent text-accent-foreground": dropdownOpen,
+                    "ds:bg-accent ds:text-accent-foreground": dropdownOpen,
                   }
                 )}
                 aria-label="More tabs"
               >
-                <MoreHorizontal className="h-4 w-4" />
+                <MoreHorizontal className="ds:h-4 ds:w-4" />
               </button>
             }
             content={
               // <div className={cn("flex flex-col gap-1 min-w-[150px]")}>
               <ScrollArea
-                className="min-w-[150px] max-h-[256px] [&_[data-radix-scroll-area-viewport]]:max-h-[256px]"
+                className="ds:min-w-[150px] ds:max-h-[256px] ds:[&_[data-radix-scroll-area-viewport]]:max-h-[256px]"
                 snapType="y"
               >
                 {items.map((item) => (
@@ -869,19 +869,19 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
                     }}
                     disabled={item.disabled}
                     className={cn(
-                      "snap-start",
-                      "w-full flex items-center gap-2 rounded-sm px-2 py-1.5 text-sm",
-                      "hover:bg-accent hover:text-accent-foreground",
-                      "disabled:pointer-events-none disabled:opacity-50",
-                      "text-left",
+                      "ds:snap-start",
+                      "ds:w-full ds:flex ds:items-center ds:gap-2 ds:rounded-sm ds:px-2 ds:py-1.5 ds:text-sm",
+                      "ds:hover:bg-accent ds:hover:text-accent-foreground",
+                      "ds:disabled:pointer-events-none ds:disabled:opacity-50",
+                      "ds:text-left",
                       {
-                        "bg-accent text-accent-foreground":
+                        "ds:bg-accent ds:text-accent-foreground":
                           item.key === currentActiveKey,
                       }
                     )}
                   >
                     {item.icon && (
-                      <span className="inline-flex items-center">
+                      <span className="ds:inline-flex ds:items-center">
                         {item.icon}
                       </span>
                     )}
@@ -893,7 +893,7 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
             }
             side={isVertical ? "right" : "bottom"}
             align="end"
-            className="p-2"
+            className="ds:p-2"
           />
         </div>
       );
@@ -909,19 +909,19 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
       value={currentActiveKey}
       onValueChange={handleValueChange}
       orientation={orientation}
-      className={cn("gap-2", positionClasses[tabPosition].root, className)}
+      className={cn("ds:gap-2", positionClasses[tabPosition].root, className)}
     >
       <div
         ref={containerRef}
-        className={cn("flex", {
+        className={cn("ds:flex", {
           [alignmentClasses[alignment].horizontal]: !isVertical,
           [alignmentClasses[alignment].vertical]: isVertical,
-          "w-full":
+          "ds:w-full":
             (fullWidth ||
               overflowMode === "dropdown" ||
               overflowMode === "fade") &&
             !isVertical,
-          "overflow-hidden":
+          "ds:overflow-hidden":
             overflowMode === "dropdown" || overflowMode === "fade",
         })}
       >

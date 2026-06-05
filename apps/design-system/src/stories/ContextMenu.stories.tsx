@@ -155,7 +155,7 @@ export const Default: Story = {
     return (
       <ContextMenu
         trigger={
-          <div className="flex h-[200px] w-[300px] items-center justify-center rounded-md border border-dashed text-sm">
+          <div className="ds:flex ds:h-[200px] ds:w-[300px] ds:items-center ds:justify-center ds:rounded-md ds:border ds:border-dashed ds:text-sm">
             {"Right click here"}
           </div>
         }
@@ -182,14 +182,14 @@ export const WithItemTypes: Story = {
         {
           key: "profile",
           label: "Profile",
-          icon: <User className="h-4 w-4" />,
+          icon: <User className="ds:h-4 ds:w-4" />,
           shortcut: "⇧⌘P",
           onClick: () => console.log("Profile clicked"),
         },
         {
           key: "settings",
           label: "Settings",
-          icon: <Settings className="h-4 w-4" />,
+          icon: <Settings className="ds:h-4 ds:w-4" />,
           shortcut: "⌘,",
           onClick: () => console.log("Settings clicked"),
         },
@@ -219,7 +219,7 @@ export const WithItemTypes: Story = {
         {
           key: "delete",
           label: "Delete",
-          icon: <Trash2 className="h-4 w-4" />,
+          icon: <Trash2 className="ds:h-4 ds:w-4" />,
           variant: "destructive",
           shortcut: "⌘⌫",
           onClick: () => console.log("Delete clicked"),
@@ -229,7 +229,7 @@ export const WithItemTypes: Story = {
       return (
         <ContextMenu
           trigger={
-            <div className="flex h-[200px] w-[300px] items-center justify-center rounded-md border border-dashed text-sm">
+            <div className="ds:flex ds:h-[200px] ds:w-[300px] ds:items-center ds:justify-center ds:rounded-md ds:border ds:border-dashed ds:text-sm">
               Right click to see checkboxes
             </div>
           }
@@ -262,18 +262,18 @@ export const WithSubmenu: Story = {
       {
         key: "share",
         label: "Share",
-        icon: <Share className="h-4 w-4" />,
+        icon: <Share className="ds:h-4 ds:w-4" />,
         children: [
           {
             key: "email",
             label: "Email Link",
-            icon: <Mail className="h-4 w-4" />,
+            icon: <Mail className="ds:h-4 ds:w-4" />,
             onClick: () => console.log("Email clicked"),
           },
           {
             key: "messages",
             label: "Messages",
-            icon: <MessageSquare className="h-4 w-4" />,
+            icon: <MessageSquare className="ds:h-4 ds:w-4" />,
             onClick: () => console.log("Messages clicked"),
           },
           {
@@ -325,7 +325,7 @@ export const WithSubmenu: Story = {
     return (
       <ContextMenu
         trigger={
-          <div className="flex h-[200px] w-[300px] items-center justify-center rounded-md border border-dashed text-sm">
+          <div className="ds:flex ds:h-[200px] ds:w-[300px] ds:items-center ds:justify-center ds:rounded-md ds:border ds:border-dashed ds:text-sm">
             Right click to see submenus
           </div>
         }
@@ -347,13 +347,13 @@ export const WithGroups: Story = {
           {
             key: "copy",
             label: "Copy",
-            icon: <Copy className="h-4 w-4" />,
+            icon: <Copy className="ds:h-4 ds:w-4" />,
             shortcut: "⌘C",
           },
           {
             key: "edit",
             label: "Edit",
-            icon: <Edit className="h-4 w-4" />,
+            icon: <Edit className="ds:h-4 ds:w-4" />,
             shortcut: "⌘E",
           },
         ],
@@ -370,13 +370,13 @@ export const WithGroups: Story = {
           {
             key: "download",
             label: "Download",
-            icon: <Download className="h-4 w-4" />,
+            icon: <Download className="ds:h-4 ds:w-4" />,
             shortcut: "⌘D",
           },
           {
             key: "upload",
             label: "Upload",
-            icon: <Upload className="h-4 w-4" />,
+            icon: <Upload className="ds:h-4 ds:w-4" />,
             shortcut: "⌘U",
           },
         ],
@@ -388,7 +388,7 @@ export const WithGroups: Story = {
       {
         key: "delete",
         label: "Delete",
-        icon: <Trash2 className="h-4 w-4" />,
+        icon: <Trash2 className="ds:h-4 ds:w-4" />,
         variant: "destructive",
         shortcut: "⌘⌫",
       },
@@ -397,7 +397,7 @@ export const WithGroups: Story = {
     return (
       <ContextMenu
         trigger={
-          <div className="flex h-[200px] w-[300px] items-center justify-center rounded-md border border-dashed text-sm">
+          <div className="ds:flex ds:h-[200px] ds:w-[300px] ds:items-center ds:justify-center ds:rounded-md ds:border ds:border-dashed ds:text-sm">
             Right click to see groups
           </div>
         }
@@ -417,28 +417,28 @@ export const Primitive: Story = {
       return (
         <ContextMenu>
           <ContextMenu.Trigger asChild>
-            <div className="flex h-[200px] w-[300px] items-center justify-center rounded-md border border-dashed text-sm">
+            <div className="ds:flex ds:h-[200px] ds:w-[300px] ds:items-center ds:justify-center ds:rounded-md ds:border ds:border-dashed ds:text-sm">
               Right click (Compound Pattern)
             </div>
           </ContextMenu.Trigger>
-          <ContextMenu.Content className="w-64">
+          <ContextMenu.Content className="ds:w-64">
             <ContextMenu.Item>
-              <User className="h-4 w-4" />
+              <User className="ds:h-4 ds:w-4" />
               Profile
               <ContextMenu.Shortcut>⇧⌘P</ContextMenu.Shortcut>
             </ContextMenu.Item>
             <ContextMenu.Item>
-              <CreditCard className="h-4 w-4" />
+              <CreditCard className="ds:h-4 ds:w-4" />
               Billing
               <ContextMenu.Shortcut>⌘B</ContextMenu.Shortcut>
             </ContextMenu.Item>
             <ContextMenu.Item>
-              <Settings className="h-4 w-4" />
+              <Settings className="ds:h-4 ds:w-4" />
               Settings
               <ContextMenu.Shortcut>⌘,</ContextMenu.Shortcut>
             </ContextMenu.Item>
             <ContextMenu.Item>
-              <Keyboard className="h-4 w-4" />
+              <Keyboard className="ds:h-4 ds:w-4" />
               Keyboard shortcuts
               <ContextMenu.Shortcut>⌘K</ContextMenu.Shortcut>
             </ContextMenu.Item>
@@ -446,14 +446,14 @@ export const Primitive: Story = {
             <ContextMenu.Group>
               <ContextMenu.Label>Team</ContextMenu.Label>
               <ContextMenu.Item>
-                <PlusCircle className="h-4 w-4" />
+                <PlusCircle className="ds:h-4 ds:w-4" />
                 Invite users
               </ContextMenu.Item>
             </ContextMenu.Group>
             <ContextMenu.Separator />
             <ContextMenu.Sub>
               <ContextMenu.SubTrigger>
-                <Cloud className="h-4 w-4" />
+                <Cloud className="ds:h-4 ds:w-4" />
                 Theme
               </ContextMenu.SubTrigger>
               <ContextMenu.SubContent>
@@ -472,16 +472,16 @@ export const Primitive: Story = {
             </ContextMenu.Sub>
             <ContextMenu.Separator />
             <ContextMenu.Item>
-              <Github className="h-4 w-4" />
+              <Github className="ds:h-4 ds:w-4" />
               GitHub
             </ContextMenu.Item>
             <ContextMenu.Item>
-              <LifeBuoy className="h-4 w-4" />
+              <LifeBuoy className="ds:h-4 ds:w-4" />
               Support
             </ContextMenu.Item>
             <ContextMenu.Separator />
             <ContextMenu.Item variant="destructive">
-              <LogOut className="h-4 w-4" />
+              <LogOut className="ds:h-4 ds:w-4" />
               Log out
               <ContextMenu.Shortcut>⇧⌘Q</ContextMenu.Shortcut>
             </ContextMenu.Item>
@@ -501,11 +501,11 @@ export const WithRadioGroup: Story = {
       return (
         <ContextMenu>
           <ContextMenu.Trigger asChild>
-            <div className="flex h-[200px] w-[300px] items-center justify-center rounded-md border border-dashed text-sm">
+            <div className="ds:flex ds:h-[200px] ds:w-[300px] ds:items-center ds:justify-center ds:rounded-md ds:border ds:border-dashed ds:text-sm">
               Right click to select person
             </div>
           </ContextMenu.Trigger>
-          <ContextMenu.Content className="w-48">
+          <ContextMenu.Content className="ds:w-48">
             <ContextMenu.Label>People</ContextMenu.Label>
             <ContextMenu.RadioGroup value={person} onValueChange={setPerson}>
               <ContextMenu.RadioItem value="pedro">
@@ -593,14 +593,14 @@ export const FileManagerExample: Story = {
     ];
 
     return (
-      <div className="flex h-[200px] w-[300px] items-center justify-center rounded-md border bg-muted/50">
+      <div className="ds:flex ds:h-[200px] ds:w-[300px] ds:items-center ds:justify-center ds:rounded-md ds:border ds:bg-muted/50">
         <ContextMenu
           trigger={
-            <div className="flex flex-col items-center gap-2 text-muted-foreground">
-              <div className="h-16 w-14 rounded border bg-background flex items-center justify-center">
+            <div className="ds:flex ds:flex-col ds:items-center ds:gap-2 ds:text-muted-foreground">
+              <div className="ds:h-16 ds:w-14 ds:rounded ds:border ds:bg-background ds:flex ds:items-center ds:justify-center">
                 📄
               </div>
-              <span className="text-sm">document.txt</span>
+              <span className="ds:text-sm">document.txt</span>
             </div>
           }
           items={menuItems}
@@ -617,13 +617,13 @@ export const WithDisabledItems: Story = {
       {
         key: "enabled-item",
         label: "Enabled Item",
-        icon: <User className="h-4 w-4" />,
+        icon: <User className="ds:h-4 ds:w-4" />,
         onClick: () => console.log("Enabled item clicked"),
       },
       {
         key: "disabled-item",
         label: "Disabled Item",
-        icon: <Settings className="h-4 w-4" />,
+        icon: <Settings className="ds:h-4 ds:w-4" />,
         disabled: true,
       },
       {
@@ -669,7 +669,7 @@ export const WithDisabledItems: Story = {
     return (
       <ContextMenu
         trigger={
-          <div className="flex h-[200px] w-[300px] items-center justify-center rounded-md border border-dashed text-sm">
+          <div className="ds:flex ds:h-[200px] ds:w-[300px] ds:items-center ds:justify-center ds:rounded-md ds:border ds:border-dashed ds:text-sm">
             Right click to see disabled states
           </div>
         }

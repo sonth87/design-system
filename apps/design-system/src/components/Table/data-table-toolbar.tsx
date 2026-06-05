@@ -47,13 +47,13 @@ export function DataTableToolbar<TData>({
       role="toolbar"
       aria-orientation="horizontal"
       className={cn(
-        "flex w-full items-start justify-between gap-2 p-1",
+        "ds:flex ds:w-full ds:items-start ds:justify-between ds:gap-2 ds:p-1",
         className
       )}
       {...props}
     >
       {showColumnFilters ? (
-        <div className="flex flex-1 flex-wrap items-center justify-start gap-2">
+        <div className="ds:flex ds:flex-1 ds:flex-wrap ds:items-center ds:justify-start ds:gap-2">
           {columns.map((column) => (
             <DataTableToolbarFilter key={column.id} column={column} />
           ))}
@@ -62,7 +62,7 @@ export function DataTableToolbar<TData>({
               aria-label="Reset filters"
               variant="outline"
               size="sm"
-              className="border-dashed"
+              className="ds:border-dashed"
               onClick={onReset}
             >
               <X />
@@ -73,7 +73,7 @@ export function DataTableToolbar<TData>({
       ) : (
         <div />
       )}
-      <div className="flex items-center gap-2">
+      <div className="ds:flex ds:items-center ds:gap-2">
         {children}
         {showColumnVisibilityToggle && (
           <DataTableViewOptions
@@ -108,7 +108,7 @@ function DataTableToolbarFilter<TData>({
     <DataTableFilterPopover
       column={column}
       trigger={
-        <Button variant="outline" size="sm" className="border-dashed">
+        <Button variant="outline" size="sm" className="ds:border-dashed">
           {icon}
           {getTriggerLabel()}
         </Button>

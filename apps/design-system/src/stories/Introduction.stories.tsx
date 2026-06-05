@@ -10,7 +10,7 @@ const meta: Meta = {
 export default meta;
 
 export const Documentation = () => (
-  <div className="max-w-4xl mx-auto p-8 prose prose-slate dark:prose-invert">
+  <div className="ds:max-w-4xl ds:mx-auto ds:p-8 ds:prose ds:prose-slate ds:dark:prose-invert">
     <h1>Shadcn Design System</h1>
 
     <p>
@@ -25,7 +25,7 @@ export const Documentation = () => (
       with powerful features and enhancements.
     </p>
 
-    <div className="flex gap-2 my-4">
+    <div className="ds:flex ds:gap-2 ds:my-4">
       <a href="https://www.npmjs.com/package/@sth87/shadcn-design-system">
         <img
           src="https://img.shields.io/npm/v/@sth87/shadcn-design-system"
@@ -70,21 +70,21 @@ export const Documentation = () => (
 
     <h3>Using npm</h3>
     <pre>
-      <code className="language-bash">
+      <code className="ds:language-bash">
         npm install @sth87/shadcn-design-system
       </code>
     </pre>
 
     <h3>Using pnpm</h3>
     <pre>
-      <code className="language-bash">
+      <code className="ds:language-bash">
         pnpm add @sth87/shadcn-design-system
       </code>
     </pre>
 
     <h3>Using yarn</h3>
     <pre>
-      <code className="language-bash">
+      <code className="ds:language-bash">
         yarn add @sth87/shadcn-design-system
       </code>
     </pre>
@@ -94,7 +94,7 @@ export const Documentation = () => (
     <h3>1. Install Peer Dependencies</h3>
     <p>Make sure you have the following peer dependencies installed:</p>
     <pre>
-      <code className="language-bash">
+      <code className="ds:language-bash">
         npm install react react-dom tailwindcss
       </code>
     </pre>
@@ -105,11 +105,11 @@ export const Documentation = () => (
       or <code>App.tsx</code>):
     </p>
     <pre>
-      <code className="language-tsx">{`import "@sth87/shadcn-design-system/index.css";`}</code>
+      <code className="ds:language-tsx">{`import "@sth87/shadcn-design-system/index.css";`}</code>
     </pre>
 
     <pre>
-      <code className="language-tsx">{`// animation
+      <code className="ds:language-tsx">{`// animation
 import "@sth87/shadcn-design-system/animation.css";`}</code>
     </pre>
 
@@ -117,7 +117,7 @@ import "@sth87/shadcn-design-system/animation.css";`}</code>
 
     <h3>Basic Example</h3>
     <pre>
-      <code className="language-tsx">{`import { Button, Input } from "@sth87/shadcn-design-system";
+      <code className="ds:language-tsx">{`import { Button, Input } from "@sth87/shadcn-design-system";
 
 function App() {
   return (
@@ -134,7 +134,7 @@ function App() {
 
     <h3>Using Hooks</h3>
     <pre>
-      <code className="language-tsx">{`import { useDebounce } from "@sth87/shadcn-design-system";
+      <code className="ds:language-tsx">{`import { useDebounce } from "@sth87/shadcn-design-system";
 import { useState, useEffect } from "react";
 
 function SearchComponent() {
@@ -193,8 +193,8 @@ function SearchComponent() {
       </li>
     </ul>
 
-    <hr className="my-8" />
-    <p className="text-center">
+    <hr className="ds:my-8" />
+    <p className="ds:text-center">
       Made by{" "}
       <a
         href="https://github.com/sonth87"

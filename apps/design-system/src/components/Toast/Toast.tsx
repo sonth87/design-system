@@ -7,24 +7,24 @@ import { CheckCircle, XCircle, Info, AlertTriangle } from "lucide-react";
 import { cn } from "@dsui/ui/index";
 
 const variantStyles = {
-  default: "bg-neutral-800 text-white border border-neutral-700",
-  success: "bg-success text-white border border-success/20",
-  error: "bg-error text-white border border-error/20",
-  warning: "bg-warning text-black border border-warning/20",
-  info: "bg-info text-foreground",
-  primary: "bg-primary text-primary-foreground border border-primary/20",
+  default: "ds:bg-neutral-800 ds:text-white ds:border ds:border-neutral-700",
+  success: "ds:bg-success ds:text-white ds:border ds:border-success/20",
+  error: "ds:bg-error ds:text-white ds:border ds:border-error/20",
+  warning: "ds:bg-warning ds:text-black ds:border ds:border-warning/20",
+  info: "ds:bg-info ds:text-foreground",
+  primary: "ds:bg-primary ds:text-primary-foreground ds:border ds:border-primary/20",
   secondary:
-    "bg-secondary text-secondary-foreground border border-secondary/20",
+    "ds:bg-secondary ds:text-secondary-foreground ds:border ds:border-secondary/20",
 };
 
 const variantIcons = {
-  success: <CheckCircle className="w-4 h-4 shrink-0" />,
-  error: <XCircle className="w-4 h-4 shrink-0" />,
-  warning: <AlertTriangle className="w-4 h-4 shrink-0" />,
-  info: <Info className="w-4 h-4 shrink-0" />,
+  success: <CheckCircle className="ds:w-4 ds:h-4 ds:shrink-0" />,
+  error: <XCircle className="ds:w-4 ds:h-4 ds:shrink-0" />,
+  warning: <AlertTriangle className="ds:w-4 ds:h-4 ds:shrink-0" />,
+  info: <Info className="ds:w-4 ds:h-4 ds:shrink-0" />,
   default: null,
-  primary: <Info className="w-4 h-4 shrink-0" />,
-  secondary: <Info className="w-4 h-4 shrink-0" />,
+  primary: <Info className="ds:w-4 ds:h-4 ds:shrink-0" />,
+  secondary: <Info className="ds:w-4 ds:h-4 ds:shrink-0" />,
 };
 
 type Variant = keyof typeof variantStyles;
@@ -32,7 +32,7 @@ type Variant = keyof typeof variantStyles;
 const renderToastContent = (variant: Variant, message: React.ReactNode) => (
   <div
     className={cn(
-      "flex items-center gap-2 rounded-md px-3 py-2 shadow-md text-sm font-medium",
+      "ds:flex ds:items-center ds:gap-2 ds:rounded-md ds:px-3 ds:py-2 ds:shadow-md ds:text-sm ds:font-medium",
       variantStyles[variant]
     )}
   >
@@ -104,9 +104,9 @@ function Toaster({
         duration: duration,
         classNames: {
           toast:
-            "rounded-md shadow-md border-none text-sm font-medium backdrop-blur-sm text-black dark:text-white",
-          description: "text-muted-foreground",
-          actionButton: "bg-white/10",
+            "ds:rounded-md ds:shadow-md ds:border-none ds:text-sm ds:font-medium ds:backdrop-blur-sm ds:text-black ds:dark:text-white",
+          description: "ds:text-muted-foreground",
+          actionButton: "ds:bg-white/10",
         },
       }}
     />

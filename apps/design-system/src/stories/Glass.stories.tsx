@@ -39,7 +39,7 @@ export const Default: Story = {
 
 export const GlassButton: Story = {
   args: {
-    children: <button className="px-4 py-2">Click Me</button>,
+    children: <button className="ds:px-4 ds:py-2">Click Me</button>,
     // size: "default",
   },
   parameters: {
@@ -53,9 +53,9 @@ export const GlassButton: Story = {
 
 export const GlassInput: Story = {
   render: () => (
-    <div className="flex flex-col gap-4">
-      <Glass className="h-60 w-120">
-        <div className="p-4 w-full h-full text-foreground">
+    <div className="ds:flex ds:flex-col ds:gap-4">
+      <Glass className="ds:h-60 ds:w-120">
+        <div className="ds:p-4 ds:w-full ds:h-full ds:text-foreground">
           Đây là 1 container
         </div>
       </Glass>
@@ -63,7 +63,7 @@ export const GlassInput: Story = {
         <input
           type="email"
           placeholder="Enter your email..."
-          className="px-6 py-2 bg-transparent border-none outline-none text-white placeholder:text-white/70"
+          className="ds:px-6 ds:py-2 ds:bg-transparent ds:border-none ds:outline-none ds:text-white ds:placeholder:text-white/70"
         />
       </Glass>
     </div>
@@ -79,20 +79,20 @@ export const GlassInput: Story = {
 
 export const GlassDiv: Story = {
   render: () => (
-    <div className="flex flex-col gap-6">
+    <div className="ds:flex ds:flex-col ds:gap-6">
       <Glass>
-        <div className="p-4 min-w-[200px]">
-          <h3 className="text-lg font-semibold mb-2">Card Title</h3>
-          <p className="text-sm">This is a glass card with some content.</p>
+        <div className="ds:p-4 ds:min-w-[200px]">
+          <h3 className="ds:text-lg ds:font-semibold ds:mb-2">Card Title</h3>
+          <p className="ds:text-sm">This is a glass card with some content.</p>
         </div>
       </Glass>
       <Glass>
-        <div className="p-6 min-w-[250px]">
-          <h3 className="text-xl font-bold mb-2">Large Card</h3>
-          <p className="text-sm mb-2">
+        <div className="ds:p-6 ds:min-w-[250px]">
+          <h3 className="ds:text-xl ds:font-bold ds:mb-2">Large Card</h3>
+          <p className="ds:text-sm ds:mb-2">
             A larger glass effect container with more content.
           </p>
-          <p className="text-xs opacity-80">Additional information here.</p>
+          <p className="ds:text-xs ds:opacity-80">Additional information here.</p>
         </div>
       </Glass>
     </div>

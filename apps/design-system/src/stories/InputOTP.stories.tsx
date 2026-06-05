@@ -117,7 +117,7 @@ export const Underlined: Story = {
 
 export const SizeVariants: Story = {
   render: () => (
-    <div className="flex flex-col items-center gap-4">
+    <div className="ds:flex ds:flex-col ds:items-center ds:gap-4">
       <InputOTP size="xs" />
       <InputOTP size="sm" />
       <InputOTP size="normal" />
@@ -129,24 +129,24 @@ export const SizeVariants: Story = {
 
 export const CustomColorVariants: Story = {
   render: () => (
-    <div className="flex flex-col items-center gap-4">
-      <InputOTP size="normal" childClassName="border-red-500 text-red-500" />
+    <div className="ds:flex ds:flex-col ds:items-center ds:gap-4">
+      <InputOTP size="normal" childClassName="ds:border-red-500 ds:text-red-500" />
       <InputOTP
         size="normal"
-        childClassName="border-purple-500 text-purple-500"
+        childClassName="ds:border-purple-500 ds:text-purple-500"
       />
-      <InputOTP size="normal" childClassName="border-blue-500 text-blue-500" />
+      <InputOTP size="normal" childClassName="ds:border-blue-500 ds:text-blue-500" />
       <InputOTP
         size="normal"
-        childClassName="border-green-500 text-green-500"
-      />
-      <InputOTP
-        size="normal"
-        className="[&>div:first-child]:border-red-500 [&>div:nth-child(2)]:border-green-500  [&>div:nth-child(3)]:border-blue-500 [&>div:nth-child(4)]:border-yellow-500 [&>div:nth-child(5)]:border-purple-500"
+        childClassName="ds:border-green-500 ds:text-green-500"
       />
       <InputOTP
         size="normal"
-        className="[&>div]:border-none text-white [&>div:first-child]:bg-red-500 [&>div:nth-child(2)]:bg-green-500  [&>div:nth-child(3)]:bg-blue-500 [&>div:nth-child(4)]:bg-yellow-500 [&>div:nth-child(5)]:bg-purple-500"
+        className="ds:[&>div:first-child]:border-red-500 ds:[&>div:nth-child(2)]:border-green-500  ds:[&>div:nth-child(3)]:border-blue-500 ds:[&>div:nth-child(4)]:border-yellow-500 ds:[&>div:nth-child(5)]:border-purple-500"
+      />
+      <InputOTP
+        size="normal"
+        className="ds:[&>div]:border-none ds:text-white ds:[&>div:first-child]:bg-red-500 ds:[&>div:nth-child(2)]:bg-green-500  ds:[&>div:nth-child(3)]:bg-blue-500 ds:[&>div:nth-child(4)]:bg-yellow-500 ds:[&>div:nth-child(5)]:bg-purple-500"
       />
     </div>
   ),

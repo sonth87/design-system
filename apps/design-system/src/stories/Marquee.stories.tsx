@@ -134,11 +134,11 @@ const tricks = [
 
 export const Default = (args: typeof Marquee) => {
   const items = tricks.map((trick) => (
-    <div className="flex w-[260px] flex-col gap-1 rounded-md border bg-card p-4 text-card-foreground shadow-sm">
-      <div className="font-medium text-sm leading-tight sm:text-base">
+    <div className="ds:flex ds:w-[260px] ds:flex-col ds:gap-1 ds:rounded-md ds:border ds:bg-card ds:p-4 ds:text-card-foreground ds:shadow-sm">
+      <div className="ds:font-medium ds:text-sm ds:leading-tight ds:sm:text-base">
         {trick.title}
       </div>
-      <span className="line-clamp-2 text-muted-foreground text-sm">
+      <span className="ds:line-clamp-2 ds:text-muted-foreground ds:text-sm">
         {trick.description}
       </span>
     </div>
@@ -148,7 +148,7 @@ export const Default = (args: typeof Marquee) => {
     <Marquee
       aria-label="Skateboard tricks showcase with items"
       items={items}
-      className="max-h-[200px]"
+      className="ds:max-h-[200px]"
       {...args}
     />
   );
@@ -157,11 +157,11 @@ export const Default = (args: typeof Marquee) => {
 export const Manual = (args: typeof Marquee) => {
   const items = tricks.map((trick, index) => (
     <Marquee.Item key={index}>
-      <div className="flex w-[260px] flex-col gap-1 rounded-md border bg-card p-4 text-card-foreground shadow-sm">
-        <div className="font-medium text-sm leading-tight sm:text-base">
+      <div className="ds:flex ds:w-[260px] ds:flex-col ds:gap-1 ds:rounded-md ds:border ds:bg-card ds:p-4 ds:text-card-foreground ds:shadow-sm">
+        <div className="ds:font-medium ds:text-sm ds:leading-tight ds:sm:text-base">
           {trick.title}
         </div>
-        <span className="line-clamp-2 text-muted-foreground text-sm">
+        <span className="ds:line-clamp-2 ds:text-muted-foreground ds:text-sm">
           {trick.description}
         </span>
       </div>

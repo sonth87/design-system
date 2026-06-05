@@ -118,15 +118,15 @@ const items = generateItems(20);
 
 // Card component for rendering items
 const ItemCard = ({ item }: { item: ImageItem }) => (
-  <div className="relative overflow-hidden rounded-lg bg-white shadow-md">
+  <div className="ds:relative ds:overflow-hidden ds:rounded-lg ds:bg-white ds:shadow-md">
     <img
       src={item.imageUrl}
       alt={item.title}
-      className="w-full object-cover"
+      className="ds:w-full ds:object-cover"
       style={{ height: item.height }}
     />
-    <div className="absolute bottom-0 left-0 right-0 bg-black/50 p-2 text-white">
-      <h3 className="text-sm font-medium">{item.title}</h3>
+    <div className="ds:absolute ds:bottom-0 ds:left-0 ds:right-0 ds:bg-black/50 ds:p-2 ds:text-white">
+      <h3 className="ds:text-sm ds:font-medium">{item.title}</h3>
     </div>
   </div>
 );
@@ -148,11 +148,11 @@ const ItemCard = ({ item }: { item: ImageItem }) => (
  */
 export const DataDriven: Story = {
   render: () => (
-    <div className="p-4">
+    <div className="ds:p-4">
       <Masonry<ImageItem>
         columnCount={3}
         gap={12}
-        fallback={<Skeleton className="h-72 w-full" />}
+        fallback={<Skeleton className="ds:h-72 ds:w-full" />}
         items={items}
         renderItem={(item) => <ItemCard item={item} />}
       />
@@ -178,11 +178,11 @@ export const DataDriven: Story = {
  */
 export const Declarative: Story = {
   render: () => (
-    <div className="p-4">
+    <div className="ds:p-4">
       <Masonry
         columnCount={3}
         gap={12}
-        fallback={<Skeleton className="h-72 w-full" />}
+        fallback={<Skeleton className="ds:h-72 ds:w-full" />}
       >
         {items.map((item) => (
           <Masonry.Item key={item.id}>
@@ -201,21 +201,21 @@ export const Declarative: Story = {
  */
 export const CustomStyling: Story = {
   render: () => (
-    <div className="p-4">
+    <div className="ds:p-4">
       <Masonry
         columnCount={3}
         gap={12}
-        fallback={<Skeleton className="h-72 w-full" />}
+        fallback={<Skeleton className="ds:h-72 ds:w-full" />}
       >
         {items.map((item) => (
           <Masonry.Item key={item.id}>
-            <div className="overflow-hidden rounded-lg bg-linear-to-br from-purple-500 to-pink-500 p-4 text-white shadow-lg">
-              <h3 className="mb-2 text-lg font-bold">{item.title}</h3>
-              <p className="text-sm opacity-90">
+            <div className="ds:overflow-hidden ds:rounded-lg ds:bg-linear-to-br ds:from-purple-500 ds:to-pink-500 ds:p-4 ds:text-white ds:shadow-lg">
+              <h3 className="ds:mb-2 ds:text-lg ds:font-bold">{item.title}</h3>
+              <p className="ds:text-sm ds:opacity-90">
                 Custom styled item with height: {item.height}px
               </p>
               <div
-                className="mt-2 rounded bg-white/20"
+                className="ds:mt-2 ds:rounded ds:bg-white/20"
                 style={{ height: item.height / 2 }}
               />
             </div>
@@ -231,11 +231,11 @@ export const CustomStyling: Story = {
  */
 export const FourColumns: Story = {
   render: () => (
-    <div className="p-4">
+    <div className="ds:p-4">
       <Masonry<ImageItem>
         columnCount={4}
         gap={8}
-        fallback={<Skeleton className="h-72 w-full" />}
+        fallback={<Skeleton className="ds:h-72 ds:w-full" />}
         items={items}
         renderItem={(item) => <ItemCard item={item} />}
       />
@@ -254,11 +254,11 @@ export const FourColumns: Story = {
  */
 export const CustomGap: Story = {
   render: () => (
-    <div className="p-4">
+    <div className="ds:p-4">
       <Masonry<ImageItem>
         columnCount={3}
         gap={{ column: 24, row: 12 }}
-        fallback={<Skeleton className="h-72 w-full" />}
+        fallback={<Skeleton className="ds:h-72 ds:w-full" />}
         items={items.slice(0, 12)}
         renderItem={(item) => <ItemCard item={item} />}
       />
@@ -301,12 +301,12 @@ Col 1    Col 2    Col 3
  */
 export const LinearLayout: Story = {
   render: () => (
-    <div className="p-4">
+    <div className="ds:p-4">
       <Masonry<ImageItem>
         columnCount={3}
         gap={12}
         linear
-        fallback={<Skeleton className="h-72 w-full" />}
+        fallback={<Skeleton className="ds:h-72 ds:w-full" />}
         items={items.slice(0, 12)}
         renderItem={(item) => <ItemCard item={item} />}
       />
@@ -327,8 +327,8 @@ export const LinearLayout: Story = {
  */
 export const NoVirtualization: Story = {
   render: () => (
-    <div className="p-4">
-      <div className="mb-4 rounded bg-yellow-100 p-3 text-sm text-yellow-800">
+    <div className="ds:p-4">
+      <div className="ds:mb-4 ds:rounded ds:bg-yellow-100 ds:p-3 ds:text-sm ds:text-yellow-800">
         <strong>50 items</strong> - All items are rendered in DOM regardless of
         scroll position.
       </div>
@@ -363,8 +363,8 @@ export const NoVirtualization: Story = {
  */
 export const LazyLoad: Story = {
   render: () => (
-    <div className="p-4">
-      <div className="mb-4 rounded bg-blue-100 p-3 text-sm text-blue-800">
+    <div className="ds:p-4">
+      <div className="ds:mb-4 ds:rounded ds:bg-blue-100 ds:p-3 ds:text-sm ds:text-blue-800">
         <strong>100 items with Lazy Load</strong> - Items load progressively as
         you scroll and remain in DOM. Try Ctrl+F to search after scrolling!
       </div>

@@ -59,7 +59,7 @@ type CursorVariant = CursorVariantKey | React.ReactNode;
 const cursorVariants: Record<CursorVariantKey, React.ReactNode> = {
   default: null, // Use system cursor
   pointer: (
-    <div className="h-5 w-5 rounded-full bg-white/30 border-2 border-white" />
+    <div className="ds:h-5 ds:w-5 ds:rounded-full ds:bg-white/30 ds:border-2 ds:border-white" />
   ),
 };
 
@@ -217,7 +217,7 @@ function Cursor({
           ref={cursorRef}
           data-slot="cursor"
           className={cn(
-            "transform-[translate(-50%,-50%)] pointer-events-none z-9999 absolute",
+            "ds:transform-[translate(-50%,-50%)] ds:pointer-events-none ds:z-9999 ds:absolute",
             className
           )}
           style={{ top: y, left: x, ...style }}
@@ -330,7 +330,7 @@ function CursorFollow({
       // If followText is a string, wrap it with default styling
       if (typeof followText === "string") {
         return (
-          <div className="px-4 py-2 bg-white rounded-md shadow-lg text-sm font-medium">
+          <div className="ds:px-4 ds:py-2 ds:bg-white ds:rounded-md ds:shadow-lg ds:text-sm ds:font-medium">
             {followText}
           </div>
         );
@@ -349,7 +349,7 @@ function CursorFollow({
           ref={cursorFollowRef}
           data-slot="cursor-follow"
           className={cn(
-            "transform-[translate(-50%,-50%)] pointer-events-none z-9998 absolute",
+            "ds:transform-[translate(-50%,-50%)] ds:pointer-events-none ds:z-9998 ds:absolute",
             className
           )}
           style={{ top: springY, left: springX, ...style }}
@@ -481,7 +481,7 @@ function useCursorFollow(
   // Return props that can be spread on the container element
   return {
     ref: containerRef,
-    className: cn("relative", className),
+    className: cn("ds:relative", className),
     style: { ...style },
     "data-cursor-container": true as const,
     children: (children: React.ReactNode) => (

@@ -61,19 +61,19 @@ const Collapsible = React.forwardRef<
 
   const variantStyles = {
     default: {
-      root: "rounded-lg border bg-card",
-      trigger: "px-4 py-3 hover:bg-accent/50",
-      content: "px-4 py-3 border-t",
+      root: "ds:rounded-lg ds:border ds:bg-card",
+      trigger: "ds:px-4 ds:py-3 ds:hover:bg-accent/50",
+      content: "ds:px-4 ds:py-3 ds:border-t",
     },
     bordered: {
-      root: "rounded-lg border-2",
-      trigger: "px-4 py-3 font-semibold hover:bg-accent",
-      content: "px-4 py-3 border-t-2",
+      root: "ds:rounded-lg ds:border-2",
+      trigger: "ds:px-4 ds:py-3 ds:font-semibold ds:hover:bg-accent",
+      content: "ds:px-4 ds:py-3 ds:border-t-2",
     },
     ghost: {
       root: "",
-      trigger: "px-2 py-2 hover:bg-accent/30 rounded-md",
-      content: "px-2 py-2",
+      trigger: "ds:px-2 ds:py-2 ds:hover:bg-accent/30 ds:rounded-md",
+      content: "ds:px-2 ds:py-2",
     },
   };
 
@@ -105,7 +105,7 @@ const Collapsible = React.forwardRef<
     >
       <CollapsibleTrigger
         className={cn(
-          "flex w-full items-center justify-between transition-colors",
+          "ds:flex ds:w-full ds:items-center ds:justify-between ds:transition-colors",
           styles.trigger,
           triggerClassName
         )}
@@ -113,17 +113,17 @@ const Collapsible = React.forwardRef<
         {iconPosition === "left" && showIcon && (
           <ChevronDown
             className={cn(
-              "size-4 transition-transform duration-200",
-              iconRotation && isOpen && "rotate-180"
+              "ds:size-4 ds:transition-transform ds:duration-200",
+              iconRotation && isOpen && "ds:rotate-180"
             )}
           />
         )}
-        <span className="flex-1 text-left">{trigger}</span>
+        <span className="ds:flex-1 ds:text-left">{trigger}</span>
         {iconPosition === "right" && showIcon && (
           <ChevronDown
             className={cn(
-              "size-4 transition-transform duration-200",
-              iconRotation && isOpen && "rotate-180"
+              "ds:size-4 ds:transition-transform ds:duration-200",
+              iconRotation && isOpen && "ds:rotate-180"
             )}
           />
         )}

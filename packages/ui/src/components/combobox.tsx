@@ -18,24 +18,24 @@ import * as PopoverPrimitive from "@radix-ui/react-popover";
 import { Label } from "./label";
 
 const comboboxVariants = cva(
-  "justify-between relative dark:bg-background dark:hover:bg-input/50 border-input w-full min-w-0 rounded-md border bg-transparent shadow-xs transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
+  "ds:justify-between ds:relative ds:dark:bg-background ds:dark:hover:bg-input/50 ds:border-input ds:w-full ds:min-w-0 ds:rounded-md ds:border ds:border-border ds:bg-transparent ds:shadow-xs ds:transition-[color,box-shadow] ds:outline-none ds:file:inline-flex ds:file:h-7 ds:file:border-0 ds:file:bg-transparent ds:file:text-sm ds:file:font-medium ds:disabled:pointer-events-none ds:disabled:cursor-not-allowed ds:disabled:opacity-50 ds:focus-visible:border-ring ds:focus-visible:ring-ring/50 ds:focus-visible:ring-[3px] ds:aria-invalid:ring-destructive/20 ds:dark:aria-invalid:ring-destructive/40 ds:aria-invalid:border-destructive",
   {
     variants: {
       size: {
-        xs: "h-6 text-xs px-2 py-0.5",
-        sm: "h-8 text-sm px-2.5 py-1",
-        normal: "h-9 px-3 py-1",
-        lg: "h-11 px-4 py-2",
-        xl: "h-14 px-5 py-3",
+        xs: "ds:h-6 ds:text-xs ds:px-2 ds:py-0.5",
+        sm: "ds:h-8 ds:text-sm ds:px-2.5 ds:py-1",
+        normal: "ds:h-9 ds:px-3 ds:py-1",
+        lg: "ds:h-11 ds:px-4 ds:py-2",
+        xl: "ds:h-14 ds:px-5 ds:py-3",
       },
       state: {
         default: "",
         success:
-          "border-success ring-success/30 focus-visible:border-success focus-visible:ring-success/50",
+          "ds:border-success ds:ring-success/30 ds:focus-visible:border-success ds:focus-visible:ring-success/50",
         error:
-          "border-destructive ring-destructive/30 focus-visible:border-destructive focus-visible:ring-destructive/50",
+          "ds:border-destructive ds:ring-destructive/30 ds:focus-visible:border-destructive ds:focus-visible:ring-destructive/50",
         warning:
-          "border-warning ring-warning/30 focus-visible:border-warning focus-visible:ring-warning/50",
+          "ds:border-warning ds:ring-warning/30 ds:focus-visible:border-warning ds:focus-visible:ring-warning/50",
       },
     },
     defaultVariants: {
@@ -103,9 +103,9 @@ function Combobox({
           <Label className={cn(comboboxVariants({ size, state }), className)}>
             <span
               className={cn(
-                "truncate w-full inline-block align-middle text-left",
+                "ds:truncate ds:w-full ds:inline-block ds:align-middle ds:text-left",
                 {
-                  "pr-8": clearable,
+                  "ds:pr-8": clearable,
                 }
               )}
             >
@@ -116,10 +116,10 @@ function Combobox({
             {open && (
               <ChevronUp
                 className={cn(
-                  "z-10 opacity-50",
+                  "ds:z-10 ds:opacity-50",
                   {
-                    "size-4 min-w-4": size === "sm" || size === "xs",
-                    "size-5 min-w-5": size === "lg" || size === "xl",
+                    "ds:size-4 ds:min-w-4": size === "sm" || size === "xs",
+                    "ds:size-5 ds:min-w-5": size === "lg" || size === "xl",
                   },
                   dropdownClassName
                 )}
@@ -128,10 +128,10 @@ function Combobox({
             {!open && (
               <ChevronDown
                 className={cn(
-                  "z-10 opacity-50",
+                  "ds:z-10 ds:opacity-50",
                   {
-                    "size-4 min-w-4": size === "sm" || size === "xs",
-                    "size-5 min-w-5": size === "lg" || size === "xl",
+                    "ds:size-4 ds:min-w-4": size === "sm" || size === "xs",
+                    "ds:size-5 ds:min-w-5": size === "lg" || size === "xl",
                   },
                   dropdownClassName
                 )}
@@ -147,13 +147,13 @@ function Combobox({
             e.stopPropagation();
             onChange?.("");
           }}
-          className="absolute right-11 top-1/2 -translate-y-1/2 rounded-sm p-1 text-muted-foreground hover:bg-accent hover:text-accent-foreground cursor-pointer size-6 opacity-50"
+          className="ds:absolute ds:right-11 ds:top-1/2 ds:-translate-y-1/2 ds:rounded-sm ds:p-1 ds:text-muted-foreground ds:hover:bg-accent ds:hover:text-accent-foreground ds:cursor-pointer ds:size-6 ds:opacity-50"
         >
-          <X className="h-4 w-4" />
+          <X className="ds:h-4 ds:w-4" />
         </Label>
       )}
       <PopoverContent
-        className={cn("p-0 w-(--radix-popover-trigger-width)")}
+        className={cn("ds:p-0 ds:w-(--radix-popover-trigger-width)")}
         onInteractOutside={(e) => {
           // Prevent closing when clicking the trigger
           const target = e.target as HTMLElement;
@@ -164,7 +164,7 @@ function Combobox({
       >
         <Command>
           {searchable && (
-            <CommandInput placeholder={placeHolder} className="h-9" />
+            <CommandInput placeholder={placeHolder} className="ds:h-9" />
           )}
           <CommandList>
             <CommandEmpty>{emptyText || "Not found"}</CommandEmpty>
@@ -183,8 +183,8 @@ function Combobox({
                   }
                   className={cn(
                     option?.disabled &&
-                      "opacity-50 cursor-not-allowed grayscale",
-                    value === option.value && "bg-primary/10 dark:bg-primary/20"
+                      "ds:opacity-50 ds:cursor-not-allowed ds:grayscale",
+                    value === option.value && "ds:bg-primary/10 ds:dark:bg-primary/20"
                   )}
                 >
                   {tagRender ? (
@@ -192,7 +192,7 @@ function Combobox({
                   ) : (
                     <>
                       {option.icon && (
-                        <span className="mr-2 max-w-4 max-h-4">
+                        <span className="ds:mr-2 ds:max-w-4 ds:max-h-4">
                           {option.icon}
                         </span>
                       )}
@@ -201,8 +201,8 @@ function Combobox({
                   )}
                   <Check
                     className={cn(
-                      "ml-auto",
-                      value === option.value ? "opacity-100" : "opacity-0" // So sánh theo value
+                      "ds:ml-auto",
+                      value === option.value ? "ds:opacity-100" : "ds:opacity-0" // So sánh theo value
                     )}
                   />
                 </CommandItem>

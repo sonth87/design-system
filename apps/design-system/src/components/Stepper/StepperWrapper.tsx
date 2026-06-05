@@ -65,12 +65,12 @@ function StepperWrapper({
     if (orientation === "vertical") {
       // Vertical stepper - separator positioning
       if (labelPosition === "top" || labelPosition === "bottom") {
-        return "-order-1 -z-10 absolute inset-y-0 top-7 left-1/2 -translate-x-1/2 h-full";
+        return "ds:-order-1 ds:-z-10 ds:absolute ds:inset-y-0 ds:top-7 ds:left-1/2 ds:-translate-x-1/2 ds:h-full";
       } else if (labelPosition === "left") {
-        return "-order-1 -z-10 absolute inset-y-0 top-7 right-0 translate-x-1/2 h-full";
+        return "ds:-order-1 ds:-z-10 ds:absolute ds:inset-y-0 ds:top-7 ds:right-0 ds:translate-x-1/2 ds:h-full";
       } else {
         // right (default)
-        return "-order-1 -z-10 absolute inset-y-0 top-7 left-3.5 -translate-x-1/2 h-full";
+        return "ds:-order-1 ds:-z-10 ds:absolute ds:inset-y-0 ds:top-7 ds:left-3.5 ds:-translate-x-1/2 ds:h-full";
       }
     }
 
@@ -97,18 +97,18 @@ function StepperWrapper({
             >
               <StepperTrigger
                 className={cn({
-                  "not-last:pb-6":
+                  "ds:not-last:pb-6":
                     index < steps.length - 1 &&
                     props.orientation === "vertical",
                 })}
               >
                 <StepperIndicator />
                 <div
-                  className={cn("flex flex-col gap-1", {
-                    "text-center":
+                  className={cn("ds:flex ds:flex-col ds:gap-1", {
+                    "ds:text-center":
                       labelPosition === "top" || labelPosition === "bottom",
-                    "text-left": labelPosition === "right",
-                    "text-right": labelPosition === "left",
+                    "ds:text-left": labelPosition === "right",
+                    "ds:text-right": labelPosition === "left",
                   })}
                 >
                   <StepperTitle>{step.title}</StepperTitle>

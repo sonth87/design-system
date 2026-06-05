@@ -103,23 +103,23 @@ export interface DialogProps {
 const variantIcons = {
   dialog: null,
   confirm: (
-    <div className="size-12 flex items-center justify-center rounded-full bg-success/10 mx-auto mb-4">
-      <CheckCircle2 className="size-6 text-success" />
+    <div className="ds:size-12 ds:flex ds:items-center ds:justify-center ds:rounded-full ds:bg-success/10 ds:mx-auto ds:mb-4">
+      <CheckCircle2 className="ds:size-6 ds:text-success" />
     </div>
   ),
   alert: (
-    <div className="size-12 flex items-center justify-center rounded-full bg-error/10 mx-auto mb-4">
-      <AlertCircle className="size-5 text-error" />
+    <div className="ds:size-12 ds:flex ds:items-center ds:justify-center ds:rounded-full ds:bg-error/10 ds:mx-auto ds:mb-4">
+      <AlertCircle className="ds:size-5 ds:text-error" />
     </div>
   ),
   info: (
-    <div className="size-12 flex items-center justify-center rounded-full bg-blue-500/10 mx-auto mb-4">
-      <Info className="size-5 text-blue-500" />
+    <div className="ds:size-12 ds:flex ds:items-center ds:justify-center ds:rounded-full ds:bg-blue-500/10 ds:mx-auto ds:mb-4">
+      <Info className="ds:size-5 ds:text-blue-500" />
     </div>
   ),
   warning: (
-    <div className="size-12 flex items-center justify-center rounded-full bg-warning/10 mx-auto mb-4">
-      <AlertTriangle className="size-5 text-warning" />
+    <div className="ds:size-12 ds:flex ds:items-center ds:justify-center ds:rounded-full ds:bg-warning/10 ds:mx-auto ds:mb-4">
+      <AlertTriangle className="ds:size-5 ds:text-warning" />
     </div>
   ),
 };
@@ -133,27 +133,27 @@ const variantColors = {
 };
 
 const sizeClasses: Record<DialogSize, string> = {
-  sm: "sm:max-w-sm",
-  md: "sm:max-w-md",
-  lg: "sm:max-w-lg",
-  xl: "sm:max-w-xl",
-  "2xl": "sm:max-w-2xl max-h-[90vh]",
-  "3xl": "sm:max-w-3xl max-h-[90vh]",
-  "4xl": "sm:max-w-4xl max-h-[90vh]",
-  full: "sm:max-w-[95vw] h-[98vh]",
+  sm: "ds:sm:max-w-sm",
+  md: "ds:sm:max-w-md",
+  lg: "ds:sm:max-w-lg",
+  xl: "ds:sm:max-w-xl",
+  "2xl": "ds:sm:max-w-2xl ds:max-h-[90vh]",
+  "3xl": "ds:sm:max-w-3xl ds:max-h-[90vh]",
+  "4xl": "ds:sm:max-w-4xl ds:max-h-[90vh]",
+  full: "ds:sm:max-w-[95vw] ds:h-[98vh]",
 };
 
 const positionClasses: Record<DialogPosition, string> = {
-  center: "!top-[50%] !left-[50%] !translate-x-[-50%] !translate-y-[-50%]",
-  top: "!top-4 !left-[50%] !translate-x-[-50%] !translate-y-0",
-  bottom: "!top-auto !bottom-4 !left-[50%] !translate-x-[-50%] !translate-y-0",
-  left: "!left-4 !top-[50%] !translate-x-0 !translate-y-[-50%]",
-  right: "!left-auto !right-4 !top-[50%] !translate-x-0 !translate-y-[-50%]",
-  "top-left": "!top-4 !left-4 !translate-x-0 !translate-y-0",
-  "top-right": "!top-4 !left-auto !right-4 !translate-x-0 !translate-y-0",
-  "bottom-left": "!top-auto !bottom-4 !left-4 !translate-x-0 !translate-y-0",
+  center: "ds:!top-[50%] ds:!left-[50%] ds:!translate-x-[-50%] ds:!translate-y-[-50%]",
+  top: "ds:!top-4 ds:!left-[50%] ds:!translate-x-[-50%] ds:!translate-y-0",
+  bottom: "ds:!top-auto ds:!bottom-4 ds:!left-[50%] ds:!translate-x-[-50%] ds:!translate-y-0",
+  left: "ds:!left-4 ds:!top-[50%] ds:!translate-x-0 ds:!translate-y-[-50%]",
+  right: "ds:!left-auto ds:!right-4 ds:!top-[50%] ds:!translate-x-0 ds:!translate-y-[-50%]",
+  "top-left": "ds:!top-4 ds:!left-4 ds:!translate-x-0 ds:!translate-y-0",
+  "top-right": "ds:!top-4 ds:!left-auto ds:!right-4 ds:!translate-x-0 ds:!translate-y-0",
+  "bottom-left": "ds:!top-auto ds:!bottom-4 ds:!left-4 ds:!translate-x-0 ds:!translate-y-0",
   "bottom-right":
-    "!top-auto !bottom-4 !left-auto !right-4 !translate-x-0 !translate-y-0",
+    "ds:!top-auto ds:!bottom-4 ds:!left-auto ds:!right-4 ds:!translate-x-0 ds:!translate-y-0",
 };
 
 const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
@@ -196,23 +196,23 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
 
   const contentClasses = cn(
     // Remove default padding and gap to allow custom header/footer
-    "!p-0 !gap-0 flex flex-col",
+    "ds:!p-0 ds:!gap-0 ds:flex ds:flex-col",
     sizeClasses[fullscreen ? "full" : size],
     positionClasses[position],
     variantColors[variant],
     animationResult.className,
-    fullscreen ? "h-[98vh]" : "max-h-[90vh]"
+    fullscreen ? "ds:h-[98vh]" : "ds:max-h-[90vh]"
   );
 
   const headerClasses = cn(
-    "px-6 pt-6 text-left",
-    !scrollable && "contents space-y-0",
+    "ds:px-6 ds:pt-6 ds:text-left",
+    !scrollable && "ds:contents ds:space-y-0",
     headerClassName
   );
 
   const footerClasses = cn(
-    "px-6 pb-6 sm:justify-end",
-    !scrollable && "border-t py-4",
+    "ds:px-6 ds:pb-6 ds:sm:justify-end",
+    !scrollable && "ds:border-t ds:py-4",
     footerClassName
   );
 
@@ -222,8 +222,8 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
     return title || icon || description ? (
       <AlertDialogHeader
         className={cn(
-          "flex items-center gap-2 py-4",
-          { "border-b": stickyHeader },
+          "ds:flex ds:items-center ds:gap-2 ds:py-4",
+          { "ds:border-b": stickyHeader },
           headerClasses
         )}
       >
@@ -267,7 +267,7 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
 
     return footer || confirmButton || cancelButton ? (
       <AlertDialogFooter
-        className={cn("py-4", { "border-t": stickyFooter }, footerClasses)}
+        className={cn("ds:py-4", { "ds:border-t": stickyFooter }, footerClasses)}
       >
         {footer || (
           <>
@@ -312,10 +312,10 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
         >
           {stickyHeader && headerComponents}
 
-          <ScrollArea className="flex max-h-full flex-col overflow-hidden">
+          <ScrollArea className="ds:flex ds:max-h-full ds:flex-col ds:overflow-hidden">
             {!stickyHeader && headerComponents}
             {children && (
-              <div className={cn("px-6 py-4", contentClassName)}>
+              <div className={cn("ds:px-6 ds:py-4", contentClassName)}>
                 {children}
               </div>
             )}
@@ -344,7 +344,7 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
       >
         {stickyHeader && (title || description) && (
           <DialogHeader
-            className={cn({ "py-4 border-b": stickyHeader }, headerClasses)}
+            className={cn({ "ds:py-4 ds:border-b": stickyHeader }, headerClasses)}
           >
             {title && (
               <DialogTitle className={titleClassName}>{title}</DialogTitle>
@@ -356,9 +356,9 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
             )}
           </DialogHeader>
         )}
-        <ScrollArea className="flex max-h-full flex-col overflow-hidden">
+        <ScrollArea className="ds:flex ds:max-h-full ds:flex-col ds:overflow-hidden">
           {!stickyHeader && (title || description) && (
-            <DialogHeader className={cn("py-4", headerClasses)}>
+            <DialogHeader className={cn("ds:py-4", headerClasses)}>
               {title && (
                 <DialogTitle className={titleClassName}>{title}</DialogTitle>
               )}
@@ -370,17 +370,17 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
             </DialogHeader>
           )}
           {children && (
-            <div className={cn("px-6 py-4", contentClassName)}>{children}</div>
+            <div className={cn("ds:px-6 ds:py-4", contentClassName)}>{children}</div>
           )}
           {!stickyFooter && footer && (
-            <DialogFooter className={cn("py-4", footerClasses)}>
+            <DialogFooter className={cn("ds:py-4", footerClasses)}>
               {footer}
             </DialogFooter>
           )}
         </ScrollArea>
         {stickyFooter && footer && (
           <DialogFooter
-            className={cn({ "py-4 border-t": stickyFooter }, footerClasses)}
+            className={cn({ "ds:py-4 ds:border-t": stickyFooter }, footerClasses)}
           >
             {footer}
           </DialogFooter>

@@ -83,7 +83,7 @@ const Command = React.forwardRef<HTMLDivElement, CommandProps>((props, ref) => {
                 item.children
               ) : (
                 <>
-                  {item.icon && <item.icon className="mr-2 h-4 w-4" />}
+                  {item.icon && <item.icon className="ds:mr-2 ds:h-4 ds:w-4" />}
                   <span>{item.label}</span>
                   {item.shortcut && (
                     <CommandShortcut>{item.shortcut}</CommandShortcut>
@@ -111,7 +111,7 @@ const Command = React.forwardRef<HTMLDivElement, CommandProps>((props, ref) => {
                   ) : (
                     <>
                       {subItem.icon && (
-                        <subItem.icon className="mr-2 h-4 w-4" />
+                        <subItem.icon className="ds:mr-2 ds:h-4 ds:w-4" />
                       )}
                       <span>{subItem.label}</span>
                       {subItem.shortcut && (
@@ -135,7 +135,7 @@ const Command = React.forwardRef<HTMLDivElement, CommandProps>((props, ref) => {
     <SCommand
       ref={ref}
       className={cn(
-        "bg-popover text-popover-foreground flex h-full w-full flex-col overflow-hidden rounded-md",
+        "ds:bg-popover ds:text-popover-foreground ds:flex ds:h-full ds:w-full ds:flex-col ds:overflow-hidden ds:rounded-md",
         className
       )}
       {...rest}

@@ -199,13 +199,13 @@ export const Default: Story = {
       {
         key: "enabled-item",
         label: "Enabled Item",
-        icon: <User className="h-4 w-4" />,
+        icon: <User className="ds:h-4 ds:w-4" />,
         onClick: () => console.log("Enabled item clicked"),
       },
       {
         key: "disabled-item",
         label: "Disabled Item",
-        icon: <Settings className="h-4 w-4" />,
+        icon: <Settings className="ds:h-4 ds:w-4" />,
         disabled: true,
         onClick: () => console.log("This should not be called"),
       },
@@ -221,13 +221,13 @@ export const Default: Story = {
           {
             key: "copy",
             label: "Copy",
-            icon: <Copy className="h-4 w-4" />,
+            icon: <Copy className="ds:h-4 ds:w-4" />,
             onClick: fn(),
           },
           {
             key: "edit-disabled",
             label: "Edit (Disabled)",
-            icon: <Edit className="h-4 w-4" />,
+            icon: <Edit className="ds:h-4 ds:w-4" />,
             disabled: true,
             onClick: () => console.log("Edit disabled clicked"),
           },
@@ -280,7 +280,7 @@ export const Default: Story = {
       <DropdownMenu
         trigger={
           <Button variant="outline">
-            <MoreHorizontal className="h-4 w-4" />
+            <MoreHorizontal className="ds:h-4 ds:w-4" />
           </Button>
         }
         items={menuItems}
@@ -295,31 +295,31 @@ export const WithItemTypes: Story = {
     <DropdownMenu
       trigger={
         <Button variant="outline">
-          <MoreHorizontal className="h-4 w-4" />
+          <MoreHorizontal className="ds:h-4 ds:w-4" />
         </Button>
       }
       content={
-        <div className="w-48">
+        <div className="ds:w-48">
           <DropdownMenu.Item>
-            <Copy className="mr-2 h-4 w-4" />
+            <Copy className="ds:mr-2 ds:h-4 ds:w-4" />
             Copy
           </DropdownMenu.Item>
           <DropdownMenu.Item>
-            <Edit className="mr-2 h-4 w-4" />
+            <Edit className="ds:mr-2 ds:h-4 ds:w-4" />
             Edit
           </DropdownMenu.Item>
           <DropdownMenu.Separator />
           <DropdownMenu.CheckboxItem checked={true}>
-            <Check className="mr-2 h-4 w-4" />
+            <Check className="ds:mr-2 ds:h-4 ds:w-4" />
             Show notifications
           </DropdownMenu.CheckboxItem>
           <DropdownMenu.CheckboxItem checked={false}>
-            <Circle className="mr-2 h-4 w-4" />
+            <Circle className="ds:mr-2 ds:h-4 ds:w-4" />
             Auto-save
           </DropdownMenu.CheckboxItem>
           <DropdownMenu.Separator />
           <DropdownMenu.Item variant="destructive">
-            <Trash2 className="mr-2 h-4 w-4" />
+            <Trash2 className="ds:mr-2 ds:h-4 ds:w-4" />
             Delete
           </DropdownMenu.Item>
         </div>
@@ -337,7 +337,7 @@ export const WithRadioGroup: Story = {
         <DropdownMenu
           trigger={<Button variant="outline">Theme: {theme}</Button>}
           content={
-            <div className="w-48">
+            <div className="ds:w-48">
               <DropdownMenu.Label>Theme</DropdownMenu.Label>
               <DropdownMenu.RadioGroup value={theme} onValueChange={setTheme}>
                 <DropdownMenu.RadioItem value="light">
@@ -365,23 +365,23 @@ export const WithSubmenu: Story = {
     <DropdownMenu
       trigger={
         <Button variant="outline">
-          <MoreHorizontal className="h-4 w-4" />
+          <MoreHorizontal className="ds:h-4 ds:w-4" />
         </Button>
       }
       content={
-        <div className="w-48">
+        <div className="ds:w-48">
           <DropdownMenu.Item>
-            <Copy className="mr-2 h-4 w-4" />
+            <Copy className="ds:mr-2 ds:h-4 ds:w-4" />
             Copy
           </DropdownMenu.Item>
           <DropdownMenu.Item>
-            <Share className="mr-2 h-4 w-4" />
+            <Share className="ds:mr-2 ds:h-4 ds:w-4" />
             Share
           </DropdownMenu.Item>
           <DropdownMenu.Separator />
           <DropdownMenu.Sub>
             <DropdownMenu.SubTrigger>
-              <Download className="mr-2 h-4 w-4" />
+              <Download className="ds:mr-2 ds:h-4 ds:w-4" />
               Export
             </DropdownMenu.SubTrigger>
             <DropdownMenu.SubContent>
@@ -392,7 +392,7 @@ export const WithSubmenu: Story = {
           </DropdownMenu.Sub>
           <DropdownMenu.Sub>
             <DropdownMenu.SubTrigger>
-              <Upload className="mr-2 h-4 w-4" />
+              <Upload className="ds:mr-2 ds:h-4 ds:w-4" />
               Import
             </DropdownMenu.SubTrigger>
             <DropdownMenu.SubContent>
@@ -409,12 +409,12 @@ export const WithSubmenu: Story = {
 // Different sides
 export const Sides: Story = {
   render: () => (
-    <div className="flex gap-4 flex-wrap">
+    <div className="ds:flex ds:gap-4 ds:flex-wrap">
       <DropdownMenu
         trigger={<Button variant="outline">Bottom</Button>}
         side="bottom"
         content={
-          <div className="w-32">
+          <div className="ds:w-32">
             <DropdownMenu.Item>Item 1</DropdownMenu.Item>
             <DropdownMenu.Item>Item 2</DropdownMenu.Item>
           </div>
@@ -425,7 +425,7 @@ export const Sides: Story = {
         trigger={<Button variant="outline">Top</Button>}
         side="top"
         content={
-          <div className="w-32">
+          <div className="ds:w-32">
             <DropdownMenu.Item>Item 1</DropdownMenu.Item>
             <DropdownMenu.Item>Item 2</DropdownMenu.Item>
           </div>
@@ -436,7 +436,7 @@ export const Sides: Story = {
         trigger={<Button variant="outline">Right</Button>}
         side="right"
         content={
-          <div className="w-32">
+          <div className="ds:w-32">
             <DropdownMenu.Item>Item 1</DropdownMenu.Item>
             <DropdownMenu.Item>Item 2</DropdownMenu.Item>
           </div>
@@ -447,7 +447,7 @@ export const Sides: Story = {
         trigger={<Button variant="outline">Left</Button>}
         side="left"
         content={
-          <div className="w-32">
+          <div className="ds:w-32">
             <DropdownMenu.Item>Item 1</DropdownMenu.Item>
             <DropdownMenu.Item>Item 2</DropdownMenu.Item>
           </div>
@@ -460,12 +460,12 @@ export const Sides: Story = {
 // Different alignments
 export const Alignments: Story = {
   render: () => (
-    <div className="flex gap-4 flex-wrap">
+    <div className="ds:flex ds:gap-4 ds:flex-wrap">
       <DropdownMenu
         trigger={<Button variant="outline">Start</Button>}
         align="start"
         content={
-          <div className="w-32">
+          <div className="ds:w-32">
             <DropdownMenu.Item>Item 1</DropdownMenu.Item>
             <DropdownMenu.Item>Item 2</DropdownMenu.Item>
           </div>
@@ -476,7 +476,7 @@ export const Alignments: Story = {
         trigger={<Button variant="outline">Center</Button>}
         align="center"
         content={
-          <div className="w-32">
+          <div className="ds:w-32">
             <DropdownMenu.Item>Item 1</DropdownMenu.Item>
             <DropdownMenu.Item>Item 2</DropdownMenu.Item>
           </div>
@@ -487,7 +487,7 @@ export const Alignments: Story = {
         trigger={<Button variant="outline">End</Button>}
         align="end"
         content={
-          <div className="w-32">
+          <div className="ds:w-32">
             <DropdownMenu.Item>Item 1</DropdownMenu.Item>
             <DropdownMenu.Item>Item 2</DropdownMenu.Item>
           </div>
@@ -502,8 +502,8 @@ export const Controlled: Story = {
   render: function ControlledDropdownMenu() {
     const [open, setOpen] = useState(false);
     return (
-      <div className="space-y-4">
-        <div className="flex gap-2">
+      <div className="ds:space-y-4">
+        <div className="ds:flex ds:gap-2">
           <Button onClick={() => setOpen(true)}>Open Menu</Button>
           <Button onClick={() => setOpen(false)}>Close Menu</Button>
         </div>
@@ -512,7 +512,7 @@ export const Controlled: Story = {
           onOpenChange={setOpen}
           trigger={<Button variant="outline">Controlled Menu</Button>}
           content={
-            <div className="w-48">
+            <div className="ds:w-48">
               <DropdownMenu.Item>Item 1</DropdownMenu.Item>
               <DropdownMenu.Item>Item 2</DropdownMenu.Item>
               <DropdownMenu.Item>Item 3</DropdownMenu.Item>
@@ -529,19 +529,19 @@ export const CustomStyled: Story = {
   render: () => (
     <DropdownMenu
       trigger={
-        <Button variant="outline" className="bg-purple-50 hover:bg-purple-100">
+        <Button variant="outline" className="ds:bg-purple-50 ds:hover:bg-purple-100">
           Custom Style
         </Button>
       }
-      contentClassName="bg-purple-50 border-purple-200"
+      contentClassName="ds:bg-purple-50 ds:border-purple-200"
       content={
-        <div className="w-48">
-          <DropdownMenu.Item className="hover:bg-purple-100">
-            <User className="mr-2 h-4 w-4" />
+        <div className="ds:w-48">
+          <DropdownMenu.Item className="ds:hover:bg-purple-100">
+            <User className="ds:mr-2 ds:h-4 ds:w-4" />
             Profile
           </DropdownMenu.Item>
-          <DropdownMenu.Item className="hover:bg-purple-100">
-            <Settings className="mr-2 h-4 w-4" />
+          <DropdownMenu.Item className="ds:hover:bg-purple-100">
+            <Settings className="ds:mr-2 ds:h-4 ds:w-4" />
             Settings
           </DropdownMenu.Item>
         </div>
@@ -557,13 +557,13 @@ export const WithItemsProp: Story = {
       {
         key: "profile",
         label: "Profile",
-        icon: <User className="h-4 w-4" />,
+        icon: <User className="ds:h-4 ds:w-4" />,
         onClick: () => console.log("Profile clicked"),
       },
       {
         key: "settings",
         label: "Settings",
-        icon: <Settings className="h-4 w-4" />,
+        icon: <Settings className="ds:h-4 ds:w-4" />,
         onClick: () => console.log("Settings clicked"),
       },
       {
@@ -578,13 +578,13 @@ export const WithItemsProp: Story = {
           {
             key: "copy",
             label: "Copy",
-            icon: <Copy className="h-4 w-4" />,
+            icon: <Copy className="ds:h-4 ds:w-4" />,
             onClick: () => console.log("Copy clicked"),
           },
           {
             key: "edit",
             label: "Edit",
-            icon: <Edit className="h-4 w-4" />,
+            icon: <Edit className="ds:h-4 ds:w-4" />,
             onClick: () => console.log("Edit clicked"),
           },
         ],
@@ -596,7 +596,7 @@ export const WithItemsProp: Story = {
       {
         key: "delete",
         label: "Delete",
-        icon: <Trash2 className="h-4 w-4" />,
+        icon: <Trash2 className="ds:h-4 ds:w-4" />,
         variant: "destructive" as const,
         onClick: () => console.log("Delete clicked"),
       },
@@ -606,7 +606,7 @@ export const WithItemsProp: Story = {
       <DropdownMenu
         trigger={
           <Button variant="outline">
-            <MoreHorizontal className="h-4 w-4" />
+            <MoreHorizontal className="ds:h-4 ds:w-4" />
           </Button>
         }
         items={menuItems}
@@ -738,13 +738,13 @@ export const WithDisabledItems: Story = {
       {
         key: "enabled-item",
         label: "Enabled Item",
-        icon: <User className="h-4 w-4" />,
+        icon: <User className="ds:h-4 ds:w-4" />,
         onClick: () => console.log("Enabled item clicked"),
       },
       {
         key: "disabled-item",
         label: "Disabled Item",
-        icon: <Settings className="h-4 w-4" />,
+        icon: <Settings className="ds:h-4 ds:w-4" />,
         disabled: true,
         onClick: () => console.log("This should not be called"),
       },
@@ -760,13 +760,13 @@ export const WithDisabledItems: Story = {
           {
             key: "copy",
             label: "Copy",
-            icon: <Copy className="h-4 w-4" />,
+            icon: <Copy className="ds:h-4 ds:w-4" />,
             onClick: () => console.log("Copy clicked"),
           },
           {
             key: "edit-disabled",
             label: "Edit (Disabled)",
-            icon: <Edit className="h-4 w-4" />,
+            icon: <Edit className="ds:h-4 ds:w-4" />,
             disabled: true,
             onClick: () => console.log("Edit disabled clicked"),
           },
@@ -808,7 +808,7 @@ export const WithDisabledItems: Story = {
       <DropdownMenu
         trigger={
           <Button variant="outline">
-            <MoreHorizontal className="h-4 w-4" />
+            <MoreHorizontal className="ds:h-4 ds:w-4" />
           </Button>
         }
         items={menuItems}
@@ -823,29 +823,29 @@ export const ContextMenu: Story = {
     <DropdownMenu
       contextMenu={true}
       trigger={
-        <div className="size-64 border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center">
-          <p className="text-gray-500">Right-click anywhere in this area</p>
+        <div className="ds:size-64 ds:border-2 ds:border-dashed ds:border-gray-300 ds:rounded-lg ds:flex ds:items-center ds:justify-center">
+          <p className="ds:text-gray-500">Right-click anywhere in this area</p>
         </div>
       }
-      triggerClassName="hover:bg-red-100"
+      triggerClassName="ds:hover:bg-red-100"
       items={[
         {
           key: "view",
           label: "View",
-          icon: <Info className="h-4 w-4" />,
+          icon: <Info className="ds:h-4 ds:w-4" />,
           onClick: () => console.log("View clicked"),
         },
         {
           key: "edit",
           label: "Edit",
-          icon: <Edit className="h-4 w-4" />,
+          icon: <Edit className="ds:h-4 ds:w-4" />,
           onClick: () => console.log("Edit clicked"),
         },
         { key: "separator", type: "separator" as const },
         {
           key: "delete",
           label: "Delete",
-          icon: <Trash2 className="h-4 w-4" />,
+          icon: <Trash2 className="ds:h-4 ds:w-4" />,
           variant: "destructive" as const,
           onClick: () => console.log("Delete clicked"),
         },

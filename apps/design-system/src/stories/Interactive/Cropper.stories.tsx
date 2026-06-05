@@ -133,7 +133,7 @@ const meta: Meta<CropperProps> = {
   },
   decorators: [
     (Story) => (
-      <div className="w-[600px] min-h-[300px] border border-gray-200 rounded-lg overflow-hidden">
+      <div className="ds:w-[600px] ds:min-h-[300px] ds:border ds:border-gray-200 ds:rounded-lg ds:overflow-hidden">
         <Story />
       </div>
     ),
@@ -148,7 +148,7 @@ const sampleImage =
 
 export const Default: Story = {
   render: (args) => (
-    <Cropper {...args} className="min-h-[300px] w-full">
+    <Cropper {...args} className="ds:min-h-[300px] ds:w-full">
       <CropperImage src={sampleImage} alt="Sample landscape" />
       <CropperArea />
     </Cropper>
@@ -221,27 +221,27 @@ export const ControlledState = () => {
   }, [croppedImage]);
 
   return (
-    <div className="flex flex-col gap-4 p-4">
-      <div className="flex items-center gap-4">
-        <div className="flex flex-col gap-2">
-          <span className="text-sm font-medium">
+    <div className="ds:flex ds:flex-col ds:gap-4 ds:p-4">
+      <div className="ds:flex ds:items-center ds:gap-4">
+        <div className="ds:flex ds:flex-col ds:gap-2">
+          <span className="ds:text-sm ds:font-medium">
             {croppedImage ? "Cropped Image" : "Original Image"}
           </span>
           <img
             src={croppedImage || sampleImage}
             alt="Sample landscape"
-            className={"size-32"}
+            className={"ds:size-32"}
           />
         </div>
         {croppedImage && (
           <Button onClick={handleDownload} size="sm">
-            <DownloadIcon className="size-4 mr-2" />
+            <DownloadIcon className="ds:size-4 ds:mr-2" />
             Download
           </Button>
         )}
       </div>
-      <div className="grid grid-cols-2 gap-4">
-        <div className="flex items-center gap-2">
+      <div className="ds:grid ds:grid-cols-2 ds:gap-4">
+        <div className="ds:flex ds:items-center ds:gap-2">
           <label htmlFor={`${id}-shape`}>Shape:</label>
           <Select
             value={shape}
@@ -252,7 +252,7 @@ export const ControlledState = () => {
             ]}
           />
         </div>
-        <div className="flex items-center gap-2">
+        <div className="ds:flex ds:items-center ds:gap-2">
           <label htmlFor={`${id}-object-fit`}>Object Fit:</label>
           <Select
             value={objectFit}
@@ -265,7 +265,7 @@ export const ControlledState = () => {
             ]}
           />
         </div>
-        <div className="flex items-center gap-2">
+        <div className="ds:flex ds:items-center ds:gap-2">
           <Switch
             id={`${id}-grid`}
             checked={withGrid}
@@ -273,7 +273,7 @@ export const ControlledState = () => {
           />
           <label htmlFor={`${id}-grid`}>Show Grid</label>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="ds:flex ds:items-center ds:gap-2">
           <Switch
             id={`${id}-overflow`}
             checked={allowOverflow}
@@ -294,7 +294,7 @@ export const ControlledState = () => {
         onCropChange={setCrop}
         onZoomChange={setZoom}
         onCropAreaChange={onCropAreaChange}
-        className="min-h-72 w-full"
+        className="ds:min-h-72 ds:w-full"
       >
         <CropperImage
           src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop"
@@ -304,8 +304,8 @@ export const ControlledState = () => {
         <CropperArea />
       </Cropper>
 
-      <div className="flex flex-col items-center gap-4 sm:flex-row">
-        <div className="flex w-full flex-col gap-2.5">
+      <div className="ds:flex ds:flex-col ds:items-center ds:gap-4 ds:sm:flex-row">
+        <div className="ds:flex ds:w-full ds:flex-col ds:gap-2.5">
           <label htmlFor={`${id}-zoom`}>Zoom: {zoom.toFixed(2)}</label>
           <Slider
             id={`${id}-zoom`}
@@ -316,7 +316,7 @@ export const ControlledState = () => {
             step={0.1}
           />
         </div>
-        <div className="flex w-full flex-col gap-2.5">
+        <div className="ds:flex ds:w-full ds:flex-col ds:gap-2.5">
           <label htmlFor={`${id}-rotation`}>
             Rotation: {rotation.toFixed(0)}°
           </label>
@@ -333,7 +333,7 @@ export const ControlledState = () => {
       <Button
         variant="outline"
         size="icon"
-        className="absolute top-3 right-2 size-8"
+        className="ds:absolute ds:top-3 ds:right-2 ds:size-8"
         onClick={onCropReset}
       >
         <RotateCcwIcon />
@@ -372,17 +372,17 @@ export const CropperWithHook = () => {
   }, [croppedImage]);
 
   return (
-    <div className="flex flex-col gap-4 p-4">
-      <div className="flex items-center gap-4">
+    <div className="ds:flex ds:flex-col ds:gap-4 ds:p-4">
+      <div className="ds:flex ds:items-center ds:gap-4">
         {croppedImage && typeof croppedImage === "string" && (
-          <div className="flex flex-col gap-2">
-            <span className="text-sm font-medium">Cropped Image</span>
-            <img src={croppedImage} alt="Cropped result" className="size-32" />
+          <div className="ds:flex ds:flex-col ds:gap-2">
+            <span className="ds:text-sm ds:font-medium">Cropped Image</span>
+            <img src={croppedImage} alt="Cropped result" className="ds:size-32" />
           </div>
         )}
         {croppedImage && (
           <Button onClick={handleDownload} size="sm">
-            <DownloadIcon className="size-4 mr-2" />
+            <DownloadIcon className="ds:size-4 ds:mr-2" />
             Download
           </Button>
         )}
@@ -396,7 +396,7 @@ export const CropperWithHook = () => {
         onCropChange={setCrop}
         onZoomChange={setZoom}
         onCropAreaChange={handleCropAreaChange}
-        className="min-h-72 w-full"
+        className="ds:min-h-72 ds:w-full"
         shape="circle"
       >
         <CropperImage
@@ -407,8 +407,8 @@ export const CropperWithHook = () => {
         <CropperArea />
       </Cropper>
 
-      <div className="flex flex-col items-center gap-4 sm:flex-row">
-        <div className="flex w-full flex-col gap-2.5">
+      <div className="ds:flex ds:flex-col ds:items-center ds:gap-4 ds:sm:flex-row">
+        <div className="ds:flex ds:w-full ds:flex-col ds:gap-2.5">
           <label htmlFor={`${id}-zoom`}>Zoom: {zoom.toFixed(2)}</label>
           <Slider
             id={`${id}-zoom`}
@@ -419,7 +419,7 @@ export const CropperWithHook = () => {
             step={0.1}
           />
         </div>
-        <div className="flex w-full flex-col gap-2.5">
+        <div className="ds:flex ds:w-full ds:flex-col ds:gap-2.5">
           <label htmlFor={`${id}-rotation`}>
             Rotation: {rotation.toFixed(0)}°
           </label>
@@ -434,8 +434,8 @@ export const CropperWithHook = () => {
         </div>
       </div>
 
-      <Button variant="outline" onClick={reset} className="w-fit">
-        <RotateCcwIcon className="size-4 mr-2" />
+      <Button variant="outline" onClick={reset} className="ds:w-fit">
+        <RotateCcwIcon className="ds:size-4 ds:mr-2" />
         Reset
       </Button>
     </div>
@@ -475,20 +475,20 @@ export const CropperWithCropperTool = () => {
   }, []);
 
   return (
-    <div className="flex flex-col gap-4 p-4">
-      <div className="flex items-center gap-4">
+    <div className="ds:flex ds:flex-col ds:gap-4 ds:p-4">
+      <div className="ds:flex ds:items-center ds:gap-4">
         {croppedImage && (
           <>
-            <div className="flex flex-col gap-2">
-              <span className="text-sm font-medium">Cropped Avatar</span>
+            <div className="ds:flex ds:flex-col ds:gap-2">
+              <span className="ds:text-sm ds:font-medium">Cropped Avatar</span>
               <img
                 src={croppedImage}
                 alt="Cropped avatar"
-                className="size-32 rounded-full border-2 border-gray-200"
+                className="ds:size-32 ds:rounded-full ds:border-2 ds:border-gray-200"
               />
             </div>
             <Button onClick={handleDownload} size="sm">
-              <DownloadIcon className="size-4 mr-2" />
+              <DownloadIcon className="ds:size-4 ds:mr-2" />
               Download
             </Button>
           </>
@@ -509,12 +509,12 @@ export const CropperWithCropperTool = () => {
           quality: 0.95,
           type: "base64", // or 'blob'
         }}
-        className="min-h-72 w-full"
+        className="ds:min-h-72 ds:w-full"
         crossOrigin="anonymous"
       />
 
-      <div className="flex flex-col items-center gap-4 sm:flex-row">
-        <div className="flex w-full flex-col gap-2.5">
+      <div className="ds:flex ds:flex-col ds:items-center ds:gap-4 ds:sm:flex-row">
+        <div className="ds:flex ds:w-full ds:flex-col ds:gap-2.5">
           <label htmlFor={`${id}-zoom`}>Zoom: {zoom.toFixed(2)}</label>
           <Slider
             id={`${id}-zoom`}
@@ -525,7 +525,7 @@ export const CropperWithCropperTool = () => {
             step={0.1}
           />
         </div>
-        <div className="flex w-full flex-col gap-2.5">
+        <div className="ds:flex ds:w-full ds:flex-col ds:gap-2.5">
           <label htmlFor={`${id}-rotation`}>
             Rotation: {rotation.toFixed(0)}°
           </label>
@@ -540,8 +540,8 @@ export const CropperWithCropperTool = () => {
         </div>
       </div>
 
-      <Button variant="outline" onClick={handleReset} className="w-fit">
-        <RotateCcwIcon className="size-4 mr-2" />
+      <Button variant="outline" onClick={handleReset} className="ds:w-fit">
+        <RotateCcwIcon className="ds:size-4 ds:mr-2" />
         Reset
       </Button>
     </div>
@@ -618,24 +618,24 @@ export const CropperWithBlobOutput = () => {
   }, [croppedImage]);
 
   return (
-    <div className="flex flex-col gap-4 p-4">
-      <div className="flex items-center gap-4">
+    <div className="ds:flex ds:flex-col ds:gap-4 ds:p-4">
+      <div className="ds:flex ds:items-center ds:gap-4">
         {previewUrl && (
-          <div className="flex flex-col gap-2">
-            <span className="text-sm font-medium">
+          <div className="ds:flex ds:flex-col ds:gap-2">
+            <span className="ds:text-sm ds:font-medium">
               Cropped Image (from Blob)
             </span>
             <img
               src={previewUrl}
               alt="Cropped result"
-              className="w-32 h-auto"
+              className="ds:w-32 ds:h-auto"
             />
           </div>
         )}
         {croppedImage && (
-          <div className="flex gap-2">
+          <div className="ds:flex ds:gap-2">
             <Button onClick={handleDownload} size="sm">
-              <DownloadIcon className="size-4 mr-2" />
+              <DownloadIcon className="ds:size-4 ds:mr-2" />
               Download
             </Button>
             <Button onClick={handleUpload} size="sm" variant="outline">
@@ -653,7 +653,7 @@ export const CropperWithBlobOutput = () => {
         onCropChange={setCrop}
         onZoomChange={setZoom}
         onCropAreaChange={handleCropAreaChange}
-        className="min-h-72 w-full"
+        className="ds:min-h-72 ds:w-full"
         shape="rectangle"
       >
         <CropperImage
@@ -664,8 +664,8 @@ export const CropperWithBlobOutput = () => {
         <CropperArea />
       </Cropper>
 
-      <div className="flex flex-col items-center gap-4 sm:flex-row">
-        <div className="flex w-full flex-col gap-2.5">
+      <div className="ds:flex ds:flex-col ds:items-center ds:gap-4 ds:sm:flex-row">
+        <div className="ds:flex ds:w-full ds:flex-col ds:gap-2.5">
           <label htmlFor={`${id}-zoom`}>Zoom: {zoom.toFixed(2)}</label>
           <Slider
             id={`${id}-zoom`}
@@ -676,7 +676,7 @@ export const CropperWithBlobOutput = () => {
             step={0.1}
           />
         </div>
-        <div className="flex w-full flex-col gap-2.5">
+        <div className="ds:flex ds:w-full ds:flex-col ds:gap-2.5">
           <label htmlFor={`${id}-rotation`}>
             Rotation: {rotation.toFixed(0)}°
           </label>
@@ -691,8 +691,8 @@ export const CropperWithBlobOutput = () => {
         </div>
       </div>
 
-      <Button variant="outline" onClick={reset} className="w-fit">
-        <RotateCcwIcon className="size-4 mr-2" />
+      <Button variant="outline" onClick={reset} className="ds:w-fit">
+        <RotateCcwIcon className="ds:size-4 ds:mr-2" />
         Reset
       </Button>
     </div>

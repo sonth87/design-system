@@ -35,7 +35,7 @@ function Avatar({
     <AvatarPrimitive.Root
       data-slot="avatar"
       className={cn(
-        "relative flex shrink-0 rounded-full",
+        "ds:relative ds:flex ds:shrink-0 ds:rounded-full",
         avatarSize,
         className
       )}
@@ -51,7 +51,7 @@ function AvatarImage({
   return (
     <AvatarPrimitive.Image
       data-slot="avatar-image"
-      className={cn("aspect-square size-full", className)}
+      className={cn("ds:aspect-square ds:size-full", className)}
       {...props}
     />
   );
@@ -65,7 +65,7 @@ function AvatarFallback({
     <AvatarPrimitive.Fallback
       data-slot="avatar-fallback"
       className={cn(
-        "bg-muted flex size-full items-center justify-center rounded-full",
+        "ds:bg-muted ds:flex ds:size-full ds:items-center ds:justify-center ds:rounded-full",
         className
       )}
       {...props}

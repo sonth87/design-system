@@ -123,9 +123,9 @@ export const Default: Story = {
 export const Position = (args: TooltipProps) => {
   const content = (pos: string) => {
     return (
-      <div className="flex flex-col gap-2">
-        <h2 className="font-semibold flex items-center gap-2">
-          <Info className="size-4" /> {pos} Tooltip
+      <div className="ds:flex ds:flex-col ds:gap-2">
+        <h2 className="ds:font-semibold ds:flex ds:items-center ds:gap-2">
+          <Info className="ds:size-4" /> {pos} Tooltip
         </h2>
         <div>Additional content</div>
       </div>
@@ -133,27 +133,27 @@ export const Position = (args: TooltipProps) => {
   };
 
   return (
-    <div className="w-60 h-40 relative mx-auto [&_button]:absolute">
+    <div className="ds:w-60 ds:h-40 ds:relative ds:mx-auto ds:[&_button]:absolute">
       <Tooltip {...args} position="top" content={content("Top")}>
-        <Button variant="outline" className="top-0 left-1/2 -translate-x-1/2">
+        <Button variant="outline" className="ds:top-0 ds:left-1/2 ds:-translate-x-1/2">
           Top
         </Button>
       </Tooltip>
       <Tooltip {...args} position="right" content={content("Right")}>
-        <Button variant="outline" className="top-1/2 right-0 -translate-y-1/2">
+        <Button variant="outline" className="ds:top-1/2 ds:right-0 ds:-translate-y-1/2">
           Right
         </Button>
       </Tooltip>
       <Tooltip {...args} position="bottom" content={content("Bottom")}>
         <Button
           variant="outline"
-          className="bottom-0 left-1/2 -translate-x-1/2"
+          className="ds:bottom-0 ds:left-1/2 ds:-translate-x-1/2"
         >
           Bottom
         </Button>
       </Tooltip>
       <Tooltip {...args} position="left" content={content("Left")}>
-        <Button variant="outline" className="top-1/2 left-0 -translate-y-1/2">
+        <Button variant="outline" className="ds:top-1/2 ds:left-0 ds:-translate-y-1/2">
           Left
         </Button>
       </Tooltip>
@@ -168,7 +168,7 @@ export const CustomOffset: Story = {
   },
   render: (args) => (
     <Tooltip {...args}>
-      <span className="underline cursor-pointer">Hover for offset</span>
+      <span className="ds:underline ds:cursor-pointer">Hover for offset</span>
     </Tooltip>
   ),
 };
@@ -180,7 +180,7 @@ export const WithDelay: Story = {
   },
   render: (args) => (
     <Tooltip {...args}>
-      <span className="underline cursor-pointer">Hover with delay</span>
+      <span className="ds:underline ds:cursor-pointer">Hover with delay</span>
     </Tooltip>
   ),
 };

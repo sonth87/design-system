@@ -85,14 +85,14 @@ export const Default: Story = {
     grabCursor: true,
   },
   render: (args) => (
-    <div className="w-[600px]">
+    <div className="ds:w-[600px]">
       <Carousel {...args}>
         {images.map((src, index) => (
           <CarouselSlide key={index}>
             <img
               src={src}
               alt={`Slide ${index + 1}`}
-              className="w-full h-[400px] object-cover rounded-lg"
+              className="ds:w-full ds:h-[400px] ds:object-cover ds:rounded-lg"
             />
           </CarouselSlide>
         ))}
@@ -103,14 +103,14 @@ export const Default: Story = {
 
 export const WithNavigation: Story = {
   render: () => (
-    <div className="w-[600px]">
+    <div className="ds:w-[600px]">
       <Carousel navigation pagination>
         {images.map((src, index) => (
           <CarouselSlide key={index}>
             <img
               src={src}
               alt={`Slide ${index + 1}`}
-              className="w-full h-[400px] object-cover rounded-lg"
+              className="ds:w-full ds:h-[400px] ds:object-cover ds:rounded-lg"
             />
           </CarouselSlide>
         ))}
@@ -121,7 +121,7 @@ export const WithNavigation: Story = {
 
 export const WithPagination: Story = {
   render: () => (
-    <div className="w-[600px]">
+    <div className="ds:w-[600px]">
       <Carousel
         navigation
         pagination={{
@@ -136,7 +136,7 @@ export const WithPagination: Story = {
             <img
               src={src}
               alt={`Slide ${index + 1}`}
-              className="w-full h-[400px] object-cover rounded-lg"
+              className="ds:w-full ds:h-[400px] ds:object-cover ds:rounded-lg"
             />
           </CarouselSlide>
         ))}
@@ -147,7 +147,7 @@ export const WithPagination: Story = {
 
 export const PaginationOutside: Story = {
   render: () => (
-    <div className="w-[600px]">
+    <div className="ds:w-[600px]">
       <Carousel
         navigation
         pagination={{
@@ -162,7 +162,7 @@ export const PaginationOutside: Story = {
             <img
               src={src}
               alt={`Slide ${index + 1}`}
-              className="w-full h-[400px] object-cover rounded-lg"
+              className="ds:w-full ds:h-[400px] ds:object-cover ds:rounded-lg"
             />
           </CarouselSlide>
         ))}
@@ -173,7 +173,7 @@ export const PaginationOutside: Story = {
 
 export const NavigationOutside: Story = {
   render: () => (
-    <div className="w-[700px]">
+    <div className="ds:w-[700px]">
       <Carousel
         navigation={{
           enabled: true,
@@ -186,7 +186,7 @@ export const NavigationOutside: Story = {
             <img
               src={src}
               alt={`Slide ${index + 1}`}
-              className="w-full h-[400px] object-cover rounded-lg"
+              className="ds:w-full ds:h-[400px] ds:object-cover ds:rounded-lg"
             />
           </CarouselSlide>
         ))}
@@ -197,7 +197,7 @@ export const NavigationOutside: Story = {
 
 export const PaginationFraction: Story = {
   render: () => (
-    <div className="w-[600px]">
+    <div className="ds:w-[600px]">
       <Carousel
         navigation
         pagination={{
@@ -210,7 +210,7 @@ export const PaginationFraction: Story = {
             <img
               src={src}
               alt={`Slide ${index + 1}`}
-              className="w-full h-[400px] object-cover rounded-lg"
+              className="ds:w-full ds:h-[400px] ds:object-cover ds:rounded-lg"
             />
           </CarouselSlide>
         ))}
@@ -221,7 +221,7 @@ export const PaginationFraction: Story = {
 
 export const PaginationProgressbar: Story = {
   render: () => (
-    <div className="w-[600px]">
+    <div className="ds:w-[600px]">
       <Carousel
         navigation
         pagination={{
@@ -235,7 +235,7 @@ export const PaginationProgressbar: Story = {
             <img
               src={src}
               alt={`Slide ${index + 1}`}
-              className="w-full h-[400px] object-cover rounded-lg"
+              className="ds:w-full ds:h-[400px] ds:object-cover ds:rounded-lg"
             />
           </CarouselSlide>
         ))}
@@ -246,7 +246,7 @@ export const PaginationProgressbar: Story = {
 
 export const PaginationScrollbar: Story = {
   render: () => (
-    <div className="w-[600px]">
+    <div className="ds:w-[600px]">
       <Carousel
         navigation
         pagination={{
@@ -260,7 +260,7 @@ export const PaginationScrollbar: Story = {
             <img
               src={src}
               alt={`Slide ${index + 1}`}
-              className="w-full h-[400px] object-cover rounded-lg"
+              className="ds:w-full ds:h-[400px] ds:object-cover ds:rounded-lg"
             />
           </CarouselSlide>
         ))}
@@ -271,7 +271,7 @@ export const PaginationScrollbar: Story = {
 
 export const WithAutoplay: Story = {
   render: () => (
-    <div className="w-[600px]">
+    <div className="ds:w-[600px]">
       <Carousel
         navigation
         pagination
@@ -286,7 +286,7 @@ export const WithAutoplay: Story = {
             <img
               src={src}
               alt={`Slide ${index + 1}`}
-              className="w-full h-[400px] object-cover rounded-lg"
+              className="ds:w-full ds:h-[400px] ds:object-cover ds:rounded-lg"
             />
           </CarouselSlide>
         ))}
@@ -297,14 +297,14 @@ export const WithAutoplay: Story = {
 
 export const Loop: Story = {
   render: () => (
-    <div className="w-[600px]">
+    <div className="ds:w-[600px]">
       <Carousel navigation pagination loop>
         {images.map((src, index) => (
           <CarouselSlide key={index}>
             <img
               src={src}
               alt={`Slide ${index + 1}`}
-              className="w-full h-[400px] object-cover rounded-lg"
+              className="ds:w-full ds:h-[400px] ds:object-cover ds:rounded-lg"
             />
           </CarouselSlide>
         ))}
@@ -315,14 +315,14 @@ export const Loop: Story = {
 
 export const EffectFade: Story = {
   render: () => (
-    <div className="w-[600px]">
+    <div className="ds:w-[600px]">
       <Carousel navigation pagination effect="fade" speed={600}>
         {images.map((src, index) => (
           <CarouselSlide key={index}>
             <img
               src={src}
               alt={`Slide ${index + 1}`}
-              className="w-full h-[400px] object-cover rounded-lg"
+              className="ds:w-full ds:h-[400px] ds:object-cover ds:rounded-lg"
             />
           </CarouselSlide>
         ))}
@@ -333,14 +333,14 @@ export const EffectFade: Story = {
 
 export const EffectCube: Story = {
   render: () => (
-    <div className="w-[600px]">
+    <div className="ds:w-[600px]">
       <Carousel navigation pagination effect="cube" speed={800}>
         {images.map((src, index) => (
           <CarouselSlide key={index}>
             <img
               src={src}
               alt={`Slide ${index + 1}`}
-              className="w-full h-[400px] object-cover rounded-lg"
+              className="ds:w-full ds:h-[400px] ds:object-cover ds:rounded-lg"
             />
           </CarouselSlide>
         ))}
@@ -351,7 +351,7 @@ export const EffectCube: Story = {
 
 export const EffectCoverflow: Story = {
   render: () => (
-    <div className="w-[800px]">
+    <div className="ds:w-[800px]">
       <Carousel
         navigation
         pagination
@@ -365,7 +365,7 @@ export const EffectCoverflow: Story = {
             <img
               src={src}
               alt={`Slide ${index + 1}`}
-              className="w-full h-[400px] object-cover rounded-lg"
+              className="ds:w-full ds:h-[400px] ds:object-cover ds:rounded-lg"
             />
           </CarouselSlide>
         ))}
@@ -376,14 +376,14 @@ export const EffectCoverflow: Story = {
 
 export const EffectFlip: Story = {
   render: () => (
-    <div className="w-[600px]">
+    <div className="ds:w-[600px]">
       <Carousel navigation pagination effect="flip" speed={800}>
         {images.map((src, index) => (
           <CarouselSlide key={index}>
             <img
               src={src}
               alt={`Slide ${index + 1}`}
-              className="w-full h-[400px] object-cover rounded-lg"
+              className="ds:w-full ds:h-[400px] ds:object-cover ds:rounded-lg"
             />
           </CarouselSlide>
         ))}
@@ -394,14 +394,14 @@ export const EffectFlip: Story = {
 
 export const EffectCards: Story = {
   render: () => (
-    <div className="w-[600px]">
+    <div className="ds:w-[600px]">
       <Carousel navigation pagination effect="cards" speed={500}>
         {images.map((src, index) => (
           <CarouselSlide key={index}>
             <img
               src={src}
               alt={`Slide ${index + 1}`}
-              className="w-full h-[400px] object-cover rounded-lg"
+              className="ds:w-full ds:h-[400px] ds:object-cover ds:rounded-lg"
             />
           </CarouselSlide>
         ))}
@@ -412,14 +412,14 @@ export const EffectCards: Story = {
 
 export const MultipleSlides: Story = {
   render: () => (
-    <div className="w-[800px]">
+    <div className="ds:w-[800px]">
       <Carousel navigation pagination slidesPerView={3} spaceBetween={20} loop>
         {images.map((src, index) => (
           <CarouselSlide key={index}>
             <img
               src={src}
               alt={`Slide ${index + 1}`}
-              className="w-full h-[300px] object-cover rounded-lg"
+              className="ds:w-full ds:h-[300px] ds:object-cover ds:rounded-lg"
             />
           </CarouselSlide>
         ))}
@@ -430,7 +430,7 @@ export const MultipleSlides: Story = {
 
 export const CenteredSlides: Story = {
   render: () => (
-    <div className="w-[800px]">
+    <div className="ds:w-[800px]">
       <Carousel
         navigation
         pagination
@@ -444,7 +444,7 @@ export const CenteredSlides: Story = {
             <img
               src={src}
               alt={`Slide ${index + 1}`}
-              className="w-full h-[350px] object-cover rounded-lg"
+              className="ds:w-full ds:h-[350px] ds:object-cover ds:rounded-lg"
             />
           </CarouselSlide>
         ))}
@@ -455,20 +455,20 @@ export const CenteredSlides: Story = {
 
 export const Vertical: Story = {
   render: () => (
-    <div className="h-[500px]">
+    <div className="ds:h-[500px]">
       <Carousel
         navigation
         pagination
         direction="vertical"
         slidesPerView={1}
-        className="h-full w-full"
+        className="ds:h-full ds:w-full"
       >
         {images.slice(0, 10).map((src, index) => (
           <CarouselSlide key={index}>
             <img
               src={src}
               alt={`Slide ${index + 1}`}
-              className="w-full h-full object-cover rounded-xl"
+              className="ds:w-full ds:h-full ds:object-cover ds:rounded-xl"
             />
           </CarouselSlide>
         ))}
@@ -479,8 +479,8 @@ export const Vertical: Story = {
 
 export const KeyboardNavigation: Story = {
   render: () => (
-    <div className="w-[600px]">
-      <div className="mb-4 text-sm text-muted-foreground text-center">
+    <div className="ds:w-[600px]">
+      <div className="ds:mb-4 ds:text-sm ds:text-muted-foreground ds:text-center">
         Sử dụng phím mũi tên ← → để điều hướng
       </div>
       <Carousel navigation pagination keyboard>
@@ -489,7 +489,7 @@ export const KeyboardNavigation: Story = {
             <img
               src={src}
               alt={`Slide ${index + 1}`}
-              className="w-full h-[400px] object-cover rounded-lg"
+              className="ds:w-full ds:h-[400px] ds:object-cover ds:rounded-lg"
             />
           </CarouselSlide>
         ))}
@@ -500,8 +500,8 @@ export const KeyboardNavigation: Story = {
 
 export const MousewheelNavigation: Story = {
   render: () => (
-    <div className="w-[600px]">
-      <div className="mb-4 text-sm text-muted-foreground text-center">
+    <div className="ds:w-[600px]">
+      <div className="ds:mb-4 ds:text-sm ds:text-muted-foreground ds:text-center">
         Cuộn chuột để chuyển slide
       </div>
       <Carousel navigation pagination mousewheel>
@@ -510,7 +510,7 @@ export const MousewheelNavigation: Story = {
             <img
               src={src}
               alt={`Slide ${index + 1}`}
-              className="w-full h-[400px] object-cover rounded-lg"
+              className="ds:w-full ds:h-[400px] ds:object-cover ds:rounded-lg"
             />
           </CarouselSlide>
         ))}
@@ -521,7 +521,7 @@ export const MousewheelNavigation: Story = {
 
 export const WithContent: Story = {
   render: () => (
-    <div className="w-[700px]">
+    <div className="ds:w-[700px]">
       <Carousel
         navigation
         pagination
@@ -532,18 +532,18 @@ export const WithContent: Story = {
       >
         {images.map((src, index) => (
           <CarouselSlide key={index}>
-            <div className="relative w-full h-[450px]">
+            <div className="ds:relative ds:w-full ds:h-[450px]">
               <img
                 src={src}
                 alt={`Slide ${index + 1}`}
-                className="w-full h-full object-cover rounded-lg"
+                className="ds:w-full ds:h-full ds:object-cover ds:rounded-lg"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-lg" />
-              <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
-                <h3 className="text-2xl font-bold mb-2">
+              <div className="ds:absolute ds:inset-0 ds:bg-gradient-to-t ds:from-black/60 ds:to-transparent ds:rounded-lg" />
+              <div className="ds:absolute ds:bottom-0 ds:left-0 ds:right-0 ds:p-8 ds:text-white">
+                <h3 className="ds:text-2xl ds:font-bold ds:mb-2">
                   Hình ảnh {index + 1}
                 </h3>
-                <p className="text-sm opacity-90">
+                <p className="ds:text-sm ds:opacity-90">
                   Mô tả chi tiết về hình ảnh này, bao gồm các thông tin quan
                   trọng và hấp dẫn để thu hút người xem.
                 </p>
@@ -558,7 +558,7 @@ export const WithContent: Story = {
 
 export const Gallery: Story = {
   render: () => (
-    <div className="w-[900px]">
+    <div className="ds:w-[900px]">
       <Carousel
         navigation
         pagination={{
@@ -573,11 +573,11 @@ export const Gallery: Story = {
       >
         {images.map((src, index) => (
           <CarouselSlide key={index}>
-            <div className="relative w-full h-[500px] bg-muted rounded-lg overflow-hidden">
+            <div className="ds:relative ds:w-full ds:h-[500px] ds:bg-muted ds:rounded-lg ds:overflow-hidden">
               <img
                 src={src}
                 alt={`Gallery ${index + 1}`}
-                className="w-full h-full object-contain"
+                className="ds:w-full ds:h-full ds:object-contain"
               />
             </div>
           </CarouselSlide>
@@ -589,7 +589,7 @@ export const Gallery: Story = {
 
 export const ProductSlider: Story = {
   render: () => (
-    <div className="w-[800px]">
+    <div className="ds:w-[800px]">
       <Carousel
         navigation
         pagination={{
@@ -620,23 +620,23 @@ export const ProductSlider: Story = {
       >
         {[...images, ...images].map((src, index) => (
           <CarouselSlide key={index}>
-            <div className="bg-muted rounded-lg p-4">
+            <div className="ds:bg-muted ds:rounded-lg ds:p-4">
               <img
                 src={src}
                 alt={`Product ${index + 1}`}
-                className="w-full h-[200px] object-cover rounded-md mb-3"
+                className="ds:w-full ds:h-[200px] ds:object-cover ds:rounded-md ds:mb-3"
               />
-              <h4 className="font-semibold text-sm mb-1">
+              <h4 className="ds:font-semibold ds:text-sm ds:mb-1">
                 Sản phẩm {index + 1}
               </h4>
-              <p className="text-xs text-muted-foreground mb-2">
+              <p className="ds:text-xs ds:text-muted-foreground ds:mb-2">
                 Mô tả ngắn gọn
               </p>
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-bold text-primary">
+              <div className="ds:flex ds:items-center ds:justify-between">
+                <span className="ds:text-sm ds:font-bold ds:text-primary">
                   {(Math.random() * 1000 + 100).toFixed(0)}$
                 </span>
-                <button className="text-xs px-3 py-1 bg-primary text-primary-foreground rounded-md hover:opacity-90">
+                <button className="ds:text-xs ds:px-3 ds:py-1 ds:bg-primary ds:text-primary-foreground ds:rounded-md ds:hover:opacity-90">
                   Mua
                 </button>
               </div>
@@ -663,8 +663,8 @@ export const WithImageViewer: Story = {
     allowTouchMove: false, // Disable drag to test click
   },
   render: (args) => (
-    <div className="w-[600px]">
-      <p className="mb-4 text-sm text-muted-foreground text-center">
+    <div className="ds:w-[600px]">
+      <p className="ds:mb-4 ds:text-sm ds:text-muted-foreground ds:text-center">
         Click vào ảnh để xem ảnh với ImageViewer
       </p>
       <Carousel {...args}>
@@ -673,7 +673,7 @@ export const WithImageViewer: Story = {
             <img
               src={src}
               alt={`Slide ${index + 1}`}
-              className="w-full h-[400px] object-cover rounded-lg"
+              className="ds:w-full ds:h-[400px] ds:object-cover ds:rounded-lg"
             />
           </CarouselSlide>
         ))}

@@ -24,7 +24,7 @@ function ShimmeringText({
 }: ShimmeringTextProps) {
   return (
     <motion.span
-      className={cn("relative inline-block [perspective:500px]", className)}
+      className={cn("ds:relative ds:inline-block ds:[perspective:500px]", className)}
       style={
         {
           "--shimmering-color": shimmeringColor,
@@ -37,7 +37,7 @@ function ShimmeringText({
       {text?.split("")?.map((char, i) => (
         <motion.span
           key={i}
-          className="inline-block whitespace-pre [transform-style:preserve-3d]"
+          className="ds:inline-block ds:whitespace-pre ds:[transform-style:preserve-3d]"
           initial={{
             ...(wave
               ? {

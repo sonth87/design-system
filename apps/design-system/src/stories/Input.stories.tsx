@@ -203,7 +203,7 @@ export default meta;
 export const Default = (args: InputProps) => <Input {...args} />;
 
 export const WithLabel = (args: InputProps) => (
-  <div className="flex flex-col gap-4 w-80">
+  <div className="ds:flex ds:flex-col ds:gap-4 ds:w-80">
     <Input
       {...args}
       label="Label normal"
@@ -232,7 +232,7 @@ export const WithLabel = (args: InputProps) => (
 );
 
 export const WithHelperText = (args: InputProps) => (
-  <div className="w-80">
+  <div className="ds:w-80">
     <Input
       {...args}
       label="Username"
@@ -243,7 +243,7 @@ export const WithHelperText = (args: InputProps) => (
 );
 
 export const WithMask = (args: InputProps) => (
-  <div className="flex flex-col gap-4 w-80">
+  <div className="ds:flex ds:flex-col ds:gap-4 ds:w-80">
     <Input
       {...args}
       mask="datetime"
@@ -268,7 +268,7 @@ export const WithMask = (args: InputProps) => (
 );
 
 export const WithMaxLengthAndCharCount = (args: InputProps) => (
-  <div className="w-80">
+  <div className="ds:w-80">
     <Input
       {...args}
       label="Full Name"
@@ -281,7 +281,7 @@ export const WithMaxLengthAndCharCount = (args: InputProps) => (
 );
 
 export const WithInfo = (args: InputProps) => (
-  <div className="w-80 flex flex-col gap-4">
+  <div className="ds:w-80 ds:flex ds:flex-col ds:gap-4">
     <Input
       {...args}
       label="Email"
@@ -300,7 +300,7 @@ export const WithInfo = (args: InputProps) => (
 );
 
 export const HelperTextStates = () => (
-  <div className="flex flex-col gap-4 w-80">
+  <div className="ds:flex ds:flex-col ds:gap-4 ds:w-80">
     <Input
       label="Default Helper"
       placeholder="Enter text"
@@ -331,7 +331,7 @@ export const HelperTextStates = () => (
 );
 
 export const Disabled = (args: InputProps) => (
-  <div className="w-80">
+  <div className="ds:w-80">
     <Input
       {...args}
       label="Disabled Input"
@@ -343,7 +343,7 @@ export const Disabled = (args: InputProps) => (
 );
 
 export const Types = () => (
-  <div className="flex flex-col gap-4 w-80">
+  <div className="ds:flex ds:flex-col ds:gap-4 ds:w-80">
     <Input label="Text" type="text" placeholder="Enter text" />
     <Input label="Email" type="email" placeholder="Enter email" />
     <Input label="Password" type="password" placeholder="Enter password" />
@@ -356,7 +356,7 @@ export const Types = () => (
 
 export const WithIcons = () => {
   return (
-    <div className="flex flex-col gap-4 w-80">
+    <div className="ds:flex ds:flex-col ds:gap-4 ds:w-80">
       <Input
         label="Email"
         type="email"
@@ -398,7 +398,7 @@ export const WithIcons = () => {
 };
 
 export const IconsWithSizes = () => (
-  <div className="flex flex-col gap-4 w-80">
+  <div className="ds:flex ds:flex-col ds:gap-4 ds:w-80">
     <Input
       label="Extra Small with icon"
       placeholder="XS input"
@@ -433,7 +433,7 @@ export const IconsWithSizes = () => (
 );
 
 export const IconsWithBuiltInFeatures = () => (
-  <div className="flex flex-col gap-4 w-80">
+  <div className="ds:flex ds:flex-col ds:gap-4 ds:w-80">
     <Input
       label="Email with prefix icon and clearable"
       type="email"
@@ -487,7 +487,7 @@ export const IconsWithBuiltInFeatures = () => (
 );
 
 export const Sizes = () => (
-  <div className="flex flex-col gap-4 w-80">
+  <div className="ds:flex ds:flex-col ds:gap-4 ds:w-80">
     <Input label="Extra Small" placeholder="XS input" size="xs" />
     <Input label="Small" placeholder="Small input" size="sm" />
     <Input label="Default" placeholder="Default input" size="normal" />
@@ -497,13 +497,13 @@ export const Sizes = () => (
 );
 
 export const FileUpload = () => (
-  <div className="w-80">
+  <div className="ds:w-80">
     <Input label="Upload File" type="file" />
   </div>
 );
 
 export const FloatLabel = () => (
-  <div className="flex flex-col gap-4 w-80">
+  <div className="ds:flex ds:flex-col ds:gap-4 ds:w-80">
     <Input label="Email Address" type="email" isFloatLabel size="lg" />
     <Input
       label="Full Name"
@@ -529,7 +529,7 @@ export const FloatLabel = () => (
 );
 
 export const Clearable = () => (
-  <div className="flex flex-col gap-4 w-80">
+  <div className="ds:flex ds:flex-col ds:gap-4 ds:w-80">
     <Input
       label="Search"
       placeholder="Type to search..."

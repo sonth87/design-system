@@ -164,7 +164,7 @@ export const Default = (args: CheckboxProps) => {
 
 export const CheckedType = (args: CheckboxProps) => {
   return (
-    <div className="flex flex-row gap-4">
+    <div className="ds:flex ds:flex-row ds:gap-4">
       <Checkbox {...args} checked={false} label="Unchecked" />
       <Checkbox {...args} checked label="Checked" />
       <Checkbox {...args} checked="indeterminate" label="Indeterminate" />
@@ -174,7 +174,7 @@ export const CheckedType = (args: CheckboxProps) => {
 
 export const Sizes = (args: CheckboxProps) => {
   return (
-    <div className="flex flex-row gap-4 items-center">
+    <div className="ds:flex ds:flex-row ds:gap-4 ds:items-center">
       <Checkbox {...args} size="sm" checked />
       <Checkbox {...args} size="default" checked />
       <Checkbox {...args} size="lg" checked />
@@ -184,7 +184,7 @@ export const Sizes = (args: CheckboxProps) => {
 
 export const WithLabel = (args: CheckboxProps) => {
   return (
-    <div className="flex flex-col gap-4">
+    <div className="ds:flex ds:flex-col ds:gap-4">
       <Checkbox {...args} label="Checkbox Label" />
       <Checkbox
         {...args}
@@ -196,8 +196,8 @@ export const WithLabel = (args: CheckboxProps) => {
 
 export const Colors = (args: CheckboxProps) => {
   return (
-    <div className="flex flex-col gap-4">
-      <div className="flex flex-row gap-4">
+    <div className="ds:flex ds:flex-col ds:gap-4">
+      <div className="ds:flex ds:flex-row ds:gap-4">
         Default colors:
         <Checkbox {...args} color="primary" checked />
         <Checkbox {...args} color="secondary" checked />
@@ -207,32 +207,32 @@ export const Colors = (args: CheckboxProps) => {
         <Checkbox {...args} color="error" checked />
         <Checkbox {...args} color="warning" checked />
       </div>
-      <div className="flex flex-row gap-4">
+      <div className="ds:flex ds:flex-row ds:gap-4">
         Custom colors:
         <Checkbox
           {...args}
           checked
-          className="data-[state=checked]:border-blue-600 data-[state=checked]:bg-pink-400 hover:border-blue-200 hover:bg-pink-200"
+          className="ds:data-[state=checked]:border-blue-600 ds:data-[state=checked]:bg-pink-400 ds:hover:border-blue-200 ds:hover:bg-pink-200"
         />
         <Checkbox
           {...args}
           checked
-          className="data-[state=checked]:border-purple-500 data-[state=checked]:bg-purple-500"
+          className="ds:data-[state=checked]:border-purple-500 ds:data-[state=checked]:bg-purple-500"
         />
         <Checkbox
           {...args}
           checked
-          className="data-[state=checked]:border-yellow-500 data-[state=checked]:bg-yellow-500"
+          className="ds:data-[state=checked]:border-yellow-500 ds:data-[state=checked]:bg-yellow-500"
         />
         <Checkbox
           {...args}
           checked
-          className="data-[state=checked]:border-[#00d9b9] data-[state=checked]:bg-[#00d9b9] [&_svg]:text-red-500"
+          className="ds:data-[state=checked]:border-[#00d9b9] ds:data-[state=checked]:bg-[#00d9b9] ds:[&_svg]:text-red-500"
         />
         <Checkbox
           {...args}
           checked
-          className="data-[state=checked]:border-blue-600 data-[state=checked]:bg-transparent [&_svg]:text-purple-500"
+          className="ds:data-[state=checked]:border-blue-600 ds:data-[state=checked]:bg-transparent ds:[&_svg]:text-purple-500"
         />
       </div>
     </div>
@@ -241,19 +241,19 @@ export const Colors = (args: CheckboxProps) => {
 
 export const CustomIcons = (args: CheckboxProps) => {
   return (
-    <div className="flex flex-row gap-4">
+    <div className="ds:flex ds:flex-row ds:gap-4">
       <Checkbox {...args} color="primary" icon={<Heart />} />
       <Checkbox {...args} color="success" icon={<Star />} />
       <Checkbox
         {...args}
         icon={
-          <Angry className="stroke-1 size-8 group-data-[state=checked]:stroke-white group-data-[state=checked]:fill-red-500" />
+          <Angry className="ds:stroke-1 ds:size-8 ds:group-data-[state=checked]:stroke-white ds:group-data-[state=checked]:fill-red-500" />
         }
       />
       <Checkbox
         {...args}
         icon={
-          <Star className="stroke-1 size-10 group-data-[state=checked]:stroke-fuchsia-500 group-data-[state=checked]:fill-fuchsia-500" />
+          <Star className="ds:stroke-1 ds:size-10 ds:group-data-[state=checked]:stroke-fuchsia-500 ds:group-data-[state=checked]:fill-fuchsia-500" />
         }
       />
     </div>
@@ -283,8 +283,8 @@ export const SelectAllExample = (args: CheckboxProps) => {
     };
 
   return (
-    <div className="space-y-4">
-      <div className="flex items-center space-x-2">
+    <div className="ds:space-y-4">
+      <div className="ds:flex ds:items-center ds:space-x-2">
         <Checkbox
           {...args}
           checked={masterChecked}
@@ -292,9 +292,9 @@ export const SelectAllExample = (args: CheckboxProps) => {
           label="Select All"
         />
       </div>
-      <div className="ml-6 space-y-2">
+      <div className="ds:ml-6 ds:space-y-2">
         {items.map((checked, index) => (
-          <div key={index} className="flex items-center space-x-2">
+          <div key={index} className="ds:flex ds:items-center ds:space-x-2">
             <Checkbox
               {...args}
               checked={checked}
@@ -310,13 +310,13 @@ export const SelectAllExample = (args: CheckboxProps) => {
 
 export const CustomLabel = (args: CheckboxProps) => {
   return (
-    <div className="flex flex-col gap-4">
+    <div className="ds:flex ds:flex-col ds:gap-4">
       <Checkbox
         {...args}
         label={
           <span>
             I agree to the{" "}
-            <a href="#" className="text-primary underline">
+            <a href="#" className="ds:text-primary ds:underline">
               Terms and Conditions
             </a>
           </span>
@@ -324,17 +324,17 @@ export const CustomLabel = (args: CheckboxProps) => {
         checked
       />
 
-      <label className="hover:bg-accent/50 flex items-start gap-3 rounded-lg border p-3 has-[[aria-checked=true]]:border-blue-600 has-[[aria-checked=true]]:bg-blue-50 dark:has-[[aria-checked=true]]:border-blue-900 dark:has-[[aria-checked=true]]:bg-blue-950">
+      <label className="ds:hover:bg-accent/50 ds:flex ds:items-start ds:gap-3 ds:rounded-lg ds:border ds:p-3 ds:has-[[aria-checked=true]]:border-blue-600 ds:has-[[aria-checked=true]]:bg-blue-50 ds:dark:has-[[aria-checked=true]]:border-blue-900 ds:dark:has-[[aria-checked=true]]:bg-blue-950">
         <Checkbox
           id="toggle-2"
           defaultChecked
-          className="data-[state=checked]:border-blue-600 data-[state=checked]:bg-blue-600 data-[state=checked]:text-white dark:data-[state=checked]:border-blue-700 dark:data-[state=checked]:bg-blue-700 hover:border-blue-600 dark:hover:border-blue-700"
+          className="ds:data-[state=checked]:border-blue-600 ds:data-[state=checked]:bg-blue-600 ds:data-[state=checked]:text-white ds:dark:data-[state=checked]:border-blue-700 ds:dark:data-[state=checked]:bg-blue-700 ds:hover:border-blue-600 ds:dark:hover:border-blue-700"
         />
-        <div className="grid gap-1.5 font-normal">
-          <p className="text-sm leading-none font-medium">
+        <div className="ds:grid ds:gap-1.5 ds:font-normal">
+          <p className="ds:text-sm ds:leading-none ds:font-medium">
             Enable notifications
           </p>
-          <p className="text-muted-foreground text-sm">
+          <p className="ds:text-muted-foreground ds:text-sm">
             You can enable or disable notifications at any time.
           </p>
         </div>

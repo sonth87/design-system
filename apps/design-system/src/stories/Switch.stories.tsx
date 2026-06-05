@@ -129,9 +129,9 @@ const VariantsComponent = (args: SwitchProps) => {
   const [checked4, setChecked4] = useState(false);
 
   return (
-    <div className="flex flex-col gap-6">
-      <div className="flex items-center gap-4">
-        <span className="min-w-20 text-sm font-medium">Default:</span>
+    <div className="ds:flex ds:flex-col ds:gap-6">
+      <div className="ds:flex ds:items-center ds:gap-4">
+        <span className="ds:min-w-20 ds:text-sm ds:font-medium">Default:</span>
         <Switch
           {...args}
           variant="default"
@@ -139,8 +139,8 @@ const VariantsComponent = (args: SwitchProps) => {
           onCheckedChange={setChecked1}
         />
       </div>
-      <div className="flex items-center gap-4">
-        <span className="min-w-20 text-sm font-medium">Square 1:</span>
+      <div className="ds:flex ds:items-center ds:gap-4">
+        <span className="ds:min-w-20 ds:text-sm ds:font-medium">Square 1:</span>
         <Switch
           {...args}
           variant="square1"
@@ -148,8 +148,8 @@ const VariantsComponent = (args: SwitchProps) => {
           onCheckedChange={setChecked2}
         />
       </div>
-      <div className="flex items-center gap-4">
-        <span className="min-w-20 text-sm font-medium">Square 2:</span>
+      <div className="ds:flex ds:items-center ds:gap-4">
+        <span className="ds:min-w-20 ds:text-sm ds:font-medium">Square 2:</span>
         <Switch
           {...args}
           variant="square2"
@@ -157,8 +157,8 @@ const VariantsComponent = (args: SwitchProps) => {
           onCheckedChange={setChecked3}
         />
       </div>
-      <div className="flex items-center gap-4">
-        <span className="min-w-20 text-sm font-medium">Mini:</span>
+      <div className="ds:flex ds:items-center ds:gap-4">
+        <span className="ds:min-w-20 ds:text-sm ds:font-medium">Mini:</span>
         <Switch
           {...args}
           variant="mini"
@@ -194,10 +194,10 @@ const ColorsComponent = () => {
   };
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="ds:flex ds:flex-col ds:gap-4">
       {colors.map((color) => (
-        <div key={color} className="flex items-center gap-4">
-          <span className="min-w-20 capitalize text-sm font-medium">
+        <div key={color} className="ds:flex ds:items-center ds:gap-4">
+          <span className="ds:min-w-20 ds:capitalize ds:text-sm ds:font-medium">
             {color}:
           </span>
           <Switch
@@ -226,15 +226,15 @@ const SizesComponent = () => {
   };
 
   return (
-    <div className="flex items-center gap-4">
+    <div className="ds:flex ds:items-center ds:gap-4">
       {sizes.map((size) => (
-        <div key={size} className="flex flex-col items-center gap-2">
+        <div key={size} className="ds:flex ds:flex-col ds:items-center ds:gap-2">
           <Switch
             size={size}
             checked={states[size] || false}
             onCheckedChange={() => updateState(size)}
           />
-          <span className="capitalize text-xs font-medium">{size}</span>
+          <span className="ds:capitalize ds:text-xs ds:font-medium">{size}</span>
         </div>
       ))}
     </div>
@@ -247,7 +247,7 @@ const WithLabelComponent = () => {
   const [checkedTop, setCheckedTop] = useState(false);
   const [checkedBottom, setCheckedBottom] = useState(false);
   return (
-    <div className="flex flex-col items-center gap-8">
+    <div className="ds:flex ds:flex-col ds:items-center ds:gap-8">
       <Switch
         label="Top Label"
         labelPosition="top"
@@ -280,9 +280,9 @@ const WithLabelComponent = () => {
 const WithInsideLabelsComponent = () => {
   const [checked, setChecked] = useState(false);
   return (
-    <div className="flex flex-col gap-6">
-      <div className="flex flex-col gap-2">
-        <span className="text-sm font-medium">With Icons (Inside):</span>
+    <div className="ds:flex ds:flex-col ds:gap-6">
+      <div className="ds:flex ds:flex-col ds:gap-2">
+        <span className="ds:text-sm ds:font-medium">With Icons (Inside):</span>
         <Switch
           size="lg"
           showLabels="inside"
@@ -293,13 +293,13 @@ const WithInsideLabelsComponent = () => {
         />
       </div>
 
-      <div className="flex flex-col gap-2">
-        <span className="text-sm font-medium">With Text (Inside):</span>
+      <div className="ds:flex ds:flex-col ds:gap-2">
+        <span className="ds:text-sm ds:font-medium">With Text (Inside):</span>
         <Switch
           size="xl"
           showLabels="inside"
-          offLabel={<span className="text-xs">Off</span>}
-          onLabel={<span className="text-xs">On</span>}
+          offLabel={<span className="ds:text-xs">Off</span>}
+          onLabel={<span className="ds:text-xs">On</span>}
           checked={checked}
           onCheckedChange={setChecked}
         />
@@ -321,9 +321,9 @@ const WithOutsideLabelsComponent = () => {
   };
 
   return (
-    <div className="flex flex-col gap-6">
-      <div className="flex flex-col gap-2">
-        <span className="text-sm font-medium">Theme Switcher:</span>
+    <div className="ds:flex ds:flex-col ds:gap-6">
+      <div className="ds:flex ds:flex-col ds:gap-2">
+        <span className="ds:text-sm ds:font-medium">Theme Switcher:</span>
         <Switch
           size="lg"
           showLabels="outside"
@@ -334,8 +334,8 @@ const WithOutsideLabelsComponent = () => {
         />
       </div>
 
-      <div className="flex flex-col gap-2">
-        <span className="text-sm font-medium">With Text Labels:</span>
+      <div className="ds:flex ds:flex-col ds:gap-2">
+        <span className="ds:text-sm ds:font-medium">With Text Labels:</span>
         <Switch
           size="lg"
           showLabels="outside"
@@ -346,25 +346,25 @@ const WithOutsideLabelsComponent = () => {
         />
       </div>
 
-      <div className="flex flex-col gap-2">
-        <span className="text-sm font-medium">Power Toggle:</span>
+      <div className="ds:flex ds:flex-col ds:gap-2">
+        <span className="ds:text-sm ds:font-medium">Power Toggle:</span>
         <Switch
           size="lg"
           showLabels="outside"
-          offLabel={<Zap size={16} className="rotate-45 opacity-50" />}
+          offLabel={<Zap size={16} className="ds:rotate-45 ds:opacity-50" />}
           onLabel={<Zap size={16} />}
           checked={states.power}
           onCheckedChange={() => updateState("power")}
         />
       </div>
 
-      <div className="flex flex-col gap-2">
-        <span className="text-sm font-medium">Favorite Toggle:</span>
+      <div className="ds:flex ds:flex-col ds:gap-2">
+        <span className="ds:text-sm ds:font-medium">Favorite Toggle:</span>
         <Switch
           size="lg"
           showLabels="outside"
-          offLabel={<Heart size={16} className="opacity-50" />}
-          onLabel={<Heart size={16} className="fill-current" />}
+          offLabel={<Heart size={16} className="ds:opacity-50" />}
+          onLabel={<Heart size={16} className="ds:fill-current" />}
           checked={states.favorite}
           onCheckedChange={() => updateState("favorite")}
         />
@@ -376,9 +376,9 @@ const WithOutsideLabelsComponent = () => {
 const WithAnimationComponent = () => {
   const [checked, setChecked] = useState(false);
   return (
-    <div className="flex flex-col gap-6">
-      <div className="flex flex-col gap-2">
-        <span className="text-sm font-medium">Heartbeat</span>
+    <div className="ds:flex ds:flex-col ds:gap-6">
+      <div className="ds:flex ds:flex-col ds:gap-2">
+        <span className="ds:text-sm ds:font-medium">Heartbeat</span>
         <Switch
           animation="heartbeat"
           checked={checked}
@@ -386,8 +386,8 @@ const WithAnimationComponent = () => {
         />
       </div>
 
-      <div className="flex flex-col gap-2">
-        <span className="text-sm font-medium">Glow</span>
+      <div className="ds:flex ds:flex-col ds:gap-2">
+        <span className="ds:text-sm ds:font-medium">Glow</span>
         <Switch
           animation="glow"
           checked={checked}
@@ -395,8 +395,8 @@ const WithAnimationComponent = () => {
         />
       </div>
 
-      <div className="flex flex-col gap-2">
-        <span className="text-sm font-medium">Shine</span>
+      <div className="ds:flex ds:flex-col ds:gap-2">
+        <span className="ds:text-sm ds:font-medium">Shine</span>
         <Switch
           animation="shine"
           checked={checked}
@@ -413,43 +413,43 @@ const WithAnimationComponent = () => {
 
 const CustomColorComponent = () => {
   return (
-    <div className="flex flex-col gap-6">
-      <div className="flex flex-col gap-2">
-        <span className="text-sm font-medium">Custom Purple Switch:</span>
-        <Switch className="data-[state=checked]:bg-purple-500 data-[state=unchecked]:bg-purple-200" />
+    <div className="ds:flex ds:flex-col ds:gap-6">
+      <div className="ds:flex ds:flex-col ds:gap-2">
+        <span className="ds:text-sm ds:font-medium">Custom Purple Switch:</span>
+        <Switch className="ds:data-[state=checked]:bg-purple-500 ds:data-[state=unchecked]:bg-purple-200" />
       </div>
 
-      <div className="flex flex-col gap-2">
-        <span className="text-sm font-medium">Custom Gradient Switch:</span>
-        <Switch className="data-[state=checked]:bg-gradient-to-r data-[state=checked]:from-pink-500 data-[state=checked]:to-violet-500 data-[state=unchecked]:bg-gray-300 border-none" />
+      <div className="ds:flex ds:flex-col ds:gap-2">
+        <span className="ds:text-sm ds:font-medium">Custom Gradient Switch:</span>
+        <Switch className="ds:data-[state=checked]:bg-gradient-to-r ds:data-[state=checked]:from-pink-500 ds:data-[state=checked]:to-violet-500 ds:data-[state=unchecked]:bg-gray-300 ds:border-none" />
       </div>
 
-      <div className="flex flex-col gap-2">
-        <span className="text-sm font-medium">Custom Orange Switch:</span>
-        <Switch className="data-[state=checked]:bg-orange-500 data-[state=unchecked]:bg-orange-200 [&_[data-slot=switch-thumb]]:data-[state=checked]:bg-orange-100" />
+      <div className="ds:flex ds:flex-col ds:gap-2">
+        <span className="ds:text-sm ds:font-medium">Custom Orange Switch:</span>
+        <Switch className="ds:data-[state=checked]:bg-orange-500 ds:data-[state=unchecked]:bg-orange-200 ds:[&_[data-slot=switch-thumb]]:data-[state=checked]:bg-orange-100" />
       </div>
 
-      <div className="flex flex-col gap-2">
-        <span className="text-sm font-medium">Custom Teal Switch:</span>
-        <Switch className="data-[state=checked]:bg-teal-500 data-[state=unchecked]:bg-teal-200 [&_[data-slot=switch-thumb]]:data-[state=checked]:bg-teal-100" />
+      <div className="ds:flex ds:flex-col ds:gap-2">
+        <span className="ds:text-sm ds:font-medium">Custom Teal Switch:</span>
+        <Switch className="ds:data-[state=checked]:bg-teal-500 ds:data-[state=unchecked]:bg-teal-200 ds:[&_[data-slot=switch-thumb]]:data-[state=checked]:bg-teal-100" />
       </div>
 
-      <div className="flex flex-col gap-2">
-        <span className="text-sm font-medium">Custom Thumb Color:</span>
-        <Switch className="data-[state=checked]:bg-pink-400 data-[state=unchecked]:!bg-pink-800 [&_[data-slot=switch-thumb]]:data-[state=checked]:bg-yellow-500" />
+      <div className="ds:flex ds:flex-col ds:gap-2">
+        <span className="ds:text-sm ds:font-medium">Custom Thumb Color:</span>
+        <Switch className="ds:data-[state=checked]:bg-pink-400 ds:data-[state=unchecked]:!bg-pink-800 ds:[&_[data-slot=switch-thumb]]:data-[state=checked]:bg-yellow-500" />
       </div>
     </div>
   );
 };
 
 const DisabledStateComponent = () => (
-  <div className="flex flex-col gap-4">
-    <div className="flex items-center gap-4">
-      <span className="text-sm font-medium">Disabled (Off):</span>
+  <div className="ds:flex ds:flex-col ds:gap-4">
+    <div className="ds:flex ds:items-center ds:gap-4">
+      <span className="ds:text-sm ds:font-medium">Disabled (Off):</span>
       <Switch checked={false} disabled />
     </div>
-    <div className="flex items-center gap-4">
-      <span className="text-sm font-medium">Disabled (On):</span>
+    <div className="ds:flex ds:items-center ds:gap-4">
+      <span className="ds:text-sm ds:font-medium">Disabled (On):</span>
       <Switch checked={true} disabled />
     </div>
   </div>
@@ -472,54 +472,54 @@ const AllVariantsShowcaseComponent = () => {
     "error",
     "warning",
   ];
-  const variants: SwitchProps["variant"][] = ["default", "square1", "square2"];
+  const variants: SwitchProps["variant"][] = ["ds:default", "ds:square1", "ds:square2"];
   const sizes: SwitchProps["size"][] = ["xs", "sm", "normal", "lg", "xl"];
 
   return (
-    <div className="flex flex-col gap-8">
+    <div className="ds:flex ds:flex-col ds:gap-8">
       <div>
-        <h3 className="mb-4 text-lg font-semibold">All Variants</h3>
-        <div className="flex flex-wrap gap-4">
+        <h3 className="ds:mb-4 ds:text-lg ds:font-semibold">All Variants</h3>
+        <div className="ds:flex ds:flex-wrap ds:gap-4">
           {variants.map((variant) => (
-            <div key={variant} className="flex flex-col items-center gap-2">
+            <div key={variant} className="ds:flex ds:flex-col ds:items-center ds:gap-2">
               <Switch
                 variant={variant}
                 checked={states[`variant-${variant}`] || false}
                 onCheckedChange={(v) => setState(`variant-${variant}`, v)}
               />
-              <span className="capitalize text-xs font-medium">{variant}</span>
+              <span className="ds:capitalize ds:text-xs ds:font-medium">{variant}</span>
             </div>
           ))}
         </div>
       </div>
 
       <div>
-        <h3 className="mb-4 text-lg font-semibold">All Sizes</h3>
-        <div className="flex items-center gap-4">
+        <h3 className="ds:mb-4 ds:text-lg ds:font-semibold">All Sizes</h3>
+        <div className="ds:flex ds:items-center ds:gap-4">
           {sizes.map((size) => (
-            <div key={size} className="flex flex-col items-center gap-2">
+            <div key={size} className="ds:flex ds:flex-col ds:items-center ds:gap-2">
               <Switch
                 size={size}
                 checked={states[`size-${size}`] || false}
                 onCheckedChange={(v) => setState(`size-${size}`, v)}
               />
-              <span className="capitalize text-xs font-medium">{size}</span>
+              <span className="ds:capitalize ds:text-xs ds:font-medium">{size}</span>
             </div>
           ))}
         </div>
       </div>
 
       <div>
-        <h3 className="mb-4 text-lg font-semibold">All Colors</h3>
-        <div className="flex flex-wrap gap-6">
+        <h3 className="ds:mb-4 ds:text-lg ds:font-semibold">All Colors</h3>
+        <div className="ds:flex ds:flex-wrap ds:gap-6">
           {colors.map((color) => (
-            <div key={color} className="flex flex-col items-center gap-2">
+            <div key={color} className="ds:flex ds:flex-col ds:items-center ds:gap-2">
               <Switch
                 color={color}
                 checked={states[`color-${color}`] || false}
                 onCheckedChange={(v) => setState(`color-${color}`, v)}
               />
-              <span className="capitalize text-xs font-medium">{color}</span>
+              <span className="ds:capitalize ds:text-xs ds:font-medium">{color}</span>
             </div>
           ))}
         </div>
@@ -531,16 +531,16 @@ const AllVariantsShowcaseComponent = () => {
 const CustomSwitchComponent = () => {
   const id = "custom-switch-example";
   return (
-    <div className="border-input has-data-[state=checked]:border-primary/50 relative flex w-full items-start gap-2 rounded-md border p-4 shadow-xs outline-none">
-      <div className="flex grow items-center gap-3">
+    <div className="ds:border-input ds:has-data-[state=checked]:border-primary/50 ds:relative ds:flex ds:w-full ds:items-start ds:gap-2 ds:rounded-md ds:border ds:p-4 ds:shadow-xs ds:outline-none">
+      <div className="ds:flex ds:grow ds:items-center ds:gap-3">
         <img
           src="https://cdn.shadcnstudio.com/ss-assets/brand-logo/github-icon.png?width=20&height=20&format=auto"
           alt="GitHub Icon"
-          className="size-5"
+          className="ds:size-5"
         />
-        <label className="grid grow gap-2" htmlFor={id}>
+        <label className="ds:grid ds:grow ds:gap-2" htmlFor={id}>
           <span>Connect with GitHub</span>
-          <p id={`${id}-description`} className="text-muted-foreground text-xs">
+          <p id={`${id}-description`} className="ds:text-muted-foreground ds:text-xs">
             Access your projects direct from GitHub.
           </p>
         </label>

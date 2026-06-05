@@ -267,36 +267,36 @@ export const Default = (args: typeof Tour) => {
   const [open, setOpen] = React.useState(false);
 
   return (
-    <div className="space-y-4">
+    <div className="ds:space-y-4">
       <Button onClick={() => setOpen(true)}>Start Tour</Button>
 
-      <div className="grid grid-cols-3 gap-4">
+      <div className="ds:grid ds:grid-cols-3 ds:gap-4">
         <div
           id="tour-element-1"
-          className="p-6 border rounded-lg bg-card text-card-foreground"
+          className="ds:p-6 ds:border ds:rounded-lg ds:bg-card ds:text-card-foreground"
         >
-          <h3 className="font-semibold mb-2">Dashboard</h3>
-          <p className="text-sm text-muted-foreground">
+          <h3 className="ds:font-semibold ds:mb-2">Dashboard</h3>
+          <p className="ds:text-sm ds:text-muted-foreground">
             Your main dashboard view
           </p>
         </div>
 
         <div
           id="tour-element-2"
-          className="p-6 border rounded-lg bg-card text-card-foreground"
+          className="ds:p-6 ds:border ds:rounded-lg ds:bg-card ds:text-card-foreground"
         >
-          <h3 className="font-semibold mb-2">Analytics</h3>
-          <p className="text-sm text-muted-foreground">
+          <h3 className="ds:font-semibold ds:mb-2">Analytics</h3>
+          <p className="ds:text-sm ds:text-muted-foreground">
             View your analytics here
           </p>
         </div>
 
         <div
           id="tour-element-3"
-          className="p-6 border rounded-lg bg-card text-card-foreground"
+          className="ds:p-6 ds:border ds:rounded-lg ds:bg-card ds:text-card-foreground"
         >
-          <h3 className="font-semibold mb-2">Settings</h3>
-          <p className="text-sm text-muted-foreground">
+          <h3 className="ds:font-semibold ds:mb-2">Settings</h3>
+          <p className="ds:text-sm ds:text-muted-foreground">
             Configure your preferences
           </p>
         </div>
@@ -341,13 +341,13 @@ export function Manual() {
   const [open, setOpen] = React.useState(false);
 
   return (
-    <div className="flex min-h-[400px] flex-col items-center justify-center gap-8 p-8">
-      <div className="flex flex-col items-center gap-4">
-        <div className="flex flex-col items-center gap-1">
-          <h1 id="welcome-title" className="font-bold text-2xl">
+    <div className="ds:flex ds:min-h-[400px] ds:flex-col ds:items-center ds:justify-center ds:gap-8 ds:p-8">
+      <div className="ds:flex ds:flex-col ds:items-center ds:gap-4">
+        <div className="ds:flex ds:flex-col ds:items-center ds:gap-1">
+          <h1 id="welcome-title" className="ds:font-bold ds:text-2xl">
             Welcome to Your Dashboard
           </h1>
-          <p className="text-center text-muted-foreground">
+          <p className="ds:text-center ds:text-muted-foreground">
             Take a quick tour to explore key features
           </p>
         </div>
@@ -355,22 +355,22 @@ export function Manual() {
           Start Tour
         </Button>
       </div>
-      <div className="grid grid-cols-3 gap-4">
-        <div id="feature-1" className="rounded-lg border p-4 text-center">
-          <h3 className="font-semibold">Analytics</h3>
-          <p className="text-muted-foreground text-sm">
+      <div className="ds:grid ds:grid-cols-3 ds:gap-4">
+        <div id="feature-1" className="ds:rounded-lg ds:border ds:p-4 ds:text-center">
+          <h3 className="ds:font-semibold">Analytics</h3>
+          <p className="ds:text-muted-foreground ds:text-sm">
             Track your performance metrics
           </p>
         </div>
-        <div id="feature-2" className="rounded-lg border p-4 text-center">
-          <h3 className="font-semibold">Projects</h3>
-          <p className="text-muted-foreground text-sm">
+        <div id="feature-2" className="ds:rounded-lg ds:border ds:p-4 ds:text-center">
+          <h3 className="ds:font-semibold">Projects</h3>
+          <p className="ds:text-muted-foreground ds:text-sm">
             Manage your active projects
           </p>
         </div>
-        <div id="feature-3" className="rounded-lg border p-4 text-center">
-          <h3 className="font-semibold">Team</h3>
-          <p className="text-muted-foreground text-sm">
+        <div id="feature-3" className="ds:rounded-lg ds:border ds:p-4 ds:text-center">
+          <h3 className="ds:font-semibold">Team</h3>
+          <p className="ds:text-muted-foreground ds:text-sm">
             Collaborate with teammates
           </p>
         </div>
@@ -381,9 +381,9 @@ export function Manual() {
         dismissible={false}
         stepFooter={
           <Tour.Footer>
-            <div className="flex w-full items-center justify-between">
+            <div className="ds:flex ds:w-full ds:items-center ds:justify-between">
               <Tour.StepCounter />
-              <div className="flex gap-2">
+              <div className="ds:flex ds:gap-2">
                 <Tour.Prev />
                 <Tour.Next />
               </div>
@@ -447,26 +447,26 @@ export const WithCustomContent = () => {
   const [open, setOpen] = React.useState(false);
 
   return (
-    <div className="space-y-4">
+    <div className="ds:space-y-4">
       <Button onClick={() => setOpen(true)}>Start Tour</Button>
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="ds:grid ds:grid-cols-2 ds:gap-4">
         <div
           id="tour-custom-1"
-          className="p-6 border rounded-lg bg-card text-card-foreground"
+          className="ds:p-6 ds:border ds:rounded-lg ds:bg-card ds:text-card-foreground"
         >
-          <h3 className="font-semibold mb-2">Feature 1</h3>
-          <p className="text-sm text-muted-foreground">
+          <h3 className="ds:font-semibold ds:mb-2">Feature 1</h3>
+          <p className="ds:text-sm ds:text-muted-foreground">
             Important feature description
           </p>
         </div>
 
         <div
           id="tour-custom-2"
-          className="p-6 border rounded-lg bg-card text-card-foreground"
+          className="ds:p-6 ds:border ds:rounded-lg ds:bg-card ds:text-card-foreground"
         >
-          <h3 className="font-semibold mb-2">Feature 2</h3>
-          <p className="text-sm text-muted-foreground">Another key feature</p>
+          <h3 className="ds:font-semibold ds:mb-2">Feature 2</h3>
+          <p className="ds:text-sm ds:text-muted-foreground">Another key feature</p>
         </div>
       </div>
 
@@ -480,9 +480,9 @@ export const WithCustomContent = () => {
             title: "First Feature",
             description: "This is an important feature you should know about.",
             content: (
-              <div className="space-y-2">
-                <p className="text-sm">Here are some key points:</p>
-                <ul className="text-sm list-disc list-inside space-y-1">
+              <div className="ds:space-y-2">
+                <p className="ds:text-sm">Here are some key points:</p>
+                <ul className="ds:text-sm ds:list-disc ds:list-inside ds:space-y-1">
                   <li>Point number one</li>
                   <li>Point number two</li>
                   <li>Point number three</li>
@@ -496,9 +496,9 @@ export const WithCustomContent = () => {
             title: "Second Feature",
             description: "Learn about this powerful feature.",
             content: (
-              <div className="p-3 bg-muted rounded-md">
-                <p className="text-sm font-medium">Pro Tip:</p>
-                <p className="text-sm text-muted-foreground mt-1">
+              <div className="ds:p-3 ds:bg-muted ds:rounded-md">
+                <p className="ds:text-sm ds:font-medium">Pro Tip:</p>
+                <p className="ds:text-sm ds:text-muted-foreground ds:mt-1">
                   You can use keyboard shortcuts to navigate faster!
                 </p>
               </div>
@@ -535,12 +535,12 @@ export function TourControlled() {
   }, []);
 
   return (
-    <div className="flex min-h-[400px] flex-col items-center justify-center gap-8 p-8">
-      <div className="flex flex-col items-center gap-4">
-        <h1 id="controlled-title" className="font-bold text-2xl">
+    <div className="ds:flex ds:min-h-[400px] ds:flex-col ds:items-center ds:justify-center ds:gap-8 ds:p-8">
+      <div className="ds:flex ds:flex-col ds:items-center ds:gap-4">
+        <h1 id="controlled-title" className="ds:font-bold ds:text-2xl">
           Controlled Tour
         </h1>
-        <div className="flex items-center gap-2">
+        <div className="ds:flex ds:items-center ds:gap-2">
           <Button id="controlled-start-btn" onClick={onTourStart}>
             Start
           </Button>
@@ -558,28 +558,28 @@ export function TourControlled() {
           >
             Next
           </Button>
-          <span className="flex items-center text-sm text-muted-foreground">
+          <span className="ds:flex ds:items-center ds:text-sm ds:text-muted-foreground">
             Step: {value + 1}
           </span>
         </div>
       </div>
-      <div className="flex w-full flex-col gap-6">
-        <div className="grid grid-cols-2 gap-6">
+      <div className="ds:flex ds:w-full ds:flex-col ds:gap-6">
+        <div className="ds:grid ds:grid-cols-2 ds:gap-6">
           <div
             id="controlled-step-1"
-            className="rounded-lg border p-6 text-center"
+            className="ds:rounded-lg ds:border ds:p-6 ds:text-center"
           >
-            <h3 className="font-semibold">Step 1</h3>
-            <p className="text-muted-foreground text-sm">
+            <h3 className="ds:font-semibold">Step 1</h3>
+            <p className="ds:text-muted-foreground ds:text-sm">
               First step in our controlled tour
             </p>
           </div>
           <div
             id="controlled-step-2"
-            className="rounded-lg border p-6 text-center"
+            className="ds:rounded-lg ds:border ds:p-6 ds:text-center"
           >
-            <h3 className="font-semibold">Step 2</h3>
-            <p className="text-muted-foreground text-sm">
+            <h3 className="ds:font-semibold">Step 2</h3>
+            <p className="ds:text-muted-foreground ds:text-sm">
               Second step with external controls
             </p>
           </div>
@@ -587,10 +587,10 @@ export function TourControlled() {
         {open && value >= 2 && (
           <div
             id="controlled-step-3"
-            className="fade-in slide-in-from-bottom-4 animate-in rounded-lg border border-primary/50 bg-primary/5 p-6 text-center duration-300"
+            className="ds:fade-in ds:slide-in-from-bottom-4 ds:animate-in ds:rounded-lg ds:border ds:border-primary/50 ds:bg-primary/5 ds:p-6 ds:text-center ds:duration-300"
           >
-            <h3 className="font-semibold">Step 3</h3>
-            <p className="text-muted-foreground text-sm">
+            <h3 className="ds:font-semibold">Step 3</h3>
+            <p className="ds:text-muted-foreground ds:text-sm">
               Dynamic step that appears after step 2
             </p>
           </div>
@@ -605,9 +605,9 @@ export function TourControlled() {
         onSkip={onSkip}
         stepFooter={
           <Tour.Footer>
-            <div className="flex w-full items-center justify-between">
+            <div className="ds:flex ds:w-full ds:items-center ds:justify-between">
               <Tour.StepCounter />
-              <div className="flex gap-2">
+              <div className="ds:flex ds:gap-2">
                 <Tour.Prev />
                 <Tour.Next />
               </div>
@@ -657,34 +657,34 @@ export const WithCustomButtonsAndStyle = () => {
   const [open, setOpen] = React.useState(false);
 
   return (
-    <div className="space-y-4">
+    <div className="ds:space-y-4">
       <Button onClick={() => setOpen(true)}>Bắt đầu Tour</Button>
 
-      <div className="grid grid-cols-3 gap-4">
+      <div className="ds:grid ds:grid-cols-3 ds:gap-4">
         <div
           id="custom-btn-1"
-          className="p-6 border rounded-lg bg-card text-card-foreground"
+          className="ds:p-6 ds:border ds:rounded-lg ds:bg-card ds:text-card-foreground"
         >
-          <h3 className="font-semibold mb-2">Tính năng 1</h3>
-          <p className="text-sm text-muted-foreground">
+          <h3 className="ds:font-semibold ds:mb-2">Tính năng 1</h3>
+          <p className="ds:text-sm ds:text-muted-foreground">
             Tính năng quan trọng đầu tiên
           </p>
         </div>
 
         <div
           id="custom-btn-2"
-          className="p-6 border rounded-lg bg-card text-card-foreground"
+          className="ds:p-6 ds:border ds:rounded-lg ds:bg-card ds:text-card-foreground"
         >
-          <h3 className="font-semibold mb-2">Tính năng 2</h3>
-          <p className="text-sm text-muted-foreground">Tính năng thứ hai</p>
+          <h3 className="ds:font-semibold ds:mb-2">Tính năng 2</h3>
+          <p className="ds:text-sm ds:text-muted-foreground">Tính năng thứ hai</p>
         </div>
 
         <div
           id="custom-btn-3"
-          className="p-6 border rounded-lg bg-card text-card-foreground"
+          className="ds:p-6 ds:border ds:rounded-lg ds:bg-card ds:text-card-foreground"
         >
-          <h3 className="font-semibold mb-2">Tính năng 3</h3>
-          <p className="text-sm text-muted-foreground">Tính năng cuối cùng</p>
+          <h3 className="ds:font-semibold ds:mb-2">Tính năng 3</h3>
+          <p className="ds:text-sm ds:text-muted-foreground">Tính năng cuối cùng</p>
         </div>
       </div>
 
@@ -718,8 +718,8 @@ export const WithCustomButtonsAndStyle = () => {
             side: "bottom",
           },
         ]}
-        spotlightClassName="bg-gradient-to-r from-primary/40 to-transparent"
-        spotlightRingClassName="ring-2 ring-offset-2 ring-primary animate-heartbeat"
+        spotlightClassName="ds:bg-gradient-to-r ds:from-primary/40 ds:to-transparent"
+        spotlightRingClassName="ds:ring-2 ds:ring-offset-2 ds:ring-primary ds:animate-heartbeat"
       />
     </div>
   );
