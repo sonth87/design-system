@@ -2,7 +2,7 @@ import type { Table } from "@tanstack/react-table";
 
 import { Select } from "../Select";
 import { Pagination } from "../Pagination";
-import { cn } from "@dsui/ui/index";
+import { cn } from "@dsui/ui/lib/utils";
 
 export interface DataTablePaginationProps<TData> extends React.ComponentProps<"div"> {
   table: Table<TData>;

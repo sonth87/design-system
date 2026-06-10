@@ -7,4 +7,5 @@ const Popover = Object.assign(PopoverWrapper, {
 });
 
 export { Popover };
+export default Popover;
 export type { PopoverProps };

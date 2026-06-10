@@ -4,8 +4,8 @@
  */
 
 import { cn as _cn } from "@dsui/ui/lib/utils";
-import { Slot as _Slot } from "@dsui/ui/index";
-import { useComposedRefs as _useComposedRefs } from "@dsui/ui/index";
+import { Slot as _Slot } from "@radix-ui/react-slot";
+import { useComposedRefs as _useComposedRefs } from "@dsui/ui/lib/compose-refs";
 import type { ClassValue } from "clsx";
 
 /**

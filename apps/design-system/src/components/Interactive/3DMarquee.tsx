@@ -1,5 +1,5 @@
 "use client";
-import { cn } from "@dsui/ui/index";
+import { cn } from "@dsui/ui/lib/utils";
 import { motion } from "motion/react";
 import React from "react";
 

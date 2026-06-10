@@ -1,3 +1,5 @@
+> Import policy: prefer subpath imports. Root imports are legacy; see [import-policy.md](import-policy.md).
+
 # Components Reference — A to L
 ## @sth87/shadcn-design-system
 
@@ -9,7 +11,7 @@ Vertically stacked, collapsible content sections built on Radix UI.
 
 **Import:**
 ```tsx
-import { Accordion } from "@sth87/shadcn-design-system";
+import { Accordion } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 ```
 
 **Props:**
@@ -72,7 +74,7 @@ User photo or initials display with fallback behavior.
 
 **Import:**
 ```tsx
-import { Avatar } from "@sth87/shadcn-design-system";
+import { Avatar } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 ```
 
 **Props:**
@@ -117,7 +119,7 @@ Small status indicator or label.
 
 **Import:**
 ```tsx
-import { Badge } from "@sth87/shadcn-design-system";
+import { Badge } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 ```
 
 **Props:**
@@ -152,7 +154,7 @@ Navigation trail showing current location in hierarchy.
 
 **Import:**
 ```tsx
-import { Breadcrumb } from "@sth87/shadcn-design-system";
+import { Breadcrumb } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 ```
 
 **Props:**
@@ -202,7 +204,7 @@ Primary interactive action element.
 
 **Import:**
 ```tsx
-import { Button, ButtonGroup } from "@sth87/shadcn-design-system";
+import { Button, ButtonGroup } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 ```
 
 **Props:**
@@ -267,7 +269,7 @@ Full-featured calendar component with date selection, events, and views.
 
 **Import:**
 ```tsx
-import { Calendar } from "@sth87/shadcn-design-system";
+import { Calendar } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 ```
 
 **Props:**
@@ -322,7 +324,7 @@ Touch-friendly, responsive slider built on Swiper.js.
 
 **Import:**
 ```tsx
-import { Carousel, CarouselSlide } from "@sth87/shadcn-design-system";
+import { Carousel, CarouselSlide } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 ```
 
 **Props:**
@@ -385,7 +387,7 @@ Toggleable selection input.
 
 **Import:**
 ```tsx
-import { Checkbox } from "@sth87/shadcn-design-system";
+import { Checkbox } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 ```
 
 **Props:**
@@ -421,7 +423,7 @@ Single expandable/collapsible section.
 
 **Import:**
 ```tsx
-import { Collapsible } from "@sth87/shadcn-design-system";
+import { Collapsible } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 ```
 
 **Props:**
@@ -466,7 +468,7 @@ Command palette / combobox / spotlight search.
 
 **Import:**
 ```tsx
-import { Command } from "@sth87/shadcn-design-system";
+import { Command } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 ```
 
 **Props:**
@@ -528,7 +530,7 @@ Right-click context menu.
 
 **Import:**
 ```tsx
-import { ContextMenu } from "@sth87/shadcn-design-system";
+import { ContextMenu } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 ```
 
 **Props:**
@@ -574,7 +576,7 @@ Image crop with zoom, rotation, and aspect ratio control. Built on `react-advanc
 
 **Import:**
 ```tsx
-import { Cropper } from "@sth87/shadcn-design-system";
+import { Cropper } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 ```
 
 **Props:**
@@ -628,7 +630,7 @@ Date/time selection inputs with calendar popover.
 
 **Import:**
 ```tsx
-import { DatePicker, RangePicker, TimePicker } from "@sth87/shadcn-design-system";
+import { DatePicker, RangePicker, TimePicker } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 ```
 
 **DatePicker Props:**
@@ -709,7 +711,7 @@ Modal overlay with customizable header, footer, and action buttons.
 
 **Import:**
 ```tsx
-import { Dialog } from "@sth87/shadcn-design-system";
+import { Dialog } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 ```
 
 **Props:**
@@ -781,7 +783,7 @@ Contextual action menu triggered by a button/element.
 
 **Import:**
 ```tsx
-import { DropdownMenu } from "@sth87/shadcn-design-system";
+import { DropdownMenu } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 ```
 
 **Props:**
@@ -836,7 +838,7 @@ Frosted glass distortion filter effect. Wraps children to apply the SVG feTurbul
 
 **Import:**
 ```tsx
-import { Glass } from "@sth87/shadcn-design-system";
+import { Glass } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 ```
 
 **Props:**
@@ -876,7 +878,7 @@ Lightbox viewer with zoom, pan, rotation, and thumbnail strip.
 
 **Import:**
 ```tsx
-import { ImageViewer } from "@sth87/shadcn-design-system";
+import { ImageViewer } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 ```
 
 **Props:**
@@ -927,7 +929,7 @@ Text input field with label, description, prefix/suffix, and validation state.
 
 **Import:**
 ```tsx
-import { Input } from "@sth87/shadcn-design-system";
+import { Input } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 ```
 
 **Props:**
@@ -979,7 +981,7 @@ One-time password / verification code input.
 
 **Import:**
 ```tsx
-import { InputOTP } from "@sth87/shadcn-design-system";
+import { InputOTP } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 ```
 
 **Props:**
@@ -1023,7 +1025,7 @@ Mouse-tracked 3D perspective tilt effect on a card.
 
 **Import:**
 ```tsx
-import { Interactive3DCard } from "@sth87/shadcn-design-system";
+import { Interactive3DCard } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 ```
 
 **Props:**
@@ -1063,7 +1065,7 @@ interface Interactive3DCardProps {
 
 **Import:**
 ```tsx
-import { Interactive3DMarquee } from "@sth87/shadcn-design-system";
+import { Interactive3DMarquee } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 ```
 
 **Props:**
@@ -1104,7 +1106,7 @@ Custom cursor follow element or container that tracks pointer movement.
 
 **Import:**
 ```tsx
-import { InteractiveCursorFollow } from "@sth87/shadcn-design-system";
+import { InteractiveCursorFollow } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 ```
 
 **Props:**
@@ -1149,7 +1151,7 @@ Form field label with required indicator and compound layout helpers.
 
 **Import:**
 ```tsx
-import { Label } from "@sth87/shadcn-design-system";
+import { Label } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 ```
 
 **Props:**

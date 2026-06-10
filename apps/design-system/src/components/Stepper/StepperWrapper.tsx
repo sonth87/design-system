@@ -13,7 +13,7 @@ import {
   StepperTrigger,
   type StepperProps,
 } from "./Stepper";
-import { cn } from "@dsui/ui/index";
+import { cn } from "@dsui/ui/lib/utils";
 
 type StepperColor =
   | "primary"

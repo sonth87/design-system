@@ -5,7 +5,7 @@ import {
   type CalendarProps as SCalendarProps,
   type CalendarColor,
 } from "@dsui/ui/components/calendar";
-import { cn } from "@dsui/ui/index";
+import { cn } from "@dsui/ui/lib/utils";
 import { vi, enUS } from "date-fns/locale";
 
 export type DateRange = {

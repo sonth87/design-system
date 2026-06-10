@@ -130,6 +130,7 @@ export function MultiSelectTrigger({
   children,
   size,
   state = "default",
+  disabled,
   ...props
 }: {
   className?: string;
@@ -142,7 +143,7 @@ export function MultiSelectTrigger({
   const { open } = useMultiSelectContext();
 
   return (
-    <PopoverTrigger asChild>
+    <PopoverTrigger asChild disabled={disabled}>
       {/* <Button
         {...props}
         variant={props.variant ?? "outline"}
@@ -159,7 +160,14 @@ export function MultiSelectTrigger({
       </Button> */}
 
       <Label
-        className={cn(multiSelectTriggerVariants({ size, state }), className)}
+        aria-disabled={disabled || undefined}
+        data-disabled={disabled || undefined}
+        className={cn(
+          multiSelectTriggerVariants({ size, state }),
+          disabled &&
+            "ds:pointer-events-none ds:cursor-not-allowed ds:opacity-50",
+          className
+        )}
       >
         {children}
         {open && (

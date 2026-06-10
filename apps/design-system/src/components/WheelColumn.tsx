@@ -1,6 +1,6 @@
 import * as React from "react";
 import { memo, useCallback, useEffect, useRef, useState } from "react";
-import { cn } from "@dsui/ui/index";
+import { cn } from "@dsui/ui/lib/utils";
 import type { CalendarColor } from "./Calendar/Calendar";
 
 const pad = (num: number): string => String(num).padStart(2, "0");

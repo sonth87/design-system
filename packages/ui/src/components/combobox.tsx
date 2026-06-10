@@ -88,19 +88,33 @@ function Combobox({
   state = "default",
   searchable = true,
   tagRender,
+  disabled,
   ...props
 }: ComboboxProps) {
   const [open, setOpen] = React.useState(false);
 
-  const handleOpenChange = React.useCallback((newOpen: boolean) => {
-    setOpen(newOpen);
-  }, []);
+  const handleOpenChange = React.useCallback(
+    (newOpen: boolean) => {
+      if (disabled) return;
+      setOpen(newOpen);
+    },
+    [disabled]
+  );
 
   return (
     <Popover open={open} onOpenChange={handleOpenChange} modal={true}>
-      <PopoverTrigger asChild {...props}>
+      <PopoverTrigger asChild {...props} disabled={disabled}>
         {children ?? (
-          <Label className={cn(comboboxVariants({ size, state }), className)}>
+          <Label
+            aria-disabled={disabled || undefined}
+            data-disabled={disabled || undefined}
+            className={cn(
+              comboboxVariants({ size, state }),
+              disabled &&
+                "ds:pointer-events-none ds:cursor-not-allowed ds:opacity-50",
+              className
+            )}
+          >
             <span
               className={cn(
                 "ds:truncate ds:w-full ds:inline-block ds:align-middle ds:text-left",
@@ -141,7 +155,7 @@ function Combobox({
         )}
       </PopoverTrigger>
 
-      {clearable && value && (
+      {clearable && value && !disabled && (
         <Label
           onClick={(e) => {
             e.stopPropagation();

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Checkbox as SCheckbox } from "@dsui/ui/components/checkbox";
-import { cn } from "@dsui/ui/index";
+import { cn } from "@dsui/ui/lib/utils";
 import { Tooltip } from "../Tooltip/Tooltip";
 import { Label } from "../Label";
 import { Info } from "lucide-react";

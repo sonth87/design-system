@@ -1,4 +1,4 @@
-import { cn } from "@dsui/ui/index";
+import { cn } from "@dsui/ui/lib/utils";
 import type {
   TabAlignment,
   TabColor,

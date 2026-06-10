@@ -230,10 +230,9 @@ function generateDocs() {
 This file is auto-generated to assist AI Agents in understanding the Component Library.
 
 ## Usage Guidelines
-1. **Imports**: Components are exported from the root or subpaths.
-   - Preferred: \`import { Button } from "@sth87/shadcn-design-system/button"\`
-   - Or: \`import { Button } from "@sth87/shadcn-design-system"\`
-2. **Styling**: All components accept a \`className\` prop which overrides internal styles using \`tailwind-merge\`.
+1. **Imports**: Always generate subpath imports. Root imports from \`@sth87/shadcn-design-system\` are legacy/backward-compatible only.
+2. **Default vs named**: Use default imports only for modules whose subpath exports a primary default component. Use named imports for compound modules such as table, toast, datepicker, qrcode, stepper, and tour.
+3. **Styling**: All components accept a \`className\` prop which overrides internal styles using \`tailwind-merge\`.
 
 ## Component Reference
 
@@ -248,7 +247,36 @@ This file is auto-generated to assist AI Agents in understanding the Component L
       mdContent += `${info.description}\n\n`;
     }
 
-    mdContent += `**Import:** \`${info.importPath}\`\n\n`;
+    const importKind = new Set([
+      "Accordion",
+      "Badge",
+      "Breadcrumb",
+      "Button",
+      "Checkbox",
+      "Collapsible",
+      "Dialog",
+      "Glass",
+      "Input",
+      "InputOTP",
+      "Popover",
+      "Radio",
+      "Rate",
+      "Resizable",
+      "ScrollArea",
+      "Select",
+      "Separator",
+      "Sheet",
+      "Sidebar",
+      "Skeleton",
+      "Slider",
+      "Switch",
+      "Tabs",
+      "Textarea",
+      "Toggle",
+    ]).has(info.name)
+      ? "default"
+      : "named";
+    mdContent += `**Import:** \`${info.importPath}\` (${importKind})\n\n`;
 
     mdContent += `**Props:**\n\`\`\`typescript\n${info.propsDefinition}\n\`\`\`\n\n`;
 

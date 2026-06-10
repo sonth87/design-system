@@ -1,1 +1,1 @@
-export { default as Breadcrumb, type BreadcrumbProps } from "./Breadcrumb";
+export { default, default as Breadcrumb, type BreadcrumbProps } from "./Breadcrumb";

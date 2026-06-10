@@ -5,7 +5,7 @@ import {
   type RadioGroupProps,
   type RadioGroupItemProps,
 } from "@dsui/ui/components/radio-group";
-import { cn } from "@dsui/ui/index";
+import { cn } from "@dsui/ui/lib/utils";
 
 export type RadioItemProps = RadioGroupItemProps & {
   label?: React.ReactNode;

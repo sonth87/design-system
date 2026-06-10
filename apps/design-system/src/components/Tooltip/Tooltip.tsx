@@ -6,7 +6,7 @@ import {
   TooltipProvider,
   type TooltipContentProps,
 } from "@dsui/ui/components/tooltip";
-import { cn } from "@dsui/ui/index";
+import { cn } from "@dsui/ui/lib/utils";
 import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
 import type { BasicAnimation, BasicColor } from "@/types/variables";
 import { useMemo, useCallback } from "react";

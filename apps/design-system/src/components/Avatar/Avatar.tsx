@@ -4,7 +4,7 @@ import {
   AvatarImage,
   AvatarFallback,
 } from "@dsui/ui/components/avatar";
-import { cn } from "@dsui/ui/index";
+import { cn } from "@dsui/ui/lib/utils";
 import type { BasicAnimation, BasicColor } from "@/types/variables";
 import { animationClass } from "@/utils/animations";
 

@@ -1,3 +1,5 @@
+> Import policy: prefer subpath imports. Root imports are legacy; see [import-policy.md](import-policy.md).
+
 # Theme Tokens & Animation Reference
 ## @sth87/shadcn-design-system
 
@@ -102,7 +104,7 @@ import { ThemeProvider } from "next-themes";
 ## Date/Time Constants
 
 ```tsx
-import { DATE_FORMAT, TIME_FORMAT, DATE_TIME_FORMAT } from "@sth87/shadcn-design-system";
+import { DATE_FORMAT, TIME_FORMAT, DATE_TIME_FORMAT } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 
 DATE_FORMAT      // "dd/MM/yyyy"
 TIME_FORMAT      // "HH:mm"

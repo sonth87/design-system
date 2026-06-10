@@ -2,15 +2,15 @@ import { flexRender, type Table as TanstackTable } from "@tanstack/react-table";
 import type * as React from "react";
 
 import { DataTablePagination } from "./data-table-pagination";
+import { cn } from "@dsui/ui/lib/utils";
 import {
-  cn,
   Table,
   TableBody,
   TableCell,
   TableHead,
   TableHeader,
   TableRow,
-} from "@dsui/ui";
+} from "@dsui/ui/components/table";
 import { getCommonPinningStyles } from "@/utils/data-table";
 import { DataTableColumnHeader } from "./data-table-column-header";
 

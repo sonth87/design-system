@@ -1,5 +1,5 @@
 // Button
-export { default as Button, type ButtonProps } from "./Button";
+export { default, default as Button, type ButtonProps } from "./Button";
 
 // ButtonGroup
 export {

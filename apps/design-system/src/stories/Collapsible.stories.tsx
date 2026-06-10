@@ -8,7 +8,7 @@ import Collapsible, {
 } from "../components/Collapsible/Collapsible";
 import { ChevronRight, Info, Settings, User } from "lucide-react";
 import { useState } from "react";
-import { cn } from "@dsui/ui/index";
+import { cn } from "@dsui/ui/lib/utils";
 import i18n from "../../.storybook/i18n";
 
 const meta: Meta<typeof Collapsible> = {

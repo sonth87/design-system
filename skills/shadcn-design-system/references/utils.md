@@ -1,9 +1,11 @@
+> Import policy: prefer subpath imports. Root imports are legacy; see [import-policy.md](import-policy.md).
+
 # Utilities Reference
 ## @sth87/shadcn-design-system
 
 All utilities are named exports from the package root:
 ```tsx
-import { cn, animationClass, animationEffect, formatDate, dataTableConfig, ... } from "@sth87/shadcn-design-system";
+import { cn, animationClass, animationEffect, formatDate, dataTableConfig, ... } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 ```
 
 ---
@@ -13,7 +15,7 @@ import { cn, animationClass, animationEffect, formatDate, dataTableConfig, ... }
 Re-exported from `@dsui/ui`. Combines `clsx` and `tailwind-merge` to safely merge Tailwind classes without conflicts.
 
 ```tsx
-import { cn } from "@sth87/shadcn-design-system";
+import { cn } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 
 // Merge conditional classes
 const cls = cn("px-4 py-2 rounded", isActive && "bg-primary text-white", className);
@@ -34,7 +36,7 @@ cn(["flex items-center", { "gap-2": hasItems }], additionalClass)
 Maps a `BasicAnimation` string to the corresponding Tailwind `animate-*` class string. Used internally by components and available for custom wrappers.
 
 ```tsx
-import { animationClass } from "@sth87/shadcn-design-system";
+import { animationClass } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 
 // Returns a CSS class string
 animationClass("heartbeat")              // → "animate-[heartbeat]"
@@ -61,7 +63,7 @@ function AnimatedBox({ animation, className, children }) {
 Returns a descriptor object `{ className?, style?, children?, variant? }` for complex animations that require Framer Motion (`motion/react`) wrappers or special DOM structure (e.g., shine overlay, liquid ripple, glass filter). Used internally by `Button`, `Badge`, `Switch`, etc.
 
 ```tsx
-import { animationEffect } from "@sth87/shadcn-design-system";
+import { animationEffect } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 
 const result = animationEffect({
   animation: "shine",
@@ -105,7 +107,7 @@ function MyAnimatedButton({ animation, children, className }) {
 Wraps `Intl.DateTimeFormat` with sensible defaults (long month, numeric day/year in the system locale).
 
 ```tsx
-import { formatDate } from "@sth87/shadcn-design-system";
+import { formatDate } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 
 // Default format
 formatDate(new Date())                          // → "March 11, 2026"
@@ -128,7 +130,7 @@ formatDate(new Date(), { month: "long", day: "numeric" }, "vi-VN") // → "11 th
 Computes `React.CSSProperties` for sticky (pinned) columns in TanStack Table. Handles `position`, `left`/`right`, `z-index`, and `box-shadow`.
 
 ```tsx
-import { getCommonPinningStyles } from "@sth87/shadcn-design-system";
+import { getCommonPinningStyles } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 import type { Column } from "@tanstack/react-table";
 
 // Use inside a cell or header renderer
@@ -148,7 +150,7 @@ const style = getCommonPinningStyles({ column, withBorder: true });
 Returns the array of valid filter operators for a given filter variant.
 
 ```tsx
-import { getFilterOperators } from "@sth87/shadcn-design-system";
+import { getFilterOperators } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 
 getFilterOperators("text")        // ["iLike", "notILike", "eq", "ne", "isEmpty", "isNotEmpty"]
 getFilterOperators("numeric")     // ["eq", "ne", "lt", "lte", "gt", "gte", "isBetween", "isEmpty", "isNotEmpty"]
@@ -164,7 +166,7 @@ getFilterOperators("boolean")     // ["eq", "ne"]
 Returns the first/default operator for a given filter variant.
 
 ```tsx
-import { getDefaultFilterOperator } from "@sth87/shadcn-design-system";
+import { getDefaultFilterOperator } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 
 getDefaultFilterOperator("text")        // "iLike"
 getDefaultFilterOperator("numeric")     // "eq"
@@ -177,7 +179,7 @@ getDefaultFilterOperator("multiSelect") // "inArray"
 Removes filter entries where the value is empty, null, or incomplete (e.g. `isBetween` with only one bound).
 
 ```tsx
-import { getValidFilters } from "@sth87/shadcn-design-system";
+import { getValidFilters } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 
 const valid = getValidFilters(filters);
 // Strips: filters where value === "" | null | undefined | []
@@ -191,7 +193,7 @@ const valid = getValidFilters(filters);
 Complete configuration object for all DataTable filter variants and operators.
 
 ```tsx
-import { dataTableConfig } from "@sth87/shadcn-design-system";
+import { dataTableConfig } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 
 dataTableConfig.textOperators
 // ["iLike", "notILike", "eq", "ne", "isEmpty", "isNotEmpty"]
@@ -255,7 +257,7 @@ npm install nuqs
 ```
 
 ```tsx
-import { getSortingStateParser, getFiltersStateParser } from "@sth87/shadcn-design-system";
+import { getSortingStateParser, getFiltersStateParser } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 import { parseAsString, useQueryState } from "nuqs";
 
 // Create a nuqs parser for TanStack Table sorting state

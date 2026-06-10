@@ -1,4 +1,4 @@
-import { cn } from "@dsui/ui/index";
+import { cn } from "@dsui/ui/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
 import React from "react";
 

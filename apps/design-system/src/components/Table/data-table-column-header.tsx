@@ -10,7 +10,7 @@ import {
   X,
 } from "lucide-react";
 
-import { cn } from "@dsui/ui";
+import { cn } from "@dsui/ui/lib/utils";
 import DropdownMenu, {
   type DropdownMenuItem,
 } from "../DropdownMenu/DropdownMenu";

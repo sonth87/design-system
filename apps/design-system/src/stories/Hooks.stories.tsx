@@ -11,7 +11,7 @@ import { Input } from "@/components/Input";
 import { Label } from "@/components/Label";
 import { Button } from "@/components/Button";
 import { Badge } from "@/components/Badge";
-import { cn } from "@dsui/ui/index";
+import { cn } from "@dsui/ui/lib/utils";
 import { useMousePosition } from "@/hooks/use-mouse-position";
 import { useOnClickOutside } from "@/hooks/use-on-click-outside";
 import { useEventListener } from "@/hooks/use-event-listener";

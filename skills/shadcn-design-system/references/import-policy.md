@@ -1,36 +1,15 @@
-# AI Agent Guide for @sth87/shadcn-design-system
+# Import Policy
 
-## Import Policy
+Use subpath imports for all new code. Root imports are kept only for backward compatibility and should be treated as legacy.
 
-AI agents and IDE assistants must generate subpath imports for all new code. Root imports from `@sth87/shadcn-design-system` are legacy/backward-compatible only.
+## Rules
 
-```tsx
-// Preferred
-import Button from "@sth87/shadcn-design-system/button";
-import Dialog from "@sth87/shadcn-design-system/dialog";
-import { DataTable } from "@sth87/shadcn-design-system/table";
-import { Toaster, toast } from "@sth87/shadcn-design-system/toast";
+- Generate component, hook, utility, and text animation imports from subpaths.
+- Do not generate new component code from the root package.
+- Keep CSS imports as package CSS subpaths.
+- Root import remains supported for older apps, but it can make Vite dev prebundles much heavier.
 
-// Legacy only
-import { Button, Dialog, DataTable, Toaster } from "@sth87/shadcn-design-system";
-```
-
-## Configuration
-
-### Tailwind
-
-```css
-@source "../../node_modules/@sth87/shadcn-design-system/dist";
-```
-
-```js
-content: [
-  "./src/**/*.{ts,tsx}",
-  "./node_modules/@sth87/shadcn-design-system/dist/**/*.{js,mjs}"
-]
-```
-
-### Global CSS
+## CSS
 
 ```tsx
 import "@sth87/shadcn-design-system/theme.css";
@@ -38,7 +17,7 @@ import "@sth87/shadcn-design-system/index.css";
 import "@sth87/shadcn-design-system/animation.css";
 ```
 
-## Component Imports
+## Components And Component Helpers
 
 | Subpath | Public exports | Canonical import |
 |---|---|---|
@@ -122,10 +101,9 @@ import { BlurText, RotatingText, CircularText, FlipWords, GradientText, RollingT
 import { cn } from "@sth87/shadcn-design-system/utils";
 ```
 
-## AI Generation Rules
+## Legacy Root Import
 
-1. Never generate new component imports from the root package.
-2. Use default imports only for subpaths marked default in the table.
-3. Use named imports for compound modules like `table`, `toast`, `datepicker`, `qrcode`, `stepper`, and `tour`.
-4. Keep CSS imports as package CSS subpaths.
-5. Check generated `AI_CONTEXT.md` for props and examples when available.
+```tsx
+// Legacy only. Do not generate new code with this form.
+import { Button, Dialog, DataTable, Toaster } from "@sth87/shadcn-design-system";
+```

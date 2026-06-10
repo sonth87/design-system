@@ -1,4 +1,4 @@
-import { cn } from "@dsui/ui/index";
+import { cn } from "@dsui/ui/lib/utils";
 import type { BasicAnimation } from "@/types/variables";
 import { easeOut, motion } from "motion/react";
 import Glass from "../components/Glass/Glass";

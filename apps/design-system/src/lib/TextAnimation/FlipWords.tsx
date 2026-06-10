@@ -1,7 +1,7 @@
 "use client";
 import * as React from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { cn } from "@dsui/ui/index";
+import { cn } from "@dsui/ui/lib/utils";
 
 type FlipWordsProps = Omit<React.ComponentProps<"span">, "children"> & {
   words: string[];

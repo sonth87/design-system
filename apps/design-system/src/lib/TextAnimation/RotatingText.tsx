@@ -7,7 +7,7 @@ import {
   type HTMLMotionProps,
   type Transition,
 } from "motion/react";
-import { cn } from "@dsui/ui/index";
+import { cn } from "@dsui/ui/lib/utils";
 
 type RotatingTextProps = {
   text: string | string[];

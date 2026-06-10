@@ -1,6 +1,8 @@
 "use client";
 
-import { cn, Slot, useComposedRefs } from "@dsui/ui/index";
+import { cn } from "@dsui/ui/lib/utils";
+import { Slot } from "@radix-ui/react-slot";
+import { useComposedRefs } from "@dsui/ui/lib/compose-refs";
 import * as React from "react";
 
 const ROOT_NAME = "QRCode";

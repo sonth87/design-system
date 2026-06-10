@@ -96,8 +96,8 @@ export default defineConfig({
       ],
     },
 
-    // Generate sourcemaps for debugging
-    sourcemap: true,
+    // Generate sourcemaps only when explicitly requested for debugging
+    sourcemap: process.env.BUILD_SOURCEMAP === "true",
 
     // Clear output dir before build
     emptyOutDir: true,
@@ -115,22 +115,15 @@ export default defineConfig({
 });
 
 /**
- * Get all entry points for the library
- *
- * MODE 1 (SIMPLE): Only build src/index.ts - Components exported here will be included
- * MODE 2 (ADVANCED): Build each component as separate entry for individual imports
- *
- * Current mode: SIMPLE (change to ADVANCED if you want per-component imports)
+ * Get all entry points for the library.
+ * Multi-entry is the default so every public subpath can resolve to a small,
+ * direct module instead of the legacy root barrel.
  */
 function getEntryPoints() {
-  const mode = process.env.BUILD_MODE || "SIMPLE"; // Change to "ADVANCED" for individual component builds
-
-  // Main entry point (always included)
   const entries: Record<string, string> = {
     index: path.resolve(__dirname, "src/index.ts"),
   };
 
-  // Add CSS files as entry points
   const cssFiles = [
     { name: "styles/theme", path: "src/theme.css" },
     { name: "styles/index", path: "src/index.css" },
@@ -139,60 +132,46 @@ function getEntryPoints() {
 
   cssFiles.forEach(({ name, path: cssPath }) => {
     const fullPath = path.resolve(__dirname, cssPath);
-    if (fs.existsSync(fullPath)) {
-      entries[name] = fullPath;
-    }
+    if (fs.existsSync(fullPath)) entries[name] = fullPath;
   });
 
-  // ADVANCED MODE: Build each component as separate entry point
-  // This allows imports like: import Button from "@dsui/design-system/button"
-  if (mode === "ADVANCED") {
-    console.log(
-      "📦 Building in ADVANCED mode - creating individual component entries"
-    );
+  const addEntry = (entryName: string, relativePath: string) => {
+    const fullPath = path.resolve(__dirname, relativePath);
+    if (fs.existsSync(fullPath)) entries[entryName] = fullPath;
+  };
 
-    // Get all component directories
-    const componentDirs = glob.sync("src/components/*/", {
-      cwd: __dirname,
-    });
+  glob.sync("src/components/*/", { cwd: __dirname }).forEach((dir) => {
+    const componentName = path.basename(dir);
+    const indexTs = path.join(dir, "index.ts");
+    const indexTsx = path.join(dir, "index.tsx");
+    const componentTs = path.join(dir, `${componentName}.ts`);
+    const componentTsx = path.join(dir, `${componentName}.tsx`);
 
-    componentDirs.forEach((dir) => {
-      const componentName = path.basename(dir);
-      const componentPath = path.resolve(
-        __dirname,
-        dir,
-        `${componentName}.tsx`
+    const entry =
+      [indexTs, indexTsx, componentTs, componentTsx].find((candidate) =>
+        fs.existsSync(path.resolve(__dirname, candidate))
       );
 
-      // Check if component file exists
-      if (fs.existsSync(componentPath)) {
-        // Use lowercase for consistency: button, avatar, etc.
-        entries[`components/${componentName.toLowerCase()}/index`] =
-          componentPath;
-      }
-    });
+    if (entry) addEntry(`components/${componentName}/index`, entry);
+  });
 
-    // Add standalone component files (not in directories)
-    const standaloneFiles = glob.sync("src/components/*.tsx", {
-      cwd: __dirname,
-    });
+  glob.sync("src/components/*.{ts,tsx}", { cwd: __dirname }).forEach((file) => {
+    const fileName = path.basename(file, path.extname(file));
+    addEntry(`components/${fileName}`, file);
+  });
 
-    standaloneFiles.forEach((file) => {
-      const fileName = path.basename(file, ".tsx");
-      entries[`components/${fileName.toLowerCase()}`] = path.resolve(
-        __dirname,
-        file
-      );
-    });
+  glob.sync("src/lib/*/", { cwd: __dirname }).forEach((dir) => {
+    const moduleName = path.basename(dir);
+    addEntry(`lib/${moduleName}/index`, path.join(dir, "index.ts"));
+  });
+  addEntry("lib/utils", "src/lib/utils.ts");
 
-    console.log(
-      `✅ Found ${Object.keys(entries).length - 1 - cssFiles.length} components`
-    );
-  } else {
-    console.log(
-      "📦 Building in SIMPLE mode - only src/index.ts (components exported there will be included)"
-    );
-  }
+  addEntry("hooks/index", "src/hooks/index.ts");
+  glob.sync("src/hooks/*.ts", { cwd: __dirname }).forEach((file) => {
+    const hookName = path.basename(file, ".ts");
+    if (hookName !== "index") addEntry(`hooks/${hookName}`, file);
+  });
 
+  console.log(`📦 Building library with ${Object.keys(entries).length} entry points`);
   return entries;
 }
