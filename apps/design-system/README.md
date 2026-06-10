@@ -62,7 +62,9 @@ import "@sth87/shadcn-design-system/animation.css";
 ### 2. Use Components
 
 ```tsx
-import { Button, Dialog } from "@sth87/shadcn-design-system";
+import { useState } from "react";
+import Button from "@sth87/shadcn-design-system/button";
+import Dialog from "@sth87/shadcn-design-system/dialog";
 
 function App() {
   const [open, setOpen] = useState(false);
@@ -70,9 +72,9 @@ function App() {
   return (
     <div>
       <Button variant="default">Click me</Button>
-
-      {/* Dialog with trigger prop */}
       <Dialog
+        open={open}
+        onOpenChange={setOpen}
         trigger={<Button>Open Dialog</Button>}
         title="Welcome"
         description="This is an enhanced dialog component"
@@ -94,34 +96,87 @@ function App() {
 
 ## 📚 Component Import
 
-### Full Import
+## Recommended Subpath Imports
 
-Import all components from the main entry:
+Use subpath imports for all application code. The root package import is still supported for backward compatibility, but it is considered legacy because it can make Vite dev prebundles much heavier.
+
+### Quick Examples
 
 ```tsx
-import {
-  Avatar,
-  Badge,
-  Button,
-  Calendar,
-  Checkbox,
-  Dialog,
-  Input,
-  Select,
-  Tabs,
-  Toast,
-} from "@sth87/shadcn-design-system";
+import Button from "@sth87/shadcn-design-system/button";
+import Dialog from "@sth87/shadcn-design-system/dialog";
+import { DataTable } from "@sth87/shadcn-design-system/table";
+import { Toaster, toast } from "@sth87/shadcn-design-system/toast";
 ```
 
-### Tree-shakeable Imports
+### Component Import Matrix
 
-Import individual components for optimal bundle size:
+| Subpath | Public exports | Canonical import |
+|---|---|---|
+| `accordion` | Accordion | `import Accordion from "@sth87/shadcn-design-system/accordion";` |
+| `avatar` | Avatar | `import { Avatar } from "@sth87/shadcn-design-system/avatar";` |
+| `badge` | Badge | `import Badge from "@sth87/shadcn-design-system/badge";` |
+| `breadcrumb` | Breadcrumb | `import Breadcrumb from "@sth87/shadcn-design-system/breadcrumb";` |
+| `button` | Button, ButtonGroup | `import Button, { ButtonGroup } from "@sth87/shadcn-design-system/button";` |
+| `calendar` | Calendar, CalendarDayButton | `import { Calendar, CalendarDayButton } from "@sth87/shadcn-design-system/calendar";` |
+| `carousel` | Carousel, CarouselSlide | `import { Carousel, CarouselSlide } from "@sth87/shadcn-design-system/carousel";` |
+| `checkbox` | Checkbox | `import Checkbox from "@sth87/shadcn-design-system/checkbox";` |
+| `collapsible` | Collapsible | `import Collapsible from "@sth87/shadcn-design-system/collapsible";` |
+| `command` | Command | `import { Command } from "@sth87/shadcn-design-system/command";` |
+| `contextmenu` | ContextMenu | `import { ContextMenu } from "@sth87/shadcn-design-system/contextmenu";` |
+| `cropper` | Cropper, CropperTool, useCropper, useCropperTool | `import { Cropper, CropperTool, useCropper } from "@sth87/shadcn-design-system/cropper";` |
+| `datepicker` | DatePicker, RangePicker, TimePicker | `import { DatePicker, RangePicker, TimePicker } from "@sth87/shadcn-design-system/datepicker";` |
+| `dialog` | Dialog | `import Dialog from "@sth87/shadcn-design-system/dialog";` |
+| `dropdownmenu` | DropdownMenu | `import { DropdownMenu } from "@sth87/shadcn-design-system/dropdownmenu";` |
+| `floatlabel` | FloatingLabel | `import { FloatingLabel } from "@sth87/shadcn-design-system/floatlabel";` |
+| `glass` | Glass | `import Glass from "@sth87/shadcn-design-system/glass";` |
+| `imageviewer` | ImageViewer, ImageViewerImage, ImageViewerGroup | `import ImageViewer, { ImageViewerImage, ImageViewerGroup } from "@sth87/shadcn-design-system/imageviewer";` |
+| `input` | Input | `import Input from "@sth87/shadcn-design-system/input";` |
+| `inputotp` | InputOTP | `import InputOTP from "@sth87/shadcn-design-system/inputotp";` |
+| `interactive` | Cursor, CursorFollow, CursorProvider | `import { Cursor, CursorFollow, CursorProvider } from "@sth87/shadcn-design-system/interactive";` |
+| `label` | Label | `import { Label } from "@sth87/shadcn-design-system/label";` |
+| `marquee` | Marquee | `import { Marquee } from "@sth87/shadcn-design-system/marquee";` |
+| `masonry` | Masonry, MasonryComponent, MasonryRoot | `import { Masonry, MasonryComponent, MasonryRoot } from "@sth87/shadcn-design-system/masonry";` |
+| `pagination` | Pagination | `import { Pagination } from "@sth87/shadcn-design-system/pagination";` |
+| `popover` | Popover | `import Popover from "@sth87/shadcn-design-system/popover";` |
+| `qrcode` | QRCode, QrCode, useQRCode | `import { QRCode, QrCode, useQRCode } from "@sth87/shadcn-design-system/qrcode";` |
+| `radio` | Radio | `import Radio from "@sth87/shadcn-design-system/radio";` |
+| `rate` | Rate | `import Rate from "@sth87/shadcn-design-system/rate";` |
+| `resizable` | Resizable, ResizablePanelGroup, ResizablePanel | `import Resizable, { ResizablePanelGroup, ResizablePanel } from "@sth87/shadcn-design-system/resizable";` |
+| `scrollarea` | ScrollArea | `import ScrollArea from "@sth87/shadcn-design-system/scrollarea";` |
+| `select` | Select | `import Select from "@sth87/shadcn-design-system/select";` |
+| `separator` | Separator | `import Separator from "@sth87/shadcn-design-system/separator";` |
+| `sheet` | Sheet | `import Sheet from "@sth87/shadcn-design-system/sheet";` |
+| `sidebar` | Sidebar, SidebarProvider, useSidebar | `import Sidebar, { SidebarProvider, useSidebar } from "@sth87/shadcn-design-system/sidebar";` |
+| `skeleton` | Skeleton | `import Skeleton from "@sth87/shadcn-design-system/skeleton";` |
+| `slider` | Slider | `import Slider from "@sth87/shadcn-design-system/slider";` |
+| `stepper` | Stepper, useStepper | `import { Stepper, useStepper } from "@sth87/shadcn-design-system/stepper";` |
+| `switch` | Switch | `import Switch from "@sth87/shadcn-design-system/switch";` |
+| `table` | DataTable, DataTableColumnHeader, DataTablePagination | `import { DataTable, DataTableColumnHeader, DataTablePagination } from "@sth87/shadcn-design-system/table";` |
+| `tabs` | Tabs | `import Tabs from "@sth87/shadcn-design-system/tabs";` |
+| `textarea` | Textarea | `import Textarea from "@sth87/shadcn-design-system/textarea";` |
+| `timegridview` | TimeGridView | `import { TimeGridView } from "@sth87/shadcn-design-system/timegridview";` |
+| `toast` | Toaster, toast, Toast | `import { Toaster, toast, Toast } from "@sth87/shadcn-design-system/toast";` |
+| `toggle` | Toggle | `import Toggle from "@sth87/shadcn-design-system/toggle";` |
+| `tooltip` | Tooltip | `import { Tooltip } from "@sth87/shadcn-design-system/tooltip";` |
+| `tour` | Tour | `import { Tour } from "@sth87/shadcn-design-system/tour";` |
+| `treeselect` | TreeSelect, TreeView | `import { TreeSelect, TreeView } from "@sth87/shadcn-design-system/treeselect";` |
+| `upload` | Upload | `import { Upload } from "@sth87/shadcn-design-system/upload";` |
+| `wheelcolumn` | WheelColumn | `import { WheelColumn } from "@sth87/shadcn-design-system/wheelcolumn";` |
+
+### Text Animation, Hooks, Utilities
 
 ```tsx
-import { Button } from "@sth87/shadcn-design-system/button";
-import { Dialog } from "@sth87/shadcn-design-system/dialog";
-import { DatePicker } from "@sth87/shadcn-design-system/datepicker";
-import { Input } from "@sth87/shadcn-design-system/input";
+import { BlurText, RotatingText, CircularText, FlipWords, GradientText, RollingText, ShimmeringText, SplittingText, TextGenerateEffect, TextHoverEffect, TextPressure, TypingText, WritingText } from "@sth87/shadcn-design-system/textanimation";
+import { useDataTable } from "@sth87/shadcn-design-system/use-data-table";
+import { cn } from "@sth87/shadcn-design-system/utils";
+```
+
+### Legacy Root Import
+
+```tsx
+// Legacy only. Prefer subpath imports in new code.
+import { Button, Dialog, DataTable, Toaster } from "@sth87/shadcn-design-system";
 ```
 
 ## 🎨 Theme Configuration
@@ -220,7 +275,7 @@ document.documentElement.classList.toggle("dark");
 ### Button Component
 
 ```tsx
-import { Button } from "@sth87/shadcn-design-system";
+import Button from "@sth87/shadcn-design-system/button";
 
 <Button variant="default" size="md">
   Default Button
@@ -240,7 +295,8 @@ import { Button } from "@sth87/shadcn-design-system";
 The Dialog component is enhanced with additional features beyond shadcn/ui:
 
 ```tsx
-import { Dialog, Button } from "@sth87/shadcn-design-system";
+import Dialog from "@sth87/shadcn-design-system/dialog";
+import Button from "@sth87/shadcn-design-system/button";
 import { useState } from "react";
 
 function MyComponent() {
@@ -362,7 +418,7 @@ function MyComponent() {
 Enhanced DatePicker with range and time selection:
 
 ```tsx
-import { DatePicker } from "@sth87/shadcn-design-system";
+import { DatePicker } from "@sth87/shadcn-design-system/datepicker";
 import { useState } from "react";
 
 function MyComponent() {
@@ -377,7 +433,7 @@ function MyComponent() {
 ### Toast Notifications
 
 ```tsx
-import { toast, Toaster } from "@sth87/shadcn-design-system";
+import { toast, Toaster } from "@sth87/shadcn-design-system/toast";
 
 function App() {
   return (

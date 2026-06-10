@@ -4,7 +4,7 @@ import {
   type ToasterProps as SonnerToasterProps,
 } from "sonner";
 import { CheckCircle, XCircle, Info, AlertTriangle } from "lucide-react";
-import { cn } from "@dsui/ui/index";
+import { cn } from "@dsui/ui/lib/utils";
 
 const variantStyles = {
   default: "ds:bg-neutral-800 ds:text-white ds:border ds:border-neutral-700",

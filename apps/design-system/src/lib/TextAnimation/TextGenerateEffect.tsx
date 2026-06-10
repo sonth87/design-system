@@ -1,7 +1,7 @@
 "use client";
 import * as React from "react";
 import { motion, stagger, useAnimate } from "motion/react";
-import { cn } from "@dsui/ui/index";
+import { cn } from "@dsui/ui/lib/utils";
 
 type TextGenerateEffectProps = Omit<React.ComponentProps<"div">, "children"> & {
   words: string;

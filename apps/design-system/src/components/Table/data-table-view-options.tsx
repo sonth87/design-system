@@ -29,7 +29,7 @@ import { Button } from "../Button";
 import { Checkbox } from "../Checkbox";
 import Command, { type CommandItemType } from "../Command/Command";
 import { Popover } from "../Popover";
-import { cn } from "@dsui/ui";
+import { cn } from "@dsui/ui/lib/utils";
 
 export type DataTableViewOptionsVariant = "command" | "draggable";
 

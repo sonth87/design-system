@@ -1,10 +1,25 @@
 /**
- * @dsui/design-system
- * Main entry point for the design system library
+ * @sth87/shadcn-design-system
+ * Root barrel entry point for the design system library.
  *
- * Import examples:
- * import { Button, Avatar, Dialog } from "@dsui/design-system"
- * import "@dsui/design-system/theme.css"
+ * ⚠️ LEGACY / BACKWARD-COMPATIBLE ONLY.
+ * This root barrel re-exports every public module and is kept only so existing
+ * `import { Button } from "@sth87/shadcn-design-system"` code keeps working.
+ * Do NOT use it for new code, and do NOT generate root imports from it.
+ *
+ * Canonical imports are subpaths (one entry per module), e.g.:
+ *   import Button from "@sth87/shadcn-design-system/button";
+ *   import Dialog from "@sth87/shadcn-design-system/dialog";
+ *   import { DataTable } from "@sth87/shadcn-design-system/table";
+ *   import { Toaster, toast } from "@sth87/shadcn-design-system/toast";
+ *
+ * CSS is imported separately:
+ *   import "@sth87/shadcn-design-system/theme.css";
+ *   import "@sth87/shadcn-design-system/index.css";
+ *   import "@sth87/shadcn-design-system/animation.css";
+ *
+ * See AI_README.md and skills/shadcn-design-system/references/import-policy.md
+ * for the full subpath matrix.
  */
 
 // ============================================
@@ -173,7 +188,7 @@ export * from "./lib/TextAnimation";
 // UTILS & HOOKS
 // ============================================
 
-export { cn } from "@dsui/ui";
+export { cn } from "@dsui/ui/lib/utils";
 export { useCallbackRef } from "@/hooks/use-callback-ref";
 export { useDebouncedCallback } from "@/hooks/use-debounced-callback";
 export { useDebounceValue } from "@/hooks/use-debounced-value";
@@ -182,6 +197,8 @@ export { useScript } from "@/hooks/use-script";
 export { useScrollLock } from "@/hooks/use-scroll-lock";
 export { useOnClickOutside } from "@/hooks/use-on-click-outside";
 export { useEventListener } from "@/hooks/use-event-listener";
+export { useIsomorphicLayoutEffect } from "@/hooks/use-isomorphic-layout-effect";
+export { useMousePosition } from "@/hooks/use-mouse-position";
 export {
   useMediaQuery,
   type UseMediaQueryOptions,

@@ -18,7 +18,7 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@dsui/ui/components/drawer";
-import { cn } from "@dsui/ui/index";
+import { cn } from "@dsui/ui/lib/utils";
 import { Input, type InputProps } from "../Input";
 import { Button } from "../Button";
 import { TimePicker } from "./TimePicker";

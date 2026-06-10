@@ -1,7 +1,7 @@
 "use client";
 import * as React from "react";
 import { type HTMLMotionProps, motion, type Transition } from "motion/react";
-import { cn } from "@dsui/ui/index";
+import { cn } from "@dsui/ui/lib/utils";
 
 type ShimmeringTextProps = {
   text: string;

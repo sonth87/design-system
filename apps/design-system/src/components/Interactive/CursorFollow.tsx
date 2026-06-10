@@ -10,7 +10,7 @@ import {
   type SpringOptions,
 } from "motion/react";
 
-import { cn } from "@dsui/ui/index";
+import { cn } from "@dsui/ui/lib/utils";
 
 // Transition presets
 type TransitionPreset = "slow" | "normal" | "fast" | "realtime";

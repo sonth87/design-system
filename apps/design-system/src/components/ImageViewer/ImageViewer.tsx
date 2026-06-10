@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useEffect } from "react";
 import { ZoomIn } from "lucide-react";
-import { cn } from "@dsui/ui/index";
+import { cn } from "@dsui/ui/lib/utils";
 
 // Dynamic import for react-viewer to avoid SSR issues
 let Viewer: any = null;

@@ -1,6 +1,6 @@
 import * as React from "react";
 import { memo, useMemo } from "react";
-import { cn } from "@dsui/ui/index";
+import { cn } from "@dsui/ui/lib/utils";
 import Button from "./Button/Button";
 import type { CalendarColor } from "./Calendar/Calendar";
 

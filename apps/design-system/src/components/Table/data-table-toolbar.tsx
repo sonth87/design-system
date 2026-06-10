@@ -10,7 +10,7 @@ import {
   type DataTableViewOptionsProps,
 } from "./data-table-view-options";
 import { Button } from "../Button";
-import { cn } from "@dsui/ui";
+import { cn } from "@dsui/ui/lib/utils";
 
 export interface DataTableToolbarProps<TData>
   extends React.ComponentProps<"div"> {

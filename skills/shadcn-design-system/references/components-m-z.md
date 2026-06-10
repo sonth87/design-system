@@ -1,3 +1,5 @@
+> Import policy: prefer subpath imports. Root imports are legacy; see [import-policy.md](import-policy.md).
+
 # Components Reference — M to Z
 ## @sth87/shadcn-design-system
 
@@ -9,7 +11,7 @@ Auto-scrolling content belt. Supports horizontal/vertical direction, hover-pause
 
 **Import:**
 ```tsx
-import { Marquee } from "@sth87/shadcn-design-system";
+import { Marquee } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 ```
 
 **Props:**
@@ -63,7 +65,7 @@ Responsive Pinterest-style masonry layout using CSS columns.
 
 **Import:**
 ```tsx
-import { Masonry } from "@sth87/shadcn-design-system";
+import { Masonry } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 ```
 
 **Props:**
@@ -103,7 +105,7 @@ Page navigation control.
 
 **Import:**
 ```tsx
-import { Pagination } from "@sth87/shadcn-design-system";
+import { Pagination } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 ```
 
 **Props:**
@@ -152,7 +154,7 @@ Non-modal floating content panel.
 
 **Import:**
 ```tsx
-import { Popover } from "@sth87/shadcn-design-system";
+import { Popover } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 ```
 
 **Props:**
@@ -199,7 +201,7 @@ QR code generator from string data.
 
 **Import:**
 ```tsx
-import { QrCode } from "@sth87/shadcn-design-system";
+import { QrCode } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 ```
 
 **Props:**
@@ -241,7 +243,7 @@ Radio button input. Supports single-button and button-group variants.
 
 **Import:**
 ```tsx
-import { Radio } from "@sth87/shadcn-design-system";
+import { Radio } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 ```
 
 **Props:**
@@ -298,7 +300,7 @@ Star (or custom icon) rating input.
 
 **Import:**
 ```tsx
-import { Rate } from "@sth87/shadcn-design-system";
+import { Rate } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 ```
 
 **Props:**
@@ -336,7 +338,7 @@ Drag-to-resize panels (horizontal or vertical split).
 
 **Import:**
 ```tsx
-import { Resizable } from "@sth87/shadcn-design-system";
+import { Resizable } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 ```
 
 **Props:**
@@ -391,7 +393,7 @@ Custom-styled scrollable container.
 
 **Import:**
 ```tsx
-import { ScrollArea } from "@sth87/shadcn-design-system";
+import { ScrollArea } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 ```
 
 **Props:**
@@ -427,7 +429,7 @@ Dropdown value selector with search capability.
 
 **Import:**
 ```tsx
-import { Select } from "@sth87/shadcn-design-system";
+import { Select } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 ```
 
 **Props:**
@@ -479,7 +481,7 @@ Horizontal or vertical divider line.
 
 **Import:**
 ```tsx
-import { Separator } from "@sth87/shadcn-design-system";
+import { Separator } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 ```
 
 **Props:**
@@ -508,7 +510,7 @@ Side drawer panel (like a Dialog but anchored to a viewport edge).
 
 **Import:**
 ```tsx
-import { Sheet } from "@sth87/shadcn-design-system";
+import { Sheet } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 ```
 
 **Props:**
@@ -589,7 +591,7 @@ import {
   SidebarSeparator,
   SidebarTrigger,
   useSidebar,
-} from "@sth87/shadcn-design-system";
+} from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 ```
 
 **Full Usage:**
@@ -676,7 +678,7 @@ Loading placeholder with shimmer animation.
 
 **Import:**
 ```tsx
-import { Skeleton } from "@sth87/shadcn-design-system";
+import { Skeleton } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 ```
 
 **Props:**
@@ -719,7 +721,7 @@ Range input for selecting numeric values.
 
 **Import:**
 ```tsx
-import { Slider } from "@sth87/shadcn-design-system";
+import { Slider } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 ```
 
 **Props:**
@@ -766,7 +768,7 @@ Multi-step process indicator with navigation.
 
 **Import:**
 ```tsx
-import { Stepper } from "@sth87/shadcn-design-system";
+import { Stepper } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 ```
 
 **Props:**
@@ -819,7 +821,7 @@ Toggle switch control.
 
 **Import:**
 ```tsx
-import { Switch } from "@sth87/shadcn-design-system";
+import { Switch } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 ```
 
 **Props:**
@@ -866,7 +868,7 @@ import {
   DataTablePagination,
   DataTableToolbar,
   DataTableViewOptions,
-} from "@sth87/shadcn-design-system";
+} from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 import type { Table } from "@tanstack/react-table";
 ```
 
@@ -941,7 +943,7 @@ Switchable tab panels.
 
 **Import:**
 ```tsx
-import { Tabs } from "@sth87/shadcn-design-system";
+import { Tabs } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 ```
 
 **Props:**
@@ -992,7 +994,7 @@ Multi-line text input.
 
 **Import:**
 ```tsx
-import { Textarea } from "@sth87/shadcn-design-system";
+import { Textarea } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 ```
 
 **Props:**
@@ -1032,7 +1034,7 @@ Notification toasts via Sonner.
 
 **Import:**
 ```tsx
-import { Toaster, toast } from "@sth87/shadcn-design-system";
+import { Toaster, toast } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 ```
 
 **Setup:**
@@ -1085,7 +1087,7 @@ Two-state toggled button.
 
 **Import:**
 ```tsx
-import { Toggle } from "@sth87/shadcn-design-system";
+import { Toggle } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 ```
 
 **Props:**
@@ -1125,7 +1127,7 @@ Hover information popup.
 
 **Import:**
 ```tsx
-import { Tooltip } from "@sth87/shadcn-design-system";
+import { Tooltip } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 ```
 
 **Props:**
@@ -1167,7 +1169,7 @@ Step-by-step feature walkthrough anchored to DOM elements.
 
 **Import:**
 ```tsx
-import { Tour } from "@sth87/shadcn-design-system";
+import { Tour } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 ```
 
 **Props:**
@@ -1216,7 +1218,7 @@ Hierarchical tree data selector with search.
 
 **Import:**
 ```tsx
-import { TreeSelect } from "@sth87/shadcn-design-system";
+import { TreeSelect } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 ```
 
 **Props:**
@@ -1284,7 +1286,7 @@ File uploader with preview, progress, and drag-and-drop.
 
 **Import:**
 ```tsx
-import { Upload } from "@sth87/shadcn-design-system";
+import { Upload } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 ```
 
 **Props:**

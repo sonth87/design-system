@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 
 /**
- * Script to automatically generate exports map for package.json
- * Run this before publishing to NPM
+ * Script to automatically generate exports map for package.json.
+ * Subpath exports prefer folder index files so modules like Table can expose
+ * multiple named exports without forcing consumers through the root barrel.
  */
 
 import fs from "fs";
@@ -15,53 +16,70 @@ const __dirname = path.dirname(__filename);
 const packageJsonPath = path.resolve(__dirname, "../package.json");
 const srcPath = path.resolve(__dirname, "../src");
 
+function withoutExt(filePath) {
+  return filePath.replace(/\.(ts|tsx)$/, "");
+}
+
+function toExportName(name) {
+  return name.toLowerCase();
+}
+
+function moduleRecord(relNoExt) {
+  return {
+    import: {
+      types: `./dist/types/${relNoExt}.d.ts`,
+      default: `./dist/esm/${relNoExt}.js`,
+    },
+    require: {
+      types: `./dist/types/${relNoExt}.d.ts`,
+      default: `./dist/cjs/${relNoExt}.cjs`,
+    },
+  };
+}
+
+function findDirectoryEntry(baseRel, dirName) {
+  const candidates = [
+    path.join(baseRel, dirName, "index.ts"),
+    path.join(baseRel, dirName, "index.tsx"),
+    path.join(baseRel, dirName, `${dirName}.ts`),
+    path.join(baseRel, dirName, `${dirName}.tsx`),
+  ];
+
+  for (const candidate of candidates) {
+    if (fs.existsSync(path.join(srcPath, candidate))) return withoutExt(candidate);
+  }
+
+  return null;
+}
+
 function getModulesFromDir(dirName) {
   const dirPath = path.join(srcPath, dirName);
   if (!fs.existsSync(dirPath)) return [];
 
-  const items = fs.readdirSync(dirPath, { withFileTypes: true });
-  const modules = [];
-
-  items.forEach((item) => {
-    if (item.isDirectory()) {
-      // Check if index file exists
-      const indexFile = path.join(dirPath, item.name, `index.ts`);
-      const indexTsxFile = path.join(dirPath, item.name, `index.tsx`);
-      if (fs.existsSync(indexFile) || fs.existsSync(indexTsxFile)) {
-        modules.push(item.name);
+  return fs
+    .readdirSync(dirPath, { withFileTypes: true })
+    .flatMap((item) => {
+      if (item.isDirectory()) {
+        const rel = findDirectoryEntry(dirName, item.name);
+        return rel ? [{ name: item.name, rel }] : [];
       }
-    } else if (
-      item.isFile() &&
-      (item.name.endsWith(".ts") || item.name.endsWith(".tsx"))
-    ) {
-      // Standalone module files
-      const fileName = item.name.replace(/\.tsx?$/, "");
-      modules.push(fileName);
-    }
-  });
 
-  return modules;
-}
+      if (item.isFile() && /\.tsx?$/.test(item.name)) {
+        const fileName = item.name.replace(/\.tsx?$/, "");
+        if (fileName === "main") return [];
+        return [{ name: fileName, rel: withoutExt(path.join(dirName, item.name)) }];
+      }
 
-function getComponentDirectories() {
-  return getModulesFromDir("components");
-}
-
-function getLibModules() {
-  return getModulesFromDir("lib");
-}
-
-function getHooksModules() {
-  return getModulesFromDir("hooks");
+      return [];
+    });
 }
 
 function generateExports() {
-  const components = getComponentDirectories();
-  const libModules = getLibModules();
-  const hooksModules = getHooksModules();
+  const components = getModulesFromDir("components");
+  const libModules = getModulesFromDir("lib");
+  const hooksModules = getModulesFromDir("hooks");
 
   const exports = {
-    // Main entry
     ".": {
       import: {
         types: "./dist/types/index.d.ts",
@@ -72,76 +90,37 @@ function generateExports() {
         default: "./dist/cjs/index.cjs",
       },
     },
-    // Package.json
     "./package.json": "./package.json",
-    // Styles
     "./index.css": "./dist/esm/styles/index.css",
   };
 
-  // Add each component
-  components.forEach((component) => {
-    const componentLower = component.toLowerCase();
-    const componentPath = `components/${component}/${component}`;
-
-    exports[`./${componentLower}`] = {
-      import: {
-        types: `./dist/types/${componentPath}.d.ts`,
-        default: `./dist/esm/${componentPath}.js`,
-      },
-      require: {
-        types: `./dist/types/${componentPath}.d.ts`,
-        default: `./dist/cjs/${componentPath}.cjs`,
-      },
-    };
+  components.forEach(({ name, rel }) => {
+    exports[`./${toExportName(name)}`] = moduleRecord(rel);
   });
 
-  // Add each lib module
-  libModules.forEach((module) => {
-    const moduleLower = module.toLowerCase();
-    const modulePath = `lib/${module}/index`;
-
-    exports[`./${moduleLower}`] = {
-      import: {
-        types: `./dist/types/${modulePath}.d.ts`,
-        default: `./dist/esm/${modulePath}.js`,
-      },
-      require: {
-        types: `./dist/types/${modulePath}.d.ts`,
-        default: `./dist/cjs/${modulePath}.cjs`,
-      },
-    };
+  libModules.forEach(({ name, rel }) => {
+    exports[`./${toExportName(name)}`] = moduleRecord(rel);
   });
 
-  // Add each hooks module
-  hooksModules.forEach((module) => {
-    const moduleLower = module.toLowerCase();
-    const modulePath = `hooks/${module}`;
+  exports["./hooks"] = moduleRecord("hooks/index");
+  hooksModules
+    .filter(({ name }) => name !== "index")
+    .forEach(({ name, rel }) => {
+      exports[`./${toExportName(name)}`] = moduleRecord(rel);
+    });
 
-    exports[`./${moduleLower}`] = {
-      import: {
-        types: `./dist/types/${modulePath}.d.ts`,
-        default: `./dist/esm/${modulePath}.js`,
-      },
-      require: {
-        types: `./dist/types/${modulePath}.d.ts`,
-        default: `./dist/cjs/${modulePath}.cjs`,
-      },
-    };
-  });
-
-  // Add CSS exports
   const cssExports = [
-    { name: "theme.css", path: "styles/theme" },
-    { name: "index.css", path: "styles/index" },
-    { name: "animation.css", path: "styles/animation" },
+    { name: "theme.css", rel: "styles/theme" },
+    { name: "index.css", rel: "styles/index" },
+    { name: "animation.css", rel: "styles/animation" },
   ];
 
-  cssExports.forEach(({ name, path: cssPath }) => {
+  cssExports.forEach(({ name, rel }) => {
     const fullPath = path.join(srcPath, name);
     if (fs.existsSync(fullPath)) {
       exports[`./${name}`] = {
-        import: `./dist/esm/${cssPath}.css`,
-        require: `./dist/cjs/${cssPath}.css`,
+        import: `./dist/esm/${rel}.css`,
+        require: `./dist/cjs/${rel}.css`,
       };
     }
   });
@@ -150,9 +129,9 @@ function generateExports() {
 }
 
 function generateTypesVersions() {
-  const components = getComponentDirectories();
-  const libModules = getLibModules();
-  const hooksModules = getHooksModules();
+  const components = getModulesFromDir("components");
+  const libModules = getModulesFromDir("lib");
+  const hooksModules = getModulesFromDir("hooks");
 
   const typesVersions = {
     "*": {
@@ -160,26 +139,14 @@ function generateTypesVersions() {
     },
   };
 
-  components.forEach((component) => {
-    const componentLower = component.toLowerCase();
-    const componentPath = `components/${component}/${component}`;
+  const addType = ({ name, rel }) => {
+    typesVersions["*"][toExportName(name)] = [`./dist/types/${rel}.d.ts`];
+  };
 
-    typesVersions["*"][componentLower] = [`./dist/types/${componentPath}.d.ts`];
-  });
-
-  libModules.forEach((module) => {
-    const moduleLower = module.toLowerCase();
-    const modulePath = `lib/${module}/index`;
-
-    typesVersions["*"][moduleLower] = [`./dist/types/${modulePath}.d.ts`];
-  });
-
-  hooksModules.forEach((module) => {
-    const moduleLower = module.toLowerCase();
-    const modulePath = `hooks/${module}`;
-
-    typesVersions["*"][moduleLower] = [`./dist/types/${modulePath}.d.ts`];
-  });
+  components.forEach(addType);
+  libModules.forEach(addType);
+  typesVersions["*"].hooks = ["./dist/types/hooks/index.d.ts"];
+  hooksModules.filter(({ name }) => name !== "index").forEach(addType);
 
   return typesVersions;
 }
@@ -187,28 +154,15 @@ function generateTypesVersions() {
 function updatePackageJson() {
   const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, "utf-8"));
 
-  // Update exports
   packageJson.exports = generateExports();
-
-  // Update typesVersions
   packageJson.typesVersions = generateTypesVersions();
-
-  // Update main fields
   packageJson.main = "./dist/cjs/index.cjs";
   packageJson.module = "./dist/esm/index.js";
   packageJson.types = "./dist/types/index.d.ts";
-
-  // Update files to include
   packageJson.files = ["dist", "README.md", "LICENSE", "AI_README.md"];
-
-  // Update sideEffects (CSS files have side effects)
   packageJson.sideEffects = ["**/*.css"];
 
-  // Write back
-  fs.writeFileSync(
-    packageJsonPath,
-    JSON.stringify(packageJson, null, 2) + "\n"
-  );
+  fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2) + "\n");
 
   console.log("✅ package.json updated successfully!");
   console.log(`📦 Found ${Object.keys(packageJson.exports).length} exports`);

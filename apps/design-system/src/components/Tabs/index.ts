@@ -1,4 +1,4 @@
-export { default as Tabs, type TabsProps } from "./Tabs";
+export { default, default as Tabs, type TabsProps } from "./Tabs";
 export type {
   TabItem,
   TabPosition,

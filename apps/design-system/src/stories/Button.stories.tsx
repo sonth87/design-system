@@ -21,7 +21,7 @@ const meta: Meta<ButtonProps> = {
       options: ["solid", "mix", "light", "outline", "ghost", "link"],
       description: i18n.t("stories.button.argTypes.variant.description"),
       table: {
-        defaultValue: { summary: "solid" },
+        defaultValue: { summary: "" },
         category: i18n.t("stories.category.appearance"),
       },
     },
@@ -64,7 +64,7 @@ const meta: Meta<ButtonProps> = {
       ],
       description: i18n.t("stories.button.argTypes.color.description"),
       table: {
-        defaultValue: { summary: "primary" },
+        defaultValue: { summary: "" },
         category: i18n.t("stories.category.appearance"),
       },
     },

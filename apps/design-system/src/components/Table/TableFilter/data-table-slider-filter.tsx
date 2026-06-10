@@ -8,7 +8,7 @@ import { Input } from "../../Input";
 import { Popover } from "../../Popover";
 import { Separator } from "../../Separator";
 import { Slider } from "../../Slider";
-import { cn } from "@dsui/ui/index";
+import { cn } from "@dsui/ui/lib/utils";
 
 interface Range {
   min: number;

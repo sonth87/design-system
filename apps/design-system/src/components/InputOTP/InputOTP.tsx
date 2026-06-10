@@ -12,7 +12,7 @@ import {
 } from "@dsui/ui/components/input-otp";
 import { Label } from "@dsui/ui/components/label";
 import type { VariantProps } from "class-variance-authority";
-import { cn } from "@dsui/ui/index";
+import { cn } from "@dsui/ui/lib/utils";
 
 export type InputOTPProps = Omit<
   SInputOTPProps,

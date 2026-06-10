@@ -117,7 +117,8 @@ import "@sth87/shadcn-design-system/animation.css";`}</code>
 
     <h3>Basic Example</h3>
     <pre>
-      <code className="ds:language-tsx">{`import { Button, Input } from "@sth87/shadcn-design-system";
+      <code className="ds:language-tsx">{`import Button from "@sth87/shadcn-design-system/button";
+import Input from "@sth87/shadcn-design-system/input";
 
 function App() {
   return (
@@ -134,12 +135,12 @@ function App() {
 
     <h3>Using Hooks</h3>
     <pre>
-      <code className="ds:language-tsx">{`import { useDebounce } from "@sth87/shadcn-design-system";
+      <code className="ds:language-tsx">{`import { useDebounceValue } from "@sth87/shadcn-design-system/use-debounced-value";
 import { useState, useEffect } from "react";
 
 function SearchComponent() {
   const [search, setSearch] = useState("");
-  const debouncedSearch = useDebounce(search, 500);
+  const debouncedSearch = useDebounceValue(search, 500);
 
   useEffect(() => {
     // API call with debounced value

@@ -1,9 +1,11 @@
+> Import policy: prefer subpath imports. Root imports are legacy; see [import-policy.md](import-policy.md).
+
 # Hooks Reference
 ## @sth87/shadcn-design-system
 
 All hooks are named exports from the package root:
 ```tsx
-import { useCallbackRef, useDebouncedCallback, useDataTable, ... } from "@sth87/shadcn-design-system";
+import { useCallbackRef, useDebouncedCallback, useDataTable, ... } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 ```
 
 ---
@@ -13,7 +15,7 @@ import { useCallbackRef, useDebouncedCallback, useDataTable, ... } from "@sth87/
 Returns a stable function reference that always delegates to the latest callback. Prevents stale closures without needing to add the callback to effect dependency arrays.
 
 ```tsx
-import { useCallbackRef } from "@sth87/shadcn-design-system";
+import { useCallbackRef } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 
 function Component({ onSelect }: { onSelect: (id: string) => void }) {
   // stableHandler has a stable identity but always calls the current onSelect
@@ -34,7 +36,7 @@ function Component({ onSelect }: { onSelect: (id: string) => void }) {
 Debounces a callback by `delay` ms. The returned function has a stable identity.
 
 ```tsx
-import { useDebouncedCallback } from "@sth87/shadcn-design-system";
+import { useDebouncedCallback } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 
 function SearchInput() {
   const debouncedSearch = useDebouncedCallback((query: string) => {
@@ -56,7 +58,7 @@ debouncedFn.cancel();
 Debounces a state value. Returns `[debouncedValue, updater]`. The `debouncedValue` only updates after the delay has elapsed since the last `updater` call.
 
 ```tsx
-import { useDebounceValue } from "@sth87/shadcn-design-system";
+import { useDebounceValue } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 
 function SearchPage() {
   const [debouncedQuery, setQuery] = useDebounceValue("", 400);
@@ -77,7 +79,7 @@ function SearchPage() {
 Type-safe event listener with automatic cleanup. Supports `Window`, `Document`, `HTMLElement`, and `MediaQueryList` targets.
 
 ```tsx
-import { useEventListener } from "@sth87/shadcn-design-system";
+import { useEventListener } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 
 // Global window event
 useEventListener("keydown", (e: KeyboardEvent) => {
@@ -105,7 +107,7 @@ useEventListener("click", handleOnce, window, { once: true, capture: true });
 Reactive IntersectionObserver hook. Returns `[ref, isIntersecting, entry]`.
 
 ```tsx
-import { useIntersectionObserver } from "@sth87/shadcn-design-system";
+import { useIntersectionObserver } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 
 // Lazy-load content
 function LazySection() {
@@ -143,7 +145,7 @@ useEffect(() => {
 `useLayoutEffect` on the client, `useEffect` on the server. Use this instead of `useLayoutEffect` in SSR/Next.js environments to avoid hydration warnings.
 
 ```tsx
-import { useIsomorphicLayoutEffect } from "@sth87/shadcn-design-system";
+import { useIsomorphicLayoutEffect } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 
 function Tooltip({ children }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -167,7 +169,7 @@ function Tooltip({ children }) {
 Reactive CSS media query matcher. Returns `true` when the query matches.
 
 ```tsx
-import { useMediaQuery } from "@sth87/shadcn-design-system";
+import { useMediaQuery } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 
 function ResponsiveComponent() {
   const isMobile = useMediaQuery("(max-width: 640px)");
@@ -187,7 +189,7 @@ function ResponsiveComponent() {
 Tracks global mouse coordinates and position relative to a ref element.
 
 ```tsx
-import { useMousePosition } from "@sth87/shadcn-design-system";
+import { useMousePosition } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 
 function ParallaxCard() {
   const [position, ref] = useMousePosition<HTMLDivElement>();
@@ -227,7 +229,7 @@ function CursorDot() {
 Fires a handler when a click occurs outside of one or multiple ref elements. Useful for closing dropdowns, modals, and popovers.
 
 ```tsx
-import { useOnClickOutside } from "@sth87/shadcn-design-system";
+import { useOnClickOutside } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 
 // Single ref
 function Dropdown() {
@@ -271,7 +273,7 @@ useOnClickOutside(ref, handler, "touchstart");
 Dynamically injects an external `<script>` tag and tracks load status. Caches results so the same script is never loaded twice.
 
 ```tsx
-import { useScript } from "@sth87/shadcn-design-system";
+import { useScript } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 // Returns: "idle" | "loading" | "ready" | "error"
 
 // Load Google Maps
@@ -304,7 +306,7 @@ const status = useScript("https://cdn.example.com/widget.js", {
 Locks body (or a specific element) scroll. Compensates for scrollbar width to prevent layout shift.
 
 ```tsx
-import { useScrollLock } from "@sth87/shadcn-design-system";
+import { useScrollLock } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 
 // Auto-lock: lock immediately when component mounts
 function Modal() {
@@ -348,7 +350,7 @@ const { lock } = useScrollLock({
 Creates a fully-configured TanStack Table v8 instance with optional URL state synchronization via `nuqs`. The most comprehensive integration hook.
 
 ```tsx
-import { useDataTable } from "@sth87/shadcn-design-system";
+import { useDataTable } from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 import type { ColumnDef } from "@tanstack/react-table";
 
 // Signature

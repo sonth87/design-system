@@ -8,7 +8,7 @@ import {
   useState,
   type RefObject,
 } from "react";
-import { cn } from "@dsui/ui/index";
+import { cn } from "@dsui/ui/lib/utils";
 import { Button } from "../Button";
 import { Select } from "../Select";
 import { Input, type InputProps } from "../Input";

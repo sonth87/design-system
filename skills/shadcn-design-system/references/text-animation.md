@@ -1,3 +1,5 @@
+> Import policy: prefer subpath imports. Root imports are legacy; see [import-policy.md](import-policy.md).
+
 # Text Animation Components Reference
 ## @sth87/shadcn-design-system
 
@@ -18,7 +20,7 @@ import {
   TextPressure,
   TypingText,
   WritingText,
-} from "@sth87/shadcn-design-system";
+} from "@sth87/shadcn-design-system"; // legacy root import; prefer subpath imports
 ```
 
 These components use `motion/react` (Framer Motion v11+) internally.
