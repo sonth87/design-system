@@ -40,6 +40,8 @@ export type SelectProps = Omit<ComboboxProps, "ref"> & {
   defaultValues?: string | string[];
   onValuesChange?: (values: string[]) => void;
   search?: boolean | { placeholder?: string; emptyMessage?: string };
+  onSearchChange?: (value: string) => void;
+  shouldFilter?: boolean;
   clickToRemove?: boolean;
   overflowBehavior?: "wrap" | "wrap-when-open" | "cutoff";
   className?: string;
@@ -72,6 +74,8 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
       defaultValues,
       onValuesChange,
       search,
+      onSearchChange,
+      shouldFilter,
       clickToRemove = true,
       overflowBehavior = "wrap-when-open",
       disabled,
@@ -200,6 +204,8 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
                     "ds:translate-y-[-8px]": isFloatLabel && size !== "lg",
                   })}
                   searchable={!!search}
+                  onSearchChange={onSearchChange}
+                  shouldFilter={shouldFilter}
                   tagRender={tagRender}
                   onFocus={onFocus}
                   onBlur={onBlur}
@@ -256,12 +262,14 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
                     size={size}
                     infoTooltip={infoTooltip}
                     required={required}
-                  >
-                    {label}
-                  </FloatingLabel>
+                  ></FloatingLabel>
                 )}
 
-                <BaseMultiSelectContent search={search}>
+                <BaseMultiSelectContent
+                  search={search}
+                  onSearchChange={onSearchChange}
+                  shouldFilter={shouldFilter}
+                >
                   {[...groupedOptions.entries()].map(([group, items]) => {
                     if (group) {
                       return (
@@ -301,7 +309,9 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
           </div>
 
           {helperText && (
-            <p className={cn("ds:text-xs", state ? helperTextStyles[state] : "")}>
+            <p
+              className={cn("ds:text-xs", state ? helperTextStyles[state] : "")}
+            >
               {helperText}
             </p>
           )}

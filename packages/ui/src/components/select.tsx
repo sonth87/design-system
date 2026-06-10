@@ -353,10 +353,12 @@ export function MultiSelectValue({
 
 export function MultiSelectContent({
   search = true,
+  onSearchChange,
   children,
   ...props
 }: {
   search?: boolean | { placeholder?: string; emptyMessage?: string };
+  onSearchChange?: (value: string) => void;
   children: ReactNode;
 } & Omit<ComponentPropsWithoutRef<typeof Command>, "children">) {
   const canSearch = typeof search === "object" ? true : search;
@@ -375,9 +377,15 @@ export function MultiSelectContent({
               placeholder={
                 typeof search === "object" ? search.placeholder : undefined
               }
+              onValueChange={onSearchChange}
             />
           ) : (
-            <button autoFocus className="ds:sr-only" />
+            <button
+              type="button"
+              aria-label="Search"
+              autoFocus
+              className="ds:sr-only"
+            />
           )}
           <CommandList>
             {canSearch && (
