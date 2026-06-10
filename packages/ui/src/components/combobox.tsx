@@ -69,6 +69,8 @@ type ComboboxProps = Omit<
   size?: "normal" | "sm" | "xs" | "lg" | "xl";
   state?: "default" | "success" | "error" | "warning";
   searchable?: boolean;
+  onSearchChange?: (value: string) => void;
+  shouldFilter?: boolean;
   tagRender?: (
     option: SelectOption & { onClick?: () => void }
   ) => React.ReactNode;
@@ -80,6 +82,8 @@ function Combobox({
   placeHolder,
   emptyText,
   onChange,
+  onSearchChange,
+  shouldFilter,
   clearable,
   className,
   dropdownClassName,
@@ -162,9 +166,13 @@ function Combobox({
           }
         }}
       >
-        <Command>
+        <Command shouldFilter={shouldFilter}>
           {searchable && (
-            <CommandInput placeholder={placeHolder} className="ds:h-9" />
+            <CommandInput
+              placeholder={placeHolder}
+              className="ds:h-9"
+              onValueChange={onSearchChange}
+            />
           )}
           <CommandList>
             <CommandEmpty>{emptyText || "Not found"}</CommandEmpty>
@@ -184,7 +192,8 @@ function Combobox({
                   className={cn(
                     option?.disabled &&
                       "ds:opacity-50 ds:cursor-not-allowed ds:grayscale",
-                    value === option.value && "ds:bg-primary/10 ds:dark:bg-primary/20"
+                    value === option.value &&
+                      "ds:bg-primary/10 ds:dark:bg-primary/20"
                   )}
                 >
                   {tagRender ? (
