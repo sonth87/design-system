@@ -37,7 +37,7 @@ function DrawerOverlay({
     <DrawerPrimitive.Overlay
       data-slot="drawer-overlay"
       className={cn(
-        "ds:data-[state=open]:animate-in ds:data-[state=closed]:animate-out ds:data-[state=closed]:fade-out-0 ds:data-[state=open]:fade-in-0 ds:fixed ds:inset-0 ds:z-50 ds:bg-black/50",
+        "ds:data-[state=open]:animate-in ds:data-[state=closed]:animate-out ds:data-[state=closed]:fade-out-0 ds:data-[state=open]:fade-in-0 ds:fixed ds:inset-0 ds:z-50 ds:bg-blackOpacity600",
         className
       )}
       {...props}
@@ -56,7 +56,7 @@ function DrawerContent({
       <DrawerPrimitive.Content
         data-slot="drawer-content"
         className={cn(
-          "ds:group/drawer-content ds:bg-background ds:fixed ds:z-50 ds:flex ds:h-auto ds:flex-col",
+          "ds:group/drawer-content ds:bg-white ds:fixed ds:z-50 ds:flex ds:h-auto ds:flex-col",
           "ds:data-[vaul-drawer-direction=top]:inset-x-0 ds:data-[vaul-drawer-direction=top]:top-0 ds:data-[vaul-drawer-direction=top]:mb-24 ds:data-[vaul-drawer-direction=top]:max-h-[80vh] ds:data-[vaul-drawer-direction=top]:rounded-b-lg ds:data-[vaul-drawer-direction=top]:border-b",
           "ds:data-[vaul-drawer-direction=bottom]:inset-x-0 ds:data-[vaul-drawer-direction=bottom]:bottom-0 ds:data-[vaul-drawer-direction=bottom]:mt-24 ds:data-[vaul-drawer-direction=bottom]:max-h-[80vh] ds:data-[vaul-drawer-direction=bottom]:rounded-t-lg ds:data-[vaul-drawer-direction=bottom]:border-t",
           "ds:data-[vaul-drawer-direction=right]:inset-y-0 ds:data-[vaul-drawer-direction=right]:right-0 ds:data-[vaul-drawer-direction=right]:w-3/4 ds:data-[vaul-drawer-direction=right]:border-l ds:data-[vaul-drawer-direction=right]:sm:max-w-sm",
@@ -65,7 +65,7 @@ function DrawerContent({
         )}
         {...props}
       >
-        <div className="ds:bg-muted ds:mx-auto ds:mt-4 ds:hidden ds:h-2 ds:w-[100px] ds:shrink-0 ds:rounded-full ds:group-data-[vaul-drawer-direction=bottom]/drawer-content:block" />
+        <div className="ds:bg-ink200 ds:mx-auto ds:mt-4 ds:hidden ds:h-2 ds:w-[100px] ds:shrink-0 ds:rounded-full ds:group-data-[vaul-drawer-direction=bottom]/drawer-content:block" />
         {children}
       </DrawerPrimitive.Content>
     </DrawerPortal>
@@ -102,7 +102,7 @@ function DrawerTitle({
   return (
     <DrawerPrimitive.Title
       data-slot="drawer-title"
-      className={cn("ds:text-foreground ds:font-semibold", className)}
+      className={cn("ds:text-ink800 ds:font-semibold", className)}
       {...props}
     />
   );
@@ -115,7 +115,7 @@ function DrawerDescription({
   return (
     <DrawerPrimitive.Description
       data-slot="drawer-description"
-      className={cn("ds:text-muted-foreground ds:text-sm", className)}
+      className={cn("ds:text-ink700 ds:text-sm", className)}
       {...props}
     />
   );

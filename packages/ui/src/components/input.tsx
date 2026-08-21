@@ -3,7 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@dsui/ui/lib/utils";
 
 const inputVariants = cva(
-  "ds:file:text-foreground ds:placeholder:text-muted-foreground ds:selection:bg-primary ds:selection:text-primary-foreground ds:dark:bg-background ds:border-input ds:w-full ds:min-w-0 ds:rounded-md ds:border ds:bg-transparent ds:shadow-xs ds:transition-[color,box-shadow] ds:outline-none ds:file:inline-flex ds:file:h-7 ds:file:border-0 ds:file:bg-transparent ds:file:text-sm ds:file:font-medium ds:disabled:pointer-events-none ds:disabled:cursor-not-allowed ds:disabled:opacity-50 ds:focus-visible:border-ring ds:focus-visible:ring-ring/50 ds:focus-visible:ring-[3px] ds:aria-invalid:ring-destructive/20 ds:dark:aria-invalid:ring-destructive/40 ds:aria-invalid:border-destructive",
+  "ds:file:text-ink800 ds:placeholder:text-ink700 ds:selection:bg-primaryA-500 ds:selection:text-white ds:dark:bg-white ds:border-border ds:w-full ds:min-w-0 ds:rounded-md ds:border ds:bg-transparent ds:shadow-xs ds:transition-[color,box-shadow] ds:outline-none ds:file:inline-flex ds:file:h-7 ds:file:border-0 ds:file:bg-transparent ds:file:text-sm ds:file:font-medium ds:disabled:pointer-events-none ds:disabled:cursor-not-allowed ds:disabled:opacity-50 ds:focus-visible:border-ink500 ds:focus-visible:ring-ink500/50 ds:focus-visible:ring-[3px] ds:aria-invalid:ring-red600/20 ds:dark:aria-invalid:ring-red600/40 ds:aria-invalid:border-red600",
   {
     variants: {
       size: {
@@ -16,11 +16,11 @@ const inputVariants = cva(
       state: {
         default: "",
         success:
-          "ds:border-success ds:ring-success/30 ds:focus-visible:border-success ds:focus-visible:ring-success/50",
+          "ds:border-green500 ds:ring-green500/30 ds:focus-visible:border-green500 ds:focus-visible:ring-green500/50",
         error:
-          "ds:border-destructive ds:ring-destructive/30 ds:focus-visible:border-destructive ds:focus-visible:ring-destructive/50",
+          "ds:border-red600 ds:ring-red600/30 ds:focus-visible:border-red600 ds:focus-visible:ring-red600/50",
         warning:
-          "ds:border-warning ds:ring-warning/30 ds:focus-visible:border-warning ds:focus-visible:ring-warning/50",
+          "ds:border-orange500 ds:ring-orange500/30 ds:focus-visible:border-orange500 ds:focus-visible:ring-orange500/50",
       },
     },
     defaultVariants: {

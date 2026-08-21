@@ -86,13 +86,13 @@ const Rate = React.forwardRef<HTMLDivElement, RateProps>(
 
     // Color mapping for filled stars
     const colorMap = {
-      primary: "ds:text-primary ds:[&_svg]:fill-primary",
-      secondary: "ds:text-secondary ds:[&_svg]:fill-secondary",
-      accent: "ds:text-accent ds:[&_svg]:fill-accent",
-      destructive: "ds:text-destructive ds:[&_svg]:fill-destructive",
-      muted: "ds:text-muted-foreground ds:[&_svg]:fill-muted-foreground",
-      success: "ds:text-success ds:[&_svg]:fill-success",
-      error: "ds:text-error ds:[&_svg]:fill-error",
+      primary: "ds:text-primaryA-500 ds:[&_svg]:fill-primaryA-500",
+      secondary: "ds:text-primaryC-500 ds:[&_svg]:fill-primaryC-500",
+      accent: "ds:text-ink200 ds:[&_svg]:fill-ink200",
+      destructive: "ds:text-red600 ds:[&_svg]:fill-red600",
+      muted: "ds:text-ink700 ds:[&_svg]:fill-ink700",
+      success: "ds:text-green500 ds:[&_svg]:fill-green500",
+      error: "ds:text-red500 ds:[&_svg]:fill-red500",
       warning: "ds:text-yellow-400 ds:[&_svg]:fill-yellow-400",
     };
 
@@ -264,7 +264,7 @@ const Rate = React.forwardRef<HTMLDivElement, RateProps>(
                 }}
               >
                 {/* Empty star background */}
-                <div className="ds:text-muted-foreground/30 ds:pointer-events-none">
+                <div className="ds:text-ink700/30 ds:pointer-events-none">
                   {renderCharacter(false)}
                 </div>
 
@@ -322,7 +322,7 @@ const Rate = React.forwardRef<HTMLDivElement, RateProps>(
               {tooltip &&
                 (hoverValue === index + 1 ||
                   (allowHalf && hoverValue === index + 0.5)) && (
-                  <div className="ds:absolute ds:top-full ds:left-1/2 ds:-translate-x-1/2 ds:mt-1 ds:px-2 ds:py-1 ds:text-xs ds:bg-foreground ds:text-background ds:rounded ds:whitespace-nowrap ds:z-10">
+                  <div className="ds:absolute ds:top-full ds:left-1/2 ds:-translate-x-1/2 ds:mt-1 ds:px-2 ds:py-1 ds:text-xs ds:bg-ink800 ds:text-white ds:rounded ds:whitespace-nowrap ds:z-10">
                     {tooltip}
                   </div>
                 )}

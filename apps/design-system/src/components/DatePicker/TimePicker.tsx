@@ -276,7 +276,7 @@ export function TimePicker({
   const shareLabel = typeof timeLabel === "string" && (
     <div
       key="common-label"
-      className="ds:text-xs ds:font-semibold ds:text-muted-foreground ds:uppercase ds:p-2 ds:border-b ds:w-full ds:text-center"
+      className="ds:text-xs ds:font-semibold ds:text-ink700 ds:uppercase ds:p-2 ds:border-b ds:w-full ds:text-center"
     >
       {timeLabel}
     </div>
@@ -447,7 +447,7 @@ export function TimePicker({
     }) => (
       <div className="ds:flex ds:flex-col ds:gap-2">
         {timeLabel && (
-          <div className="ds:text-xs ds:font-semibold ds:text-muted-foreground ds:uppercase ds:p-2 ds:border-b ds:w-full ds:text-center">
+          <div className="ds:text-xs ds:font-semibold ds:text-ink700 ds:uppercase ds:p-2 ds:border-b ds:w-full ds:text-center">
             {timeLabel}
           </div>
         )}
@@ -682,7 +682,7 @@ export function TimePicker({
   const iconTrigger = (
     <Button
       variant="ghost"
-      className="ds:!p-1 ds:!leading-0 ds:h-auto ds:rounded ds:hover:bg-accent ds:transition-colors"
+      className="ds:!p-1 ds:!leading-0 ds:h-auto ds:rounded ds:hover:bg-ink200 ds:transition-colors"
       disabled={disabled}
     >
       <Clock className="ds:size-4" />
@@ -698,7 +698,7 @@ export function TimePicker({
       <PopoverContent
         className={cn(
           "ds:w-auto ds:overflow-hidden ds:p-0",
-          "ds:backdrop-blur ds:bg-background/50"
+          "ds:backdrop-blur ds:bg-whiteOpacity500"
         )}
       >
         {timePickerContent}
@@ -712,7 +712,7 @@ export function TimePicker({
       <DrawerContent
         className={cn(
           "ds:w-auto ds:overflow-hidden ds:p-0",
-          "ds:backdrop-blur ds:bg-background"
+          "ds:backdrop-blur ds:bg-white"
         )}
       >
         <DrawerHeader className="ds:sr-only">

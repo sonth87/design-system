@@ -30,12 +30,12 @@ function ResizablePanel({
 }
 
 const resizableHandleVariants = cva(
-  "ds:bg-border ds:focus-visible:ring-ring ds:relative ds:flex ds:w-px ds:items-center ds:justify-center ds:after:absolute ds:after:inset-y-0 ds:after:left-1/2 ds:after:w-1 ds:after:-translate-x-1/2 ds:focus-visible:ring-1 ds:focus-visible:ring-offset-1 ds:focus-visible:outline-hidden ds:data-[panel-group-direction=vertical]:h-px ds:data-[panel-group-direction=vertical]:w-full ds:data-[panel-group-direction=vertical]:after:left-0 ds:data-[panel-group-direction=vertical]:after:h-1 ds:data-[panel-group-direction=vertical]:after:w-full ds:data-[panel-group-direction=vertical]:after:translate-x-0 ds:data-[panel-group-direction=vertical]:after:-translate-y-1/2 ds:[&[data-panel-group-direction=vertical]>div]:rotate-90",
+  "ds:bg-border ds:focus-visible:ring-ink500 ds:relative ds:flex ds:w-px ds:items-center ds:justify-center ds:after:absolute ds:after:inset-y-0 ds:after:left-1/2 ds:after:w-1 ds:after:-translate-x-1/2 ds:focus-visible:ring-1 ds:focus-visible:ring-offset-1 ds:focus-visible:outline-hidden ds:data-[panel-group-direction=vertical]:h-px ds:data-[panel-group-direction=vertical]:w-full ds:data-[panel-group-direction=vertical]:after:left-0 ds:data-[panel-group-direction=vertical]:after:h-1 ds:data-[panel-group-direction=vertical]:after:w-full ds:data-[panel-group-direction=vertical]:after:translate-x-0 ds:data-[panel-group-direction=vertical]:after:-translate-y-1/2 ds:[&[data-panel-group-direction=vertical]>div]:rotate-90",
   {
     variants: {
       variant: {
         default: "",
-        line: "ds:transition-all ds:hover:bg-primary/50 ds:hover:shadow-[0_0_12px_3px_hsl(var(--primary)/0.6)] ds:hover:ring-1 ds:hover:ring-primary/30 ds:data-[resize-handle-state=hover]:bg-primary/50 ds:data-[resize-handle-state=hover]:shadow-[0_0_12px_3px_hsl(var(--primary)/0.6)] ds:data-[resize-handle-state=hover]:ring-1 ds:data-[resize-handle-state=hover]:ring-primary/30 ds:data-[resize-handle-state=drag]:bg-primary ds:data-[resize-handle-state=drag]:shadow-[0_0_12px_3px_hsl(var(--primary)/0.6)] ds:data-[resize-handle-state=drag]:ring-1 ds:data-[resize-handle-state=drag]:ring-primary/30",
+        line: "ds:transition-all ds:hover:bg-primaryA-500/50 ds:hover:shadow-[0_0_12px_3px_hsl(var(--primary)/0.6)] ds:hover:ring-1 ds:hover:ring-primaryA-500/30 ds:data-[resize-handle-state=hover]:bg-primaryA-500/50 ds:data-[resize-handle-state=hover]:shadow-[0_0_12px_3px_hsl(var(--primary)/0.6)] ds:data-[resize-handle-state=hover]:ring-1 ds:data-[resize-handle-state=hover]:ring-primaryA-500/30 ds:data-[resize-handle-state=drag]:bg-primaryA-500 ds:data-[resize-handle-state=drag]:shadow-[0_0_12px_3px_hsl(var(--primary)/0.6)] ds:data-[resize-handle-state=drag]:ring-1 ds:data-[resize-handle-state=drag]:ring-primaryA-500/30",
       },
     },
     defaultVariants: {

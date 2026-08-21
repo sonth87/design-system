@@ -148,12 +148,12 @@ const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>(
       return (
         <div className="ds:relative ds:inline-grid ds:h-7 ds:w-fit ds:grid-cols-[1fr_1fr] ds:items-center ds:text-sm ds:font-medium">
           {switchElement(
-            "ds:peer ds:data-[state=unchecked]:bg-input/50 ds:absolute ds:inset-0 ds:h-[inherit] ds:w-14 ds:[&_span]:z-10 ds:[&_span]:size-6.5 ds:[&_span]:transition-transform ds:[&_span]:duration-300 ds:[&_span]:ease-[cubic-bezier(0.16,1,0.3,1)] ds:[&_span]:data-[state=checked]:translate-x-7 ds:[&_span]:data-[state=checked]:rtl:-translate-x-7"
+            "ds:peer ds:data-[state=unchecked]:bg-border/50 ds:absolute ds:inset-0 ds:h-[inherit] ds:w-14 ds:[&_span]:z-10 ds:[&_span]:size-6.5 ds:[&_span]:transition-transform ds:[&_span]:duration-300 ds:[&_span]:ease-[cubic-bezier(0.16,1,0.3,1)] ds:[&_span]:data-[state=checked]:translate-x-7 ds:[&_span]:data-[state=checked]:rtl:-translate-x-7"
           )}
           <span className="ds:pointer-events-none ds:relative ds:ml-0.5 ds:flex ds:min-w-8 ds:items-center ds:justify-center ds:text-center ds:transition-transform ds:duration-300 ds:ease-[cubic-bezier(0.16,1,0.3,1)] ds:peer-data-[state=checked]:invisible ds:peer-data-[state=unchecked]:translate-x-6 ds:peer-data-[state=unchecked]:rtl:-translate-x-6">
             {offLabel}
           </span>
-          <span className="ds:peer-data-[state=checked]:text-background ds:pointer-events-none ds:relative ds:flex ds:min-w-8 ds:items-center ds:justify-center ds:text-center ds:transition-transform ds:duration-300 ds:ease-[cubic-bezier(0.16,1,0.3,1)]	ds:peer-data-[state=checked]:-translate-x-full	ds:peer-data-[state=unchecked]:invisible	ds:peer-data-[state=checked]:rtl:translate-x-full">
+          <span className="ds:peer-data-[state=checked]:text-white ds:pointer-events-none ds:relative ds:flex ds:min-w-8 ds:items-center ds:justify-center ds:text-center ds:transition-transform ds:duration-300 ds:ease-[cubic-bezier(0.16,1,0.3,1)]	ds:peer-data-[state=checked]:-translate-x-full	ds:peer-data-[state=unchecked]:invisible	ds:peer-data-[state=checked]:rtl:translate-x-full">
             {onLabel}
           </span>
         </div>
@@ -169,7 +169,7 @@ const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>(
         >
           {offLabel && (
             <span
-              className="ds:flex-1 ds:cursor-pointer ds:text-sm ds:font-medium ds:group-data-[state=checked]:text-muted-foreground/70"
+              className="ds:flex-1 ds:cursor-pointer ds:text-sm ds:font-medium ds:group-data-[state=checked]:text-ink700/70"
               onClick={() => handleCheckedChange(false)}
             >
               {offLabel}
@@ -178,7 +178,7 @@ const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>(
           {switchElement()}
           {onLabel && (
             <span
-              className="ds:flex-1 ds:cursor-pointer ds:text-sm ds:font-medium ds:group-data-[state=unchecked]:text-muted-foreground/70"
+              className="ds:flex-1 ds:cursor-pointer ds:text-sm ds:font-medium ds:group-data-[state=unchecked]:text-ink700/70"
               onClick={() => handleCheckedChange(true)}
             >
               {onLabel}

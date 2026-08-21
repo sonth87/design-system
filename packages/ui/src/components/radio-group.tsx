@@ -10,51 +10,51 @@ import { cn } from "@dsui/ui/lib/utils";
 const colorVariants = {
   primary: {
     option:
-      "ds:data-[state=checked]:border-primary ds:data-[state=checked]:bg-primary ds:data-[state=checked]:text-primary-foreground ds:hover:border-primary ds:transition-colors",
+      "ds:data-[state=checked]:border-primaryA-500 ds:data-[state=checked]:bg-primaryA-500 ds:data-[state=checked]:text-white ds:hover:border-primaryA-500 ds:transition-colors",
     "button-group":
-      "ds:data-[state=checked]:border-primary ds:data-[state=checked]:bg-primary ds:data-[state=checked]:text-primary-foreground ds:hover:border-primary ds:transition-colors",
+      "ds:data-[state=checked]:border-primaryA-500 ds:data-[state=checked]:bg-primaryA-500 ds:data-[state=checked]:text-white ds:hover:border-primaryA-500 ds:transition-colors",
   },
   secondary: {
     option:
-      "ds:data-[state=checked]:border-secondary ds:data-[state=checked]:bg-secondary ds:data-[state=checked]:text-secondary-foreground ds:hover:border-secondary ds:transition-colors",
+      "ds:data-[state=checked]:border-primaryC-500 ds:data-[state=checked]:bg-primaryC-500 ds:data-[state=checked]:text-white ds:hover:border-primaryC-500 ds:transition-colors",
     "button-group":
-      "ds:data-[state=checked]:border-secondary ds:data-[state=checked]:bg-secondary ds:data-[state=checked]:text-secondary-foreground ds:hover:border-secondary ds:transition-colors",
+      "ds:data-[state=checked]:border-primaryC-500 ds:data-[state=checked]:bg-primaryC-500 ds:data-[state=checked]:text-white ds:hover:border-primaryC-500 ds:transition-colors",
   },
   accent: {
     option:
-      "ds:data-[state=checked]:border-accent ds:data-[state=checked]:bg-accent ds:data-[state=checked]:text-accent-foreground ds:hover:border-accent ds:transition-colors",
+      "ds:data-[state=checked]:border-ink200 ds:data-[state=checked]:bg-ink200 ds:data-[state=checked]:text-ink900 ds:hover:border-ink200 ds:transition-colors",
     "button-group":
-      "ds:data-[state=checked]:border-accent ds:data-[state=checked]:bg-accent ds:data-[state=checked]:text-accent-foreground ds:hover:border-accent ds:transition-colors",
+      "ds:data-[state=checked]:border-ink200 ds:data-[state=checked]:bg-ink200 ds:data-[state=checked]:text-ink900 ds:hover:border-ink200 ds:transition-colors",
   },
   destructive: {
     option:
-      "ds:data-[state=checked]:border-destructive ds:data-[state=checked]:bg-destructive ds:data-[state=checked]:text-destructive-foreground ds:hover:border-destructive ds:transition-colors",
+      "ds:data-[state=checked]:border-red600 ds:data-[state=checked]:bg-red600 ds:data-[state=checked]:text-white ds:hover:border-red600 ds:transition-colors",
     "button-group":
-      "ds:data-[state=checked]:border-destructive ds:data-[state=checked]:bg-destructive ds:data-[state=checked]:text-destructive-foreground ds:hover:border-destructive ds:transition-colors",
+      "ds:data-[state=checked]:border-red600 ds:data-[state=checked]:bg-red600 ds:data-[state=checked]:text-white ds:hover:border-red600 ds:transition-colors",
   },
   muted: {
     option:
-      "ds:data-[state=checked]:border-muted ds:data-[state=checked]:bg-muted ds:data-[state=checked]:text-muted-foreground ds:hover:border-muted ds:transition-colors",
+      "ds:data-[state=checked]:border-ink200 ds:data-[state=checked]:bg-ink200 ds:data-[state=checked]:text-ink700 ds:hover:border-ink200 ds:transition-colors",
     "button-group":
-      "ds:data-[state=checked]:border-muted ds:data-[state=checked]:bg-muted ds:data-[state=checked]:text-muted-foreground ds:hover:border-muted ds:transition-colors",
+      "ds:data-[state=checked]:border-ink200 ds:data-[state=checked]:bg-ink200 ds:data-[state=checked]:text-ink700 ds:hover:border-ink200 ds:transition-colors",
   },
   success: {
     option:
-      "ds:data-[state=checked]:border-success ds:data-[state=checked]:bg-success ds:data-[state=checked]:text-success-foreground ds:hover:border-success ds:transition-colors",
+      "ds:data-[state=checked]:border-green500 ds:data-[state=checked]:bg-green500 ds:data-[state=checked]:text-white ds:hover:border-green500 ds:transition-colors",
     "button-group":
-      "ds:data-[state=checked]:border-success ds:data-[state=checked]:bg-success ds:data-[state=checked]:text-success-foreground ds:hover:border-success ds:transition-colors",
+      "ds:data-[state=checked]:border-green500 ds:data-[state=checked]:bg-green500 ds:data-[state=checked]:text-white ds:hover:border-green500 ds:transition-colors",
   },
   error: {
     option:
-      "ds:data-[state=checked]:border-error ds:data-[state=checked]:bg-error ds:data-[state=checked]:text-error-foreground ds:hover:border-error ds:transition-colors",
+      "ds:data-[state=checked]:border-red500 ds:data-[state=checked]:bg-red500 ds:data-[state=checked]:text-white ds:hover:border-red500 ds:transition-colors",
     "button-group":
-      "ds:data-[state=checked]:border-error ds:data-[state=checked]:bg-error ds:data-[state=checked]:text-error-foreground ds:hover:border-error ds:transition-colors",
+      "ds:data-[state=checked]:border-red500 ds:data-[state=checked]:bg-red500 ds:data-[state=checked]:text-white ds:hover:border-red500 ds:transition-colors",
   },
   warning: {
     option:
-      "ds:data-[state=checked]:border-warning ds:data-[state=checked]:bg-warning ds:data-[state=checked]:text-warning-foreground ds:hover:border-warning ds:transition-colors",
+      "ds:data-[state=checked]:border-orange500 ds:data-[state=checked]:bg-orange500 ds:data-[state=checked]:text-white ds:hover:border-orange500 ds:transition-colors",
     "button-group":
-      "ds:data-[state=checked]:border-warning ds:data-[state=checked]:bg-warning ds:data-[state=checked]:text-warning-foreground ds:hover:border-warning ds:transition-colors",
+      "ds:data-[state=checked]:border-orange500 ds:data-[state=checked]:bg-orange500 ds:data-[state=checked]:text-white ds:hover:border-orange500 ds:transition-colors",
   },
 };
 
@@ -85,13 +85,13 @@ const generateCompoundVariants = () => {
 };
 
 const radioGroupItemVariants = cva(
-  "ds:border ds:border-input ds:text-primary ds:focus-visible:border-ring ds:focus-visible:ring-ring/50 ds:aria-invalid:ring-destructive/20 ds:dark:aria-invalid:ring-destructive/40 ds:aria-invalid:border-destructive ds:dark:bg-input/30 ds:aspect-square ds:size-4 ds:shrink-0 ds:rounded-full ds:shadow-xs ds:transition-[color,box-shadow] ds:outline-none ds:focus-visible:ring-[3px] ds:disabled:cursor-not-allowed ds:disabled:opacity-50 ds:disabled:bg-input ds:disabled:border-input",
+  "ds:border ds:border-border ds:text-primaryA-500 ds:focus-visible:border-ink500 ds:focus-visible:ring-ink500/50 ds:aria-invalid:ring-red600/20 ds:dark:aria-invalid:ring-red600/40 ds:aria-invalid:border-red600 ds:dark:bg-border/30 ds:aspect-square ds:size-4 ds:shrink-0 ds:rounded-full ds:shadow-xs ds:transition-[color,box-shadow] ds:outline-none ds:focus-visible:ring-[3px] ds:disabled:cursor-not-allowed ds:disabled:opacity-50 ds:disabled:bg-border ds:disabled:border-border",
   {
     variants: {
       variant: {
         option: "",
         "button-group":
-          "ds:border-0 ds:bg-transparent ds:aspect-auto ds:size-auto ds:rounded-none ds:first:rounded-l-md ds:last:rounded-r-md ds:border ds:border-input ds:hover:bg-accent ds:hover:text-accent-foreground ds:data-[state=checked]:bg-primary ds:data-[state=checked]:text-primary-foreground ds:data-[state=checked]:border-primary ds:data-[state=checked]:shadow-sm ds:focus-visible:ring-0 ds:px-3 ds:py-2 ds:text-sm ds:font-medium",
+          "ds:border-0 ds:bg-transparent ds:aspect-auto ds:size-auto ds:rounded-none ds:first:rounded-l-md ds:last:rounded-r-md ds:border ds:border-border ds:hover:bg-ink200 ds:hover:text-ink900 ds:data-[state=checked]:bg-primaryA-500 ds:data-[state=checked]:text-white ds:data-[state=checked]:border-primaryA-500 ds:data-[state=checked]:shadow-sm ds:focus-visible:ring-0 ds:px-3 ds:py-2 ds:text-sm ds:font-medium",
       },
       size: {
         default: "ds:size-4",

@@ -123,10 +123,10 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
 
     // Helper text styles
     const helperTextStyles = {
-      default: "ds:text-muted-foreground",
-      success: "ds:text-success",
-      warning: "ds:text-warning",
-      error: "ds:text-error",
+      default: "ds:text-ink700",
+      success: "ds:text-green500",
+      warning: "ds:text-orange500",
+      error: "ds:text-red500",
     };
 
     // Calculate current size
@@ -164,7 +164,7 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
             >
               <span>
                 {label}
-                {required && <span className="ds:text-error ds:ml-0.5">*</span>}
+                {required && <span className="ds:text-red500 ds:ml-0.5">*</span>}
               </span>
               {infoTooltip && (
                 <Tooltip content={infoTooltip}>

@@ -40,120 +40,120 @@ const stepperColorClasses: Record<
   primary: {
     indicator: {
       active:
-        "ds:border-primary ds:bg-primary ds:text-primary-foreground ds:data-[variant=dot]:bg-primary/30 ds:data-[variant=dot]:border-primary/0",
+        "ds:border-primaryA-500 ds:bg-primaryA-500 ds:text-white ds:data-[variant=dot]:bg-primaryA-500/30 ds:data-[variant=dot]:border-primaryA-500/0",
       completed:
-        "ds:border-primary ds:bg-primary ds:text-primary-foreground ds:data-[variant=dot]:bg-primary/30 ds:data-[variant=dot]:border-primary/0",
+        "ds:border-primaryA-500 ds:bg-primaryA-500 ds:text-white ds:data-[variant=dot]:bg-primaryA-500/30 ds:data-[variant=dot]:border-primaryA-500/0",
       inactive:
-        "ds:border-muted ds:bg-background ds:text-muted-foreground ds:data-[variant=dot]:bg-muted/30 ds:data-[variant=dot]:border-muted/0",
+        "ds:border-ink200 ds:bg-white ds:text-ink700 ds:data-[variant=dot]:bg-ink200/30 ds:data-[variant=dot]:border-ink200/0",
     },
     separator: {
-      active: "ds:bg-primary",
-      completed: "ds:bg-primary",
+      active: "ds:bg-primaryA-500",
+      completed: "ds:bg-primaryA-500",
       inactive: "ds:bg-border",
     },
   },
   secondary: {
     indicator: {
       active:
-        "ds:border-secondary ds:bg-secondary ds:text-secondary-foreground ds:data-[variant=dot]:bg-secondary/30 ds:data-[variant=dot]:border-secondary/0",
+        "ds:border-primaryC-500 ds:bg-primaryC-500 ds:text-white ds:data-[variant=dot]:bg-primaryC-500/30 ds:data-[variant=dot]:border-primaryC-500/0",
       completed:
-        "ds:border-secondary ds:bg-secondary ds:text-secondary-foreground ds:data-[variant=dot]:bg-secondary/30 ds:data-[variant=dot]:border-secondary/0",
+        "ds:border-primaryC-500 ds:bg-primaryC-500 ds:text-white ds:data-[variant=dot]:bg-primaryC-500/30 ds:data-[variant=dot]:border-primaryC-500/0",
       inactive:
-        "ds:border-muted ds:bg-background ds:text-muted-foreground ds:data-[variant=dot]:bg-muted/30 ds:data-[variant=dot]:border-muted/0",
+        "ds:border-ink200 ds:bg-white ds:text-ink700 ds:data-[variant=dot]:bg-ink200/30 ds:data-[variant=dot]:border-ink200/0",
     },
     separator: {
-      active: "ds:bg-secondary",
-      completed: "ds:bg-secondary",
+      active: "ds:bg-primaryC-500",
+      completed: "ds:bg-primaryC-500",
       inactive: "ds:bg-border",
     },
   },
   accent: {
     indicator: {
       active:
-        "ds:border-accent ds:bg-accent ds:text-accent-foreground ds:data-[variant=dot]:bg-accent/30 ds:data-[variant=dot]:border-accent/0",
+        "ds:border-ink200 ds:bg-ink200 ds:text-ink900 ds:data-[variant=dot]:bg-ink200/30 ds:data-[variant=dot]:border-ink200/0",
       completed:
-        "ds:border-accent ds:bg-accent ds:text-accent-foreground ds:data-[variant=dot]:bg-accent/30 ds:data-[variant=dot]:border-accent/0",
+        "ds:border-ink200 ds:bg-ink200 ds:text-ink900 ds:data-[variant=dot]:bg-ink200/30 ds:data-[variant=dot]:border-ink200/0",
       inactive:
-        "ds:border-muted ds:bg-background ds:text-muted-foreground ds:data-[variant=dot]:bg-muted/30 ds:data-[variant=dot]:border-muted/0",
+        "ds:border-ink200 ds:bg-white ds:text-ink700 ds:data-[variant=dot]:bg-ink200/30 ds:data-[variant=dot]:border-ink200/0",
     },
     separator: {
-      active: "ds:bg-accent",
-      completed: "ds:bg-accent",
+      active: "ds:bg-ink200",
+      completed: "ds:bg-ink200",
       inactive: "ds:bg-border",
     },
   },
   destructive: {
     indicator: {
       active:
-        "ds:border-destructive ds:bg-destructive ds:text-destructive-foreground ds:data-[variant=dot]:bg-destructive/30 ds:data-[variant=dot]:border-destructive/0",
+        "ds:border-red600 ds:bg-red600 ds:text-white ds:data-[variant=dot]:bg-red600/30 ds:data-[variant=dot]:border-red600/0",
       completed:
-        "ds:border-destructive ds:bg-destructive ds:text-destructive-foreground ds:data-[variant=dot]:bg-destructive/30 ds:data-[variant=dot]:border-destructive/0",
+        "ds:border-red600 ds:bg-red600 ds:text-white ds:data-[variant=dot]:bg-red600/30 ds:data-[variant=dot]:border-red600/0",
       inactive:
-        "ds:border-muted ds:bg-background ds:text-muted-foreground ds:data-[variant=dot]:bg-muted/30 ds:data-[variant=dot]:border-muted/0",
+        "ds:border-ink200 ds:bg-white ds:text-ink700 ds:data-[variant=dot]:bg-ink200/30 ds:data-[variant=dot]:border-ink200/0",
     },
     separator: {
-      active: "ds:bg-destructive",
-      completed: "ds:bg-destructive",
+      active: "ds:bg-red600",
+      completed: "ds:bg-red600",
       inactive: "ds:bg-border",
     },
   },
   muted: {
     indicator: {
       active:
-        "ds:border-muted ds:bg-muted ds:text-muted-foreground ds:data-[variant=dot]:bg-muted/30 ds:data-[variant=dot]:border-muted/0",
+        "ds:border-ink200 ds:bg-ink200 ds:text-ink700 ds:data-[variant=dot]:bg-ink200/30 ds:data-[variant=dot]:border-ink200/0",
       completed:
-        "ds:border-muted ds:bg-muted ds:text-muted-foreground ds:data-[variant=dot]:bg-muted/30 ds:data-[variant=dot]:border-muted/0",
+        "ds:border-ink200 ds:bg-ink200 ds:text-ink700 ds:data-[variant=dot]:bg-ink200/30 ds:data-[variant=dot]:border-ink200/0",
       inactive:
-        "ds:border-muted ds:bg-background ds:text-muted-foreground ds:data-[variant=dot]:bg-muted/30 ds:data-[variant=dot]:border-muted/0",
+        "ds:border-ink200 ds:bg-white ds:text-ink700 ds:data-[variant=dot]:bg-ink200/30 ds:data-[variant=dot]:border-ink200/0",
     },
     separator: {
-      active: "ds:bg-muted",
-      completed: "ds:bg-muted",
+      active: "ds:bg-ink200",
+      completed: "ds:bg-ink200",
       inactive: "ds:bg-border",
     },
   },
   success: {
     indicator: {
       active:
-        "ds:border-success ds:bg-success ds:text-success-foreground ds:data-[variant=dot]:bg-success/30 ds:data-[variant=dot]:border-success/0",
+        "ds:border-green500 ds:bg-green500 ds:text-white ds:data-[variant=dot]:bg-green500/30 ds:data-[variant=dot]:border-green500/0",
       completed:
-        "ds:border-success ds:bg-success ds:text-success-foreground ds:data-[variant=dot]:bg-success/30 ds:data-[variant=dot]:border-success/0",
+        "ds:border-green500 ds:bg-green500 ds:text-white ds:data-[variant=dot]:bg-green500/30 ds:data-[variant=dot]:border-green500/0",
       inactive:
-        "ds:border-muted ds:bg-background ds:text-muted-foreground ds:data-[variant=dot]:bg-muted/30 ds:data-[variant=dot]:border-muted/0",
+        "ds:border-ink200 ds:bg-white ds:text-ink700 ds:data-[variant=dot]:bg-ink200/30 ds:data-[variant=dot]:border-ink200/0",
     },
     separator: {
-      active: "ds:bg-success",
-      completed: "ds:bg-success",
+      active: "ds:bg-green500",
+      completed: "ds:bg-green500",
       inactive: "ds:bg-border",
     },
   },
   error: {
     indicator: {
       active:
-        "ds:border-error ds:bg-error ds:text-error-foreground ds:data-[variant=dot]:bg-error/30 ds:data-[variant=dot]:border-error/0",
+        "ds:border-red500 ds:bg-red500 ds:text-white ds:data-[variant=dot]:bg-red500/30 ds:data-[variant=dot]:border-red500/0",
       completed:
-        "ds:border-error ds:bg-error ds:text-error-foreground ds:data-[variant=dot]:bg-error/30 ds:data-[variant=dot]:border-error/0",
+        "ds:border-red500 ds:bg-red500 ds:text-white ds:data-[variant=dot]:bg-red500/30 ds:data-[variant=dot]:border-red500/0",
       inactive:
-        "ds:border-muted ds:bg-background ds:text-muted-foreground ds:data-[variant=dot]:bg-muted/30 ds:data-[variant=dot]:border-muted/0",
+        "ds:border-ink200 ds:bg-white ds:text-ink700 ds:data-[variant=dot]:bg-ink200/30 ds:data-[variant=dot]:border-ink200/0",
     },
     separator: {
-      active: "ds:bg-error",
-      completed: "ds:bg-error",
+      active: "ds:bg-red500",
+      completed: "ds:bg-red500",
       inactive: "ds:bg-border",
     },
   },
   warning: {
     indicator: {
       active:
-        "ds:border-warning ds:bg-warning ds:text-warning-foreground ds:data-[variant=dot]:bg-warning/30 ds:data-[variant=dot]:border-warning/0",
+        "ds:border-orange500 ds:bg-orange500 ds:text-white ds:data-[variant=dot]:bg-orange500/30 ds:data-[variant=dot]:border-orange500/0",
       completed:
-        "ds:border-warning ds:bg-warning ds:text-warning-foreground ds:data-[variant=dot]:bg-warning/30 ds:data-[variant=dot]:border-warning/0",
+        "ds:border-orange500 ds:bg-orange500 ds:text-white ds:data-[variant=dot]:bg-orange500/30 ds:data-[variant=dot]:border-orange500/0",
       inactive:
-        "ds:border-muted ds:bg-background ds:text-muted-foreground ds:data-[variant=dot]:bg-muted/30 ds:data-[variant=dot]:border-muted/0",
+        "ds:border-ink200 ds:bg-white ds:text-ink700 ds:data-[variant=dot]:bg-ink200/30 ds:data-[variant=dot]:border-ink200/0",
     },
     separator: {
-      active: "ds:bg-warning",
-      completed: "ds:bg-warning",
+      active: "ds:bg-orange500",
+      completed: "ds:bg-orange500",
       inactive: "ds:bg-border",
     },
   },
@@ -1392,7 +1392,7 @@ function StepperTrigger(props: ButtonProps) {
       {...triggerProps}
       ref={composedRef}
       className={cn(
-        "ds:inline-flex ds:items-center ds:justify-center ds:gap-3 ds:rounded-md ds:text-left ds:outline-none ds:transition-all ds:focus-visible:border-ring ds:focus-visible:ring-[3px] ds:focus-visible:ring-ring/50 ds:disabled:pointer-events-none ds:disabled:opacity-50 ds:aria-invalid:border-destructive ds:aria-invalid:ring-destructive/20 ds:dark:aria-invalid:ring-destructive/40 ds:[&_svg:not([class*='size-'])]:size-4 ds:[&_svg]:pointer-events-none ds:[&_svg]:shrink-0",
+        "ds:inline-flex ds:items-center ds:justify-center ds:gap-3 ds:rounded-md ds:text-left ds:outline-none ds:transition-all ds:focus-visible:border-ink500 ds:focus-visible:ring-[3px] ds:focus-visible:ring-ink500/50 ds:disabled:pointer-events-none ds:disabled:opacity-50 ds:aria-invalid:border-red600 ds:aria-invalid:ring-red600/20 ds:dark:aria-invalid:ring-red600/40 ds:[&_svg:not([class*='size-'])]:size-4 ds:[&_svg]:pointer-events-none ds:[&_svg]:shrink-0",
         "ds:not-has-data-[slot=description]:rounded-full ds:not-has-data-[slot=title]:rounded-full",
         shouldWrapIndicator ? "" : getFlexDirection(),
         className
@@ -1619,7 +1619,7 @@ function StepperDescription(props: StepperDescriptionProps) {
       dir={context.dir}
       {...descriptionProps}
       ref={ref}
-      className={cn("ds:text-muted-foreground ds:text-xs", className)}
+      className={cn("ds:text-ink700 ds:text-xs", className)}
     />
   );
 }

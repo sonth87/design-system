@@ -3,7 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import React from "react";
 
 const glassVariants = cva(
-  "ds:inline-flex ds:items-center ds:justify-center ds:gap-2 ds:whitespace-nowrap ds:text-sm ds:font-medium ds:transition-all ds:disabled:pointer-events-none ds:disabled:opacity-50 ds:[&_svg]:pointer-events-none ds:[&_svg:not([class*='size-'])]:size-4 ds:shrink-0 ds:[&_svg]:shrink-0 ds:outline-none ds:focus-visible:border-ring ds:focus-visible:ring-ring/50 ds:focus-visible:ring-[3px] ds:aria-invalid:ring-destructive/20 ds:dark:aria-invalid:ring-destructive/40 ds:aria-invalid:border-destructive",
+  "ds:inline-flex ds:items-center ds:justify-center ds:gap-2 ds:whitespace-nowrap ds:text-sm ds:font-medium ds:transition-all ds:disabled:pointer-events-none ds:disabled:opacity-50 ds:[&_svg]:pointer-events-none ds:[&_svg:not([class*='size-'])]:size-4 ds:shrink-0 ds:[&_svg]:shrink-0 ds:outline-none ds:focus-visible:border-ink500 ds:focus-visible:ring-ink500/50 ds:focus-visible:ring-[3px] ds:aria-invalid:ring-red600/20 ds:dark:aria-invalid:ring-red600/40 ds:aria-invalid:border-red600",
   {
     variants: {},
     defaultVariants: {},
@@ -27,7 +27,7 @@ const Glass: React.FC<GlassProps> = ({ className, children }) => {
       <div className="ds:z-1 ds:absolute ds:inset-0 ds:bg-white/25 ds:rounded-[inherit]"></div>
       <div className="ds:absolute ds:inset-0 ds:z-2 ds:overflow-hidden ds:shadow-[inset_2px_2px_1px_0_rgba(255,255,255,0.5),inset_-1px_-1px_1px_1px_rgba(255,255,255,0.5)] ds:rounded-[inherit]"></div>
       <div className="ds:z-3 ds:relative">
-        <div className="ds:text-foreground ds:[text-shadow:0px_1px_3px_rgba(255, ds:255, ds:255, ds:0.3)] ds:transition-all ds:duration-100 ds:ease-in ds:inline-flex ds:gap-2">
+        <div className="ds:text-ink800 ds:[text-shadow:0px_1px_3px_rgba(255, ds:255, ds:255, ds:0.3)] ds:transition-all ds:duration-100 ds:ease-in ds:inline-flex ds:gap-2">
           {children}
         </div>
       </div>

@@ -79,10 +79,10 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
 
     // State
     const helperTextStyles = {
-      default: "ds:text-muted-foreground",
-      success: "ds:text-success",
-      warning: "ds:text-warning",
-      error: "ds:text-error",
+      default: "ds:text-ink700",
+      success: "ds:text-green500",
+      warning: "ds:text-orange500",
+      error: "ds:text-red500",
     };
 
     return (
@@ -99,7 +99,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
             >
               <span>
                 {label}
-                {required && <span className="ds:text-error ds:ml-0.5">*</span>}
+                {required && <span className="ds:text-red500 ds:ml-0.5">*</span>}
               </span>
               {infoTooltip && (
                 <Tooltip content={infoTooltip}>
@@ -155,7 +155,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
                 type="button"
                 tabIndex={-1}
                 className={cn(
-                  "ds:absolute ds:top-2 ds:right-2 ds:p-1 ds:rounded ds:hover:bg-accent ds:transition-colors"
+                  "ds:absolute ds:top-2 ds:right-2 ds:p-1 ds:rounded ds:hover:bg-ink200 ds:transition-colors"
                 )}
                 onClick={handleClear}
                 disabled={props.disabled}
@@ -178,7 +178,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
                 </p>
               )}
               {showCharCount && typeof maxLength === "number" && (
-                <span className="ds:ml-auto ds:text-muted-foreground">
+                <span className="ds:ml-auto ds:text-ink700">
                   {charCount} / {maxLength}
                 </span>
               )}

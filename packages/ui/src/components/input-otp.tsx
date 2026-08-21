@@ -14,7 +14,7 @@ import { cn } from "@dsui/ui/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
 
 const inputOTPSlotVariants = cva(
-  "ds:border-input ds:relative ds:flex ds:items-center ds:justify-center ds:data-[active=true]:border-ring ds:data-[active=true]:ring-ring/50 ds:data-[active=true]:aria-invalid:ring-destructive/20 ds:dark:data-[active=true]:aria-invalid:ring-destructive/40 ds:aria-invalid:border-destructive ds:data-[active=true]:aria-invalid:border-destructive ds:dark:bg-input/30",
+  "ds:border-border ds:relative ds:flex ds:items-center ds:justify-center ds:data-[active=true]:border-ink500 ds:data-[active=true]:ring-ink500/50 ds:data-[active=true]:aria-invalid:ring-red600/20 ds:dark:data-[active=true]:aria-invalid:ring-red600/40 ds:aria-invalid:border-red600 ds:data-[active=true]:aria-invalid:border-red600 ds:dark:bg-border/30",
   {
     variants: {
       variant: {
@@ -32,11 +32,11 @@ const inputOTPSlotVariants = cva(
       state: {
         default: "",
         success:
-          "ds:border-success ds:ring-success/30 ds:data-[active=true]:border-success ds:data-[active=true]:ring-success/50",
+          "ds:border-green500 ds:ring-green500/30 ds:data-[active=true]:border-green500 ds:data-[active=true]:ring-green500/50",
         error:
-          "ds:border-destructive ds:ring-destructive/30 ds:data-[active=true]:border-destructive ds:data-[active=true]:ring-destructive/50",
+          "ds:border-red600 ds:ring-red600/30 ds:data-[active=true]:border-red600 ds:data-[active=true]:ring-red600/50",
         warning:
-          "ds:border-warning ds:ring-warning/30 ds:data-[active=true]:border-warning ds:data-[active=true]:ring-warning/50",
+          "ds:border-orange500 ds:ring-orange500/30 ds:data-[active=true]:border-orange500 ds:data-[active=true]:ring-orange500/50",
       },
     },
     defaultVariants: {
@@ -97,7 +97,7 @@ function InputOTPSlot({
       {char}
       {hasFakeCaret && (
         <div className="ds:pointer-events-none ds:absolute ds:inset-0 ds:flex ds:items-center ds:justify-center">
-          <div className="ds:animate-caret-blink ds:bg-foreground ds:h-4 ds:w-px ds:duration-1000" />
+          <div className="ds:animate-caret-blink ds:bg-ink800 ds:h-4 ds:w-px ds:duration-1000" />
         </div>
       )}
     </div>

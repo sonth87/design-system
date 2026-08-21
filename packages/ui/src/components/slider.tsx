@@ -39,13 +39,13 @@ function Slider({
       <SliderPrimitive.Track
         data-slot="slider-track"
         className={cn(
-          "ds:bg-muted ds:relative ds:grow ds:overflow-hidden ds:rounded-full ds:data-[orientation=horizontal]:h-1.5 ds:data-[orientation=horizontal]:w-full ds:data-[orientation=vertical]:h-full ds:data-[orientation=vertical]:w-1.5"
+          "ds:bg-ink200 ds:relative ds:grow ds:overflow-hidden ds:rounded-full ds:data-[orientation=horizontal]:h-1.5 ds:data-[orientation=horizontal]:w-full ds:data-[orientation=vertical]:h-full ds:data-[orientation=vertical]:w-1.5"
         )}
       >
         <SliderPrimitive.Range
           data-slot="slider-range"
           className={cn(
-            "ds:bg-primary ds:absolute ds:data-[orientation=horizontal]:h-full ds:data-[orientation=vertical]:w-full"
+            "ds:bg-primaryA-500 ds:absolute ds:data-[orientation=horizontal]:h-full ds:data-[orientation=vertical]:w-full"
           )}
         />
       </SliderPrimitive.Track>
@@ -53,7 +53,7 @@ function Slider({
         <SliderPrimitive.Thumb
           data-slot="slider-thumb"
           key={index}
-          className="ds:border-primary ds:ring-ring/50 ds:block ds:size-4 ds:shrink-0 ds:rounded-full ds:border ds:bg-white ds:shadow-sm ds:transition-[color,box-shadow] ds:hover:ring-4 ds:focus-visible:ring-4 ds:focus-visible:outline-hidden ds:disabled:pointer-events-none ds:disabled:opacity-50"
+          className="ds:border-primaryA-500 ds:ring-ink500/50 ds:block ds:size-4 ds:shrink-0 ds:rounded-full ds:border ds:bg-white ds:shadow-sm ds:transition-[color,box-shadow] ds:hover:ring-4 ds:focus-visible:ring-4 ds:focus-visible:outline-hidden ds:disabled:pointer-events-none ds:disabled:opacity-50"
         />
       ))}
     </SliderPrimitive.Root>

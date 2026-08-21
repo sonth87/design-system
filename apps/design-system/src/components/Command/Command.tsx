@@ -135,7 +135,7 @@ const Command = React.forwardRef<HTMLDivElement, CommandProps>((props, ref) => {
     <SCommand
       ref={ref}
       className={cn(
-        "ds:bg-popover ds:text-popover-foreground ds:flex ds:h-full ds:w-full ds:flex-col ds:overflow-hidden ds:rounded-md",
+        "ds:bg-white ds:text-ink900 ds:flex ds:h-full ds:w-full ds:flex-col ds:overflow-hidden ds:rounded-md",
         className
       )}
       {...rest}

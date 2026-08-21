@@ -10,40 +10,40 @@ const pad = (num: number): string => String(num).padStart(2, "0");
 const getColorClasses = (color: CalendarColor = "primary") => {
   const colorMap = {
     primary: {
-      bg: "ds:bg-primary",
-      text: "ds:text-primary-foreground",
+      bg: "ds:bg-primaryA-500",
+      text: "ds:text-white",
     },
     secondary: {
-      bg: "ds:bg-secondary",
-      text: "ds:text-secondary-foreground",
+      bg: "ds:bg-primaryC-500",
+      text: "ds:text-white",
     },
     accent: {
-      bg: "ds:bg-accent",
-      text: "ds:text-accent-foreground",
+      bg: "ds:bg-ink200",
+      text: "ds:text-ink900",
     },
     destructive: {
-      bg: "ds:bg-destructive",
-      text: "ds:text-destructive-foreground",
+      bg: "ds:bg-red600",
+      text: "ds:text-white",
     },
     muted: {
-      bg: "ds:bg-muted",
-      text: "ds:text-muted-foreground",
+      bg: "ds:bg-ink200",
+      text: "ds:text-ink700",
     },
     success: {
-      bg: "ds:bg-success",
-      text: "ds:text-success-foreground",
+      bg: "ds:bg-green500",
+      text: "ds:text-white",
     },
     error: {
-      bg: "ds:bg-error",
-      text: "ds:text-error-foreground",
+      bg: "ds:bg-red500",
+      text: "ds:text-white",
     },
     warning: {
-      bg: "ds:bg-warning",
-      text: "ds:text-warning-foreground",
+      bg: "ds:bg-orange500",
+      text: "ds:text-white",
     },
     foreground: {
-      bg: "ds:bg-foreground",
-      text: "ds:text-background",
+      bg: "ds:bg-ink800",
+      text: "ds:text-white",
     },
   };
   return colorMap[color];
@@ -127,7 +127,7 @@ export const TimeGridView = memo(
                   className={cn(
                     isSelected
                       ? `${colorClasses.bg} ${colorClasses.text} ds:font-semibold`
-                      : "ds:text-foreground"
+                      : "ds:text-ink800"
                   )}
                 >
                   {display}

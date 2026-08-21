@@ -161,7 +161,7 @@ export function DataTableSliderFilter<TData>({
               className={cn("ds:h-8 ds:w-24", unit && "ds:pr-8")}
             />
             {unit && (
-              <span className="ds:absolute ds:top-0 ds:right-0 ds:bottom-0 ds:flex ds:items-center ds:rounded-r-md ds:bg-accent ds:px-2 ds:text-muted-foreground ds:text-sm">
+              <span className="ds:absolute ds:top-0 ds:right-0 ds:bottom-0 ds:flex ds:items-center ds:rounded-r-md ds:bg-ink200 ds:px-2 ds:text-ink700 ds:text-sm">
                 {unit}
               </span>
             )}
@@ -185,7 +185,7 @@ export function DataTableSliderFilter<TData>({
               className={cn("ds:h-8 ds:w-24", unit && "ds:pr-8")}
             />
             {unit && (
-              <span className="ds:absolute ds:top-0 ds:right-0 ds:bottom-0 ds:flex ds:items-center ds:rounded-r-md ds:bg-accent ds:px-2 ds:text-muted-foreground ds:text-sm">
+              <span className="ds:absolute ds:top-0 ds:right-0 ds:bottom-0 ds:flex ds:items-center ds:rounded-r-md ds:bg-ink200 ds:px-2 ds:text-ink700 ds:text-sm">
                 {unit}
               </span>
             )}
@@ -222,7 +222,7 @@ export function DataTableSliderFilter<TData>({
             role="button"
             aria-label={`Clear ${title} filter`}
             tabIndex={0}
-            className="ds:rounded-sm ds:opacity-70 ds:transition-opacity ds:hover:opacity-100 ds:focus-visible:outline-none ds:focus-visible:ring-1 ds:focus-visible:ring-ring"
+            className="ds:rounded-sm ds:opacity-70 ds:transition-opacity ds:hover:opacity-100 ds:focus-visible:outline-none ds:focus-visible:ring-1 ds:focus-visible:ring-ink500"
             onClick={onReset}
           >
             <XCircle />

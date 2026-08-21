@@ -298,11 +298,11 @@ export const ImageViewerImage: React.FC<ImageViewerImageProps> = ({
         <div className="ds:relative ds:inline-block">
           {showPlaceholder && (
             <div
-              className="ds:absolute ds:inset-0 ds:flex ds:items-center ds:justify-center ds:bg-muted ds:animate-pulse"
+              className="ds:absolute ds:inset-0 ds:flex ds:items-center ds:justify-center ds:bg-ink200 ds:animate-pulse"
               style={{ width, height }}
             >
               {placeholder === true ? (
-                <div className="ds:w-8 ds:h-8 ds:border-2 ds:border-primary ds:border-t-transparent ds:rounded-full ds:animate-spin" />
+                <div className="ds:w-8 ds:h-8 ds:border-2 ds:border-primaryA-500 ds:border-t-transparent ds:rounded-full ds:animate-spin" />
               ) : (
                 placeholder
               )}
@@ -329,7 +329,7 @@ export const ImageViewerImage: React.FC<ImageViewerImageProps> = ({
               onClick={handlePreview}
               className={cn(
                 "ds:image-viewer-mask ds:absolute ds:inset-0 ds:flex ds:items-center ds:justify-center ds:opacity-0 ds:hover:opacity-100 ds:transition-opacity ds:cursor-pointer",
-                "ds:bg-black/50 ds:backdrop-blur-sm"
+                "ds:bg-blackOpacity600 ds:backdrop-blur-sm"
               )}
             >
               <div className="ds:text-white ds:text-sm ds:flex ds:items-center ds:gap-2">

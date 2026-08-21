@@ -468,7 +468,7 @@ function QRCodeOverlay(props: QRCodeOverlayProps) {
       data-slot="qr-code-overlay"
       {...overlayProps}
       className={cn(
-        "ds:-translate-x-1/2 ds:-translate-y-1/2 ds:absolute ds:top-1/2 ds:left-1/2 ds:flex ds:items-center ds:justify-center ds:rounded-sm ds:bg-background",
+        "ds:-translate-x-1/2 ds:-translate-y-1/2 ds:absolute ds:top-1/2 ds:left-1/2 ds:flex ds:items-center ds:justify-center ds:rounded-sm ds:bg-white",
         className
       )}
     />
@@ -498,7 +498,7 @@ function QRCodeSkeleton(props: QRCodeSkeletonProps) {
       data-slot="qr-code-skeleton"
       {...skeletonProps}
       className={cn(
-        "ds:absolute ds:max-h-(--qr-code-size) ds:max-w-(--qr-code-size) ds:animate-pulse ds:bg-accent",
+        "ds:absolute ds:max-h-(--qr-code-size) ds:max-w-(--qr-code-size) ds:animate-pulse ds:bg-ink200",
         className
       )}
       style={{

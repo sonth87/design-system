@@ -6,44 +6,44 @@ import { cn } from "../lib/utils";
 
 const colorVariants = {
   primary: {
-    solid: "ds:bg-primary ds:text-primary-foreground",
-    light: "ds:bg-primary/30 ds:text-primary ds:dark:bg-primary/30",
-    outline: "ds:border-primary ds:text-primary ds:bg-transparent",
+    solid: "ds:bg-primaryA-500 ds:text-white",
+    light: "ds:bg-primaryA-500/30 ds:text-primaryA-500 ds:dark:bg-primaryA-500/30",
+    outline: "ds:border-primaryA-500 ds:text-primaryA-500 ds:bg-transparent",
   },
   secondary: {
-    solid: "ds:bg-secondary ds:text-secondary-foreground",
-    light: "ds:bg-secondary/30 ds:text-secondary ds:dark:bg-secondary/30",
-    outline: "ds:border-secondary ds:text-secondary ds:bg-transparent",
+    solid: "ds:bg-primaryC-500 ds:text-white",
+    light: "ds:bg-primaryC-500/30 ds:text-primaryC-500 ds:dark:bg-primaryC-500/30",
+    outline: "ds:border-primaryC-500 ds:text-primaryC-500 ds:bg-transparent",
   },
   accent: {
-    solid: "ds:bg-accent ds:text-accent-foreground",
-    light: "ds:bg-accent/30 ds:text-accent ds:dark:bg-accent/30",
-    outline: "ds:border-accent ds:text-accent ds:bg-transparent",
+    solid: "ds:bg-ink200 ds:text-ink900",
+    light: "ds:bg-ink200/30 ds:text-ink200 ds:dark:bg-ink200/30",
+    outline: "ds:border-ink200 ds:text-ink200 ds:bg-transparent",
   },
   destructive: {
-    solid: "ds:bg-destructive ds:text-destructive-foreground ds:dark:bg-destructive/60",
-    light: "ds:bg-destructive/30 ds:text-destructive ds:dark:bg-destructive/30",
-    outline: "ds:border-destructive ds:text-destructive ds:bg-transparent",
+    solid: "ds:bg-red600 ds:text-white ds:dark:bg-red600/60",
+    light: "ds:bg-red600/30 ds:text-red600 ds:dark:bg-red600/30",
+    outline: "ds:border-red600 ds:text-red600 ds:bg-transparent",
   },
   muted: {
-    solid: "ds:bg-muted ds:text-muted-foreground",
-    light: "ds:bg-muted/30 ds:text-muted-foreground ds:dark:bg-muted/30",
-    outline: "ds:border-input ds:text-muted-foreground ds:bg-transparent",
+    solid: "ds:bg-ink200 ds:text-ink700",
+    light: "ds:bg-ink200/30 ds:text-ink700 ds:dark:bg-ink200/30",
+    outline: "ds:border-border ds:text-ink700 ds:bg-transparent",
   },
   success: {
-    solid: "ds:bg-success ds:text-success-foreground ds:dark:bg-success/60",
-    light: "ds:bg-success/30 ds:text-success ds:dark:bg-success/30",
-    outline: "ds:border-success ds:text-success ds:bg-transparent",
+    solid: "ds:bg-green500 ds:text-white ds:dark:bg-green500/60",
+    light: "ds:bg-green500/30 ds:text-green500 ds:dark:bg-green500/30",
+    outline: "ds:border-green500 ds:text-green500 ds:bg-transparent",
   },
   error: {
-    solid: "ds:bg-error ds:text-error-foreground ds:dark:bg-error/60",
-    light: "ds:bg-error/30 ds:text-error ds:dark:bg-error/30",
-    outline: "ds:border-error ds:text-error ds:bg-transparent",
+    solid: "ds:bg-red500 ds:text-white ds:dark:bg-red500/60",
+    light: "ds:bg-red500/30 ds:text-red500 ds:dark:bg-red500/30",
+    outline: "ds:border-red500 ds:text-red500 ds:bg-transparent",
   },
   warning: {
-    solid: "ds:bg-warning ds:text-warning-foreground ds:dark:bg-warning/60",
-    light: "ds:bg-warning/30 ds:text-warning ds:dark:bg-warning/30",
-    outline: "ds:border-warning ds:text-warning ds:bg-transparent",
+    solid: "ds:bg-orange500 ds:text-white ds:dark:bg-orange500/60",
+    light: "ds:bg-orange500/30 ds:text-orange500 ds:dark:bg-orange500/30",
+    outline: "ds:border-orange500 ds:text-orange500 ds:bg-transparent",
   },
 };
 
@@ -111,32 +111,32 @@ const badgeVariants = cva(
       {
         border: true,
         size: "dot",
-        className: "ds:border ds:border-background",
+        className: "ds:border ds:border-white",
       },
       {
         border: true,
         size: "xs",
-        className: "ds:border ds:border-background",
+        className: "ds:border ds:border-white",
       },
       {
         border: true,
         size: "sm",
-        className: "ds:border ds:border-background",
+        className: "ds:border ds:border-white",
       },
       {
         border: true,
         size: "normal",
-        className: "ds:border ds:border-background",
+        className: "ds:border ds:border-white",
       },
       {
         border: true,
         size: "lg",
-        className: "ds:border-[2px] ds:border-background",
+        className: "ds:border-[2px] ds:border-white",
       },
       {
         border: true,
         size: "xl",
-        className: "ds:border-[2px] ds:border-background",
+        className: "ds:border-[2px] ds:border-white",
       },
     ],
     defaultVariants: {

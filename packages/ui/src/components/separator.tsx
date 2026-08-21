@@ -6,14 +6,14 @@ import * as SeparatorPrimitive from "@radix-ui/react-separator";
 import { cn } from "@dsui/ui/lib/utils";
 
 const colorVariants = {
-  primary: "ds:bg-primary",
-  secondary: "ds:bg-secondary",
-  accent: "ds:bg-accent",
-  destructive: "ds:bg-destructive",
-  muted: "ds:bg-muted",
-  success: "ds:bg-success",
-  error: "ds:bg-error",
-  warning: "ds:bg-warning",
+  primary: "ds:bg-primaryA-500",
+  secondary: "ds:bg-primaryC-500",
+  accent: "ds:bg-ink200",
+  destructive: "ds:bg-red600",
+  muted: "ds:bg-ink200",
+  success: "ds:bg-green500",
+  error: "ds:bg-red500",
+  warning: "ds:bg-orange500",
 };
 
 interface SeparatorProps
@@ -39,7 +39,7 @@ function Separator({
         <div className={cn("ds:flex ds:items-center", className)}>
           {textPosition === "start" && (
             <>
-              <span className="ds:text-sm ds:text-muted-foreground">{children}</span>
+              <span className="ds:text-sm ds:text-ink700">{children}</span>
               <SeparatorPrimitive.Root
                 data-slot="separator"
                 decorative={decorative}
@@ -56,7 +56,7 @@ function Separator({
                 orientation={orientation}
                 className={`${baseColor} ds:shrink-0 ds:h-px ds:flex-1`}
               />
-              <span className="ds:text-sm ds:text-muted-foreground ds:px-2">
+              <span className="ds:text-sm ds:text-ink700 ds:px-2">
                 {children}
               </span>
               <SeparatorPrimitive.Root
@@ -75,7 +75,7 @@ function Separator({
                 orientation={orientation}
                 className={`${baseColor} ds:shrink-0 ds:h-px ds:flex-1 ds:mr-2`}
               />
-              <span className="ds:text-sm ds:text-muted-foreground">{children}</span>
+              <span className="ds:text-sm ds:text-ink700">{children}</span>
             </>
           )}
         </div>
@@ -91,7 +91,7 @@ function Separator({
         >
           {textPosition === "start" && (
             <>
-              <span className="ds:text-sm ds:text-foreground ds:bg-background ds:px-1 ds:rounded">
+              <span className="ds:text-sm ds:text-ink800 ds:bg-white ds:px-1 ds:rounded">
                 {children}
               </span>
               <SeparatorPrimitive.Root
@@ -110,7 +110,7 @@ function Separator({
                 orientation={orientation}
                 className={`${baseColor} ds:shrink-0 ds:w-px ds:h-full ds:flex-1`}
               />
-              <span className="ds:text-sm ds:text-foreground ds:bg-background ds:px-1 ds:rounded">
+              <span className="ds:text-sm ds:text-ink800 ds:bg-white ds:px-1 ds:rounded">
                 {children}
               </span>
               <SeparatorPrimitive.Root
@@ -129,7 +129,7 @@ function Separator({
                 orientation={orientation}
                 className={`${baseColor} ds:shrink-0 ds:w-px ds:h-full ds:flex-1 ds:mb-2`}
               />
-              <span className="ds:text-sm ds:text-foreground ds:bg-background ds:px-1 ds:rounded">
+              <span className="ds:text-sm ds:text-ink800 ds:bg-white ds:px-1 ds:rounded">
                 {children}
               </span>
             </>

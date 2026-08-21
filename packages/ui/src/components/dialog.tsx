@@ -39,7 +39,7 @@ function DialogOverlay({
   backdropFilter?: number;
   overlay?: "dark" | "light";
 }) {
-  const overlayClass = overlay === "dark" ? "bg-black/50" : "bg-white/50";
+  const overlayClass = overlay === "dark" ? "bg-blackOpacity600" : "bg-whiteOpacity500";
   return (
     <DialogPrimitive.Overlay
       data-slot="dialog-overlay"
@@ -78,7 +78,7 @@ function DialogContent({
       <DialogPrimitive.Content
         data-slot="dialog-content"
         className={cn(
-          "ds:bg-background ds:data-[state=closed]:animate-out ds:data-[state=closed]:fade-out-0 ds:data-[state=open]:fade-in-0 ds:data-[state=closed]:zoom-out-95 ds:data-[state=open]:zoom-in-95 ds:fixed ds:top-[50%] ds:left-[50%] ds:z-50 ds:grid ds:w-full ds:max-w-[calc(100%-2rem)] ds:translate-x-[-50%] ds:translate-y-[-50%] ds:gap-4 ds:rounded-lg ds:border ds:p-6 ds:shadow-lg ds:duration-200 ds:sm:max-w-lg",
+          "ds:bg-white ds:data-[state=closed]:animate-out ds:data-[state=closed]:fade-out-0 ds:data-[state=open]:fade-in-0 ds:data-[state=closed]:zoom-out-95 ds:data-[state=open]:zoom-in-95 ds:fixed ds:top-[50%] ds:left-[50%] ds:z-50 ds:grid ds:w-full ds:max-w-[calc(100%-2rem)] ds:translate-x-[-50%] ds:translate-y-[-50%] ds:gap-4 ds:rounded-lg ds:border ds:p-6 ds:shadow-lg ds:duration-200 ds:sm:max-w-lg",
           {
             "ds:data-[state=open]:animate-in": !noDefaultAnimation,
           },
@@ -90,7 +90,7 @@ function DialogContent({
         {showCloseButton && (
           <DialogPrimitive.Close
             data-slot="dialog-close"
-            className="ds:ring-offset-background ds:focus:ring-ring ds:data-[state=open]:bg-accent ds:data-[state=open]:text-muted-foreground ds:absolute ds:top-4 ds:right-4 ds:rounded-xs ds:opacity-70 ds:transition-opacity ds:hover:opacity-100 ds:focus:ring-2 ds:focus:ring-offset-2 ds:focus:outline-hidden ds:disabled:pointer-events-none ds:[&_svg]:pointer-events-none ds:[&_svg]:shrink-0 ds:[&_svg:not([class*='size-'])]:size-4"
+            className="ds:ring-offset-white ds:focus:ring-ink500 ds:data-[state=open]:bg-ink200 ds:data-[state=open]:text-ink700 ds:absolute ds:top-4 ds:right-4 ds:rounded-xs ds:opacity-70 ds:transition-opacity ds:hover:opacity-100 ds:focus:ring-2 ds:focus:ring-offset-2 ds:focus:outline-hidden ds:disabled:pointer-events-none ds:[&_svg]:pointer-events-none ds:[&_svg]:shrink-0 ds:[&_svg:not([class*='size-'])]:size-4"
           >
             <XIcon />
             <span className="ds:sr-only">Close</span>
@@ -144,7 +144,7 @@ function DialogDescription({
   return (
     <DialogPrimitive.Description
       data-slot="dialog-description"
-      className={cn("ds:text-muted-foreground ds:text-sm", className)}
+      className={cn("ds:text-ink700 ds:text-sm", className)}
       {...props}
     />
   );

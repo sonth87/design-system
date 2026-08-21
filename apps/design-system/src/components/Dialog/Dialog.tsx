@@ -103,13 +103,13 @@ export interface DialogProps {
 const variantIcons = {
   dialog: null,
   confirm: (
-    <div className="ds:size-12 ds:flex ds:items-center ds:justify-center ds:rounded-full ds:bg-success/10 ds:mx-auto ds:mb-4">
-      <CheckCircle2 className="ds:size-6 ds:text-success" />
+    <div className="ds:size-12 ds:flex ds:items-center ds:justify-center ds:rounded-full ds:bg-green500/10 ds:mx-auto ds:mb-4">
+      <CheckCircle2 className="ds:size-6 ds:text-green500" />
     </div>
   ),
   alert: (
-    <div className="ds:size-12 ds:flex ds:items-center ds:justify-center ds:rounded-full ds:bg-error/10 ds:mx-auto ds:mb-4">
-      <AlertCircle className="ds:size-5 ds:text-error" />
+    <div className="ds:size-12 ds:flex ds:items-center ds:justify-center ds:rounded-full ds:bg-red500/10 ds:mx-auto ds:mb-4">
+      <AlertCircle className="ds:size-5 ds:text-red500" />
     </div>
   ),
   info: (
@@ -118,8 +118,8 @@ const variantIcons = {
     </div>
   ),
   warning: (
-    <div className="ds:size-12 ds:flex ds:items-center ds:justify-center ds:rounded-full ds:bg-warning/10 ds:mx-auto ds:mb-4">
-      <AlertTriangle className="ds:size-5 ds:text-warning" />
+    <div className="ds:size-12 ds:flex ds:items-center ds:justify-center ds:rounded-full ds:bg-orange500/10 ds:mx-auto ds:mb-4">
+      <AlertTriangle className="ds:size-5 ds:text-orange500" />
     </div>
   ),
 };

@@ -304,7 +304,7 @@ export function DatePicker({
   ) : (
     <Button
       variant="ghost"
-      className="ds:!p-1 ds:!leading-0 ds:h-auto ds:rounded ds:hover:bg-accent ds:transition-colors"
+      className="ds:!p-1 ds:!leading-0 ds:h-auto ds:rounded ds:hover:bg-ink200 ds:transition-colors"
       size={props.size}
     >
       <CalendarIcon
@@ -409,7 +409,7 @@ export function DatePicker({
       <PopoverContent
         className={cn(
           "ds:w-auto ds:overflow-hidden ds:p-0",
-          "ds:backdrop-blur ds:bg-background/50"
+          "ds:backdrop-blur ds:bg-whiteOpacity500"
         )}
         side={side}
         align={align}
@@ -425,7 +425,7 @@ export function DatePicker({
       <DrawerContent
         className={cn(
           "ds:w-auto ds:overflow-hidden ds:p-0",
-          "ds:backdrop-blur ds:bg-background"
+          "ds:backdrop-blur ds:bg-white"
         )}
       >
         <DrawerHeader className="ds:sr-only">

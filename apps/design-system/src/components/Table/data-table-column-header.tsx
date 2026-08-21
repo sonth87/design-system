@@ -42,7 +42,7 @@ export function DataTableColumnHeader<TData, TValue>({
   }
 
   const sortTrigger = (
-    <button className="ds:-ml-1.5 ds:flex ds:h-8 ds:items-center ds:gap-1.5 ds:rounded-md ds:px-2 ds:py-1.5 ds:hover:bg-accent ds:focus:outline-none ds:focus:ring-1 ds:focus:ring-ring ds:data-[state=open]:bg-accent ds:[&_svg]:size-4 ds:[&_svg]:shrink-0 ds:[&_svg]:text-muted-foreground">
+    <button className="ds:-ml-1.5 ds:flex ds:h-8 ds:items-center ds:gap-1.5 ds:rounded-md ds:px-2 ds:py-1.5 ds:hover:bg-ink200 ds:focus:outline-none ds:focus:ring-1 ds:focus:ring-ink500 ds:data-[state=open]:bg-ink200 ds:[&_svg]:size-4 ds:[&_svg]:shrink-0 ds:[&_svg]:text-ink700">
       {displayLabel}
       {column.getCanSort() &&
         (column.getIsSorted() === "desc" ? (
@@ -63,8 +63,8 @@ export function DataTableColumnHeader<TData, TValue>({
           <Button
             variant="ghost"
             className={cn(
-              "ds:hover:bg-accent ds:rounded ds:p-1",
-              column.getFilterValue() ? "ds:text-primary" : ""
+              "ds:hover:bg-ink200 ds:rounded ds:p-1",
+              column.getFilterValue() ? "ds:text-primaryA-500" : ""
             )}
           >
             <Filter className="ds:size-4" />
@@ -84,7 +84,7 @@ export function DataTableColumnHeader<TData, TValue>({
       checked: column.getIsSorted() === "asc",
       onClick: () => column.toggleSorting(false),
       className:
-        "ds:relative ds:pr-8 ds:pl-2 ds:[&>span:first-child]:right-2 ds:[&>span:first-child]:left-auto ds:[&_svg]:text-muted-foreground",
+        "ds:relative ds:pr-8 ds:pl-2 ds:[&>span:first-child]:right-2 ds:[&>span:first-child]:left-auto ds:[&_svg]:text-ink700",
     });
     items.push({
       key: "desc",
@@ -94,7 +94,7 @@ export function DataTableColumnHeader<TData, TValue>({
       checked: column.getIsSorted() === "desc",
       onClick: () => column.toggleSorting(true),
       className:
-        "ds:relative ds:pr-8 ds:pl-2 ds:[&>span:first-child]:right-2 ds:[&>span:first-child]:left-auto ds:[&_svg]:text-muted-foreground",
+        "ds:relative ds:pr-8 ds:pl-2 ds:[&>span:first-child]:right-2 ds:[&>span:first-child]:left-auto ds:[&_svg]:text-ink700",
     });
     if (column.getIsSorted()) {
       items.push({
@@ -103,7 +103,7 @@ export function DataTableColumnHeader<TData, TValue>({
         label: "Reset",
         icon: <X />,
         onClick: () => column.clearSorting(),
-        className: "ds:pl-2 ds:[&_svg]:text-muted-foreground",
+        className: "ds:pl-2 ds:[&_svg]:text-ink700",
       });
     }
   }
@@ -117,7 +117,7 @@ export function DataTableColumnHeader<TData, TValue>({
       checked: !column.getIsVisible(),
       onClick: () => column.toggleVisibility(false),
       className:
-        "ds:relative ds:pr-8 ds:pl-2 ds:[&>span:first-child]:right-2 ds:[&>span:first-child]:left-auto ds:[&_svg]:text-muted-foreground",
+        "ds:relative ds:pr-8 ds:pl-2 ds:[&>span:first-child]:right-2 ds:[&>span:first-child]:left-auto ds:[&_svg]:text-ink700",
     });
   }
 

@@ -51,21 +51,21 @@ export type BreadcrumbProps = React.ComponentProps<"nav"> & {
 const colorClasses = {
   default: "",
   primary:
-    "ds:text-primary ds:[&_[data-slot=breadcrumb-link]:hover]:text-primary/80 ds:[&_[data-slot=breadcrumb-page]]:text-primary",
+    "ds:text-primaryA-500 ds:[&_[data-slot=breadcrumb-link]:hover]:text-primaryA-500/80 ds:[&_[data-slot=breadcrumb-page]]:text-primaryA-500",
   secondary:
-    "ds:text-secondary ds:[&_[data-slot=breadcrumb-link]:hover]:text-secondary/80 ds:[&_[data-slot=breadcrumb-page]]:text-secondary",
+    "ds:text-primaryC-500 ds:[&_[data-slot=breadcrumb-link]:hover]:text-primaryC-500/80 ds:[&_[data-slot=breadcrumb-page]]:text-primaryC-500",
   accent:
-    "ds:text-accent ds:[&_[data-slot=breadcrumb-link]:hover]:text-accent/80 ds:[&_[data-slot=breadcrumb-page]]:text-accent",
+    "ds:text-ink200 ds:[&_[data-slot=breadcrumb-link]:hover]:text-ink200/80 ds:[&_[data-slot=breadcrumb-page]]:text-ink200",
   destructive:
-    "ds:text-destructive ds:[&_[data-slot=breadcrumb-link]:hover]:text-destructive/80 ds:[&_[data-slot=breadcrumb-page]]:text-destructive",
+    "ds:text-red600 ds:[&_[data-slot=breadcrumb-link]:hover]:text-red600/80 ds:[&_[data-slot=breadcrumb-page]]:text-red600",
   muted:
-    "ds:text-muted-foreground ds:[&_[data-slot=breadcrumb-link]:hover]:text-muted-foreground/80 ds:[&_[data-slot=breadcrumb-page]]:text-muted-foreground",
+    "ds:text-ink700 ds:[&_[data-slot=breadcrumb-link]:hover]:text-ink700/80 ds:[&_[data-slot=breadcrumb-page]]:text-ink700",
   success:
-    "ds:text-success ds:[&_[data-slot=breadcrumb-link]:hover]:text-success/80 ds:[&_[data-slot=breadcrumb-page]]:text-success",
+    "ds:text-green500 ds:[&_[data-slot=breadcrumb-link]:hover]:text-green500/80 ds:[&_[data-slot=breadcrumb-page]]:text-green500",
   error:
-    "ds:text-error ds:[&_[data-slot=breadcrumb-link]:hover]:text-error/80 ds:[&_[data-slot=breadcrumb-page]]:text-error",
+    "ds:text-red500 ds:[&_[data-slot=breadcrumb-link]:hover]:text-red500/80 ds:[&_[data-slot=breadcrumb-page]]:text-red500",
   warning:
-    "ds:text-warning ds:[&_[data-slot=breadcrumb-link]:hover]:text-warning/80 ds:[&_[data-slot=breadcrumb-page]]:text-warning",
+    "ds:text-orange500 ds:[&_[data-slot=breadcrumb-link]:hover]:text-orange500/80 ds:[&_[data-slot=breadcrumb-page]]:text-orange500",
 };
 
 const variantClasses = {
@@ -73,7 +73,7 @@ const variantClasses = {
   compact:
     "ds:text-xs ds:[&_[data-slot=breadcrumb-list]]:gap-1 ds:[&_[data-slot=breadcrumb-separator]>svg]:size-3",
   badge:
-    "ds:[&_[data-slot=breadcrumb-list]]:gap-1 ds:[&_[data-slot=breadcrumb-item]]:border ds:[&_[data-slot=breadcrumb-item]]:bg-muted ds:[&_[data-slot=breadcrumb-item]]:px-2 ds:[&_[data-slot=breadcrumb-item]]:py-0.5 ds:[&_[data-slot=breadcrumb-item]]:rounded-full ds:[&_[data-slot=breadcrumb-item]]:text-sm",
+    "ds:[&_[data-slot=breadcrumb-list]]:gap-1 ds:[&_[data-slot=breadcrumb-item]]:border ds:[&_[data-slot=breadcrumb-item]]:bg-ink200 ds:[&_[data-slot=breadcrumb-item]]:px-2 ds:[&_[data-slot=breadcrumb-item]]:py-0.5 ds:[&_[data-slot=breadcrumb-item]]:rounded-full ds:[&_[data-slot=breadcrumb-item]]:text-sm",
   bordered: "ds:border ds:rounded-md ds:px-3 ds:py-2",
 };
 
@@ -152,7 +152,7 @@ const Breadcrumb = React.forwardRef<HTMLElement, BreadcrumbProps>(
               {hiddenItems.map((item, index) => (
                 <div
                   key={index}
-                  className="ds:flex ds:items-center ds:gap-2 ds:py-1 ds:px-3 ds:rounded ds:hover:bg-muted"
+                  className="ds:flex ds:items-center ds:gap-2 ds:py-1 ds:px-3 ds:rounded ds:hover:bg-ink200"
                 >
                   {item.icon}
                   {item.label && (

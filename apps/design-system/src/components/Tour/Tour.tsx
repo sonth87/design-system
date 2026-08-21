@@ -1284,7 +1284,7 @@ function TourStep(props: TourStepProps) {
         onFocusCapture={onFocusCapture}
         onBlurCapture={onBlurCapture}
         className={cn(
-          "ds:fixed ds:z-50 ds:flex ds:w-80 ds:flex-col ds:gap-4 ds:rounded-lg ds:border ds:bg-popover ds:p-4 ds:text-popover-foreground ds:shadow-md ds:outline-none",
+          "ds:fixed ds:z-50 ds:flex ds:w-80 ds:flex-col ds:gap-4 ds:rounded-lg ds:border ds:bg-white ds:p-4 ds:text-ink900 ds:shadow-md ds:outline-none",
           className
         )}
         style={{
@@ -1331,7 +1331,7 @@ function TourSpotlight(props: TourSpotlightProps) {
       data-state={getDataState(open)}
       {...backdropProps}
       className={cn(
-        "ds:data-[state=closed]:fade-out-0 ds:data-[state=open]:fade-in-0 ds:fixed ds:inset-0 ds:z-40 ds:bg-black/80 ds:data-[state=closed]:animate-out ds:data-[state=open]:animate-in",
+        "ds:data-[state=closed]:fade-out-0 ds:data-[state=open]:fade-in-0 ds:fixed ds:inset-0 ds:z-40 ds:bg-blackOpacity900 ds:data-[state=closed]:animate-out ds:data-[state=open]:animate-in",
         className
       )}
       style={{
@@ -1363,7 +1363,7 @@ function TourSpotlightRing(props: TourSpotlightRingProps) {
       data-state={getDataState(open)}
       {...ringProps}
       className={cn(
-        "ds:pointer-events-none ds:fixed ds:z-40 ds:border-ring ds:ring-[3px] ds:ring-ring/50",
+        "ds:pointer-events-none ds:fixed ds:z-40 ds:border-ink500 ds:ring-[3px] ds:ring-ink500/50",
         className
       )}
       style={{
@@ -1457,7 +1457,7 @@ function TourArrow(props: TourArrowProps) {
         width={width}
         height={height}
         {...arrowProps}
-        className={cn("ds:block ds:fill-popover ds:stroke-border", className)}
+        className={cn("ds:block ds:fill-white ds:stroke-border", className)}
       >
         {asChild ? children : <polygon points="0,0 30,0 15,10" />}
       </svg>
@@ -1517,7 +1517,7 @@ function TourDescription(props: DivProps) {
       data-slot="tour-description"
       dir={context.dir}
       {...descriptionProps}
-      className={cn("ds:text-muted-foreground ds:text-sm", className)}
+      className={cn("ds:text-ink700 ds:text-sm", className)}
     />
   );
 }
@@ -1553,7 +1553,7 @@ function TourClose(props: TourCloseProps) {
       type="button"
       aria-label="Close tour"
       className={cn(
-        "ds:absolute ds:top-4 ds:right-4 ds:rounded-xs ds:opacity-70 ds:ring-offset-background ds:transition-opacity ds:hover:opacity-100 ds:focus:outline-hidden ds:focus:ring-2 ds:focus:ring-ring ds:focus:ring-offset-2 ds:disabled:pointer-events-none ds:[&_svg:not([class*='size-'])]:size-4 ds:[&_svg]:pointer-events-none ds:[&_svg]:shrink-0",
+        "ds:absolute ds:top-4 ds:right-4 ds:rounded-xs ds:opacity-70 ds:ring-offset-white ds:transition-opacity ds:hover:opacity-100 ds:focus:outline-hidden ds:focus:ring-2 ds:focus:ring-ink500 ds:focus:ring-offset-2 ds:disabled:pointer-events-none ds:[&_svg:not([class*='size-'])]:size-4 ds:[&_svg]:pointer-events-none ds:[&_svg]:shrink-0",
         className
       )}
       onClick={onClick}
@@ -1689,7 +1689,7 @@ function TourStepCounter(props: TourStepCounterProps) {
     <StepCounterPrimitive
       data-slot="tour-step-counter"
       {...stepCounterProps}
-      className={cn("ds:text-muted-foreground ds:text-sm", className)}
+      className={cn("ds:text-ink700 ds:text-sm", className)}
     >
       {children ?? format(value + 1, steps.length)}
     </StepCounterPrimitive>

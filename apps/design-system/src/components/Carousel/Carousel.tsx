@@ -687,9 +687,9 @@ export const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>(
                     direction === "horizontal" ? "ds:w-2 ds:h-2" : "ds:w-2 ds:h-2",
                     isActive
                       ? direction === "horizontal"
-                        ? "ds:bg-primary ds:w-6"
-                        : "ds:bg-primary ds:h-6"
-                      : "ds:bg-muted-foreground/30 ds:hover:bg-muted-foreground/50",
+                        ? "ds:bg-primaryA-500 ds:w-6"
+                        : "ds:bg-primaryA-500 ds:h-6"
+                      : "ds:bg-ink700/30 ds:hover:bg-ink700/50",
                     clickable && "ds:cursor-pointer"
                   )}
                   aria-label={`Go to slide ${bulletIndex + 1}`}
@@ -704,7 +704,7 @@ export const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>(
         return (
           <div
             className={cn(
-              "ds:text-center ds:text-sm ds:text-muted-foreground ds:bg-background/80 ds:backdrop-blur ds:px-3 ds:py-1 ds:rounded-full",
+              "ds:text-center ds:text-sm ds:text-ink700 ds:bg-white/80 ds:backdrop-blur ds:px-3 ds:py-1 ds:rounded-full",
               isOutside
                 ? "ds:mt-4 ds:mx-auto ds:w-fit" // Outside: centered with margin
                 : "ds:absolute ds:bottom-4 ds:left-1/2 ds:-translate-x-1/2" // Inside: overlay
@@ -717,7 +717,7 @@ export const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>(
               )
             ) : (
               <>
-                <span className="ds:carousel-pagination-current ds:font-semibold ds:text-foreground">
+                <span className="ds:carousel-pagination-current ds:font-semibold ds:text-ink800">
                   {activeIndex + 1}
                 </span>
                 {" / "}
@@ -747,7 +747,7 @@ export const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>(
           <div
             onClick={handleProgressbarClick}
             className={cn(
-              "ds:w-full ds:h-1 ds:bg-muted ds:rounded-full ds:overflow-hidden",
+              "ds:w-full ds:h-1 ds:bg-ink200 ds:rounded-full ds:overflow-hidden",
               isInside
                 ? "ds:absolute ds:bottom-0 ds:left-0 ds:right-0 ds:rounded-none"
                 : "ds:mt-4",
@@ -758,7 +758,7 @@ export const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>(
               paginationOptions.renderProgressbar("carousel-progressbar-fill")
             ) : (
               <div
-                className="ds:carousel-progressbar-fill ds:h-full ds:bg-primary ds:transition-all ds:duration-300"
+                className="ds:carousel-progressbar-fill ds:h-full ds:bg-primaryA-500 ds:transition-all ds:duration-300"
                 style={{ width: `${progress}%` }}
               />
             )}
@@ -810,7 +810,7 @@ export const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>(
           <div
             onClick={handleScrollbarClick}
             className={cn(
-              "ds:w-full ds:h-1 ds:bg-muted/50 ds:rounded-full ds:transition-opacity ds:duration-300",
+              "ds:w-full ds:h-1 ds:bg-ink200/50 ds:rounded-full ds:transition-opacity ds:duration-300",
               isOutside
                 ? "ds:mt-4" // Outside: margin-top for spacing
                 : "ds:absolute ds:bottom-0 ds:left-1/2 ds:-translate-x-1/2", // Inside: overlay at bottom
@@ -822,7 +822,7 @@ export const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>(
               paginationOptions.renderScrollbar("carousel-scrollbar-drag")
             ) : (
               <div
-                className="ds:carousel-scrollbar-drag ds:h-full ds:bg-primary ds:rounded-full ds:transition-all ds:duration-300 ds:absolute ds:left-0"
+                className="ds:carousel-scrollbar-drag ds:h-full ds:bg-primaryA-500 ds:rounded-full ds:transition-all ds:duration-300 ds:absolute ds:left-0"
                 style={{
                   width: `${dragWidth}%`,
                   left: `${scrollPosition}%`,
@@ -1001,7 +1001,7 @@ export const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>(
                     onClick={slidePrev}
                     disabled={!loop && !rewind && isBeginning}
                     className={cn(
-                      "ds:absolute ds:z-10 ds:w-10 ds:h-10 ds:rounded-full ds:bg-background/80 ds:backdrop-blur ds:shadow-lg ds:flex ds:items-center ds:justify-center ds:transition-all ds:hover:bg-background ds:disabled:opacity-30 ds:disabled:cursor-not-allowed",
+                      "ds:absolute ds:z-10 ds:w-10 ds:h-10 ds:rounded-full ds:bg-white/80 ds:backdrop-blur ds:shadow-lg ds:flex ds:items-center ds:justify-center ds:transition-all ds:hover:bg-white ds:disabled:opacity-30 ds:disabled:cursor-not-allowed",
                       direction === "horizontal"
                         ? "ds:left-4 ds:top-1/2 ds:-translate-y-1/2"
                         : "ds:top-4 ds:left-1/2 ds:-translate-x-1/2"
@@ -1019,7 +1019,7 @@ export const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>(
                     onClick={slideNext}
                     disabled={!loop && !rewind && isEnd}
                     className={cn(
-                      "ds:absolute ds:z-10 ds:w-10 ds:h-10 ds:rounded-full ds:bg-background/80 ds:backdrop-blur ds:shadow-lg ds:flex ds:items-center ds:justify-center ds:transition-all ds:hover:bg-background ds:disabled:opacity-30 ds:disabled:cursor-not-allowed",
+                      "ds:absolute ds:z-10 ds:w-10 ds:h-10 ds:rounded-full ds:bg-white/80 ds:backdrop-blur ds:shadow-lg ds:flex ds:items-center ds:justify-center ds:transition-all ds:hover:bg-white ds:disabled:opacity-30 ds:disabled:cursor-not-allowed",
                       direction === "horizontal"
                         ? "ds:right-4 ds:top-1/2 ds:-translate-y-1/2"
                         : "ds:bottom-4 ds:left-1/2 ds:-translate-x-1/2"

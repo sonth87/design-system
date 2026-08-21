@@ -30,19 +30,19 @@ const uploadVariants = cva(
   {
     variants: {
       variant: {
-        outline: "ds:border ds:border-foreground/10 ds:bg-background ds:text-foreground",
-        primaryOutline: "ds:border ds:border-primary ds:bg-background ds:text-primary",
-        icon: "ds:border ds:border-primary ds:text-primary ds:bg-background ds:rounded-xl ds:p-2",
+        outline: "ds:border ds:border-ink800/10 ds:bg-white ds:text-ink800",
+        primaryOutline: "ds:border ds:border-primaryA-500 ds:bg-white ds:text-primaryA-500",
+        icon: "ds:border ds:border-primaryA-500 ds:text-primaryA-500 ds:bg-white ds:rounded-xl ds:p-2",
         avatar:
-          "ds:border-2 ds:border-dashed ds:border-foreground/20 ds:bg-background ds:!w-full ds:!h-full ds:flex-col ds:text-center ds:hover:border-foreground/40 ds:!p-1",
+          "ds:border-2 ds:border-dashed ds:border-ink800/20 ds:bg-white ds:!w-full ds:!h-full ds:flex-col ds:text-center ds:hover:border-ink800/40 ds:!p-1",
         avatarCircle:
-          "ds:border-2 ds:border-dashed ds:border-foreground/20 ds:bg-background ds:!w-full ds:!h-full ds:rounded-full ds:flex-col ds:text-center ds:hover:border-foreground/40 ds:!p-1",
+          "ds:border-2 ds:border-dashed ds:border-ink800/20 ds:bg-white ds:!w-full ds:!h-full ds:rounded-full ds:flex-col ds:text-center ds:hover:border-ink800/40 ds:!p-1",
         dropzone:
-          "ds:border ds:border-foreground/10 ds:bg-background ds:flex-col ds:text-center ds:py-10",
+          "ds:border ds:border-ink800/10 ds:bg-white ds:flex-col ds:text-center ds:py-10",
         primaryDropzone:
-          "ds:border ds:border-primary ds:bg-primary/10 ds:flex-col ds:text-center ds:py-10",
+          "ds:border ds:border-primaryA-500 ds:bg-primaryA-500/10 ds:flex-col ds:text-center ds:py-10",
         secondaryDropzone:
-          "ds:border ds:border-foreground/10 ds:bg-foreground/10 ds:flex-col ds:text-center ds:py-10",
+          "ds:border ds:border-ink800/10 ds:bg-ink800/10 ds:flex-col ds:text-center ds:py-10",
       },
 
       size: {
@@ -53,7 +53,7 @@ const uploadVariants = cva(
 
       status: {
         idle: "",
-        dragover: "ds:border-primary ds:bg-primary/5 ds:scale-[1.02]",
+        dragover: "ds:border-primaryA-500 ds:bg-primaryA-500/5 ds:scale-[1.02]",
         disabled: "ds:opacity-50 ds:cursor-not-allowed",
       },
     },
@@ -942,7 +942,7 @@ const UploadBase = React.forwardRef<HTMLDivElement, UploadProps>(
                     {/* Delete button overlay */}
                     <div
                       className={cn(
-                        "ds:absolute ds:inset-0 ds:bg-black/50 ds:opacity-0 ds:group-hover:opacity-100 ds:transition-opacity ds:flex ds:items-center ds:justify-center",
+                        "ds:absolute ds:inset-0 ds:bg-blackOpacity600 ds:opacity-0 ds:group-hover:opacity-100 ds:transition-opacity ds:flex ds:items-center ds:justify-center",
                         variant === "avatarCircle" && "ds:rounded-full",
                         variant === "avatar" && "ds:rounded-lg"
                       )}
@@ -979,12 +979,12 @@ const UploadBase = React.forwardRef<HTMLDivElement, UploadProps>(
                         : size === "small"
                           ? "ds:h-5 ds:w-5"
                           : "ds:h-6 ds:w-6",
-                      variant === "outline" && "ds:text-gray-500",
+                      variant === "outline" && "ds:text-ink600",
                       [
                         "primaryDropzone",
                         "secondaryDropzone",
                         "primaryOutline",
-                      ].includes(variant as any) && "ds:text-primary"
+                      ].includes(variant as any) && "ds:text-primaryA-500"
                     )}
                   >
                     {uploadIcon}
@@ -1003,12 +1003,12 @@ const UploadBase = React.forwardRef<HTMLDivElement, UploadProps>(
                             : size === "small"
                               ? "ds:h-5 ds:w-5"
                               : "ds:h-6 ds:w-6",
-                          variant === "outline" && "ds:text-gray-500",
+                          variant === "outline" && "ds:text-ink600",
                           [
                             "secondaryDropzone",
                             "primaryDropzone",
                             "primaryOutline",
-                          ].includes(variant as any) && "ds:text-primary"
+                          ].includes(variant as any) && "ds:text-primaryA-500"
                         )}
                       />
                     ) : (
@@ -1023,12 +1023,12 @@ const UploadBase = React.forwardRef<HTMLDivElement, UploadProps>(
                             : size === "small"
                               ? "ds:h-5 ds:w-5"
                               : "ds:h-6 ds:w-6",
-                          variant === "outline" && "ds:text-gray-500",
+                          variant === "outline" && "ds:text-ink600",
                           [
                             "primaryDropzone",
                             "secondaryDropzone",
                             "primaryOutline",
-                          ].includes(variant as any) && "ds:text-primary"
+                          ].includes(variant as any) && "ds:text-primaryA-500"
                         )}
                       />
                     )}
@@ -1045,7 +1045,7 @@ const UploadBase = React.forwardRef<HTMLDivElement, UploadProps>(
                         "primaryDropzone",
                         "secondaryDropzone",
                       ].includes(variant as any) && (
-                        <span className="ds:text-xs ds:text-gray-500">
+                        <span className="ds:text-xs ds:text-ink600">
                           {uploadDescription}
                         </span>
                       )}
@@ -1159,7 +1159,7 @@ const FileItem: React.FC<FileItemProps> = ({
   if (listType === "picture-card") {
     return (
       <div
-        className="ds:relative ds:aspect-square ds:rounded-lg ds:border ds:bg-muted/50 ds:overflow-hidden ds:group"
+        className="ds:relative ds:aspect-square ds:rounded-lg ds:border ds:bg-ink200/50 ds:overflow-hidden ds:group"
         style={{
           width: "100px",
           height: "100px",
@@ -1183,15 +1183,15 @@ const FileItem: React.FC<FileItemProps> = ({
 
         {/* Upload Progress */}
         {file.status === "uploading" && (
-          <div className="ds:absolute ds:inset-0 ds:bg-background/80 ds:flex ds:items-center ds:justify-center">
+          <div className="ds:absolute ds:inset-0 ds:bg-white/80 ds:flex ds:items-center ds:justify-center">
             <div className="ds:w-full ds:px-4">
               <div className="ds:flex ds:items-center ds:gap-2 ds:mb-2">
                 <Loader2 className="ds:h-4 ds:w-4 ds:animate-spin" />
                 <span className="ds:text-xs">{file.percent}%</span>
               </div>
-              <div className="ds:h-1 ds:bg-muted ds:rounded-full ds:overflow-hidden">
+              <div className="ds:h-1 ds:bg-ink200 ds:rounded-full ds:overflow-hidden">
                 <div
-                  className="ds:h-full ds:bg-primary ds:transition-all ds:duration-300"
+                  className="ds:h-full ds:bg-primaryA-500 ds:transition-all ds:duration-300"
                   style={{ width: `${file.percent}%` }}
                 />
               </div>
@@ -1212,14 +1212,14 @@ const FileItem: React.FC<FileItemProps> = ({
         )}
 
         {/* Hover Actions */}
-        <div className="ds:absolute ds:inset-0 ds:bg-black/60 ds:opacity-0 ds:group-hover:opacity-100 ds:transition-opacity ds:flex ds:items-center ds:justify-center ds:gap-2">
+        <div className="ds:absolute ds:inset-0 ds:bg-blackOpacity700 ds:opacity-0 ds:group-hover:opacity-100 ds:transition-opacity ds:flex ds:items-center ds:justify-center ds:gap-2">
           {showPreviewIcon && canPreview && (
             <button
               onClick={(e) => {
                 e.stopPropagation();
                 onPreview?.(file);
               }}
-              className="ds:p-1 ds:rounded-full ds:bg-background/20 ds:hover:bg-background/30 ds:transition-colors"
+              className="ds:p-1 ds:rounded-full ds:bg-white/20 ds:hover:bg-white/30 ds:transition-colors"
               title="Preview"
             >
               <Eye className="ds:h-4 ds:w-4 ds:text-white" />
@@ -1231,7 +1231,7 @@ const FileItem: React.FC<FileItemProps> = ({
                 e.stopPropagation();
                 onDownload?.(file);
               }}
-              className="ds:p-1 ds:rounded-full ds:bg-background/20 ds:hover:bg-background/30 ds:transition-colors"
+              className="ds:p-1 ds:rounded-full ds:bg-white/20 ds:hover:bg-white/30 ds:transition-colors"
               title="Download"
             >
               <Download className="ds:h-4 ds:w-4 ds:text-white" />
@@ -1243,7 +1243,7 @@ const FileItem: React.FC<FileItemProps> = ({
                 e.stopPropagation();
                 onRemove();
               }}
-              className="ds:p-1 ds:rounded-full ds:bg-background/20 ds:hover:bg-background/30 ds:transition-colors"
+              className="ds:p-1 ds:rounded-full ds:bg-white/20 ds:hover:bg-white/30 ds:transition-colors"
               title="Remove"
             >
               <Trash2 className="ds:h-4 ds:w-4 ds:text-white" />
@@ -1252,7 +1252,7 @@ const FileItem: React.FC<FileItemProps> = ({
         </div>
 
         {/* File name tooltip */}
-        <div className="ds:absolute ds:bottom-0 ds:left-0 ds:right-0 ds:bg-black/60 ds:p-2 ds:text-white ds:text-xs ds:truncate ds:opacity-0 ds:group-hover:opacity-100 ds:transition-opacity">
+        <div className="ds:absolute ds:bottom-0 ds:left-0 ds:right-0 ds:bg-blackOpacity700 ds:p-2 ds:text-white ds:text-xs ds:truncate ds:opacity-0 ds:group-hover:opacity-100 ds:transition-opacity">
           {file.name}
         </div>
       </div>
@@ -1263,7 +1263,7 @@ const FileItem: React.FC<FileItemProps> = ({
     return (
       <div
         className={cn(
-          "ds:relative ds:aspect-square ds:rounded-full ds:border ds:bg-muted/50 ds:overflow-hidden ds:group",
+          "ds:relative ds:aspect-square ds:rounded-full ds:border ds:bg-ink200/50 ds:overflow-hidden ds:group",
           file.status === "done" && "ds:border-2 ds:border-green-500",
           file.status === "error" && "ds:border-2 ds:border-red-500"
         )}
@@ -1283,22 +1283,22 @@ const FileItem: React.FC<FileItemProps> = ({
             className="ds:h-full ds:w-full ds:object-cover ds:rounded-full"
           />
         ) : (
-          <div className="ds:flex ds:items-center ds:justify-center ds:h-full ds:rounded-full ds:bg-muted">
+          <div className="ds:flex ds:items-center ds:justify-center ds:h-full ds:rounded-full ds:bg-ink200">
             {getFileIcon(file)}
           </div>
         )}
 
         {/* Upload Progress */}
         {file.status === "uploading" && (
-          <div className="ds:absolute ds:inset-0 ds:bg-background/80 ds:flex ds:items-center ds:justify-center ds:rounded-full">
+          <div className="ds:absolute ds:inset-0 ds:bg-white/80 ds:flex ds:items-center ds:justify-center ds:rounded-full">
             <div className="ds:w-full ds:px-4">
               <div className="ds:flex ds:items-center ds:gap-2 ds:mb-2 ds:justify-center">
                 <Loader2 className="ds:h-4 ds:w-4 ds:animate-spin" />
                 <span className="ds:text-xs">{file.percent}%</span>
               </div>
-              <div className="ds:h-1 ds:bg-muted ds:rounded-full ds:overflow-hidden">
+              <div className="ds:h-1 ds:bg-ink200 ds:rounded-full ds:overflow-hidden">
                 <div
-                  className="ds:h-full ds:bg-primary ds:transition-all ds:duration-300"
+                  className="ds:h-full ds:bg-primaryA-500 ds:transition-all ds:duration-300"
                   style={{ width: `${file.percent}%` }}
                 />
               </div>
@@ -1307,14 +1307,14 @@ const FileItem: React.FC<FileItemProps> = ({
         )}
 
         {/* Hover Actions */}
-        <div className="ds:absolute ds:inset-0 ds:bg-black/60 ds:opacity-0 ds:group-hover:opacity-100 ds:transition-opacity ds:flex ds:items-center ds:justify-center ds:gap-2 ds:rounded-full">
+        <div className="ds:absolute ds:inset-0 ds:bg-blackOpacity700 ds:opacity-0 ds:group-hover:opacity-100 ds:transition-opacity ds:flex ds:items-center ds:justify-center ds:gap-2 ds:rounded-full">
           {showPreviewIcon && canPreview && (
             <button
               onClick={(e) => {
                 e.stopPropagation();
                 onPreview?.(file);
               }}
-              className="ds:p-1 ds:rounded-full ds:bg-background/20 ds:hover:bg-background/30 ds:transition-colors"
+              className="ds:p-1 ds:rounded-full ds:bg-white/20 ds:hover:bg-white/30 ds:transition-colors"
               title="Preview"
             >
               <Eye className="ds:h-4 ds:w-4 ds:text-white" />
@@ -1326,7 +1326,7 @@ const FileItem: React.FC<FileItemProps> = ({
                 e.stopPropagation();
                 onDownload?.(file);
               }}
-              className="ds:p-1 ds:rounded-full ds:bg-background/20 ds:hover:bg-background/30 ds:transition-colors"
+              className="ds:p-1 ds:rounded-full ds:bg-white/20 ds:hover:bg-white/30 ds:transition-colors"
               title="Download"
             >
               <Download className="ds:h-4 ds:w-4 ds:text-white" />
@@ -1338,14 +1338,14 @@ const FileItem: React.FC<FileItemProps> = ({
                 e.stopPropagation();
                 onRemove();
               }}
-              className="ds:p-1 ds:rounded-full ds:bg-background/20 ds:hover:bg-background/30 ds:transition-colors"
+              className="ds:p-1 ds:rounded-full ds:bg-white/20 ds:hover:bg-white/30 ds:transition-colors"
               title="Remove"
             >
               <Trash2 className="ds:h-4 ds:w-4 ds:text-white" />
             </button>
           )}
           {/* File name tooltip */}
-          <div className="ds:absolute ds:bottom-0 ds:left-0 ds:right-0 ds:bg-black/60 ds:p-2 ds:text-white ds:text-xs ds:truncate ds:opacity-0 ds:group-hover:opacity-100 ds:transition-opacity">
+          <div className="ds:absolute ds:bottom-0 ds:left-0 ds:right-0 ds:bg-blackOpacity700 ds:p-2 ds:text-white ds:text-xs ds:truncate ds:opacity-0 ds:group-hover:opacity-100 ds:transition-opacity">
             {file.name}
           </div>
         </div>
@@ -1355,9 +1355,9 @@ const FileItem: React.FC<FileItemProps> = ({
 
   if (listType === "picture") {
     return (
-      <div className="ds:flex ds:items-center ds:gap-3 ds:p-2 ds:rounded-lg ds:border ds:bg-background ds:hover:bg-muted/50 ds:transition-colors ds:group">
+      <div className="ds:flex ds:items-center ds:gap-3 ds:p-2 ds:rounded-lg ds:border ds:bg-white ds:hover:bg-ink200/50 ds:transition-colors ds:group">
         {/* Thumbnail */}
-        <div className="ds:shrink-0 ds:h-10 ds:w-10 ds:rounded ds:overflow-hidden ds:bg-muted ds:flex ds:items-center ds:justify-center">
+        <div className="ds:shrink-0 ds:h-10 ds:w-10 ds:rounded ds:overflow-hidden ds:bg-ink200 ds:flex ds:items-center ds:justify-center">
           {file.url && isImage ? (
             <img
               src={file.thumbUrl || file.url}
@@ -1374,12 +1374,12 @@ const FileItem: React.FC<FileItemProps> = ({
           <p className="ds:text-sm ds:font-medium ds:truncate">{file.name}</p>
           <div className="ds:flex ds:items-center ds:gap-2 ds:mt-1">
             {file.size && (
-              <span className="ds:text-xs ds:text-muted-foreground">
+              <span className="ds:text-xs ds:text-ink700">
                 {formatFileSize(file.size)}
               </span>
             )}
             {file.status === "uploading" && (
-              <span className="ds:text-xs ds:text-primary">{file.percent}%</span>
+              <span className="ds:text-xs ds:text-primaryA-500">{file.percent}%</span>
             )}
             {file.status === "done" && (
               <CheckCircle2 className="ds:h-4 ds:w-4 ds:text-green-500" />
@@ -1389,9 +1389,9 @@ const FileItem: React.FC<FileItemProps> = ({
             )}
           </div>
           {file.status === "uploading" && (
-            <div className="ds:h-1 ds:bg-muted ds:rounded-full ds:overflow-hidden ds:mt-2">
+            <div className="ds:h-1 ds:bg-ink200 ds:rounded-full ds:overflow-hidden ds:mt-2">
               <div
-                className="ds:h-full ds:bg-primary ds:transition-all ds:duration-300"
+                className="ds:h-full ds:bg-primaryA-500 ds:transition-all ds:duration-300"
                 style={{ width: `${file.percent}%` }}
               />
             </div>
@@ -1406,7 +1406,7 @@ const FileItem: React.FC<FileItemProps> = ({
                 e.stopPropagation();
                 onPreview?.(file);
               }}
-              className="ds:p-1.5 ds:rounded ds:hover:bg-muted ds:transition-colors"
+              className="ds:p-1.5 ds:rounded ds:hover:bg-ink200 ds:transition-colors"
               title="Preview"
             >
               <Eye className="ds:h-4 ds:w-4" />
@@ -1418,7 +1418,7 @@ const FileItem: React.FC<FileItemProps> = ({
                 e.stopPropagation();
                 onDownload?.(file);
               }}
-              className="ds:p-1.5 ds:rounded ds:hover:bg-muted ds:transition-colors"
+              className="ds:p-1.5 ds:rounded ds:hover:bg-ink200 ds:transition-colors"
               title="Download"
             >
               <Download className="ds:h-4 ds:w-4" />
@@ -1430,7 +1430,7 @@ const FileItem: React.FC<FileItemProps> = ({
                 e.stopPropagation();
                 onRemove();
               }}
-              className="ds:p-1.5 ds:rounded ds:hover:bg-destructive/10 ds:transition-colors ds:text-destructive"
+              className="ds:p-1.5 ds:rounded ds:hover:bg-red600/10 ds:transition-colors ds:text-red600"
               title="Remove"
             >
               <X className="ds:h-4 ds:w-4" />
@@ -1443,7 +1443,7 @@ const FileItem: React.FC<FileItemProps> = ({
 
   // Text list
   return (
-    <div className="ds:flex ds:items-center ds:gap-2 ds:p-2 ds:rounded ds:hover:bg-muted/50 ds:transition-colors ds:group">
+    <div className="ds:flex ds:items-center ds:gap-2 ds:p-2 ds:rounded ds:hover:bg-ink200/50 ds:transition-colors ds:group">
       {/* Icon */}
       <div className="ds:shrink-0">{getFileIcon(file)}</div>
 
@@ -1465,13 +1465,13 @@ const FileItem: React.FC<FileItemProps> = ({
 
         {file.status === "uploading" && (
           <div className="ds:flex ds:items-center ds:gap-2">
-            <div className="ds:flex-1 ds:h-1 ds:bg-muted ds:rounded-full ds:overflow-hidden">
+            <div className="ds:flex-1 ds:h-1 ds:bg-ink200 ds:rounded-full ds:overflow-hidden">
               <div
-                className="ds:h-full ds:bg-primary ds:transition-all ds:duration-300"
+                className="ds:h-full ds:bg-primaryA-500 ds:transition-all ds:duration-300"
                 style={{ width: `${file.percent}%` }}
               />
             </div>
-            <span className="ds:text-xs ds:text-muted-foreground">
+            <span className="ds:text-xs ds:text-ink700">
               {file.percent}%
             </span>
           </div>
@@ -1486,7 +1486,7 @@ const FileItem: React.FC<FileItemProps> = ({
               e.stopPropagation();
               onPreview?.(file);
             }}
-            className="ds:p-1 ds:rounded ds:hover:bg-muted ds:transition-colors"
+            className="ds:p-1 ds:rounded ds:hover:bg-ink200 ds:transition-colors"
             title="Preview"
           >
             <Eye className="ds:h-4 ds:w-4" />
@@ -1498,7 +1498,7 @@ const FileItem: React.FC<FileItemProps> = ({
               e.stopPropagation();
               onDownload?.(file);
             }}
-            className="ds:p-1 ds:rounded ds:hover:bg-muted ds:transition-colors"
+            className="ds:p-1 ds:rounded ds:hover:bg-ink200 ds:transition-colors"
             title="Download"
           >
             <Download className="ds:h-4 ds:w-4" />
@@ -1510,7 +1510,7 @@ const FileItem: React.FC<FileItemProps> = ({
               e.stopPropagation();
               onRemove();
             }}
-            className="ds:p-1 ds:rounded ds:hover:bg-destructive/10 ds:transition-colors ds:text-destructive"
+            className="ds:p-1 ds:rounded ds:hover:bg-red600/10 ds:transition-colors ds:text-red600"
             title="Remove"
           >
             <Trash2 className="ds:h-4 ds:w-4" />

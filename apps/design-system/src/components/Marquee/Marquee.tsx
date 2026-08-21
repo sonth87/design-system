@@ -409,7 +409,7 @@ function MarqueeRoot(props: MarqueeRootProps) {
             paused && "ds:[&_*]:[animation-play-state:paused]",
             pauseOnHover && "ds:group",
             pauseOnKeyboard &&
-              "ds:rounded-md ds:focus-visible:border-ring ds:focus-visible:outline-none ds:focus-visible:ring-[3px] ds:focus-visible:ring-ring/50",
+              "ds:rounded-md ds:focus-visible:border-ink500 ds:focus-visible:outline-none ds:focus-visible:ring-[3px] ds:focus-visible:ring-ink500/50",
             className
           )}
           style={style}
@@ -606,12 +606,12 @@ function MarqueeItem(props: DivProps) {
 const marqueeEdgeVariants = cva("ds:pointer-events-none ds:absolute ds:z-10", {
   variants: {
     side: {
-      left: "ds:top-0 ds:left-0 ds:h-full ds:bg-gradient-to-r ds:from-background ds:to-transparent",
+      left: "ds:top-0 ds:left-0 ds:h-full ds:bg-gradient-to-r ds:from-white ds:to-transparent",
       right:
-        "ds:top-0 ds:right-0 ds:h-full ds:bg-gradient-to-l ds:from-background ds:to-transparent",
-      top: "ds:top-0 ds:left-0 ds:w-full ds:bg-gradient-to-b ds:from-background ds:to-transparent",
+        "ds:top-0 ds:right-0 ds:h-full ds:bg-gradient-to-l ds:from-white ds:to-transparent",
+      top: "ds:top-0 ds:left-0 ds:w-full ds:bg-gradient-to-b ds:from-white ds:to-transparent",
       bottom:
-        "ds:bottom-0 ds:left-0 ds:w-full ds:bg-gradient-to-t ds:from-background ds:to-transparent",
+        "ds:bottom-0 ds:left-0 ds:w-full ds:bg-gradient-to-t ds:from-white ds:to-transparent",
     },
     size: {
       default: "",

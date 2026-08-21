@@ -8,56 +8,56 @@ import { cn } from "@dsui/ui/lib/utils";
 
 const colorVariants = {
   primary: {
-    checked: "ds:data-[state=checked]:bg-primary",
+    checked: "ds:data-[state=checked]:bg-primaryA-500",
     unchecked:
-      "ds:data-[state=unchecked]:bg-input ds:dark:data-[state=unchecked]:bg-input/80",
+      "ds:data-[state=unchecked]:bg-border ds:dark:data-[state=unchecked]:bg-border/80",
   },
   secondary: {
-    checked: "ds:data-[state=checked]:bg-secondary",
+    checked: "ds:data-[state=checked]:bg-primaryC-500",
     unchecked:
-      "ds:data-[state=unchecked]:bg-secondary/30 ds:dark:data-[state=unchecked]:bg-secondary/20",
+      "ds:data-[state=unchecked]:bg-primaryC-500/30 ds:dark:data-[state=unchecked]:bg-primaryC-500/20",
   },
   accent: {
-    checked: "ds:data-[state=checked]:bg-accent",
+    checked: "ds:data-[state=checked]:bg-ink200",
     unchecked:
-      "ds:data-[state=unchecked]:bg-accent/30 ds:dark:data-[state=unchecked]:bg-accent/20",
+      "ds:data-[state=unchecked]:bg-ink200/30 ds:dark:data-[state=unchecked]:bg-ink200/20",
   },
   destructive: {
-    checked: "ds:data-[state=checked]:bg-destructive",
+    checked: "ds:data-[state=checked]:bg-red600",
     unchecked:
-      "ds:data-[state=unchecked]:bg-destructive/30 ds:dark:data-[state=unchecked]:bg-destructive/20",
+      "ds:data-[state=unchecked]:bg-red600/30 ds:dark:data-[state=unchecked]:bg-red600/20",
   },
   muted: {
-    checked: "ds:data-[state=checked]:bg-muted",
+    checked: "ds:data-[state=checked]:bg-ink200",
     unchecked:
-      "ds:data-[state=unchecked]:bg-muted ds:dark:data-[state=unchecked]:bg-muted/80",
+      "ds:data-[state=unchecked]:bg-ink200 ds:dark:data-[state=unchecked]:bg-ink200/80",
   },
   success: {
-    checked: "ds:data-[state=checked]:bg-success",
+    checked: "ds:data-[state=checked]:bg-green500",
     unchecked:
-      "ds:data-[state=unchecked]:bg-success/30 ds:dark:data-[state=unchecked]:bg-success/20",
+      "ds:data-[state=unchecked]:bg-green500/30 ds:dark:data-[state=unchecked]:bg-green500/20",
   },
   error: {
-    checked: "ds:data-[state=checked]:bg-error",
+    checked: "ds:data-[state=checked]:bg-red500",
     unchecked:
-      "ds:data-[state=unchecked]:bg-error/30 ds:dark:data-[state=unchecked]:bg-error/20",
+      "ds:data-[state=unchecked]:bg-red500/30 ds:dark:data-[state=unchecked]:bg-red500/20",
   },
   warning: {
-    checked: "ds:data-[state=checked]:bg-warning",
+    checked: "ds:data-[state=checked]:bg-orange500",
     unchecked:
-      "ds:data-[state=unchecked]:bg-warning/30 ds:dark:data-[state=unchecked]:bg-warning/20",
+      "ds:data-[state=unchecked]:bg-orange500/30 ds:dark:data-[state=unchecked]:bg-orange500/20",
   },
 };
 
 const switchVariants = cva(
-  "ds:peer ds:outline-none ds:focus-visible:border-ring ds:focus-visible:ring-ring/50 ds:inline-flex ds:shrink-0 ds:items-center ds:border-2 ds:border-transparent ds:shadow-xs ds:transition-all ds:focus-visible:ring-[3px] ds:disabled:cursor-not-allowed ds:disabled:opacity-50",
+  "ds:peer ds:outline-none ds:focus-visible:border-ink500 ds:focus-visible:ring-ink500/50 ds:inline-flex ds:shrink-0 ds:items-center ds:border-2 ds:border-transparent ds:shadow-xs ds:transition-all ds:focus-visible:ring-[3px] ds:disabled:cursor-not-allowed ds:disabled:opacity-50",
   {
     variants: {
       variant: {
         default: "ds:rounded-full",
         square1: "ds:rounded-sm",
         square2: "ds:rounded-none",
-        mini: "ds:rounded-sm ds:[&_span]:border-input ds:!h-3 ds:!w-8 ds:border-none ds:[&_span]:size-4.5 ds:[&_span]:border",
+        mini: "ds:rounded-sm ds:[&_span]:border-border ds:!h-3 ds:!w-8 ds:border-none ds:[&_span]:size-4.5 ds:[&_span]:border",
       },
       size: {
         xs: "ds:h-4 ds:w-7",
@@ -92,7 +92,7 @@ const switchVariants = cva(
 );
 
 const thumbVariants = cva(
-  "ds:bg-background ds:dark:data-[state=unchecked]:bg-foreground ds:pointer-events-none ds:block ds:ring-0 ds:transition-transform ds:data-[state=unchecked]:translate-x-0",
+  "ds:bg-white ds:dark:data-[state=unchecked]:bg-ink800 ds:pointer-events-none ds:block ds:ring-0 ds:transition-transform ds:data-[state=unchecked]:translate-x-0",
   {
     variants: {
       variant: {
@@ -109,14 +109,14 @@ const thumbVariants = cva(
         xl: "ds:size-7",
       },
       color: {
-        primary: "ds:dark:data-[state=checked]:bg-primary-foreground",
-        secondary: "ds:dark:data-[state=checked]:bg-secondary-foreground",
-        accent: "ds:dark:data-[state=checked]:bg-accent-foreground",
-        destructive: "ds:dark:data-[state=checked]:bg-destructive-foreground",
-        muted: "ds:dark:data-[state=checked]:bg-muted-foreground",
-        success: "ds:dark:data-[state=checked]:bg-success-foreground",
-        error: "ds:dark:data-[state=checked]:bg-error-foreground",
-        warning: "ds:dark:data-[state=checked]:bg-warning-foreground",
+        primary: "ds:dark:data-[state=checked]:bg-white",
+        secondary: "ds:dark:data-[state=checked]:bg-white",
+        accent: "ds:dark:data-[state=checked]:bg-ink900",
+        destructive: "ds:dark:data-[state=checked]:bg-white",
+        muted: "ds:dark:data-[state=checked]:bg-ink700",
+        success: "ds:dark:data-[state=checked]:bg-white",
+        error: "ds:dark:data-[state=checked]:bg-white",
+        warning: "ds:dark:data-[state=checked]:bg-white",
       },
     },
     compoundVariants: [

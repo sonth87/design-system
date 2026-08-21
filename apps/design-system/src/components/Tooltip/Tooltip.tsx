@@ -48,25 +48,25 @@ export const Tooltip = React.memo(function Tooltip({
   const tooltipColor = useMemo<string>(() => {
     switch (props.color) {
       case "primary":
-        return "ds:bg-primary ds:text-primary-foreground ds:[&>span>svg]:bg-primary ds:[&>span>svg]:fill-primary";
+        return "ds:bg-primaryA-500 ds:text-white ds:[&>span>svg]:bg-primaryA-500 ds:[&>span>svg]:fill-primaryA-500";
       case "secondary":
-        return "ds:bg-secondary ds:text-secondary-foreground ds:[&>span>svg]:bg-secondary ds:[&>span>svg]:fill-secondary";
+        return "ds:bg-primaryC-500 ds:text-white ds:[&>span>svg]:bg-primaryC-500 ds:[&>span>svg]:fill-primaryC-500";
       case "dark":
         return "";
       case "light":
-        return "ds:bg-neutral-200 ds:text-neutral-950 ds:[&_svg]:bg-neutral-200 ds:[&_svg]:fill-neutral-200";
+        return "ds:bg-ink200 ds:text-ink900 ds:[&_svg]:bg-ink200 ds:[&_svg]:fill-ink200";
       case "inverted":
-        return "ds:dark:bg-white ds:dark:text-black ds:dark:[&_svg]:bg-white ds:dark:[&_svg]:fill-white";
+        return "ds:dark:bg-white ds:dark:text-ink900 ds:dark:[&_svg]:bg-white ds:dark:[&_svg]:fill-white";
       case "success":
-        return "ds:bg-success ds:text-success-foreground ds:[&>span>svg]:bg-success ds:[&>span>svg]:fill-success";
+        return "ds:bg-green500 ds:text-white ds:[&>span>svg]:bg-green500 ds:[&>span>svg]:fill-green500";
       case "warning":
-        return "ds:bg-warning ds:text-warning-foreground ds:[&>span>svg]:bg-warning ds:[&>span>svg]:fill-warning";
+        return "ds:bg-orange500 ds:text-white ds:[&>span>svg]:bg-orange500 ds:[&>span>svg]:fill-orange500";
       case "error":
-        return "ds:bg-error ds:text-error-foreground ds:[&>span>svg]:bg-error ds:[&>span>svg]:fill-error";
+        return "ds:bg-red500 ds:text-white ds:[&>span>svg]:bg-red500 ds:[&>span>svg]:fill-red500";
       case "glass":
-        return "ds:bg-white/15 ds:text-foreground ds:backdrop-blur-sm ds:shadow-lg ds:[&>span>svg]:bg-white/15 ds:[&>span>svg]:fill-white/15";
+        return "ds:bg-white/15 ds:text-ink800 ds:backdrop-blur-sm ds:shadow-lg ds:[&>span>svg]:bg-white/15 ds:[&>span>svg]:fill-white/15";
       default:
-        return "ds:bg-foreground ds:text-background ds:animate-in ds:fade-in-0 ds:zoom-in-95 ds:data-[state=closed]:animate-out ds:data-[state=closed]:fade-out-0 ds:data-[state=closed]:zoom-out-95 ds:data-[side=bottom]:slide-in-from-top-2 ds:data-[side=left]:slide-in-from-right-2 ds:data-[side=right]:slide-in-from-left-2 ds:data-[side=top]:slide-in-from-bottom-2 ds:z-50 ds:w-fit ds:origin-(--radix-tooltip-content-transform-origin) ds:rounded-md ds:px-3 ds:py-1.5 ds:text-xs ds:text-balance";
+        return "ds:bg-ink800 ds:text-white ds:animate-in ds:fade-in-0 ds:zoom-in-95 ds:data-[state=closed]:animate-out ds:data-[state=closed]:fade-out-0 ds:data-[state=closed]:zoom-out-95 ds:data-[side=bottom]:slide-in-from-top-2 ds:data-[side=left]:slide-in-from-right-2 ds:data-[side=right]:slide-in-from-left-2 ds:data-[side=top]:slide-in-from-bottom-2 ds:z-50 ds:w-fit ds:origin-(--radix-tooltip-content-transform-origin) ds:rounded-md ds:px-3 ds:py-1.5 ds:text-xs ds:text-balance";
     }
   }, [props?.color]);
 

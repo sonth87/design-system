@@ -21,7 +21,7 @@ function Command({
     <CommandPrimitive
       data-slot="command"
       className={cn(
-        "ds:bg-popover ds:text-popover-foreground ds:flex ds:h-full ds:w-full ds:flex-col ds:overflow-hidden ds:rounded-md",
+        "ds:bg-white ds:text-ink900 ds:flex ds:h-full ds:w-full ds:flex-col ds:overflow-hidden ds:rounded-md",
         className
       )}
       {...props}
@@ -52,7 +52,7 @@ function CommandDialog({
         className={cn("ds:overflow-hidden ds:p-0", className)}
         showCloseButton={showCloseButton}
       >
-        <Command className="ds:[&_[cmdk-group-heading]]:text-muted-foreground ds:**:data-[slot=command-input-wrapper]:h-12 ds:[&_[cmdk-group-heading]]:px-2 ds:[&_[cmdk-group-heading]]:font-medium ds:[&_[cmdk-group]]:px-2 ds:[&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 ds:[&_[cmdk-input-wrapper]_svg]:h-5 ds:[&_[cmdk-input-wrapper]_svg]:w-5 ds:[&_[cmdk-input]]:h-12 ds:[&_[cmdk-item]]:px-2 ds:[&_[cmdk-item]]:py-3 ds:[&_[cmdk-item]_svg]:h-5 ds:[&_[cmdk-item]_svg]:w-5">
+        <Command className="ds:[&_[cmdk-group-heading]]:text-ink700 ds:**:data-[slot=command-input-wrapper]:h-12 ds:[&_[cmdk-group-heading]]:px-2 ds:[&_[cmdk-group-heading]]:font-medium ds:[&_[cmdk-group]]:px-2 ds:[&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 ds:[&_[cmdk-input-wrapper]_svg]:h-5 ds:[&_[cmdk-input-wrapper]_svg]:w-5 ds:[&_[cmdk-input]]:h-12 ds:[&_[cmdk-item]]:px-2 ds:[&_[cmdk-item]]:py-3 ds:[&_[cmdk-item]_svg]:h-5 ds:[&_[cmdk-item]_svg]:w-5">
           {children}
         </Command>
       </DialogContent>
@@ -73,7 +73,7 @@ function CommandInput({
       <CommandPrimitive.Input
         data-slot="command-input"
         className={cn(
-          "ds:placeholder:text-muted-foreground ds:flex ds:h-10 ds:w-full ds:rounded-md ds:bg-transparent ds:py-3 ds:text-sm ds:outline-hidden ds:disabled:cursor-not-allowed ds:disabled:opacity-50",
+          "ds:placeholder:text-ink700 ds:flex ds:h-10 ds:w-full ds:rounded-md ds:bg-transparent ds:py-3 ds:text-sm ds:outline-hidden ds:disabled:cursor-not-allowed ds:disabled:opacity-50",
           className
         )}
         {...props}
@@ -118,7 +118,7 @@ function CommandGroup({
     <CommandPrimitive.Group
       data-slot="command-group"
       className={cn(
-        "ds:text-foreground ds:[&_[cmdk-group-heading]]:text-muted-foreground ds:overflow-hidden ds:p-1 ds:[&_[cmdk-group-heading]]:px-2 ds:[&_[cmdk-group-heading]]:py-1.5 ds:[&_[cmdk-group-heading]]:text-xs ds:[&_[cmdk-group-heading]]:font-medium",
+        "ds:text-ink800 ds:[&_[cmdk-group-heading]]:text-ink700 ds:overflow-hidden ds:p-1 ds:[&_[cmdk-group-heading]]:px-2 ds:[&_[cmdk-group-heading]]:py-1.5 ds:[&_[cmdk-group-heading]]:text-xs ds:[&_[cmdk-group-heading]]:font-medium",
         className
       )}
       {...props}
@@ -147,7 +147,7 @@ function CommandItem({
     <CommandPrimitive.Item
       data-slot="command-item"
       className={cn(
-        "ds:data-[selected=true]:bg-accent ds:data-[selected=true]:text-accent-foreground ds:[&_svg:not([class*='text-'])]:text-muted-foreground ds:relative ds:flex ds:cursor-default ds:items-center ds:gap-2 ds:rounded-sm ds:px-2 ds:py-1.5 ds:text-sm ds:outline-hidden ds:select-none ds:data-[disabled=true]:pointer-events-none ds:data-[disabled=true]:opacity-50 ds:[&_svg]:pointer-events-none ds:[&_svg]:shrink-0 ds:[&_svg:not([class*='size-'])]:size-4",
+        "ds:data-[selected=true]:bg-ink200 ds:data-[selected=true]:text-ink900 ds:[&_svg:not([class*='text-'])]:text-ink700 ds:relative ds:flex ds:cursor-default ds:items-center ds:gap-2 ds:rounded-sm ds:px-2 ds:py-1.5 ds:text-sm ds:outline-hidden ds:select-none ds:data-[disabled=true]:pointer-events-none ds:data-[disabled=true]:opacity-50 ds:[&_svg]:pointer-events-none ds:[&_svg]:shrink-0 ds:[&_svg:not([class*='size-'])]:size-4",
         className
       )}
       {...props}
@@ -163,7 +163,7 @@ function CommandShortcut({
     <span
       data-slot="command-shortcut"
       className={cn(
-        "ds:text-muted-foreground ds:ml-auto ds:text-xs ds:tracking-widest",
+        "ds:text-ink700 ds:ml-auto ds:text-xs ds:tracking-widest",
         className
       )}
       {...props}

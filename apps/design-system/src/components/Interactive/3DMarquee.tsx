@@ -65,7 +65,7 @@ export const ThreeDMarquee = ({
                       key={imageIndex + image}
                       src={image}
                       alt={`Image ${imageIndex + 1}`}
-                      className="ds:aspect-[970/700] ds:rounded-lg ds:object-cover ds:ring ds:ring-gray-950/5 ds:hover:shadow-2xl"
+                      className="ds:aspect-[970/700] ds:rounded-lg ds:object-cover ds:ring ds:ring-blackOpacity100 ds:hover:shadow-2xl"
                       width={970}
                       height={700}
                     />

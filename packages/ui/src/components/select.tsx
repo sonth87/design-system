@@ -29,7 +29,7 @@ import { Badge } from "./badge";
 import { Label } from "./label";
 
 const multiSelectTriggerVariants = cva(
-  "ds:flex ds:h-auto ds:w-fit ds:items-center ds:justify-between ds:gap-2 ds:overflow-hidden ds:rounded-md ds:border ds:bg-transparent ds:shadow-xs ds:transition-[color,box-shadow] ds:outline-none ds:focus-visible:ring-[3px] ds:disabled:cursor-not-allowed ds:disabled:opacity-50 ds:data-[placeholder]:text-muted-foreground ds:dark:bg-background ds:dark:hover:bg-input/50 ds:[&_svg]:pointer-events-none ds:[&_svg]:shrink-0 ds:[&_svg:not([class*='size-'])]:size-4 ds:[&_svg:not([class*='text-'])]:text-muted-foreground",
+  "ds:flex ds:h-auto ds:w-fit ds:items-center ds:justify-between ds:gap-2 ds:overflow-hidden ds:rounded-md ds:border ds:bg-transparent ds:shadow-xs ds:transition-[color,box-shadow] ds:outline-none ds:focus-visible:ring-[3px] ds:disabled:cursor-not-allowed ds:disabled:opacity-50 ds:data-[placeholder]:text-ink700 ds:dark:bg-white ds:dark:hover:bg-border/50 ds:[&_svg]:pointer-events-none ds:[&_svg]:shrink-0 ds:[&_svg:not([class*='size-'])]:size-4 ds:[&_svg:not([class*='text-'])]:text-ink700",
   {
     variants: {
       size: {
@@ -41,13 +41,13 @@ const multiSelectTriggerVariants = cva(
       },
       state: {
         default:
-          "ds:border-input ds:focus-visible:border-ring ds:focus-visible:ring-ring/50 ds:aria-invalid:border-destructive ds:aria-invalid:ring-destructive/20 ds:dark:aria-invalid:ring-destructive/40",
+          "ds:border-border ds:focus-visible:border-ink500 ds:focus-visible:ring-ink500/50 ds:aria-invalid:border-red600 ds:aria-invalid:ring-red600/20 ds:dark:aria-invalid:ring-red600/40",
         success:
-          "ds:border-success ds:ring-success/30 ds:focus-visible:border-success ds:focus-visible:ring-success/50",
+          "ds:border-green500 ds:ring-green500/30 ds:focus-visible:border-green500 ds:focus-visible:ring-green500/50",
         error:
-          "ds:border-destructive ds:ring-destructive/30 ds:focus-visible:border-destructive ds:focus-visible:ring-destructive/50",
+          "ds:border-red600 ds:ring-red600/30 ds:focus-visible:border-red600 ds:focus-visible:ring-red600/50",
         warning:
-          "ds:border-warning ds:ring-warning/30 ds:focus-visible:border-warning ds:focus-visible:ring-warning/50",
+          "ds:border-orange500 ds:ring-orange500/30 ds:focus-visible:border-orange500 ds:focus-visible:ring-orange500/50",
       },
     },
     defaultVariants: {
@@ -260,7 +260,7 @@ export function MultiSelectValue({
 
   if (selectedValues.size === 0 && placeholder) {
     return (
-      <span className="ds:min-w-0 ds:overflow-hidden ds:font-normal ds:text-muted-foreground">
+      <span className="ds:min-w-0 ds:overflow-hidden ds:font-normal ds:text-ink700">
         {placeholder}
       </span>
     );
@@ -316,7 +316,7 @@ export function MultiSelectValue({
               <>
                 {element.props.children}
                 {clickToRemove && (
-                  <XIcon className="ds:size-2 ds:text-muted-foreground ds:group-hover:text-destructive" />
+                  <XIcon className="ds:size-2 ds:text-ink700 ds:group-hover:text-red600" />
                 )}
               </>
             );
@@ -332,7 +332,7 @@ export function MultiSelectValue({
             >
               {itemNode}
               {clickToRemove && (
-                <XIcon className="ds:size-2 ds:text-muted-foreground ds:group-hover:text-destructive" />
+                <XIcon className="ds:size-2 ds:text-ink700 ds:group-hover:text-red600" />
               )}
             </Badge>
           );
@@ -435,7 +435,7 @@ export function MultiSelectItem({
       }
       className={cn(
         props?.disabled && "ds:opacity-50 ds:cursor-not-allowed ds:grayscale",
-        isSelected && "ds:bg-primary/10 ds:dark:bg-primary/20"
+        isSelected && "ds:bg-primaryA-500/10 ds:dark:bg-primaryA-500/20"
       )}
     >
       {!tagRender && icon && (

@@ -123,10 +123,10 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
     // State
     const helperTextStyles = {
-      default: "ds:text-muted-foreground",
-      success: "ds:text-success",
-      warning: "ds:text-warning",
-      error: "ds:text-error",
+      default: "ds:text-ink700",
+      success: "ds:text-green500",
+      warning: "ds:text-orange500",
+      error: "ds:text-red500",
     };
 
     // Calculate current size
@@ -255,7 +255,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             >
               <span>
                 {label}
-                {required && <span className="ds:text-error ds:ml-0.5">*</span>}
+                {required && <span className="ds:text-red500 ds:ml-0.5">*</span>}
               </span>
               {infoTooltip && (
                 <Tooltip content={infoTooltip}>
@@ -270,7 +270,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             {prefixIcon && (
               <div
                 className={cn(
-                  "ds:absolute ds:top-1/2 ds:-translate-y-1/2 ds:text-muted-foreground ds:leading-0",
+                  "ds:absolute ds:top-1/2 ds:-translate-y-1/2 ds:text-ink700 ds:leading-0",
                   iconPosition.left
                 )}
               >
@@ -297,7 +297,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                   // "[-webkit-text-fill-color:var(--foreground)]": mask,
                 },
                 prefixIcon && padding.prefix,
-                mask && "ds:placeholder:text-slate-400 ds:placeholder:opacity-100",
+                mask && "ds:placeholder:text-ink500 ds:placeholder:opacity-100",
                 getRightPadding(),
                 inputClassName,
               )}
@@ -372,7 +372,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                   type="button"
                   tabIndex={-1}
                   className={cn(
-                    "ds:absolute ds:top-1/2 ds:-translate-y-1/2 ds:p-1 ds:rounded ds:hover:bg-accent ds:transition-colors ds:cursor-pointer",
+                    "ds:absolute ds:top-1/2 ds:-translate-y-1/2 ds:p-1 ds:rounded ds:hover:bg-ink200 ds:transition-colors ds:cursor-pointer",
                     type === "password"
                       ? suffixIcon
                         ? "ds:right-14"
@@ -394,7 +394,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                 type="button"
                 tabIndex={-1}
                 className={cn(
-                  "ds:absolute ds:top-1/2 ds:-translate-y-1/2 ds:p-1 ds:rounded ds:hover:bg-accent ds:transition-colors",
+                  "ds:absolute ds:top-1/2 ds:-translate-y-1/2 ds:p-1 ds:rounded ds:hover:bg-ink200 ds:transition-colors",
                   suffixIcon ? "ds:right-10" : "ds:right-2"
                 )}
                 onClick={() => setShowPassword((prev) => !prev)}
@@ -412,7 +412,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             {suffixIcon && (
               <div
                 className={cn(
-                  "ds:absolute ds:top-1/2 ds:-translate-y-1/2 ds:text-muted-foreground ds:leading-0",
+                  "ds:absolute ds:top-1/2 ds:-translate-y-1/2 ds:text-ink700 ds:leading-0",
                   iconPosition.right
                 )}
               >
@@ -441,7 +441,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                 </p>
               )}
               {showCharCount && typeof maxLength === "number" && (
-                <span className="ds:ml-auto ds:text-muted-foreground">
+                <span className="ds:ml-auto ds:text-ink700">
                   {charCount} / {maxLength}
                 </span>
               )}

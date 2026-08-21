@@ -45,52 +45,52 @@ const COLOR_CONFIG: Record<
   }
 > = {
   primary: {
-    range: "ds:bg-primary",
-    thumb: "ds:border-primary/50",
-    labelBg: "ds:bg-primary",
-    labelText: "ds:text-primary-foreground",
+    range: "ds:bg-primaryA-500",
+    thumb: "ds:border-primaryA-500/50",
+    labelBg: "ds:bg-primaryA-500",
+    labelText: "ds:text-white",
   },
   secondary: {
-    range: "ds:bg-secondary",
-    thumb: "ds:border-secondary/50",
-    labelBg: "ds:bg-secondary",
-    labelText: "ds:text-secondary-foreground",
+    range: "ds:bg-primaryC-500",
+    thumb: "ds:border-primaryC-500/50",
+    labelBg: "ds:bg-primaryC-500",
+    labelText: "ds:text-white",
   },
   success: {
-    range: "ds:bg-success",
-    thumb: "ds:border-success/50",
-    labelBg: "ds:bg-success",
-    labelText: "ds:text-success-foreground",
+    range: "ds:bg-green500",
+    thumb: "ds:border-green500/50",
+    labelBg: "ds:bg-green500",
+    labelText: "ds:text-white",
   },
   warning: {
-    range: "ds:bg-warning",
-    thumb: "ds:border-warning/50",
-    labelBg: "ds:bg-warning",
-    labelText: "ds:text-warning-foreground",
+    range: "ds:bg-orange500",
+    thumb: "ds:border-orange500/50",
+    labelBg: "ds:bg-orange500",
+    labelText: "ds:text-white",
   },
   error: {
-    range: "ds:bg-error",
-    thumb: "ds:border-error/50",
-    labelBg: "ds:bg-error",
-    labelText: "ds:text-error-foreground",
+    range: "ds:bg-red500",
+    thumb: "ds:border-red500/50",
+    labelBg: "ds:bg-red500",
+    labelText: "ds:text-white",
   },
   glass: {
     range: "ds:bg-white/30 backdrop-blur-sm",
     thumb: "ds:border-white/30 backdrop-blur-sm",
     labelBg: "ds:bg-white/15",
-    labelText: "ds:text-foreground",
+    labelText: "ds:text-ink800",
   },
   muted: {
-    range: "ds:bg-muted-foreground",
-    thumb: "ds:border-muted-foreground/50",
-    labelBg: "ds:bg-muted",
-    labelText: "ds:text-muted-foreground",
+    range: "ds:bg-ink700",
+    thumb: "ds:border-ink700/50",
+    labelBg: "ds:bg-ink200",
+    labelText: "ds:text-ink700",
   },
   accent: {
-    range: "ds:bg-accent",
-    thumb: "ds:border-accent/50",
-    labelBg: "ds:bg-accent",
-    labelText: "ds:text-accent-foreground",
+    range: "ds:bg-ink200",
+    thumb: "ds:border-ink200/50",
+    labelBg: "ds:bg-ink200",
+    labelText: "ds:text-ink900",
   },
 };
 
@@ -140,7 +140,7 @@ const getArrowColorClass = (
   color: SliderColor,
   direction: "top" | "bottom" | "left" | "right"
 ): string => {
-  // Generate full border class (e.g., "border-t-primary")
+  // Generate full border class (e.g., "border-t-primaryA-500")
   const prefix =
     direction === "top"
       ? "t"
@@ -348,8 +348,8 @@ const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
     const sliderColorClass = useMemo(() => {
       if (sliderColor || thumbBorderColor) {
         return {
-          range: sliderColor || "ds:bg-primary",
-          thumb: thumbBorderColor || "ds:border-primary/50",
+          range: sliderColor || "ds:bg-primaryA-500",
+          thumb: thumbBorderColor || "ds:border-primaryA-500/50",
         };
       }
       const config = COLOR_CONFIG[color];
@@ -487,7 +487,7 @@ const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
               !labelColor &&
                 !labelTextColor &&
                 color === "glass" &&
-                "ds:bg-white/15 ds:text-foreground ds:backdrop-blur-sm ds:shadow-lg ds:[&>div.arrow]:border-t-white/15"
+                "ds:bg-white/15 ds:text-ink800 ds:backdrop-blur-sm ds:shadow-lg ds:[&>div.arrow]:border-t-white/15"
             )}
           >
             {labelAnimation === "number-flow" ? (
@@ -551,7 +551,7 @@ const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
           <SliderPrimitive.Track
             data-slot="slider-track"
             className={cn(
-              "ds:bg-muted ds:relative ds:grow ds:overflow-hidden ds:rounded-full ds:data-[orientation=horizontal]:w-full ds:data-[orientation=vertical]:h-full",
+              "ds:bg-ink200 ds:relative ds:grow ds:overflow-hidden ds:rounded-full ds:data-[orientation=horizontal]:w-full ds:data-[orientation=vertical]:h-full",
               sliderSizeClass.track
             )}
           >
@@ -568,7 +568,7 @@ const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
               key={index}
               data-slot="slider-thumb"
               className={cn(
-                "ds:block ds:shrink-0 ds:rounded-full ds:border ds:bg-white ds:shadow-sm ds:transition-[color,box-shadow] ds:hover:ring-4 ds:focus-visible:ring-4 ds:focus-visible:outline-hidden ds:disabled:pointer-events-none ds:disabled:opacity-50 ds:ring-ring/50",
+                "ds:block ds:shrink-0 ds:rounded-full ds:border ds:bg-white ds:shadow-sm ds:transition-[color,box-shadow] ds:hover:ring-4 ds:focus-visible:ring-4 ds:focus-visible:outline-hidden ds:disabled:pointer-events-none ds:disabled:opacity-50 ds:ring-ink500/50",
                 sliderColorClass.thumb,
                 sliderSizeClass.thumb
               )}
@@ -596,7 +596,7 @@ const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
         <SliderPrimitive.Track
           data-slot="slider-track"
           className={cn(
-            "ds:bg-muted ds:relative ds:grow ds:overflow-hidden ds:rounded-full ds:data-[orientation=horizontal]:w-full ds:data-[orientation=vertical]:h-full",
+            "ds:bg-ink200 ds:relative ds:grow ds:overflow-hidden ds:rounded-full ds:data-[orientation=horizontal]:w-full ds:data-[orientation=vertical]:h-full",
             sliderSizeClass.track
           )}
         >
@@ -613,7 +613,7 @@ const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
             key={index}
             data-slot="slider-thumb"
             className={cn(
-              "ds:group ds:block ds:shrink-0 ds:rounded-full ds:border ds:bg-white ds:shadow-sm ds:transition-[color,box-shadow] ds:hover:ring-4 ds:focus-visible:ring-4 ds:focus-visible:outline-hidden ds:disabled:pointer-events-none ds:disabled:opacity-50 ds:ring-ring/50",
+              "ds:group ds:block ds:shrink-0 ds:rounded-full ds:border ds:bg-white ds:shadow-sm ds:transition-[color,box-shadow] ds:hover:ring-4 ds:focus-visible:ring-4 ds:focus-visible:outline-hidden ds:disabled:pointer-events-none ds:disabled:opacity-50 ds:ring-ink500/50",
               sliderColorClass.thumb,
               sliderSizeClass.thumb
             )}

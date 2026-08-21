@@ -1757,7 +1757,7 @@ const cropperAreaVariants = cva(
         circle: "ds:rounded-full",
       },
       withGrid: {
-        true: "ds:before:absolute ds:before:top-0 ds:before:right-1/3 ds:before:bottom-0 ds:before:left-1/3 ds:before:box-border ds:before:border ds:before:border-white/50 ds:before:border-t-0 ds:before:border-b-0 ds:before:content-[''] ds:after:absolute ds:after:top-1/3 ds:after:right-0 ds:after:bottom-1/3 ds:after:left-0 ds:after:box-border ds:after:border ds:after:border-white/50 ds:after:border-r-0 ds:after:border-l-0 ds:after:content-['']",
+        true: "ds:before:absolute ds:before:top-0 ds:before:right-1/3 ds:before:bottom-0 ds:before:left-1/3 ds:before:box-border ds:before:border ds:before:border-whiteOpacity500 ds:before:border-t-0 ds:before:border-b-0 ds:before:content-[''] ds:after:absolute ds:after:top-1/3 ds:after:right-0 ds:after:bottom-1/3 ds:after:left-0 ds:after:box-border ds:after:border ds:after:border-whiteOpacity500 ds:after:border-r-0 ds:after:border-l-0 ds:after:content-['']",
         false: "",
       },
     },

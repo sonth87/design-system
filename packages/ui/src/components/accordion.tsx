@@ -35,13 +35,13 @@ function AccordionTrigger({
       <AccordionPrimitive.Trigger
         data-slot="accordion-trigger"
         className={cn(
-          "ds:focus-visible:border-ring ds:focus-visible:ring-ring/50 ds:flex ds:flex-1 ds:items-start ds:justify-between ds:gap-4 ds:rounded-md ds:py-4 ds:text-left ds:text-sm ds:font-medium ds:transition-all ds:outline-none ds:hover:underline ds:focus-visible:ring-[3px] ds:disabled:pointer-events-none ds:disabled:opacity-50 ds:[&[data-state=open]>svg]:rotate-180",
+          "ds:focus-visible:border-ink500 ds:focus-visible:ring-ink500/50 ds:flex ds:flex-1 ds:items-start ds:justify-between ds:gap-4 ds:rounded-md ds:py-4 ds:text-left ds:text-sm ds:font-medium ds:transition-all ds:outline-none ds:hover:underline ds:focus-visible:ring-[3px] ds:disabled:pointer-events-none ds:disabled:opacity-50 ds:[&[data-state=open]>svg]:rotate-180",
           className
         )}
         {...props}
       >
         {children}
-        <ChevronDownIcon className="ds:text-muted-foreground ds:pointer-events-none ds:size-4 ds:shrink-0 ds:translate-y-0.5 ds:transition-transform ds:duration-200" />
+        <ChevronDownIcon className="ds:text-ink700 ds:pointer-events-none ds:size-4 ds:shrink-0 ds:translate-y-0.5 ds:transition-transform ds:duration-200" />
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>
   );

@@ -61,18 +61,18 @@ const Collapsible = React.forwardRef<
 
   const variantStyles = {
     default: {
-      root: "ds:rounded-lg ds:border ds:bg-card",
-      trigger: "ds:px-4 ds:py-3 ds:hover:bg-accent/50",
+      root: "ds:rounded-lg ds:border ds:bg-white",
+      trigger: "ds:px-4 ds:py-3 ds:hover:bg-ink200/50",
       content: "ds:px-4 ds:py-3 ds:border-t",
     },
     bordered: {
       root: "ds:rounded-lg ds:border-2",
-      trigger: "ds:px-4 ds:py-3 ds:font-semibold ds:hover:bg-accent",
+      trigger: "ds:px-4 ds:py-3 ds:font-semibold ds:hover:bg-ink200",
       content: "ds:px-4 ds:py-3 ds:border-t-2",
     },
     ghost: {
       root: "",
-      trigger: "ds:px-2 ds:py-2 ds:hover:bg-accent/30 ds:rounded-md",
+      trigger: "ds:px-2 ds:py-2 ds:hover:bg-ink200/30 ds:rounded-md",
       content: "ds:px-2 ds:py-2",
     },
   };

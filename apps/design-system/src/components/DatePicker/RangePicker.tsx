@@ -362,7 +362,7 @@ export function RangePicker({
   ) : (
     <Button
       variant="ghost"
-      className="ds:!p-1 ds:!leading-0 ds:h-auto ds:rounded ds:hover:bg-accent ds:transition-colors"
+      className="ds:!p-1 ds:!leading-0 ds:h-auto ds:rounded ds:hover:bg-ink200 ds:transition-colors"
       size={props?.size}
     >
       <CalendarIcon
@@ -498,7 +498,7 @@ export function RangePicker({
       <PopoverContent
         className={cn(
           "ds:w-auto ds:overflow-hidden ds:p-0",
-          "ds:backdrop-blur ds:bg-background/50"
+          "ds:backdrop-blur ds:bg-whiteOpacity500"
         )}
         side={side}
         align={align}
@@ -514,7 +514,7 @@ export function RangePicker({
       <DrawerContent
         className={cn(
           "ds:w-auto ds:overflow-hidden ds:p-0",
-          "ds:backdrop-blur ds:bg-background"
+          "ds:backdrop-blur ds:bg-white"
         )}
       >
         <DrawerHeader className="ds:sr-only">
@@ -713,18 +713,18 @@ export function RangePicker({
   return (
     <div
       className={cn(
-        "ds:group ds:relative ds:flex ds:items-center ds:border ds:rounded-md ds:focus-within:ring-2 ds:focus-within:ring-offset-2 ds:bg-background ds:transition-[color,box-shadow]",
+        "ds:group ds:relative ds:flex ds:items-center ds:border ds:rounded-md ds:focus-within:ring-2 ds:focus-within:ring-offset-2 ds:bg-white ds:transition-[color,box-shadow]",
         {
-          "ds:border-input ds:focus-within:ring-ring": !props.state,
-          "ds:border-success ds:focus-within:ring-success": props.state === "success",
-          "ds:border-warning ds:focus-within:ring-warning": props.state === "warning",
-          "ds:border-error ds:focus-within:ring-error": props.state === "error",
+          "ds:border-border ds:focus-within:ring-ink500": !props.state,
+          "ds:border-green500 ds:focus-within:ring-green500": props.state === "success",
+          "ds:border-orange500 ds:focus-within:ring-orange500": props.state === "warning",
+          "ds:border-red500 ds:focus-within:ring-red500": props.state === "error",
         }
       )}
     >
       {renderRangeInput("from", fromInputValue, setFromInputValue)}
       <span
-        className={cn("ds:text-muted-foreground ds:select-none ds:pl-2", {
+        className={cn("ds:text-ink700 ds:select-none ds:pl-2", {
           "ds:opacity-30": props.disabled,
         })}
       >

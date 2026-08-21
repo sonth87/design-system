@@ -526,19 +526,19 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
                   variant === "bordered" ||
                   variant === "pills",
                 // Apply text color for active state with sliding indicator
-                "ds:data-[state=active]:text-primary-foreground":
+                "ds:data-[state=active]:text-white":
                   (variant === "bordered" || variant === "pills") &&
                   color === "primary",
-                "ds:data-[state=active]:text-secondary-foreground":
+                "ds:data-[state=active]:text-white":
                   (variant === "bordered" || variant === "pills") &&
                   color === "secondary",
-                "ds:data-[state=active]:text-muted-foreground":
+                "ds:data-[state=active]:text-ink700":
                   (variant === "bordered" || variant === "pills") &&
                   color === "muted",
-                "ds:data-[state=active]:text-accent-foreground":
+                "ds:data-[state=active]:text-ink900":
                   (variant === "bordered" || variant === "pills") &&
                   color === "accent",
-                "ds:data-[state=active]:text-destructive-foreground":
+                "ds:data-[state=active]:text-white":
                   (variant === "bordered" || variant === "pills") &&
                   color === "destructive",
                 "ds:data-[state=active]:text-white":
@@ -601,13 +601,13 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
                 "ds:w-0.5 ds:right-0": tabPosition === "left",
                 "ds:w-0.5 ds:left-0": tabPosition === "right",
                 // Colors
-                "ds:bg-primary": color === "primary",
-                "ds:bg-secondary": color === "secondary",
-                "ds:bg-muted-foreground": color === "muted",
-                "ds:bg-accent": color === "accent",
-                "ds:bg-destructive": color === "destructive",
-                "ds:bg-success": color === "success",
-                "ds:bg-warning": color === "warning",
+                "ds:bg-primaryA-500": color === "primary",
+                "ds:bg-primaryC-500": color === "secondary",
+                "ds:bg-ink700": color === "muted",
+                "ds:bg-ink200": color === "accent",
+                "ds:bg-red600": color === "destructive",
+                "ds:bg-green500": color === "success",
+                "ds:bg-orange500": color === "warning",
               })}
               animate={
                 isVertical
@@ -637,43 +637,43 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
           !isActiveTabInOverflow && (
             <motion.div
               className={cn("ds:absolute ds:rounded-md ds:pointer-events-none ds:z-0", {
-                "ds:bg-background ds:shadow-sm": variant === "solid",
+                "ds:bg-white ds:shadow-sm": variant === "solid",
 
-                "ds:bg-primary":
+                "ds:bg-primaryA-500":
                   (variant === "bordered" || variant === "pills") &&
                   color === "primary",
-                "ds:bg-secondary":
+                "ds:bg-primaryC-500":
                   (variant === "bordered" || variant === "pills") &&
                   color === "secondary",
-                "ds:bg-muted":
+                "ds:bg-ink200":
                   (variant === "bordered" || variant === "pills") &&
                   color === "muted",
-                "ds:bg-accent":
+                "ds:bg-ink200":
                   (variant === "bordered" || variant === "pills") &&
                   color === "accent",
-                "ds:bg-destructive":
+                "ds:bg-red600":
                   (variant === "bordered" || variant === "pills") &&
                   color === "destructive",
-                "ds:bg-success":
+                "ds:bg-green500":
                   (variant === "bordered" || variant === "pills") &&
                   color === "success",
-                "ds:bg-warning":
+                "ds:bg-orange500":
                   (variant === "bordered" || variant === "pills") &&
                   color === "warning",
 
-                "ds:border ds:rounded-full ds:border-primary":
+                "ds:border ds:rounded-full ds:border-primaryA-500":
                   variant === "pill-stroke" && color === "primary",
-                "ds:border ds:rounded-full ds:border-secondary":
+                "ds:border ds:rounded-full ds:border-primaryC-500":
                   variant === "pill-stroke" && color === "secondary",
-                "ds:rounded-full ds:border-muted":
+                "ds:rounded-full ds:border-ink200":
                   variant === "pill-stroke" && color === "muted",
-                "ds:border ds:rounded-full ds:border-accent":
+                "ds:border ds:rounded-full ds:border-ink200":
                   variant === "pill-stroke" && color === "accent",
-                "ds:border ds:rounded-full ds:border-destructive":
+                "ds:border ds:rounded-full ds:border-red600":
                   variant === "pill-stroke" && color === "destructive",
-                "ds:border ds:rounded-full ds:border-success":
+                "ds:border ds:rounded-full ds:border-green500":
                   variant === "pill-stroke" && color === "success",
-                "ds:border ds:rounded-full ds:border-warning":
+                "ds:border ds:rounded-full ds:border-orange500":
                   variant === "pill-stroke" && color === "warning",
               })}
               animate={{
@@ -728,13 +728,13 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
             trigger={
               <button
                 className={cn(
-                  "ds:inline-flex ds:items-center ds:justify-center ds:rounded-md ds:text-sm ds:font-medium ds:ring-offset-background ds:transition-colors",
-                  "ds:focus-visible:outline-none ds:focus-visible:ring-2 ds:focus-visible:ring-ring ds:focus-visible:ring-offset-2",
+                  "ds:inline-flex ds:items-center ds:justify-center ds:rounded-md ds:text-sm ds:font-medium ds:ring-offset-white ds:transition-colors",
+                  "ds:focus-visible:outline-none ds:focus-visible:ring-2 ds:focus-visible:ring-ink500 ds:focus-visible:ring-offset-2",
                   "ds:disabled:pointer-events-none ds:disabled:opacity-50",
-                  "ds:hover:bg-accent ds:hover:text-accent-foreground",
+                  "ds:hover:bg-ink200 ds:hover:text-ink900",
                   "ds:h-9 ds:px-3 ds:shrink-0",
                   {
-                    "ds:bg-accent ds:text-accent-foreground": dropdownOpen,
+                    "ds:bg-ink200 ds:text-ink900": dropdownOpen,
                   }
                 )}
                 aria-label="More tabs"
@@ -754,11 +754,11 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
                     disabled={item.disabled}
                     className={cn(
                       "ds:flex ds:items-center ds:gap-2 ds:rounded-sm ds:px-2 ds:py-1.5 ds:text-sm",
-                      "ds:hover:bg-accent ds:hover:text-accent-foreground",
+                      "ds:hover:bg-ink200 ds:hover:text-ink900",
                       "ds:disabled:pointer-events-none ds:disabled:opacity-50",
                       "ds:text-left",
                       {
-                        "ds:bg-accent ds:text-accent-foreground":
+                        "ds:bg-ink200 ds:text-ink900":
                           item.key === currentActiveKey,
                       }
                     )}
@@ -812,9 +812,9 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
             {showStartFade && (
               <div
                 className={cn("ds:absolute ds:pointer-events-none ds:z-20", {
-                  "ds:top-0 ds:left-0 ds:bottom-0 ds:w-24 ds:bg-linear-to-r ds:from-background ds:to-transparent":
+                  "ds:top-0 ds:left-0 ds:bottom-0 ds:w-24 ds:bg-linear-to-r ds:from-white ds:to-transparent":
                     !isVertical,
-                  "ds:left-0 ds:right-0 ds:top-0 ds:h-24 ds:bg-linear-to-b ds:from-background ds:to-transparent":
+                  "ds:left-0 ds:right-0 ds:top-0 ds:h-24 ds:bg-linear-to-b ds:from-white ds:to-transparent":
                     isVertical,
                 })}
               />
@@ -824,9 +824,9 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
             {showEndFade && (
               <div
                 className={cn("ds:absolute ds:pointer-events-none ds:z-20", {
-                  "ds:top-0 ds:right-0 ds:bottom-0 ds:w-24 ds:bg-linear-to-l ds:from-background ds:to-transparent":
+                  "ds:top-0 ds:right-0 ds:bottom-0 ds:w-24 ds:bg-linear-to-l ds:from-white ds:to-transparent":
                     !isVertical,
-                  "ds:left-0 ds:right-0 ds:bottom-0 ds:h-24 ds:bg-linear-to-t ds:from-background ds:to-transparent":
+                  "ds:left-0 ds:right-0 ds:bottom-0 ds:h-24 ds:bg-linear-to-t ds:from-white ds:to-transparent":
                     isVertical,
                 })}
               />
@@ -840,13 +840,13 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
             trigger={
               <button
                 className={cn(
-                  "ds:inline-flex ds:items-center ds:justify-center ds:rounded-md ds:text-sm ds:font-medium ds:ring-offset-background ds:transition-colors",
-                  "ds:focus-visible:outline-none ds:focus-visible:ring-2 ds:focus-visible:ring-ring ds:focus-visible:ring-offset-2",
+                  "ds:inline-flex ds:items-center ds:justify-center ds:rounded-md ds:text-sm ds:font-medium ds:ring-offset-white ds:transition-colors",
+                  "ds:focus-visible:outline-none ds:focus-visible:ring-2 ds:focus-visible:ring-ink500 ds:focus-visible:ring-offset-2",
                   "ds:disabled:pointer-events-none ds:disabled:opacity-50",
-                  "ds:hover:bg-accent ds:hover:text-accent-foreground",
+                  "ds:hover:bg-ink200 ds:hover:text-ink900",
                   "ds:h-9 ds:px-3 ds:shrink-0",
                   {
-                    "ds:bg-accent ds:text-accent-foreground": dropdownOpen,
+                    "ds:bg-ink200 ds:text-ink900": dropdownOpen,
                   }
                 )}
                 aria-label="More tabs"
@@ -871,11 +871,11 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
                     className={cn(
                       "ds:snap-start",
                       "ds:w-full ds:flex ds:items-center ds:gap-2 ds:rounded-sm ds:px-2 ds:py-1.5 ds:text-sm",
-                      "ds:hover:bg-accent ds:hover:text-accent-foreground",
+                      "ds:hover:bg-ink200 ds:hover:text-ink900",
                       "ds:disabled:pointer-events-none ds:disabled:opacity-50",
                       "ds:text-left",
                       {
-                        "ds:bg-accent ds:text-accent-foreground":
+                        "ds:bg-ink200 ds:text-ink900":
                           item.key === currentActiveKey,
                       }
                     )}

@@ -8,15 +8,15 @@ const pad = (num: number): string => String(num).padStart(2, "0");
 // Color variants for time picker items
 const getColorClass = (color: CalendarColor = "primary"): string => {
   const colorMap = {
-    primary: "ds:text-primary",
-    secondary: "ds:text-secondary",
-    accent: "ds:text-accent",
-    destructive: "ds:text-destructive",
-    muted: "ds:text-muted-foreground",
-    success: "ds:text-success",
-    error: "ds:text-error",
-    warning: "ds:text-warning",
-    foreground: "ds:text-foreground",
+    primary: "ds:text-primaryA-500",
+    secondary: "ds:text-primaryC-500",
+    accent: "ds:text-ink200",
+    destructive: "ds:text-red600",
+    muted: "ds:text-ink700",
+    success: "ds:text-green500",
+    error: "ds:text-red500",
+    warning: "ds:text-orange500",
+    foreground: "ds:text-ink800",
   };
   return colorMap[color];
 };
@@ -190,7 +190,7 @@ export const TimeColumnwheel = memo(
       return (
         <div className="ds:flex ds:flex-col ds:items-center ds:gap-2 ds:w-full ds:h-full ds:max-h-72">
           {timeLabel && (
-            <div className="ds:text-xs ds:font-semibold ds:text-muted-foreground ds:uppercase ds:p-2 ds:border-b ds:w-full ds:text-center ds:h-8">
+            <div className="ds:text-xs ds:font-semibold ds:text-ink700 ds:uppercase ds:p-2 ds:border-b ds:w-full ds:text-center ds:h-8">
               {timeLabel}
             </div>
           )}
@@ -248,7 +248,7 @@ export const TimeColumnwheel = memo(
                       "ds:disabled:opacity-30 ds:disabled:cursor-not-allowed ds:disabled:line-through",
                       isSelected
                         ? `${getColorClass(color)} ds:font-bold`
-                        : "ds:text-muted-foreground"
+                        : "ds:text-ink700"
                     )}
                     style={itemStyle}
                   >

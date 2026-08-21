@@ -7,14 +7,14 @@ import { CheckCircle, XCircle, Info, AlertTriangle } from "lucide-react";
 import { cn } from "@dsui/ui/lib/utils";
 
 const variantStyles = {
-  default: "ds:bg-neutral-800 ds:text-white ds:border ds:border-neutral-700",
-  success: "ds:bg-success ds:text-white ds:border ds:border-success/20",
-  error: "ds:bg-error ds:text-white ds:border ds:border-error/20",
-  warning: "ds:bg-warning ds:text-black ds:border ds:border-warning/20",
-  info: "ds:bg-info ds:text-foreground",
-  primary: "ds:bg-primary ds:text-primary-foreground ds:border ds:border-primary/20",
+  default: "ds:bg-ink900 ds:text-white ds:border ds:border-ink800",
+  success: "ds:bg-green500 ds:text-white ds:border ds:border-green500/20",
+  error: "ds:bg-red500 ds:text-white ds:border ds:border-red500/20",
+  warning: "ds:bg-orange500 ds:text-ink900 ds:border ds:border-orange500/20",
+  info: "ds:bg-info ds:text-ink800",
+  primary: "ds:bg-primaryA-500 ds:text-white ds:border ds:border-primaryA-500/20",
   secondary:
-    "ds:bg-secondary ds:text-secondary-foreground ds:border ds:border-secondary/20",
+    "ds:bg-primaryC-500 ds:text-white ds:border ds:border-primaryC-500/20",
 };
 
 const variantIcons = {
@@ -104,8 +104,8 @@ function Toaster({
         duration: duration,
         classNames: {
           toast:
-            "ds:rounded-md ds:shadow-md ds:border-none ds:text-sm ds:font-medium ds:backdrop-blur-sm ds:text-black ds:dark:text-white",
-          description: "ds:text-muted-foreground",
+            "ds:rounded-md ds:shadow-md ds:border-none ds:text-sm ds:font-medium ds:backdrop-blur-sm ds:text-ink800 ds:dark:text-white",
+          description: "ds:text-ink700",
           actionButton: "ds:bg-white/10",
         },
       }}

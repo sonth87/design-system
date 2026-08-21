@@ -53,7 +53,7 @@ export function DataTableViewOptions<TData>({
   table,
   variant = "command",
   labels,
-  triggerIcon = <Settings2 className="ds:text-muted-foreground" />,
+  triggerIcon = <Settings2 className="ds:text-ink700" />,
   trigger,
   content,
   contentClassName,
@@ -179,7 +179,7 @@ export function DataTableViewOptions<TData>({
           }
           onCheckedChange={(checked) => onToggleAll(checked === true)}
         />
-        <span className="ds:text-sm ds:font-medium ds:text-foreground">
+        <span className="ds:text-sm ds:font-medium ds:text-ink800">
           {resolvedLabels.selectAll}
         </span>
       </div>
@@ -213,7 +213,7 @@ export function DataTableViewOptions<TData>({
         type="button"
         variant="ghost"
         size="sm"
-        className="ds:mx-3 ds:my-2 ds:text-primary hover:ds:text-primary"
+        className="ds:mx-3 ds:my-2 ds:text-primaryA-500 hover:ds:text-primaryA-500"
         onClick={() => {
           table.resetColumnVisibility();
           table.resetColumnOrder();
@@ -309,8 +309,8 @@ function DataTableDraggableColumnOption({
     <div
       ref={setNodeRef}
       className={cn(
-        "ds:flex ds:min-h-11 ds:items-center ds:gap-3 ds:px-3 ds:text-sm ds:text-foreground",
-        isDragging && "ds:bg-accent"
+        "ds:flex ds:min-h-11 ds:items-center ds:gap-3 ds:px-3 ds:text-sm ds:text-ink800",
+        isDragging && "ds:bg-ink200"
       )}
       style={{
         transform: CSS.Transform.toString(transform),
@@ -319,7 +319,7 @@ function DataTableDraggableColumnOption({
     >
       <button
         type="button"
-        className="ds:flex ds:size-5 ds:shrink-0 ds:cursor-grab ds:items-center ds:justify-center ds:text-muted-foreground active:ds:cursor-grabbing"
+        className="ds:flex ds:size-5 ds:shrink-0 ds:cursor-grab ds:items-center ds:justify-center ds:text-ink700 active:ds:cursor-grabbing"
         aria-label={`Reorder ${label}`}
         {...attributes}
         {...listeners}

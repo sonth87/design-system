@@ -48,7 +48,7 @@ export function DataTable<TData>({
     >
       {children}
       {loading && (
-        <div className="ds:absolute ds:inset-0 ds:bg-background/50 ds:flex ds:items-center ds:justify-center ds:z-20">
+        <div className="ds:absolute ds:inset-0 ds:bg-whiteOpacity500 ds:flex ds:items-center ds:justify-center ds:z-20">
           Loading...
         </div>
       )}

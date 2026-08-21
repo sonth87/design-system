@@ -70,21 +70,21 @@ export function Avatar({
   const avatarColor = React.useMemo<string>(() => {
     switch (color) {
       case "primary":
-        return "ds:bg-primary ds:text-primary-foreground";
+        return "ds:bg-primaryA-500 ds:text-white";
       case "secondary":
-        return "ds:bg-secondary ds:text-secondary-foreground";
+        return "ds:bg-primaryC-500 ds:text-white";
       case "dark":
-        return "ds:bg-neutral-900 ds:text-white";
+        return "ds:bg-ink1000 ds:text-white";
       case "light":
-        return "ds:bg-neutral-200 ds:text-neutral-950";
+        return "ds:bg-ink200 ds:text-ink900";
       case "inverted":
-        return "ds:dark:bg-white ds:dark:text-black";
+        return "ds:dark:bg-white ds:dark:text-ink900";
       case "success":
-        return "ds:bg-success ds:text-success-foreground";
+        return "ds:bg-green500 ds:text-white";
       case "warning":
-        return "ds:bg-warning ds:text-warning-foreground";
+        return "ds:bg-orange500 ds:text-white";
       case "error":
-        return "ds:bg-error ds:text-error-foreground";
+        return "ds:bg-red500 ds:text-white";
       case "glass":
         return "ds:bg-white/15 ds:backdrop-blur-sm";
       default:

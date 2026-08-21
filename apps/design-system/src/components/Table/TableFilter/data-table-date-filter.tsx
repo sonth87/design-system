@@ -203,7 +203,7 @@ export function DataTableDateFilter<TData>({
             aria-label={`Clear ${title} filter`}
             tabIndex={0}
             onClick={onReset}
-            className="ds:rounded-sm ds:opacity-70 ds:transition-opacity ds:hover:opacity-100 ds:focus-visible:outline-none ds:focus-visible:ring-1 ds:focus-visible:ring-ring"
+            className="ds:rounded-sm ds:opacity-70 ds:transition-opacity ds:hover:opacity-100 ds:focus-visible:outline-none ds:focus-visible:ring-1 ds:focus-visible:ring-ink500"
           >
             <XCircle />
           </div>

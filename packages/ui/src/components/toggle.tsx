@@ -9,45 +9,45 @@ import { cn } from "@dsui/ui/lib/utils";
 const colorVariants = {
   primary: {
     default:
-      "ds:data-[state=on]:bg-primary ds:data-[state=on]:text-primary-foreground",
+      "ds:data-[state=on]:bg-primaryA-500 ds:data-[state=on]:text-white",
     outline:
-      "ds:data-[state=on]:bg-primary ds:data-[state=on]:text-primary-foreground",
+      "ds:data-[state=on]:bg-primaryA-500 ds:data-[state=on]:text-white",
   },
   secondary: {
     default:
-      "ds:data-[state=on]:bg-secondary ds:data-[state=on]:text-secondary-foreground",
+      "ds:data-[state=on]:bg-primaryC-500 ds:data-[state=on]:text-white",
     outline:
-      "ds:data-[state=on]:bg-secondary ds:data-[state=on]:text-secondary-foreground",
+      "ds:data-[state=on]:bg-primaryC-500 ds:data-[state=on]:text-white",
   },
   accent: {
-    default: "ds:data-[state=on]:bg-accent ds:data-[state=on]:text-accent-foreground",
-    outline: "ds:data-[state=on]:bg-accent ds:data-[state=on]:text-accent-foreground",
+    default: "ds:data-[state=on]:bg-ink200 ds:data-[state=on]:text-ink900",
+    outline: "ds:data-[state=on]:bg-ink200 ds:data-[state=on]:text-ink900",
   },
   destructive: {
     default:
-      "ds:data-[state=on]:bg-destructive ds:data-[state=on]:text-destructive-foreground",
+      "ds:data-[state=on]:bg-red600 ds:data-[state=on]:text-white",
     outline:
-      "ds:data-[state=on]:bg-destructive ds:data-[state=on]:text-destructive-foreground",
+      "ds:data-[state=on]:bg-red600 ds:data-[state=on]:text-white",
   },
   muted: {
-    default: "ds:data-[state=on]:bg-muted ds:data-[state=on]:text-muted-foreground",
-    outline: "ds:data-[state=on]:bg-muted ds:data-[state=on]:text-muted-foreground",
+    default: "ds:data-[state=on]:bg-ink200 ds:data-[state=on]:text-ink700",
+    outline: "ds:data-[state=on]:bg-ink200 ds:data-[state=on]:text-ink700",
   },
   success: {
     default:
-      "ds:data-[state=on]:bg-success ds:data-[state=on]:text-success-foreground",
+      "ds:data-[state=on]:bg-green500 ds:data-[state=on]:text-white",
     outline:
-      "ds:data-[state=on]:bg-success ds:data-[state=on]:text-success-foreground",
+      "ds:data-[state=on]:bg-green500 ds:data-[state=on]:text-white",
   },
   error: {
-    default: "ds:data-[state=on]:bg-error ds:data-[state=on]:text-error-foreground",
-    outline: "ds:data-[state=on]:bg-error ds:data-[state=on]:text-error-foreground",
+    default: "ds:data-[state=on]:bg-red500 ds:data-[state=on]:text-white",
+    outline: "ds:data-[state=on]:bg-red500 ds:data-[state=on]:text-white",
   },
   warning: {
     default:
-      "ds:data-[state=on]:bg-warning ds:data-[state=on]:text-warning-foreground",
+      "ds:data-[state=on]:bg-orange500 ds:data-[state=on]:text-white",
     outline:
-      "ds:data-[state=on]:bg-warning ds:data-[state=on]:text-warning-foreground",
+      "ds:data-[state=on]:bg-orange500 ds:data-[state=on]:text-white",
   },
 };
 
@@ -78,13 +78,13 @@ const generateCompoundVariants = () => {
 };
 
 const toggleVariants = cva(
-  "ds:inline-flex ds:items-center ds:justify-center ds:gap-2 ds:rounded-md ds:text-sm ds:font-medium ds:hover:bg-muted ds:hover:text-muted-foreground ds:disabled:pointer-events-none ds:disabled:opacity-50 ds:[&_svg]:pointer-events-none ds:[&_svg:not([class*='size-'])]:size-4 ds:[&_svg]:shrink-0 ds:focus-visible:border-ring ds:focus-visible:ring-ring/50 ds:focus-visible:ring-[3px] ds:outline-none ds:transition-[color,box-shadow] ds:aria-invalid:ring-destructive/20 ds:dark:aria-invalid:ring-destructive/40 ds:aria-invalid:border-destructive ds:whitespace-nowrap",
+  "ds:inline-flex ds:items-center ds:justify-center ds:gap-2 ds:rounded-md ds:text-sm ds:font-medium ds:hover:bg-ink200 ds:hover:text-ink700 ds:disabled:pointer-events-none ds:disabled:opacity-50 ds:[&_svg]:pointer-events-none ds:[&_svg:not([class*='size-'])]:size-4 ds:[&_svg]:shrink-0 ds:focus-visible:border-ink500 ds:focus-visible:ring-ink500/50 ds:focus-visible:ring-[3px] ds:outline-none ds:transition-[color,box-shadow] ds:aria-invalid:ring-red600/20 ds:dark:aria-invalid:ring-red600/40 ds:aria-invalid:border-red600 ds:whitespace-nowrap",
   {
     variants: {
       variant: {
         default: "ds:bg-transparent",
         outline:
-          "ds:border ds:border-input ds:bg-transparent ds:shadow-xs ds:hover:bg-accent ds:hover:text-accent-foreground",
+          "ds:border ds:border-border ds:bg-transparent ds:shadow-xs ds:hover:bg-ink200 ds:hover:text-ink900",
       },
       size: {
         default: "ds:h-9 ds:px-2 ds:min-w-9",

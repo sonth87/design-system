@@ -14,11 +14,11 @@ import { cva } from "class-variance-authority";
 import { cn } from "../lib/utils";
 
 const treeVariants = cva(
-  "ds:group ds:hover:before:opacity-100 ds:before:absolute ds:before:rounded-lg ds:before:left-0 ds:pr-2 ds:before:w-full ds:before:opacity-0 ds:before:bg-accent/70 ds:before:h-[2rem] ds:before:-z-10"
+  "ds:group ds:hover:before:opacity-100 ds:before:absolute ds:before:rounded-lg ds:before:left-0 ds:pr-2 ds:before:w-full ds:before:opacity-0 ds:before:bg-ink200/70 ds:before:h-[2rem] ds:before:-z-10"
 );
 
 const selectedTreeVariants = cva(
-  "ds:before:opacity-100 ds:before:bg-accent/70 ds:text-accent-foreground"
+  "ds:before:opacity-100 ds:before:bg-ink200/70 ds:text-ink900"
 );
 
 const DEFAULT_SELECTED_IDS: string[] = [];
@@ -430,7 +430,7 @@ const TreeNode = ({
                     !customCollapseIcon &&
                     "ds:[&[data-state=open]>svg:first-of-type]:rotate-90",
                   expandOnArrowClick
-                    ? "ds:hover:bg-accent/50 ds:rounded-sm ds:cursor-pointer"
+                    ? "ds:hover:bg-ink200/50 ds:rounded-sm ds:cursor-pointer"
                     : "ds:flex-1 ds:cursor-pointer"
                 )}
               >
@@ -455,7 +455,7 @@ const TreeNode = ({
                           handleCheckChange?.(item, checked === true);
                         }}
                         onClick={(e) => e.stopPropagation()}
-                        className="ds:mr-2 ds:h-4 ds:w-4 ds:shrink-0 ds:rounded-sm ds:border ds:border-primary ds:data-[state=checked]:bg-primary ds:data-[state=checked]:text-primary-foreground ds:data-[state=indeterminate]:bg-primary ds:data-[state=indeterminate]:text-primary-foreground"
+                        className="ds:mr-2 ds:h-4 ds:w-4 ds:shrink-0 ds:rounded-sm ds:border ds:border-primaryA-500 ds:data-[state=checked]:bg-primaryA-500 ds:data-[state=checked]:text-white ds:data-[state=indeterminate]:bg-primaryA-500 ds:data-[state=indeterminate]:text-white"
                       >
                         <CheckboxPrimitive.Indicator className="ds:flex ds:items-center ds:justify-center ds:text-current">
                           {isIndeterminate ? (
@@ -506,7 +506,7 @@ const TreeNode = ({
                       handleCheckChange?.(item, checked === true);
                     }}
                     onClick={(e) => e.stopPropagation()}
-                    className="ds:mr-2 ds:h-4 ds:w-4 ds:shrink-0 ds:rounded-sm ds:border ds:border-primary ds:data-[state=checked]:bg-primary ds:data-[state=checked]:text-primary-foreground ds:data-[state=indeterminate]:bg-primary ds:data-[state=indeterminate]:text-primary-foreground"
+                    className="ds:mr-2 ds:h-4 ds:w-4 ds:shrink-0 ds:rounded-sm ds:border ds:border-primaryA-500 ds:data-[state=checked]:bg-primaryA-500 ds:data-[state=checked]:text-white ds:data-[state=indeterminate]:bg-primaryA-500 ds:data-[state=indeterminate]:text-white"
                   >
                     <CheckboxPrimitive.Indicator className="ds:flex ds:items-center ds:justify-center ds:text-current">
                       {isIndeterminate ? (
@@ -642,7 +642,7 @@ const TreeLeaf = React.forwardRef<
             }}
             disabled={item.disabled}
             onClick={(e) => e.stopPropagation()}
-            className="ds:mr-2 ds:h-4 ds:w-4 ds:shrink-0 ds:rounded-sm ds:border ds:border-primary ds:data-[state=checked]:bg-primary ds:data-[state=checked]:text-primary-foreground"
+            className="ds:mr-2 ds:h-4 ds:w-4 ds:shrink-0 ds:rounded-sm ds:border ds:border-primaryA-500 ds:data-[state=checked]:bg-primaryA-500 ds:data-[state=checked]:text-white"
           >
             <CheckboxPrimitive.Indicator className="ds:flex ds:items-center ds:justify-center ds:text-current">
               <Check className="ds:h-3 ds:w-3" />
@@ -679,7 +679,7 @@ const AccordionTrigger = React.forwardRef<
           className
         )}
       >
-        <ChevronRight className="ds:h-4 ds:w-4 ds:shrink-0 ds:transition-transform ds:duration-200 ds:text-accent-foreground/50" />
+        <ChevronRight className="ds:h-4 ds:w-4 ds:shrink-0 ds:transition-transform ds:duration-200 ds:text-ink900/50" />
         {children}
       </div>
     </AccordionPrimitive.Trigger>
@@ -761,25 +761,25 @@ const IndicatorIcon = ({
 }) => {
   if (CustomExpand && !isOpen) {
     return (
-      <CustomExpand className="ds:h-4 ds:w-4 ds:shrink-0 ds:transition-transform ds:duration-200 ds:text-accent-foreground/50" />
+      <CustomExpand className="ds:h-4 ds:w-4 ds:shrink-0 ds:transition-transform ds:duration-200 ds:text-ink900/50" />
     );
   }
   if (CustomCollapse && isOpen) {
     return (
-      <CustomCollapse className="ds:h-4 ds:w-4 ds:shrink-0 ds:transition-transform ds:duration-200 ds:text-accent-foreground/50" />
+      <CustomCollapse className="ds:h-4 ds:w-4 ds:shrink-0 ds:transition-transform ds:duration-200 ds:text-ink900/50" />
     );
   }
 
   if (variant === "plus-minus") {
     return isOpen ? (
-      <SquareMinus className="ds:h-4 ds:w-4 ds:shrink-0 ds:transition-transform ds:duration-200 ds:text-accent-foreground/50" />
+      <SquareMinus className="ds:h-4 ds:w-4 ds:shrink-0 ds:transition-transform ds:duration-200 ds:text-ink900/50" />
     ) : (
-      <SquarePlus className="ds:h-4 ds:w-4 ds:shrink-0 ds:transition-transform ds:duration-200 ds:text-accent-foreground/50" />
+      <SquarePlus className="ds:h-4 ds:w-4 ds:shrink-0 ds:transition-transform ds:duration-200 ds:text-ink900/50" />
     );
   }
 
   return (
-    <ChevronRight className="ds:h-4 ds:w-4 ds:shrink-0 ds:transition-transform ds:duration-200 ds:text-accent-foreground/50" />
+    <ChevronRight className="ds:h-4 ds:w-4 ds:shrink-0 ds:transition-transform ds:duration-200 ds:text-ink900/50" />
   );
 };
 

@@ -119,7 +119,7 @@ const Radio = React.forwardRef<HTMLDivElement, RadioProps>((props, ref) => {
       </SRadioGroup>
 
       {helperText && (
-        <p className="ds:text-xs ds:text-muted-foreground">{helperText}</p>
+        <p className="ds:text-xs ds:text-ink700">{helperText}</p>
       )}
     </div>
   );

@@ -135,22 +135,22 @@ export const ThemeShowcase: React.FC = () => {
   };
 
   return (
-    <div className="ds:p-8 ds:bg-background ds:min-h-screen">
+    <div className="ds:p-8 ds:bg-white ds:min-h-screen">
       <div className="ds:max-w-7xl ds:mx-auto ds:space-y-8">
         {/* Header */}
         <div className="ds:space-y-4">
           <div className="ds:flex ds:items-center ds:justify-between">
             <div>
-              <h1 className="ds:text-4xl ds:font-bold ds:text-foreground">
+              <h1 className="ds:text-4xl ds:font-bold ds:text-ink800">
                 Theme Configuration
               </h1>
-              <p className="ds:text-lg ds:text-muted-foreground">
+              <p className="ds:text-lg ds:text-ink700">
                 Chỉnh sửa các biến CSS để thay đổi theme
               </p>
             </div>
             <button
               onClick={toggleTheme}
-              className="ds:px-4 ds:py-2 ds:bg-primary ds:text-primary-foreground ds:rounded-lg ds:hover:opacity-90 ds:transition-all ds:flex ds:items-center ds:gap-2 ds:shadow-md ds:hover:shadow-lg"
+              className="ds:px-4 ds:py-2 ds:bg-primaryA-500 ds:text-white ds:rounded-lg ds:hover:opacity-90 ds:transition-all ds:flex ds:items-center ds:gap-2 ds:shadow-md ds:hover:shadow-lg"
               title={
                 isDarkMode ? "Chuyển sang Light Mode" : "Chuyển sang Dark Mode"
               }
@@ -167,10 +167,10 @@ export const ThemeShowcase: React.FC = () => {
           {/* Variables List */}
           <section className="ds:space-y-4">
             <div className="ds:space-y-2">
-              <h2 className="ds:text-2xl ds:font-semibold ds:text-foreground">
+              <h2 className="ds:text-2xl ds:font-semibold ds:text-ink800">
                 Danh sách biến Theme
               </h2>
-              <p className="ds:text-sm ds:text-muted-foreground">
+              <p className="ds:text-sm ds:text-ink700">
                 {themeVariables.length} biến CSS được phân nhóm
               </p>
             </div>
@@ -194,14 +194,14 @@ export const ThemeShowcase: React.FC = () => {
 
                 return (
                   <div key={groupName} className="ds:space-y-2">
-                    <h3 className="ds:text-sm ds:font-semibold ds:text-foreground ds:uppercase ds:tracking-wide ds:opacity-60">
+                    <h3 className="ds:text-sm ds:font-semibold ds:text-ink800 ds:uppercase ds:tracking-wide ds:opacity-60">
                       {groupLabels[groupName]}
                     </h3>
                     <div className="ds:grid ds:grid-cols-1 ds:lg:grid-cols-2 ds:gap-1">
                       {groupVariables.map((variable) => (
                         <div
                           key={variable.cssVar}
-                          className="ds:flex ds:items-center ds:gap-3 ds:p-3 ds:rounded-md ds:border ds:border-border ds:bg-card ds:hover:bg-accent ds:transition-colors ds:group"
+                          className="ds:flex ds:items-center ds:gap-3 ds:p-3 ds:rounded-md ds:border ds:border-border ds:bg-white ds:hover:bg-ink200 ds:transition-colors ds:group"
                         >
                           {variable.category === "color" ? (
                             <label
@@ -222,13 +222,13 @@ export const ThemeShowcase: React.FC = () => {
                               />
                             </label>
                           ) : variable.category === "size" ? (
-                            <div className="ds:w-10 ds:h-10 ds:rounded ds:border ds:border-border ds:bg-muted ds:flex-shrink-0 ds:flex ds:items-center ds:justify-center ds:group/radius ds:relative">
-                              <span className="ds:text-xs ds:font-mono ds:text-muted-foreground ds:cursor-pointer">
+                            <div className="ds:w-10 ds:h-10 ds:rounded ds:border ds:border-border ds:bg-ink200 ds:flex-shrink-0 ds:flex ds:items-center ds:justify-center ds:group/radius ds:relative">
+                              <span className="ds:text-xs ds:font-mono ds:text-ink700 ds:cursor-pointer">
                                 📏
                               </span>
-                              <div className="ds:absolute ds:left-0 ds:ml-0 ds:hidden ds:group-hover/radius:block ds:z-10 ds:bg-popover ds:border ds:border-border ds:rounded-lg ds:py-3 ds:px-6 ds:shadow-lg ds:w-56">
+                              <div className="ds:absolute ds:left-0 ds:ml-0 ds:hidden ds:group-hover/radius:block ds:z-10 ds:bg-white ds:border ds:border-border ds:rounded-lg ds:py-3 ds:px-6 ds:shadow-lg ds:w-56">
                                 <div className="ds:space-y-2">
-                                  <label className="ds:text-xs ds:font-medium ds:text-foreground ds:block">
+                                  <label className="ds:text-xs ds:font-medium ds:text-ink800 ds:block">
                                     Border Radius: {variable.value}
                                   </label>
                                   <input
@@ -243,9 +243,9 @@ export const ThemeShowcase: React.FC = () => {
                                         `${e.target.value}rem`
                                       )
                                     }
-                                    className="ds:w-full ds:h-2 ds:bg-muted ds:rounded-lg ds:appearance-none ds:cursor-pointer ds:accent-primary"
+                                    className="ds:w-full ds:h-2 ds:bg-ink200 ds:rounded-lg ds:appearance-none ds:cursor-pointer ds:accent-primaryA-500"
                                   />
-                                  <div className="ds:flex ds:justify-between ds:text-xs ds:text-muted-foreground">
+                                  <div className="ds:flex ds:justify-between ds:text-xs ds:text-ink700">
                                     <span>0rem</span>
                                     <span>1rem</span>
                                     <span>2rem</span>
@@ -254,26 +254,26 @@ export const ThemeShowcase: React.FC = () => {
                               </div>
                             </div>
                           ) : (
-                            <div className="ds:w-10 ds:h-10 ds:rounded ds:border ds:border-border ds:bg-muted ds:flex-shrink-0 ds:flex ds:items-center ds:justify-center">
-                              <span className="ds:text-xs ds:font-mono ds:text-muted-foreground">
+                            <div className="ds:w-10 ds:h-10 ds:rounded ds:border ds:border-border ds:bg-ink200 ds:flex-shrink-0 ds:flex ds:items-center ds:justify-center">
+                              <span className="ds:text-xs ds:font-mono ds:text-ink700">
                                 📏
                               </span>
                             </div>
                           )}
                           <div className="ds:flex-1 ds:min-w-0">
                             <div className="ds:flex ds:items-baseline ds:gap-2">
-                              <span className="ds:font-medium ds:text-foreground ds:text-sm">
+                              <span className="ds:font-medium ds:text-ink800 ds:text-sm">
                                 {variable.name}
                               </span>
                             </div>
                             <div className="ds:flex ds:items-baseline ds:gap-2">
-                              <span className="ds:text-xs ds:text-muted-foreground ds:truncate">
+                              <span className="ds:text-xs ds:text-ink700 ds:truncate">
                                 {variable.description}
                               </span>
                             </div>
-                            <div className="ds:text-xs ds:font-mono ds:text-muted-foreground ds:mt-0.5">
+                            <div className="ds:text-xs ds:font-mono ds:text-ink700 ds:mt-0.5">
                               {variable.cssVar}:{" "}
-                              <span className="ds:text-foreground">
+                              <span className="ds:text-ink800">
                                 {variable.value}
                               </span>
                             </div>
@@ -290,10 +290,10 @@ export const ThemeShowcase: React.FC = () => {
           {/* Theme Editor */}
           <section className="ds:space-y-4 ds:lg:sticky ds:lg:top-8 ds:lg:self-start">
             <div className="ds:space-y-2">
-              <h2 className="ds:text-2xl ds:font-semibold ds:text-foreground">
+              <h2 className="ds:text-2xl ds:font-semibold ds:text-ink800">
                 Theme Editor
               </h2>
-              <p className="ds:text-sm ds:text-muted-foreground">
+              <p className="ds:text-sm ds:text-ink700">
                 Copy CSS này vào file theme.css của bạn để áp dụng theme
               </p>
             </div>
@@ -302,7 +302,7 @@ export const ThemeShowcase: React.FC = () => {
                 <textarea
                   value={textareaValue}
                   onChange={handleTextareaChange}
-                  className="ds:w-full ds:h-[600px] ds:p-4 ds:rounded-lg ds:border ds:border-border ds:bg-card ds:text-foreground ds:font-mono ds:text-sm ds:resize-none ds:focus:outline-none ds:focus:ring-2 ds:focus:ring-ring"
+                  className="ds:w-full ds:h-[600px] ds:p-4 ds:rounded-lg ds:border ds:border-border ds:bg-white ds:text-ink800 ds:font-mono ds:text-sm ds:resize-none ds:focus:outline-none ds:focus:ring-2 ds:focus:ring-ink500"
                   spellCheck={false}
                   placeholder=":root {
   --background: 0 0% 100%;
@@ -316,7 +316,7 @@ export const ThemeShowcase: React.FC = () => {
                     setIsCopied(true);
                     setTimeout(() => setIsCopied(false), 2000);
                   }}
-                  className="ds:absolute ds:top-4 ds:right-4 ds:px-3 ds:py-1.5 ds:bg-primary ds:text-primary-foreground ds:rounded-md ds:hover:opacity-90 ds:transition-opacity ds:text-xs ds:font-medium ds:shadow-md"
+                  className="ds:absolute ds:top-4 ds:right-4 ds:px-3 ds:py-1.5 ds:bg-primaryA-500 ds:text-white ds:rounded-md ds:hover:opacity-90 ds:transition-opacity ds:text-xs ds:font-medium ds:shadow-md"
                   title="Copy to clipboard"
                 >
                   {isCopied ? (
@@ -329,30 +329,30 @@ export const ThemeShowcase: React.FC = () => {
                   )}
                 </button>
               </div>
-              <div className="ds:bg-muted ds:p-4 ds:rounded-lg ds:space-y-2">
-                <h3 className="ds:text-sm ds:font-semibold ds:text-foreground">
+              <div className="ds:bg-ink200 ds:p-4 ds:rounded-lg ds:space-y-2">
+                <h3 className="ds:text-sm ds:font-semibold ds:text-ink800">
                   💡 Hướng dẫn sử dụng:
                 </h3>
-                <ul className="ds:text-xs ds:text-muted-foreground ds:space-y-1 ds:list-disc ds:list-inside">
+                <ul className="ds:text-xs ds:text-ink700 ds:space-y-1 ds:list-disc ds:list-inside">
                   <li>
                     <strong>Light mode:</strong> Copy CSS từ{" "}
-                    <code className="ds:bg-background ds:px-1 ds:rounded">:root</code> và
+                    <code className="ds:bg-white ds:px-1 ds:rounded">:root</code> và
                     paste vào file CSS của bạn
                   </li>
                   <li>
                     <strong>Dark mode:</strong> Copy CSS từ{" "}
-                    <code className="ds:bg-background ds:px-1 ds:rounded">.dark</code> và
+                    <code className="ds:bg-white ds:px-1 ds:rounded">.dark</code> và
                     paste vào file CSS của bạn
                   </li>
                   <li>
                     Format màu:{" "}
-                    <code className="ds:bg-background ds:px-1 ds:rounded">#ffffff</code>{" "}
+                    <code className="ds:bg-white ds:px-1 ds:rounded">#ffffff</code>{" "}
                     hoặc{" "}
-                    <code className="ds:bg-background ds:px-1 ds:rounded">
+                    <code className="ds:bg-white ds:px-1 ds:rounded">
                       rgb(255, 255, 255)
                     </code>
                     hoặc{" "}
-                    <code className="ds:bg-background ds:px-1 ds:rounded">
+                    <code className="ds:bg-white ds:px-1 ds:rounded">
                       oklch(1 0.37 62)
                     </code>
                   </li>
@@ -368,52 +368,52 @@ export const ThemeShowcase: React.FC = () => {
 
             {/* Preview Section */}
             <div className="ds:space-y-4 ds:pt-4">
-              <h3 className="ds:text-lg ds:font-semibold ds:text-foreground">
+              <h3 className="ds:text-lg ds:font-semibold ds:text-ink800">
                 Preview Components
               </h3>
               <div className="ds:space-y-3">
-                <div className="ds:bg-card ds:text-card-foreground ds:rounded-lg ds:border ds:border-border ds:p-4">
+                <div className="ds:bg-white ds:text-ink900 ds:rounded-lg ds:border ds:border-border ds:p-4">
                   <h4 className="ds:font-semibold ds:mb-2">Card Component</h4>
-                  <p className="ds:text-sm ds:text-muted-foreground ds:mb-3">
+                  <p className="ds:text-sm ds:text-ink700 ds:mb-3">
                     This is a card with current theme colors.
                   </p>
                   <div className="ds:flex ds:gap-2 ds:flex-wrap">
-                    <button className="ds:px-4 ds:py-2 ds:bg-primary ds:text-primary-foreground ds:rounded-md ds:hover:opacity-90 ds:transition-opacity ds:text-sm">
+                    <button className="ds:px-4 ds:py-2 ds:bg-primaryA-500 ds:text-white ds:rounded-md ds:hover:opacity-90 ds:transition-opacity ds:text-sm">
                       Primary
                     </button>
-                    <button className="ds:px-4 ds:py-2 ds:bg-secondary ds:text-secondary-foreground ds:rounded-md ds:hover:opacity-90 ds:transition-opacity ds:text-sm">
+                    <button className="ds:px-4 ds:py-2 ds:bg-primaryC-500 ds:text-white ds:rounded-md ds:hover:opacity-90 ds:transition-opacity ds:text-sm">
                       Secondary
                     </button>
-                    <button className="ds:px-4 ds:py-2 ds:bg-destructive ds:text-destructive-foreground ds:rounded-md ds:hover:opacity-90 ds:transition-opacity ds:text-sm">
+                    <button className="ds:px-4 ds:py-2 ds:bg-red600 ds:text-white ds:rounded-md ds:hover:opacity-90 ds:transition-opacity ds:text-sm">
                       Destructive
                     </button>
                   </div>
                 </div>
 
-                <div className="ds:bg-card ds:text-card-foreground ds:rounded-lg ds:border ds:border-border ds:p-4">
+                <div className="ds:bg-white ds:text-ink900 ds:rounded-lg ds:border ds:border-border ds:p-4">
                   <h4 className="ds:font-semibold ds:mb-2">State color</h4>
-                  <p className="ds:text-sm ds:text-muted-foreground ds:mb-3">
+                  <p className="ds:text-sm ds:text-ink700 ds:mb-3">
                     This is a card with current theme state colors.
                   </p>
                   <div className="ds:flex ds:gap-2 ds:flex-wrap">
-                    <button className="ds:px-4 ds:py-2 ds:bg-success ds:text-success-foreground ds:rounded-md ds:hover:opacity-90 ds:transition-opacity ds:text-sm">
+                    <button className="ds:px-4 ds:py-2 ds:bg-green500 ds:text-white ds:rounded-md ds:hover:opacity-90 ds:transition-opacity ds:text-sm">
                       Success
                     </button>
-                    <button className="ds:px-4 ds:py-2 ds:bg-error ds:text-error-foreground ds:rounded-md ds:hover:opacity-90 ds:transition-opacity ds:text-sm">
+                    <button className="ds:px-4 ds:py-2 ds:bg-red500 ds:text-white ds:rounded-md ds:hover:opacity-90 ds:transition-opacity ds:text-sm">
                       Error
                     </button>
-                    <button className="ds:px-4 ds:py-2 ds:bg-warning ds:text-warning-foreground ds:rounded-md ds:hover:opacity-90 ds:transition-opacity ds:text-sm">
+                    <button className="ds:px-4 ds:py-2 ds:bg-orange500 ds:text-white ds:rounded-md ds:hover:opacity-90 ds:transition-opacity ds:text-sm">
                       Warning
                     </button>
                   </div>
                 </div>
 
-                <div className="ds:bg-muted ds:text-muted-foreground ds:rounded-lg ds:p-4">
+                <div className="ds:bg-ink200 ds:text-ink700 ds:rounded-lg ds:p-4">
                   <h4 className="ds:font-semibold ds:mb-2">Muted Section</h4>
                   <p className="ds:text-sm">This section uses muted background.</p>
                 </div>
 
-                <div className="ds:bg-accent ds:text-accent-foreground ds:rounded-lg ds:p-4">
+                <div className="ds:bg-ink200 ds:text-ink900 ds:rounded-lg ds:p-4">
                   <h4 className="ds:font-semibold ds:mb-2">Accent Section</h4>
                   <p className="ds:text-sm">This section uses accent colors.</p>
                 </div>
