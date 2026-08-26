@@ -24,6 +24,34 @@ const distTypesPath = path.resolve(__dirname, "../dist/types");
 const wrongPath = path.join(distTypesPath, "apps/design-system/src");
 const packagesPath = path.join(distTypesPath, "packages");
 
+/**
+ * Move a directory/file by copying then removing the source, retrying on
+ * transient EPERM/EBUSY errors. On Windows, fs.renameSync on a directory can
+ * throw EPERM right after another process (tsc-alias) finishes writing to it,
+ * because the OS/AV briefly still holds a handle on it. Copy+remove avoids
+ * the native rename syscall that hits this race, and the retry loop absorbs
+ * whatever race remains.
+ */
+function moveSync(sourcePath, targetPath, retries = 5, delayMs = 150) {
+  for (let attempt = 1; attempt <= retries; attempt++) {
+    try {
+      if (fs.existsSync(targetPath)) {
+        fs.rmSync(targetPath, { recursive: true, force: true });
+      }
+      fs.cpSync(sourcePath, targetPath, { recursive: true });
+      fs.rmSync(sourcePath, { recursive: true, force: true });
+      return;
+    } catch (err) {
+      const transient = err.code === "EPERM" || err.code === "EBUSY";
+      if (!transient || attempt === retries) throw err;
+      console.warn(
+        `  ⚠ ${err.code} moving ${path.basename(sourcePath)}, retrying (${attempt}/${retries})...`
+      );
+      Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, delayMs);
+    }
+  }
+}
+
 // ====================================================================
 // STEP 1: Fix types folder structure (move from apps/design-system/src)
 // ====================================================================
@@ -36,11 +64,7 @@ if (fs.existsSync(wrongPath)) {
     const sourcePath = path.join(wrongPath, item);
     const targetPath = path.join(distTypesPath, item);
 
-    if (fs.existsSync(targetPath)) {
-      fs.rmSync(targetPath, { recursive: true, force: true });
-    }
-
-    fs.renameSync(sourcePath, targetPath);
+    moveSync(sourcePath, targetPath);
     console.log("✓ Moved " + item);
   });
 
