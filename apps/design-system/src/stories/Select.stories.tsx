@@ -1,9 +1,11 @@
+import { useMemo, useState } from "react";
 import type { Meta } from "@storybook/react";
 import Select, {
   type SelectOption,
   type SelectProps,
 } from "../components/Select/Select";
 import i18n from "../../.storybook/i18n";
+import { useDebouncedCallback } from "@/hooks/use-debounced-callback";
 
 const meta: Meta<typeof Select> = {
   title: "Form Components/Select",
@@ -115,6 +117,42 @@ const meta: Meta<typeof Select> = {
           summary: "boolean | { placeholder?: string; emptyMessage?: string }",
         },
         category: i18n.t("stories.category.ui"),
+      },
+    },
+    onSearchChange: {
+      action: "search changed",
+      description: i18n.t(
+        "stories.select.argTypes.onSearchChange.description"
+      ),
+      table: {
+        type: { summary: "(value: string) => void" },
+        category: i18n.t("stories.category.events"),
+      },
+    },
+    shouldFilter: {
+      control: "boolean",
+      description: i18n.t(
+        "stories.select.argTypes.shouldFilter.description"
+      ),
+      table: {
+        defaultValue: { summary: "true" },
+        category: i18n.t("stories.category.behavior"),
+      },
+    },
+    loading: {
+      control: "boolean",
+      description: i18n.t("stories.select.argTypes.loading.description"),
+      table: {
+        defaultValue: { summary: "false" },
+        category: i18n.t("stories.category.behavior"),
+      },
+    },
+    loadingText: {
+      control: "text",
+      description: i18n.t("stories.select.argTypes.loadingText.description"),
+      table: {
+        defaultValue: { summary: '"Loading..."' },
+        category: i18n.t("stories.category.content"),
       },
     },
     overflowBehavior: {
@@ -478,6 +516,74 @@ export const WithSearch = () => (
     />
   </div>
 );
+
+// Simulates a remote endpoint: given a query, resolves with matching options
+// after a short network delay.
+function fetchCountriesFromApi(query: string): Promise<SelectOption[]> {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      const results = countries.filter((c) =>
+        String(c.label).toLowerCase().includes(query.toLowerCase())
+      );
+      resolve(results);
+    }, 400);
+  });
+}
+
+/**
+ * Demonstrates driving `options` from a remote/API search instead of
+ * filtering a static local list:
+ * - `onSearchChange` fires on every keystroke; debounce it before calling
+ *   the API to avoid firing a request per character.
+ * - `shouldFilter={false}` disables cmdk's built-in client-side filtering,
+ *   since the returned `options` are already filtered by the server.
+ * - `loading` swaps the option list for a spinner while the request is
+ *   in flight.
+ */
+export const ApiSearch = () => {
+  const [options, setOptions] = useState<SelectOption[]>(countries);
+  const [isSearching, setIsSearching] = useState(false);
+
+  const debouncedSearch = useDebouncedCallback(async (query: string) => {
+    if (!query) {
+      setOptions(countries);
+      setIsSearching(false);
+      return;
+    }
+    const results = await fetchCountriesFromApi(query);
+    setOptions(results);
+    setIsSearching(false);
+  }, 400);
+
+  const handleSearchChange = (query: string) => {
+    setIsSearching(true);
+    debouncedSearch(query);
+  };
+
+  const helperText = useMemo(
+    () => (isSearching ? "Searching..." : "Options are fetched from an API"),
+    [isSearching]
+  );
+
+  return (
+    <div className="ds:w-96">
+      <Select
+        label="Search Countries (API)"
+        placeholder="Type to search..."
+        options={options}
+        search={{
+          placeholder: "Search countries...",
+          emptyMessage: "No country found.",
+        }}
+        onSearchChange={handleSearchChange}
+        shouldFilter={false}
+        loading={isSearching}
+        loadingText="Searching countries..."
+        helperText={helperText}
+      />
+    </div>
+  );
+};
 
 export const OverflowBehaviors = () => (
   <div className="ds:flex ds:flex-col ds:gap-4 ds:w-96">

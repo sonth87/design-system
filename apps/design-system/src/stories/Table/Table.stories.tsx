@@ -431,6 +431,7 @@ const columns: ColumnDef<Project>[] = [
   },
   {
     id: "actions",
+    enablePinning: true,
     cell: function Cell() {
       return (
         <div className="ds:flex ds:gap-1 ds:justify-end">
@@ -481,7 +482,7 @@ export const Default = () => {
     // manualPagination: false,
     initialState: {
       // sorting: [{ id: "title", desc: true }],
-      columnPinning: { left: ["select", "title"], right: ["actions"] },
+      columnPinning: { left: ["select", "title"] },
       pagination: { pageIndex: 0, pageSize: 10 },
     },
     getRowId: (row) => row.id,
@@ -553,6 +554,12 @@ export const WithOptions = () => {
     data: demoData,
     columns,
     getRowId: (row) => row.id,
+    initialState: {
+      // Enough rows visible at once so the sticky header + column pinning
+      // (open a column header's menu to pin/unpin it) are actually demoable.
+      pagination: { pageIndex: 0, pageSize: 30 },
+      columnPinning: { left: ["select", "title"], right: ["actions"] },
+    },
   });
 
   return (
@@ -560,7 +567,7 @@ export const WithOptions = () => {
       <DataTableToolbar table={table} showColumnVisibilityToggle />
       <DataTable
         table={table}
-        sticky={{ offsetHeader: 150 }}
+        sticky
         bordered={true}
         loading={false}
         footer={(currentPageData) => (

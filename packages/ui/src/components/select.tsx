@@ -1,6 +1,12 @@
 "use client";
 
-import { CheckIcon, ChevronDown, ChevronUp, XIcon } from "lucide-react";
+import {
+  CheckIcon,
+  ChevronDown,
+  ChevronUp,
+  LoaderCircle,
+  XIcon,
+} from "lucide-react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../lib/utils";
 import { Button } from "./button";
@@ -354,11 +360,15 @@ export function MultiSelectValue({
 export function MultiSelectContent({
   search = true,
   onSearchChange,
+  loading = false,
+  loadingText,
   children,
   ...props
 }: {
   search?: boolean | { placeholder?: string; emptyMessage?: string };
   onSearchChange?: (value: string) => void;
+  loading?: boolean;
+  loadingText?: string;
   children: ReactNode;
 } & Omit<ComponentPropsWithoutRef<typeof Command>, "children">) {
   const canSearch = typeof search === "object" ? true : search;
@@ -388,12 +398,23 @@ export function MultiSelectContent({
             />
           )}
           <CommandList>
-            {canSearch && (
-              <CommandEmpty>
-                {typeof search === "object" ? search.emptyMessage : undefined}
-              </CommandEmpty>
+            {loading ? (
+              <div className="ds:flex ds:items-center ds:justify-center ds:gap-2 ds:py-6 ds:text-sm ds:text-muted-foreground">
+                <LoaderCircle className="ds:size-4 ds:animate-spin" />
+                {loadingText ?? "Loading..."}
+              </div>
+            ) : (
+              <>
+                {canSearch && (
+                  <CommandEmpty>
+                    {typeof search === "object"
+                      ? search.emptyMessage
+                      : undefined}
+                  </CommandEmpty>
+                )}
+                {children}
+              </>
             )}
-            {children}
           </CommandList>
         </Command>
       </PopoverContent>
