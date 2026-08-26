@@ -7,6 +7,8 @@ import {
   ChevronUp,
   EyeOff,
   Filter,
+  Pin,
+  PinOff,
   X,
 } from "lucide-react";
 
@@ -35,7 +37,10 @@ export function DataTableColumnHeader<TData, TValue>({
       : null);
 
   const hasActions =
-    column.getCanSort() || column.getCanHide() || column.getCanFilter();
+    column.getCanSort() ||
+    column.getCanHide() ||
+    column.getCanFilter() ||
+    column.getCanPin();
 
   if (!hasActions) {
     return <div className={cn(className)}>{displayLabel}</div>;
@@ -121,13 +126,52 @@ export function DataTableColumnHeader<TData, TValue>({
     });
   }
 
+  if (column.getCanPin()) {
+    const isPinned = column.getIsPinned();
+
+    if (items.length > 0) {
+      items.push({ key: "pin-separator", type: "separator" });
+    }
+
+    if (isPinned !== "left") {
+      items.push({
+        key: "pin-left",
+        type: "item",
+        label: "Pin left",
+        icon: <Pin />,
+        onClick: () => column.pin("left"),
+        className: "ds:pl-2 ds:[&_svg]:text-muted-foreground",
+      });
+    }
+    if (isPinned !== "right") {
+      items.push({
+        key: "pin-right",
+        type: "item",
+        label: "Pin right",
+        icon: <Pin />,
+        onClick: () => column.pin("right"),
+        className: "ds:pl-2 ds:[&_svg]:text-muted-foreground",
+      });
+    }
+    if (isPinned) {
+      items.push({
+        key: "unpin",
+        type: "item",
+        label: "Unpin",
+        icon: <PinOff />,
+        onClick: () => column.pin(false),
+        className: "ds:pl-2 ds:[&_svg]:text-muted-foreground",
+      });
+    }
+  }
+
   return (
     <div className={cn("ds:flex ds:items-center ds:gap-1.5", className)}>
       <DropdownMenu
         trigger={sortTrigger}
         items={items}
         align="start"
-        contentClassName="ds:w-28"
+        contentClassName="ds:w-36"
       />
       {filterButton}
     </div>

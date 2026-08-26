@@ -42,6 +42,8 @@ export type SelectProps = Omit<ComboboxProps, "ref"> & {
   search?: boolean | { placeholder?: string; emptyMessage?: string };
   onSearchChange?: (value: string) => void;
   shouldFilter?: boolean;
+  loading?: boolean;
+  loadingText?: string;
   clickToRemove?: boolean;
   overflowBehavior?: "wrap" | "wrap-when-open" | "cutoff";
   className?: string;
@@ -76,6 +78,8 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
       search,
       onSearchChange,
       shouldFilter,
+      loading = false,
+      loadingText,
       clickToRemove = true,
       overflowBehavior = "wrap-when-open",
       disabled,
@@ -206,6 +210,8 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
                   searchable={!!search}
                   onSearchChange={onSearchChange}
                   shouldFilter={shouldFilter}
+                  loading={loading}
+                  loadingText={loadingText}
                   tagRender={tagRender}
                   onFocus={onFocus}
                   onBlur={onBlur}
@@ -269,6 +275,8 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
                   search={search}
                   onSearchChange={onSearchChange}
                   shouldFilter={shouldFilter}
+                  loading={loading}
+                  loadingText={loadingText}
                 >
                   {[...groupedOptions.entries()].map(([group, items]) => {
                     if (group) {

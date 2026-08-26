@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { Check, ChevronDown, ChevronUp, X } from "lucide-react";
+import { Check, ChevronDown, ChevronUp, LoaderCircle, X } from "lucide-react";
 import { cva, type VariantProps } from "class-variance-authority";
 
 import {
@@ -71,6 +71,8 @@ type ComboboxProps = Omit<
   searchable?: boolean;
   onSearchChange?: (value: string) => void;
   shouldFilter?: boolean;
+  loading?: boolean;
+  loadingText?: string;
   tagRender?: (
     option: SelectOption & { onClick?: () => void }
   ) => React.ReactNode;
@@ -84,6 +86,8 @@ function Combobox({
   onChange,
   onSearchChange,
   shouldFilter,
+  loading = false,
+  loadingText,
   clearable,
   className,
   dropdownClassName,
@@ -189,48 +193,59 @@ function Combobox({
             />
           )}
           <CommandList>
-            <CommandEmpty>{emptyText || "Not found"}</CommandEmpty>
-            <CommandGroup>
-              {options?.map((option) => (
-                <CommandItem
-                  key={option.value}
-                  value={String(option.label)} // Để Command search theo label
-                  onSelect={
-                    option?.disabled
-                      ? undefined
-                      : () => {
-                          onChange?.(option.value); // Lưu value thực sự
-                          setOpen(false);
-                        }
-                  }
-                  className={cn(
-                    option?.disabled &&
-                      "ds:opacity-50 ds:cursor-not-allowed ds:grayscale",
-                    value === option.value &&
-                      "ds:bg-primary/10 ds:dark:bg-primary/20"
-                  )}
-                >
-                  {tagRender ? (
-                    tagRender(option)
-                  ) : (
-                    <>
-                      {option.icon && (
-                        <span className="ds:mr-2 ds:max-w-4 ds:max-h-4">
-                          {option.icon}
-                        </span>
+            {loading ? (
+              <div className="ds:flex ds:items-center ds:justify-center ds:gap-2 ds:py-6 ds:text-sm ds:text-muted-foreground">
+                <LoaderCircle className="ds:size-4 ds:animate-spin" />
+                {loadingText ?? "Loading..."}
+              </div>
+            ) : (
+              <>
+                <CommandEmpty>{emptyText || "Not found"}</CommandEmpty>
+                <CommandGroup>
+                  {options?.map((option) => (
+                    <CommandItem
+                      key={option.value}
+                      value={String(option.label)} // Để Command search theo label
+                      onSelect={
+                        option?.disabled
+                          ? undefined
+                          : () => {
+                              onChange?.(option.value); // Lưu value thực sự
+                              setOpen(false);
+                            }
+                      }
+                      className={cn(
+                        option?.disabled &&
+                          "ds:opacity-50 ds:cursor-not-allowed ds:grayscale",
+                        value === option.value &&
+                          "ds:bg-primary/10 ds:dark:bg-primary/20"
                       )}
-                      {option.label}
-                    </>
-                  )}
-                  <Check
-                    className={cn(
-                      "ds:ml-auto",
-                      value === option.value ? "ds:opacity-100" : "ds:opacity-0" // So sánh theo value
-                    )}
-                  />
-                </CommandItem>
-              ))}
-            </CommandGroup>
+                    >
+                      {tagRender ? (
+                        tagRender(option)
+                      ) : (
+                        <>
+                          {option.icon && (
+                            <span className="ds:mr-2 ds:max-w-4 ds:max-h-4">
+                              {option.icon}
+                            </span>
+                          )}
+                          {option.label}
+                        </>
+                      )}
+                      <Check
+                        className={cn(
+                          "ds:ml-auto",
+                          value === option.value
+                            ? "ds:opacity-100"
+                            : "ds:opacity-0" // So sánh theo value
+                        )}
+                      />
+                    </CommandItem>
+                  ))}
+                </CommandGroup>
+              </>
+            )}
           </CommandList>
         </Command>
       </PopoverContent>
