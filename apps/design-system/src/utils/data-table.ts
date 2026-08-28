@@ -29,9 +29,14 @@ export function getCommonPinningStyles<TData>({
       : undefined,
     left: isPinned === "left" ? `${column.getStart("left")}px` : undefined,
     right: isPinned === "right" ? `${column.getAfter("right")}px` : undefined,
-    opacity: isPinned ? 0.97 : 1,
     position: isPinned ? "sticky" : "relative",
-    background: isPinned ? "var(--background)" : "var(--background)",
+    // Background is applied via className, not here — see the call sites.
+    // Pinned cells get a *static* background (never changes on hover/select):
+    // Chromium can repaint a `position: sticky` cell using a stale raster
+    // tile from before the last horizontal scroll when only that one row
+    // repaints (e.g. a hover-triggered background change) — the underlying,
+    // scrolled-away column bleeds through for that row. Keeping the pinned
+    // cell's own background constant avoids ever triggering that repaint.
     width: column.getSize(),
     zIndex: isPinned ? 1 : undefined,
   };
