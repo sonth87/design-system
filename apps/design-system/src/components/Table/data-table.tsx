@@ -304,7 +304,6 @@ export function DataTable<TData>({
             totalCount={totalCount}
             showPageSizeOptions={true}
             showRowSelectionCount={true}
-            className="ds:mt-2.5"
             table={table}
             {...(pagination === true ? {} : pagination)}
           />
