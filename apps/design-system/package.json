@@ -1,6 +1,6 @@
 {
   "name": "@sth87/shadcn-design-system",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "type": "module",
   "description": "A modern React design system base on Shadcn UI and Tailwind CSS.",
   "author": "Sonth87 <sonth87@gmail.com>",
@@ -38,522 +38,522 @@
     },
     "./accordion": {
       "import": {
-        "types": "./dist/types/components\\Accordion\\index.d.ts",
-        "default": "./dist/esm/components\\Accordion\\index.js"
+        "types": "./dist/types/components/Accordion/index.d.ts",
+        "default": "./dist/esm/components/Accordion/index.js"
       },
       "require": {
-        "types": "./dist/types/components\\Accordion\\index.d.ts",
-        "default": "./dist/cjs/components\\Accordion\\index.cjs"
+        "types": "./dist/types/components/Accordion/index.d.ts",
+        "default": "./dist/cjs/components/Accordion/index.cjs"
       }
     },
     "./avatar": {
       "import": {
-        "types": "./dist/types/components\\Avatar\\index.d.ts",
-        "default": "./dist/esm/components\\Avatar\\index.js"
+        "types": "./dist/types/components/Avatar/index.d.ts",
+        "default": "./dist/esm/components/Avatar/index.js"
       },
       "require": {
-        "types": "./dist/types/components\\Avatar\\index.d.ts",
-        "default": "./dist/cjs/components\\Avatar\\index.cjs"
+        "types": "./dist/types/components/Avatar/index.d.ts",
+        "default": "./dist/cjs/components/Avatar/index.cjs"
       }
     },
     "./badge": {
       "import": {
-        "types": "./dist/types/components\\Badge\\index.d.ts",
-        "default": "./dist/esm/components\\Badge\\index.js"
+        "types": "./dist/types/components/Badge/index.d.ts",
+        "default": "./dist/esm/components/Badge/index.js"
       },
       "require": {
-        "types": "./dist/types/components\\Badge\\index.d.ts",
-        "default": "./dist/cjs/components\\Badge\\index.cjs"
+        "types": "./dist/types/components/Badge/index.d.ts",
+        "default": "./dist/cjs/components/Badge/index.cjs"
       }
     },
     "./breadcrumb": {
       "import": {
-        "types": "./dist/types/components\\Breadcrumb\\index.d.ts",
-        "default": "./dist/esm/components\\Breadcrumb\\index.js"
+        "types": "./dist/types/components/Breadcrumb/index.d.ts",
+        "default": "./dist/esm/components/Breadcrumb/index.js"
       },
       "require": {
-        "types": "./dist/types/components\\Breadcrumb\\index.d.ts",
-        "default": "./dist/cjs/components\\Breadcrumb\\index.cjs"
+        "types": "./dist/types/components/Breadcrumb/index.d.ts",
+        "default": "./dist/cjs/components/Breadcrumb/index.cjs"
       }
     },
     "./button": {
       "import": {
-        "types": "./dist/types/components\\Button\\index.d.ts",
-        "default": "./dist/esm/components\\Button\\index.js"
+        "types": "./dist/types/components/Button/index.d.ts",
+        "default": "./dist/esm/components/Button/index.js"
       },
       "require": {
-        "types": "./dist/types/components\\Button\\index.d.ts",
-        "default": "./dist/cjs/components\\Button\\index.cjs"
+        "types": "./dist/types/components/Button/index.d.ts",
+        "default": "./dist/cjs/components/Button/index.cjs"
       }
     },
     "./calendar": {
       "import": {
-        "types": "./dist/types/components\\Calendar\\index.d.ts",
-        "default": "./dist/esm/components\\Calendar\\index.js"
+        "types": "./dist/types/components/Calendar/index.d.ts",
+        "default": "./dist/esm/components/Calendar/index.js"
       },
       "require": {
-        "types": "./dist/types/components\\Calendar\\index.d.ts",
-        "default": "./dist/cjs/components\\Calendar\\index.cjs"
+        "types": "./dist/types/components/Calendar/index.d.ts",
+        "default": "./dist/cjs/components/Calendar/index.cjs"
       }
     },
     "./carousel": {
       "import": {
-        "types": "./dist/types/components\\Carousel\\index.d.ts",
-        "default": "./dist/esm/components\\Carousel\\index.js"
+        "types": "./dist/types/components/Carousel/index.d.ts",
+        "default": "./dist/esm/components/Carousel/index.js"
       },
       "require": {
-        "types": "./dist/types/components\\Carousel\\index.d.ts",
-        "default": "./dist/cjs/components\\Carousel\\index.cjs"
+        "types": "./dist/types/components/Carousel/index.d.ts",
+        "default": "./dist/cjs/components/Carousel/index.cjs"
       }
     },
     "./checkbox": {
       "import": {
-        "types": "./dist/types/components\\Checkbox\\index.d.ts",
-        "default": "./dist/esm/components\\Checkbox\\index.js"
+        "types": "./dist/types/components/Checkbox/index.d.ts",
+        "default": "./dist/esm/components/Checkbox/index.js"
       },
       "require": {
-        "types": "./dist/types/components\\Checkbox\\index.d.ts",
-        "default": "./dist/cjs/components\\Checkbox\\index.cjs"
+        "types": "./dist/types/components/Checkbox/index.d.ts",
+        "default": "./dist/cjs/components/Checkbox/index.cjs"
       }
     },
     "./collapsible": {
       "import": {
-        "types": "./dist/types/components\\Collapsible\\index.d.ts",
-        "default": "./dist/esm/components\\Collapsible\\index.js"
+        "types": "./dist/types/components/Collapsible/index.d.ts",
+        "default": "./dist/esm/components/Collapsible/index.js"
       },
       "require": {
-        "types": "./dist/types/components\\Collapsible\\index.d.ts",
-        "default": "./dist/cjs/components\\Collapsible\\index.cjs"
+        "types": "./dist/types/components/Collapsible/index.d.ts",
+        "default": "./dist/cjs/components/Collapsible/index.cjs"
       }
     },
     "./command": {
       "import": {
-        "types": "./dist/types/components\\Command\\index.d.ts",
-        "default": "./dist/esm/components\\Command\\index.js"
+        "types": "./dist/types/components/Command/index.d.ts",
+        "default": "./dist/esm/components/Command/index.js"
       },
       "require": {
-        "types": "./dist/types/components\\Command\\index.d.ts",
-        "default": "./dist/cjs/components\\Command\\index.cjs"
+        "types": "./dist/types/components/Command/index.d.ts",
+        "default": "./dist/cjs/components/Command/index.cjs"
       }
     },
     "./contextmenu": {
       "import": {
-        "types": "./dist/types/components\\ContextMenu\\index.d.ts",
-        "default": "./dist/esm/components\\ContextMenu\\index.js"
+        "types": "./dist/types/components/ContextMenu/index.d.ts",
+        "default": "./dist/esm/components/ContextMenu/index.js"
       },
       "require": {
-        "types": "./dist/types/components\\ContextMenu\\index.d.ts",
-        "default": "./dist/cjs/components\\ContextMenu\\index.cjs"
+        "types": "./dist/types/components/ContextMenu/index.d.ts",
+        "default": "./dist/cjs/components/ContextMenu/index.cjs"
       }
     },
     "./cropper": {
       "import": {
-        "types": "./dist/types/components\\Cropper\\index.d.ts",
-        "default": "./dist/esm/components\\Cropper\\index.js"
+        "types": "./dist/types/components/Cropper/index.d.ts",
+        "default": "./dist/esm/components/Cropper/index.js"
       },
       "require": {
-        "types": "./dist/types/components\\Cropper\\index.d.ts",
-        "default": "./dist/cjs/components\\Cropper\\index.cjs"
+        "types": "./dist/types/components/Cropper/index.d.ts",
+        "default": "./dist/cjs/components/Cropper/index.cjs"
       }
     },
     "./datepicker": {
       "import": {
-        "types": "./dist/types/components\\DatePicker\\index.d.ts",
-        "default": "./dist/esm/components\\DatePicker\\index.js"
+        "types": "./dist/types/components/DatePicker/index.d.ts",
+        "default": "./dist/esm/components/DatePicker/index.js"
       },
       "require": {
-        "types": "./dist/types/components\\DatePicker\\index.d.ts",
-        "default": "./dist/cjs/components\\DatePicker\\index.cjs"
+        "types": "./dist/types/components/DatePicker/index.d.ts",
+        "default": "./dist/cjs/components/DatePicker/index.cjs"
       }
     },
     "./dialog": {
       "import": {
-        "types": "./dist/types/components\\Dialog\\index.d.ts",
-        "default": "./dist/esm/components\\Dialog\\index.js"
+        "types": "./dist/types/components/Dialog/index.d.ts",
+        "default": "./dist/esm/components/Dialog/index.js"
       },
       "require": {
-        "types": "./dist/types/components\\Dialog\\index.d.ts",
-        "default": "./dist/cjs/components\\Dialog\\index.cjs"
+        "types": "./dist/types/components/Dialog/index.d.ts",
+        "default": "./dist/cjs/components/Dialog/index.cjs"
       }
     },
     "./dropdownmenu": {
       "import": {
-        "types": "./dist/types/components\\DropdownMenu\\index.d.ts",
-        "default": "./dist/esm/components\\DropdownMenu\\index.js"
+        "types": "./dist/types/components/DropdownMenu/index.d.ts",
+        "default": "./dist/esm/components/DropdownMenu/index.js"
       },
       "require": {
-        "types": "./dist/types/components\\DropdownMenu\\index.d.ts",
-        "default": "./dist/cjs/components\\DropdownMenu\\index.cjs"
+        "types": "./dist/types/components/DropdownMenu/index.d.ts",
+        "default": "./dist/cjs/components/DropdownMenu/index.cjs"
       }
     },
     "./floatlabel": {
       "import": {
-        "types": "./dist/types/components\\FloatLabel.d.ts",
-        "default": "./dist/esm/components\\FloatLabel.js"
+        "types": "./dist/types/components/FloatLabel.d.ts",
+        "default": "./dist/esm/components/FloatLabel.js"
       },
       "require": {
-        "types": "./dist/types/components\\FloatLabel.d.ts",
-        "default": "./dist/cjs/components\\FloatLabel.cjs"
+        "types": "./dist/types/components/FloatLabel.d.ts",
+        "default": "./dist/cjs/components/FloatLabel.cjs"
       }
     },
     "./glass": {
       "import": {
-        "types": "./dist/types/components\\Glass\\index.d.ts",
-        "default": "./dist/esm/components\\Glass\\index.js"
+        "types": "./dist/types/components/Glass/index.d.ts",
+        "default": "./dist/esm/components/Glass/index.js"
       },
       "require": {
-        "types": "./dist/types/components\\Glass\\index.d.ts",
-        "default": "./dist/cjs/components\\Glass\\index.cjs"
+        "types": "./dist/types/components/Glass/index.d.ts",
+        "default": "./dist/cjs/components/Glass/index.cjs"
       }
     },
     "./imageviewer": {
       "import": {
-        "types": "./dist/types/components\\ImageViewer\\index.d.ts",
-        "default": "./dist/esm/components\\ImageViewer\\index.js"
+        "types": "./dist/types/components/ImageViewer/index.d.ts",
+        "default": "./dist/esm/components/ImageViewer/index.js"
       },
       "require": {
-        "types": "./dist/types/components\\ImageViewer\\index.d.ts",
-        "default": "./dist/cjs/components\\ImageViewer\\index.cjs"
+        "types": "./dist/types/components/ImageViewer/index.d.ts",
+        "default": "./dist/cjs/components/ImageViewer/index.cjs"
       }
     },
     "./input": {
       "import": {
-        "types": "./dist/types/components\\Input\\index.d.ts",
-        "default": "./dist/esm/components\\Input\\index.js"
+        "types": "./dist/types/components/Input/index.d.ts",
+        "default": "./dist/esm/components/Input/index.js"
       },
       "require": {
-        "types": "./dist/types/components\\Input\\index.d.ts",
-        "default": "./dist/cjs/components\\Input\\index.cjs"
+        "types": "./dist/types/components/Input/index.d.ts",
+        "default": "./dist/cjs/components/Input/index.cjs"
       }
     },
     "./inputotp": {
       "import": {
-        "types": "./dist/types/components\\InputOTP\\index.d.ts",
-        "default": "./dist/esm/components\\InputOTP\\index.js"
+        "types": "./dist/types/components/InputOTP/index.d.ts",
+        "default": "./dist/esm/components/InputOTP/index.js"
       },
       "require": {
-        "types": "./dist/types/components\\InputOTP\\index.d.ts",
-        "default": "./dist/cjs/components\\InputOTP\\index.cjs"
+        "types": "./dist/types/components/InputOTP/index.d.ts",
+        "default": "./dist/cjs/components/InputOTP/index.cjs"
       }
     },
     "./interactive": {
       "import": {
-        "types": "./dist/types/components\\Interactive\\index.d.ts",
-        "default": "./dist/esm/components\\Interactive\\index.js"
+        "types": "./dist/types/components/Interactive/index.d.ts",
+        "default": "./dist/esm/components/Interactive/index.js"
       },
       "require": {
-        "types": "./dist/types/components\\Interactive\\index.d.ts",
-        "default": "./dist/cjs/components\\Interactive\\index.cjs"
+        "types": "./dist/types/components/Interactive/index.d.ts",
+        "default": "./dist/cjs/components/Interactive/index.cjs"
       }
     },
     "./label": {
       "import": {
-        "types": "./dist/types/components\\Label\\index.d.ts",
-        "default": "./dist/esm/components\\Label\\index.js"
+        "types": "./dist/types/components/Label/index.d.ts",
+        "default": "./dist/esm/components/Label/index.js"
       },
       "require": {
-        "types": "./dist/types/components\\Label\\index.d.ts",
-        "default": "./dist/cjs/components\\Label\\index.cjs"
+        "types": "./dist/types/components/Label/index.d.ts",
+        "default": "./dist/cjs/components/Label/index.cjs"
       }
     },
     "./marquee": {
       "import": {
-        "types": "./dist/types/components\\Marquee\\index.d.ts",
-        "default": "./dist/esm/components\\Marquee\\index.js"
+        "types": "./dist/types/components/Marquee/index.d.ts",
+        "default": "./dist/esm/components/Marquee/index.js"
       },
       "require": {
-        "types": "./dist/types/components\\Marquee\\index.d.ts",
-        "default": "./dist/cjs/components\\Marquee\\index.cjs"
+        "types": "./dist/types/components/Marquee/index.d.ts",
+        "default": "./dist/cjs/components/Marquee/index.cjs"
       }
     },
     "./masonry": {
       "import": {
-        "types": "./dist/types/components\\Masonry\\index.d.ts",
-        "default": "./dist/esm/components\\Masonry\\index.js"
+        "types": "./dist/types/components/Masonry/index.d.ts",
+        "default": "./dist/esm/components/Masonry/index.js"
       },
       "require": {
-        "types": "./dist/types/components\\Masonry\\index.d.ts",
-        "default": "./dist/cjs/components\\Masonry\\index.cjs"
+        "types": "./dist/types/components/Masonry/index.d.ts",
+        "default": "./dist/cjs/components/Masonry/index.cjs"
       }
     },
     "./pagination": {
       "import": {
-        "types": "./dist/types/components\\Pagination\\index.d.ts",
-        "default": "./dist/esm/components\\Pagination\\index.js"
+        "types": "./dist/types/components/Pagination/index.d.ts",
+        "default": "./dist/esm/components/Pagination/index.js"
       },
       "require": {
-        "types": "./dist/types/components\\Pagination\\index.d.ts",
-        "default": "./dist/cjs/components\\Pagination\\index.cjs"
+        "types": "./dist/types/components/Pagination/index.d.ts",
+        "default": "./dist/cjs/components/Pagination/index.cjs"
       }
     },
     "./popover": {
       "import": {
-        "types": "./dist/types/components\\Popover\\index.d.ts",
-        "default": "./dist/esm/components\\Popover\\index.js"
+        "types": "./dist/types/components/Popover/index.d.ts",
+        "default": "./dist/esm/components/Popover/index.js"
       },
       "require": {
-        "types": "./dist/types/components\\Popover\\index.d.ts",
-        "default": "./dist/cjs/components\\Popover\\index.cjs"
+        "types": "./dist/types/components/Popover/index.d.ts",
+        "default": "./dist/cjs/components/Popover/index.cjs"
       }
     },
     "./qrcode": {
       "import": {
-        "types": "./dist/types/components\\QrCode\\index.d.ts",
-        "default": "./dist/esm/components\\QrCode\\index.js"
+        "types": "./dist/types/components/QrCode/index.d.ts",
+        "default": "./dist/esm/components/QrCode/index.js"
       },
       "require": {
-        "types": "./dist/types/components\\QrCode\\index.d.ts",
-        "default": "./dist/cjs/components\\QrCode\\index.cjs"
+        "types": "./dist/types/components/QrCode/index.d.ts",
+        "default": "./dist/cjs/components/QrCode/index.cjs"
       }
     },
     "./radio": {
       "import": {
-        "types": "./dist/types/components\\Radio\\index.d.ts",
-        "default": "./dist/esm/components\\Radio\\index.js"
+        "types": "./dist/types/components/Radio/index.d.ts",
+        "default": "./dist/esm/components/Radio/index.js"
       },
       "require": {
-        "types": "./dist/types/components\\Radio\\index.d.ts",
-        "default": "./dist/cjs/components\\Radio\\index.cjs"
+        "types": "./dist/types/components/Radio/index.d.ts",
+        "default": "./dist/cjs/components/Radio/index.cjs"
       }
     },
     "./rate": {
       "import": {
-        "types": "./dist/types/components\\Rate\\index.d.ts",
-        "default": "./dist/esm/components\\Rate\\index.js"
+        "types": "./dist/types/components/Rate/index.d.ts",
+        "default": "./dist/esm/components/Rate/index.js"
       },
       "require": {
-        "types": "./dist/types/components\\Rate\\index.d.ts",
-        "default": "./dist/cjs/components\\Rate\\index.cjs"
+        "types": "./dist/types/components/Rate/index.d.ts",
+        "default": "./dist/cjs/components/Rate/index.cjs"
       }
     },
     "./resizable": {
       "import": {
-        "types": "./dist/types/components\\Resizable\\index.d.ts",
-        "default": "./dist/esm/components\\Resizable\\index.js"
+        "types": "./dist/types/components/Resizable/index.d.ts",
+        "default": "./dist/esm/components/Resizable/index.js"
       },
       "require": {
-        "types": "./dist/types/components\\Resizable\\index.d.ts",
-        "default": "./dist/cjs/components\\Resizable\\index.cjs"
+        "types": "./dist/types/components/Resizable/index.d.ts",
+        "default": "./dist/cjs/components/Resizable/index.cjs"
       }
     },
     "./scrollarea": {
       "import": {
-        "types": "./dist/types/components\\ScrollArea\\index.d.ts",
-        "default": "./dist/esm/components\\ScrollArea\\index.js"
+        "types": "./dist/types/components/ScrollArea/index.d.ts",
+        "default": "./dist/esm/components/ScrollArea/index.js"
       },
       "require": {
-        "types": "./dist/types/components\\ScrollArea\\index.d.ts",
-        "default": "./dist/cjs/components\\ScrollArea\\index.cjs"
+        "types": "./dist/types/components/ScrollArea/index.d.ts",
+        "default": "./dist/cjs/components/ScrollArea/index.cjs"
       }
     },
     "./select": {
       "import": {
-        "types": "./dist/types/components\\Select\\index.d.ts",
-        "default": "./dist/esm/components\\Select\\index.js"
+        "types": "./dist/types/components/Select/index.d.ts",
+        "default": "./dist/esm/components/Select/index.js"
       },
       "require": {
-        "types": "./dist/types/components\\Select\\index.d.ts",
-        "default": "./dist/cjs/components\\Select\\index.cjs"
+        "types": "./dist/types/components/Select/index.d.ts",
+        "default": "./dist/cjs/components/Select/index.cjs"
       }
     },
     "./separator": {
       "import": {
-        "types": "./dist/types/components\\Separator\\index.d.ts",
-        "default": "./dist/esm/components\\Separator\\index.js"
+        "types": "./dist/types/components/Separator/index.d.ts",
+        "default": "./dist/esm/components/Separator/index.js"
       },
       "require": {
-        "types": "./dist/types/components\\Separator\\index.d.ts",
-        "default": "./dist/cjs/components\\Separator\\index.cjs"
+        "types": "./dist/types/components/Separator/index.d.ts",
+        "default": "./dist/cjs/components/Separator/index.cjs"
       }
     },
     "./sheet": {
       "import": {
-        "types": "./dist/types/components\\Sheet\\index.d.ts",
-        "default": "./dist/esm/components\\Sheet\\index.js"
+        "types": "./dist/types/components/Sheet/index.d.ts",
+        "default": "./dist/esm/components/Sheet/index.js"
       },
       "require": {
-        "types": "./dist/types/components\\Sheet\\index.d.ts",
-        "default": "./dist/cjs/components\\Sheet\\index.cjs"
+        "types": "./dist/types/components/Sheet/index.d.ts",
+        "default": "./dist/cjs/components/Sheet/index.cjs"
       }
     },
     "./sidebar": {
       "import": {
-        "types": "./dist/types/components\\Sidebar\\index.d.ts",
-        "default": "./dist/esm/components\\Sidebar\\index.js"
+        "types": "./dist/types/components/Sidebar/index.d.ts",
+        "default": "./dist/esm/components/Sidebar/index.js"
       },
       "require": {
-        "types": "./dist/types/components\\Sidebar\\index.d.ts",
-        "default": "./dist/cjs/components\\Sidebar\\index.cjs"
+        "types": "./dist/types/components/Sidebar/index.d.ts",
+        "default": "./dist/cjs/components/Sidebar/index.cjs"
       }
     },
     "./skeleton": {
       "import": {
-        "types": "./dist/types/components\\Skeleton\\index.d.ts",
-        "default": "./dist/esm/components\\Skeleton\\index.js"
+        "types": "./dist/types/components/Skeleton/index.d.ts",
+        "default": "./dist/esm/components/Skeleton/index.js"
       },
       "require": {
-        "types": "./dist/types/components\\Skeleton\\index.d.ts",
-        "default": "./dist/cjs/components\\Skeleton\\index.cjs"
+        "types": "./dist/types/components/Skeleton/index.d.ts",
+        "default": "./dist/cjs/components/Skeleton/index.cjs"
       }
     },
     "./slider": {
       "import": {
-        "types": "./dist/types/components\\Slider\\index.d.ts",
-        "default": "./dist/esm/components\\Slider\\index.js"
+        "types": "./dist/types/components/Slider/index.d.ts",
+        "default": "./dist/esm/components/Slider/index.js"
       },
       "require": {
-        "types": "./dist/types/components\\Slider\\index.d.ts",
-        "default": "./dist/cjs/components\\Slider\\index.cjs"
+        "types": "./dist/types/components/Slider/index.d.ts",
+        "default": "./dist/cjs/components/Slider/index.cjs"
       }
     },
     "./stepper": {
       "import": {
-        "types": "./dist/types/components\\Stepper\\index.d.ts",
-        "default": "./dist/esm/components\\Stepper\\index.js"
+        "types": "./dist/types/components/Stepper/index.d.ts",
+        "default": "./dist/esm/components/Stepper/index.js"
       },
       "require": {
-        "types": "./dist/types/components\\Stepper\\index.d.ts",
-        "default": "./dist/cjs/components\\Stepper\\index.cjs"
+        "types": "./dist/types/components/Stepper/index.d.ts",
+        "default": "./dist/cjs/components/Stepper/index.cjs"
       }
     },
     "./switch": {
       "import": {
-        "types": "./dist/types/components\\Switch\\index.d.ts",
-        "default": "./dist/esm/components\\Switch\\index.js"
+        "types": "./dist/types/components/Switch/index.d.ts",
+        "default": "./dist/esm/components/Switch/index.js"
       },
       "require": {
-        "types": "./dist/types/components\\Switch\\index.d.ts",
-        "default": "./dist/cjs/components\\Switch\\index.cjs"
+        "types": "./dist/types/components/Switch/index.d.ts",
+        "default": "./dist/cjs/components/Switch/index.cjs"
       }
     },
     "./table": {
       "import": {
-        "types": "./dist/types/components\\Table\\index.d.ts",
-        "default": "./dist/esm/components\\Table\\index.js"
+        "types": "./dist/types/components/Table/index.d.ts",
+        "default": "./dist/esm/components/Table/index.js"
       },
       "require": {
-        "types": "./dist/types/components\\Table\\index.d.ts",
-        "default": "./dist/cjs/components\\Table\\index.cjs"
+        "types": "./dist/types/components/Table/index.d.ts",
+        "default": "./dist/cjs/components/Table/index.cjs"
       }
     },
     "./tabs": {
       "import": {
-        "types": "./dist/types/components\\Tabs\\index.d.ts",
-        "default": "./dist/esm/components\\Tabs\\index.js"
+        "types": "./dist/types/components/Tabs/index.d.ts",
+        "default": "./dist/esm/components/Tabs/index.js"
       },
       "require": {
-        "types": "./dist/types/components\\Tabs\\index.d.ts",
-        "default": "./dist/cjs/components\\Tabs\\index.cjs"
+        "types": "./dist/types/components/Tabs/index.d.ts",
+        "default": "./dist/cjs/components/Tabs/index.cjs"
       }
     },
     "./textarea": {
       "import": {
-        "types": "./dist/types/components\\Textarea\\index.d.ts",
-        "default": "./dist/esm/components\\Textarea\\index.js"
+        "types": "./dist/types/components/Textarea/index.d.ts",
+        "default": "./dist/esm/components/Textarea/index.js"
       },
       "require": {
-        "types": "./dist/types/components\\Textarea\\index.d.ts",
-        "default": "./dist/cjs/components\\Textarea\\index.cjs"
+        "types": "./dist/types/components/Textarea/index.d.ts",
+        "default": "./dist/cjs/components/Textarea/index.cjs"
       }
     },
     "./timegridview": {
       "import": {
-        "types": "./dist/types/components\\TimeGridView.d.ts",
-        "default": "./dist/esm/components\\TimeGridView.js"
+        "types": "./dist/types/components/TimeGridView.d.ts",
+        "default": "./dist/esm/components/TimeGridView.js"
       },
       "require": {
-        "types": "./dist/types/components\\TimeGridView.d.ts",
-        "default": "./dist/cjs/components\\TimeGridView.cjs"
+        "types": "./dist/types/components/TimeGridView.d.ts",
+        "default": "./dist/cjs/components/TimeGridView.cjs"
       }
     },
     "./toast": {
       "import": {
-        "types": "./dist/types/components\\Toast\\index.d.ts",
-        "default": "./dist/esm/components\\Toast\\index.js"
+        "types": "./dist/types/components/Toast/index.d.ts",
+        "default": "./dist/esm/components/Toast/index.js"
       },
       "require": {
-        "types": "./dist/types/components\\Toast\\index.d.ts",
-        "default": "./dist/cjs/components\\Toast\\index.cjs"
+        "types": "./dist/types/components/Toast/index.d.ts",
+        "default": "./dist/cjs/components/Toast/index.cjs"
       }
     },
     "./toggle": {
       "import": {
-        "types": "./dist/types/components\\Toggle\\index.d.ts",
-        "default": "./dist/esm/components\\Toggle\\index.js"
+        "types": "./dist/types/components/Toggle/index.d.ts",
+        "default": "./dist/esm/components/Toggle/index.js"
       },
       "require": {
-        "types": "./dist/types/components\\Toggle\\index.d.ts",
-        "default": "./dist/cjs/components\\Toggle\\index.cjs"
+        "types": "./dist/types/components/Toggle/index.d.ts",
+        "default": "./dist/cjs/components/Toggle/index.cjs"
       }
     },
     "./tooltip": {
       "import": {
-        "types": "./dist/types/components\\Tooltip\\index.d.ts",
-        "default": "./dist/esm/components\\Tooltip\\index.js"
+        "types": "./dist/types/components/Tooltip/index.d.ts",
+        "default": "./dist/esm/components/Tooltip/index.js"
       },
       "require": {
-        "types": "./dist/types/components\\Tooltip\\index.d.ts",
-        "default": "./dist/cjs/components\\Tooltip\\index.cjs"
+        "types": "./dist/types/components/Tooltip/index.d.ts",
+        "default": "./dist/cjs/components/Tooltip/index.cjs"
       }
     },
     "./tour": {
       "import": {
-        "types": "./dist/types/components\\Tour\\index.d.ts",
-        "default": "./dist/esm/components\\Tour\\index.js"
+        "types": "./dist/types/components/Tour/index.d.ts",
+        "default": "./dist/esm/components/Tour/index.js"
       },
       "require": {
-        "types": "./dist/types/components\\Tour\\index.d.ts",
-        "default": "./dist/cjs/components\\Tour\\index.cjs"
+        "types": "./dist/types/components/Tour/index.d.ts",
+        "default": "./dist/cjs/components/Tour/index.cjs"
       }
     },
     "./treeselect": {
       "import": {
-        "types": "./dist/types/components\\TreeSelect\\index.d.ts",
-        "default": "./dist/esm/components\\TreeSelect\\index.js"
+        "types": "./dist/types/components/TreeSelect/index.d.ts",
+        "default": "./dist/esm/components/TreeSelect/index.js"
       },
       "require": {
-        "types": "./dist/types/components\\TreeSelect\\index.d.ts",
-        "default": "./dist/cjs/components\\TreeSelect\\index.cjs"
+        "types": "./dist/types/components/TreeSelect/index.d.ts",
+        "default": "./dist/cjs/components/TreeSelect/index.cjs"
       }
     },
     "./upload": {
       "import": {
-        "types": "./dist/types/components\\Upload\\index.d.ts",
-        "default": "./dist/esm/components\\Upload\\index.js"
+        "types": "./dist/types/components/Upload/index.d.ts",
+        "default": "./dist/esm/components/Upload/index.js"
       },
       "require": {
-        "types": "./dist/types/components\\Upload\\index.d.ts",
-        "default": "./dist/cjs/components\\Upload\\index.cjs"
+        "types": "./dist/types/components/Upload/index.d.ts",
+        "default": "./dist/cjs/components/Upload/index.cjs"
       }
     },
     "./wheelcolumn": {
       "import": {
-        "types": "./dist/types/components\\WheelColumn.d.ts",
-        "default": "./dist/esm/components\\WheelColumn.js"
+        "types": "./dist/types/components/WheelColumn.d.ts",
+        "default": "./dist/esm/components/WheelColumn.js"
       },
       "require": {
-        "types": "./dist/types/components\\WheelColumn.d.ts",
-        "default": "./dist/cjs/components\\WheelColumn.cjs"
+        "types": "./dist/types/components/WheelColumn.d.ts",
+        "default": "./dist/cjs/components/WheelColumn.cjs"
       }
     },
     "./textanimation": {
       "import": {
-        "types": "./dist/types/lib\\TextAnimation\\index.d.ts",
-        "default": "./dist/esm/lib\\TextAnimation\\index.js"
+        "types": "./dist/types/lib/TextAnimation/index.d.ts",
+        "default": "./dist/esm/lib/TextAnimation/index.js"
       },
       "require": {
-        "types": "./dist/types/lib\\TextAnimation\\index.d.ts",
-        "default": "./dist/cjs/lib\\TextAnimation\\index.cjs"
+        "types": "./dist/types/lib/TextAnimation/index.d.ts",
+        "default": "./dist/cjs/lib/TextAnimation/index.cjs"
       }
     },
     "./utils": {
       "import": {
-        "types": "./dist/types/lib\\utils.d.ts",
-        "default": "./dist/esm/lib\\utils.js"
+        "types": "./dist/types/lib/utils.d.ts",
+        "default": "./dist/esm/lib/utils.js"
       },
       "require": {
-        "types": "./dist/types/lib\\utils.d.ts",
-        "default": "./dist/cjs/lib\\utils.cjs"
+        "types": "./dist/types/lib/utils.d.ts",
+        "default": "./dist/cjs/lib/utils.cjs"
       }
     },
     "./hooks": {
@@ -568,122 +568,122 @@
     },
     "./use-callback-ref": {
       "import": {
-        "types": "./dist/types/hooks\\use-callback-ref.d.ts",
-        "default": "./dist/esm/hooks\\use-callback-ref.js"
+        "types": "./dist/types/hooks/use-callback-ref.d.ts",
+        "default": "./dist/esm/hooks/use-callback-ref.js"
       },
       "require": {
-        "types": "./dist/types/hooks\\use-callback-ref.d.ts",
-        "default": "./dist/cjs/hooks\\use-callback-ref.cjs"
+        "types": "./dist/types/hooks/use-callback-ref.d.ts",
+        "default": "./dist/cjs/hooks/use-callback-ref.cjs"
       }
     },
     "./use-data-table": {
       "import": {
-        "types": "./dist/types/hooks\\use-data-table.d.ts",
-        "default": "./dist/esm/hooks\\use-data-table.js"
+        "types": "./dist/types/hooks/use-data-table.d.ts",
+        "default": "./dist/esm/hooks/use-data-table.js"
       },
       "require": {
-        "types": "./dist/types/hooks\\use-data-table.d.ts",
-        "default": "./dist/cjs/hooks\\use-data-table.cjs"
+        "types": "./dist/types/hooks/use-data-table.d.ts",
+        "default": "./dist/cjs/hooks/use-data-table.cjs"
       }
     },
     "./use-debounced-callback": {
       "import": {
-        "types": "./dist/types/hooks\\use-debounced-callback.d.ts",
-        "default": "./dist/esm/hooks\\use-debounced-callback.js"
+        "types": "./dist/types/hooks/use-debounced-callback.d.ts",
+        "default": "./dist/esm/hooks/use-debounced-callback.js"
       },
       "require": {
-        "types": "./dist/types/hooks\\use-debounced-callback.d.ts",
-        "default": "./dist/cjs/hooks\\use-debounced-callback.cjs"
+        "types": "./dist/types/hooks/use-debounced-callback.d.ts",
+        "default": "./dist/cjs/hooks/use-debounced-callback.cjs"
       }
     },
     "./use-debounced-value": {
       "import": {
-        "types": "./dist/types/hooks\\use-debounced-value.d.ts",
-        "default": "./dist/esm/hooks\\use-debounced-value.js"
+        "types": "./dist/types/hooks/use-debounced-value.d.ts",
+        "default": "./dist/esm/hooks/use-debounced-value.js"
       },
       "require": {
-        "types": "./dist/types/hooks\\use-debounced-value.d.ts",
-        "default": "./dist/cjs/hooks\\use-debounced-value.cjs"
+        "types": "./dist/types/hooks/use-debounced-value.d.ts",
+        "default": "./dist/cjs/hooks/use-debounced-value.cjs"
       }
     },
     "./use-event-listener": {
       "import": {
-        "types": "./dist/types/hooks\\use-event-listener.d.ts",
-        "default": "./dist/esm/hooks\\use-event-listener.js"
+        "types": "./dist/types/hooks/use-event-listener.d.ts",
+        "default": "./dist/esm/hooks/use-event-listener.js"
       },
       "require": {
-        "types": "./dist/types/hooks\\use-event-listener.d.ts",
-        "default": "./dist/cjs/hooks\\use-event-listener.cjs"
+        "types": "./dist/types/hooks/use-event-listener.d.ts",
+        "default": "./dist/cjs/hooks/use-event-listener.cjs"
       }
     },
     "./use-intersection-observer": {
       "import": {
-        "types": "./dist/types/hooks\\use-intersection-observer.d.ts",
-        "default": "./dist/esm/hooks\\use-intersection-observer.js"
+        "types": "./dist/types/hooks/use-intersection-observer.d.ts",
+        "default": "./dist/esm/hooks/use-intersection-observer.js"
       },
       "require": {
-        "types": "./dist/types/hooks\\use-intersection-observer.d.ts",
-        "default": "./dist/cjs/hooks\\use-intersection-observer.cjs"
+        "types": "./dist/types/hooks/use-intersection-observer.d.ts",
+        "default": "./dist/cjs/hooks/use-intersection-observer.cjs"
       }
     },
     "./use-isomorphic-layout-effect": {
       "import": {
-        "types": "./dist/types/hooks\\use-isomorphic-layout-effect.d.ts",
-        "default": "./dist/esm/hooks\\use-isomorphic-layout-effect.js"
+        "types": "./dist/types/hooks/use-isomorphic-layout-effect.d.ts",
+        "default": "./dist/esm/hooks/use-isomorphic-layout-effect.js"
       },
       "require": {
-        "types": "./dist/types/hooks\\use-isomorphic-layout-effect.d.ts",
-        "default": "./dist/cjs/hooks\\use-isomorphic-layout-effect.cjs"
+        "types": "./dist/types/hooks/use-isomorphic-layout-effect.d.ts",
+        "default": "./dist/cjs/hooks/use-isomorphic-layout-effect.cjs"
       }
     },
     "./use-media-query": {
       "import": {
-        "types": "./dist/types/hooks\\use-media-query.d.ts",
-        "default": "./dist/esm/hooks\\use-media-query.js"
+        "types": "./dist/types/hooks/use-media-query.d.ts",
+        "default": "./dist/esm/hooks/use-media-query.js"
       },
       "require": {
-        "types": "./dist/types/hooks\\use-media-query.d.ts",
-        "default": "./dist/cjs/hooks\\use-media-query.cjs"
+        "types": "./dist/types/hooks/use-media-query.d.ts",
+        "default": "./dist/cjs/hooks/use-media-query.cjs"
       }
     },
     "./use-mouse-position": {
       "import": {
-        "types": "./dist/types/hooks\\use-mouse-position.d.ts",
-        "default": "./dist/esm/hooks\\use-mouse-position.js"
+        "types": "./dist/types/hooks/use-mouse-position.d.ts",
+        "default": "./dist/esm/hooks/use-mouse-position.js"
       },
       "require": {
-        "types": "./dist/types/hooks\\use-mouse-position.d.ts",
-        "default": "./dist/cjs/hooks\\use-mouse-position.cjs"
+        "types": "./dist/types/hooks/use-mouse-position.d.ts",
+        "default": "./dist/cjs/hooks/use-mouse-position.cjs"
       }
     },
     "./use-on-click-outside": {
       "import": {
-        "types": "./dist/types/hooks\\use-on-click-outside.d.ts",
-        "default": "./dist/esm/hooks\\use-on-click-outside.js"
+        "types": "./dist/types/hooks/use-on-click-outside.d.ts",
+        "default": "./dist/esm/hooks/use-on-click-outside.js"
       },
       "require": {
-        "types": "./dist/types/hooks\\use-on-click-outside.d.ts",
-        "default": "./dist/cjs/hooks\\use-on-click-outside.cjs"
+        "types": "./dist/types/hooks/use-on-click-outside.d.ts",
+        "default": "./dist/cjs/hooks/use-on-click-outside.cjs"
       }
     },
     "./use-script": {
       "import": {
-        "types": "./dist/types/hooks\\use-script.d.ts",
-        "default": "./dist/esm/hooks\\use-script.js"
+        "types": "./dist/types/hooks/use-script.d.ts",
+        "default": "./dist/esm/hooks/use-script.js"
       },
       "require": {
-        "types": "./dist/types/hooks\\use-script.d.ts",
-        "default": "./dist/cjs/hooks\\use-script.cjs"
+        "types": "./dist/types/hooks/use-script.d.ts",
+        "default": "./dist/cjs/hooks/use-script.cjs"
       }
     },
     "./use-scroll-lock": {
       "import": {
-        "types": "./dist/types/hooks\\use-scroll-lock.d.ts",
-        "default": "./dist/esm/hooks\\use-scroll-lock.js"
+        "types": "./dist/types/hooks/use-scroll-lock.d.ts",
+        "default": "./dist/esm/hooks/use-scroll-lock.js"
       },
       "require": {
-        "types": "./dist/types/hooks\\use-scroll-lock.d.ts",
-        "default": "./dist/cjs/hooks\\use-scroll-lock.cjs"
+        "types": "./dist/types/hooks/use-scroll-lock.d.ts",
+        "default": "./dist/cjs/hooks/use-scroll-lock.cjs"
       }
     },
     "./theme.css": {
@@ -817,199 +817,199 @@
         "./dist/types/index.d.ts"
       ],
       "accordion": [
-        "./dist/types/components\\Accordion\\index.d.ts"
+        "./dist/types/components/Accordion/index.d.ts"
       ],
       "avatar": [
-        "./dist/types/components\\Avatar\\index.d.ts"
+        "./dist/types/components/Avatar/index.d.ts"
       ],
       "badge": [
-        "./dist/types/components\\Badge\\index.d.ts"
+        "./dist/types/components/Badge/index.d.ts"
       ],
       "breadcrumb": [
-        "./dist/types/components\\Breadcrumb\\index.d.ts"
+        "./dist/types/components/Breadcrumb/index.d.ts"
       ],
       "button": [
-        "./dist/types/components\\Button\\index.d.ts"
+        "./dist/types/components/Button/index.d.ts"
       ],
       "calendar": [
-        "./dist/types/components\\Calendar\\index.d.ts"
+        "./dist/types/components/Calendar/index.d.ts"
       ],
       "carousel": [
-        "./dist/types/components\\Carousel\\index.d.ts"
+        "./dist/types/components/Carousel/index.d.ts"
       ],
       "checkbox": [
-        "./dist/types/components\\Checkbox\\index.d.ts"
+        "./dist/types/components/Checkbox/index.d.ts"
       ],
       "collapsible": [
-        "./dist/types/components\\Collapsible\\index.d.ts"
+        "./dist/types/components/Collapsible/index.d.ts"
       ],
       "command": [
-        "./dist/types/components\\Command\\index.d.ts"
+        "./dist/types/components/Command/index.d.ts"
       ],
       "contextmenu": [
-        "./dist/types/components\\ContextMenu\\index.d.ts"
+        "./dist/types/components/ContextMenu/index.d.ts"
       ],
       "cropper": [
-        "./dist/types/components\\Cropper\\index.d.ts"
+        "./dist/types/components/Cropper/index.d.ts"
       ],
       "datepicker": [
-        "./dist/types/components\\DatePicker\\index.d.ts"
+        "./dist/types/components/DatePicker/index.d.ts"
       ],
       "dialog": [
-        "./dist/types/components\\Dialog\\index.d.ts"
+        "./dist/types/components/Dialog/index.d.ts"
       ],
       "dropdownmenu": [
-        "./dist/types/components\\DropdownMenu\\index.d.ts"
+        "./dist/types/components/DropdownMenu/index.d.ts"
       ],
       "floatlabel": [
-        "./dist/types/components\\FloatLabel.d.ts"
+        "./dist/types/components/FloatLabel.d.ts"
       ],
       "glass": [
-        "./dist/types/components\\Glass\\index.d.ts"
+        "./dist/types/components/Glass/index.d.ts"
       ],
       "imageviewer": [
-        "./dist/types/components\\ImageViewer\\index.d.ts"
+        "./dist/types/components/ImageViewer/index.d.ts"
       ],
       "input": [
-        "./dist/types/components\\Input\\index.d.ts"
+        "./dist/types/components/Input/index.d.ts"
       ],
       "inputotp": [
-        "./dist/types/components\\InputOTP\\index.d.ts"
+        "./dist/types/components/InputOTP/index.d.ts"
       ],
       "interactive": [
-        "./dist/types/components\\Interactive\\index.d.ts"
+        "./dist/types/components/Interactive/index.d.ts"
       ],
       "label": [
-        "./dist/types/components\\Label\\index.d.ts"
+        "./dist/types/components/Label/index.d.ts"
       ],
       "marquee": [
-        "./dist/types/components\\Marquee\\index.d.ts"
+        "./dist/types/components/Marquee/index.d.ts"
       ],
       "masonry": [
-        "./dist/types/components\\Masonry\\index.d.ts"
+        "./dist/types/components/Masonry/index.d.ts"
       ],
       "pagination": [
-        "./dist/types/components\\Pagination\\index.d.ts"
+        "./dist/types/components/Pagination/index.d.ts"
       ],
       "popover": [
-        "./dist/types/components\\Popover\\index.d.ts"
+        "./dist/types/components/Popover/index.d.ts"
       ],
       "qrcode": [
-        "./dist/types/components\\QrCode\\index.d.ts"
+        "./dist/types/components/QrCode/index.d.ts"
       ],
       "radio": [
-        "./dist/types/components\\Radio\\index.d.ts"
+        "./dist/types/components/Radio/index.d.ts"
       ],
       "rate": [
-        "./dist/types/components\\Rate\\index.d.ts"
+        "./dist/types/components/Rate/index.d.ts"
       ],
       "resizable": [
-        "./dist/types/components\\Resizable\\index.d.ts"
+        "./dist/types/components/Resizable/index.d.ts"
       ],
       "scrollarea": [
-        "./dist/types/components\\ScrollArea\\index.d.ts"
+        "./dist/types/components/ScrollArea/index.d.ts"
       ],
       "select": [
-        "./dist/types/components\\Select\\index.d.ts"
+        "./dist/types/components/Select/index.d.ts"
       ],
       "separator": [
-        "./dist/types/components\\Separator\\index.d.ts"
+        "./dist/types/components/Separator/index.d.ts"
       ],
       "sheet": [
-        "./dist/types/components\\Sheet\\index.d.ts"
+        "./dist/types/components/Sheet/index.d.ts"
       ],
       "sidebar": [
-        "./dist/types/components\\Sidebar\\index.d.ts"
+        "./dist/types/components/Sidebar/index.d.ts"
       ],
       "skeleton": [
-        "./dist/types/components\\Skeleton\\index.d.ts"
+        "./dist/types/components/Skeleton/index.d.ts"
       ],
       "slider": [
-        "./dist/types/components\\Slider\\index.d.ts"
+        "./dist/types/components/Slider/index.d.ts"
       ],
       "stepper": [
-        "./dist/types/components\\Stepper\\index.d.ts"
+        "./dist/types/components/Stepper/index.d.ts"
       ],
       "switch": [
-        "./dist/types/components\\Switch\\index.d.ts"
+        "./dist/types/components/Switch/index.d.ts"
       ],
       "table": [
-        "./dist/types/components\\Table\\index.d.ts"
+        "./dist/types/components/Table/index.d.ts"
       ],
       "tabs": [
-        "./dist/types/components\\Tabs\\index.d.ts"
+        "./dist/types/components/Tabs/index.d.ts"
       ],
       "textarea": [
-        "./dist/types/components\\Textarea\\index.d.ts"
+        "./dist/types/components/Textarea/index.d.ts"
       ],
       "timegridview": [
-        "./dist/types/components\\TimeGridView.d.ts"
+        "./dist/types/components/TimeGridView.d.ts"
       ],
       "toast": [
-        "./dist/types/components\\Toast\\index.d.ts"
+        "./dist/types/components/Toast/index.d.ts"
       ],
       "toggle": [
-        "./dist/types/components\\Toggle\\index.d.ts"
+        "./dist/types/components/Toggle/index.d.ts"
       ],
       "tooltip": [
-        "./dist/types/components\\Tooltip\\index.d.ts"
+        "./dist/types/components/Tooltip/index.d.ts"
       ],
       "tour": [
-        "./dist/types/components\\Tour\\index.d.ts"
+        "./dist/types/components/Tour/index.d.ts"
       ],
       "treeselect": [
-        "./dist/types/components\\TreeSelect\\index.d.ts"
+        "./dist/types/components/TreeSelect/index.d.ts"
       ],
       "upload": [
-        "./dist/types/components\\Upload\\index.d.ts"
+        "./dist/types/components/Upload/index.d.ts"
       ],
       "wheelcolumn": [
-        "./dist/types/components\\WheelColumn.d.ts"
+        "./dist/types/components/WheelColumn.d.ts"
       ],
       "textanimation": [
-        "./dist/types/lib\\TextAnimation\\index.d.ts"
+        "./dist/types/lib/TextAnimation/index.d.ts"
       ],
       "utils": [
-        "./dist/types/lib\\utils.d.ts"
+        "./dist/types/lib/utils.d.ts"
       ],
       "hooks": [
         "./dist/types/hooks/index.d.ts"
       ],
       "use-callback-ref": [
-        "./dist/types/hooks\\use-callback-ref.d.ts"
+        "./dist/types/hooks/use-callback-ref.d.ts"
       ],
       "use-data-table": [
-        "./dist/types/hooks\\use-data-table.d.ts"
+        "./dist/types/hooks/use-data-table.d.ts"
       ],
       "use-debounced-callback": [
-        "./dist/types/hooks\\use-debounced-callback.d.ts"
+        "./dist/types/hooks/use-debounced-callback.d.ts"
       ],
       "use-debounced-value": [
-        "./dist/types/hooks\\use-debounced-value.d.ts"
+        "./dist/types/hooks/use-debounced-value.d.ts"
       ],
       "use-event-listener": [
-        "./dist/types/hooks\\use-event-listener.d.ts"
+        "./dist/types/hooks/use-event-listener.d.ts"
       ],
       "use-intersection-observer": [
-        "./dist/types/hooks\\use-intersection-observer.d.ts"
+        "./dist/types/hooks/use-intersection-observer.d.ts"
       ],
       "use-isomorphic-layout-effect": [
-        "./dist/types/hooks\\use-isomorphic-layout-effect.d.ts"
+        "./dist/types/hooks/use-isomorphic-layout-effect.d.ts"
       ],
       "use-media-query": [
-        "./dist/types/hooks\\use-media-query.d.ts"
+        "./dist/types/hooks/use-media-query.d.ts"
       ],
       "use-mouse-position": [
-        "./dist/types/hooks\\use-mouse-position.d.ts"
+        "./dist/types/hooks/use-mouse-position.d.ts"
       ],
       "use-on-click-outside": [
-        "./dist/types/hooks\\use-on-click-outside.d.ts"
+        "./dist/types/hooks/use-on-click-outside.d.ts"
       ],
       "use-script": [
-        "./dist/types/hooks\\use-script.d.ts"
+        "./dist/types/hooks/use-script.d.ts"
       ],
       "use-scroll-lock": [
-        "./dist/types/hooks\\use-scroll-lock.d.ts"
+        "./dist/types/hooks/use-scroll-lock.d.ts"
       ]
     }
   }
