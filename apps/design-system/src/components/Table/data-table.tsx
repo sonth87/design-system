@@ -114,7 +114,8 @@ export function DataTable<TData>({
     ? {
         offsetHeader:
           typeof sticky === "object" ? (sticky.offsetHeader ?? 0) : 0,
-        offsetScroll: typeof sticky === "object" ? sticky.offsetScroll : undefined,
+        offsetScroll:
+          typeof sticky === "object" ? sticky.offsetScroll : undefined,
       }
     : null;
 
@@ -218,9 +219,7 @@ export function DataTable<TData>({
                     onRowClick && "ds:cursor-pointer"
                   )}
                   onClick={
-                    onRowClick
-                      ? (event) => onRowClick(row, event)
-                      : undefined
+                    onRowClick ? (event) => onRowClick(row, event) : undefined
                   }
                 >
                   {row.getVisibleCells().map((cell) => {
@@ -303,7 +302,6 @@ export function DataTable<TData>({
           <DataTablePagination
             showTotalCount={showTotalCount}
             totalCount={totalCount}
-            showPageInfo={true}
             showPageSizeOptions={true}
             showRowSelectionCount={true}
             className="ds:mt-2.5"

@@ -4,7 +4,9 @@ import { Select } from "../Select";
 import { Pagination } from "../Pagination";
 import { cn } from "@dsui/ui/lib/utils";
 
-export interface DataTablePaginationProps<TData> extends React.ComponentProps<"div"> {
+export interface DataTablePaginationProps<
+  TData,
+> extends React.ComponentProps<"div"> {
   table: Table<TData>;
   pageSizeOptions?: number[];
   showPagination?: boolean;
@@ -58,7 +60,7 @@ export function DataTablePagination<TData>({
         ) : (
           showTotalCount && (
             <>
-              {rangeStart} - {rangeEnd} from {filteredCount}
+              Hiển thị <strong>{rangeStart} - {rangeEnd}</strong>
               {typeof totalCount === "number" && ` / ${totalCount}`}
             </>
           )
@@ -93,7 +95,7 @@ export function DataTablePagination<TData>({
             }}
             options={pageSizeOptions.map((pageSize) => ({
               value: `${pageSize}`,
-              label: `${pageSize} / page`,
+              label: `${pageSize} / trang`,
             }))}
           />
         )}
