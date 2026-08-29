@@ -14,6 +14,7 @@ import {
   DollarSign,
   Edit2,
   Edit3,
+  Loader2,
   MoreHorizontal,
   Text,
   Trash2,
@@ -475,30 +476,96 @@ const columns: ColumnDef<Project>[] = [
 ];
 
 export const Default = () => {
+  // Demo-only toggles to make `loading`/`emptyState` actually visible below.
+  const [loading, setLoading] = React.useState(false);
+  const [showEmpty, setShowEmpty] = React.useState(false);
+
   const { table } = useDataTable({
-    data: data,
+    data: showEmpty ? [] : data,
     columns,
-    // pageCount: Math.ceil(data.length / 10),
-    // manualPagination: false,
     initialState: {
-      // sorting: [{ id: "title", desc: true }],
-      columnPinning: { left: ["select", "title"] },
+      columnPinning: { left: ["select", "title"], right: ["actions"] },
       pagination: { pageIndex: 0, pageSize: 10 },
     },
     getRowId: (row) => row.id,
-    // getFilteredRowModel: undefined, // disable client-side filtering
-    // enableNuqs: true, // enabled if you are using NuqsAdapter
   });
-  console.log(table.getRowModel());
+
   return (
     <div className="ds:data-table-container">
-      <DataTableToolbar
-        table={table}
-        showColumnFilters
-        showColumnVisibilityToggle
-      />
+      <div className="ds:flex ds:flex-wrap ds:items-center ds:justify-between ds:gap-2">
+        <DataTableToolbar
+          table={table}
+          showColumnFilters
+          showColumnVisibilityToggle
+        />
+        <div className="ds:flex ds:gap-2">
+          <Button
+            size="sm"
+            variant="outline"
+            onClick={() => setLoading((v) => !v)}
+          >
+            Toggle loading
+          </Button>
+          <Button
+            size="sm"
+            variant="outline"
+            onClick={() => setShowEmpty((v) => !v)}
+          >
+            Toggle empty
+          </Button>
+        </div>
+      </div>
       <DataTable
         table={table}
+        bordered
+        sticky={{ offsetHeader: 0 }}
+        stickyFooter
+        loading={loading}
+        loadingIndicator={
+          <span className="ds:flex ds:items-center ds:gap-2">
+            <Loader2 className="ds:size-4 ds:animate-spin" />
+            Loading projects...
+          </span>
+        }
+        emptyState={
+          <span>No projects match your filters. Try clearing them.</span>
+        }
+        onRowClick={(row) =>
+          console.log("Row clicked:", row.original.title)
+        }
+        rowClassName={(row) =>
+          row.original.status === "inactive" ? "ds:opacity-60" : undefined
+        }
+        // Highlight high-priority rows with a left accent border, on top of
+        // whatever rowClassName/onRowClick already produced for that row.
+        renderRow={(row, children) => {
+          if (row.original.priority !== "high") return children;
+          const el = children as React.ReactElement<{ className?: string }>;
+          return React.cloneElement(el, {
+            className: `${el.props.className ?? ""} ds:border-l-2 ds:border-l-destructive`.trim(),
+          });
+        }}
+        // Flag high-budget cells, on top of the default cell rendering.
+        renderCell={(cell, children) => {
+          if (cell.column.id !== "budget") return children;
+          if (cell.getValue<number>() < 70000) return children;
+          const el = children as React.ReactElement<{ className?: string }>;
+          return React.cloneElement(el, {
+            className: `${el.props.className ?? ""} ds:bg-warning/10 ds:font-semibold`.trim(),
+          });
+        }}
+        classNames={{
+          headerCell: "ds:bg-muted/40",
+          emptyCell: "ds:text-muted-foreground ds:italic",
+        }}
+        showTotalCount
+        totalCount={500}
+        footer={(currentPageData) => (
+          <div className="ds:text-center ds:py-2">
+            Showing {currentPageData.length} of{" "}
+            {table.getFilteredRowModel().rows.length} projects on this page
+          </div>
+        )}
         pagination={{ showRowSelectionCount: true, showPageSizeOptions: true }}
       />
     </div>
