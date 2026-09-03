@@ -140,6 +140,23 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
         : "xl"
       : size;
 
+    // Render an option's label, stacking a small sublabel underneath when provided
+    const renderOptionContent = React.useCallback(
+      (option: SelectOption) => {
+        if (tagRender) return tagRender(option);
+        if (!option.sublabel) return option.label;
+        return (
+          <span className="ds:flex ds:min-w-0 ds:flex-col ds:items-start">
+            <span className="ds:truncate">{option.label}</span>
+            <span className="ds:truncate ds:text-xs ds:text-muted-foreground">
+              {option.sublabel}
+            </span>
+          </span>
+        );
+      },
+      [tagRender]
+    );
+
     // Group options by group property
     const groupedOptions = React.useMemo(() => {
       const groups = new Map<string | undefined, SelectOption[]>();
@@ -290,8 +307,11 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
                                 disabled={option?.disabled}
                                 icon={option?.icon}
                                 tagRender={!!tagRender}
+                                badgeLabel={
+                                  tagRender ? tagRender(option) : option.label
+                                }
                               >
-                                {tagRender ? tagRender(option) : option.label}
+                                {renderOptionContent(option)}
                               </BaseMultiSelectItem>
                             ))}
                           </BaseMultiSelectGroup>
@@ -306,8 +326,9 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
                         disabled={option?.disabled}
                         icon={option?.icon}
                         tagRender={!!tagRender}
+                        badgeLabel={tagRender ? tagRender(option) : option.label}
                       >
-                        {tagRender ? tagRender(option) : option.label}
+                        {renderOptionContent(option)}
                       </BaseMultiSelectItem>
                     ));
                   })}

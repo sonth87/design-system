@@ -47,6 +47,7 @@ const comboboxVariants = cva(
 
 type SelectOption = {
   label: React.ReactNode;
+  sublabel?: React.ReactNode;
   value: string;
   group?: string;
   icon?: React.ReactNode;
@@ -230,7 +231,14 @@ function Combobox({
                               {option.icon}
                             </span>
                           )}
-                          {option.label}
+                          <span className="ds:flex ds:min-w-0 ds:flex-col ds:items-start">
+                            <span className="ds:truncate">{option.label}</span>
+                            {option.sublabel && (
+                              <span className="ds:truncate ds:text-xs ds:text-muted-foreground">
+                                {option.sublabel}
+                              </span>
+                            )}
+                          </span>
                         </>
                       )}
                       <Check
