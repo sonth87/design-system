@@ -4,7 +4,7 @@ import { cn } from "@dsui/ui/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
 
 const textareaVariants = cva(
-  "ds:border-input ds:placeholder:text-muted-foreground ds:focus-visible:border-ring ds:focus-visible:ring-ring/50 ds:aria-invalid:ring-destructive/20 ds:dark:aria-invalid:ring-destructive/40 ds:aria-invalid:border-destructive ds:dark:background ds:flex ds:field-sizing-content ds:min-h-16 ds:w-full ds:max-w-full ds:break-words ds:whitespace-pre-wrap ds:rounded-md ds:border ds:bg-transparent ds:text-base ds:shadow-xs ds:transition-[color,box-shadow] ds:outline-none ds:focus-visible:ring-[3px] ds:disabled:cursor-not-allowed ds:disabled:opacity-50 ds:md:text-sm",
+  "ds:border-input ds:placeholder:text-muted-foreground ds:focus-visible:border-ring ds:focus-visible:ring-ring/50 ds:aria-invalid:ring-destructive/20 ds:dark:aria-invalid:ring-destructive/40 ds:aria-invalid:border-destructive ds:dark:background ds:flex field-sizing-content ds:min-h-16 ds:w-full ds:max-w-full ds:break-words ds:whitespace-pre-wrap ds:rounded-md ds:border ds:bg-transparent ds:text-base ds:shadow-xs ds:transition-[color,box-shadow] ds:outline-none ds:focus-visible:ring-[3px] ds:disabled:cursor-not-allowed ds:disabled:opacity-50 ds:md:text-sm",
   {
     variants: {
       size: {
