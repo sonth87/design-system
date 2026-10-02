@@ -114,7 +114,8 @@ export function DataTable<TData>({
     ? {
         offsetHeader:
           typeof sticky === "object" ? (sticky.offsetHeader ?? 0) : 0,
-        offsetScroll: typeof sticky === "object" ? sticky.offsetScroll : undefined,
+        offsetScroll:
+          typeof sticky === "object" ? sticky.offsetScroll : undefined,
       }
     : null;
 
@@ -140,7 +141,10 @@ export function DataTable<TData>({
         </div>
       )}
       <Table
-        className={classNames?.table}
+        // Fixed layout makes column `size` authoritative; minWidth keeps the
+        // table scrolling horizontally instead of squeezing columns below it.
+        className={cn("ds:table-fixed", classNames?.table)}
+        style={{ minWidth: table.getTotalSize() }}
         containerClassName={cn(
           bordered && "ds:rounded-md ds:border ds:border-border",
           // Thin, unobtrusive scrollbar that darkens only when hovering the thumb itself
@@ -149,6 +153,8 @@ export function DataTable<TData>({
           "ds:[&::-webkit-scrollbar-track]:bg-transparent",
           "ds:[&::-webkit-scrollbar-thumb]:rounded-full ds:[&::-webkit-scrollbar-thumb]:bg-border",
           "ds:[&::-webkit-scrollbar-thumb:hover]:bg-muted-foreground",
+          // Size container so the footer can use `cqw` units (see footer cell)
+          "ds:[container-type:inline-size]",
           loading && "ds:blur-sm",
           classNames?.container
         )}
@@ -218,9 +224,7 @@ export function DataTable<TData>({
                     onRowClick && "ds:cursor-pointer"
                   )}
                   onClick={
-                    onRowClick
-                      ? (event) => onRowClick(row, event)
-                      : undefined
+                    onRowClick ? (event) => onRowClick(row, event) : undefined
                   }
                 >
                   {row.getVisibleCells().map((cell) => {
@@ -228,6 +232,7 @@ export function DataTable<TData>({
                       <TableCell
                         key={cell.id}
                         className={cn(
+                          "ds:overflow-hidden ds:text-ellipsis",
                           classNames?.cell,
                           // Static background on purpose — see the comment on
                           // getCommonPinningStyles for why pinned cells must
@@ -292,7 +297,12 @@ export function DataTable<TData>({
                     : undefined
                 }
               >
-                {footer(table.getRowModel().rows.map((row) => row.original))}
+                {/* The cell spans the full (possibly scrolled) table width; pin its
+                    content to the visible scrollport so it never lands off-screen.
+                    100cqw = scroll container width, 1rem = the cell's p-2 padding. */}
+                <div className="ds:sticky ds:left-2 ds:w-[calc(100cqw-1rem)]">
+                  {footer(table.getRowModel().rows.map((row) => row.original))}
+                </div>
               </TableCell>
             </TableRow>
           </TableFooter>
@@ -303,10 +313,8 @@ export function DataTable<TData>({
           <DataTablePagination
             showTotalCount={showTotalCount}
             totalCount={totalCount}
-            showPageInfo={true}
             showPageSizeOptions={true}
             showRowSelectionCount={true}
-            className="ds:mt-2.5"
             table={table}
             {...(pagination === true ? {} : pagination)}
           />

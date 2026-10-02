@@ -37,7 +37,13 @@ export function getCommonPinningStyles<TData>({
     // repaints (e.g. a hover-triggered background change) — the underlying,
     // scrolled-away column bleeds through for that row. Keeping the pinned
     // cell's own background constant avoids ever triggering that repaint.
+    // Pin min/max to the declared size too: under `table-layout: auto` a bare
+    // `width` is only a hint, so columns shrink/grow with content and the
+    // sticky offsets above (summed from getSize()) drift from the real layout.
+    // getSize() is already clamped to minSize/maxSize by TanStack.
     width: column.getSize(),
+    minWidth: column.getSize(),
+    maxWidth: column.getSize(),
     zIndex: isPinned ? 1 : undefined,
   };
 }

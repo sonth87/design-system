@@ -16,8 +16,12 @@ const __dirname = path.dirname(__filename);
 const packageJsonPath = path.resolve(__dirname, "../package.json");
 const srcPath = path.resolve(__dirname, "../src");
 
+function normalizePackagePath(value) {
+  return value.replace(/\\/g, "/");
+}
+
 function withoutExt(filePath) {
-  return filePath.replace(/\.(ts|tsx)$/, "");
+  return normalizePackagePath(filePath.replace(/\.(ts|tsx)$/, ""));
 }
 
 function toExportName(name) {
@@ -25,14 +29,16 @@ function toExportName(name) {
 }
 
 function moduleRecord(relNoExt) {
+  const normalized = normalizePackagePath(relNoExt);
+
   return {
     import: {
-      types: `./dist/types/${relNoExt}.d.ts`,
-      default: `./dist/esm/${relNoExt}.js`,
+      types: `./dist/types/${normalized}.d.ts`,
+      default: `./dist/esm/${normalized}.js`,
     },
     require: {
-      types: `./dist/types/${relNoExt}.d.ts`,
-      default: `./dist/cjs/${relNoExt}.cjs`,
+      types: `./dist/types/${normalized}.d.ts`,
+      default: `./dist/cjs/${normalized}.cjs`,
     },
   };
 }
@@ -140,7 +146,8 @@ function generateTypesVersions() {
   };
 
   const addType = ({ name, rel }) => {
-    typesVersions["*"][toExportName(name)] = [`./dist/types/${rel}.d.ts`];
+    const normalizedRel = normalizePackagePath(rel);
+    typesVersions["*"][toExportName(name)] = [`./dist/types/${normalizedRel}.d.ts`];
   };
 
   components.forEach(addType);

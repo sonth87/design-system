@@ -445,7 +445,7 @@ const columns: ColumnDef<Project>[] = [
         </div>
       );
     },
-    size: 32,
+    size: 96,
   },
   // {
   //   id: "actions",
